@@ -161,7 +161,7 @@ form h6 span{
 .intro{
     display: block;
     margin-bottom: 1em;
-    font-size: 13px;
+    font-size: 15px;
     padding-bottom: 1em; 
     border-bottom: 1px #e6e6e6 solid;
 }
@@ -332,6 +332,11 @@ a:hover {
 .contact100-form-btn, .contact100-form-btn:hover {
     box-shadow: none; 
 }
+
+input.input100 {
+    height: 40px;
+    font-size: 14px;
+}
 .my-menu-humb{
     font-size: 1em;
     color: #ffffff;
@@ -344,6 +349,13 @@ a:hover {
 }
 .my-menu-humb:hover{
   color: white;
+}
+form h6 span {
+    display: block;
+    margin-top: -10px;
+}
+select{
+  padding: 10px 50px !important;
 }
 @media screen and (min-width: 1200px) {
     form h6 {
@@ -370,16 +382,16 @@ a:hover {
         margin-bottom: 20px;       
     }
     .radio_section_slice h6, .radio_section h6 {
-      text-align: right;
+      text-align: left;
     }
     .radio_section_slice, .radio_section {
-      text-align: right;
+      text-align: left;
     }
     .radio_section_slice h6{
       width: 100%;
     }
     .radio_section_slice h6, .radio_section h6 {
-      text-align: right;
+      text-align: left;
       width: 100%;
     }
 
