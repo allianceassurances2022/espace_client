@@ -110,3 +110,7 @@ Route::get('/produit/mrp/garanties', function () {
 //payment route manager
 
 //autentification
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
