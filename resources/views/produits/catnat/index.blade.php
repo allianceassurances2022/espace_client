@@ -19,7 +19,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         </button>
 
         <div class="contact100-form-title" style="@yield('produit_url')">
-            <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> Catastrophe Naturelle</span>
+            <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
         <form class="contact100-form validate-form">
             <div class="intro">
@@ -44,7 +44,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

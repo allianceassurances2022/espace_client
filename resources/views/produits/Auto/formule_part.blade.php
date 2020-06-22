@@ -19,7 +19,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         </button>
 
         <div class="contact100-form-title" style="@yield('produit_url')">
-            <span><img src="{{asset('produit_assets/images/icons/auto_white.svg')}}" alt=""> Automobile Particulier</span>
+            <span><img src="{{asset('produit_assets/images/icons/auto_white.svg')}}" alt=""> Automobile</span>
         </div>
         <form class="contact100-form validate-form">
             <div class="intro">
@@ -30,67 +30,77 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Auto particulier <span>2</span></h5>
             </div>
-            <h6>Periode <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Dur</option>
-                    <option value="">Semi-léger</option>
-                    <option value="">Léger</option>
-                    <option value="">Autre</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Periode <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Dur</option>
+                        <option value="">Semi-léger</option>
+                        <option value="">Léger</option>
+                        <option value="">Autre</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
-            <h6>Usage <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Dur</option>
-                    <option value="">Semi-léger</option>
-                    <option value="">Léger</option>
-                    <option value="">Autre</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Usage <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Dur</option>
+                        <option value="">Semi-léger</option>
+                        <option value="">Léger</option>
+                        <option value="">Autre</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
-            <h6>Couverture <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Dur</option>
-                    <option value="">Semi-léger</option>
-                    <option value="">Léger</option>
-                    <option value="">Autre</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Couverture <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Dur</option>
+                        <option value="">Semi-léger</option>
+                        <option value="">Léger</option>
+                        <option value="">Autre</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
-            <h6>Assistance <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Dur</option>
-                    <option value="">Semi-léger</option>
-                    <option value="">Léger</option>
-                    <option value="">Autre</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Assistance <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Dur</option>
+                        <option value="">Semi-léger</option>
+                        <option value="">Léger</option>
+                        <option value="">Autre</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
             <!-- fin produit auto particulier -->
 
-            <h6>Genre <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="phone" class="input100" type="text" name="phone" placeholder="Véhicules particuliers sans remorques">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Genre <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" placeholder="Véhicules particuliers sans remorques">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Extensions suplementaire <span>3</span></h5>
@@ -117,10 +127,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

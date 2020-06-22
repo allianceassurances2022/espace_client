@@ -133,14 +133,14 @@ body {
 @endsection
 
 @section('produit_url')
-background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg')}});
+background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
 @endsection
 
 @section('content')
 <div class="container2">
     <!-- code here -->
     <div class="card">
-        <a href="{{route('produit_auto')}}">
+        <a href="{{route('type_produit',['auto','index'])}}">
           <div class="card-img">
               <img src="{{asset('produit_assets/images/backgrounds/automobile.jpg')}}" />
           </div>
@@ -152,13 +152,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
               <p class="card-intro">
                   Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
               </p>
-              <a href="{{route('produit_auto')}}"  class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
+              <a href="{{route('type_produit',['auto','index'])}}"  class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
           </div>
         </a>
     </div>
 
     <div class="card">
-        <a href="{{route('produit_mrh')}}">
+        <a href="{{route('type_produit',['mrh','index'])}}">
           <div class="card-img">
               <img src="{{asset('produit_assets/images/backgrounds/habitation.jpg')}}" />
           </div>
@@ -170,12 +170,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
               <p class="card-intro">
                   Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
               </p>
-              <a href="{{route('produit_mrh')}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
+              <a href="{{route('type_produit',['mrh','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
           </div>
         </a>
     </div>
     <div class="card">
-        <a href="{{route('produit_mrp')}}">
+        <a href="{{route('type_produit',['mrp','index'])}}">
           <div class="card-img">
               <img src="{{asset('produit_assets/images/backgrounds/entreprise.jpg')}}" />
           </div>
@@ -187,12 +187,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
               <p class="card-intro">
                   Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
               </p>
-              <a href="{{route('produit_mrp')}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
+              <a href="{{route('type_produit',['mrp','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </a>
         </div>
     </div>
     <div class="card">
-      <a href="{{route('produit_catnat')}}">
+      <a href="{{route('type_produit',['catnat','index'])}}">
         <div class="card-img">
             <img src="{{asset('produit_assets/images/backgrounds/catastrophe-naturelle.jpg')}}" />
         </div>
@@ -204,7 +204,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <p class="card-intro">
                 Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
             </p>
-            <a href="{{route('produit_catnat')}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
+            <a href="{{route('type_produit',['catnat','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </div>
       </a>
     </div>

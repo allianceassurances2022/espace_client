@@ -26,51 +26,59 @@ background-image: url({{asset('produit_assets/images/backgrounds/entreprise.jpg'
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Informations de l'assuré <span>1</span></h5>
             </div>
-            <h6>Activité <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Production</option>
-                    <option value="">Administratifs</option>
-                    <option value="">Stockage</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Activité <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Production</option>
+                        <option value="">Administratifs</option>
+                        <option value="">Stockage</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
 
-            <h6>Statut de l'assuré <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">Production</option>
-                    <option value="">Administratifs</option>
-                    <option value="">Stockage</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Statut de l'assuré <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                        <option value="">Production</option>
+                        <option value="">Administratifs</option>
+                        <option value="">Stockage</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
 
-            <h6>La superficie <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>La superficie <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
 
-            <h6>Nombre d'employés <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
-                </label>
+            <div class="slice">
+                <h6>Nombre d'employés <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-home"></span>
+                    </label>
+                </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

@@ -1,6 +1,9 @@
 button{
 }
 
+
+
+
 .btn-show-contact100 {
 	display: inline-block;
 	color: #007480;
@@ -47,6 +50,23 @@ button{
     display: none;
 }
 
+.tarificateur input.input100 {
+    height: 50px;
+    font-size: 17px;
+    text-align: right;
+}
+
+.tarificateur h5 {
+    text-align: right;
+    margin-right: 26px;
+    margin-bottom: 14px;
+}
+.tarificateur .validate-input {
+    margin: auto;
+    margin-bottom: 20px;
+    float: right;
+    width: 50%;
+}
 
 
 
@@ -258,17 +278,16 @@ select option{
 }
 .tite_container h5{
     width: 100%;
-    padding: 1.5% 2%;
+    padding: 0.5% 2%;
     display: inline-block;
     background-color: #00a4b514;
     color: #6d6d6d;
     text-transform: uppercase;
-    font-size: 0.95em;
+    font-size: 0.90em;
     margin-bottom: 0.8em;
     margin-top: 1em;
     border: 1px #00a4b5 solid;
     text-align: left;
-
 }
 
 .tite_container h5 i{
@@ -279,7 +298,7 @@ select option{
     margin-right: 10px;
 }
 .tite_container h5 span{
-    padding: 11px;
+    padding: 9px;
     float: right;
     background-color: #e5fdff;
     border-radius: 5px;
@@ -335,7 +354,7 @@ a:hover {
 
 input.input100 {
     height: 40px;
-    font-size: 14px;
+    font-size: 12px;
 }
 .my-menu-humb{
     font-size: 1em;
@@ -356,8 +375,22 @@ form h6 span {
 }
 select{
   padding: 10px 50px !important;
+  font-size: 12px !important;
+}
+.slice{
+  width: 100%;
 }
 @media screen and (min-width: 1200px) {
+    .slice{
+      width: 50%;
+    }
+    .slice h6, .wrap-input100 .validate-input{
+      width: 100%;
+    }
+    .slice .validate-input{
+       float: left;
+        width: 85%;
+    }
     form h6 {
         line-height: 2.0em;
         font-weight: bold;
@@ -465,4 +498,18 @@ select{
     ::-webkit-scrollbar {
       display: none;
     }
+
+    .tarificateur .validate-input {
+        width: 100%;
+        text-align: center;
+    }
+    .tarificateur input.input100 {
+      text-align: center;
+    }
+}
+
+.contact100-form-title span {
+  text-align: center;
+  background: #00000024;
+  font-size: 0.75em;
 }
