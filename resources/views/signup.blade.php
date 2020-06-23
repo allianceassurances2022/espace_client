@@ -77,6 +77,9 @@
             padding: 8px;
             outline: none;
         }
+        .page-wrapper{
+            background-color: red !important; 
+        }
           
     </style>
 </head>
@@ -89,7 +92,6 @@
                     <div class="all_header">
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                     </div>
-                    <h2 class="title">Formulaire d'inscription pour Particulier</h2>
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
@@ -190,7 +192,6 @@
                         </div>
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--aa" type="submit">M'inscrire</button>
-                            <a href="{{route('signin')}}" class="btn btn--radius-2 btn--aa-white " type="submit">Deja Membre</a>
                         </div>
                     </form>
                 </div>

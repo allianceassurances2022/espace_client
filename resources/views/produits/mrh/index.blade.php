@@ -100,10 +100,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="{{route('pannier')}}" class="contact100-form-btn">
+                <a href="" class="contact100-form-btn">
                      Calculer  
                 </a>
-                <a href="{{route('pannier')}}" class="contact100-form-btn">
+                <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

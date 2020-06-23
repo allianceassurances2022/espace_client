@@ -115,7 +115,7 @@
 							Vous n'avez pas de compte ?
 						</span>
 
-						<a class="txt2" href="#">
+						<a href="{{route('signup')}}" class="txt2" href="#">
 							M'inscrire
 						</a>
 					</div>
