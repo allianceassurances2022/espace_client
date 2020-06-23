@@ -58,10 +58,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
+                <a href="{{route('pannier')}}" class="contact100-form-btn">
+                     Calculer  
                 </a>
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                </a>
+                <a href="{{route('pannier')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

@@ -39,20 +39,20 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>La construction dispose-t-elle d'un permis de construire ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio"/>
+                    <input type="radio" name="permis"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio"/>
+                    <input type="radio" name="permis"/>
                     <span>Non</span>
                 </label>
             </div>
 
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{route('type_produit',['catnat','construction'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

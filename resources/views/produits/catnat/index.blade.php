@@ -31,20 +31,19 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             
             <h6>Formule <span>(Choix Obligatoire)</span></h6>
             <div class="wrap-input100 validate-input">
-                <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                    <option value="">10%</option>
-                    <option value="">25%</option>
-                    <option value="">50%</option>
-                    <option value="">100%</option>
+                <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                    <option value="Habitation">Habitation</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Industrielle">Industrielle</option>
                 </select>
                 <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-home"></span>
+                <label class="label-input100" for="formule">
+                    <span class="fa fa-umbrella"></span>
                 </label>
             </div>
             
             <div class="container-contact100-form-btn">
-                <a href="" class="contact100-form-btn">
+                <a href="{{route('type_produit',['catnat','commerce'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

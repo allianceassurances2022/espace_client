@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V2</title>
+	<title>Authentification</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -25,6 +25,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/css/main.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+
 	<style>
 		.all_header{
             position: relative;
@@ -45,6 +47,34 @@
         .wrap-login100 {
         	padding-top: 0;
         }
+        .login100-form-bgbtn {
+            background: -webkit-linear-gradient(right, #21d4fd, #007481, #00576b, #068597);
+        }
+        h4{
+        	margin-top: 25px;
+		    text-align: center;
+		    font-weight: bold;
+		    font-size: 12px;
+		    font-size: 1.2rem;
+		    text-transform: capitalize;
+		    margin-bottom: 1em;
+		    margin-top: 1.5em;
+		    letter-spacing: 0.1em;
+		    word-spacing: 0.5em;
+		    font-weight: bold;
+		    font-family: 'Lato';
+		    font-weight: 300;
+		    text-align: right;
+		    color: #404040;
+		    border: 4px #88888821 dotted;
+		    padding: 21px;
+		    background: #8888880f;
+        }
+        h4 i{
+        	padding: 5px;
+        	background-color: white;
+        	border-radius: 50px;
+        }
 	</style>
 <!--===============================================================================================-->
 </head>
@@ -57,7 +87,7 @@
                     <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                 </div>
 				<form class="login100-form validate-form">
-					
+                    
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
@@ -82,11 +112,11 @@
 
 					<div class="text-center p-t-115">
 						<span class="txt1">
-							Don’t have an account?
+							Vous n'avez pas de compte ?
 						</span>
 
 						<a class="txt2" href="#">
-							Sign Up
+							M'inscrire
 						</a>
 					</div>
 				</form>

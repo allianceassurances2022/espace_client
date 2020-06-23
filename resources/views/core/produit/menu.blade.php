@@ -12,7 +12,7 @@
         </div>
 
         <div  id="mobile-menu" class="display-switch-off">
-            <button class="btn-show-contact100 contact100-form-btn-white">Autres Produits</button>
+            <button class="btn-show-contact100 contact100-form-btn-white">Produits</button>
             <button class="btn-show-contact100">Mon Pannier</button>
             <button class="btn-show-contact100">@yield('nom_produit')</button>
         </div>

@@ -35,7 +35,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
+                        <span class="fa fa-calculator"></span>
                     </label>
                 </div>
             </div>
@@ -45,7 +45,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
+                        <span class="fa fa-calculator"></span>
                     </label>
                 </div>
             </div>
@@ -55,7 +55,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
+                        <span class="fa fa-calculator"></span>
                     </label>
                 </div>
             </div>
@@ -65,72 +65,57 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="slice">
-                <h6>Type de construction <span>(Choix Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
-                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">10%</option>
-                        <option value="">25%</option>
-                        <option value="">50%</option>
-                        <option value="">100%</option>
-                    </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
+                        <span class="fa fa-calculator"></span>
                     </label>
                 </div>
             </div>
             <div class="radio_section">
                 <h6>Es une activité qui doit être inscrite au registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Non</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Ne sais pas</span>
                 </label>
             </div>
             <div class="radio_section">
                 <h6>Si oui, disposez-vous d’un registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="registre"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="registre"/>
                     <span>Non</span>
                 </label>
             </div>
             <div class="radio_section">
                 <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Non</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Ne sais pas</span>
                 </label>
             </div>
             
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{route('type_produit',['catnat','construction'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

@@ -78,7 +78,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/entreprise.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="" class="contact100-form-btn">
+                <a href="{{route('type_produit',['mrp','garanties'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

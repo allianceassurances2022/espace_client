@@ -95,7 +95,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
             
             <div class="container-contact100-form-btn">
-                <a href="" class="contact100-form-btn">
+                <a href="{{route('type_produit',['auto','laki'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

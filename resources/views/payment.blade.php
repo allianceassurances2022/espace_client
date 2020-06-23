@@ -124,8 +124,8 @@
           
         </div>
 			</form>
-        	<a href="" class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-left"></i> Produits</a>
-        	<a href="" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+        	<a href="{{ url()->previous() }}" class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-left"></i> Produit</a>
+        	<a href="{{route('signup')}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
         </div>
 </div>
 </div>

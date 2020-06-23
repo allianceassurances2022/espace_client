@@ -21,6 +21,18 @@ Route::get('/', function () {
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
 
+Route::get('pannier', function () {
+    return view('payment');
+})->name('pannier');
+
+Route::get('signup', function () {
+    return view('signup');
+})->name('signup');
+
+Route::get('signin', function () {
+    return view('signin');
+})->name('signin');
+
 
 Auth::routes();
 

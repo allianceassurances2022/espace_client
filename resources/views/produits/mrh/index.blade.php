@@ -32,11 +32,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                    <h6>Habitation <br><span>(Choix Obligatoire)</span></h6>
                    <label>
-                       <input type="radio" name="radio"/>
+                       <input type="radio" name="habitation"/>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="radio"/>
+                       <input type="radio" name="habitation"/>
                        <span>Collective</span>
                    </label>
                </div>
@@ -45,11 +45,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                     <h6>Qualité juredique <br><span>(Choix Obligatoire)</span></h6>
                     <label>
-                        <input type="radio" name="radio2"/>
+                        <input type="radio" name="qualite"/>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="radio2"/>
+                        <input type="radio" name="qualite"/>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -58,9 +58,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                   <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire">
                    <span class="focus-input100"></span>
-                   <label class="label-input100" for="phone">
+                   <label class="label-input100" for="montant">
                        <span class="fa fa-home"></span>
                    </label>
                </div>
@@ -69,9 +69,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
+                   <input id="pieces" class="input100" type="text" name="pieces" placeholder="Nombre de pieces">
                    <span class="focus-input100"></span>
-                   <label class="label-input100" for="phone">
+                   <label class="label-input100" for="pieces">
                        <span class="fa fa-bed"></span>
                    </label>
                </div>
@@ -100,7 +100,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="" class="contact100-form-btn">
+                <a href="{{route('pannier')}}" class="contact100-form-btn">
+                     Calculer  
+                </a>
+                <a href="{{route('pannier')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

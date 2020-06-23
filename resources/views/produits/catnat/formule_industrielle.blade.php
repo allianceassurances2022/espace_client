@@ -72,50 +72,50 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>Es une activité qui doit être inscrite au registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Non</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="activite"/>
                     <span>Ne sais pas</span>
                 </label>
             </div>
             <div class="radio_section">
                 <h6>Si oui, disposez-vous d’un registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="registre"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="registre"/>
                     <span>Non</span>
                 </label>
             </div>
             <div class="radio_section">
                 <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Non</span>
                 </label>
                 <label>
-                    <input type="radio" name="radio2"/>
+                    <input type="radio" name="local"/>
                     <span>Ne sais pas</span>
                 </label>
             </div>
 
             <div class="container-contact100-form-btn">
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <a href="{{route('produit_auto_laki')}}" class="contact100-form-btn">
+                <a href="{{route('type_produit',['catnat','construction'])}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>

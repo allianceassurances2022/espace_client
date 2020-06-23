@@ -63,8 +63,8 @@ class ProduitController extends Controller
                     case 'index':
                         return view('produits.professionnel.index');
                         break;
-                    case 'construction':
-                        return view('produits.professionnel.construction');
+                    case 'garanties':
+                        return view('produits.professionnel.garanties');
                         break;    
                 }
                 break;    
