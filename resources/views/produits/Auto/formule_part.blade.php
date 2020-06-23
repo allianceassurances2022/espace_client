@@ -131,6 +131,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
                 <a href="{{route('pannier')}}" class="contact100-form-btn">
+                     Calculer  
+                </a>
+                <a href="{{route('pannier')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>
