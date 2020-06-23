@@ -29,23 +29,54 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5 class="active"><i class="fa fa-building-o"></i> La construction<span>3</span></h5>
             </div>
 
-            <h6>Superficie <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-bed"></span>
-                </label>
+            <div class="slice">
+                <h6>Superficie <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-bed"></span>
+                    </label>
+                </div>
             </div>
-            <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-bed"></span>
-                </label>
+            <div class="slice">
+                <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" placeholder="Nombre de pieces">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-bed"></span>
+                    </label>
+                </div>
             </div>
-            
+            <div class="slice">
+                <h6>Wilaya <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                        <option value="Habitation">Habitation</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Industrielle">Industrielle</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="formule">
+                        <span class="fa fa-globe"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="slice">
+                <h6>Commune <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                        <option value="Habitation">Habitation</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Industrielle">Industrielle</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="formule">
+                        <span class="fa fa-globe"></span>
+                    </label>
+                </div>
+            </div>
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
