@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommuneTable extends Migration
+class CreateZcatnatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCommuneTable extends Migration
      */
     public function up()
     {
-        Schema::create('communes', function (Blueprint $table) {
+        Schema::create('zcatnats', function (Blueprint $table) {
             $table->id();
             $table->integer('code_commune');
-            $table->text('lib_commune');
+            $table->text('zone');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCommuneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('communes');
+        Schema::dropIfExists('zcatnats');
     }
 }
