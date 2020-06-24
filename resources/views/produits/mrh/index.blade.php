@@ -21,7 +21,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span> <img src="{{asset('produit_assets/images/icons/hab_white.svg')}}" alt=""> Multirisques Habitation</span>
         </div>
-        <form class="contact100-form validate-form">
+        <form class="contact100-form " action="{{route('montant_mrh')}}" method="get">
+        @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
@@ -92,7 +93,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="phone" class="input100" type="text" name="phone" placeholder="Calcul du Montant en cours" disabled="">
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{ $totale ?? '' }}" placeholder="Calcul du Montant en cours" >
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-file-text"></span>
@@ -100,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="" class="contact100-form-btn">
+                <a href="{{route('montant_mrh')}}" class="contact100-form-btn">
                      Calculer  
                 </a>
                 <a href="{{route('signin')}}" class="contact100-form-btn">

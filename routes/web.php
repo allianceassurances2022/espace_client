@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
 
+Route::get('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
+
 Route::get('pannier', function () {
     return view('payment');
 })->name('pannier');
