@@ -8,5 +8,5 @@ class zcatnat extends Model
 {
     protected $fillable = ['code_commune',    'zone'];
     
-    protected $table = 'zcatnat';
+    protected $table = 'zcatnats';
 }

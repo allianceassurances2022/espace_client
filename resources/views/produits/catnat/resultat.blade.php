@@ -22,7 +22,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="get" >
-          @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
@@ -33,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Superficie <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input id="Superficie" class="input100" type="text" name="Superficie" placeholder="Superficie">
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{$surface}}" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -43,7 +42,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input id="anne_cont" class="input100" type="text" name="anne_cont" placeholder="Année de construction">
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{$anne_cont}}"  placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -53,12 +52,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Wilaya <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
-                    @foreach($wilaya as $wilaya)
-                        <option value="{{$wilaya->code_wilaya}}">{{$wilaya->nlib_wilaya}}</option>
-                        @endforeach
+                    <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                        <option value="16">Alger</option>
+     
                     </select>
-                    
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="formule">
                         <span class="fa fa-globe"></span>
@@ -68,8 +65,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Commune <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
-                        <option value="160001">Commune</option>
+                    <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                        <option value="160001">alger</option>
                         
                     </select>
                     <span class="focus-input100"></span>
@@ -80,7 +77,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
-               
+                <div class="wrap-input100 validate-input">
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{$prime_total}}" placeholder="Calcul du Montant en cours" disabled="">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-file-text"></span>
+                    </label>
+                </div>
             </div>
 
             <div class="container-contact100-form-btn">
@@ -101,51 +104,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <input type="hidden" nom="activite" id="activite" value="{{$activite ?? ''}}">
             <input type="hidden" nom="registre" id="registre" value="{{$registre ?? ''}}">
             <input type="hidden" nom="local" id="local" value="{{$local ?? ''}}">
-            <input type="hidden" nom="val_assur" id="val_assur" value="{{$val_assur ?? ''}}">
-            <input type="hidden" nom="permis" id="permis" value="{{$permis ?? ''}}">
-            <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
-              </form>
+        </form>
     </div>
 </div>
-@endsection
-@section('js')
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<script>
-$(document).ready(function(){
-
- $('#Wilaya').change(function(){
-  if($(this).val() != '')
-  {
-   var select = $(this).attr("id");
-   
-   var value = $(this).val();
-   
- 
-   //alter(dependent);
- 
-   var _token = $('input[name="_token"]').val();
-   //alert( _token );
-   $.ajax({
-   
-    //alert(value);
-    url:"{{ route('report.construction.fetch') }}",
-    method:"POST",
-    data:{select:select, value:value, _token: $('#signup-token').val()},
-    success:function(result)
-    {
-     $('#Commune').html(result);
-    //alert(value);
-   
-    }
-
-   })
-  }
- });
-
-
-});
-</script>
 @endsection

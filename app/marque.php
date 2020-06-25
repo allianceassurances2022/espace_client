@@ -9,5 +9,5 @@ class marque extends Model
     
     protected $fillable = ['code_marque', 'lib_marque'];
     
-    protected $table = 'marque';
+    protected $table = 'marques';
 }

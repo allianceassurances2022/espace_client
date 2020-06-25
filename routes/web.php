@@ -21,7 +21,13 @@ Route::get('/', function () {
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
 
+
+Route::get('type_formule_catanat' , 'TarificationController@type_formule_catanat')->name('type_formule_catanat');
+Route::get('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
+
+Route::get('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
 Route::get('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
+Route::post('construction' , 'TarificationController@fetch')->name('report.construction.fetch');
 
 Route::get('pannier', function () {
     return view('payment');

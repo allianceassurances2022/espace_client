@@ -32,25 +32,30 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <div class="radio_section_slice">
                    <h6>Habitation <br><span>(Choix Obligatoire)</span></h6>
+          
+              
                    <label>
-                       <input type="radio" name="hab"  value="individuelle"/>
+                       <input type="radio" name="hab" id="individuelle"  value="individuelle" checked/>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="hab"  value="collective"/>
+                       <input type="radio" name="hab" id="collective"  value="collective"/>
                        <span>Collective</span>
                    </label>
+                
+                    
+                  
                </div>
            </div>
             <div class="slice">
                 <div class="radio_section_slice">
                     <h6>Qualité juredique <br><span>(Choix Obligatoire)</span></h6>
                     <label>
-                        <input type="radio" name="juredique" value="proprietaire"/>
+                        <input type="radio" name="juredique" id="proprietaire" value="proprietaire"/>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="juredique" value="locataire"/>
+                        <input type="radio" name="juredique" id="locataire" value="locataire"/>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -59,7 +64,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire">
+                   <input id="montant" class="input100" type="text" name="montant" value="{{$montant}}">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="montant">
                        <span class="fa fa-home"></span>
@@ -70,7 +75,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="pieces" class="input100" type="text" name="nbr_piece" placeholder="Nombre de pieces">
+                   <input id="pieces" class="input100" type="text" name="nbr_piece" value="{{$nbr_piece}}">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="pieces">
                        <span class="fa fa-bed"></span>
@@ -93,7 +98,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" >
+                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{ $totale }}" >
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-file-text"></span>
@@ -101,7 +106,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-            <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" >  
+            <input  class="contact100-form-btn" type='submit' id="calculer" nom="calculer" >  
             <!--    <a href="{{route('montant_mrh')}}" class="contact100-form-btn">
                 
                 </a>-->
@@ -109,18 +114,52 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
             </div>
+            <input type="hidden" nom="habl" id="habl" value="{{$habitation}}">
+            <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique}}">
+            <input type="hidden" nom="terassedd" id="terassedd" value="{{$terasse}}">
         </form>
     </div>
 </div>
 @endsection
-<!--@section('js')
+@section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 $(document).ready(function(){
 
- $("#calculer").change(function(){
+var habl = document.getElementById("habl").value;
+var juridiquee= document.getElementById("juridiquee").value;
+var terassedd= document.getElementById("terassedd").value;
+ if(habl=="individuelle"){
+    document.getElementById("individuelle").checked = true;
+ }
+ if(habl=="collective"){
+    document.getElementById("collective").checked = true;
+}
+if(juridiquee=="Propretaire"){
+    document.getElementById("Propretaire").checked = true;
+ }
+ if(juridiquee=="locataire"){
+    document.getElementById("locataire").checked = true;
+}
+if(terassedd=="oui"){
+    document.getElementById("oui").checked = true;
+ }
+ if(terassedd=="non"){
+    document.getElementById("non").checked = true;
+}
+
+
+
+
+
+
+
+
+
+
+    /*$("#calculer").change(function(){
   if($(this).val() != '')
   {
     
@@ -152,11 +191,11 @@ error:function(){
 
    })
   }
- });
+ });*/
 
  
  
 
 });
 </script>
-@endsection-->
+@endsection

@@ -8,5 +8,5 @@ class commune extends Model
 {
     protected $fillable = ['code_commune',    'lib_commune' ,'code_wilaya'];
     
-    protected $table = 'commune';
+    protected $table = 'communes';
 }

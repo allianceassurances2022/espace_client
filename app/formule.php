@@ -8,5 +8,5 @@ class formule extends Model
 {
     protected $fillable = ['code_formule', 'libelle_formule', 'code_garantie', 'code_branche'];
     
-    protected $table = 'formule';
+    protected $table = 'formules';
 }

@@ -8,5 +8,5 @@ class wilaya extends Model
 {
     protected $fillable = ['code_wilaya', 'nlib_wilaya', 'zone'];
     
-    protected $table = 'wilaya';
+    protected $table = 'wilayas';
 }
