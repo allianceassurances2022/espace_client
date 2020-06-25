@@ -26,6 +26,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
 
+            
+
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Formule Commerce <span>2</span></h5>
             </div>

@@ -29,6 +29,8 @@ Route::get('montant_catnat' , 'TarificationController@montant_catnat')->name('mo
 Route::get('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 Route::post('construction' , 'TarificationController@fetch')->name('report.construction.fetch');
 
+Route::get('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
+
 Route::get('pannier', function () {
     return view('payment');
 })->name('pannier');

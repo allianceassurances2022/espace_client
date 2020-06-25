@@ -8,6 +8,19 @@
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/iconic/css/material-design-iconic-font.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+    <style> 
+     @media screen and (max-width: 880px) {
+        .all_header{
+            background-color: transparent;             
+        }
+        .all_header img{
+         background-color: #007481;
+          padding: 3% 5%;
+          border-radius: 10px;
+          margin-left: 1em !important;
+        }
+    }
+    </style>
 </head>
 <body>
  	<div class='container'>

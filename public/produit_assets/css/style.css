@@ -468,7 +468,7 @@ select{
       display: block;
       margin: auto;
       margin: 18px auto;
-      font-size: 1em;
+      font-size: 1.3em;
       width: 63%;
       line-height: 1.5em;
       height: 3em;
@@ -512,4 +512,28 @@ select{
   text-align: center;
   background: #00000024;
   font-size: 0.75em;
+}
+.btn-btn{
+    font-family: Montserrat-Bold;
+    color: #007481;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    min-width: 160px;
+    height: 42px;
+    background-color: #fff;
+    border-radius: 21px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.btn-btn:hover{
+  background-color: #007480;
+  border: #007480;
+  color: white;
+}
+
+#my-menu a{
+  font-weight: bold;
 }
