@@ -77,6 +77,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     </label>
                 </div>
             </div>
+            <div class="radio_section">
+                <h6>A t-elle été construite ou vérifiée conforme aux règles parasismiques <br><span>(Choix Obligatoire)</span></h6>
+                <label>
+                    <input type="radio" name="seisme"/>
+                    <span>Oui</span>
+                </label>
+                <label>
+                    <input type="radio" name="seisme"/>
+                    <span>Non</span>
+                </label>
+            </div>
+
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">

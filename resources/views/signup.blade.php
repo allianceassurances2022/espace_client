@@ -42,6 +42,8 @@
             border-top: 1px #007481 solid;
             margin-bottom: 45px;
         }
+
+
         .card-4 .card-body {
             padding-top: 0px;
         }
@@ -78,14 +80,16 @@
             outline: none;
         }
         .page-wrapper{
-            background-color: red !important; 
+            background-color: #f2f2f2 !important; 
         }
+
+       
           
     </style>
 </head>
 
 <body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="page-wrapper p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
