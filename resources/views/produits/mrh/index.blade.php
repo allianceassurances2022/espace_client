@@ -21,7 +21,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span> <img src="{{asset('produit_assets/images/icons/hab_white.svg')}}" alt=""> Multirisques Habitation</span>
         </div>
-        <form class="contact100-form " action="{{route('montant_mrh')}}" method="get" >
+        <form class="contact100-form " action="{{route('montant_mrh')}}" method="post" >
         @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
