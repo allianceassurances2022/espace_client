@@ -22,14 +22,14 @@ Route::get('/produits/index' , 'ProduitController@index')->name('index_produit')
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
 
 
-Route::get('type_formule_catanat' , 'TarificationController@type_formule_catanat')->name('type_formule_catanat');
+Route::get('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');
 Route::get('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 
-Route::get('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
-Route::get('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
-Route::post('construction' , 'TarificationController@fetch')->name('report.construction.fetch');
+Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
+Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
+Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
-Route::get('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
+Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
 
 Route::get('pannier', function () {
     return view('payment');

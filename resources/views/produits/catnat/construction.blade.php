@@ -21,7 +21,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
-        <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="get" >
+        <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
@@ -53,7 +53,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Wilaya <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
+                   <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
                     @foreach($wilaya as $wilaya)
                         <option value="{{$wilaya->code_wilaya}}">{{$wilaya->nlib_wilaya}}</option>
                         @endforeach
@@ -81,11 +81,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>A t-elle été construite ou vérifiée conforme aux règles parasismiques <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="seisme"/>
+                    <input type="radio" name="seisme" value="oui" />
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="seisme"/>
+                    <input type="radio" name="seisme" value="non" />
                     <span>Non</span>
                 </label>
             </div>
@@ -143,7 +143,7 @@ $(document).ready(function(){
    $.ajax({
    
     //alert(value);
-    url:"{{ route('report.construction.fetch') }}",
+    url:"{{ route('construction.fetch') }}",
     method:"POST",
     data:{select:select, value:value, _token: $('#signup-token').val()},
     success:function(result)
