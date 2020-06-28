@@ -380,16 +380,20 @@ select{
 .slice{
   width: 100%;
 }
+
+.tarificateur .validate-input, .tarificateur input.input100{
+    border-radius: 50px;
+}
 @media screen and (min-width: 1200px) {
     .slice{
       width: 50%;
     }
-    .slice h6, .wrap-input100 .validate-input{
+    .slice h6, .wrap-input100 .validate-input2{
       width: 100%;
     }
-    .slice .validate-input{
+    .slice .validate-input2{
        float: left;
-        width: 85%;
+        width: 90%;
     }
     form h6 {
         line-height: 2.0em;
@@ -410,7 +414,7 @@ select{
     form h6 span {
       display: block;
     }
-    .validate-input{
+    .validate-input2{
         margin: auto;
         margin-bottom: 20px;       
     }
@@ -431,7 +435,7 @@ select{
     .tarificateur h5 {
       text-align: right; 
     }
-    .validate-input {
+    .validate-input2 {
       margin: auto;
       margin-bottom: 20px;
       float: right;
