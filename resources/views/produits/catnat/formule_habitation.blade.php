@@ -39,11 +39,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>La construction dispose-t-elle d'un permis de construire ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="permis" id="oui" valeur="oui"/>
+                    <input type="radio" name="permis" id="oui" value=oui"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="permis" id="non" valeur="non"/>
+                    <input type="radio" name="permis" id="non" value="non"/>
                     <span>Non</span>
                 </label>
             </div>
