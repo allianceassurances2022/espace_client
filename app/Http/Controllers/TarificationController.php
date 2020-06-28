@@ -76,22 +76,12 @@ class TarificationController extends Controller
 
 
 
-// 	foreach($zonee as $row)
-// 	{
-// 	$zone=$row->zone;
-//    }
-	//dd($zone);
-	//$data = zcatnat::where('code_commune', $Commune)->get('zone');
-
-
-//$zone=$data->zone;
-//dd($zone);
     	/////////////////////Habitation-----------------------------------------
 
 		if ($type_formule=="Habitation"){
 			
-			$valeur_e=0;
-			$valeur_m=0;
+		//	$valeur_e=0;
+			//$valeur_m=0;
 			if ($type_const=="Habitation individuelle"){
 				if ($zone=="0"){
 				$val_assure=$surface*28000;
@@ -221,8 +211,27 @@ class TarificationController extends Controller
 		//echo $val." "." taux:".$taux." majoration:".$maj." zone:".$zone." conforme:".$reg_para." val:".$val;
 
 		$prime_total = $val+$CP+$TD+$maj;
-		dd($prime_total);
-		//return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+	//	dd($prime_total);
+	$tab= [
+		$type_formule,
+		$equipement,
+		$marchandise,
+		$contenu,
+		$act_reg,
+		$reg_com,
+		$loca,
+		$Commune,
+		$Wilaya,
+		$anne_cont,
+		$surface,
+		$permis,
+		$val_assur,
+		$reg_para,
+
+	];
+	return view('produits.catnat.resultat',compact('tab','prime_total'));
+
+	//	return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
     }
     
