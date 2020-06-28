@@ -229,9 +229,9 @@ class TarificationController extends Controller
 
 	//mrh
     public function montant_mrh(Request $request)
-    { $ct=0;$taux=0.0;$p_res_civile=0;
-	
-		$habitation = $request->post('hab');
+    {    
+	//['DR','CODE','TYPE_AGENCE','TGVA','STATUT','CHEF_AGENCE','EMAIL']
+	$habitation = $request->post('hab');
     
     	$ct=0;$taux=0.0;$p_res_civile=0;
 		
@@ -241,58 +241,97 @@ class TarificationController extends Controller
 
         $juredique = $request->post('juredique');
 		$nbr_piece = $request->post('nbr_piece');
-	//	if((!is_null($habitation)) and (!is_null($terasse)) and (!is_null($montant)) and (!is_null($juredique)) and (!is_null($nbr_piece))){
-		//dd($nbr_piece);
-		$sup_log = 35 + ($nbr_piece - 1) * 15;
-		
-	//	dd($sup_log);
-		if ($habitation =="individuelle") {
-			$ct = 60000;
-		}
-		else if ($habitation == "collective") {
-			$ct = 40000;
-		}
-		//dd($ct);
-		$val_batim = $sup_log * $ct;
-		
-		if ($juredique == "proprietaire") {
-			$taux = 0.0005 ;
-			$p_res_civile = 100;
-		}
-		else if ($juredique == "locataire") {
-			$taux = 0.0003;
-			$p_res_civile = 200;
-		}
-		//dd($p_res_civile);
-		$p_inc = $val_batim * $taux;
-		//dd($p_inc);
-		$p_con_inc = $montant * 0.0009;
-	
-		$p_in = $p_inc + $p_con_inc;
-		$p_vol = $montant * 0.001;
-		$p_degat = $montant * 0.0009;
-		$p_bris = 100 * $nbr_piece;
-	
-		if ($terasse == "oui") {
-			$Majter = $p_degat * 1.5;
-			$prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
-		}
-		else {
-			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-		}
 
-		
-		$td =80;
-		$Ctpolice =500;
-		$tva=($prim+$Ctpolice)*0.19;
-		$totale = $prim+$Ctpolice+$tva+$td;
+			$rules = array(
+				'habitation' => 'bail|string|max:190', 
+				'terasse' => 'bail|string|max:3',
+				'montant' => 'bail|required|integer',
+				'juredique'  => 'bail|string',
+				'nbr_piece'    => 'bail|string|max:3',
+				
+			);
+	 
+			$data = [
+				$habitation ,
+				$terasse,
+				$montant,
+				$juredique,
+				$nbr_piece,
+				
+			];
+	 
+			if($this->validate($request, $rules)){
+				$ct=0;$taux=0.0;$p_res_civile=0;
 	
-       // $output = '<input  class="input100" type="text" id="montant_calcul" name="montant_calcul"  value="'.$totale.'" placeholder="Calcul du Montant en cours" disabled="">';
-	   // echo $output;
-	   return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
-	//	}else{
+		
+				//	if((!is_null($habitation)) and (!is_null($terasse)) and (!is_null($montant)) and (!is_null($juredique)) and (!is_null($nbr_piece))){
+					//dd($nbr_piece);
+					$sup_log = 35 + ($nbr_piece - 1) * 15;
+					
+				//	dd($sup_log);
+					if ($habitation =="individuelle") {
+						$ct = 60000;
+					}
+					else if ($habitation == "collective") {
+						$ct = 40000;
+					}
+					//dd($ct);
+					$val_batim = $sup_log * $ct;
+					
+					if ($juredique == "proprietaire") {
+						$taux = 0.0005 ;
+						$p_res_civile = 100;
+					}
+					else if ($juredique == "locataire") {
+						$taux = 0.0003;
+						$p_res_civile = 200;
+					}
+					//dd($p_res_civile);
+					$p_inc = $val_batim * $taux;
+					//dd($p_inc);
+					$p_con_inc = $montant * 0.0009;
+				
+					$p_in = $p_inc + $p_con_inc;
+					$p_vol = $montant * 0.001;
+					$p_degat = $montant * 0.0009;
+					$p_bris = 100 * $nbr_piece;
+				
+					if ($terasse == "oui") {
+						$Majter = $p_degat * 1.5;
+						$prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
+					}
+					else {
+						$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+					}
+			
+					
+					$td =80;
+					$Ctpolice =500;
+					$tva=($prim+$Ctpolice)*0.19;
+					$totale = $prim+$Ctpolice+$tva+$td;
 
-		//}
+					//dd($nbr_piece);
+				
+				   // $output = '<input  class="input100" type="text" id="montant_calcul" name="montant_calcul"  value="'.$totale.'" placeholder="Calcul du Montant en cours" disabled="">';
+				   // echo $output;
+				   return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+				//	}else{
+			
+					//}
+			}
+			else{
+				//Agence::create($data);
+				return redirect()->route('montant_mrh')
+								 ->withError("veuillez corriger les champs ci-dessous");   
+			}
+			
+					
+	
+		
+		
+		
+		
+		
 	}
 	function fetch(Request $request)
 {

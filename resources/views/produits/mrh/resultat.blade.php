@@ -21,7 +21,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span> <img src="{{asset('produit_assets/images/icons/hab_white.svg')}}" alt=""> Multirisques Habitation</span>
         </div>
-        <form class="contact100-form " action="{{route('montant_mrh')}}" method="get" >
+        <form class="contact100-form " action="{{route('montant_mrh')}}" method="post" >
         @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
@@ -106,7 +106,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-            <input  class="contact100-form-btn" type='submit' id="calculer" nom="calculer" >  
+            <input  class="contact100-form-btn" type='submit' id="calculer" nom="calculer" value="calculer" >  
             <!--    <a href="{{route('montant_mrh')}}" class="contact100-form-btn">
                 
                 </a>-->
@@ -117,6 +117,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <input type="hidden" nom="habl" id="habl" value="{{$habitation}}">
             <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique}}">
             <input type="hidden" nom="terassedd" id="terassedd" value="{{$terasse}}">
+          
         </form>
     </div>
 </div>

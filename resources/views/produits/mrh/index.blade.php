@@ -33,7 +33,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire">
+                   <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire" value="{{$montant ?? ''}}">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="montant">
                        <span class="fa fa-home"></span>
@@ -44,7 +44,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
                <div class="wrap-input100 validate-input">
-                   <input id="pieces" class="input100" type="text" name="pieces" placeholder="Nombre de pieces">
+                   <input id="pieces" class="input100" type="text" name="nbr_piece" placeholder="Nombre de pieces" value="{{$nbr_piece ?? ''}} ">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="pieces">
                        <span class="fa fa-bed"></span>
@@ -54,13 +54,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            
            <div class="slice">
                 <div class="radio_section_slice">
+                 
                    <h6>Habitation <br><span>(Choix Obligatoire)</span></h6>
-                   <label>
-                       <input type="radio" name="hab"  value="individuelle"/>
+                     <label>
+                       <input type="radio" name="hab"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="hab"  value="collective"/>
+                       <input type="radio" name="hab"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif/>
                        <span>Collective</span>
                    </label>
                </div>
@@ -69,11 +70,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                     <h6>Qualité juredique <br><span>(Choix Obligatoire)</span></h6>
                     <label>
-                        <input type="radio" name="juredique" value="proprietaire"/>
+                        <input type="radio" name="juredique" value="proprietaire"  @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif/>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="juredique" value="locataire"/>
+                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif/>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -103,20 +104,23 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            
             <div class="radio_section">
                 <h6>Terrasse <br><span>(Choix Obligatoire)</span></h6>
-                <label>
-                    <input type="radio" name="terasse" id="oui" value="oui"/>
+              
+              
+                    <label>
+                    <input type="radio" name="terasse" id="oui" value="oui" @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif />
                     <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="terasse" id="non" value="non"/>
+                    </label>
+                    <label>
+                    <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif />
                     <span>Non</span>
-                </label>
+                    </label>
+                
             </div>
 
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" >
+                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{ $totale ?? '' }}" >
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-file-text"></span>
@@ -125,61 +129,17 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             <div class="container-contact100-form-btn">
             <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" >  
-            <!--    <a href="{{route('montant_mrh')}}" class="contact100-form-btn">
-                
-                </a>-->
+        
                 <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
+                <input type="hidden" nom="habl" id="habl" value="{{$habitation ?? '' ?? ''}}">
+            <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique ?? '' ?? ''}}">
+            <input type="hidden" nom="terassedd" id="terassedd" value="{{$terasse ?? '' ?? ''}}">
+          
             </div>
         </form>
     </div>
 </div>
 @endsection
-<!--@section('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script>
-$(document).ready(function(){
-
- $("#calculer").change(function(){
-  if($(this).val() != '')
-  {
-    
- var habitation = document.getElementById("habitation").value;
- var terrasse = $(this).val();
-   var montant=  document.getElementById("montant").value;
- var juredique= document.getElementById("juredique").value;
-   var nbr_piece= document.getElementById("nbr_piece").value;
-
- 
-   alert('La première zone a été mise à jour');
-   $.ajax({
-   
-   
-    url:"{{ route('montant_mrh') }}",
-    method:"post",
-    data:{habitation:habitation, terrasse:terrasse, montant:montant, juredique:juredique, nbr_piece:nbr_piece,_token:'{{csrf_token()}}'},
-    success:function(result)
-    {
-     $('#montant_calcul').html(result);
-   
-   
-    },
-error:function(){
-    alert("désolé aucun résuktat trouvé");
-}
-
-    
-
-   })
-  }
- });
-
- 
- 
-
-});
-</script>
-@endsection-->
