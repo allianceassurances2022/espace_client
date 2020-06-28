@@ -44,10 +44,15 @@ class TarificationController extends Controller
 
     public function montant_catnat(Request $request)
     {
+
+
+		
+
 		$maj=0.0;
 	//	dd($request);
 
 	$type_formule=$request->post('type_formule');
+	
 
 	$valeur_c=$request->post('Contenant');
 	$equipement=$request->post('equipement');
@@ -217,7 +222,7 @@ class TarificationController extends Controller
 
 		$prime_total = $val+$CP+$TD+$maj;
 		dd($prime_total);
-		return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+		//return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
     }
     
@@ -225,9 +230,9 @@ class TarificationController extends Controller
 	//mrh
     public function montant_mrh(Request $request)
     { $ct=0;$taux=0.0;$p_res_civile=0;
-		
+	
 		$habitation = $request->post('hab');
-    {
+    
     	$ct=0;$taux=0.0;$p_res_civile=0;
 		
 		$terasse = $request->post('terasse');
@@ -236,7 +241,7 @@ class TarificationController extends Controller
 
         $juredique = $request->post('juredique');
 		$nbr_piece = $request->post('nbr_piece');
-        
+	//	if((!is_null($habitation)) and (!is_null($terasse)) and (!is_null($montant)) and (!is_null($juredique)) and (!is_null($nbr_piece))){
 		//dd($nbr_piece);
 		$sup_log = 35 + ($nbr_piece - 1) * 15;
 		
@@ -285,7 +290,9 @@ class TarificationController extends Controller
        // $output = '<input  class="input100" type="text" id="montant_calcul" name="montant_calcul"  value="'.$totale.'" placeholder="Calcul du Montant en cours" disabled="">';
 	   // echo $output;
 	   return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
-	
+	//	}else{
+
+		//}
 	}
 	function fetch(Request $request)
 {
@@ -303,7 +310,7 @@ class TarificationController extends Controller
 }
 
 
-     function montant_catnat(Request $request)
+  /*   function montant_catnat(Request $request)
     {
  $maj=0;
     	dd($request);
@@ -444,6 +451,5 @@ class TarificationController extends Controller
 
 		$prime_total = $val+$CP+$TD+$maj;
 
-    }    
-}
+    }    */
 }
