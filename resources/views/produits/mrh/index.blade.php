@@ -32,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             
            <div class="slice">
                 <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
-               <div class="wrap-input100 validate-input">
+               <div class="wrap-input100 validate-input2">
                    <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire" value="{{$montant ?? ''}}">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="montant">
@@ -43,7 +43,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
            <div class="slice">
                 <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
-               <div class="wrap-input100 validate-input">
+               <div class="wrap-input100 validate-input2">
                    <input id="pieces" class="input100" type="text" name="nbr_piece" placeholder="Nombre de pieces" value="{{$nbr_piece ?? ''}} ">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="pieces">
@@ -80,28 +80,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             
-           <div class="slice">
-                <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
-               <div class="wrap-input100 validate-input">
-                   <input id="montant" class="input100" type="text" name="montant" placeholder="Montant Forfetaire">
-                   <span class="focus-input100"></span>
-                   <label class="label-input100" for="montant">
-                       <span class="fa fa-home"></span>
-                   </label>
-               </div>
-           </div>
-
-           <div class="slice">
-                <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
-               <div class="wrap-input100 validate-input">
-                   <input id="pieces" class="input100" type="text" name="nbr_piece" placeholder="Nombre de pieces">
-                   <span class="focus-input100"></span>
-                   <label class="label-input100" for="pieces">
-                       <span class="fa fa-bed"></span>
-                   </label>
-               </div>
-           </div>
-           
             <div class="radio_section">
                 <h6>Terrasse <br><span>(Choix Obligatoire)</span></h6>
               
