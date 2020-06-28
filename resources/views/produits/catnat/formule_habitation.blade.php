@@ -30,7 +30,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
             <div class="wrap-input100 validate-input">
-                <input id="val_assur" class="input100" type="text" name="val_assur" placeholder="Nombre de pieces">
+                <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Nombre de pieces">
                 <span class="focus-input100"></span>
                 <label class="label-input100" for="phone">
                     <span class="fa fa-bed"></span>

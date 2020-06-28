@@ -33,7 +33,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Superficie <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input id="Superficie" class="input100" type="text" name="Superficie" placeholder="Superficie">
+                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -43,7 +43,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input id="anne_cont" class="input100" type="text" name="anne_cont" placeholder="Année de construction">
+                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
