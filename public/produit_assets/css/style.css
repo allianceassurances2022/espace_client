@@ -61,11 +61,14 @@ button{
     margin-right: 26px;
     margin-bottom: 14px;
 }
-.tarificateur .validate-input {
+.tarificateur .validate-input2 {
     margin: auto;
     margin-bottom: 20px;
     float: right;
     width: 50%;
+}
+.tarificateur .validate-input2{
+  border-radius: 50px;
 }
 
 

@@ -101,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{ $totale ?? '' }}" >
+                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{ $totale ?? '' }}"  disabled="">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-file-text"></span>
@@ -109,7 +109,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-            <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" >  
+            <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer">  
         
                 <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 

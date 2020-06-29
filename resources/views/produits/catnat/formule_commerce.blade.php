@@ -33,7 +33,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur Contenant <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="Contenant" class="input100" type="number" name="Contenant" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -43,7 +43,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur equipement <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="equipement" class="input100" type="number" name="equipement" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -53,7 +53,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur marchandise <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="marchandise" class="input100" type="number" name="marchandise" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -63,7 +63,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur contenu <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="contenu" class="input100" type="number" name="contenu" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
