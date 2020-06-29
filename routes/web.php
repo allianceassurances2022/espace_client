@@ -29,7 +29,8 @@ Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('m
 Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
-Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
+Route::post('choix_auto' , 'TarificationController@choix_auto')->name('choix_auto');
+Route::post('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
 Route::get('pannier', function () {
     return view('payment');

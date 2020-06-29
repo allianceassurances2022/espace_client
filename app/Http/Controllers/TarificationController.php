@@ -11,7 +11,7 @@ class TarificationController extends Controller
     //catnat
  
 	public function type_formule_catnat(Request $request)
-	{	//dd("aaa");
+	{	
 		
 		
 		$formul=$request->get('formule');
@@ -37,23 +37,19 @@ class TarificationController extends Controller
 		$val_assur=$request->get('val_assur');
 		$permis=$request->get('permis');
 		$wilaya = wilaya::all();
+		$prime_total=0;
 		//$wilaya = 16;
-			return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya'));
+			return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total'));
 		
 	}
 
     public function montant_catnat(Request $request)
     {
 
-
-		
-
-		$maj=0.0;
-	//	dd($request);
+	$maj=0.0;
 
 	$type_formule=$request->post('type_formule');
 	
-
 	$valeur_c=$request->post('Contenant');
 	$equipement=$request->post('equipement');
 	$marchandise=$request->post('marchandise');
@@ -62,17 +58,19 @@ class TarificationController extends Controller
 	$reg_com=$request->post('registre');
 	$loca=$request->post('local');
 	$Commune=$request->post('Commune');
-	$Wilaya=$request->post('Wilaya');
+	$wilaya=$request->post('Wilaya');
 	$anne_cont=$request->post('anne_cont');
 	$surface=$request->post('Superficie');
 	$permis=$request->post('permis');
 	$val_assur=$request->post('val_assur');
 	$reg_para=$request->post('seisme');
-	//dd($Commune);
+
 	$zone = zcatnat::select('zone')
 	->where('code_commune', $Commune)
 	->first();
 	$zone = $zone->zone;
+
+	$wilaya = wilaya::all();
 
 
 
@@ -80,7 +78,11 @@ class TarificationController extends Controller
 
 		if ($type_formule=="Habitation"){
 			
+
 		//	$valeur_e=0;
+
+			//$valeur_e=0;
+
 			//$valeur_m=0;
 			if ($type_const=="Habitation individuelle"){
 				if ($zone=="0"){
@@ -148,7 +150,9 @@ class TarificationController extends Controller
 		}
 
 ///////////////////////industrie et commercial--------------------------------------
-		else {$valeur_e=0;$valeur_m=0;
+		else {
+			$valeur_e=0;
+			$valeur_m=0;
             $valeur_normative=0;
 			$val_assure=$valeur_c+$valeur_e+$valeur_m;
 			
@@ -205,12 +209,13 @@ class TarificationController extends Controller
     }
 		$CP=1000;
 		$TD=80;
-		
-		//echo $taux.' '.$val_assure.' '.$maj;
 
-		//echo $val." "." taux:".$taux." majoration:".$maj." zone:".$zone." conforme:".$reg_para." val:".$val;
+		//dd($val,$CP,$TD,$maj);
+		
+		
 
 		$prime_total = $val+$CP+$TD+$maj;
+
 	//	dd($prime_total);
 	$tab= [
 		$type_formule,
@@ -233,6 +238,10 @@ class TarificationController extends Controller
 
 	//	return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
+		return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total'));
+		
+
+
     }
     
 
@@ -241,6 +250,7 @@ class TarificationController extends Controller
     {    
 	//['DR','CODE','TYPE_AGENCE','TGVA','STATUT','CHEF_AGENCE','EMAIL']
 	$habitation = $request->post('hab');
+
     
     	$ct=0;$taux=0.0;$p_res_civile=0;
 		
@@ -250,6 +260,46 @@ class TarificationController extends Controller
 
         $juredique = $request->post('juredique');
 		$nbr_piece = $request->post('nbr_piece');
+
+	
+		$sup_log = 35 + ($nbr_piece - 1) * 15;
+		
+	
+		if ($habitation =="individuelle") {
+			$ct = 60000;
+		}
+		else if ($habitation == "collective") {
+			$ct = 40000;
+		}
+		
+		$val_batim = $sup_log * $ct;
+		
+		if ($juredique == "proprietaire") {
+			$taux = 0.0005 ;
+			$p_res_civile = 100;
+		}
+		else if ($juredique == "locataire") {
+			$taux = 0.0003;
+			$p_res_civile = 200;
+		}
+		
+		$p_inc = $val_batim * $taux;
+		
+		$p_con_inc = $montant * 0.0009;
+	
+		$p_in = $p_inc + $p_con_inc;
+		$p_vol = $montant * 0.001;
+		$p_degat = $montant * 0.0009;
+		$p_bris = 100 * $nbr_piece;
+	
+		if ($terasse == "oui") {
+			$Majter = $p_degat * 1.5;
+			$prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
+		}
+		else {
+			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+		}
+
 
 			$rules = array(
 				'habitation' => 'bail|string|max:190', 
@@ -336,11 +386,17 @@ class TarificationController extends Controller
 			
 					
 	
+
+       
+	   return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+	
+
 		
 		
 		
 		
 		
+
 	}
 	function fetch(Request $request)
 {
@@ -357,147 +413,16 @@ class TarificationController extends Controller
 
 }
 
+    public function choix_auto(Request $request){
 
-  /*   function montant_catnat(Request $request)
-    {
- $maj=0;
     	dd($request);
 
-    	/////////////////////Habitation-----------------------------------------
+    } 
 
-		if ($type_formule=="Habitation"){
-			$activite="";
-			$valeur_e=0;
-			$valeur_m=0;
-			if ($type_const=="Habitation individuelle"){
-				if ($zone=="0"){
-				$val_assure=$surface*28000;
-				$taux=0.00055;
-				}
-			    else if ($zone=="1"){
-			    	$val_assure=$surface*31000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00060;
-			    	else $taux=0.00065;
-			    }
-			    else if ($zone=="2a"){
-			    	$val_assure=$surface*35000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00065;
-			    	else $taux=0.00080;
-			    }
-			    else if ($zone=="2b"){
-			    	$val_assure=$surface*39000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00070;
-			    	else $taux=0.001;
-			    }
-			    else if ($zone=="3"){
-			    	$val_assure=$surface*47000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00075;
-			    	else $taux=0.00125;
-			    }
-			}
-			else{
-				if ($zone=="0"){
-				$val_assure=$surface*25000;
-				$taux=0.00055;
-				}
-			    else if ($zone=="1"){
-			    	$val_assure=$surface*28000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00060;
-			    	else $taux=0.00065;
-			    }
-			    else if ($zone=="2a"){
-			    	$val_assure=$surface*31000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00065;
-			    	else $taux=0.00080;
-			    }
-			    else if ($zone=="2b"){
-			    	$val_assure=$surface*35000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00070;
-			    	else $taux=0.001;
-			    }
-			    else if ($zone=="3"){
-			    	$val_assure=$surface*38000;
-			    	if ($reg_para=="oui")
-			    		$taux=0.00075;
-			    	else $taux=0.00125;
-			    }
-			}
-		$valeur_normative=$val_assure;	
-        if ($valeur_c>$val_assure)
-           $val_assure=$valeur_c;
-		}
+    public function montant_auto(Request $request){
 
-///////////////////////industrie et commercial--------------------------------------
-		else {
-            $valeur_normative=0;
-			$val_assure=$valeur_c+$valeur_e+$valeur_m;
-			
-			
-            if ($zone=="0"){
-				$taux=0.00037;
-				}
-			    else if ($zone=="1"){
-			    	if ($reg_para=="oui")
-			    		$taux=0.00040;
-			    	else $taux=0.00043;
-			    }
-			    else if ($zone=="2a"){
-			    	if ($reg_para=="oui")
-			    		$taux=0.00043;
-			    	else $taux=0.00053;
-			    }
-			    else if ($zone=="2b"){
-			    	if ($reg_para=="oui")
-			    		$taux=0.00047;
-			    	else $taux=0.00067;
-			    }
-			    else if ($zone=="3"){
-			    	if ($reg_para=="oui")
-			    		$taux=0.00050;
-			    	else $taux=0.00083;
-			    }
+    	dd($request);
 
+    } 
 
-            if ($reg_com=="non"){
-            $maj=$val_assure*$taux*0.2;
-            }
-
-		}
-///////////////////////////////majoration------------------------------------------------------------------
-		if ($permis=="non" ){
-            $maj=$val_assure*$taux*0.2;
-            }
-
-
-        $val=$val_assure*$taux;
-
-        if ($type_formule=="Habitation"){
-
-        if ($val<1500)
-        	$val=1500;
-        else $val=$val_assure*$taux;
-    }
-    else
-    {
-    	if ($val<2500)
-        	$val=2500;
-        else $val=$val_assure*$taux;
-    }
-		$CP=1000;
-		$TD=80;
-		
-		//echo $taux.' '.$val_assure.' '.$maj;
-
-		//echo $val." "." taux:".$taux." majoration:".$maj." zone:".$zone." conforme:".$reg_para." val:".$val;
-
-		$prime_total = $val+$CP+$TD+$maj;
-
-    }    */
 }

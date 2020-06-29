@@ -30,7 +30,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
             <div class="wrap-input100 validate-input">
-                <input id="val_assur" class="input100" type="text" name="val_assur" placeholder="Nombre de pieces">
+                <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Nombre de pieces">
                 <span class="focus-input100"></span>
                 <label class="label-input100" for="phone">
                     <span class="fa fa-bed"></span>
@@ -39,11 +39,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>La construction dispose-t-elle d'un permis de construire ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>
-                    <input type="radio" name="permis" id="oui" valeur="oui"/>
+                    <input type="radio" name="permis" id="oui" value=oui"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="permis" id="non" valeur="non"/>
+                    <input type="radio" name="permis" id="non" value="non"/>
                     <span>Non</span>
                 </label>
             </div>

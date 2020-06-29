@@ -21,7 +21,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/auto_white.svg')}}" alt=""> Automobile</span>
         </div>
-        <form class="contact100-form validate-form">
+        <form class="contact100-form validate-form" action="{{route('choix_auto')}}" method="post">
+            @csrf
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
@@ -31,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Date de naissance assuré/conducteur <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
+                    <input id="phone" class="input100" type="date" name="phone" placeholder="Montant Forfetaire">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-home"></span>
@@ -82,10 +83,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Type d'assurance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">Dur</option>
-                        <option value="">Semi-léger</option>
-                        <option value="">Léger</option>
-                        <option value="">Autre</option>
+                        <option value="AUTO_P">AUTO Particulier</option>
+                        <option value="OTO_L">OTO + LAKI</option>
                     </select>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
