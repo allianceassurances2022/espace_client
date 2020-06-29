@@ -31,7 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             
            <div class="slice">
-                <h6>Montant forfetaire <span>(Champs Obligatoire)</span></h6>
+                <h6>Montant forfetaire</h6>
 
                <div class="wrap-input100 validate-input2">
                    <input id="montant" class="input100" type="number" name="montant" placeholder="Montant Forfetaire" value="{{$montant ?? ''}}">
@@ -43,10 +43,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
 
            <div class="slice">
-                <h6>Nombre de pieces <span>(Champs Obligatoire)</span></h6>
+                <h6>Nombre de pieces</h6>
 
                <div class="wrap-input100 validate-input2">
-                   <input id="pieces" class="input100" type="number" name="nbr_piece" placeholder="Nombre de pieces" value="{{$nbr_piece ?? ''}} ">
+                   <input id="montant" class="input100" type="number" name="nbr_piece" placeholder="Montant Forfetaire" value="{{$nbr_piece ?? ''}}">
 
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="pieces">
@@ -58,7 +58,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            <div class="slice">
                 <div class="radio_section_slice">
                  
-                   <h6>Habitation <br><span>(Choix Obligatoire)</span></h6>
+                   <h6>Habitation</h6>
                      <label>
                        <input type="radio" name="hab"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/>
                        <span>Individuelle</span>
@@ -71,7 +71,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
             <div class="slice">
                 <div class="radio_section_slice">
-                    <h6>Qualité juredique <br><span>(Choix Obligatoire)</span></h6>
+                    <h6>Qualité juredique</h6>
                     <label>
                         <input type="radio" name="juredique" value="proprietaire"  @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif/>
                         <span>Propretaire</span>
@@ -84,7 +84,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             
             <div class="radio_section">
-                <h6>Terrasse <br><span>(Choix Obligatoire)</span></h6>
+                <h6>Terrasse</h6>
               
               
                     <label>
@@ -101,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{ $totale ?? '' }}"  disabled="">
+                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" @if(isset($totale)) value="{{number_format($totale, 2,',', ' ')}}"@endif  disabled="">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-file-text"></span>
