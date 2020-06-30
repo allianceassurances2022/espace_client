@@ -31,7 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5 class="active"><i class="fa fa-info-circle"></i>Formule Habitation <span>2</span></h5>
             </div>
             <div class="slice">
-                <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
@@ -42,7 +42,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
            <div class="slice">
-                <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
+                <h6>Type de la construction</h6>
                <div class="wrap-input100 validate-input2">
                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
                        <option value="Habitation individuelle">Habitation individuelle</option>
@@ -57,7 +57,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
            </div>
 
             <div class="slice">
-                <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée">
                     <span class="focus-input100"></span>
@@ -68,7 +68,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="radio_section">
-                <h6>La construction dispose-t-elle d'un permis de construire ? <br><span>(Choix Obligatoire)</span></h6>
+                <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
                 <label>
                     <input type="radio" name="permis" id="oui" value="oui"/>
                     <span>Oui</span>

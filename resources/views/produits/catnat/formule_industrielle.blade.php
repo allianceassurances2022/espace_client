@@ -32,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="slice">
-                <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
+                <h6>Type de la construction</h6>
                 <div class="wrap-input100 validate-input2">
                     <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
                         <option value="Bloc indépendant">Bloc indépendant</option>
@@ -46,7 +46,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="slice">
-                <h6>Valeur Contenant <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant">
                     <span class="focus-input100"></span>
@@ -57,7 +57,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="slice">
-                <h6>Valeur equipement <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement">
                     <span class="focus-input100"></span>
@@ -68,7 +68,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="slice">
-                <h6>Valeur marchandise <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
@@ -78,7 +78,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="slice">
-                <h6>Valeur contenu <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu">
                     <span class="focus-input100"></span>
@@ -88,7 +88,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="radio_section">
-                <h6>Es une activité qui doit être inscrite au registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
+                <h6>Es une activité qui doit être inscrite au registre de commerce ? </h6>
                 <label>
                     <input type="radio" name="activite"/>
                     <span>Oui</span>
@@ -103,7 +103,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </label>
             </div>
             <div class="radio_section">
-                <h6>Si oui, disposez-vous d’un registre de commerce ? <br><span>(Choix Obligatoire)</span></h6>
+                <h6>Si oui, disposez-vous d’un registre de commerce ? </h6>
                 <label>
                     <input type="radio" name="registre"/>
                     <span>Oui</span>
@@ -114,7 +114,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </label>
             </div>
             <div class="radio_section">
-                <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? <br><span>(Choix Obligatoire)</span></h6>
+                <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? </h6>
                 <label>
                     <input type="radio" name="local"/>
                     <span>Oui</span>
