@@ -57,17 +57,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                </div>
            </div>
 
-            <div class="slice">
-                <h6>Valeur assurée </h6>
-                <div class="wrap-input100 validate-input2">
-                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée">
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
-                </div>
-            </div>
-
           <div class="slice">
                 <div class="radio_section">
                   <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
