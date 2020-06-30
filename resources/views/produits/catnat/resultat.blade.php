@@ -30,7 +30,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <div class="slice">
-                <h6>Superficie <span>(Champs Obligatoire)</span></h6>
+                <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input">
 <<<<<<< HEAD
                     <input id="phone" class="input100" type="text" name="phone" valeur="{{$surface ?? ''}}" placeholder="Nombre de pieces">
@@ -44,7 +44,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="slice">
-                <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
+                <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input">
 <<<<<<< HEAD
                     <input id="phone" class="input100" type="text" name="phone" valeur="{{$anne_cont ?? ''}}"  placeholder="Nombre de pieces">
@@ -58,7 +58,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="slice">
-                <h6>Wilaya <span>(Champs Obligatoire)</span></h6>
+                <h6>Wilaya</h6>
                 <div class="wrap-input100 validate-input">
                     <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
                         <option value="16">Alger</option>
@@ -71,7 +71,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="slice">
-                <h6>Commune <span>(Champs Obligatoire)</span></h6>
+                <h6>Commune</h6>
                 <div class="wrap-input100 validate-input">
                     <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
                         <option value="160001">alger</option>

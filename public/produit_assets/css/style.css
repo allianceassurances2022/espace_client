@@ -1,8 +1,23 @@
-button{
+.my-menu-inside{
+  padding: 30px 30px 0px 30px;
+  text-align: center; 
 }
 
-
-
+.my-menu-inside li{
+  display: inline-block;
+  margin: 0 10px;
+}
+.my-menu-inside li a{
+  padding: 8px 19px;
+  border: 1px #286f74 solid;
+  border-radius: 57px;
+  font-weight: bold !important;
+  background: #ffffff;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #007480;
+}
 
 .btn-show-contact100 {
 	display: inline-block;
@@ -61,11 +76,14 @@ button{
     margin-right: 26px;
     margin-bottom: 14px;
 }
-.tarificateur .validate-input {
+.tarificateur .validate-input2 {
     margin: auto;
     margin-bottom: 20px;
     float: right;
     width: 50%;
+}
+.tarificateur .validate-input2{
+  border-radius: 50px;
 }
 
 
@@ -182,8 +200,12 @@ form h6 span{
     display: block;
     margin-bottom: 1em;
     font-size: 15px;
-    padding-bottom: 1em; 
+    padding-bottom: 1em;
+    padding-top: 15px; 
+    border-top: 1px #e6e6e6 solid;
     border-bottom: 1px #e6e6e6 solid;
+    margin-top: -20px;
+    width: 100%;
 }
 
 .wrap-input100 {
@@ -380,6 +402,14 @@ select{
 .slice{
   width: 100%;
 }
+.radio_secion{
+  display: block;
+  width: 100%;
+}
+.radio_secion .slice_third{
+  width: 33%;
+  display: inline-block;
+}
 
 .tarificateur .validate-input, .tarificateur input.input100{
     border-radius: 50px;
@@ -388,12 +418,22 @@ select{
     .slice{
       width: 50%;
     }
+    .slice_third{
+      width: 27%;
+    }
+    .radio_section_slice{
+      width: 100%;
+    }
     .slice h6, .wrap-input100 .validate-input2{
       width: 100%;
     }
     .slice .validate-input2{
        float: left;
         width: 90%;
+    }
+    .slice .validate-input3{
+       float: left;
+        width: 99%;
     }
     form h6 {
         line-height: 2.0em;
@@ -540,4 +580,14 @@ select{
 
 #my-menu a{
   font-weight: bold;
+}
+
+.tarificateur .validate-input, .tarificateur input.input100 {
+    border-radius: 50px;
+    float: right;
+    font-weight: bold;
+}
+form h6{
+  margin-bottom: 10px;
+  margin-top: 20px;
 }

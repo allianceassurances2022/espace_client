@@ -21,7 +21,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
-        <form class="contact100-form validate-form" action="{{route('type_formule_catnat')}}" method="get">
+        <form class="contact100-form validate-form" action="{{route('type_formule_catnat')}}" method="post">
+            @csrf
+            
             <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
@@ -29,8 +31,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5 class="active"><i class="fa fa-info-circle"></i> Choix de la formule <span>1</span></h5>
             </div>
             
-            <h6>Formule <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
+            <h6>Formule <span>(Choisissez votre formule)</span></h6>
+            <div class="wrap-input100 validate-input2">
                 <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
                     <option value="Habitation">Habitation</option>
                     <option value="Commerce">Commerce</option>

@@ -14,8 +14,8 @@ class TarificationController extends Controller
 	{	
 		
 		
-		$formul=$request->get('formule');
-	
+		$formul=$request->formule;
+
 		if($formul=='Habitation'){
 			return view('produits.catnat.formule_habitation',compact('formul'));
 		}elseif($formul=='Commerce'){
@@ -26,44 +26,65 @@ class TarificationController extends Controller
 	}
 	public function construction_catanat(Request $request)
     {
-		$type_formule=$request->get('type_formule');
-		$Contenant =$request->get('Contenant');
-		$equipement=$request->get('equipement');
-		$marchandise=$request->get('marchandise');
-		$contenu=$request->get('contenu');
-		$activite=$request->get('activite');
-		$registre=$request->get('registre');
-		$local=$request->get('local');
-		$val_assur=$request->get('val_assur');
-		$permis=$request->get('permis');
-		$wilaya = wilaya::all();
+
+    	//dd($request);
+
+    	$wilaya = wilaya::all();
 		$prime_total=0;
-		//$wilaya = 16;
-			return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total'));
+
+    	if ($request->type_formule == 'Habitation') {
+            
+            $type_formule=$request->type_formule;
+            $val_assur=$request->val_assur;
+            $permis=$request->permis;
+            $type_const=$request->type_const;
+
+            return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total'));
+            
+
+    	}else{
+    	
+		$type_formule=$request->type_formule;
+        $val_assur=$request->val_assur;
+        $permis=$request->permis;
+        $type_const=$request->type_const;
+		$Contenant =$request->Contenant;
+		$equipement=$request->equipement;
+		$marchandise=$request->marchandise;
+		$contenu=$request->contenu;
+		$activite=$request->activite;
+		$registre=$request->registre;
+		$local=$request->local;
+
+		    return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total'));
+		
+		}
+		
 		
 	}
 
     public function montant_catnat(Request $request)
     {
 
-	$maj=0.0;
+	$maj=0.0;	
 
-	$type_formule=$request->post('type_formule');
+	$type_formule=$request->type_formule;
+	$type_const=$request->type_const;
 	
-	$valeur_c=$request->post('Contenant');
-	$equipement=$request->post('equipement');
-	$marchandise=$request->post('marchandise');
-	$contenu=$request->post('contenu');
-	$act_reg=$request->get('activite');
-	$reg_com=$request->post('registre');
-	$loca=$request->post('local');
-	$Commune=$request->post('Commune');
-	$wilaya=$request->post('Wilaya');
-	$anne_cont=$request->post('anne_cont');
-	$surface=$request->post('Superficie');
-	$permis=$request->post('permis');
-	$val_assur=$request->post('val_assur');
-	$reg_para=$request->post('seisme');
+	$valeur_c=$request->Contenant;
+	$equipement=$request->equipement;
+	$marchandise=$request->marchandise;
+	$contenu=$request->contenu;
+	$act_reg=$request->activite;
+	$reg_com=$request->registre;
+	$loca=$request->local;
+	$Commune=$request->Commune;
+	$wilaya=$request->Wilaya;
+	$anne_cont=$request->anne_cont;
+	$surface=$request->Superficie;
+	$permis=$request->permis;
+	$val_assur=$request->val_assur;
+	$reg_para=$request->seisme;
 
 	$zone = zcatnat::select('zone')
 	->where('code_commune', $Commune)
@@ -260,7 +281,6 @@ class TarificationController extends Controller
 
         $juredique = $request->post('juredique');
 		$nbr_piece = $request->post('nbr_piece');
-
 	
 		$sup_log = 35 + ($nbr_piece - 1) * 15;
 		
@@ -309,15 +329,6 @@ class TarificationController extends Controller
 				'nbr_piece'    => 'bail|string|max:3',
 				
 			);
-	 
-			$data = [
-				$habitation ,
-				$terasse,
-				$montant,
-				$juredique,
-				$nbr_piece,
-				
-			];
 	 
 			if($this->validate($request, $rules)){
 				$ct=0;$taux=0.0;$p_res_civile=0;
