@@ -25,6 +25,7 @@ Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name(
 Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');
 
 Route::post('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
+Route::get('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
 Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');

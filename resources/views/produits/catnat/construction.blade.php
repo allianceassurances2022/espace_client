@@ -21,6 +21,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
+        @include('core.produit.messages')
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
             <div class="intro">
@@ -33,7 +34,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie">
+                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -43,7 +44,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction">
+                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -55,7 +56,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <div class="wrap-input100 validate-input2">
                    <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
                     @foreach($wilaya as $wilay)
-                        <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
+                        <option value="{{$wilay->code_wilaya}}" @if ($wilay->code_wilaya == $wilaya_selected) selected @endif>{{$wilay->nlib_wilaya}}</option>
                     @endforeach
                    </select>
                     
@@ -69,7 +70,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Commune</h6>
                 <div class="wrap-input100 validate-input2">
                     <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
-                        <option value="160001">Commune</option>
+                       @if($Commune_selected)
+                         @foreach($commune as $commun)
+                           <option value="{{$commun->code_commune}}" @if ($commun->code_commune == $Commune_selected) selected @endif>{{$commun->lib_commune}}</option>
+                         @endforeach
+                       @else
+                        <option value="10001">Adrar</option>
+                       @endif
                     </select>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="formule">
@@ -80,11 +87,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>A t-elle été construite ou vérifiée conforme aux règles parasismiques </h6>
                 <label>
-                    <input type="radio" name="seisme" value="oui" />
+                    <input type="radio" name="seisme" value="oui" @if($reg_para == "oui") checked @endif/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="seisme" value="non" />
+                    <input type="radio" name="seisme" value="non" @if($reg_para  == "non") checked @endif/>
                     <span>Non</span>
                 </label>
             </div>
