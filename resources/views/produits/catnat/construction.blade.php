@@ -22,6 +22,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
         @include('core.produit.messages')
+        
+        @include('core.produit.inside-menu')
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
             <div class="intro">
