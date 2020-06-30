@@ -47,7 +47,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="slice">
                 <h6>Valeur Contenant</h6>
-                <div class="wrap-input100 validate-input2">
+                <div class="wrap-input100 validate-input3">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -69,7 +69,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="slice">
                 <h6>Valeur marchandise</h6>
-                <div class="wrap-input100 validate-input2">
+                <div class="wrap-input100 validate-input3">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">

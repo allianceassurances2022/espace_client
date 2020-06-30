@@ -43,7 +43,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
            <div class="slice">
                 <h6>Type de la construction</h6>
-               <div class="wrap-input100 validate-input2">
+               <div class="wrap-input100 validate-input3">
                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
                        <option value="Habitation individuelle">Habitation individuelle</option>
                        <option value="Habitation collective">Habitation collective</option>

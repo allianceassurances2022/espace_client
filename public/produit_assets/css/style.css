@@ -383,6 +383,14 @@ select{
 .slice{
   width: 100%;
 }
+.radio_secion{
+  display: block;
+  width: 100%;
+}
+.radio_secion .slice_third{
+  width: 33%;
+  display: inline-block;
+}
 
 .tarificateur .validate-input, .tarificateur input.input100{
     border-radius: 50px;
@@ -391,12 +399,22 @@ select{
     .slice{
       width: 50%;
     }
+    .slice_third{
+      width: 27%;
+    }
+    .radio_section_slice{
+      width: 100%;
+    }
     .slice h6, .wrap-input100 .validate-input2{
       width: 100%;
     }
     .slice .validate-input2{
        float: left;
         width: 90%;
+    }
+    .slice .validate-input3{
+       float: left;
+        width: 99%;
     }
     form h6 {
         line-height: 2.0em;
