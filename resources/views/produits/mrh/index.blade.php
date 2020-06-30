@@ -88,7 +88,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             
            <div class="slice slice_third">
-              <div class="radio_section">
+              <div class="radio_section_slice">
                  <h6>Terrasse</h6>
                
                
