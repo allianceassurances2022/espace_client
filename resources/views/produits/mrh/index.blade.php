@@ -112,7 +112,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" >  
         
                 <a href="{{route('signin')}}" class="contact100-form-btn">
-                     Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
+                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
                 <input type="hidden" nom="habl" id="habl" value="{{$habitation ?? '' ?? ''}}">
             <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique ?? '' ?? ''}}">
