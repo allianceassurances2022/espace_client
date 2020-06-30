@@ -100,7 +100,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="{{ url()->previous() }}" class="contact100-form-btn">
+                <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
 
