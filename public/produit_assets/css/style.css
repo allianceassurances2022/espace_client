@@ -18,6 +18,13 @@
   font-size: 12px;
   color: #007480;
 }
+.my-menu-inside li a:hover{
+  background-color: #007480;
+  border: 1px #007480 solid;
+  color: white;
+  transition: 0.3s;
+}
+
 
 .btn-show-contact100 {
 	display: inline-block;
