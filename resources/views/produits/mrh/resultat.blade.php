@@ -106,7 +106,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-            <input  class="contact100-form-btn" type='submit' id="calculer" nom="calculer" value="calculer" >  
+            <input  class="contact100-form-btn" type='submit' id="calculer" nom="calculer" value="{{prime_total}}" >  
             <!--    <a href="{{route('montant_mrh')}}" class="contact100-form-btn">
                 
                 </a>-->

@@ -93,11 +93,17 @@ class TarificationController extends Controller
 
 	$wilaya = wilaya::all();
 
+
+
     	/////////////////////Habitation-----------------------------------------
 
 		if ($type_formule=="Habitation"){
 			
+
+		//	$valeur_e=0;
+
 			//$valeur_e=0;
+
 			//$valeur_m=0;
 			if ($type_const=="Habitation individuelle"){
 				if ($zone=="0"){
@@ -230,8 +236,32 @@ class TarificationController extends Controller
 		
 
 		$prime_total = $val+$CP+$TD+$maj;
+
+	//	dd($prime_total);
+	$tab= [
+		$type_formule,
+		$equipement,
+		$marchandise,
+		$contenu,
+		$act_reg,
+		$reg_com,
+		$loca,
+		$Commune,
+		$Wilaya,
+		$anne_cont,
+		$surface,
+		$permis,
+		$val_assur,
+		$reg_para,
+
+	];
+	return view('produits.catnat.resultat',compact('tab','prime_total'));
+
+	//	return view('produits.catnat.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+
 		return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total'));
 		
+
 
     }
     
@@ -349,7 +379,9 @@ class TarificationController extends Controller
 					$Ctpolice =500;
 					$tva=($prim+$Ctpolice)*0.19;
 					$totale = $prim+$Ctpolice+$tva+$td;
-
+					Session()->put('mantant_mrh', $totale);
+					Session()->put('type_produit', 'MULTIRISQUES HABITATION');
+					
 					//dd($nbr_piece);
 				
 				   // $output = '<input  class="input100" type="text" id="montant_calcul" name="montant_calcul"  value="'.$totale.'" placeholder="Calcul du Montant en cours" disabled="">';
@@ -358,6 +390,7 @@ class TarificationController extends Controller
 				//	}else{
 			
 					//}
+			
 			}
 			else{
 				//Agence::create($data);
@@ -366,10 +399,10 @@ class TarificationController extends Controller
 			}
 			
 					
-	
+			
 
        
-	   return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+	 //  return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 	
 
 		

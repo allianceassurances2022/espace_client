@@ -32,7 +32,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input">
+<<<<<<< HEAD
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{$surface ?? ''}}" placeholder="Nombre de pieces">
+=======
                     <input id="phone" class="input100" type="number" name="phone" valeur="{{$surface}}" placeholder="Nombre de pieces">
+>>>>>>> 23aa0856529289a02950e7295e2aaf9b80610357
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -42,7 +46,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input">
+<<<<<<< HEAD
+                    <input id="phone" class="input100" type="text" name="phone" valeur="{{$anne_cont ?? ''}}"  placeholder="Nombre de pieces">
+=======
                     <input id="phone" class="input100" type="number" name="phone" valeur="{{$anne_cont}}"  placeholder="Nombre de pieces">
+>>>>>>> 23aa0856529289a02950e7295e2aaf9b80610357
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
