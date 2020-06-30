@@ -87,46 +87,54 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     </label>
                 </div>
             </div>
-            <div class="radio_section">
-                <h6>Es une activité qui doit être inscrite au registre de commerce ? </h6>
-                <label>
-                    <input type="radio" name="activite"/>
-                    <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="activite"/>
-                    <span>Non</span>
-                </label>
-                <label>
-                    <input type="radio" name="activite"/>
-                    <span>Ne sais pas</span>
-                </label>
-            </div>
-            <div class="radio_section">
-                <h6>Si oui, disposez-vous d’un registre de commerce ? </h6>
-                <label>
-                    <input type="radio" name="registre"/>
-                    <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="registre"/>
-                    <span>Non</span>
-                </label>
-            </div>
-            <div class="radio_section">
-                <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? </h6>
-                <label>
-                    <input type="radio" name="local"/>
-                    <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="local"/>
-                    <span>Non</span>
-                </label>
-                <label>
-                    <input type="radio" name="local"/>
-                    <span>Ne sais pas</span>
-                </label>
+            <div class="radio_secion">
+                <div class="slice_third">
+                    <div class="radio_section">
+                        <h6>Es une activité qui doit être inscrite au registre de commerce ? </h6>
+                        <label>
+                            <input type="radio" name="activite"/>
+                            <span>Oui</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="activite"/>
+                            <span>Non</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="activite"/>
+                            <span>Ne sais pas</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="slice_third">
+                    <div class="radio_section">
+                        <h6>Si oui, disposez-vous d’un registre de commerce ? </h6>
+                        <label>
+                            <input type="radio" name="registre"/>
+                            <span>Oui</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="registre"/>
+                            <span>Non</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="slice_third">
+                    <div class="radio_section">
+                        <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? </h6>
+                        <label>
+                            <input type="radio" name="local"/>
+                            <span>Oui</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="local"/>
+                            <span>Non</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="local"/>
+                            <span>Ne sais pas</span>
+                        </label>
+                    </div>
+                </div>
             </div>
 
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul}}">
