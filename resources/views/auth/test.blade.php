@@ -1,3 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Authentification</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/fonts/iconic/css/material-design-iconic-font.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/animsition/css/animsition.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/vendor/daterangepicker/daterangepicker.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('signin_assets/css/main.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+
+	<style>
+		.all_header{
+            position: relative;
+            display: block;
+            width: 146.7%;
+            padding: 2em 0px;
+            border-top: 1px #cae0f1 solid;
+            border-bottom: 1px #007481 solid;
+            text-align: center;
+            background-color: #007481;
+            margin-left: -1.6em;
+            border-radius: 10px 10px 0px 0px;
+            border-bottom: 4px #ffffff dashed;
+            margin-left: -4.65em;
+            border-top: 1px #007481 solid;
+            margin-bottom: 45px;
+        }
+        .wrap-login100 {
+        	padding-top: 0;
+        }
+        .login100-form-bgbtn {
+            background: -webkit-linear-gradient(right, #21d4fd, #007481, #00576b, #068597);
+        }
+        h4{
+        	margin-top: 25px;
+		    text-align: center;
+		    font-weight: bold;
+		    font-size: 12px;
+		    font-size: 1.2rem;
+		    text-transform: capitalize;
+		    margin-bottom: 1em;
+		    margin-top: 1.5em;
+		    letter-spacing: 0.1em;
+		    word-spacing: 0.5em;
+		    font-weight: bold;
+		    font-family: 'Lato';
+		    font-weight: 300;
+		    text-align: right;
+		    color: #404040;
+		    border: 4px #88888821 dotted;
+		    padding: 21px;
+		    background: #8888880f;
+        }
+        h4 i{
+        	padding: 5px;
+        	background-color: white;
+        	border-radius: 50px;
+        }
+	</style>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				 <div class="all_header">
+                    <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
+                </div>
+				<form class="login100-form validate-form">
+                    
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Login
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							Vous n'avez pas de compte ?
+						</span>
+
+						<a href="{{route('signup')}}" class="txt2" href="#">
+							M'inscrire
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/animsition/js/animsition.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{asset('signin_assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/select2/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/daterangepicker/moment.min.js')}}"></script>
+	<script src="{{asset('signin_assets/vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/vendor/countdowntime/countdowntime.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('signin_assets/js/main.js')}}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -103,26 +260,13 @@
                     <div class="all_header">
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                     </div>
-                   
-                     
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
+                    <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                 
-                                    <label for="name" class="label">{{ __('Name') }}</label>
-
-                                   <div class="col-md-6">
-                                          <input id="name" type="text" class="input--style-4 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                     @error('name')
-                                         <span class="invalid-feedback" role="alert">
-                                         <strong>{{ $message }}</strong>
-                                         </span>
-                                      @enderror
-                                </div></div>
+                                    <label class="label">Nom</label>
+                                    <input class="input--style-4" type="text" name="first_name">
+                                </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
@@ -200,61 +344,23 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            
-                            <div class="rs-select2 js-select-simple select--no-search">
-                            <label class="label">Telephone</label>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Telephone</label>
                                     <input class="input--style-4" type="text" name="phone">
-                                <div class="select-dropdown"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            
-                            <div class="rs-select2 js-select-simple select--no-search">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <input id="email" type="email" class="input--style-4 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-@error('email')
-<span class="invalid-feedback" role="alert">
-<strong>{{ $message }}</strong>
-</span>
-  @enderror
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            
-                            <div class="rs-select2 js-select-simple select--no-search">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <input id="password" type="password" class="input--style-4 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                  @error('password')
-                                       <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            
-                            <div class="rs-select2 js-select-simple select--no-search">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <input id="password-confirm" type="password" class="input--style-4" name="password_confirmation" required autocomplete="new-password">
-
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                      
-                       
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--aa" type="submit">M'inscrire</button>
                         </div>
-                      
-                          
                     </form>
                 </div>
             </div>
