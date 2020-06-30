@@ -56,8 +56,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                    <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
                     @foreach($wilaya as $wilay)
                         <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
-                        @endforeach
-                    </select>
+                    @endforeach
+                   </select>
                     
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="formule">
@@ -70,7 +70,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <div class="wrap-input100 validate-input2">
                     <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
                         <option value="160001">Commune</option>
-                        
                     </select>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="formule">
@@ -104,7 +103,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" disabled="">  
+
+                <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">  
 
                 <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
