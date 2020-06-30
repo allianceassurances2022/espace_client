@@ -251,7 +251,6 @@ class TarificationController extends Controller
 
         $juredique = $request->post('juredique');
 		$nbr_piece = $request->post('nbr_piece');
-
 	
 		$sup_log = 35 + ($nbr_piece - 1) * 15;
 		
@@ -300,15 +299,6 @@ class TarificationController extends Controller
 				'nbr_piece'    => 'bail|string|max:3',
 				
 			);
-	 
-			$data = [
-				$habitation ,
-				$terasse,
-				$montant,
-				$juredique,
-				$nbr_piece,
-				
-			];
 	 
 			if($this->validate($request, $rules)){
 				$ct=0;$taux=0.0;$p_res_civile=0;

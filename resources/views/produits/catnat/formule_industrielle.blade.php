@@ -45,8 +45,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="slice">
                 <h6>Valeur Contenant <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant">
+
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -55,6 +58,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur equipement <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement">
                     <span class="focus-input100"></span>
@@ -65,7 +70,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur marchandise <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -75,6 +80,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Valeur contenu <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu">
                     <span class="focus-input100"></span>

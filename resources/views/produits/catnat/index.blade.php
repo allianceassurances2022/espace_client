@@ -32,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             
             <h6>Formule <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
+            <div class="wrap-input100 validate-input2">
                 <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
                     <option value="Habitation">Habitation</option>
                     <option value="Commerce">Commerce</option>

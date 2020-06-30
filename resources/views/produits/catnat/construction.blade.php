@@ -32,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="slice">
                 <h6>Superficie <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -42,7 +42,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Année de construction <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -52,7 +52,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Wilaya <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                    <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
                     @foreach($wilaya as $wilay)
                         <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
@@ -67,7 +67,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Commune <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
                         <option value="160001">Commune</option>
                         
@@ -92,7 +92,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
-                <div class="wrap-input100 validate-input">
+                <div class="wrap-input100 validate-input2">
                     <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{$prime_total}} DA" >
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -104,7 +104,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" >  
+                <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" disabled="">  
 
                 <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 

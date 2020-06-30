@@ -30,6 +30,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i>Formule Habitation <span>2</span></h5>
             </div>
+            <div class="slice">
+                <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Nombre de pieces">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-bed"></span>
+                    </label>
+                </div>
 
             <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
             <div class="wrap-input100 validate-input">
@@ -42,6 +51,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <label class="label-input100" for="type_const">
                     <span class="fa fa-umbrella"></span>
                 </label>
+
             </div>
 
             <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
