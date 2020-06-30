@@ -22,7 +22,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
         @include('core.produit.messages')
-        
+
         @include('core.produit.inside-menu')
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
@@ -45,7 +45,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Année de construction</h6>
-                <div class="wrap-input100 validate-input2">
+                <div class="wrap-input100 validate-input3">
                     <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -70,7 +70,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
             <div class="slice">
                 <h6>Commune</h6>
-                <div class="wrap-input100 validate-input2">
+                <div class="wrap-input100 validate-input3">
                     <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
                        @if($Commune_selected)
                          @foreach($commune as $commun)
