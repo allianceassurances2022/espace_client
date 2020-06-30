@@ -548,6 +548,7 @@ select{
 .tarificateur .validate-input, .tarificateur input.input100 {
     border-radius: 50px;
     float: right;
+    font-weight: bold;
 }
 form h6{
   margin-bottom: 10px;

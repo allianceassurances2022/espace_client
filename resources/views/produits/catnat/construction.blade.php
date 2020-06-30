@@ -104,7 +104,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <a href="{{ url()->previous() }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer" disabled="">  
+                <input class="contact100-form-btn" type ="submit" id="calculer" nom="calculer" value="calculer">  
 
                 <a href="{{route('signin')}}" class="contact100-form-btn">
                      Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
@@ -122,7 +122,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <input type="hidden" name="permis" id="permis" value="{{$permis ?? ''}}">
             <input type="hidden" name="type_const" id="type_const" value="{{$permis ?? ''}}">
             <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
-              </form>
+        </form>
     </div>
 </div>
 @endsection
@@ -144,7 +144,7 @@ $(document).ready(function(){
  
    //alter(dependent);
  
-   var _token = $('input[name="_token"]').val();
+   var _token = $('#signup-token').val();
    //alert( _token );
    $.ajax({
    

@@ -39,29 +39,34 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <span class="fa fa-bed"></span>
                     </label>
                 </div>
-
-            <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                    <option value="Habitation individuelle">Habitation individuelle</option>
-                    <option value="Habitation collective">Habitation collective</option>
-                    <option value="Immeuble">Immeuble</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="type_const">
-                    <span class="fa fa-umbrella"></span>
-                </label>
-
             </div>
 
-            <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée">
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="phone">
-                    <span class="fa fa-bed"></span>
-                </label>
+           <div class="slice">
+                <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
+               <div class="wrap-input100 validate-input2">
+                   <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
+                       <option value="Habitation individuelle">Habitation individuelle</option>
+                       <option value="Habitation collective">Habitation collective</option>
+                       <option value="Immeuble">Immeuble</option>
+                   </select>
+                   <span class="focus-input100"></span>
+                   <label class="label-input100" for="type_const">
+                       <span class="fa fa-umbrella"></span>
+                   </label>
+               </div>
+           </div>
+
+            <div class="slice">
+                <h6>Valeur assurée <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée">
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="phone">
+                        <span class="fa fa-bed"></span>
+                    </label>
+                </div>
             </div>
+
             <div class="radio_section">
                 <h6>La construction dispose-t-elle d'un permis de construire ? <br><span>(Choix Obligatoire)</span></h6>
                 <label>

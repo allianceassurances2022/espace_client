@@ -27,14 +27,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
 
-            
-
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Formule Commerce <span>2</span></h5>
             </div>
 
             <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
+            <div class="wrap-input100 validate-input2">
                 <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
                     <option value="Bloc indépendant">Bloc indépendant</option>
                     <option value="Autres">Autres</option>
@@ -48,8 +46,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur Contenant <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="Contenant" class="input100" type="number" name="Contenant" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="Contenant" class="input100" type="number" name="Contenant" placeholder="Valeur Contenant">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -60,8 +56,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur equipement <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="equipement" class="input100" type="number" name="equipement" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="equipement" class="input100" type="number" name="equipement" placeholder="Valeur equipement">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -73,8 +67,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur marchandise <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="marchandise" class="input100" type="number" name="marchandise" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
-                    <input id="marchandise" class="input100" type="number" name="marchandise" placeholder="Valeur marchandise">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-calculator"></span>
@@ -84,8 +76,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur contenu <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="contenu" class="input100" type="number" name="contenu" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="contenu" class="input100" type="number" name="contenu" placeholder="Valeur contenu">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">

@@ -31,36 +31,34 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5 class="active"><i class="fa fa-info-circle"></i> Formule Industrielle <span>2</span></h5>
             </div>
 
-            <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
-            <div class="wrap-input100 validate-input">
-                <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                    <option value="Bloc indépendant">Bloc indépendant</option>
-                    <option value="Autres">Autres</option>
-                </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="type_const">
-                    <span class="fa fa-umbrella"></span>
-                </label>
+            <div class="slice">
+                <h6>Type de la construction <span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input2">
+                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
+                        <option value="Bloc indépendant">Bloc indépendant</option>
+                        <option value="Autres">Autres</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                    <label class="label-input100" for="type_const">
+                        <span class="fa fa-umbrella"></span>
+                    </label>
+                </div>
             </div>
 
             <div class="slice">
                 <h6>Valeur Contenant <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant">
-
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
                     </label>
                 </div>
             </div>
+
             <div class="slice">
                 <h6>Valeur equipement <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
@@ -68,6 +66,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     </label>
                 </div>
             </div>
+
             <div class="slice">
                 <h6>Valeur marchandise <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
@@ -81,8 +80,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur contenu <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
-                <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu">
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
