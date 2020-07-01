@@ -49,7 +49,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -60,7 +60,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -71,7 +71,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -81,7 +81,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu">
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>

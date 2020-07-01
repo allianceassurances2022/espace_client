@@ -72,15 +72,17 @@ class TarificationController extends Controller
     public function montant_catnat(Request $request)
     {
 
-    	$rules = array(
-            'Superficie' => 'bail|required|integer',
-            'anne_cont' => 'bail|required|numeric|digits:4',
-            // 'nom'      => 'bail|required|string|max:190',
-            // 'prenom'   => 'bail|required|string|max:190',
-            'seisme'     => 'bail|required',
-        );
+    	//dd($request);
 
-	$this->validate($request, $rules);
+ //    	$rules = array(
+ //            'Superficie' => 'bail|required|integer|min:0',
+ //            'anne_cont' => 'bail|required|numeric|digits:4',
+ //            // 'nom'      => 'bail|required|string|max:190',
+ //            // 'prenom'   => 'bail|required|string|max:190',
+ //            'seisme'     => 'bail|required',
+ //        );
+
+	// $this->validate($request, $rules);
 
 	$maj=0.0;	
 
@@ -88,12 +90,16 @@ class TarificationController extends Controller
 	$type_const=$request->type_const;
 	
 	$valeur_c=$request->Contenant;
+	$Contenant=$valeur_c;
 	$equipement=$request->equipement;
 	$marchandise=$request->marchandise;
 	$contenu=$request->contenu;
 	$act_reg=$request->activite;
+	$activite=$act_reg;
 	$reg_com=$request->registre;
+	$registre=$reg_com;
 	$loca=$request->local;
+	$local=$loca;
 	$Commune_selected=$request->Commune;
 	$wilaya_selected=$request->Wilaya;
 	$anne_cont=$request->anne_cont;
@@ -255,6 +261,8 @@ class TarificationController extends Controller
 		
 
 		$prime_total = $val+$CP+$TD+$maj;
+		$prime_total = number_format($prime_total,2);
+		//dd($prime_total);
 
 		return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 		
@@ -392,7 +400,7 @@ class TarificationController extends Controller
 			
 			}
 			else{
-				//Agence::create($data);
+
 				return redirect()->route('montant_mrh')
 								 ->withError("veuillez corriger les champs ci-dessous");   
 			}
