@@ -72,6 +72,8 @@ class TarificationController extends Controller
     public function montant_catnat(Request $request)
     {
 
+    
+
     	//dd($request);
 
  //    	$rules = array(
@@ -83,6 +85,11 @@ class TarificationController extends Controller
  //        );
 
 	// $this->validate($request, $rules);
+
+	//$value = session('data');
+    
+    //dd($value['type_formule']);
+
 
 	$maj=0.0;	
 
@@ -115,6 +122,9 @@ class TarificationController extends Controller
 
 	$wilaya = wilaya::all();
 	$commune = commune::where('code_wilaya',$wilaya_selected)->get();
+
+
+	
 	
 
 	
@@ -263,6 +273,31 @@ class TarificationController extends Controller
 		$prime_total = $val+$CP+$TD+$maj;
 		$prime_total = number_format($prime_total,2);
 		//dd($prime_total);
+
+
+		$data_session = [
+    	'type_formule' => $request->type_formule,
+	    'type_const' => $request->type_const,
+	    'Contenant' => $request->Contenant,
+	    'equipement' => $request->equipement,
+	    'marchandise' => $request->marchandise,
+	    'contenu' => $request->contenu,
+	    'act_reg' => $request->activite,
+	    'reg_com' => $request->registre,
+	    'loca' => $request->local,
+	    'commune_selected' => $request->Commune,
+	    'wilaya_selected' => $request->Wilaya,
+	    'anne_cont' => $request->anne_cont,
+	    'surface' => $request->Superficie,
+	    'permis' => $request->permis,
+	    'val_assur' => $request->val_assur,
+	    'reg_para' => $request->seisme,
+	    'prime_total' => $prime_total
+    ];
+
+    $request->session()->put('data_catnat', $data_session);
+
+    //dd($request);
 
 		return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 		
@@ -445,5 +480,22 @@ class TarificationController extends Controller
     	dd($request);
 
     } 
+
+
+    public function panier (){
+
+        $value = session('data_catnat');
+
+        if ($request->session()->has('users')) {
+    
+         
+        
+        }
+    
+        //dd($value['type_formule']);
+
+    	return view('payment');
+
+    }
 
 }
