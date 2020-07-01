@@ -32,7 +32,8 @@
       	<img src="produit_assets/images/icons/alliance-assurance.png" alt="">
       </div>
         <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
-                <div class='line'></div>
+        
+        <div class='line'></div>
         <table class='order-table'>
           <tbody>
             <tr>
@@ -54,8 +55,9 @@
               </td>
             </tr>
           </tbody>
-
         </table>
+
+
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -78,6 +80,8 @@
             </tr>
           </tbody>
         </table>
+
+
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -92,7 +96,6 @@
                 	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 </div>
               </td>
-
             </tr>
             <tr>
               <td>
@@ -101,6 +104,8 @@
             </tr>
           </tbody>
         </table>
+
+        
         <div class='line'></div>
         <div class='total'>
           <span style='float:left;'>

@@ -38,9 +38,10 @@ Route::post('construction' , 'TarificationController@fetch')->name('construction
 Route::post('choix_auto' , 'TarificationController@choix_auto')->name('choix_auto');
 Route::post('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
-Route::get('pannier', function () {
-    return view('payment');
-})->name('pannier');
+
+Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
+
+Route::get('pannier', 'TarificationController@panier')->name('pannier');
 
 Route::get('signup', function () {
     return view('signup');
