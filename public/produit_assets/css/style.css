@@ -7,6 +7,7 @@
   display: inline-block;
   margin: 0 10px;
 }
+
 .my-menu-inside li a{
   padding: 8px 19px;
   border: 1px #286f74 solid;
@@ -416,11 +417,13 @@ select{
 .radio_secion .slice_third{
   width: 33%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .tarificateur .validate-input, .tarificateur input.input100{
     border-radius: 50px;
 }
+
 @media screen and (min-width: 1200px) {
     .slice{
       width: 50%;
@@ -557,6 +560,12 @@ select{
     .tarificateur input.input100 {
       text-align: center;
     }
+    .radio_section_slice {
+      width: 100% !important;
+    }
+    .slice_third {
+      width: 100% !important;
+    }
 }
 
 .contact100-form-title span {
@@ -597,4 +606,15 @@ select{
 form h6{
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.radio_section_slice label span, .radio_section label span {
+    display: inline-block !important;
+    font-size: 12px;
+    display: block !important;
+}
+
+.radio_section_slice label input:checked + span, .radio_section label input:checked + span {
+    background-color: #d6d6e5;
+    display: inline-block !important;
 }

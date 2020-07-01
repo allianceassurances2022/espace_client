@@ -21,6 +21,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
+        @include('core.produit.inside-menu')
         <form class="contact100-form validate-form"  action="{{route('construction_catanat')}}" method="post">
             @csrf
 
@@ -55,29 +56,19 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                    </label>
                </div>
            </div>
-
-            <div class="slice">
-                <h6>Valeur assurée </h6>
-                <div class="wrap-input100 validate-input2">
-                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="radio_section">
-                <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
-                <label>
-                    <input type="radio" name="permis" id="oui" value="oui"/>
-                    <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="permis" id="non" value="non"/>
-                    <span>Non</span>
-                </label>
-            </div>
+          <div class="slice">
+                <div class="radio_section">
+                  <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
+                  <label>
+                      <input type="radio" name="permis" id="oui" value="oui"/>
+                      <span>Oui</span>
+                  </label>
+                  <label>
+                      <input type="radio" name="permis" id="non" value="non"/>
+                      <span>Non</span>
+                  </label>
+              </div>
+          </div>
 
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul}}">
 
