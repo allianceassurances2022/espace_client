@@ -127,7 +127,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Prenom</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" type="text" name="prenom" id="prenom">
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                                 <div class="input-group">
                                     <label class="label">Wilaya</label>
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="wilaya" id="wilaya">
                                             <option disabled="disabled" selected="selected">Choose option</option>
                                             <option>Subject 1</option>
                                             <option>Subject 2</option>
@@ -150,7 +150,7 @@
                                 <div class="input-group">
                                     <label class="label">Commune</label>
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="commune" id="commune">
                                             <option disabled="disabled" selected="selected">Choose option</option>
                                             <option>Subject 1</option>
                                             <option>Subject 2</option>
@@ -167,7 +167,7 @@
                                 <div class="input-group">
                                     <label class="label">Date de naissance</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <input class="input--style-4 js-datepicker" type="text" name="date_naissance" id="date_naissance">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -177,11 +177,11 @@
                                     <label class="label">Sexe</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Homme
-                                            <input type="radio" checked="checked" name="gender">
+                                            <input type="radio"  name="sexe" id="homme" value="homme">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Femme
-                                            <input type="radio" name="gender">
+                                            <input type="radio" name="sexe" id="femme" value="femme">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -191,7 +191,7 @@
                         <div class="input-group">
                             <label class="label">Prefession</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
+                                <select name="prefession" id="prefession">
                                     <option disabled="disabled" selected="selected">Choose option</option>
                                     <option>Subject 1</option>
                                     <option>Subject 2</option>
@@ -204,7 +204,7 @@
                             
                             <div class="rs-select2 js-select-simple select--no-search">
                             <label class="label">Telephone</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" type="text" name="telephone" id="telephone">
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
