@@ -423,6 +423,7 @@ select{
 .tarificateur .validate-input, .tarificateur input.input100{
     border-radius: 50px;
 }
+
 @media screen and (min-width: 1200px) {
     .slice{
       width: 50%;
@@ -558,6 +559,12 @@ select{
     }
     .tarificateur input.input100 {
       text-align: center;
+    }
+    .radio_section_slice {
+      width: 100% !important;
+    }
+    .slice_third {
+      width: 100% !important;
     }
 }
 
