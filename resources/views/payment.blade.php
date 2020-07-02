@@ -33,6 +33,7 @@
       </div>
         <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
         
+        @if($auto != '')
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -56,8 +57,9 @@
             </tr>
           </tbody>
         </table>
+        @endif
 
-
+        @if($mrh != '')
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -65,7 +67,7 @@
               <td><img src='produit_assets/images/icons/hab_col.svg' class='full-width'></img>
               </td>
               <td>
-                <br> <span class='thin product_title'>Nom Du Produit</span>
+                <br> <span class='thin product_title'>{{$mrh['nom']}}</span>
                 <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
                 <div class="product_actions">
                 	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -75,13 +77,14 @@
             </tr>
             <tr>
               <td>
-                <div class='price'>7 000,00 DA</div>
+                <div class='price'>{{$mrh['montant']}} DA</div>
               </td>
             </tr>
           </tbody>
         </table>
+        @endif
 
-
+        @if($cat != '')
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -89,7 +92,7 @@
               <td><img src='produit_assets/images/icons/cat_nat_col.svg' class='full-width'></img>
               </td>
               <td>
-                <br> <span class='thin product_title'>Monobento</span>
+                <br> <span class='thin product_title'>{{$cat['nom']}}</span>
                 <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
                 <div class="product_actions">
                 	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -99,24 +102,25 @@
             </tr>
             <tr>
               <td>
-                <div class='price'>14 000,00 DA</div>
+                <div class='price'>{{$cat['montant']}} DA</div>
               </td>
             </tr>
           </tbody>
         </table>
+        @endif
 
-        
+
         <div class='line'></div>
         <div class='total'>
           <span style='float:left;'>
-            <div class='thin dense'>VAT 19%</div>
-            <div class='thin dense'>Delivery</div>
+            {{-- <div class='thin dense'>VAT 19%</div>
+            <div class='thin dense'>Delivery</div> --}}
             TOTAL
           </span>
           <span style='float:right; text-align:right;'>
-            <div class='thin dense'>26 000.75 DA</div>
-            <div class='thin dense'>400.75 DA</div>
-            26 400.75 DA
+            {{-- <div class='thin dense'>{{$total}} DA</div>
+            <div class='thin dense'>400.75 DA</div> --}}
+            {{$total}} DA
           </span>
         </div>
    
