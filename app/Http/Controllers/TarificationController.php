@@ -270,8 +270,8 @@ class TarificationController extends Controller
 
 		
 
-		$prime_total = $val+$CP+$TD+$maj;
-		$prime_total = number_format($prime_total,2);
+		$prime_total_ = $val+$CP+$TD+$maj;
+		$prime_total = number_format($prime_total_,2);
 		//dd($prime_total);
 
 
@@ -292,7 +292,7 @@ class TarificationController extends Controller
 	    'permis' => $request->permis,
 	    'val_assur' => $request->val_assur,
 	    'reg_para' => $request->seisme,
-	    'prime_total' => $prime_total
+	    'prime_total' => $prime_total_
     ];
 
     $request->session()->put('data_catnat', $data_session);
@@ -421,8 +421,19 @@ class TarificationController extends Controller
 					$Ctpolice =500;
 					$tva=($prim+$Ctpolice)*0.19;
 					$totale = $prim+$Ctpolice+$tva+$td;
-					Session()->put('mantant_mrh', $totale);
-					Session()->put('type_produit', 'MULTIRISQUES HABITATION');
+
+
+					$data_session = [
+    	              'terasse' => $terasse,
+	                  'habitation' => $habitation,
+	                  'montant' => $montant,
+	                  'juredique' => $juredique,
+	                  'nbr_piece' => $nbr_piece,
+	                  'prime_total' => $totale
+                    ];
+
+                    $request->session()->put('data_mrh', $data_session);
+					
 					
 					//dd($nbr_piece);
 				
@@ -484,18 +495,44 @@ class TarificationController extends Controller
 
     public function panier (){
 
-        $value = session('data_catnat');
+        $value_cat = session('data_catnat');
+        $value_mrh = session('data_mrh');
+        $cat='';
+        $auto='';
+        $mrh='';
+        $total = 0;
 
-        if ($request->session()->has('users')) {
-    
-         
-        
+        if ($value_cat) {
+
+        	$nom = 'Catastrophe Naturelle';
+        	$montant = $value_cat['prime_total'];
+        	$total=$total+$montant;
+
+        	$cat = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
         }
+
+        if ($value_mrh) {
+
+        	$nom = 'Multirisques Habitation';
+        	$montant = $value_mrh['prime_total'];
+        	$total=$total+$montant;
+
+        	$mrh = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+
+
     
-        //dd($value['type_formule']);
+        return view('payment',compact('mrh','auto','cat','total'));
 
-    	return view('payment');
-
+    	
     }
 
 }
