@@ -1,12 +1,21 @@
-@extends('layouts.app')
 
-@section('content')
-
-@endsection
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link href="{{asset('user_assets/assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/libs/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/chartist-bundle/chartist.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/morris-bundle/morris.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/c3charts/c3.css')}}">
+    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
+
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +24,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Tarfication</title>
 
     <!-- Icons font CSS-->
     <link href="{{asset('signup_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
@@ -89,6 +98,10 @@
         }
 
        
+        a {
+  color: hotpink;
+} 
+</style>
           
     </style>
 </head>
@@ -102,7 +115,119 @@
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                       
                     </div>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+               
+                 <div class="card">
+                
+                                    <h5 class="card-header">information</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                        <div class="input-group">
+                                 
+
+                                 <div class="col-md-6">
+
+                                     <label class="label">Nom :{{$user->name}}</label>
+                                        
+                                 </div>
+                                 <div class="col-md-6">
+                                 
+                                    <label class="label">Prenom:{{$user->prenom}}</label>
+                                   
+                                </div>
+                            
+                              
+                            </div>
+                            <div class="input-group">
+                                 
+
+                                 <div class="col-md-6">
+
+                                     <label class="label">Wilaya :{{$user->wilaya}}</label>
+                                        
+                                 </div>
+                                 <div class="col-md-6">
+                                 
+                                    <label class="label">Commune:{{$user->commune}}</label>
+                                   
+                                </div>
+                            
+                              
+                            </div>
+                            <div class="input-group">
+                                 
+
+                                 <div class="col-md-6">
+
+                                     <label class="label">Profession :{{$user->prefession}}</label>
+                                        
+                                 </div>
+                                 <div class="col-md-6">
+                                 
+                                    <label class="label">Telephone:+213 {{$user->telephone}}</label>
+                                   
+                                </div>
+                            
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                
+                <h5 class="card-header">Liste Produit</h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                                <tr class="border-0">
+                                    <th class="border-2"></th>
+                                    <th class="border-2">Produit</th>
+                                    <th class="border-2">montant</th>
+                            
+                                    <th class="border-0"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @if($auto != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
+                                    
+                                    <td>{{$auto['nom']}} </td>
+                                    <td>{{$auto['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                                @if($mrh != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/hab_col.svg' ></img></td>
+                                    
+                                    <td>{{$mrh['nom']}} </td>
+                                    <td>{{$mrh['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                                @if($cat != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
+                                    
+                                    <td>{{$cat['nom']}} </td>
+                                    <td>{{$cat['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+  
+                <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('signin') }}">
                                         {{ __('Logout') }}
                                    <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
@@ -110,12 +235,35 @@
                                     </a>
 
                                  
-                                </div>
+                                </div>-->
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="{{asset('user_assets/assets/vendor/jquery/jquery-3.3.1.min.js')}}"></script>
+    <!-- bootstap bundle js -->
+    <script src="{{asset('user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <!-- slimscroll js -->
+    <script src="{{asset('user_assets/assets/vendor/slimscroll/jquery.slimscroll.js')}}"></script>
+    <!-- main js -->
+    <script src="{{asset('user_assets/assets/libs/js/main-js.js')}}"></script>
+    <!-- chart chartist js -->
+    <script src="{{asset('user_assets/assets/vendor/charts/chartist-bundle/chartist.min.js')}}"></script>
+    <!-- sparkline js -->
+    <script src="{{asset('user_assets/assets/vendor/charts/sparkline/jquery.sparkline.js')}}"></script>
+    <!-- morris js -->
+    <script src="{{asset('user_assets/assets/vendor/charts/morris-bundle/raphael.min.js')}}"></script>
+    <script src="{{asset('user_assets/assets/vendor/charts/morris-bundle/morris.js')}}"></script>
+    <!-- chart c3 js -->
+    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/c3.min.js')}}"></script>
+    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/d3540.min.js')}}"></script>
+    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
+    <script src="{{asset('user_assets/assets/libs/js/dashboard-ecommerce.js')}}"></script>
     <!-- Jquery JS-->
     <script src="{{asset('signup_assets/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Vendor JS-->

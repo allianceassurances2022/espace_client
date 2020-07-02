@@ -108,28 +108,29 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
+                         <div class="row row-space">
+                                <div class="col-2">
+                                  <div class="input-group">
                                  
                                     <label for="name" class="label">{{ __('Name') }}</label>
 
-                                   <div class="col-md-6">
+                                     <div class="col-md-6">
                                           <input id="name" type="text" class="input--style-4 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                     @error('name')
-                                         <span class="invalid-feedback" role="alert">
-                                         <strong>{{ $message }}</strong>
-                                         </span>
-                                      @enderror
-                                </div></div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
+                                          @error('name')
+                                           <span class="invalid-feedback" role="alert">
+                                           <strong>{{ $message }}</strong>
+                                           </span>
+                                          @enderror
+                                     </div>
+                                  </div>
+                                </div>
+                               <div class="col-2">
+                                  <div class="input-group">
                                     <label class="label">Prenom</label>
                                     <input class="input--style-4" type="text" name="prenom" id="prenom">
-                                </div>
-                            </div>
+                                  </div>
+                               </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
