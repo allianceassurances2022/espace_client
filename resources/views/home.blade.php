@@ -98,6 +98,10 @@
         }
 
        
+        a {
+  color: hotpink;
+} 
+</style>
           
     </style>
 </head>
@@ -111,9 +115,13 @@
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                       
                     </div>
-                    <div class="row row-space">
-                        <div class="col-12">
-                            <div class="input-group">
+               
+                 <div class="card">
+                
+                                    <h5 class="card-header">information</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                        <div class="input-group">
                                  
 
                                  <div class="col-md-6">
@@ -159,41 +167,66 @@
                                    
                                 </div>
                             
-                              
-                            </div>
-                        </div>
-                    </div>
-                 <div class="card">
-                
-                                    <h5 class="card-header">Liste Produit</h5>
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-2">#</th>
-                                                        <th class="border-2">Produit</th>
-                                                        <th class="border-2">montant</th>
-                                                
-                                                        <th class="border-0"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        
-                                                        <td>MULTIRISQUES HABITATION </td>
-                                                        <td>125488 </td>
-                                                        
-                                                        <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
-                                                    </tr>
-                                                 
-                                                </tbody>
-                                            </table>
+                                </div>
                                         </div>
                                     </div>
                                 </div>
-                        
+                                
+                                <div class="card">
+                
+                <h5 class="card-header">Liste Produit</h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                                <tr class="border-0">
+                                    <th class="border-2"></th>
+                                    <th class="border-2">Produit</th>
+                                    <th class="border-2">montant</th>
+                            
+                                    <th class="border-0"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @if($auto != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
+                                    
+                                    <td>{{$auto['nom']}} </td>
+                                    <td>{{$auto['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                                @if($mrh != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/hab_col.svg' ></img></td>
+                                    
+                                    <td>{{$mrh['nom']}} </td>
+                                    <td>{{$mrh['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                                @if($cat != '')
+                                <tr>
+
+                                    <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
+                                    
+                                    <td>{{$cat['nom']}} </td>
+                                    <td>{{$cat['montant']}} DA </td>
+                                    
+                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+  
                 <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('signin') }}">
                                         {{ __('Logout') }}

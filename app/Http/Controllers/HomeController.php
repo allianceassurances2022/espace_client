@@ -24,6 +24,38 @@ class HomeController extends Controller
      */
     public function index()
     { $user=auth::user();
-        return view('home',compact('user'));
+        $value_cat = session('data_catnat');
+        $value_mrh = session('data_mrh');
+        $cat='';
+        $auto='';
+        $mrh='';
+        $total = 0;
+
+        if ($value_cat) {
+
+        	$nom = 'Catastrophe Naturelle';
+        	$montant = $value_cat['prime_total'];
+        	$total=$total+$montant;
+
+        	$cat = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+
+        if ($value_mrh) {
+
+        	$nom = 'Multirisques Habitation';
+        	$montant = $value_mrh['prime_total'];
+        	$total=$total+$montant;
+
+        	$mrh = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+        return view('home',compact('user','mrh','auto','cat','total'));
     }
 }
