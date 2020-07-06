@@ -106,10 +106,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             <div class="container-contact100-form-btn">
             <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer">  
-        
-                <a href="{{route('signin')}}" class="contact100-form-btn" id="devis">
+            @if(isset($totale)) 
+            <a href="{{route('signin')}}" class="contact100-form-btn">
                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
+                
+                @endif
+               
                 <input type="hidden" nom="habl" id="habl" value="{{$habitation ?? '' ?? ''}}">
             <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique ?? '' ?? ''}}">
             <input type="hidden" nom="terassedd" id="terassedd" value="{{$terasse ?? '' ?? ''}}">
@@ -118,17 +121,5 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
         </form>
     </div>
 </div>
-<script>
-$(document).ready(function(){
-
-document.GetElementByID('devis').disabled = 'disabled';
-
-    $('#calculer').change(function(){
-        document.GetElementByID('devis').disabled = '';
-
- });
-});
-
-<script/>
 @endsection
 
