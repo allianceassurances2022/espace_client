@@ -1,8 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    CATNAT
-@endsection
-
 @section('tab_title')
     CATNAT
 @endsection

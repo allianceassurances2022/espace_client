@@ -1,7 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    MRH
-@endsection
 @section('tab_title')
     MRH
 @endsection

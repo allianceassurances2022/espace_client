@@ -1,8 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    Mon compte
-@endsection
-
 @section('tab_title')
     Mon compte
 @endsection

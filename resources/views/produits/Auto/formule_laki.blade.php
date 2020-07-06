@@ -1,8 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    Automobile
-@endsection
-
 @section('tab_title')
     Automobile formule LAKI
 @endsection

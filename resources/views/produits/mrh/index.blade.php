@@ -1,7 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    MRH
-@endsection
 @section('tab_title')
     MRH
 @endsection
@@ -26,10 +23,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
         @include('core.produit.inside-menu')
         <form class="contact100-form " action="{{route('montant_mrh')}}" method="post" >
         @csrf
-
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Informations situation du risque <span>1</span></h5>
             </div>

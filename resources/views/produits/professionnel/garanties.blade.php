@@ -1,7 +1,4 @@
 @extends('default_produit')
-@section('nom_produit')
-    Professionnel
-@endsection
 @section('tab_title')
     Professionnel
 @endsection
