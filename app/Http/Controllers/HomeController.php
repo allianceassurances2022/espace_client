@@ -48,10 +48,12 @@ class HomeController extends Controller
 
         	$nom = 'Multirisques Habitation';
         	$montant = $value_mrh['prime_total'];
-        	$total=$total+$montant;
+            $total=$total+$montant;
+            $datec=$value_mrh['datec'];
 
         	$mrh = [
-        		'nom' => $nom,
+                'nom' => $nom,
+                'datec' => $datec,
         		'montant' => $montant
         	];
 
