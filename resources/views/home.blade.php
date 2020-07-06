@@ -182,6 +182,7 @@
                                 <tr class="border-0">
                                     <th class="border-2"></th>
                                     <th class="border-2">Produit</th>
+                                    <th class="border-2">date</th>
                                     <th class="border-2">montant</th>
                             
                                     <th class="border-0"></th>
@@ -203,8 +204,9 @@
                                 <tr>
 
                                     <td><img style="width: 40px;" src='produit_assets/images/icons/hab_col.svg' ></img></td>
-                                    
                                     <td>{{$mrh['nom']}} </td>
+                          
+                                    <td>{{$mrh['datec']}}  </td>
                                     <td>{{$mrh['montant']}} DA </td>
                                     
                                     <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>

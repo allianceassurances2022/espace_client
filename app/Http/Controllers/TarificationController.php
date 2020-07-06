@@ -422,13 +422,15 @@ class TarificationController extends Controller
 					$tva=($prim+$Ctpolice)*0.19;
 					$totale = $prim+$Ctpolice+$tva+$td;
 
-
+					$datec=date('y-m-d');
+					//dd($date);
 					$data_session = [
     	              'terasse' => $terasse,
 	                  'habitation' => $habitation,
 	                  'montant' => $montant,
 	                  'juredique' => $juredique,
-	                  'nbr_piece' => $nbr_piece,
+					  'nbr_piece' => $nbr_piece,
+					  'datec' => $datec,
 	                  'prime_total' => $totale
                     ];
 
