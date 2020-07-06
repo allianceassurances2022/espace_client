@@ -31,7 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Montant forfetaire</h6>
 
                <div class="wrap-input100 validate-input2">
-                   <input id="montant" class="input100" type="number" name="montant" placeholder="Montant Forfetaire" value="{{$montant ?? ''}}">
+                   <input id="montant" class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}">
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="montant">
                        <span class="fa fa-home"></span>
@@ -43,7 +43,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Nombre de pieces</h6>
 
                <div class="wrap-input100 validate-input3">
-                   <input id="montant" class="input100" type="number" name="nbr_piece" placeholder="Montant Forfetaire" value="{{$nbr_piece ?? ''}}">
+                   <input id="montant" class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}">
 
                    <span class="focus-input100"></span>
                    <label class="label-input100" for="pieces">

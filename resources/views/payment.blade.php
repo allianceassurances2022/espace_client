@@ -23,7 +23,6 @@
     .my-menu-inside{
       padding: 30px 55px 0px 30px;
       text-align: center; 
-      float: right;
     }
 
     .my-menu-inside li{

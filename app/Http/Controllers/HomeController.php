@@ -33,31 +33,36 @@ class HomeController extends Controller
 
         if ($value_cat) {
 
-        	$nom = 'Catastrophe Naturelle';
-        	$montant = $value_cat['prime_total'];
-        	$total=$total+$montant;
+            $nom = 'Catastrophe Naturelle';
+            $montant = $value_cat['prime_total'];
+            $total=$total+$montant;
 
-        	$cat = [
-        		'nom' => $nom,
-        		'montant' => $montant
-        	];
+            $cat = [
+                'nom' => $nom,
+                'montant' => $montant
+            ];
 
         }
 
         if ($value_mrh) {
 
-        	$nom = 'Multirisques Habitation';
-        	$montant = $value_mrh['prime_total'];
+            $nom = 'Multirisques Habitation';
+            $montant = $value_mrh['prime_total'];
             $total=$total+$montant;
             $datec=$value_mrh['datec'];
 
-        	$mrh = [
+            $mrh = [
                 'nom' => $nom,
                 'datec' => $datec,
-        		'montant' => $montant
-        	];
+                'montant' => $montant
+            ];
 
         }
         return view('home',compact('user','mrh','auto','cat','total'));
+    }
+
+    public function devis()
+    { 
+        return view('devis');
     }
 }
