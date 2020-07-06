@@ -20,6 +20,37 @@
           margin-left: 1em !important;
         }
     }
+    .my-menu-inside{
+      padding: 30px 55px 0px 30px;
+      text-align: center; 
+      float: right;
+    }
+
+    .my-menu-inside li{
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .my-menu-inside li a{
+      padding: 8px 19px;
+      border: 1px #286f74 solid;
+      border-radius: 57px;
+      font-weight: bold !important;
+      background: #ffffff;
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #007480;
+    }
+    .my-menu-inside li a:hover{
+      background-color: #007480;
+      border: 1px #007480 solid;
+      color: white;
+      transition: 0.3s;
+    }
+    .menu-header{
+      display: block;
+    }
     </style>
 </head>
 <body>
@@ -29,10 +60,12 @@
 
       <div class='order-info-content'>
       <div class="all_header">
-      	<img src="produit_assets/images/icons/alliance-assurance.png" alt="">
+        <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
+      </div>
+      <div class="menu-header">
+        @include('core.produit.inside-menu')
       </div>
         <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
-        
         @if($auto != '')
         <div class='line'></div>
         <table class='order-table'>
@@ -77,7 +110,7 @@
             </tr>
             <tr>
               <td>
-                <div class='price'>{{$mrh['montant']}} DA</div>
+                <div class='price'>{{number_format($mrh['montant'], 2,',', ' ')}} DA</div>
               </td>
             </tr>
           </tbody>
@@ -120,7 +153,7 @@
           <span style='float:right; text-align:right;'>
             {{-- <div class='thin dense'>{{$total}} DA</div>
             <div class='thin dense'>400.75 DA</div> --}}
-            {{$total}} DA
+            {{number_format($total, 2,',', ' ')}} DA
           </span>
         </div>
    
