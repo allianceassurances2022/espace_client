@@ -239,6 +239,10 @@
                                     
                                     <td>{{$auto['nom']}} </td>
                                     <td> {{number_format($auto['montant'], 2,',', ' ')}} DA </td>
+
+                                    <td>{{$auto['datec']}}  </td>
+                                    <td>{{$auto['montant']}} DA </td>
+
                                     
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
@@ -252,6 +256,8 @@
                                     <td>{{$mrh['datec']}}  </td>
                                     <td> {{number_format($mrh['montant'], 2,',', ' ')}} DA </td>
                                     
+
+                                    <td><a href="{{route('devismrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
                                 @endif
@@ -262,7 +268,8 @@
                                     
                                     <td>{{$cat['nom']}} </td>
                                     <td> {{number_format($cat['montant'], 2,',', ' ')}} DA </td>
-                                    
+                                    <td>{{$cat['datec']}}  </td>
+                                    <td>{{$cat['montant']}} DA </td>                                   
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
                                 @endif
