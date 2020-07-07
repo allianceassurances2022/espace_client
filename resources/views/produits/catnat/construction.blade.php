@@ -23,9 +23,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         @include('core.produit.inside-menu')
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-building-o"></i> La construction<span>3</span></h5>
             </div>

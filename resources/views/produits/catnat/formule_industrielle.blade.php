@@ -20,10 +20,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             @include('core.produit.inside-menu')
             <form class="contact100-form validate-form"  action="{{route('construction_catanat')}}" method="post">
             @csrf
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
-
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Formule Industrielle <span>2</span></h5>
             </div>

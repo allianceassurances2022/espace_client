@@ -18,9 +18,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <span><img src="{{asset('produit_assets/images/icons/auto_white.svg')}}" alt=""> Automobile</span>
         </div>
         <form class="contact100-form validate-form">
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
             <!-- produit laki + -->
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Laki + <span>2</span></h5>

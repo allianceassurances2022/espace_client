@@ -16,10 +16,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/entreprise.jpg'
             <span><img src="{{asset('produit_assets/images/icons/pro_white.svg')}}" alt=""> Professionnel</span>
         </div>
         <form class="contact100-form validate-form">
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
-            
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Informations de l'assuré <span>1</span></h5>
             </div>
