@@ -276,6 +276,7 @@ class TarificationController extends Controller
         
         $datec=date('y-m-d');
          
+
 		$data_session = [
     	'type_formule' => $request->type_formule,
 	    'type_const' => $request->type_const,
@@ -295,6 +296,7 @@ class TarificationController extends Controller
 	    'reg_para' => $request->seisme,
 	    'datec' => $datec,
 	    'prime_total' => $prime_total_
+
     ];
 
     $request->session()->put('data_catnat', $data_session);

@@ -109,7 +109,7 @@ input,select {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    width: 100%;
+    width: 70%;
     font-size: 14px;
     font-family: inherit;
     border: 1px #bbbaba solid;
@@ -120,14 +120,38 @@ input,select {
 textarea {
     overflow: auto;
     resize: vertical;
-    width: 100%;
+    width: 70%;
     min-height: 7em;
+}
+.wrapper--w680 {
+    max-width: 70%;
 }
 button{
 border: 1px black solid;
 padding: 10px;
 border-radius: 10px;
 float: right;
+}
+.slice{
+    width: 44%;
+    display: inline-block;
+    margin-right: 5%;
+}
+.all_header {
+    position: relative;
+    display: block;
+    width: 110.9%;
+    padding: 2em 0px;
+    border-top: 1px #cae0f1 solid;
+    border-bottom: 1px #007481 solid;
+    text-align: center;
+    background-color: #007481;
+    margin-left: -1.6em;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 4px #ffffff dashed;
+    margin-left: -4.65em;
+    border-top: 1px #007481 solid;
+    margin-bottom: 45px;
 }
 </style>
           
@@ -143,19 +167,24 @@ float: right;
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                       
                     </div>
-                    <form action=""><div class="tarificateur">
-                            <h5>Date de souscription </h5>
-                            <div class="wrap-input100 validate-input">
-                                <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
-                                <span class="focus-input100"></span>
+                    <form action="">
+                        <div class="slice">
+                            <div class="tarificateur">
+                                <h5>Date de souscription </h5>
+                                <div class="wrap-input100 validate-input">
+                                    <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
+                                    <span class="focus-input100"></span>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="tarificateur">
-                            <h5>Date de d'effet </h5>
-                            <div class="wrap-input100 validate-input">
-                                <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
-                                <span class="focus-input100"></span>
+                            
+                        <div class="slice">
+                            <div class="tarificateur">
+                                <h5>Date de d'effet </h5>
+                                <div class="wrap-input100 validate-input">
+                                    <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
+                                    <span class="focus-input100"></span>
+                                </div>
                             </div>
                         </div>
                         

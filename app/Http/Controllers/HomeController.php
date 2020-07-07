@@ -33,6 +33,18 @@ class HomeController extends Controller
 
         if ($value_cat) {
 
+<<<<<<< HEAD
+        	$nom = 'Catastrophe Naturelle';
+        	$montant = $value_cat['prime_total'];
+            $total=$total+$montant;
+            $datec=$value_cat['datec'];
+
+        	$cat = [
+                'nom' => $nom,
+                'datec' => $datec,
+        		'montant' => $montant
+        	];
+=======
             $nom = 'Catastrophe Naturelle';
             $montant = $value_cat['prime_total'];
             $total=$total+$montant;
@@ -42,6 +54,7 @@ class HomeController extends Controller
                 'datec' => $datec,
                 'montant' => $montant
             ];
+>>>>>>> e60e7c303896e09874585d16dc53627da16e31fc
 
         }
 

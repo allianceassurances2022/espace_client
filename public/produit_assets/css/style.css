@@ -440,11 +440,11 @@ select{
     }
     .slice .validate-input2{
        float: left;
-        width: 70%
+        width: 50%
     }
     .slice .validate-input3{
        float: left;
-        width: 70%;
+        width: 50%;
     }
     form h6 {
         line-height: 2.0em;

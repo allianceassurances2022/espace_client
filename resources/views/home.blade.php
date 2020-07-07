@@ -40,10 +40,39 @@
     <!-- Main CSS-->
     <link href="{{asset('signup_assets/css/main.css')}}" rel="stylesheet" media="all">
     <style>
-        .all_header{
+        .my-menu-inside{
+          padding: 30px 0px 0px 30px;
+          text-align: center; 
+          float: right;
+          margin-bottom: 2em;
+        }
+
+        .my-menu-inside li{
+          display: inline-block;
+          margin: 0 10px;
+        }
+
+        .my-menu-inside li a{
+          padding: 8px 19px;
+          border: 1px #286f74 solid;
+          border-radius: 57px;
+          font-weight: bold !important;
+          background: #ffffff;
+          color: white;
+          text-transform: uppercase;
+          font-size: 12px;
+          color: #007480;
+        }
+        .my-menu-inside li a:hover{
+          background-color: #007480;
+          border: 1px #007480 solid;
+          color: white;
+          transition: 0.3s;
+        }
+        .all_header {
             position: relative;
             display: block;
-            width: 123.7%;
+            width: 112.7%;
             padding: 2em 0px;
             border-top: 1px #cae0f1 solid;
             border-bottom: 1px #007481 solid;
@@ -57,6 +86,9 @@
             margin-bottom: 45px;
         }
 
+        .wrapper--w680 {
+            max-width: 60%;
+        }
 
         .card-4 .card-body {
             padding-top: 0px;
@@ -97,10 +129,37 @@
             background-color: #f2f2f2 !important; 
         }
 
-       
+        input{
+            outline: none;
+            margin: 0;
+            border: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            width: 70%;
+            font-size: 14px;
+            font-family: inherit;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px #c7c7c7 solid;
+            margin-left: 2%;
+            margin-top: 2%;
+        }
         a {
-  color: hotpink;
-} 
+          color: hotpink;
+        } 
+        .label {
+            font-size: 16px;
+            color: #555;
+            text-transform: capitalize;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            margin-top: 1em;
+        }
+        .my-card{
+            clear: both;
+        }
 </style>
           
     </style>
@@ -116,46 +175,48 @@
                       
                     </div>
                
-                 <div class="card">
-
-                                <h5 class="card-header">information</h5>
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
+                @include('core.produit.inside-menu')
+                 <div class="card my-card">
+                        <h2 class="card-header">Informations</h2>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
                                     <div class="input-group">
-                                 <div class="col-md-6">
-                                     <label class="label">Nom : {{$user->name}}</label>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Prenom: {{$user->prenom}}</label>
-                                </div>
-                              
-                            </div>
+                                         <div class="col-md-6">
+                                             <label class="label">Nom </label>
+                                             <input disabled="" type="text" value="{{$user->name}}">
+                                         </div>
+                                         <div class="col-md-6">
+                                            <label class="label">Prenom</label>
+                                             <input disabled="" type="text" value="{{$user->prenom}}">
+                                        </div>
+                                    </div>
 
-                            <div class="input-group">
-                                 <div class="col-md-6">
-                                     <label class="label">Wilaya : {{$user->wilaya}}</label>   
-                                 </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Commune: {{$user->commune}}</label>
-                                </div>
-                            </div>
+                                    <div class="input-group">
+                                         <div class="col-md-6">
+                                             <label class="label">Wilaya </label>   
+                                             <input disabled="" type="text" value="{{$user->wilaya}}">
+                                         </div>
+                                         <div class="col-md-6">
+                                            <label class="label">Commune</label>
+                                             <input disabled="" type="text" value="{{$user->commune}}">
+                                        </div>
+                                    </div>
 
-                            <div class="input-group">
-                                <div class="col-md-6">
-                                     <label class="label">Profession : {{$user->prefession}}</label>             
-                                </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Telephone:+213 {{$user->telephone}}</label>
-                                   
-                                </div>
-                            
-                                </div>
+                                    <div class="input-group">
+                                        <div class="col-md-6">
+                                             <label class="label">Profession </label>             
+                                             <input disabled="" type="text" value="{{$user->prefession}}">
+                                        </div>
+                                         <div class="col-md-6">
+                                            <label class="label">Telephone</label>
+                                             <input disabled="" type="text" value="{{$user->telephone}}"> 
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                    </div>
                                 
-                                <div class="card">
-                
+            <div class="card">
                 <h5 class="card-header">Liste Produit</h5>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -177,7 +238,11 @@
                                     <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
                                     
                                     <td>{{$auto['nom']}} </td>
+                                    <td> {{number_format($auto['montant'], 2,',', ' ')}} DA </td>
+
+                                    <td>{{$auto['datec']}}  </td>
                                     <td>{{$auto['montant']}} DA </td>
+
                                     
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
@@ -189,8 +254,10 @@
                                     <td>{{$mrh['nom']}} </td>
                           
                                     <td>{{$mrh['datec']}}  </td>
-                                    <td>{{$mrh['montant']}} DA </td>
+                                    <td> {{number_format($mrh['montant'], 2,',', ' ')}} DA </td>
                                     
+
+                                    <td><a href="{{route('devismrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
                                 @endif
@@ -201,7 +268,7 @@
                                     
                                     <td>{{$cat['nom']}} </td>
                                      <td>{{$mrh['datec']}}  </td>
-                                    <td>{{$cat['montant']}} DA </td>
+                                     <td> {{number_format($cat['montant'], 2,',', ' ')}} DA </td>
                                     
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
