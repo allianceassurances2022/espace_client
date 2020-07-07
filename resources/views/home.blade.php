@@ -258,7 +258,7 @@
                                     
 
                                     <td><a href="{{route('devismrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-                                    <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
+                                    {{-- <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td> --}}
                                 </tr>
                                 @endif
                                 @if($cat != '')
