@@ -273,8 +273,9 @@ class TarificationController extends Controller
 		$prime_total_ = $val+$CP+$TD+$maj;
 		$prime_total = number_format($prime_total_,2);
 		//dd($prime_total);
-
-
+        
+        $datec=date('y-m-d');
+         
 		$data_session = [
     	'type_formule' => $request->type_formule,
 	    'type_const' => $request->type_const,
@@ -292,6 +293,7 @@ class TarificationController extends Controller
 	    'permis' => $request->permis,
 	    'val_assur' => $request->val_assur,
 	    'reg_para' => $request->seisme,
+	    'datec' => $datec,
 	    'prime_total' => $prime_total_
     ];
 
@@ -309,7 +311,9 @@ class TarificationController extends Controller
 	//mrh
     public function montant_mrh(Request $request)
     {    
+	
 	//['DR','CODE','TYPE_AGENCE','TGVA','STATUT','CHEF_AGENCE','EMAIL']
+	
 	$habitation = $request->post('hab');
 
     

@@ -164,8 +164,8 @@
                                 <tr class="border-0">
                                     <th class="border-2"></th>
                                     <th class="border-2">Produit</th>
-                                    <th class="border-2">date</th>
-                                    <th class="border-2">montant</th>
+                                    <th class="border-2">Date</th>
+                                    <th class="border-2">Montant</th>
                             
                                     <th class="border-0"></th>
                                 </tr>
@@ -200,6 +200,7 @@
                                     <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
                                     
                                     <td>{{$cat['nom']}} </td>
+                                     <td>{{$mrh['datec']}}  </td>
                                     <td>{{$cat['montant']}} DA </td>
                                     
                                     <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
