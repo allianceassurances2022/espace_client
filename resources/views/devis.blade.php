@@ -101,6 +101,34 @@
         a {
   color: hotpink;
 } 
+
+input,select {
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px #bbbaba solid;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+textarea {
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    min-height: 7em;
+}
+button{
+border: 1px black solid;
+padding: 10px;
+border-radius: 10px;
+float: right;
+}
 </style>
           
     </style>
@@ -115,117 +143,122 @@
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
                       
                     </div>
-               
-                 <div class="card">
-
-                                <h5 class="card-header">information</h5>
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                    <div class="input-group">
-                                 <div class="col-md-6">
-                                     <label class="label">Nom : {{$user->name}}</label>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Prenom: {{$user->prenom}}</label>
-                                </div>
-                              
+                    <form action=""><div class="tarificateur">
+                            <h5>Date de souscription </h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
+                                <span class="focus-input100"></span>
                             </div>
-
-                            <div class="input-group">
-                                 <div class="col-md-6">
-                                     <label class="label">Wilaya : {{$user->wilaya}}</label>   
-                                 </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Commune: {{$user->commune}}</label>
-                                </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Date de d'effet </h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
+                                <span class="focus-input100"></span>
                             </div>
-
-                            <div class="input-group">
-                                <div class="col-md-6">
-                                     <label class="label">Profession : {{$user->prefession}}</label>             
-                                </div>
-                                 <div class="col-md-6">
-                                    <label class="label">Telephone:+213 {{$user->telephone}}</label>
-                                   
-                                </div>
-                            
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Date de d'expiration </h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="date" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>adresse </h5>
+                            <div class="wrap-input100 validate-input">
+                                <textarea></textarea>
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Wilaya </h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="text" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Habitation </h5>
+                            <div class="wrap-input100 validate-input">
+                                <select name="" id="">
+                                    <option value="oui">Individuelle</option>
+                                    <option value="non">Collective</option>
+                                </select>  
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>qualité jurédique </h5>
+                            <div class="wrap-input100 validate-input">
+                                <select name="" id="">
+                                    <option value="oui">Propetaire</option>
+                                    <option value="non">Locataire</option>
+                                </select> 
                                 
-                                <div class="card">
-                
-                <h5 class="card-header">Liste Produit</h5>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="bg-light">
-                                <tr class="border-0">
-                                    <th class="border-2"></th>
-                                    <th class="border-2">Produit</th>
-                                    <th class="border-2">date</th>
-                                    <th class="border-2">montant</th>
-                            
-                                    <th class="border-0"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @if($auto != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
-                                    
-                                    <td>{{$auto['nom']}} </td>
-                                    <td>{{$auto['datec']}}  </td>
-                                    <td>{{$auto['montant']}} DA </td>
-                                    
-                                    <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-                                </tr>
-                                @endif
-                                @if($mrh != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/hab_col.svg' ></img></td>
-                                    <td>{{$mrh['nom']}} </td>
-                          
-                                    <td>{{$mrh['datec']}}  </td>
-                                    <td>{{$mrh['montant']}} DA </td>
-                                    
-<<<<<<< HEAD
-                                    <td><a href="{{route('devismrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-=======
-                                    <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
->>>>>>> e60e7c303896e09874585d16dc53627da16e31fc
-                                </tr>
-                                @endif
-                                @if($cat != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
-                                    
-                                    <td>{{$cat['nom']}} </td>
-                                    <td>{{$cat['datec']}}  </td>
-                                    <td>{{$cat['montant']}} DA </td>
-                                    
-                                    <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-                                </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-  
-                <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('signin') }}">
-                                        {{ __('Logout') }}
-                                   <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
-                                        <span> {{Session()->get('type_produit')}}   </span>
-                                    </a>
-
-                                 
-                                </div>-->
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>                    
+                        
+                        
+                        <div class="tarificateur">
+                            <h5>montant forfaitaire </h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="text" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Nombre de pieces</h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="text" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Surface</h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="text" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Etage</h5>
+                            <div class="wrap-input100 validate-input">
+                                <input id="montant_calcul" class="input100" type="text" name="montant_calcul" >
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="tarificateur">
+                            <h5>Terrasse </h5>
+                            <div class="wrap-input100 validate-input">
+                                <select name="" id="">
+                                    <option value="oui">oui</option>
+                                    <option value="non">non</option>
+                                </select>                            
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>      
+                        <button type="submit">Valider</button>
+                                        <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('signin') }}">
+                                            {{ __('Logout') }}
+                                       <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
+                                            <span> {{Session()->get('type_produit')}}   </span>
+                                        </a>
+                        
+                                     
+                                    </div>--></form>
                 </div>
             </div>
         </div>

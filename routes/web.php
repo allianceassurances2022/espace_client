@@ -58,3 +58,4 @@ Route::get('devismrh', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/devis', 'HomeController@devis')->name('devis');
