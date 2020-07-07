@@ -273,7 +273,7 @@ class TarificationController extends Controller
 		$prime_total_ = $val+$CP+$TD+$maj;
 		$prime_total = number_format($prime_total_,2);
 		//dd($prime_total);
-
+		$datec=date('y-m-d'); 
 
 		$data_session = [
     	'type_formule' => $request->type_formule,
@@ -292,7 +292,8 @@ class TarificationController extends Controller
 	    'permis' => $request->permis,
 	    'val_assur' => $request->val_assur,
 	    'reg_para' => $request->seisme,
-	    'prime_total' => $prime_total_
+		'prime_total' => $prime_total_,
+		'datec' => $datec
     ];
 
     $request->session()->put('data_catnat', $data_session);

@@ -50,6 +50,9 @@ Route::get('signup', function () {
 Route::get('signin', function () {
     return view('signin');
 })->name('signin');
+Route::get('devismrh', function () {
+    return view('produits.mrh.devis_mrh');
+})->name('devismrh');
 
 
 Auth::routes();

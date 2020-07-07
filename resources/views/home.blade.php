@@ -195,6 +195,7 @@
                                     <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
                                     
                                     <td>{{$auto['nom']}} </td>
+                                    <td>{{$auto['datec']}}  </td>
                                     <td>{{$auto['montant']}} DA </td>
                                     
                                     <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
@@ -209,7 +210,7 @@
                                     <td>{{$mrh['datec']}}  </td>
                                     <td>{{$mrh['montant']}} DA </td>
                                     
-                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                    <td><a href="{{route('devismrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
                                 @endif
                                 @if($cat != '')
@@ -218,6 +219,7 @@
                                     <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
                                     
                                     <td>{{$cat['nom']}} </td>
+                                    <td>{{$cat['datec']}}  </td>
                                     <td>{{$cat['montant']}} DA </td>
                                     
                                     <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
