@@ -47,9 +47,9 @@ Route::get('pannier', 'TarificationController@panier')->name('pannier');
 //     return view('signup');
 // })->name('signup');
 
-// Route::get('signin', function () {
-//     return view('signin');
-// })->name('signin');
+Route::get('signin', function () {
+    return view('signin');
+})->name('signin');
 
 // Route::get('devismrh', function () {
 //     return view('produits.mrh.devis_mrh');
@@ -59,4 +59,4 @@ Route::get('pannier', 'TarificationController@panier')->name('pannier');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/devis_mrh', 'HomeController@devis_mrh')->name('devis_mrh');
+Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh');

@@ -280,7 +280,7 @@
             </div>
   
                 <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('signin') }}">
+                                    <a class="dropdown-item" href="{{ route('login') }}">
                                         {{ __('Logout') }}
                                    <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
                                         <span> {{Session()->get('type_produit')}}   </span>
