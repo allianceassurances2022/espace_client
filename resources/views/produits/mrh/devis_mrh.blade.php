@@ -38,7 +38,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Date souscription</h6>
 
                <div class="wrap-input100 validate-input3">
-                   <input id="date_s" class="input100" type="date" name="date" value="{{ session() }}">
+                   <input id="date_s" class="input100" type="date" name="date" value="">
                  
                </div>
            </div> 

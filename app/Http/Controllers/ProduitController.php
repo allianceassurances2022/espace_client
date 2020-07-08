@@ -76,8 +76,8 @@ class ProduitController extends Controller
 
     public function devis_mrh()
     { 
-        $value_mrh = session('data_mrh');
-        return view('produits.mrh.devis_mrh',compact('value_mrh'));
+        //$value_mrh = session('data_mrh');
+        return view('produits.mrh.devis_mrh');
     }
-    
+
 }
