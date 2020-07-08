@@ -111,7 +111,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
                 
-                @endif
+            @endif
                
                 <input type="hidden" nom="habl" id="habl" value="{{$habitation ?? '' ?? ''}}">
             <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique ?? '' ?? ''}}">

@@ -34,11 +34,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             
       
           
-           <div class="full_w">
+           <div class="slice">
                 <h6>Date souscription</h6>
 
                <div class="wrap-input100 validate-input3">
-                   <input id="date_s" class="input100" type="date" name="date"  >
+                   <input id="date_s" class="input100" type="date" name="date" value="{{ session() }}">
                  
                </div>
            </div> 
@@ -53,7 +53,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
 
            <div class="slice">
-                <h6>Date validation</h6>
+                <h6>Date expiration</h6>
 
                <div class="wrap-input100 validate-input3">
                    <input id="date_v" class="input100" type="date" name="date_v" >
@@ -61,14 +61,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                </div>
            </div>
            
-                  <div class="slice">
-                <h6>Adress</h6>
+           <div class="slice">
+            <h6>Adress</h6>
 
-               <div class="wrap-input100 validate-input2">
-                   <input id="adresse" class="input100" type="text" name="adresse"  value="{{$adresse ?? ''}}">
-                   
-               </div>
+            <div class="wrap-input100 validate-input2">
+             <input id="adresse" class="input100" type="text" name="adresse"  value="{{$adresse ?? ''}}">
+
            </div>
+         </div>
 
            <div class="slice">
                 <h6>Wilaya</h6>
@@ -162,10 +162,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
             <div class="container-contact100-form-btn">
             <input class="contact100-form-btn" type ='submit' id="valider" nom="valider" value="valider">  
-         
-               
-  
-          
+
             </div>
         </form>
     </div>

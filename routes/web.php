@@ -43,19 +43,20 @@ Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montan
 
 Route::get('pannier', 'TarificationController@panier')->name('pannier');
 
-Route::get('signup', function () {
-    return view('signup');
-})->name('signup');
+// Route::get('signup', function () {
+//     return view('signup');
+// })->name('signup');
 
-Route::get('signin', function () {
-    return view('signin');
-})->name('signin');
-Route::get('devismrh', function () {
-    return view('produits.mrh.devis_mrh');
-})->name('devismrh');
+// Route::get('signin', function () {
+//     return view('signin');
+// })->name('signin');
+
+// Route::get('devismrh', function () {
+//     return view('produits.mrh.devis_mrh');
+// })->name('devismrh');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/devis', 'HomeController@devis')->name('devis');
+Route::get('/devis_mrh', 'HomeController@devis_mrh')->name('devis_mrh');

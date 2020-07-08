@@ -109,10 +109,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </a>
 
                 <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">  
-
+                @if($prime_total != 0)
                 <a href="{{route('signin')}}" class="contact100-form-btn">
-                     Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
+                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  
                 </a>
+                @endif
             </div>
             <input type="hidden" name="type_formule" id="type_formule" value="{{$type_formule ?? ''}}">
             <input type="hidden" name="Contenant" id="Contenant" value="{{$Contenant ?? ''}}">

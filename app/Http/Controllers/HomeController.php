@@ -64,8 +64,9 @@ class HomeController extends Controller
         return view('home',compact('user','mrh','auto','cat','total'));
     }
 
-    public function devis()
+    public function devis_mrh()
     { 
-        return view('devis');
+        $value_mrh = session('data_mrh');
+        return view('produits.mrh.devis_mrh',compact('value_mrh'));
     }
 }
