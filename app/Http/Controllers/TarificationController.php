@@ -543,4 +543,13 @@ class TarificationController extends Controller
     	
     }
 
+    public function panier_supp (){
+
+        
+
+    	
+    }
+
+
+
 }

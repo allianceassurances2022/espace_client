@@ -76,8 +76,18 @@ class ProduitController extends Controller
 
     public function devis_mrh()
     { 
-        //$value_mrh = session('data_mrh');
-        return view('produits.mrh.devis_mrh');
+        $value_mrh = session('data_mrh');
+
+        $terasse=$value_mrh['terasse'];
+        $habitation=$value_mrh['habitation'];
+        $montant=$value_mrh['montant'];
+        $juredique=$value_mrh['juredique'];
+        $nbr_piece=$value_mrh['nbr_piece'];
+        $datec=$value_mrh['datec'];
+        $prime_total=$value_mrh['prime_total'];
+            
+
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total'));
     }
 
 }

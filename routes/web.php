@@ -42,6 +42,7 @@ Route::post('montant_auto' , 'TarificationController@montant_auto')->name('monta
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
 Route::get('pannier', 'TarificationController@panier')->name('pannier');
+Route::get('pannier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
 
 Route::get('signup', function () {
     return view('signup');
