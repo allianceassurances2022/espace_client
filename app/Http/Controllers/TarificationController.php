@@ -543,6 +543,47 @@ class TarificationController extends Controller
         return view('payment',compact('mrh','auto','cat','total'));
 
     	
+	}
+	public function paiement (){
+
+        $value_cat = session('data_catnat');
+        $value_mrh = session('data_mrh');
+        $cat='';
+        $auto='';
+        $mrh='';
+        $total = 0;
+
+        if ($value_cat) {
+
+        	$nom = 'Catastrophe Naturelle';
+        	$montant = $value_cat['prime_total'];
+        	$total=$total+$montant;
+
+        	$cat = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+
+        if ($value_mrh) {
+
+        	$nom = 'Multirisques Habitation';
+        	$montant = $value_mrh['prime_total'];
+        	$total=$total+$montant;
+
+        	$mrh = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+
+
+    
+        return view('paiement',compact('mrh','auto','cat','total'));
+
+    	
     }
 
     public function panier_supp (){

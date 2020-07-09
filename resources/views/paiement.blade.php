@@ -61,10 +61,7 @@
       <div class="all_header">
         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
       </div>
-      <div class="menu-header">
-        @include('core.produit.inside-menu')
-      </div>
-        <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+    
         @if($auto != '')
         <div class='line'></div>
         <table class='order-table'>
@@ -100,18 +97,11 @@
               </td>
               <td>
                 <br> <span class='thin product_title'>{{$mrh['nom']}}</span>
-                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
-                <div class="product_actions">
-                	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                </div>
+                <br> <br> <span class='thin small'> <br><br></span>
+              
               </td>
             </tr>
-            <tr>
-              <td>
-                <div class='price'>{{number_format($mrh['montant'], 2,',', ' ')}} DA</div>
-              </td>
-            </tr>
+          
           </tbody>
         </table>
         @endif
@@ -125,18 +115,11 @@
               </td>
               <td>
                 <br> <span class='thin product_title'>{{$cat['nom']}}</span>
-                <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
-                <div class="product_actions">
-                	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                </div>
+                <br><br> <span class='thin small'> </span>
+            
               </td>
             </tr>
-            <tr>
-              <td>
-                <div class='price'>{{$cat['montant']}} DA</div>
-              </td>
-            </tr>
+           
           </tbody>
         </table>
         @endif
@@ -147,7 +130,7 @@
           <span style='float:left;'>
             {{-- <div class='thin dense'>VAT 19%</div>
             <div class='thin dense'>Delivery</div> --}}
-            TOTAL
+            MONTANT
           </span>
           <span style='float:right; text-align:right;'>
             {{-- <div class='thin dense'>{{$total}} DA</div>
@@ -158,26 +141,33 @@
    
 
         <div class="action">
-        	<p> Repudiandae ipsam obcaecati nemo, sit ut praesentium odio molestiae, doloremque inventore atque voluptatem. Eius, veniam suscipit iste!</p>
-	        <form>
-	        <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
-	        <h3>Choisir votre mode de paiement <span>2</span></h3>
+       
+          <form>
+	        
+           
+      <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
 		    <div class="cc-selector">
-		        <input id="visa" type="radio" name="credit-card" value="visa" />
-		        <label class="drinkcard-cc visa" for="visa"></label>
-		        <input id="mastercard" type="radio" name="credit-card" value="mastercard" />
-		        <label class="drinkcard-cc mastercard"for="mastercard"></label>
+            <div class="g-recaptcha"  data-sitekey="6LfZ4AAVAAAAAFP6tyNYWgycDvXHIfjZg9shDZ05"></div>
 		    </div>
+            <h3>Choisir votre mode de paiement <span>2</span></h3>
+            
+		    <div class="cc-selector">
+		   
+               <input type="image" name="CIB" width="120" height="120"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
+               <img width="120" height="120" class="entry-thumb" src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png" > </div>
 		    <h3>Acception des conditions generales <span>3</span></h3>
         <div class="condition">
           <p>
-            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> 
+            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> fugit excepturi corporis.
+            <br>
+            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> excepturi corporis.
           </p>
           
         </div>
 			</form>
-        	<a href="{{ url()->previous() }}" class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-left"></i> Produit</a>
-        	<a href="{{route('signup')}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+        	<a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a>
+        	<a href="{{route('paiement')}}" class="bot-button"> Suivant <i class="fa fa-arrow-circle-right"></i></a>
+            
         </div>
 </div>
 </div>
@@ -185,4 +175,6 @@
     </div>
 </body>
 <script src="{{asset('payment_assets/js/js.js')}}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </html>
