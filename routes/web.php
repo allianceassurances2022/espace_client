@@ -61,3 +61,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh');
+
+Route::post('/validation_devis_mrh' , 'TarificationController@validation_devis_mrh')->name('validation_devis_mrh');

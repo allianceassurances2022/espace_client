@@ -13,19 +13,22 @@ class CreateDevisTable extends Migration
      */
     public function up()
     {
-        Schema::create('deviss', function (Blueprint $table) {
+        Schema::create('devis', function (Blueprint $table) {
             $table->id();
             
-            $table->string('code_devis');
-            $table->string('code_assure');
-            $table->string('code_risque');
-            $table->string('code_formule');
-            $table->date('date_devis');
-            $table->date('code_epaiement');
-            $table->float('montan_epaiement');
-            $table->date('date_epaiement');
-            $table->string('statut_devis');
-            $table->text('periode');
+            $table->string('code_devis')->nullable();
+            $table->date('date_souscription')->nullable();
+            $table->date('date_effet')->nullable();
+            $table->date('date_expiration')->nullable();
+            $table->string('code_assure')->nullable();
+            $table->string('code_risque')->nullable();
+            $table->string('code_formule')->nullable();
+            $table->date('date_devis')->nullable();
+            $table->date('code_epaiement')->nullable();
+            $table->float('montan_epaiement')->nullable();
+            $table->date('date_epaiement')->nullable();
+            $table->string('statut_devis')->nullable();
+            $table->text('periode')->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +40,6 @@ class CreateDevisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deviss');
+        Schema::dropIfExists('devis');
     }
 }

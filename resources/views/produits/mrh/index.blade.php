@@ -28,7 +28,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             </div>
             
            <div class="slice">
-                <h6>Montant forfetaire</h6>
+                <h6>Montant forfaitaire</h6>
 
                <div class="wrap-input100 validate-input2">
                    <input id="montant" class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}">

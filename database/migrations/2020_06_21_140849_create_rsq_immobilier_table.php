@@ -15,21 +15,23 @@ class CreateRsqImmobilierTable extends Migration
     {
         Schema::create('rsq_immobilier', function (Blueprint $table) {
             $table->id();
-            $table->string('code_bien',10);
-            $table->integer('etage');
-            $table->float('superficie',10,2);
-            $table->Date('annee_construction');
-            $table->float('valeur_contenu', 10, 2);
-            $table->float('valeur_equipement', 10, 2);
-            $table->float('valeur_marchandise', 10, 2);
-            $table->string('nature_activite',10);
-            $table->string('construction',10);
-            $table->string('type_habitation',10);
-            $table->string('qualite_juridique',10);
-            $table->float('montant_forfaitaire', 10, 2);
-            $table->integer('nombre_piece');
-            $table->string('terrasse',10);
-            $table->string('code_zone',10);
+            $table->string('code_bien',10)->nullable();
+            $table->integer('etage')->nullable();
+            $table->float('superficie',10,2)->nullable();
+            $table->Date('annee_construction')->nullable();
+            $table->float('valeur_contenu', 10, 2)->nullable();
+            $table->float('valeur_equipement', 10, 2)->nullable();
+            $table->float('valeur_marchandise', 10, 2)->nullable();
+            $table->string('nature_activite',20)->nullable();
+            $table->string('construction',20)->nullable();
+            $table->string('type_habitation',20)->nullable();
+            $table->string('qualite_juridique',20)->nullable();
+            $table->float('montant_forfaitaire', 10, 2)->nullable();
+            $table->integer('nombre_piece')->nullable();
+            $table->string('terrasse',10)->nullable();
+            $table->string('code_zone',10)->nullable();
+            $table->text('adresse')->nullable();
+            $table->integer('code_wilaya')->nullable();
             $table->timestamps();
         });
     }

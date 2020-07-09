@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
 use App\zcatnat;
+
+use App\Rsq_Immobilier;
+
 class TarificationController extends Controller
 {
     //catnat
@@ -296,8 +299,7 @@ class TarificationController extends Controller
 	    'reg_para' => $request->seisme,
 	    'datec' => $datec,
 	    'prime_total' => $prime_total_
-
-    ];
+        ];
 
     $request->session()->put('data_catnat', $data_session);
 
@@ -548,6 +550,24 @@ class TarificationController extends Controller
         
 
     	
+    }
+
+    public function validation_devis_mrh (Request $request){
+          //dd($request);
+    	//dd((float)$request->montant);
+
+          Rsq_Immobilier::create([
+          	'adresse' => $request->adresse,
+          	'code_wilaya' => $request->Wilaya,
+          	'type_habitation' => $request->hab,
+          	'qualite_juridique' => $request->juredique,
+          	'montant_forfaitaire' => $request->montant,
+          	'nombre_piece' => $request->nbr_piece,
+          	'superficie' => $request->surface,
+          	'etage' => $request->etage,
+          	'terrasse' => $request->terasse,
+          ]);
+
     }
 
 

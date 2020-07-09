@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Wilaya;
 
 class ProduitController extends Controller
 {
@@ -78,6 +79,7 @@ class ProduitController extends Controller
     { 
         $value_mrh = session('data_mrh');
 
+        $date_souscription=date('Y-m-d');
         $terasse=$value_mrh['terasse'];
         $habitation=$value_mrh['habitation'];
         $montant=$value_mrh['montant'];
@@ -85,9 +87,10 @@ class ProduitController extends Controller
         $nbr_piece=$value_mrh['nbr_piece'];
         $datec=$value_mrh['datec'];
         $prime_total=$value_mrh['prime_total'];
+        $wilaya = wilaya::all();
             
 
-        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total'));
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya'));
     }
 
 }
