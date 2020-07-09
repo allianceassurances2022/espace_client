@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use PDF;
+use auth;
 class ProduitController extends Controller
 {
     /**
@@ -88,6 +90,20 @@ class ProduitController extends Controller
             
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total'));
+    }
+    
+    public function visuelisation()
+    {  $user=auth::user();
+      
+        return view('produits.mrh.resultat',compact('user'));
+
+        
+       // $pdf = PDF::loadView('produits.mrh.resultat',compact('user'));
+
+      
+       // return $pdf->stream();
+     
+       
     }
 
 }
