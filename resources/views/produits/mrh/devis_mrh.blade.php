@@ -163,7 +163,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
                </div>
            </div>
-
+          
            <div class="slice slice_third">
                 <div class="radio_section_slice">
                  
