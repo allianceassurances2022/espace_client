@@ -207,7 +207,7 @@
                   <div class="input-group">
                    <div class="col-md-4">
                      <label class="label">Date souscription </label>
-                     <input type="date" name="date_sous" value="{{$date_souscription}}" readonly required>
+                     <input   type="date" name="date_sous" value="{{$date_souscription}}" readonly required>
                    </div>
                    <div class="col-md-4">
                     <label class="label">Date d'effet</label>
@@ -238,7 +238,7 @@
 
                <div class="col-md-8">
                 <label class="label">Adress</label>
-                <input type="text"  name="adresse" value="{{$adresse ?? ''}}" required>
+                <input   type="text"  name="adresse" value="{{$adresse ?? ''}}" required>
               </div>
               <div class="col-md-4">
                <label class="label">Wilaya </label>             
@@ -258,7 +258,7 @@
 
            <div class="col-md-4">
             <label class="label">Nombre de pieces</label>
-            <input type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
+            <input  disabled="" type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
           </div>
           <div class="col-md-4">
             <label class="label">Surface</label>
@@ -272,7 +272,7 @@
         <div class="input-group">
           <div class="col-md-12">
             <label class="label">Montant forfetaire</label>
-            <input type="text" name="montant"  value="{{$montant}}" readonly required>
+            <input  disabled="" type="text" name="montant"  value="{{$montant}}" readonly required>
           </div> 
 
         </div>
@@ -289,6 +289,7 @@
     <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
 
   </div>
+
 
 
 </div>

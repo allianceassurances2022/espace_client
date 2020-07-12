@@ -6,13 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('payment_assets/css/payment_style.css')}}">
-    <link rel="icon" type="image/png" href="{{asset('produit_assets/images/icons/favicon.ico')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/iconic/css/material-design-iconic-font.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
     <link href="{{asset('user_assets/assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('user_assets/assets/libs/css/style.css')}}">
@@ -230,62 +223,62 @@
                                     <div class="input-group">
                                          <div class="col-md-4">
                                              <label class="label">Date souscription </label>
-                                             <input disabled="" type="date" value="{{$devis->date_souscription}}">
+                                             <input disabled="" type="date" value="">
                                          </div>
                                          <div class="col-md-4">
                                             <label class="label">Date d'effet</label>
-                                             <input disabled="" type="date" value="{{$devis->date_effet}}">
+                                             <input disabled="" type="date" value="">
                                         </div>
                                         <div class="col-md-4">
                                              <label class="label">Date expiration </label>   
-                                             <input disabled="" type="date" value="{{$devis->date_expiration}}">
+                                             <input disabled="" type="date" value="">
                                          </div>
                                     </div>
                                     <div class="input-group">
                                      
                                      <div class="col-md-4">
                                         <label class="label">Habitation</label>
-                                         <input disabled="" type="text" value="{{$risque->type_habitation}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                     <div class="col-md-4">
                                         <label class="label">Qualité juredique</label>
-                                         <input disabled="" type="text" value="{{$risque->qualite_juridique}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                     <div class="col-md-4">
                                         <label class="label">Terrasse</label>
-                                         <input disabled="" type="text" value="{{$risque->terrasse}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                 </div>
                                     <div class="input-group">
                                         
                                          <div class="col-md-8">
                                             <label class="label">Adress</label>
-                                             <input disabled="" type="text" value="{{$risque->adresse}}">
+                                             <input disabled="" type="text" value="">
                                         </div>
                                         <div class="col-md-4">
                                              <label class="label">Wilaya </label>             
-                                             <input disabled="" type="text" value="{{$risque->code_wilaya}}">
+                                             <input disabled="" type="text" value="">
                                         </div>
                                     </div>
                                     <div class="input-group">
                                      
                                      <div class="col-md-4">
                                         <label class="label">Nombre de pieces</label>
-                                         <input disabled="" type="text" value="{{$risque->nombre_piece}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                     <div class="col-md-4">
                                         <label class="label">Surface</label>
-                                         <input disabled="" type="text" value="{{$risque->superficie}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                     <div class="col-md-4">
                                         <label class="label">Etage</label>
-                                         <input disabled="" type="text" value="{{$risque->etage}}"> 
+                                         <input disabled="" type="text" value=""> 
                                     </div>
                                 </div>
                                     <div class="input-group">
                                      
                                             <label class="label">Montant forfetaire</label>
-                                             <input disabled="" type="text" value="{{$risque->montant_forfaitaire}}"> 
+                                             <input disabled="" type="text" value=""> 
                                        
                                     </div>
                                    
@@ -296,13 +289,7 @@
                             
                     </div>
 
-                    <div  class="action">        
-
-                    <a href="{{ route('devis_mrh',$risque->id) }}" class="bot-button"><i class="fa fa-arrow-circle-left"></i> Modifier</a>
-                    <a href="{{route('paiement',$risque->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
-
-
-                    </div>
+                   
                   
            
                 </div>

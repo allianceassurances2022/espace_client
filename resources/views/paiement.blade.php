@@ -88,7 +88,7 @@
         </table>
         @endif
 
-        @if($mrh != '')
+        @if($mrh['montant'] != '')
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -153,15 +153,14 @@
             
 		    <div class="cc-selector">
 		   
-               <input type="image" name="CIB" width="120" height="120"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
-               <img width="120" height="120" class="entry-thumb" src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png" > </div>
+               <input type="image" name="CIB" value="CIB" width="120" height="120"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
+               <input type="image" name="POST" value="POST"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+              </div>
 		    <h3>Acception des conditions generales <span>3</span></h3>
         <div class="condition">
           <p>
             <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> fugit excepturi corporis.
-            <br>
-            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> excepturi corporis.
-          </p>
+           </p>
           
         </div>
 			</form>

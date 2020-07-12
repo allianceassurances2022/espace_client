@@ -101,13 +101,12 @@ class ProduitController extends Controller
 
         $user=auth::user();
       
-        return view('produits.mrh.resultat',compact('user'));
-
+      
         
-       // $pdf = PDF::loadView('produits.mrh.resultat',compact('user'));
+        $pdf = PDF::loadView('pdf_resultat_mrh',compact('user'));
 
       
-       // return $pdf->stream();
+        return $pdf->stream();
      
        
     }

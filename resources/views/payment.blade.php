@@ -158,27 +158,10 @@
    
 
         <div class="action">
-        	<p> Repudiandae ipsam obcaecati nemo, sit ut praesentium odio molestiae, doloremque inventore atque voluptatem. Eius, veniam suscipit iste!</p>
-	        <form>
-	        <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
-	        <h3>Choisir votre mode de paiement <span>2</span></h3>
-		    <div class="cc-selector">
-		        <input id="visa" type="radio" name="credit-card" value="visa" />
-		        <label class="drinkcard-cc visa" for="visa"></label>
-		        <input id="mastercard" type="radio" name="credit-card" value="mastercard" />
-		        <label class="drinkcard-cc mastercard"for="mastercard"></label>
-		    </div>
-		    <h3>Acception des conditions generales <span>3</span></h3>
-        <div class="condition">
-          <p>
-            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> 
-          </p>
-          
-        </div>
+        
 			</form>
-        	<a href="{{ url()->previous() }}" class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-left"></i> Produit</a>
-        	<a href="{{route('signup')}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
+        	<a href="{{route('devis_mrh')}}"  class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-right"></i> Devis</a>
+       </div>
 </div>
 </div>
       </div>
