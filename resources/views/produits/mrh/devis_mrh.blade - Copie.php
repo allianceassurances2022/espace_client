@@ -208,7 +208,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <div class="container-contact100-form-btn"> 
             <input class="contact100-form-btn" type ='submit' id="valider" nom="valider" value="valider">  
             <a href="{{ route('visuelisation') }}" class="contact100-form-btn"><i class="fa fa-arrow-circle-left"></i> Voir le Devis</a>
-          <a href="{{route('paiement')}}" class="contact100-form-btn"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+        	<a href="{{route('paiement')}}" class="contact100-form-btn"> Payer <i class="fa fa-arrow-circle-right"></i></a>
        
             </div>
         </form>

@@ -32,6 +32,7 @@ class CreateRsqImmobilierTable extends Migration
             $table->string('code_zone',10)->nullable();
             $table->text('adresse')->nullable();
             $table->integer('code_wilaya')->nullable();
+            $table->string('code_devis')->nullable();
             $table->timestamps();
         });
     }

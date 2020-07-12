@@ -292,7 +292,8 @@
            
                 </div>
                   <div>        
-                    <a href="{{route('devis_mrh')}}" class="label" style="text-align: right; "> Devis <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('visuelisation') }}" class="contact100-form-btn"><i class="fa fa-arrow-circle-left"></i> Voir le Devis</a>
+          <a href="{{route('paiement')}}" class="contact100-form-btn"> Payer <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
             </div>
         </div>
