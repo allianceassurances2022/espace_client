@@ -600,13 +600,13 @@ class TarificationController extends Controller
          //dd($request);
     	 //dd((float)$request->montant);
 
-          $devis=devis::create([
+          $dev=devis::create([
           	'date_souscription' => $request->date_sous,
           	'date_effet' => $request->date_eff,
           	'date_expiration' => $request->date_exp
           ]);
 
-          Rsq_Immobilier::create([
+          $res=Rsq_Immobilier::create([
           	'adresse' => $request->adresse,
           	'code_wilaya' => $request->Wilaya,
           	'type_habitation' => $request->hab,
@@ -616,15 +616,19 @@ class TarificationController extends Controller
           	'superficie' => $request->surface,
           	'etage' => $request->etage,
           	'terrasse' => $request->terasse,
-          	'code_devis' => $devis->id,
+          	'code_devis' => $dev->id,
           ]);
 
           $user=auth::user();
-          return view('produits.mrh.resultat',compact('user'));
+          $devis= devis::find($dev->id);
+          $risque= Rsq_Immobilier::find($res->id);
+          //dd($risque);
+
+          return view('produits.mrh.resultat',compact('user','devis','risque'));
           
 
     }
 
-
+    
 
 }
