@@ -43,7 +43,7 @@ Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montan
 
 Route::get('pannier', 'TarificationController@panier')->name('pannier');
 Route::get('pannier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
-Route::get('paiement', 'TarificationController@paiement')->name('paiement');
+Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
 Route::get('signup', function () {
     return view('signup');
 })->name('signup');

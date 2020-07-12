@@ -298,8 +298,8 @@
 
                     <div  class="action">        
 
-                    <a href="{{ route('visuelisation') }}" class="bot-button"><i class="fa fa-arrow-circle-left"></i> Voir le Devis</a>
-                    <a href="{{route('paiement')}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('visuelisation',$risque->id) }}" class="bot-button"><i class="fa fa-arrow-circle-left"></i> Voir le Devis</a>
+                    <a href="{{route('paiement',$risque->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
 
                     </div>
                   

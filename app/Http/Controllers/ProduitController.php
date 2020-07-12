@@ -96,7 +96,10 @@ class ProduitController extends Controller
     }
     
     public function visuelisation()
-    {  $user=auth::user();
+    {  
+
+
+        $user=auth::user();
       
         return view('produits.mrh.resultat',compact('user'));
 

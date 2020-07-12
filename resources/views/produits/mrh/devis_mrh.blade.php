@@ -177,10 +177,12 @@
     font-weight: 600;
     margin-top: 1em;
   }
-  
+
   .my-card{
     clear: both;
   }
+
+
 
 </style>
 
@@ -209,11 +211,11 @@
                    </div>
                    <div class="col-md-4">
                     <label class="label">Date d'effet</label>
-                    <input type="date" id="date_effet" name="date_eff" onchange="dateplusunans()" required>
+                    <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" onchange="dateplusunans()" required>
                   </div>
                   <div class="col-md-4">
                    <label class="label">Date expiration </label>   
-                   <input type="date" id="date_expiration" name="date_exp" readonly required>
+                   <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" readonly required>
                  </div>
                </div>
 
@@ -221,15 +223,15 @@
 
                    <div class="col-md-4">
                     <label class="label">Habitation</label>
-                    <input name="hab" type="text" value="{{$habitation}}"> 
+                    <input name="hab" type="text" value="{{$habitation}}" readonly required> 
                   </div>
                   <div class="col-md-4">
                     <label class="label">Qualité juredique</label>
-                    <input name="juredique" type="text" value="{{$juredique}}"> 
+                    <input name="juredique" type="text" value="{{$juredique}}" readonly required> 
                   </div>
                   <div class="col-md-4">
                     <label class="label">Terrasse</label>
-                    <input name="terasse" type="text" value="{{$terasse}}"> 
+                    <input name="terasse" type="text" value="{{$terasse}}" readonly required> 
                   </div>
                 </div>
               <div class="input-group">
@@ -260,11 +262,11 @@
           </div>
           <div class="col-md-4">
             <label class="label">Surface</label>
-            <input type="number" name="surface" required> 
+            <input type="number" name="surface" value="{{$surface ?? ''}}" required> 
           </div>
           <div class="col-md-4">
             <label class="label">Etage</label>
-            <input type="text" type="number" name="etage" required> 
+            <input type="text" type="number" name="etage" value="{{$etage ?? ''}}" required> 
           </div>
         </div>
         <div class="input-group">
