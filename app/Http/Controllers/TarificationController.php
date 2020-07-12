@@ -8,6 +8,9 @@ use App\commune;
 use App\zcatnat;
 
 use App\Rsq_Immobilier;
+use App\devis;
+
+use auth;
 
 class TarificationController extends Controller
 {
@@ -277,7 +280,7 @@ class TarificationController extends Controller
 		$prime_total = number_format($prime_total_,2);
 		//dd($prime_total);
         
-        $datec=date('y-m-d');
+        $datec=date('d/m/y');
          
 
 		$data_session = [
@@ -430,7 +433,7 @@ class TarificationController extends Controller
 					$tva=($prim+$Ctpolice)*0.19;
 					$totale = $prim+$Ctpolice+$tva+$td;
 
-					$datec=date('y-m-d');
+					$datec=date('d/m/y');
 					//dd($date);
 					$data_session = [
     	              'terasse' => $terasse,
@@ -594,8 +597,14 @@ class TarificationController extends Controller
     }
 
     public function validation_devis_mrh (Request $request){
-          //dd($request);
-    	//dd((float)$request->montant);
+         //dd($request);
+    	 //dd((float)$request->montant);
+
+          $devis=devis::create([
+          	'date_souscription' => $request->date_sous,
+          	'date_effet' => $request->date_eff,
+          	'date_expiration' => $request->date_exp
+          ]);
 
           Rsq_Immobilier::create([
           	'adresse' => $request->adresse,
@@ -607,7 +616,12 @@ class TarificationController extends Controller
           	'superficie' => $request->surface,
           	'etage' => $request->etage,
           	'terrasse' => $request->terasse,
+          	'code_devis' => $devis->id,
           ]);
+
+          $user=auth::user();
+          return view('produits.mrh.resultat',compact('user'));
+          
 
     }
 
