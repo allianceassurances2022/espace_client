@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Wilaya;
+use App\Agences;
 
 use PDF;
 use auth;
@@ -99,10 +100,11 @@ class ProduitController extends Controller
         $prime_total=$value_mrh['prime_total'];
         
         $wilaya = wilaya::all();
+        $agences = Agences::all();
 
          $wilaya_selected = 1;
 
-        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya','wilaya_selected'));
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
     }
     
     public function visuelisation()

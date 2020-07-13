@@ -223,21 +223,21 @@
                  </div>
                </div>
 
-                 <div class="input-group">
+               <div class="input-group">
 
-                   <div class="col-md-4">
-                    <label class="label">Habitation</label>
-                    <input class="disable" name="hab" type="text" value="{{$habitation}}" readonly required> 
-                  </div>
-                  <div class="col-md-4">
-                    <label class="label">Qualité juredique</label>
-                    <input class="disable" name="juredique" type="text" value="{{$juredique}}" readonly required> 
-                  </div>
-                  <div class="col-md-4">
-                    <label class="label">Terrasse</label>
-                    <input class="disable" name="terasse" type="text" value="{{$terasse}}" readonly required> 
-                  </div>
+                 <div class="col-md-4">
+                  <label class="label">Habitation</label>
+                  <input class="disable" name="hab" type="text" value="{{$habitation}}" readonly required> 
                 </div>
+                <div class="col-md-4">
+                  <label class="label">Qualité juredique</label>
+                  <input class="disable" name="juredique" type="text" value="{{$juredique}}" readonly required> 
+                </div>
+                <div class="col-md-4">
+                  <label class="label">Terrasse</label>
+                  <input class="disable" name="terasse" type="text" value="{{$terasse}}" readonly required> 
+                </div>
+              </div>
               <div class="input-group">
 
                <div class="col-md-8">
@@ -247,7 +247,7 @@
               <div class="col-md-4">
                <label class="label">Wilaya </label>             
                <select id="Wilaya" 
-               style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;" type="text" name="Wilaya" placeholder="Wilaya" required>
+               style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" type="text" name="Wilaya" placeholder="Wilaya" required>
                @foreach($wilaya as $wilay)
                <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
                @endforeach
@@ -292,27 +292,52 @@
   </div>
 
   <div class="card my-card">
-              <h2 class="card-header">Agence</h2>
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  
-                  <div class="input-group">
-                   
-               </div>
-         
+    <h2 class="card-header">Agence</h2>
+    <div class="card-body p-0">
+      <div class="table-responsive">
 
-    </div>  
-
+        <div class="input-group">
+         <div class="col-md-6">
+           <label class="label">Wilaya </label>
+           <select id="Wilaya" 
+           style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" type="text" name="Wilaya" placeholder="Wilaya" required>
+           @foreach($wilaya as $wilay)
+           <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
+           @endforeach
+         </select>
+       </div>
+       <div class="col-md-6">
+        <label class="label">Agence </label>
+        <select onchange="initialize()" id="Wilaya" 
+        style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" type="text" name="Wilaya" placeholder="Wilaya" required>
+        @foreach($agences as $agence)
+        <option value="{{$agence->id}}" >{{$agence->Name}}</option>
+        @endforeach
+      </select>
+    </div>
   </div>
 
-  <div  class="action">     
+<div class="card my-card">
+<div class="col-md-12">
+  <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+    <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+    style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
+  </div>
+</div>
+</div>
+
+</div>  
+
+</div>
+
+<div  class="action">     
 
   <input type="hidden" name="prime_total" value="{{$prime_total}}">   
   <input type="hidden" name="id" value="{{$id ?? ''}}">   
 
-    <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
+  <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
 
-  </div>
+</div>
 
 
 
@@ -357,6 +382,8 @@
 <!-- Main JS-->
 <script src="{{asset('signup_assets/js/global.js')}}"></script>
 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
+
 <script>
 
   function dateplusunans() {
@@ -378,6 +405,61 @@
     document.getElementById("date_expiration").value=final;
   }
 
+</script>
+
+
+<script>
+
+// $(document).ready( function () {
+//   initialize();
+// });
+  
+  
+function initialize() {
+
+  
+  var mapOptions = {
+    center: new google.maps.LatLng(36.7603927 , 2.9640126),
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  }
+  var map = new google.maps.Map(document.getElementById("map-container-google-1"), mapOptions);
+  var image = '{{asset('images/point.png')}}';
+    
+  var myLatlng = new google.maps.LatLng(36.760393,2.964013);    
+  var contentString = '<div id="etiquette" style="width:auto; height:auto;">'+
+            '<h2 style="color:#048c9b;">DG</h2>'+
+            '<div>'+
+            '<p>' +
+            '<strong>La Direction Generale</strong><br/>'+
+            '<strong>La Direction Generale</strong><br/>'+
+            '<strong>adresse :</strong> Centre des Affaires El Qods Esplanade Porte 14 3eme Etage Cheraga-ALGER<br/>'+
+            '<strong>Tel :</strong> 021 34 46 46<br/>'+
+            '<strong>Fax :</strong> 021 34 12 25<br/>'+
+            '<strong>Mail :</strong> <a href ="mailto:contact@allianceassurances.com.dz </a><br/>'+
+            '</p>'+
+            '</div>'+
+            '</div>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString,
+  }); 
+  
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    icon: image,
+    title:"La Direction Generale" ,  
+    html :  contentString
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(this.html);
+    infowindow.open(map,this);
+  });
+
+  // To add the marker to the map, call setMap();
+  marker.setMap(map);
+
+} 
 </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
