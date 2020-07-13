@@ -167,11 +167,12 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         $("#POST").removeClass("image-clignote");
         $("#CIB").addClass("image-clignote");
       }
+
       function test2(){
         $("#CIB").removeClass("image-clignote");
         $("#POST").addClass("image-clignote");
-        
       }
+      
   </script>
 </html>
 
