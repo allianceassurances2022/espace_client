@@ -57,7 +57,7 @@
   <div class='window'>
     <div class='order-info'>
 
-      <div class='order-info-content'>
+    <div class='order-info-content'>
       <div class="all_header">
         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
       </div>
@@ -88,7 +88,7 @@
         </table>
         @endif
 
-        @if($mrh['montant'] != '')
+        @if($risqueh != '')
         <div class='line'></div>
         <table class='order-table'>
           <tbody>
@@ -96,12 +96,12 @@
               <td><img src='produit_assets/images/icons/hab_col.svg' class='full-width'></img>
               </td>
               <td>
-                <br> <span class='thin product_title'>{{$mrh['nom']}}</span>
+                <br> <span class='thin product_title'> MULTIRISQUES HABITATION</span>
                 <br> <br> <span class='thin small'> <br><br></span>
               
               </td>
             </tr>
-          
+            
           </tbody>
         </table>
         @endif
@@ -126,16 +126,16 @@
 
 
         <div class='line'></div>
-        <div class='total'>
+      <div class='total'>
           <span style='float:left;'>
             {{-- <div class='thin dense'>VAT 19%</div>
             <div class='thin dense'>Delivery</div> --}}
             MONTANT
           </span>
           <span style='float:right; text-align:right;'>
-            {{-- <div class='thin dense'>{{$total}} DA</div>
+            {{-- <div class='thin dense'>{{$prime_total}} DA</div>
             <div class='thin dense'>400.75 DA</div> --}}
-            {{number_format($total, 2,',', ' ')}} DA
+            {{number_format($prime_total, 2,',', ' ')}} DA
           </span>
         </div>
    
@@ -180,8 +180,8 @@
           
         </div>
 			</form>
-        	{{-- <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a> --}}
-        	{{-- <a href="{{route('paiement')}}" class="bot-button"> Suivant <i class="fa fa-arrow-circle-right"></i></a> --}}
+        	 <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a> 
+         <a href="{{route('paiement',$id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a> 
             
         </div>
 </div>
@@ -193,3 +193,4 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </html>
+
