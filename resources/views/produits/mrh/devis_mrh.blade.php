@@ -284,7 +284,9 @@
 
   </div>
 
-  <div  class="action">        
+  <div  class="action">     
+
+  <input type="hidden" name="prime_total" value="{{$prime_total}}">   
 
     <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
 

@@ -611,7 +611,8 @@ class TarificationController extends Controller
           $dev=devis::create([
           	'date_souscription' => $request->date_sous,
           	'date_effet' => $request->date_eff,
-          	'date_expiration' => $request->date_exp
+          	'date_expiration' => $request->date_exp,
+          	'prime_total' => $request->prime_total
           ]);
 
           $res=Rsq_Immobilier::create([
@@ -624,7 +625,8 @@ class TarificationController extends Controller
           	'superficie' => $request->surface,
           	'etage' => $request->etage,
           	'terrasse' => $request->terasse,
-          	'code_devis' => $dev->id,
+          	'code_devis' => $dev->id
+
           ]);
 
           $user=auth::user();
