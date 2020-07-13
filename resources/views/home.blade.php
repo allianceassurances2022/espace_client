@@ -72,7 +72,7 @@
         .all_header {
             position: relative;
             display: block;
-            width: 112.7%;
+            width: 119%;
             padding: 2em 0px;
             border-top: 1px #cae0f1 solid;
             border-bottom: 1px #007481 solid;

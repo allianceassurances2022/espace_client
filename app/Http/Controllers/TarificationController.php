@@ -543,11 +543,11 @@ class TarificationController extends Controller
 
 
     
-        return view('payment',compact('mrh','auto','cat','total'));
+        return view('panier',compact('mrh','auto','cat','total'));
 
     	
 	}
-	public function paiement (){
+	public function paiement ($id){
 
         $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
@@ -589,9 +589,17 @@ class TarificationController extends Controller
     	
     }
 
-    public function panier_supp (){
+    public function panier_supp (Request $request, $produit){
 
-        
+        //dd($request);
+        if($produit == 'mrh'){
+        	$request->session()->forget('data_mrh');
+        }
+        if($produit == 'catnat'){
+        	$request->session()->forget('data_catnat');
+        }
+
+        return redirect('pannier');
 
     	
     }
@@ -630,35 +638,30 @@ class TarificationController extends Controller
     }
 
 
-    public function modification_devis_mrh (Request $request){
-         //dd($request);
-    	 //dd((float)$request->montant);
+    public function modification_devis_mrh (Request $request,$id){
 
-          $dev=devis::create([
-          	'date_souscription' => $request->date_sous,
-          	'date_effet' => $request->date_eff,
-          	'date_expiration' => $request->date_exp
-          ]);
+    	$risque=Rsq_Immobilier::find($id);
 
-          $res=Rsq_Immobilier::create([
-          	'adresse' => $request->adresse,
-          	'code_wilaya' => $request->Wilaya,
-          	'type_habitation' => $request->hab,
-          	'qualite_juridique' => $request->juredique,
-          	'montant_forfaitaire' => $request->montant,
-          	'nombre_piece' => $request->nbr_piece,
-          	'superficie' => $request->surface,
-          	'etage' => $request->etage,
-          	'terrasse' => $request->terasse,
-          	'code_devis' => $dev->id,
-          ]);
+    	$devis=devis::find($risque->code_devis);
+    	
+    	dd($devis);
 
-          $user=auth::user();
-          $devis= devis::find($dev->id);
-          $risque= Rsq_Immobilier::find($res->id);
-          //dd($risque);
+        $value_mrh = session('data_mrh');
 
-          return view('produits.mrh.resultat',compact('user','devis','risque'));
+        $date_souscription=$devis->date_souscription;
+        $date_effet=$devis->date_effet;
+        $date_expertise=$devis->date_expertise;
+        $terasse=$value_mrh['terasse'];
+        $habitation=$value_mrh['habitation'];
+        $montant=$value_mrh['montant'];
+        $juredique=$value_mrh['juredique'];
+        $nbr_piece=$value_mrh['nbr_piece'];
+        $datec=$value_mrh['datec'];
+        $prime_total=$value_mrh['prime_total'];
+        $wilaya = wilaya::all();
+            
+
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya'));
           
 
     }

@@ -57,11 +57,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                  
                    <h6>Habitation</h6>
                      <label>
-                       <input type="radio" name="hab"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/>
+                       <input type="radio" name="hab"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/ required>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="hab"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif/>
+                       <input type="radio" name="hab"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif/ required>
                        <span>Collective</span>
                    </label>
                </div>
@@ -70,11 +70,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                     <h6>Qualité juredique</h6>
                     <label>
-                        <input type="radio" name="juredique" value="proprietaire"  @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif/>
+                        <input type="radio" name="juredique" value="proprietaire"  @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif/ required>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif/>
+                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif/ required>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -86,11 +86,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                
                
                      <label>
-                     <input type="radio" name="terasse" id="oui" value="oui" @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif />
+                     <input type="radio" name="terasse" id="oui" value="oui" @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif / required>
                      <span>Oui</span>
                      </label>
                      <label>
-                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif />
+                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif / required>
                      <span>Non</span>
                      </label>
                  

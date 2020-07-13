@@ -154,7 +154,7 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    width: 70%;
+    width: 90%;
     font-size: 14px;
     font-family: inherit;
     padding: 10px;
