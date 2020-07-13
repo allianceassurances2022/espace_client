@@ -149,17 +149,33 @@
 		    <div class="cc-selector">
             <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
 		    </div>
-            <h3>Choisir votre mode de paiement <span>2</span></h3>
+           <!--  <h3>SÉLECTIONNER UN MOYEN DE PAIEMENT <span>2</span></h3>-->
             
-		    <div class="cc-selector">
-		   
-               <input type="image" name="CIB" value="CIB" width="120" height="120"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
-               <input type="image" name="POST" value="POST"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
-              </div>
+		  
+        <div class="radio_section_slice">
+                 <h3>SÉLECTIONNER UN MOYEN DE PAIEMENT</h6>
+               
+               
+                     <label>
+                     <input type="radio" name="type_payment" id="CIB" value="CIB" required>
+                     <span><img class="payment-logo"  width="120" height="120"   src="https://www.bitakati.dz/assets/front/img/logo.svg"   /></span>
+                     </label>
+                     <label>
+                     <input type="radio" name="type_payment" id="POST_CART" value="POST_CART" required>
+                     <span><img class="payment-logo"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+              </span>
+                     </label>
+                 
+             </div>
+        <!-- <input type="image" name="POST" value="POST"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+                   
+      
+           -->
+      
 		    <h3>Acception des conditions generales <span>3</span></h3>
         <div class="condition">
           <p>
-            <input type="checkbox">J'accepte les<a href=""> Conditions gelerales</a> fugit excepturi corporis.
+            <input type="checkbox">J'accepte les termes et conditions d’utilisation<a href=""></a> 
            </p>
           
         </div>
