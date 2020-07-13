@@ -266,7 +266,7 @@
             <input type="number" name="surface" value="{{$surface ?? ''}}" required> 
           </div>
           <div class="col-md-4">
-            <label class="label">Etage</label>
+            <label class="label">Nombre d'Etage</label>
             <input type="text" type="number" name="etage" value="{{$etage ?? ''}}" required> 
           </div>
         </div>
@@ -276,7 +276,12 @@
             <input  type="text" name="montant"  value="{{$montant}}" readonly required>
 
           </div> 
-
+          <div class="col-md-12">
+            <label class="label">Total a payer</label>
+            <input  type="text" name="montant"  value="{{$prime_total}}" readonly required>
+    
+          </div> 
+         
         </div>
 
 

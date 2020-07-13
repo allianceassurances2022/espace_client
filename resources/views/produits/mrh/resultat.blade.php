@@ -278,7 +278,7 @@
                                          <input disabled="" type="text" value="{{$risque->superficie}}"> 
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="label">Etage</label>
+                                        <label class="label">Nombre d'Etage</label>
                                          <input disabled="" type="text" value="{{$risque->etage}}"> 
                                     </div>
                                 </div>
@@ -288,8 +288,13 @@
                                              <input disabled="" type="text" value="{{$risque->montant_forfaitaire}}"> 
                                        
                                     </div>
-                                   
-                                 
+                                    <div class="input-group">
+                                     
+                                            <label class="label">Total a payer</label>
+                                             <input disabled="" type="text" value="{{$prime_total}}"> 
+                                       
+                                    </div>
+                 
                                 </div>
                                 
                             </div>	
