@@ -258,7 +258,7 @@
 
            <div class="col-md-4">
             <label class="label">Nombre de pieces</label>
-            <input  disabled="" type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
+            <input  type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
           </div>
           <div class="col-md-4">
             <label class="label">Surface</label>
@@ -272,7 +272,7 @@
         <div class="input-group">
           <div class="col-md-12">
             <label class="label">Montant forfetaire</label>
-            <input  disabled="" type="text" name="montant"  value="{{$montant}}" readonly required>
+            <input  type="text" name="montant"  value="{{$montant}}" readonly required>
           </div> 
 
         </div>
