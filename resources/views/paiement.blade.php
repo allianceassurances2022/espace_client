@@ -147,7 +147,7 @@
            
       <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
 		    <div class="cc-selector">
-            <div class="g-recaptcha"  data-sitekey="6LfZ4AAVAAAAAFP6tyNYWgycDvXHIfjZg9shDZ05"></div>
+            <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
 		    </div>
             <h3>Choisir votre mode de paiement <span>2</span></h3>
             
@@ -164,8 +164,8 @@
           
         </div>
 			</form>
-        	<a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a>
-        	<a href="{{route('paiement')}}" class="bot-button"> Suivant <i class="fa fa-arrow-circle-right"></i></a>
+        	{{-- <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a> --}}
+        	{{-- <a href="{{route('paiement')}}" class="bot-button"> Suivant <i class="fa fa-arrow-circle-right"></i></a> --}}
             
         </div>
 </div>

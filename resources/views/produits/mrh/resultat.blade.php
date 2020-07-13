@@ -143,7 +143,7 @@
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             box-shadow: none;
-            width: 70%;
+            width: 90%;
             font-size: 14px;
             font-family: inherit;
             padding: 10px;
@@ -298,7 +298,7 @@
 
                     <div  class="action">        
 
-                    <a href="{{ route('devis_mrh',$risque->id) }}" class="bot-button"><i class="fa fa-arrow-circle-left"></i> Modifier</a>
+                    <a href="{{ route('modification_devis_mrh',$risque->id) }}" class="bot-button"><i class="fa fa-arrow-circle-left"></i> Modifier</a>
                     <a href="{{route('paiement',$risque->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
 
 
