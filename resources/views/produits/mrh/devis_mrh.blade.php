@@ -164,6 +164,10 @@
     margin-top: 2%;
   }
 
+  input.disable{
+    background-color: #ECECEC;
+  }
+
   a {
     color: hotpink;
   }
@@ -207,15 +211,15 @@
                   <div class="input-group">
                    <div class="col-md-4">
                      <label class="label">Date souscription </label>
-                     <input   type="date" name="date_sous" value="{{$date_souscription}}" readonly required>
+                     <input  class="disable" type="date" name="date_sous" value="{{$date_souscription}}" readonly required>
                    </div>
                    <div class="col-md-4">
                     <label class="label">Date d'effet</label>
-                    <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" onchange="dateplusunans()" required>
+                    <input  type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" onchange="dateplusunans()" required>
                   </div>
                   <div class="col-md-4">
                    <label class="label">Date expiration </label>   
-                   <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" readonly required>
+                   <input class="disable" type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" readonly required>
                  </div>
                </div>
 
@@ -223,15 +227,15 @@
 
                    <div class="col-md-4">
                     <label class="label">Habitation</label>
-                    <input name="hab" type="text" value="{{$habitation}}" readonly required> 
+                    <input class="disable" name="hab" type="text" value="{{$habitation}}" readonly required> 
                   </div>
                   <div class="col-md-4">
                     <label class="label">Qualité juredique</label>
-                    <input name="juredique" type="text" value="{{$juredique}}" readonly required> 
+                    <input class="disable" name="juredique" type="text" value="{{$juredique}}" readonly required> 
                   </div>
                   <div class="col-md-4">
                     <label class="label">Terrasse</label>
-                    <input name="terasse" type="text" value="{{$terasse}}" readonly required> 
+                    <input class="disable" name="terasse" type="text" value="{{$terasse}}" readonly required> 
                   </div>
                 </div>
               <div class="input-group">
@@ -242,14 +246,10 @@
               </div>
               <div class="col-md-4">
                <label class="label">Wilaya </label>             
-               <select id="Wilaya" style="
-               padding: 10px;
-               border-radius: 4px;
-               border: 1px #c7c7c7 solid;
-               margin-left: 2%;
-               margin-top: 2%;" type="text" name="Wilaya" placeholder="Wilaya" required>
+               <select id="Wilaya" 
+               style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;" type="text" name="Wilaya" placeholder="Wilaya" required>
                @foreach($wilaya as $wilay)
-               <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
+               <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
                @endforeach
              </select>
            </div>
@@ -259,6 +259,7 @@
            <div class="col-md-4">
             <label class="label">Nombre de pieces</label>
             <input  type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
+            <input class="disable" type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
           </div>
           <div class="col-md-4">
             <label class="label">Surface</label>
@@ -273,6 +274,7 @@
           <div class="col-md-12">
             <label class="label">Montant forfetaire</label>
             <input  type="text" name="montant"  value="{{$montant}}" readonly required>
+            <input class="disable" type="text" name="montant"  value="{{$montant}}" readonly required>
           </div> 
 
         </div>
@@ -284,9 +286,24 @@
 
   </div>
 
+  <div class="card my-card">
+              <h2 class="card-header">Agence</h2>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  
+                  <div class="input-group">
+                   
+               </div>
+         
+
+    </div>  
+
+  </div>
+
   <div  class="action">     
 
   <input type="hidden" name="prime_total" value="{{$prime_total}}">   
+  <input type="hidden" name="id" value="{{$id ?? ''}}">   
 
     <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
 

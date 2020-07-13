@@ -618,6 +618,25 @@ class TarificationController extends Controller
          //dd($request);
     	 //dd((float)$request->montant);
 
+
+    	if($request->id){
+    	  	$risque= Rsq_Immobilier::find($request->id);
+    	  	$risque->update([
+    	  	'adresse' => $request->adresse,
+          	'code_wilaya' => $request->Wilaya,
+            'superficie' => $request->surface,
+          	'etage' => $request->etage
+    	  	]);
+
+    	  	$devis= devis::find($risque->code_devis);
+    	  	$devis->update([
+    	  	'date_effet' => $request->date_eff,
+          	'date_expiration' => $request->date_exp,
+    	  	]);
+
+
+    	}else{
+
           $dev=devis::create([
           	'date_souscription' => $request->date_sous,
           	'date_effet' => $request->date_eff,
@@ -639,9 +658,13 @@ class TarificationController extends Controller
 
           ]);
 
-          $user=auth::user();
           $devis= devis::find($dev->id);
           $risque= Rsq_Immobilier::find($res->id);
+
+          }
+
+          $user=auth::user();
+          
           //dd($risque);
 
           return view('produits.mrh.resultat',compact('user','devis','risque'));
@@ -652,28 +675,35 @@ class TarificationController extends Controller
 
     public function modification_devis_mrh (Request $request,$id){
 
+
     	$risque=Rsq_Immobilier::find($id);
+    	$id=$risque->id;
 
     	$devis=devis::find($risque->code_devis);
     	
-    	dd($devis);
+    	//dd($risque);
 
-        $value_mrh = session('data_mrh');
+    	//dd($risque);
+
 
         $date_souscription=$devis->date_souscription;
-        $date_effet=$devis->date_effet;
-        $date_expertise=$devis->date_expertise;
-        $terasse=$value_mrh['terasse'];
-        $habitation=$value_mrh['habitation'];
-        $montant=$value_mrh['montant'];
-        $juredique=$value_mrh['juredique'];
-        $nbr_piece=$value_mrh['nbr_piece'];
-        $datec=$value_mrh['datec'];
-        $prime_total=$value_mrh['prime_total'];
+        $date_eff=$devis->date_effet;
+        $date_exp=$devis->date_expiration;
+        $terasse=$risque->terrasse;
+        $habitation=$risque->type_habitation;
+        $montant=$risque->montant_forfaitaire;
+        $juredique=$risque->qualite_juridique;
+        $nbr_piece=$risque->nombre_piece;
+        $prime_total=$devis->prime_total;
+        $wilaya_selected = $risque->code_wilaya;
         $wilaya = wilaya::all();
+        $adresse = $risque->adresse;
+        $surface = $risque->superficie;
+        $etage = $risque->etage;
+
             
 
-        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya'));
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id'));
           
 
     }
