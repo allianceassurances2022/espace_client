@@ -70,7 +70,7 @@
 
     <div class='order-info-content'>
       <div class="all_header">
-        <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
+        <img src="{{asset('produit_assets/images/icons/alliance-assurance.png')}}" alt="">
       </div>
     
 
@@ -80,7 +80,7 @@
         <table class='order-table'>
           <tbody>
             <tr>
-              <td><img src='produit_assets/images/icons/hab_col.svg' class='full-width'></img>
+              <td><img src='{{asset('produit_assets/images/icons/hab_col.svg')}}' class='full-width'></img>
               </td>
               <td>
                 <br> <span class='thin product_title'> MULTIRISQUES HABITATION</span>
@@ -110,13 +110,16 @@
 
         <div class="action">
        
-          <form>
+          {{-- <form> --}}
 	        
            
       <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
+      <div class="d-flex justify-content-center">
 		    <div class="cc-selector">
             <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
 		    </div>
+
+      </div>
          
 		  
         <div class="radio_section_slice">
@@ -126,7 +129,7 @@
                  
                      <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
                
-               <input type="image" name="type_paiment" value="POST" id="POST" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
                    
              </div>
               
@@ -140,7 +143,7 @@
            </p>
           
         </div>
-			</form>
+			{{-- </form> --}}
         	 <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a> 
          <a href="{{route('paiement',$id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a> 
             
@@ -161,7 +164,13 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       
 
       function test(){
+        $("#POST").removeClass("image-clignote");
         $("#CIB").addClass("image-clignote");
+      }
+      function test2(){
+        $("#CIB").removeClass("image-clignote");
+        $("#POST").addClass("image-clignote");
+        
       }
   </script>
 </html>
