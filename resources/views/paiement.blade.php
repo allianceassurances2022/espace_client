@@ -50,6 +50,17 @@
     .menu-header{
       display: block;
     }
+    .image-clignote  {
+   animation-duration: .8s;
+   animation-name: clignoter;
+   animation-iteration-count: infinite;
+   transition: none;
+}
+@keyframes clignoter {
+  0%   { opacity:1; }
+  40%   {opacity:0; }
+  100% { opacity:1; }
+}
     </style>
 </head>
 <body>
@@ -62,31 +73,7 @@
         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
       </div>
     
-        @if($auto != '')
-        <div class='line'></div>
-        <table class='order-table'>
-          <tbody>
-            <tr>
-              <td><img src='produit_assets/images/icons/auto_col.svg' class='full-width'></img>
-              </td>
-              <td>
-                <br> <span class='thin product_title'>Nom Du Produit</span>
-                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
-                <div class="product_actions">
-                	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                </div>
-              </td>
 
-            </tr>
-            <tr>
-              <td>
-                <div class='price'>5 000,00 DA</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        @endif
 
         @if($risqueh != '')
         <div class='line'></div>
@@ -106,35 +93,16 @@
         </table>
         @endif
 
-        @if($cat != '')
-        <div class='line'></div>
-        <table class='order-table'>
-          <tbody>
-            <tr>
-              <td><img src='produit_assets/images/icons/cat_nat_col.svg' class='full-width'></img>
-              </td>
-              <td>
-                <br> <span class='thin product_title'>{{$cat['nom']}}</span>
-                <br><br> <span class='thin small'> </span>
-            
-              </td>
-            </tr>
-           
-          </tbody>
-        </table>
-        @endif
-
+       
 
         <div class='line'></div>
       <div class='total'>
           <span style='float:left;'>
-            {{-- <div class='thin dense'>VAT 19%</div>
-            <div class='thin dense'>Delivery</div> --}}
+           
             MONTANT
           </span>
           <span style='float:right; text-align:right;'>
-            {{-- <div class='thin dense'>{{$prime_total}} DA</div>
-            <div class='thin dense'>400.75 DA</div> --}}
+           
             {{number_format($prime_total, 2,',', ' ')}} DA
           </span>
         </div>
@@ -149,33 +117,26 @@
 		    <div class="cc-selector">
             <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
 		    </div>
-           <!--  <h3>SÉLECTIONNER UN MOYEN DE PAIEMENT <span>2</span></h3>-->
-            
+         
 		  
         <div class="radio_section_slice">
                  <h3>SÉLECTIONNER UN MOYEN DE PAIEMENT</h6>
+
                
-               
-                     <label>
-                     <input type="radio" name="type_payment" id="CIB" value="CIB" required>
-                     <span><img class="payment-logo"  width="120" height="120"   src="https://www.bitakati.dz/assets/front/img/logo.svg"   /></span>
-                     </label>
-                     <label>
-                     <input type="radio" name="type_payment" id="POST_CART" value="POST_CART" required>
-                     <span><img class="payment-logo"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
-              </span>
-                     </label>
                  
-             </div>
-        <!-- <input type="image" name="POST" value="POST"  width="120" height="120"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
+               
+               <input type="image" name="type_paiment" value="POST" id="POST" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
                    
+             </div>
+              
       
-           -->
+          
       
 		    <h3>Acception des conditions generales <span>3</span></h3>
         <div class="condition">
           <p>
-            <input type="checkbox">J'accepte les termes et conditions d’utilisation<a href=""></a> 
+            <input type="checkbox">J'accepte les termes et conditions d’utilisation</input>
            </p>
           
         </div>
@@ -191,6 +152,20 @@
 </body>
 <script src="{{asset('payment_assets/js/js.js')}}"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
 
+  <script>
+      
+
+      function test(){
+        $("#CIB").addClass("image-clignote");
+      }
+  </script>
 </html>
+
+
+
 
