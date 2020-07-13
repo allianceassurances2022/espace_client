@@ -103,7 +103,6 @@
                 <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
                 <div class="product_actions">
                 	<a href="{{route('pannier_supp','mrh')}}" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 </div>
               </td>
             </tr>
@@ -128,8 +127,7 @@
                 <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
                 <div class="product_actions">
                 	<a href="{{route('pannier_supp','catnat')}}" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                </div>
+                 </div>
               </td>
             </tr>
             <tr>
@@ -160,7 +158,7 @@
         <div class="action">
         
 			</form>
-        	<a href="{{route('devis_mrh')}}"  class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-right"></i> Devis</a>
+        	<a href="{{route('signin')}}"  class="bot-button bot-button-prev"><i class="fa fa-arrow-circle-right"></i> Devis</a>
        </div>
 </div>
 </div>

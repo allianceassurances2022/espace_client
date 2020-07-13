@@ -618,7 +618,7 @@ class TarificationController extends Controller
          //dd($request);
     	 //dd((float)$request->montant);
 
-
+		 $prime_total= $request->prime_total;
     	if($request->id){
     	  	$risque= Rsq_Immobilier::find($request->id);
     	  	$risque->update([
@@ -667,7 +667,7 @@ class TarificationController extends Controller
           
           //dd($risque);
 
-          return view('produits.mrh.resultat',compact('user','devis','risque'));
+          return view('produits.mrh.resultat',compact('user','devis','risque','prime_total'));
           
 
     }
