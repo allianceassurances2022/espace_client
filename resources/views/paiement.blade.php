@@ -18,6 +18,7 @@
           padding: 3% 5%;
           border-radius: 10px;
           margin-left: 1em !important;
+
         }
     }
     .my-menu-inside{
@@ -53,8 +54,11 @@
     }
     .image-clignote  {
       background-size: cover;
-width: 100px;
-height: 100px;
+width: 120px;
+height: 120px;
+border-inline-start: initial;
+          border-style: solid;
+          border-color: #007481;
 
 }
 
@@ -110,7 +114,7 @@ height: 100px;
           {{-- <form> --}}
 	        
            
-      <h3>Confirmer que vous etes un etre humain <span>1</span></h3>
+      <h3><span>1 - </span> Confirmer que vous etes un etre humain </h3>
       <div class="d-flex justify-content-center">
 		    <div class="cc-selector">
             <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
@@ -120,20 +124,22 @@ height: 100px;
          
 		  
         <div class="radio_section_slice">
-                 <h3>SÉLECTIONNER UN MOYEN DE PAIEMENT</h6>
+                 <h3><span>2 - </span> SÉLECTIONNER UN MOYEN DE PAIEMENT</h6>
 
                
                  
-                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="50" height="50"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
+                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
                
-               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="50" height="50"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
                    
              </div>
               
       
           
       
-		    <h3>Acception des conditions generales <span>3</span></h3>
+		    <h3> <span>3 - </span> Acception des conditions generales</h3>
+
+      </br>
         <div class="condition">
           <p>
             <input type="checkbox">J'accepte les termes et conditions d’utilisation</input>
