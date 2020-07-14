@@ -1,332 +1,173 @@
+@extends('default')
 
-<!DOCTYPE html>
-<html lang="en">
+@section('title')
+Home 
+@endsection
 
-<head>    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
-    <link href="{{asset('user_assets/assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/libs/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/chartist-bundle/chartist.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/morris-bundle/morris.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/charts/c3charts/c3.css')}}">
-    <link rel="stylesheet" href="{{asset('user_assets/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
 
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
+@section('content')
 
-    <!-- Title Page-->
-    <title>Tarfication</title>
-
-    <!-- Icons font CSS-->
-    <link href="{{asset('signup_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('signup_assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
-    
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="{{asset('signup_assets/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('signup_assets/vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{{asset('signup_assets/css/main.css')}}" rel="stylesheet" media="all">
-    <style>
-        .my-menu-inside{
-          padding: 30px 0px 0px 30px;
-          text-align: center; 
-          float: right;
-          margin-bottom: 2em;
-        }
-
-        .my-menu-inside li{
-          display: inline-block;
-          margin: 0 10px;
-        }
-
-        .my-menu-inside li a{
-          padding: 8px 19px;
-          border: 1px #286f74 solid;
-          border-radius: 57px;
-          font-weight: bold !important;
-          background: #ffffff;
-          color: white;
-          text-transform: uppercase;
-          font-size: 12px;
-          color: #007480;
-        }
-        .my-menu-inside li a:hover{
-          background-color: #007480;
-          border: 1px #007480 solid;
-          color: white;
-          transition: 0.3s;
-        }
-        .all_header {
-            position: relative;
-            display: block;
-            width: 119%;
-            padding: 2em 0px;
-            border-top: 1px #cae0f1 solid;
-            border-bottom: 1px #007481 solid;
-            text-align: center;
-            background-color: #007481;
-            margin-left: -1.6em;
-            border-radius: 10px 10px 0px 0px;
-            border-bottom: 4px #ffffff dashed;
-            margin-left: -4.65em;
-            border-top: 1px #007481 solid;
-            margin-bottom: 45px;
-        }
-
-        .wrapper--w680 {
-            max-width: 60%;
-        }
-
-        .card-4 .card-body {
-            padding-top: 0px;
-        }
-        .bg-gra-02 {
-            background: -webkit-gradient(linear, left bottom, right top, from(#060505), to(#6c4079));
-            background: -webkit-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-            background: -moz-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-            background: -o-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-            background: linear-gradient(to top right, #007481 0%, #290a88 100%);
-        }
-        .btn--aa {
-            background: #007481;
-        }
-        .btn--aa-white {
-            background: white;
-            border: 1px #007481 solid;
-            color: #007481;
-        }
-        .btn--aa-white:hover {
-            background: #007481;
-            border: 1px #007481 solid;
-            color: white;
-        }
-        .btn--aa:hover {
-            background: #015058;
-        }
-        .daterangepicker .table-condensed th select {
-            border: 1px solid #ccc;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-            font-size: 14px;
-            padding: 8px;
-            outline: none;
-        }
-        .page-wrapper{
-            background-color: #f2f2f2 !important; 
-        }
-
-        input{
-            outline: none;
-            margin: 0;
-            border: none;
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-            width: 70%;
-            font-size: 14px;
-            font-family: inherit;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px #c7c7c7 solid;
-            margin-left: 2%;
-            margin-top: 2%;
-        }
-        a {
-          color: hotpink;
-        } 
-        .label {
-            font-size: 16px;
-            color: #555;
-            text-transform: capitalize;
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            margin-top: 1em;
-        }
-        .my-card{
-            clear: both;
-        }
-</style>
-          
-    </style>
-</head>
-
-<body>
-    <div class="page-wrapper p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <div class="all_header">
-                        <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
-                      
-                    </div>
-               
-                @include('core.produit.inside-menu')
-                 <div class="card my-card">
-                        <h2 class="card-header">Informations</h2>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <div class="input-group">
-                                         <div class="col-md-6">
-                                             <label class="label">Nom </label>
-                                             <input disabled="" type="text" value="{{$user->name}}">
-                                         </div>
-                                         <div class="col-md-6">
-                                            <label class="label">Prenom</label>
-                                             <input disabled="" type="text" value="{{$user->prenom}}">
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group">
-                                         <div class="col-md-6">
-                                             <label class="label">Wilaya </label>   
-                                             <input disabled="" type="text" value="{{$user->wilaya}}">
-                                         </div>
-                                         <div class="col-md-6">
-                                            <label class="label">Commune</label>
-                                             <input disabled="" type="text" value="{{$user->commune}}">
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group">
-                                        <div class="col-md-6">
-                                             <label class="label">Profession </label>             
-                                             <input disabled="" type="text" value="{{$user->prefession}}">
-                                        </div>
-                                         <div class="col-md-6">
-                                            <label class="label">Telephone</label>
-                                             <input disabled="" type="text" value="{{$user->telephone}}"> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                                
-            <div class="card">
-                <h5 class="card-header">Liste Produit</h5>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="bg-light">
-                                <tr class="border-0">
-                                    <th class="border-2"></th>
-                                    <th class="border-2">Produit</th>
-                                    <th class="border-2">Date</th>
-                                    <th class="border-2">Montant</th>
-                            
-                                    <th class="border-0"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @if($auto != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/auto_col.svg' ></img></td>
-                                    
-                                    <td>{{$auto['nom']}} </td>
-                                    <td> {{number_format($auto['montant'], 2,',', ' ')}} DA </td>
-
-                                    <td>{{$auto['datec']}}  </td>
-                                    <td>{{$auto['montant']}} DA </td>
-
-                                    
-                                    <td><a href="{{route('devis_mrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-                                </tr>
-                                @endif
-                                @if($mrh != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/hab_col.svg' ></img></td>
-                                    <td>{{$mrh['nom']}} </td>
-                          
-                                    <td>{{$mrh['datec']}}  </td>
-                                    <td> {{number_format($mrh['montant'], 2,',', ' ')}} DA </td>
-                                    
-
-                                    <td><a href="{{route('devis_mrh')}}" class=" float-right contact100-form-btn ">Devis</a></td>
-                                    {{-- <td><a href="{{route('devis')}}" class=" float-right contact100-form-btn ">Devis</a></td> --}}
-                                </tr>
-                                @endif
-                                @if($cat != '')
-                                <tr>
-
-                                    <td><img style="width: 40px;" src='produit_assets/images/icons/cat_nat_col.svg' ></img></td>
-                                    
-                                    <td>{{$cat['nom']}} </td>
-                                     <td>{{$mrh['datec']}}  </td>
-                                     <td> {{number_format($cat['montant'], 2,',', ' ')}} DA </td>
-                                    
-                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
-                                </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-  
-                <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('login') }}">
-                                        {{ __('Logout') }}
-                                   <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
-                                        <span> {{Session()->get('type_produit')}}   </span>
-                                    </a>
-
-                                 
-                                </div>-->
-                </div>
-            </div>
+<div class="row">
+  <div class="col-md-5">
+    <div class="user-display">
+      <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div>
+      <div class="user-display-bottom">
+        <div class="user-display-avatar"><img src="assets/img/avatar-150.png" alt="Avatar"></div>
+        <div class="user-display-info">
+          <div class="name">Djilali EL Medjadji</div>
+          <div class="nick"><span class="mdi mdi-account"></span> Ingénieur Développeur</div>
+      </div>
+      <div class="row user-display-details">
+          <div class="col-xs-4">
+            <div class="title">Issues</div>
+            <div class="counter">26</div>
+        </div>
+        <div class="col-xs-4">
+            <div class="title">Commits</div>
+            <div class="counter">26</div>
+        </div>
+        <div class="col-xs-4">
+            <div class="title">Followers</div>
+            <div class="counter">26</div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
-    <!-- Optional JavaScript -->
-    <!-- jquery 3.3.1 -->
-    <script src="{{asset('user_assets/assets/vendor/jquery/jquery-3.3.1.min.js')}}"></script>
-    <!-- bootstap bundle js -->
-    <script src="{{asset('user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
-    <!-- slimscroll js -->
-    <script src="{{asset('user_assets/assets/vendor/slimscroll/jquery.slimscroll.js')}}"></script>
-    <!-- main js -->
-    <script src="{{asset('user_assets/assets/libs/js/main-js.js')}}"></script>
-    <!-- chart chartist js -->
-    <script src="{{asset('user_assets/assets/vendor/charts/chartist-bundle/chartist.min.js')}}"></script>
-    <!-- sparkline js -->
-    <script src="{{asset('user_assets/assets/vendor/charts/sparkline/jquery.sparkline.js')}}"></script>
-    <!-- morris js -->
-    <script src="{{asset('user_assets/assets/vendor/charts/morris-bundle/raphael.min.js')}}"></script>
-    <script src="{{asset('user_assets/assets/vendor/charts/morris-bundle/morris.js')}}"></script>
-    <!-- chart c3 js -->
-    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/c3.min.js')}}"></script>
-    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/d3540.min.js')}}"></script>
-    <script src="{{asset('user_assets/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
-    <script src="{{asset('user_assets/assets/libs/js/dashboard-ecommerce.js')}}"></script>
-    <!-- Jquery JS-->
-    <script src="{{asset('signup_assets/vendor/jquery/jquery.min.js')}}"></script>
-    <!-- Vendor JS-->
-    <script src="{{asset('signup_assets/vendor/select2/select2.min.js')}}"></script>
-    <script src="{{asset('signup_assets/vendor/datepicker/moment.min.js')}}"></script>
-    <script src="{{asset('signup_assets/vendor/datepicker/daterangepicker.js')}}"></script>
+</div>
+</div>
+</div>
+<div class="col-md-7">
+    
+         <div id="accordion2" class="panel-group accordion accordion-color">
+                <div class="panel panel-full-primary">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapse-1"><i class="icon mdi mdi-chevron-down"></i> Primary Color</a></h4>
+                  </div>
+                  <div id="collapse-1" class="panel-collapse collapse in">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
+                  </div>
+                </div>
+                <div class="panel panel-full-success">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapse-2" class="collapsed"><i class="icon mdi mdi-chevron-down"></i> Success Color</a></h4>
+                  </div>
+                  <div id="collapse-2" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
+                  </div>
+                </div>
+                <div class="panel panel-full-warning">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapse-3" class="collapsed"><i class="icon mdi mdi-chevron-down"></i> Warning color</a></h4>
+                  </div>
+                  <div id="collapse-3" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
+                  </div>
+                </div>
+                <div class="panel panel-full-danger">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapse-4" class="collapsed"><i class="icon mdi mdi-chevron-down"></i> Danger Color </a></h4>
+                  </div>
+                  <div id="collapse-4" class="panel-collapse collapse">
+                    <div class="panel-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
+                  </div>
+                </div>
+             
+    </div>
+</div>
+</div>
 
-    <!-- Main JS-->
-    <script src="{{asset('signup_assets/js/global.js')}}"></script>
+<div class="row">
+    <div class="col-sm-6">
+              <div class="panel panel-default panel-table">
+                <div class="panel-heading">Mes Devis
+                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width:37%;">Produit</th>
+                        <th style="width:36%;">Montant</th>
+                        <th>Date</th>
+                        <th class="actions"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
+                        <td>1 000 DA</td>
+                        <td>Aug 6, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 28, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 15, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
+                        <td>1 000 DA</td>
+                        <td>Jun 30, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+            <div class="col-sm-6">
+              <div class="panel panel-default panel-table">
+                <div class="panel-heading">Mes Contrat
+                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width:37%;">Produit</th>
+                        <th style="width:36%;">Montant</th>
+                        <th>Date</th>
+                        <th class="actions"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Aug 6, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 28, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 15, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">Catastrophe Naturelle</td>
+                        <td>1 000 DA</td>
+                        <td>Jun 30, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          
 
-</html>
-<!-- end document-->
+          </div>
+
+@endsection
