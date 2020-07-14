@@ -272,13 +272,13 @@
         </div>
         <div class="input-group">
           <div class="col-md-12">
-            <label class="label">Montant forfetaire</label>
+            <label class="label">Montant forfaitaire</label>
             <input  type="text" name="montant"  value="{{$montant}}" readonly required>
 
           </div> 
           <div class="col-md-12">
             <label class="label">Total a payer</label>
-            <input  type="text" name="montant"  value="{{$prime_total}}" readonly required>
+            <input  type="text" name="prime_total_"  value="{{$prime_total}}" readonly required>
     
           </div> 
          
@@ -495,7 +495,7 @@ function initialize() {
   '<p>' +
   '<strong>{{$agence->Chef_Agence}}</strong><br/>'+
   '<strong>adresse :</strong> {{$agence->Adresse}}<br/>'+
-  '<strong>Tel :</strong> {{$agence->Tel}}021 34 46 46<br/>'+
+  '<strong>Tel :</strong> {{$agence->Tel}}<br/>'+
   '<strong>Fax :</strong> {{$agence->Fax}}<br/>'+
   '<strong>Mail :</strong> {{$agence->Mail}} <br/>'+
   '</p>'+

@@ -284,7 +284,7 @@
                                 </div>
                                     <div class="input-group">
                                      
-                                            <label class="label">Montant forfetaire</label>
+                                            <label class="label">Montant forfaitaire</label>
                                              <input disabled="" type="text" value="{{$risque->montant_forfaitaire}}"> 
                                        
                                     </div>
