@@ -46,21 +46,18 @@
       border: 1px #007480 solid;
       color: white;
       transition: 0.3s;
+      
     }
     .menu-header{
       display: block;
     }
     .image-clignote  {
-   animation-duration: .8s;
-   animation-name: clignoter;
-   animation-iteration-count: infinite;
-   transition: none;
+      background-size: cover;
+width: 100px;
+height: 100px;
+
 }
-@keyframes clignoter {
-  0%   { opacity:1; }
-  40%   {opacity:0; }
-  100% { opacity:1; }
-}
+
     </style>
 </head>
 <body>
@@ -127,9 +124,9 @@
 
                
                  
-                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
+                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="50" height="50"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
                
-               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
+               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="50" height="50"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
                    
              </div>
               
