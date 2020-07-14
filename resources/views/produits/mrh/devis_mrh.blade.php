@@ -259,7 +259,7 @@
            <div class="col-md-4">
             <label class="label">Nombre de pieces</label>
             <input  type="text" name="nbr_piece"  value="{{$nbr_piece ?? ''}}" readonly required> 
-       
+
           </div>
           <div class="col-md-4">
             <label class="label">Surface</label>
@@ -274,7 +274,7 @@
           <div class="col-md-12">
             <label class="label">Montant forfetaire</label>
             <input  type="text" name="montant"  value="{{$montant}}" readonly required>
-    
+
           </div> 
           <div class="col-md-12">
             <label class="label">Total a payer</label>
@@ -297,16 +297,22 @@
       <div class="table-responsive">
 
         <div class="input-group">
-         <div class="col-md-6">
+         <div class="col-md-4">
            <label class="label">Wilaya </label>
-           <select id="Wilaya" 
+           <select id="Wilaya_map" 
            style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" type="text" name="Wilaya" placeholder="Wilaya" required>
            @foreach($wilaya as $wilay)
            <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
            @endforeach
          </select>
        </div>
-       <div class="col-md-6">
+       <div class="col-md-4">
+         <label class="label">Commune </label>
+         <select id="Commune" style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" class="input100" type="text" name="Commune" placeholder="Commune">
+           <option value="">-</option>
+         </select>
+       </div>
+       <div class="col-md-4">
         <label class="label">Agence </label>
         <select onchange="initialize()" id="Wilaya" 
         style="padding: 10px; border-radius: 4px; border: 1px #c7c7c7 solid; margin-left: 2%; margin-top: 2%;width: 90%;" type="text" name="Wilaya" placeholder="Wilaya" required>
@@ -317,14 +323,14 @@
     </div>
   </div>
 
-<div class="card my-card">
-<div class="col-md-12">
-  <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
-    <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-    style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
+  <div class="card my-card">
+    <div class="col-md-12">
+      <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+        <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+        style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
 </div>  
 
@@ -334,6 +340,7 @@
 
   <input type="hidden" name="prime_total" value="{{$prime_total}}">   
   <input type="hidden" name="id" value="{{$id ?? ''}}">   
+  <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 
   <input class="bot-button" type ='submit' id="valider" nom="valider" value="valider">  
 
@@ -383,7 +390,43 @@
 <script src="{{asset('signup_assets/js/global.js')}}"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
+<script>
+$(document).ready(function(){
 
+ $('#Wilaya_map').change(function(){
+
+
+  if($(this).val() != '')
+  {
+   var select = $(this).attr("id");
+   
+   var value = $(this).val();
+   
+ 
+   //alter(dependent);
+ 
+   var _token = $('#signup-token').val();
+   //alert( _token );
+   $.ajax({
+   
+    //alert(value);
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+     $('#Commune').html(result);
+    //alert(value);
+   
+    }
+
+   })
+  }
+ });
+
+
+});
+</script>
 <script>
 
   function dateplusunans() {
@@ -408,16 +451,33 @@
 </script>
 
 
+{{-- <script>
+  function map_wilaya(wilaya) {
+  $.ajax({
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+     $('#Commune').html(result);
+    //alert(value);
+   
+    }
+  })
+  }
+</script> --}}
+
+
 <script>
 
 // $(document).ready( function () {
 //   initialize();
 // });
-  
-  
+
+
 function initialize() {
 
-  
+
   var mapOptions = {
     center: new google.maps.LatLng(36.7603927 , 2.9640126),
     zoom: 13,
@@ -425,21 +485,22 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById("map-container-google-1"), mapOptions);
   var image = '{{asset('images/point.png')}}';
-    
-  var myLatlng = new google.maps.LatLng(36.760393,2.964013);    
+
+  @foreach($agences as $agence)
+
+  var myLatlng = new google.maps.LatLng({{$agence->Latitude}},{{$agence->Longetude}});    
   var contentString = '<div id="etiquette" style="width:auto; height:auto;">'+
-            '<h2 style="color:#048c9b;">DG</h2>'+
-            '<div>'+
-            '<p>' +
-            '<strong>La Direction Generale</strong><br/>'+
-            '<strong>La Direction Generale</strong><br/>'+
-            '<strong>adresse :</strong> Centre des Affaires El Qods Esplanade Porte 14 3eme Etage Cheraga-ALGER<br/>'+
-            '<strong>Tel :</strong> 021 34 46 46<br/>'+
-            '<strong>Fax :</strong> 021 34 12 25<br/>'+
-            '<strong>Mail :</strong> <a href ="mailto:contact@allianceassurances.com.dz </a><br/>'+
-            '</p>'+
-            '</div>'+
-            '</div>';
+  '<h2 style="color:#048c9b;">{{$agence->Name}}</h2>'+
+  '<div>'+
+  '<p>' +
+  '<strong>{{$agence->Chef_Agence}}</strong><br/>'+
+  '<strong>adresse :</strong> {{$agence->Adresse}}<br/>'+
+  '<strong>Tel :</strong> {{$agence->Tel}}021 34 46 46<br/>'+
+  '<strong>Fax :</strong> {{$agence->Fax}}<br/>'+
+  '<strong>Mail :</strong> {{$agence->Mail}} <br/>'+
+  '</p>'+
+  '</div>'+
+  '</div>';
   var infowindow = new google.maps.InfoWindow({
     content: contentString,
   }); 
@@ -447,7 +508,7 @@ function initialize() {
   var marker = new google.maps.Marker({
     position: myLatlng,
     icon: image,
-    title:"La Direction Generale" ,  
+    title:"{{$agence->Chef_Agence}}" ,  
     html :  contentString
   });
 
@@ -458,6 +519,8 @@ function initialize() {
 
   // To add the marker to the map, call setMap();
   marker.setMap(map);
+
+  @endforeach
 
 } 
 </script>
