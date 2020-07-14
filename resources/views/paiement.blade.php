@@ -62,6 +62,14 @@ border-inline-start: initial;
 
 }
 
+.text-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+
     </style>
 </head>
 <body>
@@ -115,12 +123,14 @@ border-inline-start: initial;
 	        
            
       <h3><span>1 - </span> Confirmer que vous etes un etre humain </h3>
+      <div class="text-center">
       <div class="d-flex justify-content-center">
 		    <div class="cc-selector">
             <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
 		    </div>
 
       </div>
+    </div>
          
 		  
         <div class="radio_section_slice">
