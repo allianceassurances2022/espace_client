@@ -75,7 +75,55 @@ Home
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+              <div class="panel panel-default panel-table">
+                <div class="panel-heading">Mon Panier
+                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width:37%;">Produit</th>
+                        <th style="width:36%;">Montant</th>
+                        <th>Date</th>
+                        <th class="actions"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @if($mrh != '')
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">{{$mrh['nom']}}</td>
+                        <td>{{number_format($mrh['montant'], 2,',', ' ')}} DA</td>
+                        <td>{{$mrh['datec']}}</td>
+                        <td class="actions"><a href="{{route('devis_mrh')}}" class="icon"><i class="mdi mdi-edit"></i></a></td>
+                      </tr>
+                        @endif
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 28, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
+                        <td>1 000 DA</td>
+                        <td>Jul 15, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">Catastrophe Naturelle</td>
+                        <td>1 000 DA</td>
+                        <td>Jun 30, 2015</td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+    <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Devis
                   <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
@@ -121,7 +169,7 @@ Home
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Contrat
                   <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>

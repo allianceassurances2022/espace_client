@@ -58,6 +58,7 @@ Route::get('signin', function () {
 
 
 Auth::routes();
+Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh');
