@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    @include('core.home.head')
+
+    <body>
+
+       <div class="be-wrapper">
+            
+            @include('core.home.topbar')
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+
+                <!-- Start content -->
+                <div class="be-content">
+
+                    <div class="main-content container-fluid">
+
+                            {{-- @include('core.breadcrumb') --}}
+
+                            {{-- @include('core.messages') --}}
+
+                            {{-- @include('sweetalert::alert') --}}
+
+                            @yield('content')
+                     
+                    </div>
+
+                </div> <!-- content -->
+
+              @include('core.home.footer')
+
+            </div>
+            <!-- End Right content here -->
+
+        </div>
+        <!-- END wrapper -->
+
+    </body>
+
+    @include('core.home.js')
+
+</html>
+
