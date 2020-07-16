@@ -11587,7 +11587,7 @@ li.L9 {
 .invoice-logo {
   height: 54px;
   min-width: 204px;
-  background-image: url("../img/logo-xx.png");
+  background-image: url("../img/logo_dark.svg");
   background-repeat: no-repeat;
   background-position: 0 ;
 }
@@ -11595,7 +11595,7 @@ li.L9 {
   .invoice-logo {
     height: 27px;
     width: 102px;
-    background-image: url("../img/logo.png");
+    background-image: url("../img/logo_dark.svg");
   }
 }
 @media (max-width: 480px) {

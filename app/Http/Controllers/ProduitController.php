@@ -83,7 +83,7 @@ class ProduitController extends Controller
 
         $value_mrh = session('data_mrh');
         
-        $date_souscription=date('Y-m-d');
+        $date_souscription=date('d/m/Y');
         
         $terasse=$value_mrh['terasse'];
         

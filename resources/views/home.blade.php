@@ -99,24 +99,22 @@ Home
                         <td class="actions"><a href="{{route('devis_mrh')}}" class="icon"><i class="mdi mdi-edit"></i></a></td>
                       </tr>
                         @endif
+                        @if($auto != '')
                       <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 28, 2015</td>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">{{$auto['nom']}}</td>
+                        <td>{{number_format($auto['montant'], 2,',', ' ')}} DA</td>
+                        <td>{{$auto['datec']}}</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
                       </tr>
+                        @endif
+                        @if($cat != '')
                       <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 15, 2015</td>
+                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">{{$cat['nom']}}</td>
+                        <td>{{number_format($cat['montant'], 2,',', ' ')}} DA</td>
+                        <td>{{$mrh['datec']}}</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
                       </tr>
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">Catastrophe Naturelle</td>
-                        <td>1 000 DA</td>
-                        <td>Jun 30, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
-                      </tr>
+                        @endif
                     </tbody>
                   </table>
                 </div>

@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-Home 
+Devis MRH
 @endsection
 
 @section('head')
@@ -119,7 +119,7 @@ Home
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Montant forfaitaire</label>
                       <div class="col-sm-6">
-                        <input type="text" name="montant" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
+                        <input type="text" name="montant_" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
                       </div>
                     </div>
 
@@ -137,6 +137,7 @@ Home
                         </p>
                       </div>
 
+                    <input type="hidden" name="montant" value="{{$montant}}">   
                     <input type="hidden" name="prime_total" value="{{$prime_total}}">   
                     <input type="hidden" name="id" value="{{$id ?? ''}}">   
                     <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
