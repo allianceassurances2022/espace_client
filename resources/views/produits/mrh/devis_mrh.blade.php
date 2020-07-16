@@ -29,16 +29,16 @@ Devis MRH
                     </div>
 
                     <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Date d'effet</label>
+                      <label class="col-sm-3 control-label">Montant forfaitaire</label>
                       <div class="col-sm-6">
-                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
+                        <input type="text" name="montant_" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
                       </div>
                     </div>
 
                     <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Date expiration</label>
+                      <label class="col-sm-3 control-label">Nombre de pieces</label>
                       <div class="col-sm-6">
-                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
+                        <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control input-lg" readonly>
                       </div>
                     </div>
 
@@ -71,6 +71,42 @@ Devis MRH
 
                     <div class="form-group">
 
+                    <div class="col-md-4">
+                      <label class="col-sm-3 control-label">Nombre d'Etage</label>
+                      <div class="col-sm-6">
+                        <input type="number" name="etage" value="{{$etage ?? ''}}" class="form-control input-lg">
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="col-sm-3 control-label">Date d'effet</label>
+                      <div class="col-sm-6">
+                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="col-sm-3 control-label">Date expiration</label>
+                      <div class="col-sm-6">
+                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+
+                  <div class="col-md-4">
+                      <label class="col-sm-3 control-label">Surface</label>
+                      <div class="col-sm-6">
+                        <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control input-lg">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+
                     <div class="col-md-8">
                       <label class="col-sm-3 control-label">Adress</label>
                       <div class="col-sm-6">
@@ -91,37 +127,7 @@ Devis MRH
 
                   </div>
 
-                    <div class="form-group">
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Nombre de pieces</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Surface</label>
-                      <div class="col-sm-6">
-                        <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control input-lg">
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Nombre d'Etage</label>
-                      <div class="col-sm-6">
-                        <input type="number" name="etage" value="{{$etage ?? ''}}" class="form-control input-lg">
-                      </div>
-                    </div>
-
-                  </div>
-
-                    <div class="form-group">
-                      <label class="col-sm-3 control-label">Montant forfaitaire</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="montant_" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
+                    
 
                     <div class="form-group">
                       <label class="col-sm-9 control-label">Total a payer</label>

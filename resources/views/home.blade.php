@@ -104,7 +104,7 @@ Home
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">{{$auto['nom']}}</td>
                         <td>{{number_format($auto['montant'], 2,',', ' ')}} DA</td>
                         <td>{{$auto['datec']}}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
                       </tr>
                         @endif
                         @if($cat != '')
@@ -112,7 +112,7 @@ Home
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">{{$cat['nom']}}</td>
                         <td>{{number_format($cat['montant'], 2,',', ' ')}} DA</td>
                         <td>{{$mrh['datec']}}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-pencil"></i></a></td>
+                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
                       </tr>
                         @endif
                     </tbody>

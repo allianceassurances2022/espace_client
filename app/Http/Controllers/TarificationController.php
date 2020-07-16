@@ -618,6 +618,8 @@ class TarificationController extends Controller
     public function validation_devis_mrh (Request $request){
          //dd($request);
     	 //dd((float)$request->montant);
+    	 
+
     	 $var =  $request->date_sous;
          $date = str_replace('/', '-', $var);
          $date_sous = date('Y-m-d', strtotime($date));
@@ -698,10 +700,21 @@ class TarificationController extends Controller
 
     	//dd($risque);
 
+         $var =  $devis->date_souscription;
+         $date = str_replace('-', '/', $var);
+         $date_sous = date('d-m-Y', strtotime($date));
 
-        $date_souscription=$devis->date_souscription;
-        $date_eff=$devis->date_effet;
-        $date_exp=$devis->date_expiration;
+         $var =  $request->date_effet;
+         $date = str_replace('-', '/', $var);
+         $date_eff = date('d-m-Y', strtotime($date));
+
+         $var =  $request->date_expiration;
+         $date = str_replace('/', '-', $var);
+         $date_exp = date('d-m-Y', strtotime($date));
+
+        $date_souscription=$date_sous;
+        $date_eff=$date_eff;
+        $date_exp=$date_exp;
         $terasse=$risque->terrasse;
         $habitation=$risque->type_habitation;
         $montant=$risque->montant_forfaitaire;
