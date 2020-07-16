@@ -9,7 +9,6 @@ use App\zcatnat;
 
 use App\Rsq_Immobilier;
 use App\devis;
-use App\Agences;
 
 use auth;
 
@@ -698,14 +697,13 @@ class TarificationController extends Controller
         $prime_total=$devis->prime_total;
         $wilaya_selected = $risque->code_wilaya;
         $wilaya = wilaya::all();
-        $agences = Agences::all();
         $adresse = $risque->adresse;
         $surface = $risque->superficie;
         $etage = $risque->etage;
 
             
 
-        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id','agences'));
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id'));
           
 
     }
