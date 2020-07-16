@@ -29,13 +29,16 @@
 
                 </div> <!-- content -->
 
-              @include('core.home.footer')
+              
 
             </div>
             <!-- End Right content here -->
 
+            @include('core.home.footer')
+
         </div>
         <!-- END wrapper -->
+
 
     </body>
 

@@ -617,6 +617,19 @@ class TarificationController extends Controller
     public function validation_devis_mrh (Request $request){
          //dd($request);
     	 //dd((float)$request->montant);
+    	 
+
+    	 $var =  $request->date_sous;
+         $date = str_replace('/', '-', $var);
+         $date_sous = date('Y-m-d', strtotime($date));
+
+         $var =  $request->date_eff;
+         $date = str_replace('/', '-', $var);
+         $date_eff = date('Y-m-d', strtotime($date));
+
+         $var =  $request->date_exp;
+         $date = str_replace('/', '-', $var);
+         $date_exp = date('Y-m-d', strtotime($date));
 
 		 $prime_total= $request->prime_total;
     	if($request->id){
@@ -630,17 +643,18 @@ class TarificationController extends Controller
 
     	  	$devis= devis::find($risque->code_devis);
     	  	$devis->update([
-    	  	'date_effet' => $request->date_eff,
-          	'date_expiration' => $request->date_exp,
+    	  	'date_effet' => $date_eff,
+          	'date_expiration' => $date_exp,
     	  	]);
 
 
     	}else{
+    	  
 
           $dev=devis::create([
-          	'date_souscription' => $request->date_sous,
-          	'date_effet' => $request->date_eff,
-          	'date_expiration' => $request->date_exp,
+          	'date_souscription' => $date_sous,
+          	'date_effet' => $date_eff,
+          	'date_expiration' => $date_exp,
           	'prime_total' => $request->prime_total
           ]);
 
@@ -685,10 +699,21 @@ class TarificationController extends Controller
 
     	//dd($risque);
 
+         $var =  $devis->date_souscription;
+         $date = str_replace('-', '/', $var);
+         $date_sous = date('d-m-Y', strtotime($date));
 
-        $date_souscription=$devis->date_souscription;
-        $date_eff=$devis->date_effet;
-        $date_exp=$devis->date_expiration;
+         $var =  $request->date_effet;
+         $date = str_replace('-', '/', $var);
+         $date_eff = date('d-m-Y', strtotime($date));
+
+         $var =  $request->date_expiration;
+         $date = str_replace('/', '-', $var);
+         $date_exp = date('d-m-Y', strtotime($date));
+
+        $date_souscription=$date_sous;
+        $date_eff=$date_eff;
+        $date_exp=$date_exp;
         $terasse=$risque->terrasse;
         $habitation=$risque->type_habitation;
         $montant=$risque->montant_forfaitaire;

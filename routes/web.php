@@ -58,10 +58,11 @@ Route::get('signin', function () {
 
 
 Auth::routes();
+Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh');
-Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh');
+Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');
+Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh')->middleware('auth');
 
 //Route::post('map_wilaya' , 'TarificationController@fetch')->name('construction.fetch');
 
