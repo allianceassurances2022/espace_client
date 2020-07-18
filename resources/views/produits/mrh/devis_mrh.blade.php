@@ -108,8 +108,8 @@ Devis MRH
                   <div class="form-group">
 
                     <div class="col-md-8">
-                      <label class="col-sm-3 control-label">Adress</label>
-                      <div class="col-sm-6">
+                      <label class="col-sm-2 control-label">Adress</label>
+                      <div class="col-sm-9">
                         <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control input-lg">
                       </div>
                     </div>
@@ -127,14 +127,48 @@ Devis MRH
 
                   </div>
 
-                    
-
-                    <div class="form-group">
+                  <div class="form-group">
                       <label class="col-sm-9 control-label">Total a payer</label>
                       <div class="col-sm-3">
-                        <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
+                        <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                       </div>
                     </div>
+
+                    <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span></div>
+
+                    <div class="form-group">
+                      <div class="col-md-6">
+                      <label class="col-sm-3 control-label">Wilaya</label>
+                      <div class="col-sm-6">
+                        <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
+                            @foreach($wilaya as $wilay)
+                              <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
+                            @endforeach                       
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="col-sm-3 control-label">Commune</label>
+                      <div class="col-sm-6">
+                        <select onchange="vers_commune()" id="Commune" name="Commune" class="select2">
+                            <option value="">-</option>                      
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+
+<div class="form-group">
+                    
+    <div class="col-md-12">
+      <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+        <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+        style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
+      </div>
+    </div>
+
+</div>
+                    
 
                     <div class="col-xs-12">
                         <p class="text-right">
@@ -146,6 +180,7 @@ Devis MRH
                     <input type="hidden" name="montant" value="{{$montant}}">   
                     <input type="hidden" name="prime_total" value="{{$prime_total}}">   
                     <input type="hidden" name="id" value="{{$id ?? ''}}">   
+                    <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">   
                     <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 
                   </form>
@@ -167,6 +202,8 @@ Devis MRH
 <script src="{{asset('assets/js/app-form-elements.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/app-form-masks.js')}}" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
 
 
 <script>
@@ -193,9 +230,141 @@ Devis MRH
 
 </script>
 
+<script>
+
+function vers_wilaya(){
+
+ var nom = $('#Wilaya_map').children("option:selected").text();
+
+
+var geocoder = new google.maps.Geocoder();
+
+
+  geocoder.geocode({'address': nom+', algerie'}, function(results, status) {
+    if (status === 'OK') {
+      map.setCenter(results[0].geometry.location);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
+  map.setZoom(10);
+
+
+}
+
+function vers_commune(){
+
+ var nom = $('#Wilaya_map').children("option:selected").text();
+ var nom_com = $('#Commune').children("option:selected").text();
+
+var geocoder = new google.maps.Geocoder();
+
+
+  geocoder.geocode({'address': nom_com+', '+nom+', algerie'}, function(results, status) {
+    if (status === 'OK') {
+      map.setCenter(results[0].geometry.location);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
+  map.setZoom(14);
+
+
+}
+
+
+function initialize() {
+
+
+  var mapOptions = {
+    center: new google.maps.LatLng(35.522973, 3.520701),
+    zoom: 7,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  }
+  map = new google.maps.Map(document.getElementById("map-container-google-1"), mapOptions);
+  var image = '{{asset('images/point.png')}}';
+
+  @foreach($agences as $agence)
+
+  var myLatlng = new google.maps.LatLng({{$agence->Latitude}},{{$agence->Longetude}});    
+  var contentString = '<div id="etiquette" style="width:auto; height:auto;">'+
+  '<h2 style="color:#048c9b;">{{$agence->Name}}</h2>'+
+  '<div>'+
+  '<p>' +
+  '<strong>Chef d\'agence :</strong> {{$agence->Chef_Agence}}<br/>'+
+  '<strong>Adresse :</strong> {{$agence->Adresse}}<br/>'+
+  '<strong>Tel :</strong> {{$agence->Tel}}<br/>'+
+  '<strong>Fax :</strong> {{$agence->Fax}}<br/>'+
+  '<strong>Mail :</strong> {{$agence->Mail}} <br/>'+
+  '</p>'+
+  '</div>'+
+  '</div>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString,
+  }); 
+  
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    icon: image,
+    title:"{{$agence->Chef_Agence}}" ,  
+    code_agence:"{{$agence->id}}" ,  
+    html :  contentString
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(this.html);
+    infowindow.open(map,this);
+    $(code_agence).val(this.code_agence);
+  });
+
+  // To add the marker to the map, call setMap();
+  marker.setMap(map);
+
+  @endforeach
+
+} 
+</script>
+
 @endsection
 
 @section('docready')
 App.formElements();
 App.masks();
+
+var map;
+
+initialize();
+
+$('#Wilaya_map').change(function(){
+
+
+  if($(this).val() != '')
+  {
+   var select = $(this).attr("id");
+   
+   var value = $(this).val();
+   
+ 
+   //alter(dependent);
+ 
+   var _token = $('#signup-token').val();
+   //alert( _token );
+   $.ajax({
+   
+    //alert(value);
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+     $('#Commune').html(result);
+    //alert(value);
+   
+    }
+
+   })
+  }
+ });
 @endsection

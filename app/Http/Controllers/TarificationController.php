@@ -610,7 +610,7 @@ class TarificationController extends Controller
         	$request->session()->forget('data_catnat');
         }
 
-        return redirect('pannier');
+        return redirect('panier');
 
     	
     }
@@ -646,6 +646,7 @@ class TarificationController extends Controller
     	  	$devis->update([
     	  	'date_effet' => $date_eff,
           	'date_expiration' => $date_exp,
+          	'code_agence' => $request->code_agence
     	  	]);
 
 
@@ -656,7 +657,8 @@ class TarificationController extends Controller
           	'date_souscription' => $date_sous,
           	'date_effet' => $date_eff,
           	'date_expiration' => $date_exp,
-          	'prime_total' => $request->prime_total
+          	'prime_total' => $request->prime_total,
+          	'code_agence' => $request->code_agence
           ]);
 
           $res=Rsq_Immobilier::create([
@@ -704,12 +706,12 @@ class TarificationController extends Controller
          $date = str_replace('-', '/', $var);
          $date_sous = date('d-m-Y', strtotime($date));
 
-         $var =  $request->date_effet;
+         $var =  $devis->date_effet;
          $date = str_replace('-', '/', $var);
          $date_eff = date('d-m-Y', strtotime($date));
 
-         $var =  $request->date_expiration;
-         $date = str_replace('/', '-', $var);
+         $var =  $devis->date_expiration;
+         $date = str_replace('-', '/', $var);
          $date_exp = date('d-m-Y', strtotime($date));
 
         $date_souscription=$date_sous;
@@ -727,10 +729,11 @@ class TarificationController extends Controller
         $adresse = $risque->adresse;
         $surface = $risque->superficie;
         $etage = $risque->etage;
+        $code_agence =  $devis->code_agence;
 
             
 
-        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id','agences'));
+        return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
           
 
     }

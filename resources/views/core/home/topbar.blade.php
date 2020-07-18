@@ -11,9 +11,9 @@
                       <div class="user-position online">Available</div>
                     </div>
                   </li>
-                  <li><a href="#"><span class="icon mdi mdi-face"></span> Account</a></li>
-                  <li><a href="#"><span class="icon mdi mdi-settings"></span> Settings</a></li>
-                  <li><a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="icon mdi mdi-power"></span> Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  <li><a href="#"><span class="icon mdi mdi-face"></span> Profil</a></li>
+                  <li><a href="#"><span class="icon mdi mdi-settings"></span> Pdaramètres</a></li>
+                  <li><a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="icon mdi mdi-power"></span> Déconnexion</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form></li>
                 </ul>
@@ -61,18 +61,17 @@
                     <div class="list">
                       <div class="content">
                         <div class="row">
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/github.png" alt="Github"><span>GitHub</span></a></div>
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/bitbucket.png" alt="Bitbucket"><span>Bitbucket</span></a></div>
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/slack.png" alt="Slack"><span>Slack</span></a></div>
+                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Automobile"><span>Auto</span></a></div>
+                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Multirisques Habitation"><span>MRH+</span></a></div>
+                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Multirisques Professionnelle"><span>MRP+</span></a></div>
                         </div>
                         <div class="row">
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/dribbble.png" alt="Dribbble"><span>Dribbble</span></a></div>
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/mail_chimp.png" alt="Mail Chimp"><span>Mail Chimp</span></a></div>
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/dropbox.png" alt="Dropbox"><span>Dropbox</span></a></div>
+                          <div class="col-xs-6"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" alt="Catastrophe Naturelle"><span>CATNAT</span></a></div>
+                          <div class="col-xs-6"><a href="#" class="connection-item"><img src="assets/img/logo_amana.png" alt="Mail Chimp"><span>Ammana</span></a></div>
                         </div>
                       </div>
                     </div>
-                    <div class="footer"> <a href="#">More</a></div>
+                    <div class="footer"> <a href="{{route('index_produit')}}">Tous les Produits</a></div>
                   </li>
                 </ul>
               </li>
