@@ -20,6 +20,11 @@ Route::get('/my', function () {
     return view('my');
 });
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+});
 
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
@@ -41,8 +46,8 @@ Route::post('montant_auto' , 'TarificationController@montant_auto')->name('monta
 
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
-Route::get('pannier', 'TarificationController@panier')->name('pannier');
-Route::get('pannier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
+Route::get('panier', 'TarificationController@panier')->name('pannier');
+Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
 Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
 Route::get('signup', function () {
     return view('signup');

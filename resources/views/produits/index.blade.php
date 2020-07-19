@@ -190,7 +190,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
     <div class="card">
       <a href="{{route('type_produit',['catnat','index'])}}">
         <div class="card-img">
-            <img src="{{asset('produit_assets/images/backgrounds/catastrophe-naturelle.jpg')}}" />
+            <img src="{{asset('produit_assets/images/backgrounds/catastrophe-naturelle.jpg')}}" style="height: 216.55px;"/>
         </div>
         <div class="card-body">
             <h2 class="card-title">

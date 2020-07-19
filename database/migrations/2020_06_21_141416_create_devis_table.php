@@ -30,6 +30,7 @@ class CreateDevisTable extends Migration
             $table->string('statut_devis')->nullable();
             $table->text('periode')->nullable();
             $table->float('prime_total')->nullable();
+            $table->string('code_agence')->nullable();
             $table->timestamps();
         });
     }

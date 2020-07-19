@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('title')
+@section('head_title')
 Home 
 @endsection
 
