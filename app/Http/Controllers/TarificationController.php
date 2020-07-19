@@ -560,7 +560,7 @@ class TarificationController extends Controller
 		$cat='';
 		$auto='';
 		
-        /*$value_cat = session('data_catnat');
+/*      $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
         $cat='';
         $auto='';
@@ -682,8 +682,6 @@ class TarificationController extends Controller
 
           $user=auth::user();
           
-          //dd($risque);
-
           return view('produits.mrh.resultat',compact('user','devis','risque','prime_total'));
           
 

@@ -64,7 +64,7 @@
       <div class="menu-header">
         @include('core.produit.inside-menu')
       </div>
-        <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+        <h2> Votre Panier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
         @if($auto != '')
         <div class='line'></div>
         <table class='order-table'>
