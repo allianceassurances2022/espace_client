@@ -23,9 +23,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { $user=auth::user();
+    { 
+        $user=auth::user();
         $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
+        $value_auto = session('data_auto');
         $cat='';
         $auto='';
         $mrh='';
@@ -55,6 +57,21 @@ class HomeController extends Controller
             $datec=$value_mrh['datec'];
 
             $mrh = [
+                'nom' => $nom,
+                'datec' => $datec,
+                'montant' => $montant
+            ];
+
+        }
+
+        if ($value_auto) {
+
+            $nom = 'Automobile';
+            $montant = $value_auto['prime_total'];
+            $total=$total+$montant;
+            $datec=$value_auto['datec'];
+
+            $auto = [
                 'nom' => $nom,
                 'datec' => $datec,
                 'montant' => $montant

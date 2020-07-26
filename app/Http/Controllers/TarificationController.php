@@ -494,23 +494,12 @@ class TarificationController extends Controller
 
 }
 
-    public function choix_auto(Request $request){
-
-    	dd($request);
-
-    } 
-
-    public function montant_auto(Request $request){
-
-    	dd($request);
-
-    } 
-
 
     public function panier (){
 
         $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
+        $value_auto = session('data_auto');
         $cat='';
         $auto='';
         $mrh='';
@@ -542,6 +531,19 @@ class TarificationController extends Controller
 
         }
 
+        if ($value_auto) {
+
+        	$nom = 'Automobile';
+        	$montant = $value_auto['prime_total'];
+        	$total=$total+$montant;
+
+        	$auto = [
+        		'nom' => $nom,
+        		'montant' => $montant
+        	];
+
+        }
+
 
     
         return view('panier',compact('mrh','auto','cat','total'));
@@ -554,9 +556,9 @@ class TarificationController extends Controller
 		$risqueh = Rsq_Immobilier::where('id',$id)->first();
 		//$devis = devis::where('id',$id)->GET('prime_total');
 		$code_devis=$risqueh->code_devis;
-	$id=$risqueh->id;
+	    $id=$risqueh->id;
 		$devis = devis::where('id',$code_devis)->first();
-  $prime_total= $devis->prime_total;
+        $prime_total= $devis->prime_total;
 		$cat='';
 		$auto='';
 		
@@ -609,6 +611,9 @@ class TarificationController extends Controller
         if($produit == 'catnat'){
         	$request->session()->forget('data_catnat');
         }
+        if($produit == 'auto'){
+        	$request->session()->forget('data_auto');
+        }
 
         return redirect('panier');
 
@@ -616,9 +621,7 @@ class TarificationController extends Controller
     }
 
     public function validation_devis_mrh (Request $request){
-         //dd($request);
-    	 //dd((float)$request->montant);
-    	 
+             	 
 
     	 $var =  $request->date_sous;
          $date = str_replace('/', '-', $var);
@@ -695,10 +698,6 @@ class TarificationController extends Controller
     	$id=$risque->id;
 
     	$devis=devis::find($risque->code_devis);
-    	
-    	//dd($risque);
-
-    	//dd($risque);
 
          $var =  $devis->date_souscription;
          $date = str_replace('-', '/', $var);
@@ -732,8 +731,7 @@ class TarificationController extends Controller
             
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
-          
-
+        
     }
 
 

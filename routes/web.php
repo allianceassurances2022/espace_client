@@ -32,7 +32,6 @@ Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name(
 
 Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');
 
-//Route::get('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 Route::post('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 
 
@@ -40,8 +39,8 @@ Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('m
 Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
-Route::post('choix_auto' , 'TarificationController@choix_auto')->name('choix_auto');
-Route::post('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
+Route::post('choix_auto' , 'TarificationAutoController@choix_auto')->name('choix_auto');
+Route::post('montant_auto' , 'TarificationAutoController@montant_auto')->name('montant_auto');
 
 
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
@@ -49,6 +48,7 @@ Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montan
 Route::get('panier', 'TarificationController@panier')->name('pannier');
 Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
 Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
+
 Route::get('signup', function () {
     return view('signup');
 })->name('signup');
@@ -57,17 +57,19 @@ Route::get('signin', function () {
     return view('signin');
 })->name('signin');
 
-// Route::get('devismrh', function () {
-//     return view('produits.mrh.devis_mrh');
-// })->name('devismrh');
-
 
 Auth::routes();
+
 Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');
 Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh')->middleware('auth');
+
+Route::get('/devis_auto', 'ProduitController@devis_auto')->name('devis_auto')->middleware('auth');
+Route::get('/devis_auto/{id}', 'TarificationAutoController@modification_devis_auto')->name('modification_devis_auto')->middleware('auth');
 
 //Route::post('map_wilaya' , 'TarificationController@fetch')->name('construction.fetch');
 

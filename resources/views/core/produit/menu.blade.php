@@ -1,6 +1,6 @@
 <div class="bg-container-contact100" style="@yield('produit_url')">
     <div class="contact100-header flex-sb-m">
-        <a href="#" class="contact100-header-logo">
+        <a href="{{route('index_produit')}}" class="contact100-header-logo">
             <img src="{{asset('produit_assets/images/icons/alliance-assurance.png')}}" alt="LOGO">
         </a>
 

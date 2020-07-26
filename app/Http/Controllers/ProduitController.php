@@ -23,9 +23,10 @@ class ProduitController extends Controller
     {
         switch ($req->produit) {
             case 'auto':
+            $wilaya = wilaya::all();
                 switch ($req->phase){
                     case 'index':
-                        return view('produits.auto.index');
+                        return view('produits.auto.index',compact('wilaya'));
                         break;
                     case 'laki':
                         return view('produits.auto.formule_laki');
@@ -105,6 +106,48 @@ class ProduitController extends Controller
          $wilaya_selected = 1;
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
+    }
+
+    public function devis_auto()
+    { 
+
+        $data_session = [
+                      'date_conducteur' => $daten,
+                      'date_permis' => $date_permis,
+                      'wilaya' => $wilaya,
+                      'annee_auto' => $annee_auto,
+                      'puissance' => $puissance,
+                      'usage' => $usage,
+                      'valeur' => $valeur,
+                      'offre' => $offre,
+                      'dure' => $dure,
+                      'formule' => $formule,
+                      'assistance' => $assistance,
+                      'prime_total' => $devis,
+                       ];
+
+        $value_auto = session('data_auto'); 
+        $date_souscription=date('d/m/Y');  
+        $date_conducteur=$value_auto['terasse'];  
+        $date_permis=$value_mrh['habitation'];  
+        $wilaya=$value_mrh['montant'];   
+        $annee_auto=$value_mrh['juredique'];     
+        $puissance=$value_mrh['nbr_piece'];
+        $usage=$value_mrh['usage'];
+        $valeur=$value_mrh['valeur'];
+        $offre=$value_mrh['offre'];
+        $dure=$value_mrh['dure'];
+        $formule=$value_mrh['formule'];
+        $assistance=$value_mrh['assistance'];
+        $prime_total=$value_mrh['prime_total'];
+        $datec=$value_mrh['datec'];
+        
+        $wilaya = wilaya::all();
+        $agences = Agences::all();
+
+         $wilaya_selected = 1;
+
+        return view('produits.Auto.devis_auto',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
     }
     
     public function visuelisation()

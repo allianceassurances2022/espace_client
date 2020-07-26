@@ -33,9 +33,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                <div class="wrap-input100 validate-input2">
                    <input id="montant" class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}">
                    <span class="focus-input100"></span>
-                   <label class="label-input100" for="montant">
-                       <span class="fa fa-home"></span>
-                   </label>
                </div>
            </div>
 
@@ -44,17 +41,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
                <div class="wrap-input100 validate-input3">
                    <input id="montant" class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}">
-
                    <span class="focus-input100"></span>
-                   <label class="label-input100" for="pieces">
-                       <span class="fa fa-bed"></span>
-                   </label>
                </div>
            </div>
            
            <div class="slice slice_third">
-                <div class="radio_section_slice">
-                 
+                <div class="radio_section_slice">             
                    <h6>Habitation</h6>
                      <label>
                        <input type="radio" name="hab"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/ required>
@@ -82,9 +74,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             
            <div class="slice slice_third">
               <div class="radio_section_slice">
-                 <h6>Terrasse</h6>
-               
-               
+                 <h6>Terrasse</h6>         
                      <label>
                      <input type="radio" name="terasse" id="oui" value="oui" @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif / required>
                      <span>Oui</span>
@@ -92,8 +82,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                      <label>
                      <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif / required>
                      <span>Non</span>
-                     </label>
-                 
+                     </label>               
              </div>
            </div>
 

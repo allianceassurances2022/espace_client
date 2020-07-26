@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
         <div class="container-fluid">
-          <div class="navbar-header"><a href="{{route('home')}}" class="navbar-brand"></a></div>
+          <div class="navbar-header"><a href="{{route('index_produit')}}" class="navbar-brand"></a></div>
           <div class="be-right-navbar">
             <ul class="nav navbar-nav navbar-right be-user-nav">
               <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="assets/img/avatar.png" alt="Avatar"><span class="user-name">Djilali EL Medjadji</span></a>
@@ -63,11 +63,11 @@
                         <div class="row">
                           <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Automobile"><span>Auto</span></a></div>
                           <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Multirisques Habitation"><span>MRH+</span></a></div>
-                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Multirisques Professionnelle"><span>MRP+</span></a></div>
+                          <div class="col-xs-4"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" alt="Multirisques Professionnelle"><span>MRP+</span></a></div>
                         </div>
                         <div class="row">
-                          <div class="col-xs-6"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" alt="Catastrophe Naturelle"><span>CATNAT</span></a></div>
-                          <div class="col-xs-6"><a href="#" class="connection-item"><img src="assets/img/logo_amana.png" alt="Mail Chimp"><span>Ammana</span></a></div>
+                          <div class="col-xs-12"><a href="#" class="connection-item"><img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Catastrophe Naturelle"><span>CATNAT</span></a></div>
+                          {{-- <div class="col-xs-6"><a href="#" class="connection-item"><img src="assets/img/logo_amana.png" alt="Mail Chimp"><span>Ammana</span></a></div> --}}
                         </div>
                       </div>
                     </div>
