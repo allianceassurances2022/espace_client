@@ -25,10 +25,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5 class="active"><i class="fa fa-info-circle"></i> Formule Commerce <span>2</span></h5>
             </div>
 
+     
             <div class="slice">
                 <h6>Type de la construction </h6>
                 <div class="wrap-input100 validate-input2">
                     <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
+                    <option value="{{$type_constcomm ?? 'Bloc indépendant'}}">{{$type_constcomm ?? 'Bloc indépendant'}}</option>
                         <option value="Bloc indépendant">Bloc indépendant</option>
                         <option value="Autres">Autres</option>
                     </select>
@@ -42,37 +44,39 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="Contenant" class="input100" type="number" name="Contenant" placeholder="Valeur Contenant" min=0>
+                    <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-calculator"></span>
                     </label>
                 </div>
-            </div>
+            </div>     
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="equipement" class="input100" type="number" name="equipement" placeholder="Valeur equipement" min=0>
+                    <input id="equipement" class="input100" type="number" name="equipement" value="{{$equipement ?? ''}}" placeholder="Valeur equipement" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-calculator"></span>
                     </label>
                 </div>
             </div>
+    
+
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="marchandise" class="input100" type="number" name="marchandise" placeholder="Valeur marchandise" min=0>
+                    <input id="marchandise" class="input100" type="number" name="marchandise" value="{{$marchandise ?? ''}}" placeholder="Valeur marchandise" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-calculator"></span>
                     </label>
                 </div>
-            </div>
+            </div>        
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="contenu" class="input100" type="number" name="contenu" placeholder="Valeur contenu" min=0>
+                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? ''}}" placeholder="Valeur contenu" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-calculator"></span>
@@ -129,12 +133,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
 
-            <input type="hidden" name="type_formule" id="type_formule" value="{{$formul}}">
+            <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
             
             <div class="container-contact100-form-btn">
-                <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
+           
+                <a href="{{route('index')}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
+              
                 <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >   
                 
                 

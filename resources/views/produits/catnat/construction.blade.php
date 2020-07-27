@@ -104,13 +104,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="container-contact100-form-btn">
-                <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
+                <a href="{{ route('type_formule') }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
 
                 <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">  
                 @if($prime_total != 0)
-                <a href="{{route('signin')}}" class="contact100-form-btn">
+                <a href="{{route('devis_catnat')}}" class="contact100-form-btn">
                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  
                 </a>
                 @endif

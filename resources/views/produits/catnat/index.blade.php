@@ -31,7 +31,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             
             <h6>Formule <span>(Choisissez votre formule)</span></h6>
             <div class="wrap-input100 validate-input2">
-                <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
+                <select id="formule" class="input100" type="text" name="formule" placeholder="Formule" ">
+                <option value="{{$formul ?? ''}}">{{$formul ?? ''}}</option>
                     <option value="Habitation">Habitation</option>
                     <option value="Commerce">Commerce</option>
                     <option value="Industrielle">Industrielle</option>

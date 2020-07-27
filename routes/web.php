@@ -34,6 +34,8 @@ Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat'
 
 //Route::get('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 Route::post('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
+Route::get('index' , 'TarificationController@precidanttypeformul')->name('index');
+Route::get('type_formule' , 'TarificationController@precidantconstructuin')->name('type_formule');
 
 
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
@@ -67,12 +69,16 @@ Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');
+Route::get('/devis_catnat', 'ProduitController@devis_catnat')->name('devis_catnat')->middleware('auth');
 Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh')->middleware('auth');
 
 //Route::post('map_wilaya' , 'TarificationController@fetch')->name('construction.fetch');
 
 
 Route::post('/validation_devis_mrh' , 'TarificationController@validation_devis_mrh')->name('validation_devis_mrh');
+
+Route::post('/validation_devis_catnat' , 'TarificationController@validation_devis_catnat')->name('validation_devis_catnat');
+
 
 Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisation');
 

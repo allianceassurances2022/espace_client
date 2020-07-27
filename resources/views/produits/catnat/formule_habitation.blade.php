@@ -20,14 +20,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         @include('core.produit.inside-menu')
         <form class="contact100-form validate-form"  action="{{route('construction_catanat')}}" method="post">
             @csrf
-
+          
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i>Formule Habitation <span>2</span></h5>
             </div>
             <div class="slice">
                 <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" min=0>
+                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0>
                     <span class="focus-input100"></span>
                     <label class="label-input100" for="phone">
                         <span class="fa fa-bed"></span>
@@ -39,6 +39,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Type de la construction</h6>
                <div class="wrap-input100 validate-input3">
                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
+                   <option value="{{$type_const ?? 'Habitation individuelle'}}">{{$type_const ?? 'Habitation individuelle'}}</option>
                        <option value="Habitation individuelle">Habitation individuelle</option>
                        <option value="Habitation collective">Habitation collective</option>
                        <option value="Immeuble">Immeuble</option>
@@ -53,17 +54,22 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <div class="radio_section">
                   <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
                   <label>
-                      <input type="radio" name="permis" id="oui" value="oui"/>
+       
+                      <input type="radio" name="permis" id="oui" value="oui"  checked />
+                    
+                      <input type="radio" name="permis" id="oui" value="oui"   />
+                   
                       <span>Oui</span>
+                   
                   </label>
                   <label>
-                      <input type="radio" name="permis" id="non" value="non"/>
+                      <input type="radio" name="permis" id="non" value="non" />
                       <span>Non</span>
                   </label>
               </div>
           </div>
 
-            <input type="hidden" name="type_formule" id="type_formule" value="{{$formul}}">
+            <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
 
             <div class="container-contact100-form-btn">
                 <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">

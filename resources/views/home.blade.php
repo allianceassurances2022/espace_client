@@ -112,7 +112,7 @@ Home
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">{{$cat['nom']}}</td>
                         <td>{{number_format($cat['montant'], 2,',', ' ')}} DA</td>
                         <td>{{$mrh['datec']}}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
+                        <td class="actions"><a href="{{route('devis_catnat')}}" class="icon"><i class="mdi mdi-edit"></i></a></td>
                       </tr>
                         @endif
                     </tbody>

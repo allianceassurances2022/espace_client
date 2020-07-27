@@ -270,7 +270,7 @@
                                      <td>{{$mrh['datec']}}  </td>
                                      <td> {{number_format($cat['montant'], 2,',', ' ')}} DA </td>
                                     
-                                    <td><a href="#" class=" float-right contact100-form-btn ">Devis</a></td>
+                                    <td><a href="{{route('devis_catnat')}}" class=" float-right contact100-form-btn ">Devis</a></td>
                                 </tr>
                                 @endif
                             </tbody>

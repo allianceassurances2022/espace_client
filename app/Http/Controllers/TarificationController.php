@@ -23,12 +23,33 @@ class TarificationController extends Controller
 		$formul=$request->formule;
 
 		if($formul=='Habitation'){
+			$request->session()->put('formul', $formul);
 			return view('produits.catnat.formule_habitation',compact('formul'));
+
+	
+			
 		}elseif($formul=='Commerce'){
+			$request->session()->put('formul', $formul);
 			return view('produits.catnat.formule_commerce',compact('formul'));
+		
 	    }elseif($formul=='Industrielle'){
+			$request->session()->put('formul', $formul);
 			return view('produits.catnat.formule_industrielle',compact('formul'));
+		
+					
+	
+	
+
 	    }
+	}
+	public function precidanttypeformul(Request $request)
+	{	
+		
+		
+		$formul=session('formul');
+
+			return view('produits.catnat.index',compact('formul'));
+	    
 	}
 	public function construction_catanat(Request $request)
     {
@@ -46,31 +67,111 @@ class TarificationController extends Controller
 
     	if ($request->type_formule == 'Habitation') {
             
-            $type_formule=$request->type_formule;
-            $val_assur=$request->val_assur;
-            $permis=$request->permis;
-            $type_const=$request->type_const;
+			$type_formule=$request->type_formule;
+			$request->session()->put('type_formule', $type_formule);
 
+			$val_assur=$request->val_assur;
+			$request->session()->put('val_assur', $val_assur);
+
+			$permis=$request->permis;
+			$request->session()->put('permis', $permis);
+
+            $type_const=$request->type_const;
+            $request->session()->put('type_const', $type_const);
             return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
             
 
     	}else{
     	
 		$type_formule=$request->type_formule;
-        $val_assur=$request->val_assur;
-        $permis=$request->permis;
-        $type_const=$request->type_const;
+		$request->session()->put('type_formulecom', $type_formule);
+
+		$val_assur=$request->val_assur;
+		$request->session()->put('val_assurcomm', $val_assur);
+
+		$permis=$request->permis;
+		$request->session()->put('permiscomm', $permis);
+
+		$type_const=$request->type_const;
+		$request->session()->put('type_constcomm', $type_const);
+
 		$Contenant =$request->Contenant;
+		$request->session()->put('Contenant', $Contenant);
+
 		$equipement=$request->equipement;
+		$request->session()->put('equipement', $equipement);
+
 		$marchandise=$request->marchandise;
+		$request->session()->put('marchandise', $marchandise);
+
 		$contenu=$request->contenu;
+		$request->session()->put('contenu', $contenu);
+
 		$activite=$request->activite;
+		$request->session()->put('activite', $activite);
+
 		$registre=$request->registre;
+		$request->session()->put('registre', $registre);
+
 		$local=$request->local;
+		$request->session()->put('local', $local);
+
 
 		    return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
 		
 		}
+		
+		
+	}
+	public function precidantconstructuin(Request $request)
+	{	
+		
+		
+		$formul=session('formul');
+		if($formul=="Commerce"){
+			//$type_formulecom-=session('type_formulecom');
+			$val_assurcomm=session('val_assurcomm');
+			$permiscomm=session('permiscomm');
+			$type_constcomm=session('type_constcomm');
+			$Contenant=session('Contenant');
+			$equipement=session('equipement');
+			$marchandise=session('marchandise');
+			$contenu=session('contenu');
+			$activite=session('activite');
+			$registre=session('registre');
+			$local=session('local');
+			$request->session()->forget('formul');
+			return view('produits.catnat.formule_commerce',compact('val_assurcomm','permiscomm','type_constcomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
+	
+		   }  
+	  elseif($formul=="Habitation"){
+
+		 // $type_formule=session('type_formule');
+		  $val_assur=session('val_assur');
+		  $permis=session('permis');
+		  $type_const=session('type_const');
+		  $request->session()->forget('formul');
+		  return view('produits.catnat.formule_habitation',compact('val_assur','permis','type_const'));
+	   }elseif($formul="Industrielle"){
+		//$request-=session('type_formulecom');
+		$val_assurcomm=session('val_assurcomm');
+		$permiscomm=session('permiscomm');
+		$type_constcomm=session('type_constcomm');
+		$Contenant=session('Contenant');
+		$equipement=session('equipement');
+		$marchandise=session('marchandise');
+		$contenu=session('contenu');
+		$activite=session('activite');
+		$registre=session('registre');
+		$local=session('local');
+		$request->session()->forget('formul');
+		return view('produits.catnat.formule_industrielle',compact('val_assurcomm','permiscomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
+
+
+	   }
+
+
+
 		
 		
 	}
@@ -687,6 +788,74 @@ class TarificationController extends Controller
           
 
     }
+	public function validation_devis_catnat(Request $request){
+		//dd($request);
+		//dd((float)$request->montant);
+		
+
+		$var =  $request->date_sous;
+		$date = str_replace('/', '-', $var);
+		$date_sous = date('Y-m-d', strtotime($date));
+
+	
+	
+
+		$prime_total= $request->prime_total;
+	   if($request->id){
+			 $risque= Rsq_Immobilier::find($request->id);
+			 $risque->update([
+			 'adresse' => $request->adresse,
+			 'code_wilaya' => $request->Wilaya,
+		   'superficie' => $request->surface,
+			 'etage' => $request->etage
+			 ]);
+
+			 $devis= devis::find($risque->code_devis);
+			 $devis->update([
+			 'date_effet' => $date_eff,
+			 'date_expiration' => $date_exp,
+			 'code_agence' => $request->code_agence
+			 ]);
+
+
+	   }else{
+		 
+
+		 $dev=devis::create([
+			 'date_souscription' => $date_sous,
+			 'date_effet' => $date_eff,
+			 'date_expiration' => $date_exp,
+			 'prime_total' => $request->prime_total,
+			 'code_agence' => $request->code_agence
+		 ]);
+
+		 $res=Rsq_Immobilier::create([
+			 'adresse' => $request->adresse,
+			 'code_wilaya' => $request->Wilaya,
+			 'type_habitation' => $request->hab,
+			 'qualite_juridique' => $request->juredique,
+			 'montant_forfaitaire' => $request->montant,
+			 'nombre_piece' => $request->nbr_piece,
+			 'superficie' => $request->surface,
+			 'etage' => $request->etage,
+			 'terrasse' => $request->terasse,
+			 'code_devis' => $dev->id
+
+		 ]);
+
+		 $devis= devis::find($dev->id);
+		 $risque= Rsq_Immobilier::find($res->id);
+
+		 }
+
+		 $user=auth::user();
+		 
+		 //dd($risque);
+
+		 return view('produits.mrh.resultat',compact('user','devis','risque','prime_total'));
+		 
+
+   }
 
 
     public function modification_devis_mrh (Request $request,$id){

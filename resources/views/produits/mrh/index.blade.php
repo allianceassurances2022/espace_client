@@ -9,6 +9,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 @endsection
 
 @section('content')
+
 <div class="container-contact100">
     <div class="wrap-contact100">
         <button class="btn-hide-contact100">
