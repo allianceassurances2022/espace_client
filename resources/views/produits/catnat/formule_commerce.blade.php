@@ -34,10 +34,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="Bloc indépendant">Bloc indépendant</option>
                         <option value="Autres">Autres</option>
                     </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="type_const">
-                        <span class="fa fa-umbrella"></span>
-                    </label>
+                    
                 </div>
             </div>
 
@@ -45,20 +42,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
                     <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-calculator"></span>
-                    </label>
+                    
                 </div>
             </div>     
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="equipement" class="input100" type="number" name="equipement" value="{{$equipement ?? ''}}" placeholder="Valeur equipement" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-calculator"></span>
-                    </label>
+                    
                 </div>
             </div>
     
@@ -67,20 +58,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
                     <input id="marchandise" class="input100" type="number" name="marchandise" value="{{$marchandise ?? ''}}" placeholder="Valeur marchandise" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-calculator"></span>
-                    </label>
+                    
                 </div>
             </div>        
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? ''}}" placeholder="Valeur contenu" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-calculator"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="radio_secion">

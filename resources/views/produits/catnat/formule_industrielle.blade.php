@@ -31,10 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="Bloc indépendant">Bloc indépendant</option>
                         <option value="Autres">Autres</option>
                     </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="type_const">
-                        <span class="fa fa-umbrella"></span>
-                    </label>
+                    
                 </div>
             </div>
 
@@ -42,10 +39,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
 
@@ -53,10 +47,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
                 </div>
             </div>
 
@@ -64,20 +54,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="radio_secion">

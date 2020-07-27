@@ -28,10 +28,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
 
@@ -44,10 +41,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                        <option value="Habitation collective">Habitation collective</option>
                        <option value="Immeuble">Immeuble</option>
                    </select>
-                   <span class="focus-input100"></span>
-                   <label class="label-input100" for="type_const">
-                       <span class="fa fa-umbrella"></span>
-                   </label>
+                   
                </div>
            </div>
           <div class="slice">

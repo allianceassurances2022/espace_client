@@ -29,20 +29,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="text" name="phone" valeur="{{$surface ?? ''}}" placeholder="Nombre de pieces">
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
                 <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="text" name="phone" valeur="{{$anne_cont ?? ''}}"  placeholder="Nombre de pieces">
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
@@ -52,10 +46,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="16">Alger</option>
      
                     </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="formule">
-                        <span class="fa fa-globe"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
@@ -65,20 +56,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="160001">alger</option>
                         
                     </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="formule">
-                        <span class="fa fa-globe"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
                     <input id="phone" class="input100" type="text" name="phone" valeur="{{$prime_total}}" placeholder="Calcul du Montant en cours" disabled="">
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-file-text"></span>
-                    </label>
+                    
                 </div>
             </div>
 

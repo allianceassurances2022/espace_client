@@ -24,6 +24,16 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h5 class="active"><i class="fa fa-info-circle"></i> Laki + <span>2</span></h5>
             </div>
             <div class="slice">
+                <h6>Usage <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                   <select class="input100" type="text" name="usage" placeholder="Usage">
+                            <option value="0" @if($auto['usage'] == '0') selected @endif>Affaire</option>
+                            <option value="1" @if($auto['usage'] == '1') selected @endif>Fonctionnaire</option>
+                    </select>
+                    <span class="focus-input100"></span>
+                </div>
+            </div>
+            <div class="slice">
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="dure" placeholder="Montant Forfetaire">
@@ -64,7 +74,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <input type="hidden" name="date_permis" value="{{$auto['date_permis']}}">
             <input type="hidden" name="annee_auto" value="{{$auto['annee_auto']}}">
             <input type="hidden" name="puissance" value="{{$auto['puissance']}}">
-            <input type="hidden" name="usage" value="{{$auto['usage']}}">
             <input type="hidden" name="valeur_auto" value="{{$auto['valeur_auto']}}">
             <input type="hidden" name="type_assurance" value="{{$auto['type_assurance']}}">
             <input type="hidden" name="Wilaya" value="{{$auto['Wilaya']}}">

@@ -12,7 +12,7 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
         
-        $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Tranquilité_plus"]);
+        $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0"]);
 
     	//dd($auto);
 
@@ -62,6 +62,16 @@ class TarificationAutoController extends Controller
 			$option = "";
 			switch ($dure) {
 			case ("1") : $dureee = "1ans";
+								break;
+		    }
+		}
+		else if ($offre == "AUTO_P") {
+			$formule = $request->formule;
+			$option = "";
+			switch ($dure) {
+			case ("1") : $dureee = "1ans";
+								break;
+			case ("2") : $dureee = "6mois";
 								break;
 		    }
 		}
@@ -209,6 +219,53 @@ class TarificationAutoController extends Controller
 			}
 			
 		}
+		else if ($offre == "AUTO_P") {
+
+
+		 switch ($usage) {
+			case '0' || '1' : 
+			    switch ($assistance) {
+			    	case ("Sir_mhanni") : $Ass = 1000;
+								break ;
+			    	case ("Tranquilité") : $Ass = 2400;
+								break ;
+			        case ("Tranquilité_plus") : $Ass = 4500;
+								break ;
+			        case ("Liberté") : $Ass = 6500;
+								break ; 
+		        }
+					break ;
+			case '2' : 
+			    switch ($assistance) {
+			    	case ("Sir_mhanni") : $Ass = 1490;
+								break ;
+			    	case ("Tranquilité") : $Ass = 2990;
+								break ;
+			        case ("Tranquilité_plus") : $Ass = 4990;
+								break ;
+			        case ("Liberté") : $Ass = 10000;
+								break ;
+		        }
+					break ; 
+		 }
+         
+
+
+			if ($formule == "1") {
+				switch ($dure) {
+					case '1':
+					  $DASC = (2.5 * $valeur)/100 ;
+				      $VOL = (0.25 * $valeur)/100 ;
+				      $BDG = 1000;
+				      $DR = 1200;
+				      $reduction = 0;	
+						break ;
+				}
+				
+				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
+			}
+			
+		}
 
 		//echo ' RC:'.$RC.' D:'.$DC20.' BDG:'.$BDG.' vol:'.$VOL.' DR:'.$DR.' ASS:'.$Ass;	
 		//$TVA = (($prime_nette+$CP)*17)/100 ; // (CP-PTA)*0.17
@@ -258,7 +315,8 @@ class TarificationAutoController extends Controller
 	                  'formule' => $formule,
 	                  'assistance' => $assistance,
 	                  'prime_total' => $devis,
-	                  'datec' => $datec,
+	                  'datec' =>
+	                  $datec,
                        ];
 
         $request->session()->put('data_auto', $data_session);

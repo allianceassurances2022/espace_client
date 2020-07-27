@@ -73,16 +73,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
-                <h6>Usage <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
-                   <select class="input100" type="text" name="usage" placeholder="Usage">
-                            <option value="0">Affaire</option>
-                            <option value="1">Fonctionnaire</option>
-                    </select>
-                    <span class="focus-input100"></span>
-                </div>
-            </div>
-            <div class="slice">
                 <h6>Valeur estimée du vehicule <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <input class="input100" type="number" name="valeur_auto" placeholder="Valeur estimée du vehicule">
@@ -93,7 +83,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Type d'assurance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="type_assurance" placeholder="Type d'assurance">
-                        {{-- <option value="AUTO_P">AUTO Particulier</option> --}}
+                        <option value="AUTO_P">AUTO Particulier</option>
                         <option value="OTO_L">OTO + LAKI</option>
                     </select>
                     <span class="focus-input100"></span>

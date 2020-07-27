@@ -31,10 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
@@ -42,10 +39,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <div class="wrap-input100 validate-input2">
                     <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999">
 
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-bed"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
@@ -57,10 +51,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     @endforeach
                    </select>
                     
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="formule">
-                        <span class="fa fa-globe"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="slice">
@@ -75,10 +66,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="10001">Adrar</option>
                        @endif
                     </select>
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="formule">
-                        <span class="fa fa-globe"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="radio_section">
@@ -97,10 +85,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input2">
                     <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{$prime_total}} DA" >
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-file-text"></span>
-                    </label>
+                    
                 </div>
             </div>
             <div class="container-contact100-form-btn">

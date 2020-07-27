@@ -1,7 +1,6 @@
 @extends('default_produit')
-
 @section('tab_title')
-    Automobile Formule particulier
+    Automobile formule Particulier
 @endsection
 
 @section('produit_url')
@@ -18,121 +17,84 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         <div class="contact100-form-title" style="@yield('produit_url')">
             <span><img src="{{asset('produit_assets/images/icons/auto_white.svg')}}" alt=""> Automobile</span>
         </div>
-        <form class="contact100-form validate-form">
-            <div class="intro">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
-            </div>
-
-            <!-- produit auto particulier -->
+        <form class="contact100-form validate-form" action="{{route('montant_auto')}}" method="post">
+            @csrf
+            <!-- produit laki + -->
             <div class="tite_container">
-                <h5 class="active"><i class="fa fa-info-circle"></i> Auto particulier <span>2</span></h5>
+                <h5 class="active"><i class="fa fa-info-circle"></i> Laki + <span>2</span></h5>
             </div>
             <div class="slice">
-                <h6>Periode <span>(Choix Obligatoire)</span></h6>
+                <h6>Usage <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">Dur</option>
-                        <option value="">Semi-léger</option>
-                        <option value="">Léger</option>
-                        <option value="">Autre</option>
+                   <select class="input100" type="text" name="usage" placeholder="Usage">
+                            <option value="0" @if($auto['usage'] == '0') selected @endif>Affaire</option>
+                            <option value="1" @if($auto['usage'] == '1') selected @endif>Fonctionnaire</option>
+                            <option value="2" @if($auto['usage'] == '2') selected @endif>Commerce</option>
                     </select>
                     <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
-                    </label>
                 </div>
             </div>
             <div class="slice">
-                <h6>Usage <span>(Choix Obligatoire)</span></h6>
+                <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">Dur</option>
-                        <option value="">Semi-léger</option>
-                        <option value="">Léger</option>
-                        <option value="">Autre</option>
+                    <select class="input100" type="text" name="dure" placeholder="Montant Forfetaire">
+                        <option value="1" @if($auto['dure'] == '1') selected @endif>1 Année</option>
+                        <option value="2" @if($auto['dure'] == '2') selected @endif>6 Mois</option>
                     </select>
                     <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
-                    </label>
                 </div>
             </div>
             <div class="slice">
-                <h6>Couverture <span>(Choix Obligatoire)</span></h6>
+                <h6>Formule <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">Dur</option>
-                        <option value="">Semi-léger</option>
-                        <option value="">Léger</option>
-                        <option value="">Autre</option>
+                    <select class="input100" type="text" name="formule" placeholder="Montant Forfetaire">
+                        <option value="1" @if($auto['formule'] == '1') selected @endif>Tous Risques</option>
+                        <option value="2" @if($auto['formule'] == '2') selected @endif>D.C Valeur Vénale</option>
                     </select>
                     <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
-                    </label>
                 </div>
             </div>
             <div class="slice">
                 <h6>Assistance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select id="phone" class="input100" type="text" name="phone" placeholder="Montant Forfetaire">
-                        <option value="">Dur</option>
-                        <option value="">Semi-léger</option>
-                        <option value="">Léger</option>
-                        <option value="">Autre</option>
+                    <select class="input100" type="text" name="assistance" placeholder="Montant Forfetaire">
+                        <option value="Sir_mhanni" @if($auto ['assistance'] == 'Sir_mhanni') selected @endif>Sir Mhanni</option>
+                        <option value="Tranquilité" @if($auto ['assistance'] == 'Tranquilité') selected @endif>Tranquillité</option>
+                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif>Tranquillité Plus</option>
+                        <option value="Liberté" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
                     </select>
                     <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
-                    </label>
                 </div>
             </div>
-            <!-- fin produit auto particulier -->
-
-            <div class="slice">
-                <h6>Genre <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
-                    <input id="phone" class="input100" type="text" name="phone" placeholder="Véhicules particuliers sans remorques">
-                    <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-home"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="tite_container">
-                <h5 class="active"><i class="fa fa-info-circle"></i> Extensions suplementaire <span>3</span></h5>
-            </div>
-            <div class="radio_section">
-                <h6>Voulez vous ....etc? <br><span>(Choix Obligatoire)</span></h6>
-                <label>
-                    <input type="radio" name="radio2"/>
-                    <span>Oui</span>
-                </label>
-                <label>
-                    <input type="radio" name="radio2"/>
-                    <span>Non</span>
-                </label>
-            </div>
+            <!-- fin produit laki + -->
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input id="phone" class="input100" type="text" name="phone" placeholder="Calcul du Montant en cours" disabled="">
+                    <input class="input100" type="text" name="montant_paye" placeholder="Calcul du Montant en cours" value="{{$devis}}" readonly >
                     <span class="focus-input100"></span>
-                    <label class="label-input100" for="phone">
-                        <span class="fa fa-file-text"></span>
-                    </label>
                 </div>
             </div>
+
+            <input type="hidden" name="date_conducteur" value="{{$auto['date_conducteur']}}">
+            <input type="hidden" name="date_permis" value="{{$auto['date_permis']}}">
+            <input type="hidden" name="annee_auto" value="{{$auto['annee_auto']}}">
+            <input type="hidden" name="puissance" value="{{$auto['puissance']}}">
+            <input type="hidden" name="valeur_auto" value="{{$auto['valeur_auto']}}">
+            <input type="hidden" name="type_assurance" value="{{$auto['type_assurance']}}">
+            <input type="hidden" name="Wilaya" value="{{$auto['Wilaya']}}">
+
+
             <div class="container-contact100-form-btn">
-                <a href="{{ url()->previous() }}" class="contact100-form-btn">
+                <a href="{{route('type_produit',['auto','index'])}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <a href="" class="contact100-form-btn">
-                     Calculer  
+
+                <input  class="contact100-form-btn" type='submit' name="calculer">
+                @if($devis != 0)
+                <a href="{{route('home')}}" class="contact100-form-btn">
+                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
                 </a>
-                <a href="{{route('signin')}}" class="contact100-form-btn">
-                     Suivant <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
-                </a>
+                @endif
             </div>
         </form>
     </div>

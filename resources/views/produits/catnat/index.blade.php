@@ -37,10 +37,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <option value="Commerce">Commerce</option>
                     <option value="Industrielle">Industrielle</option>
                 </select>
-                <span class="focus-input100"></span>
-                <label class="label-input100" for="formule">
-                    <span class="fa fa-umbrella"></span>
-                </label>
             </div>
             
             <div class="container-contact100-form-btn">
