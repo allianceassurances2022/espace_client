@@ -61,14 +61,7 @@ Home
                     <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
                   </div>
                 </div>
-                <div class="panel panel-full-danger">
-                  <div class="panel-heading">
-                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion2" href="#collapse-4" class="collapsed"><i class="icon mdi mdi-chevron-down"></i> Danger Color </a></h4>
-                  </div>
-                  <div id="collapse-4" class="panel-collapse collapse">
-                    <div class="panel-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
-                  </div>
-                </div>
+                
              
     </div>
 </div>

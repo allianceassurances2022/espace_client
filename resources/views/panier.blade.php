@@ -64,7 +64,7 @@
       <div class="menu-header">
         @include('core.produit.inside-menu')
       </div>
-        <h2> Votre Pannier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+        <h2> Votre Panier <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
         @if($auto != '')
         <div class='line'></div>
         <table class='order-table'>
@@ -73,10 +73,10 @@
               <td><img src='produit_assets/images/icons/auto_col.svg' class='full-width'></img>
               </td>
               <td>
-                <br> <span class='thin product_title'>Nom Du Produit</span>
+                <br> <span class='thin product_title'>{{$auto['nom']}}</span>
                 <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
                 <div class="product_actions">
-                	<a href="" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                	<a href="{{route('pannier_supp','auto')}}" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 </div>
               </td>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
               <td>
-                <div class='price'>5 000,00 DA</div>
+                <div class='price'>{{number_format($auto['montant'], 2,',', ' ')}} DA</div>
               </td>
             </tr>
           </tbody>
