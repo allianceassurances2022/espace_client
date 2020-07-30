@@ -52,7 +52,7 @@ class ProduitController extends Controller
                         break;
                     case 'construction':
                         return view('produits.catnat.construction');
-                        break;     
+                        break;
                 }
                 break;
             case 'mrh':
@@ -60,7 +60,7 @@ class ProduitController extends Controller
                     case 'index':
                         return view('produits.mrh.index');
                         break;
-                    
+
                 }
                 break;
             case 'mrp':
@@ -70,9 +70,9 @@ class ProduitController extends Controller
                         break;
                     case 'garanties':
                         return view('produits.professionnel.garanties');
-                        break;    
+                        break;
                 }
-                break;    
+                break;
             default:
                 return view('produits.index');
                 break;
@@ -80,26 +80,26 @@ class ProduitController extends Controller
     }
 
     public function devis_mrh()
-    { 
+    {
 
         $value_mrh = session('data_mrh');
-        
+
         $date_souscription=date('d/m/Y');
-        
+
         $terasse=$value_mrh['terasse'];
-        
+
         $habitation=$value_mrh['habitation'];
-        
+
         $montant=$value_mrh['montant'];
-        
+
         $juredique=$value_mrh['juredique'];
-        
+
         $nbr_piece=$value_mrh['nbr_piece'];
-        
+
         $datec=$value_mrh['datec'];
-        
+
         $prime_total=$value_mrh['prime_total'];
-        
+
         $wilaya = wilaya::all();
         $agences = Agences::all();
 
@@ -109,7 +109,7 @@ class ProduitController extends Controller
     }
 
     public function devis_auto()
-    { 
+    {
 
           $data_session     = [
           'date_conducteur' => $daten,
@@ -126,12 +126,12 @@ class ProduitController extends Controller
           'prime_total'     => $devis,
           ];
 
-        $value_auto        = session('data_auto'); 
-        $date_souscription =date('d/m/Y');  
-        $date_conducteur   =$value_auto['terasse'];  
-        $date_permis       =$value_mrh['habitation'];  
-        $wilaya            =$value_mrh['montant'];   
-        $annee_auto        =$value_mrh['juredique'];     
+        $value_auto        =session('data_auto');
+        $date_souscription =date('d/m/Y');
+        $date_conducteur   =$value_auto['terasse'];
+        $date_permis       =$value_mrh['habitation'];
+        $wilaya            =$value_mrh['montant'];
+        $annee_auto        =$value_mrh['juredique'];
         $puissance         =$value_mrh['nbr_piece'];
         $usage             =$value_mrh['usage'];
         $valeur            =$value_mrh['valeur'];
@@ -141,65 +141,44 @@ class ProduitController extends Controller
         $assistance        =$value_mrh['assistance'];
         $prime_total       =$value_mrh['prime_total'];
         $datec             =$value_mrh['datec'];
-        
+
         $wilaya = wilaya::all();
         $agences = Agences::all();
 
-         $wilaya_selected = 1;
+        $wilaya_selected = 1;
 
         return view('produits.Auto.devis_auto',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
     }
-    
-    public function visuelisation()
-    {  
 
+    public function visuelisation()
+    {
 
         $user=auth::user();
-      
-      
-        
         $pdf = PDF::loadView('pdf_resultat_mrh',compact('user'));
-
-      
         return $pdf->stream();
-     
-       
+
     }
     public function devis_catnat()
-    { 
+    {
 
          $value_catnat      = session('data_catnat');
-         
          $date_souscription = date('d/m/Y');
-         
          $type_formule      = $value_catnat['type_formule'];
-         
          $type_const        = $value_catnat['type_const'];
-         
          $commune_selected  = $value_catnat['commune_selected'];
-         
          $wilaya_selected   = $value_catnat['wilaya_selected'];
-         
          $anne_cont         = $value_catnat['anne_cont'];
-         
          $surface           = $value_catnat['surface'];
-         
          $permis            = $value_catnat['permis'];
-         
          $val_assur         = $value_catnat['val_assur'];
-         
          $reg_para          = $value_catnat['reg_para'];
-         
-         
          $datec             = $value_catnat['datec'];
-         
          $prime_total       = $value_catnat['prime_total'];
-         
          $wilaya            = wilaya::all();
          $agences           = Agences::all();
-         
          $wilaya_selected   = $value_catnat['wilaya_selected'];
          $commune_selected   = $value_catnat['commune_selected'];
+
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences'));
     }

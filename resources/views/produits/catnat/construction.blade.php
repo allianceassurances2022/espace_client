@@ -31,7 +31,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0>
-                    
+
                 </div>
             </div>
             <div class="slice">
@@ -39,7 +39,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <div class="wrap-input100 validate-input2">
                     <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999">
 
-                    
+
                 </div>
             </div>
             <div class="slice">
@@ -50,8 +50,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="{{$wilay->code_wilaya}}" @if ($wilay->code_wilaya == $wilaya_selected) selected @endif>{{$wilay->nlib_wilaya}}</option>
                     @endforeach
                    </select>
-                    
-                    
+
+
                 </div>
             </div>
             <div class="slice">
@@ -66,7 +66,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="10001">Adrar</option>
                        @endif
                     </select>
-                    
+
                 </div>
             </div>
             <div class="radio_section">
@@ -85,18 +85,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input2">
                     <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{$prime_total}} DA" >
-                    
+
                 </div>
             </div>
             <div class="container-contact100-form-btn">
                 <a href="{{ route('type_formule') }}" class="contact100-form-btn">
-                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
 
-                <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">  
+                <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">
                 @if($prime_total != 0)
                 <a href="{{route('devis_catnat')}}" class="contact100-form-btn">
-                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  
+                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </a>
                 @endif
             </div>
@@ -121,25 +121,24 @@ $(document).ready(function(){
   if($(this).val() != '')
   {
    var select = $(this).attr("id");
-   
+
    var value = $(this).val();
-   
- 
-   //alter(dependent);
- 
+
+
+
+
    var _token = $('#signup-token').val();
-   //alert( _token );
+
    $.ajax({
-   
-    //alert(value);
+
     url:"{{ route('construction.fetch') }}",
     method:"POST",
     data:{select:select, value:value, _token: $('#signup-token').val()},
     success:function(result)
     {
      $('#Commune').html(result);
-    //alert(value);
-   
+
+
     }
 
    })

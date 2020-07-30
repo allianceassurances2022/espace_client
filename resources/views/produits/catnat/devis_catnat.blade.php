@@ -50,7 +50,7 @@ Devis MRH
             <div class="col-md-4">
               <label class="col-sm-3 control-label">Formule</label>
               <div class="col-sm-6">
-                <input type="text" name="montant_" value="{{$type_formule}} " class="form-control input-lg" readonly>
+                <input type="text" name="formule" value="{{$type_formule}} " class="form-control input-lg" readonly>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ Devis MRH
               </div>
             </div>
 
-            
+
 
 
           </div>
@@ -95,16 +95,16 @@ Devis MRH
             <div class="col-md-4">
               <label class="col-sm-3 control-label">construite ou vérifiée conforme aux règles parasismiques</label>
               <div class="col-sm-6">
-                <input type="number" name="reg_para" value="{{$reg_para}}" class="form-control input-lg" readonly>
+                <input type="text" name="reg_para" value="{{$reg_para}}" class="form-control input-lg" readonly>
               </div>
             </div>
 
             <div class="col-md-4">
               <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
               <div class="col-sm-6">
-                <select id="Wilaya" name="Wilaya" class="select2">
-                  <option value="oui" >OUI</option>                   
-                  <option value="non" >NON</option>                   
+                <select id="appartient" name="appartient" class="select2">
+                  <option value="oui" >OUI</option>
+                  <option value="non" >NON</option>
                 </select>
               </div>
             </div>
@@ -117,7 +117,7 @@ Devis MRH
               </div>
             </div>
 
-            
+
 
           </div>
 
@@ -126,14 +126,14 @@ Devis MRH
             <div class="col-md-4">
               <label class="col-sm-3 control-label">Wilaya</label>
               <div class="col-sm-6">
-                <input type="text" name="permis" value="{{$wilaya_selected}}" class="form-control input-lg" readonly>
+                <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control input-lg" readonly>
               </div>
             </div>
 
             <div class="col-md-4">
               <label class="col-sm-3 control-label">Commune</label>
               <div class="col-sm-6">
-                <input type="text" name="permis" value="{{$commune_selected}}" class="form-control input-lg" readonly>
+                <input type="text" name="commune" value="{{$commune_selected}}" class="form-control input-lg" readonly>
               </div>
             </div>
 
@@ -154,8 +154,8 @@ Devis MRH
               <div class="col-sm-6">
                 <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
                   @foreach($wilaya as $wilay)
-                  <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
-                  @endforeach                       
+                  <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -163,15 +163,15 @@ Devis MRH
             <div class="col-md-6">
               <label class="col-sm-3 control-label">Commune</label>
               <div class="col-sm-6">
-                <select onchange="vers_commune()" id="Commune" name="Commune" class="select2">
-                  <option value="">-</option>                      
+                <select onchange="vers_commune()" id="Commune_map" name="Commune_map" class="select2">
+                  <option value="">-</option>
                 </select>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            
+
             <div class="col-md-12">
               <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
                 <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
@@ -180,7 +180,7 @@ Devis MRH
             </div>
 
           </div>
-          
+
 
           <div class="col-xs-12">
             <p class="text-right">
@@ -188,10 +188,10 @@ Devis MRH
               <button class="btn btn-space btn-default btn-lg">Annuler</button>
             </p>
           </div>
-          
-          <input type="hidden" name="prime_total" value="{{$prime_total}}">   
-          <input type="hidden" name="id" value="{{$id ?? ''}}">   
-          <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">   
+
+          <input type="hidden" name="prime_total" value="{{$prime_total}}">
+          <input type="hidden" name="id" value="{{$id ?? ''}}">
+          <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">
           <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 
         </form>
@@ -267,7 +267,7 @@ Devis MRH
  function vers_commune(){
 
    var nom = $('#Wilaya_map').children("option:selected").text();
-   var nom_com = $('#Commune').children("option:selected").text();
+   var nom_com = $('#Commune_map').children("option:selected").text();
 
    var geocoder = new google.maps.Geocoder();
 
@@ -299,7 +299,7 @@ Devis MRH
 
   @foreach($agences as $agence)
 
-  var myLatlng = new google.maps.LatLng({{$agence->Latitude}},{{$agence->Longetude}});    
+  var myLatlng = new google.maps.LatLng({{$agence->Latitude}},{{$agence->Longetude}});
   var contentString = '<div id="etiquette" style="width:auto; height:auto;">'+
   '<h2 style="color:#048c9b;">{{$agence->Name}}</h2>'+
   '<div>'+
@@ -314,13 +314,13 @@ Devis MRH
   '</div>';
   var infowindow = new google.maps.InfoWindow({
     content: contentString,
-  }); 
-  
+  });
+
   var marker = new google.maps.Marker({
     position: myLatlng,
     icon: image,
-    title:"{{$agence->Chef_Agence}}" ,  
-    code_agence:"{{$agence->id}}" ,  
+    title:"{{$agence->Chef_Agence}}" ,
+    code_agence:"{{$agence->id}}" ,
     html :  contentString
   });
 
@@ -335,7 +335,7 @@ Devis MRH
 
   @endforeach
 
-} 
+}
 </script>
 
 @endsection
@@ -354,25 +354,25 @@ $('#Wilaya_map').change(function(){
 if($(this).val() != '')
 {
  var select = $(this).attr("id");
- 
+
  var value = $(this).val();
- 
- 
+
+
  //alter(dependent);
- 
+
  var _token = $('#signup-token').val();
  //alert( _token );
  $.ajax({
- 
+
  //alert(value);
  url:"{{ route('construction.fetch') }}",
  method:"POST",
  data:{select:select, value:value, _token: $('#signup-token').val()},
  success:function(result)
  {
-   $('#Commune').html(result);
+   $('#Commune_map').html(result);
    //alert(value);
-   
+
  }
 
 })

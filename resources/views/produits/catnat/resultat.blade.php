@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-Devis MRH
+Devis CATNAT
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@ Devis MRH
                         <th style="width:15%" class="amount">Montant TTC</th>
                       </tr>
                       <tr>
-                        <td class="description">Multirisque Habitation</td>
+                        <td class="description">Catastrophe Naturelle</td>
                         <td class="hours">1</td>
                         <td class="amount">{{number_format($prime_total, 2,',', ' ')}} DA</td>
                       </tr>
