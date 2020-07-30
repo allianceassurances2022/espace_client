@@ -32,7 +32,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Montant forfaitaire</h6>
 
                <div class="wrap-input100 validate-input2">
-                   <input id="montant" class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}">
+                   <input{{--  onkeyup="djilali();" --}} class="input100" type="number" id="montant" name="montant" placeholder="" value="{{$montant ?? ''}}">
                    <span class="focus-input100"></span>
                </div>
            </div>
@@ -41,7 +41,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Nombre de pieces</h6>
 
                <div class="wrap-input100 validate-input3">
-                   <input id="montant" class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}">
+                   <input  class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}">
                    <span class="focus-input100"></span>
                </div>
            </div>
@@ -113,3 +113,40 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 </div>
 @endsection
 
+
+
+{{-- @section('js')
+<script>
+  function djilali (){
+     //console.log();
+     var m=$('#montant').val();
+     //alert(separate(m));
+     $('#montant').val(separate(m));
+  }
+ 
+var reg = new RegExp("( )", 'g');
+
+function separate(v){
+    
+
+    v=v.replace(reg, '').toString();
+    var r="";
+    var i =0
+    var l = v.length;
+    var u =0;
+    for(i=l;i>0;i--){
+        u++;
+        r=v.substr(l-u, 1)+r;
+        if(u%3==0&&u!=l){
+           r=' '+r;
+        }
+                
+    }
+    return r;    
+}
+ 
+
+ 
+</script>
+
+@endsection --}}

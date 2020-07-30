@@ -176,17 +176,6 @@ class ProduitController extends Controller
         
         $type_const=$value_catnat['type_const'];
         
-        $Contenant=$value_catnat['Contenant'];
-        
-        $equipement=$value_catnat['equipement'];
-        
-        $marchandise=$value_catnat['marchandise'];
-        $act_reg=$value_catnat['act_reg'];
-        
-        $reg_com=$value_catnat['reg_com'];
-        
-        $loca=$value_catnat['loca'];
-        
         $commune_selected=$value_catnat['commune_selected'];
         
         $wilaya_selected=$value_catnat['wilaya_selected'];
@@ -211,7 +200,7 @@ class ProduitController extends Controller
 
          $wilaya_selected = 1;
 
-        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','act_reg','reg_com','loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
+        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
     }
 
 }

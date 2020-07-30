@@ -115,6 +115,7 @@ document.addEventListener("click", closeAllSelect);
         $(".bg-container-contact100").css('z-index','1');
       }
     });
+    @yield('ready')
   });
 </script>
 @yield('js')

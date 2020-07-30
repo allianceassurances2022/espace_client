@@ -36,7 +36,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Type de la construction</h6>
                <div class="wrap-input100 validate-input3">
                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                   <option value="{{$type_const ?? 'Habitation individuelle'}}">{{$type_const ?? 'Habitation individuelle'}}</option>
                        <option value="Habitation individuelle">Habitation individuelle</option>
                        <option value="Habitation collective">Habitation collective</option>
                        <option value="Immeuble">Immeuble</option>
@@ -50,8 +49,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                   <label>
        
                       <input type="radio" name="permis" id="oui" value="oui"  checked />
-                    
-                      <input type="radio" name="permis" id="oui" value="oui"   />
                    
                       <span>Oui</span>
                    
@@ -69,9 +66,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
                 </a>
-                <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >   
-                
-                
+                <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant">
             </div>
             
         </form>

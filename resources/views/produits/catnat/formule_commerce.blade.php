@@ -30,7 +30,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Type de la construction </h6>
                 <div class="wrap-input100 validate-input2">
                     <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                    <option value="{{$type_constcomm ?? 'Bloc indépendant'}}">{{$type_constcomm ?? 'Bloc indépendant'}}</option>
                         <option value="Bloc indépendant">Bloc indépendant</option>
                         <option value="Autres">Autres</option>
                     </select>

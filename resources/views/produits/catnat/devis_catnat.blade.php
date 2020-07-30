@@ -11,233 +11,194 @@ Devis MRH
 
 @section('content')
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="panel panel-default panel-border-color panel-border-color-primary">
-                <div class="panel-heading panel-heading-divider">Devis Catastrophe Naturelle<span class="panel-subtitle">Veuillez compléter vos informations pour établire votre devis</span></div>
-                <div class="panel-body">
-                  <form action="{{route('validation_devis_catnat')}}" method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
-                    @csrf
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-border-color panel-border-color-primary">
+      <div class="panel-heading panel-heading-divider">Devis Catastrophe Naturelle<span class="panel-subtitle">Veuillez compléter vos informations pour établire votre devis</span></div>
+      <div class="panel-body">
+        <form action="{{route('validation_devis_catnat')}}" method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+          @csrf
 
-                    <div class="form-group">
+          <div class="form-group">
 
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Date souscription</label>
-                      <div class="col-sm-6">
-                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Date souscription</label>
+              <div class="col-sm-6">
+                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Date d'effet</label>
-                      <div class="col-sm-6">
-                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
-                      </div>
-                    </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Date d'effet</label>
+              <div class="col-sm-6">
+                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
+              </div>
+            </div>
 
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Date expiration</label>
-                      <div class="col-sm-6">
-                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Date expiration</label>
+              <div class="col-sm-6">
+                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                    </div>
+          </div>
 
-                    <div class="form-group">
-
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Formule</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="montant_" value="{{$type_formule}} " class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Type de la construction</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    </div>
-
-                    <div class="form-group">
-
-                      <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Valeur Contenant</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="Contenant" value="{{$Contenant}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Valeur equipement</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="equipement" value="{{$equipement}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Valeur marchandise</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="marchandise" value="{{$marchandise}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    </div>
-
-                    <div class="form-group">
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">inscrite au registre de commerce</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">un registre de commerce disposé</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="reg_com" value="{{$reg_com}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">local assuré ?</label>
-                      <div class="col-sm-6">
-                        <input type="text" name="loca" value="{{$loca}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-
-                  </div>
-<div class="form-group">
-
-<div class="col-md-4">
-  <label class="col-sm-3 control-label">Valeur assurée</label>
-  <div class="col-sm-6">
-    <input type="number" name="val_assur" value="{{$val_assur}}" class="form-control input-lg" readonly>
-  </div>
-</div>
-
-<div class="col-md-4">
-  <label class="col-sm-3 control-label">permis de construire </label>
-  <div class="col-sm-6">
-    <input type="text" name="permis" value="{{$permis}}" class="form-control input-lg" readonly>
-  </div>
-</div>
+          <div class="form-group">
 
 
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Formule</label>
+              <div class="col-sm-6">
+                <input type="text" name="montant_" value="{{$type_formule}} " class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-</div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Type de la construction</label>
+              <div class="col-sm-6">
+                <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                  <div class="form-group">
+          </div>
 
-                  <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Surface</label>
-                      <div class="col-sm-6">
-                        <input type="number" name="surface" value="{{$surface}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Année de construction</label>
-                      <div class="col-sm-6">
-                        <input type="number" name="anne_cont" value="{{$anne_cont}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">construite ou vérifiée conforme aux règles parasismiques</label>
-                      <div class="col-sm-6">
-                        <input type="number" name="reg_para" value="{{$reg_para}}" class="form-control input-lg" readonly>
-                      </div>
-                    </div>
+          <div class="form-group">
 
-                  </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Valeur assurée</label>
+              <div class="col-sm-6">
+                <input type="number" name="val_assur" value="{{$val_assur}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                  <div class="form-group">
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Surface</label>
+              <div class="col-sm-6">
+                <input type="number" name="surface" value="{{$surface}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Année de construction</label>
+              <div class="col-sm-6">
+                <input type="number" name="anne_cont" value="{{$anne_cont}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                    <div class="col-md-8">
-                      <label class="col-sm-2 control-label">Adress</label>
-                      <div class="col-sm-9">
-                        <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control input-lg">
-                      </div>
-                    </div>
+            
 
-                    <div class="col-md-4">
-                      <label class="col-sm-3 control-label">Wilaya</label>
-                      <div class="col-sm-6">
-                        <select id="Wilaya" name="Wilaya" class="select2">
-                            @foreach($wilaya as $wilay)
-                              <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
-                            @endforeach                       
-                        </select>
-                      </div>
-                    </div>
 
-                  </div>
+          </div>
 
-                  <div class="form-group">
-                      <label class="col-sm-9 control-label">Total a payer</label>
-                      <div class="col-sm-3">
-                        <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
-                      </div>
-                    </div>
+          <div class="form-group">
 
-                    <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span></div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">construite ou vérifiée conforme aux règles parasismiques</label>
+              <div class="col-sm-6">
+                <input type="number" name="reg_para" value="{{$reg_para}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-                    <div class="form-group">
-                      <div class="col-md-6">
-                      <label class="col-sm-3 control-label">Wilaya</label>
-                      <div class="col-sm-6">
-                        <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
-                            @foreach($wilaya as $wilay)
-                              <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
-                            @endforeach                       
-                        </select>
-                      </div>
-                    </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
+              <div class="col-sm-6">
+                <select id="Wilaya" name="Wilaya" class="select2">
+                  <option value="oui" >OUI</option>                   
+                  <option value="non" >NON</option>                   
+                </select>
+              </div>
+            </div>
 
-                    <div class="col-md-6">
-                      <label class="col-sm-3 control-label">Commune</label>
-                      <div class="col-sm-6">
-                        <select onchange="vers_commune()" id="Commune" name="Commune" class="select2">
-                            <option value="">-</option>                      
-                        </select>
-                      </div>
-                    </div>
-                    </div>
 
-<div class="form-group">
-                    
-    <div class="col-md-12">
-      <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
-        <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-        style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
-      </div>
-    </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">permis de construire </label>
+              <div class="col-sm-6">
+                <input type="text" name="permis" value="{{$permis}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
 
-</div>
-                    
+            
 
-                    <div class="col-xs-12">
-                        <p class="text-right">
-                          <button type="submit" class="btn btn-space btn-primary btn-lg">Valider</button>
-                          <button class="btn btn-space btn-default btn-lg">Annuler</button>
-                        </p>
-                      </div>
+          </div>
 
-                    <input type="hidden" name="Contenant" value="{{$Contenant}}">   
-                    <input type="hidden" name="prime_total" value="{{$prime_total}}">   
-                    <input type="hidden" name="id" value="{{$id ?? ''}}">   
-                    <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">   
-                    <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+          <div class="form-group">
 
-                  </form>
-                </div>
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Wilaya</label>
+              <div class="col-sm-6">
+                <input type="text" name="permis" value="{{$wilaya_selected}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="col-sm-3 control-label">Commune</label>
+              <div class="col-sm-6">
+                <input type="text" name="permis" value="{{$Commune_selected}}" class="form-control input-lg" readonly>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-9 control-label">Total a payer</label>
+            <div class="col-sm-3">
+              <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
+            </div>
+          </div>
+
+          <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span></div>
+
+          <div class="form-group">
+            <div class="col-md-6">
+              <label class="col-sm-3 control-label">Wilaya</label>
+              <div class="col-sm-6">
+                <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
+                  @foreach($wilaya as $wilay)
+                  <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
+                  @endforeach                       
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="col-sm-3 control-label">Commune</label>
+              <div class="col-sm-6">
+                <select onchange="vers_commune()" id="Commune" name="Commune" class="select2">
+                  <option value="">-</option>                      
+                </select>
               </div>
             </div>
           </div>
+
+          <div class="form-group">
+            
+            <div class="col-md-12">
+              <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
+              </div>
+            </div>
+
+          </div>
+          
+
+          <div class="col-xs-12">
+            <p class="text-right">
+              <button type="submit" class="btn btn-space btn-primary btn-lg">Valider</button>
+              <button class="btn btn-space btn-default btn-lg">Annuler</button>
+            </p>
+          </div>
+          
+          <input type="hidden" name="prime_total" value="{{$prime_total}}">   
+          <input type="hidden" name="id" value="{{$id ?? ''}}">   
+          <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">   
+          <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 @endsection
 
@@ -282,15 +243,15 @@ Devis MRH
 
 <script>
 
-function vers_wilaya(){
+  function vers_wilaya(){
 
- var nom = $('#Wilaya_map').children("option:selected").text();
-
-
-var geocoder = new google.maps.Geocoder();
+   var nom = $('#Wilaya_map').children("option:selected").text();
 
 
-  geocoder.geocode({'address': nom+', algerie'}, function(results, status) {
+   var geocoder = new google.maps.Geocoder();
+
+
+   geocoder.geocode({'address': nom+', algerie'}, function(results, status) {
     if (status === 'OK') {
       map.setCenter(results[0].geometry.location);
     } else {
@@ -298,20 +259,20 @@ var geocoder = new google.maps.Geocoder();
     }
   });
 
-  map.setZoom(10);
+   map.setZoom(10);
 
 
-}
+ }
 
-function vers_commune(){
+ function vers_commune(){
 
- var nom = $('#Wilaya_map').children("option:selected").text();
- var nom_com = $('#Commune').children("option:selected").text();
+   var nom = $('#Wilaya_map').children("option:selected").text();
+   var nom_com = $('#Commune').children("option:selected").text();
 
-var geocoder = new google.maps.Geocoder();
+   var geocoder = new google.maps.Geocoder();
 
 
-  geocoder.geocode({'address': nom_com+', '+nom+', algerie'}, function(results, status) {
+   geocoder.geocode({'address': nom_com+', '+nom+', algerie'}, function(results, status) {
     if (status === 'OK') {
       map.setCenter(results[0].geometry.location);
     } else {
@@ -319,13 +280,13 @@ var geocoder = new google.maps.Geocoder();
     }
   });
 
-  map.setZoom(14);
+   map.setZoom(14);
 
 
-}
+ }
 
 
-function initialize() {
+ function initialize() {
 
 
   var mapOptions = {
@@ -390,31 +351,31 @@ initialize();
 $('#Wilaya_map').change(function(){
 
 
-  if($(this).val() != '')
-  {
-   var select = $(this).attr("id");
-   
-   var value = $(this).val();
-   
+if($(this).val() != '')
+{
+ var select = $(this).attr("id");
  
-   //alter(dependent);
+ var value = $(this).val();
  
-   var _token = $('#signup-token').val();
-   //alert( _token );
-   $.ajax({
+ 
+ //alter(dependent);
+ 
+ var _token = $('#signup-token').val();
+ //alert( _token );
+ $.ajax({
+ 
+ //alert(value);
+ url:"{{ route('construction.fetch') }}",
+ method:"POST",
+ data:{select:select, value:value, _token: $('#signup-token').val()},
+ success:function(result)
+ {
+   $('#Commune').html(result);
+   //alert(value);
    
-    //alert(value);
-    url:"{{ route('construction.fetch') }}",
-    method:"POST",
-    data:{select:select, value:value, _token: $('#signup-token').val()},
-    success:function(result)
-    {
-     $('#Commune').html(result);
-    //alert(value);
-   
-    }
+ }
 
-   })
-  }
- });
+})
+}
+});
 @endsection
