@@ -111,36 +111,36 @@ class ProduitController extends Controller
     public function devis_auto()
     { 
 
-        $data_session = [
-                      'date_conducteur' => $daten,
-                      'date_permis' => $date_permis,
-                      'wilaya' => $wilaya,
-                      'annee_auto' => $annee_auto,
-                      'puissance' => $puissance,
-                      'usage' => $usage,
-                      'valeur' => $valeur,
-                      'offre' => $offre,
-                      'dure' => $dure,
-                      'formule' => $formule,
-                      'assistance' => $assistance,
-                      'prime_total' => $devis,
-                       ];
+          $data_session     = [
+          'date_conducteur' => $daten,
+          'date_permis'     => $date_permis,
+          'wilaya'          => $wilaya,
+          'annee_auto'      => $annee_auto,
+          'puissance'       => $puissance,
+          'usage'           => $usage,
+          'valeur'          => $valeur,
+          'offre'           => $offre,
+          'dure'            => $dure,
+          'formule'         => $formule,
+          'assistance'      => $assistance,
+          'prime_total'     => $devis,
+          ];
 
-        $value_auto = session('data_auto'); 
-        $date_souscription=date('d/m/Y');  
-        $date_conducteur=$value_auto['terasse'];  
-        $date_permis=$value_mrh['habitation'];  
-        $wilaya=$value_mrh['montant'];   
-        $annee_auto=$value_mrh['juredique'];     
-        $puissance=$value_mrh['nbr_piece'];
-        $usage=$value_mrh['usage'];
-        $valeur=$value_mrh['valeur'];
-        $offre=$value_mrh['offre'];
-        $dure=$value_mrh['dure'];
-        $formule=$value_mrh['formule'];
-        $assistance=$value_mrh['assistance'];
-        $prime_total=$value_mrh['prime_total'];
-        $datec=$value_mrh['datec'];
+        $value_auto        = session('data_auto'); 
+        $date_souscription =date('d/m/Y');  
+        $date_conducteur   =$value_auto['terasse'];  
+        $date_permis       =$value_mrh['habitation'];  
+        $wilaya            =$value_mrh['montant'];   
+        $annee_auto        =$value_mrh['juredique'];     
+        $puissance         =$value_mrh['nbr_piece'];
+        $usage             =$value_mrh['usage'];
+        $valeur            =$value_mrh['valeur'];
+        $offre             =$value_mrh['offre'];
+        $dure              =$value_mrh['dure'];
+        $formule           =$value_mrh['formule'];
+        $assistance        =$value_mrh['assistance'];
+        $prime_total       =$value_mrh['prime_total'];
+        $datec             =$value_mrh['datec'];
         
         $wilaya = wilaya::all();
         $agences = Agences::all();
@@ -168,39 +168,40 @@ class ProduitController extends Controller
     public function devis_catnat()
     { 
 
-        $value_catnat = session('data_catnat');
-        
-        $date_souscription=date('d/m/Y');
-        
-        $type_formule=$value_catnat['type_formule'];
-        
-        $type_const=$value_catnat['type_const'];
-        
-        $commune_selected=$value_catnat['commune_selected'];
-        
-        $wilaya_selected=$value_catnat['wilaya_selected'];
-        
-        $anne_cont=$value_catnat['anne_cont'];
-        
-        $surface=$value_catnat['surface'];
-        
-        $permis=$value_catnat['permis'];
-        
-        $val_assur=$value_catnat['val_assur'];
-        
-        $reg_para=$value_catnat['reg_para'];
-        
-        
-        $datec=$value_catnat['datec'];
-        
-        $prime_total=$value_catnat['prime_total'];
-        
-        $wilaya = wilaya::all();
-        $agences = Agences::all();
+         $value_catnat      = session('data_catnat');
+         
+         $date_souscription = date('d/m/Y');
+         
+         $type_formule      = $value_catnat['type_formule'];
+         
+         $type_const        = $value_catnat['type_const'];
+         
+         $commune_selected  = $value_catnat['commune_selected'];
+         
+         $wilaya_selected   = $value_catnat['wilaya_selected'];
+         
+         $anne_cont         = $value_catnat['anne_cont'];
+         
+         $surface           = $value_catnat['surface'];
+         
+         $permis            = $value_catnat['permis'];
+         
+         $val_assur         = $value_catnat['val_assur'];
+         
+         $reg_para          = $value_catnat['reg_para'];
+         
+         
+         $datec             = $value_catnat['datec'];
+         
+         $prime_total       = $value_catnat['prime_total'];
+         
+         $wilaya            = wilaya::all();
+         $agences           = Agences::all();
+         
+         $wilaya_selected   = $value_catnat['wilaya_selected'];
+         $commune_selected   = $value_catnat['commune_selected'];
 
-         $wilaya_selected = 1;
-
-        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','agences'));
+        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences'));
     }
 
 }

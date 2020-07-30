@@ -133,7 +133,7 @@ Devis MRH
             <div class="col-md-4">
               <label class="col-sm-3 control-label">Commune</label>
               <div class="col-sm-6">
-                <input type="text" name="permis" value="{{$Commune_selected}}" class="form-control input-lg" readonly>
+                <input type="text" name="permis" value="{{$commune_selected}}" class="form-control input-lg" readonly>
               </div>
             </div>
 
