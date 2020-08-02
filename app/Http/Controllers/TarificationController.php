@@ -54,8 +54,6 @@ class TarificationController extends Controller
 	public function construction_catanat(Request $request)
 	{
 
-    	//dd($request);
-
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
 		$surface          = '';
@@ -117,7 +115,8 @@ class TarificationController extends Controller
 			$request->session()->put('local', $local);
 
 
-			return view('produits.catnat.construction',compact('type_formule','Contenant','equipement','marchandise','contenu','activite','registre','local','val_assur','permis','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
+			return view('produits.catnat.construction',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','activite','registre','local',
+			'val_assur','permis','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
 
 		}
 
@@ -130,16 +129,16 @@ class TarificationController extends Controller
 		$formul=session('formul');
 		if($formul=="Commerce"){
 			//$type_formulecom-=session('type_formulecom');
-			$val_assurcomm=session('val_assurcomm');
-			$permiscomm=session('permiscomm');
-			$type_constcomm=session('type_constcomm');
-			$Contenant=session('Contenant');
-			$equipement=session('equipement');
-			$marchandise=session('marchandise');
-			$contenu=session('contenu');
-			$activite=session('activite');
-			$registre=session('registre');
-			$local=session('local');
+			$val_assurcomm  =session('val_assurcomm');
+			$permiscomm     =session('permiscomm');
+			$type_constcomm =session('type_constcomm');
+			$Contenant      =session('Contenant');
+			$equipement     =session('equipement');
+			$marchandise    =session('marchandise');
+			$contenu        =session('contenu');
+			$activite       =session('activite');
+			$registre       =session('registre');
+			$local          =session('local');
 			$request->session()->forget('formul');
 			return view('produits.catnat.formule_commerce',compact('val_assurcomm','permiscomm','type_constcomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
 
@@ -147,23 +146,23 @@ class TarificationController extends Controller
 		elseif($formul=="Habitation"){
 
 		 // $type_formule=session('type_formule');
-			$val_assur=session('val_assur');
-			$permis=session('permis');
-			$type_const=session('type_const');
+			$val_assur  =session('val_assur');
+			$permis     =session('permis');
+			$type_const =session('type_const');
 			$request->session()->forget('formul');
 			return view('produits.catnat.formule_habitation',compact('val_assur','permis','type_const'));
 		}elseif($formul="Industrielle"){
 		//$request-=session('type_formulecom');
-			$val_assurcomm=session('val_assurcomm');
-			$permiscomm=session('permiscomm');
-			$type_constcomm=session('type_constcomm');
-			$Contenant=session('Contenant');
-			$equipement=session('equipement');
-			$marchandise=session('marchandise');
-			$contenu=session('contenu');
-			$activite=session('activite');
-			$registre=session('registre');
-			$local=session('local');
+			$val_assurcomm  =session('val_assurcomm');
+			$permiscomm     =session('permiscomm');
+			$type_constcomm =session('type_constcomm');
+			$Contenant      =session('Contenant');
+			$equipement     =session('equipement');
+			$marchandise    =session('marchandise');
+			$contenu        =session('contenu');
+			$activite       =session('activite');
+			$registre       =session('registre');
+			$local          =session('local');
 			$request->session()->forget('formul');
 			return view('produits.catnat.formule_industrielle',compact('val_assurcomm','permiscomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
 
@@ -183,7 +182,17 @@ class TarificationController extends Controller
 
 		$type_formule     = $request->type_formule;
 		$type_const       = $request->type_const;
-
+		$valeur_c         = $request->Contenant;
+		$Contenant        = $valeur_c;
+		$equipement       = $request->equipement;
+		$marchandise      = $request->marchandise;
+		$contenu          = $request->contenu;
+		$act_reg          = $request->activite;
+		$activite         = $act_reg;
+		$reg_com          = $request->registre;
+		$registre         = $reg_com;
+		$loca             = $request->local;
+		$local            = $loca;
 		$Commune_selected = $request->Commune;
 		$wilaya_selected  = $request->Wilaya;
 		$anne_cont        = $request->anne_cont;
@@ -327,7 +336,7 @@ class TarificationController extends Controller
 
 
 		$prime_total_ = $val+$CP+$TD+$maj;
-		$prime_total = number_format($prime_total_,2);
+		$prime_total  = number_format($prime_total_,2);
 		//dd($prime_total);
 
 		$datec=date('d/m/y');
@@ -337,6 +346,12 @@ class TarificationController extends Controller
 			'type_formule'    => $request->type_formule,
 			'type_const'      => $request->type_const,
 			'Contenant'       => $request->Contenant,
+			'equipement'      => $request->equipement,
+	    'marchandise'     => $request->marchandise,
+	    'contenu'         => $request->contenu,
+	    'act_reg'         => $request->activite,
+	    'reg_com'         => $request->registre,
+	    'loca'            => $request->local,
 			'commune_selected'=> $request->Commune,
 			'wilaya_selected' => $request->Wilaya,
 			'anne_cont'       => $request->anne_cont,
@@ -350,18 +365,14 @@ class TarificationController extends Controller
 
 		$request->session()->put('data_catnat', $data_session);
 
-		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
-
-
+		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+		            'marchandise','contenu','act_reg','reg_com','loca','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 
 	}
-
 
 	//mrh
 	public function montant_mrh(Request $request)
 	{
-
-	//['DR','CODE','TYPE_AGENCE','TGVA','STATUT','CHEF_AGENCE','EMAIL']
 
 		$habitation = $request->post('hab');
 
@@ -418,11 +429,10 @@ class TarificationController extends Controller
 
 		$rules = array(
 			'habitation' => 'bail|string|max:190',
-			'terasse' => 'bail|string|max:3',
-			'montant' => 'bail|required|integer',
+			'terasse'    => 'bail|string|max:3',
+			'montant'    => 'bail|required|integer',
 			'juredique'  => 'bail|string',
-			'nbr_piece'    => 'bail|string|max:3',
-
+			'nbr_piece'  => 'bail|string|max:3',
 		);
 
 		if($this->validate($request, $rules)){
@@ -574,9 +584,9 @@ class TarificationController extends Controller
 
 		if ($value_auto) {
 
-			$nom = 'Automobile';
+			$nom     = 'Automobile';
 			$montant = $value_auto['prime_total'];
-			$total=$total+$montant;
+			$total   = $total+$montant;
 
 			$auto = [
 				'nom'     => $nom,
@@ -594,14 +604,14 @@ class TarificationController extends Controller
 	public function paiement ($id){
 
 
-		$risqueh = Rsq_Immobilier::where('id',$id)->first();
-		//$devis = devis::where('id',$id)->GET('prime_total');
-		$code_devis=$risqueh->code_devis;
-		$id=$risqueh->id;
-		$devis = devis::where('id',$code_devis)->first();
-		$prime_total= $devis->prime_total;
-		$cat='';
-		$auto='';
+		$risqueh     = Rsq_Immobilier::where('id',$id)->first();
+		//$devis     = devis::where('id',$id)->GET('prime_total');
+		$code_devis  = $risqueh->code_devis;
+		$id          = $risqueh->id;
+		$devis       = devis::where('id',$code_devis)->first();
+		$prime_total = $devis->prime_total;
+		$cat         = '';
+		$auto        = '';
 
 /*      $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
@@ -664,19 +674,20 @@ class TarificationController extends Controller
     public function validation_devis_mrh (Request $request){
 
 
-    	$var =  $request->date_sous;
-    	$date = str_replace('/', '-', $var);
+    	$var       = $request->date_sous;
+    	$date      = str_replace('/', '-', $var);
     	$date_sous = date('Y-m-d', strtotime($date));
 
-    	$var =  $request->date_eff;
-    	$date = str_replace('/', '-', $var);
-    	$date_eff = date('Y-m-d', strtotime($date));
+    	$var       = $request->date_eff;
+    	$date      = str_replace('/', '-', $var);
+    	$date_eff  = date('Y-m-d', strtotime($date));
 
-    	$var =  $request->date_exp;
-    	$date = str_replace('/', '-', $var);
-    	$date_exp = date('Y-m-d', strtotime($date));
+    	$var       = $request->date_exp;
+    	$date      = str_replace('/', '-', $var);
+    	$date_exp  = date('Y-m-d', strtotime($date));
 
     	$prime_total= $request->prime_total;
+
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
     		$risque->update([
@@ -840,7 +851,8 @@ class TarificationController extends Controller
 
 
 
-    	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp','adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
+    	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
+			'adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
 
     }
 

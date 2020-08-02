@@ -100,6 +100,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </a>
                 @endif
             </div>
+            <input type="hidden" name="Contenant" id="Contenant" value="{{$Contenant ?? ''}}">
+            <input type="hidden" name="equipement" id="equipement" value="{{$equipement ?? ''}}">
+            <input type="hidden" name="marchandise" id="marchandise" value="{{$marchandise ?? ''}}">
+            <input type="hidden" name="contenu" id="contenu" value="{{$contenu ?? ''}}">
+            <input type="hidden" name="activite" id="activite" value="{{$activite ?? ''}}">
+            <input type="hidden" name="registre" id="registre" value="{{$registre ?? ''}}">
+            <input type="hidden" name="local" id="local" value="{{$local ?? ''}}">
             <input type="hidden" name="type_formule" id="type_formule" value="{{$type_formule ?? ''}}">
             <input type="hidden" name="val_assur" id="val_assur" value="{{$val_assur ?? ''}}">
             <input type="hidden" name="permis" id="permis" value="{{$permis ?? ''}}">

@@ -55,11 +55,6 @@ Devis MRH
                 <div class="row">
                   <div class="col-md-12 invoice-payment-method"><span class="title">Mode de paiement</span><span>Carte de crédit</span><span>Type de carte de crédit: CIB ou EDAHABIA</span><span>Vérification du numéro: 4256981387</span></div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12 invoice-message"><span class="title">Merci de nous contacter</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis massa nisl. Sed fringilla turpis id mi ultrices, et faucibus ipsum aliquam. Sed ut eros placerat, facilisis est eu, congue felis.</p>
-                  </div>
-                </div>
                 <div class="row invoice-company-info">
                   <div class="col-sm-6 col-md-2 logo"><img src="assets/img/Alliance_assurances_logo.jpg" alt="Logo-symbol"></div>
                   <div class="col-sm-6 col-md-4 summary"><span class="title">Alliance Assurances</span>
