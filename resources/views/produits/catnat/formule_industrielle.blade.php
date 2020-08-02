@@ -31,37 +31,37 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="Bloc indépendant">Bloc indépendant</option>
                         <option value="Autres">Autres</option>
                     </select>
-                    
+
                 </div>
             </div>
 
             <div class="slice">
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant" min=0>
-                    
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur Contenant" min=0 required>
+
                 </div>
             </div>
 
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement" min=0>
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur equipement" min=0 required>
                 </div>
             </div>
 
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces" min=0>
-                    
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Nombre de pieces" min=0 required>
+
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu" min=0>
-                    
+                    <input id="phone" class="input100" type="number" name="phone" placeholder="Valeur contenu" min=0 required>
+
                 </div>
             </div>
             <div class="radio_secion">
@@ -69,7 +69,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section">
                         <h6>Es une activité qui doit être inscrite au registre de commerce ? </h6>
                         <label>
-                            <input type="radio" name="activite"/>
+                            <input type="radio" name="activite" checked/>
                             <span>Oui</span>
                         </label>
                         <label>
@@ -86,7 +86,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section">
                         <h6>Si oui, disposez-vous d’un registre de commerce ? </h6>
                         <label>
-                            <input type="radio" name="registre"/>
+                            <input type="radio" name="registre" checked/>
                             <span>Oui</span>
                         </label>
                         <label>
@@ -99,7 +99,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section">
                         <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ? </h6>
                         <label>
-                            <input type="radio" name="local"/>
+                            <input type="radio" name="local" checked/>
                             <span>Oui</span>
                         </label>
                         <label>
@@ -118,9 +118,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="container-contact100-form-btn">
                 <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
-                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
-                <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" > 
+                <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >
             </div>
         </form>
     </div>

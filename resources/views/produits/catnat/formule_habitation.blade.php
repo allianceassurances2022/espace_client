@@ -20,15 +20,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         @include('core.produit.inside-menu')
         <form class="contact100-form validate-form"  action="{{route('construction_catanat')}}" method="post">
             @csrf
-          
+
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i>Formule Habitation <span>2</span></h5>
             </div>
             <div class="slice">
                 <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0>
-                    
+                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0 required>
+
                 </div>
             </div>
 
@@ -40,18 +40,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                        <option value="Habitation collective">Habitation collective</option>
                        <option value="Immeuble">Immeuble</option>
                    </select>
-                   
+
                </div>
            </div>
           <div class="slice">
                 <div class="radio_section">
                   <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
                   <label>
-       
+
                       <input type="radio" name="permis" id="oui" value="oui"  checked />
-                   
+
                       <span>Oui</span>
-                   
+
                   </label>
                   <label>
                       <input type="radio" name="permis" id="non" value="non" />
@@ -64,11 +64,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="container-contact100-form-btn">
                 <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
-                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
                 <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant">
             </div>
-            
+
         </form>
     </div>
 </div>

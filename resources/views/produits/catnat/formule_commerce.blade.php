@@ -39,14 +39,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0>
+                    <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0 required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="equipement" class="input100" type="number" name="equipement" value="{{$equipement ?? ''}}" placeholder="Valeur equipement" min=0>
+                    <input id="equipement" class="input100" type="number" name="equipement" value="{{$equipement ?? ''}}" placeholder="Valeur equipement" min=0 required>
 
                 </div>
             </div>
@@ -55,14 +55,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="marchandise" class="input100" type="number" name="marchandise" value="{{$marchandise ?? ''}}" placeholder="Valeur marchandise" min=0>
+                    <input id="marchandise" class="input100" type="number" name="marchandise" value="{{$marchandise ?? ''}}" placeholder="Valeur marchandise" min=0 required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? ''}}" placeholder="Valeur contenu" min=0>
+                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? ''}}" placeholder="Valeur contenu" min=0 required>
 
                 </div>
             </div>
@@ -71,7 +71,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Es une activité qui doit être inscrite au registre de commerce ?</h6>
                         <label>
-                            <input type="radio" name="activite" id="oui" value="oui" />
+                            <input type="radio" name="activite" id="oui" value="oui" checked/>
                             <span>Oui</span>
                         </label>
                         <label>
@@ -88,7 +88,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Si oui, disposez-vous d’un registre de commerce ?</h6>
                         <label>
-                            <input type="radio" name="registre" value="oui" />
+                            <input type="radio" name="registre" value="oui" checked/>
                             <span>Oui</span>
                         </label>
                         <label>
@@ -101,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ?</h6>
                         <label>
-                            <input type="radio" name="local" value="oui" />
+                            <input type="radio" name="local" value="oui" checked/>
                             <span>Oui</span>
                         </label>
                         <label>

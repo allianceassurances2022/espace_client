@@ -30,14 +30,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Superficie</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0>
+                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0 required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999">
+                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999" required>
 
 
                 </div>
