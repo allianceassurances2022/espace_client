@@ -927,10 +927,8 @@ class TarificationController extends Controller
 
 
 
-    	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp',
-			'type_formule','wilaya_selected','commune_selected','surface','wilaya',
-			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement',
-			'marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','id'));
+    	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
+			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','id'));
 
     }
 

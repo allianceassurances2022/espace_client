@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('head_title')
-Home 
+Home
 @endsection
 
 
@@ -35,7 +35,7 @@ Home
 </div>
 </div>
 <div class="col-md-7">
-    
+
          <div id="accordion2" class="panel-group accordion accordion-color">
                 <div class="panel panel-full-primary">
                   <div class="panel-heading">
@@ -61,8 +61,8 @@ Home
                     <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed vestibulum quam. Pellentesque non feugiat neque, non volutpat orci. Integer ligula lacus, ornare eget lobortis ut, molestie quis risus. </div>
                   </div>
                 </div>
-                
-             
+
+
     </div>
 </div>
 </div>
@@ -104,7 +104,7 @@ Home
                       <tr>
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">{{$cat['nom']}}</td>
                         <td>{{number_format($cat['montant'], 2,',', ' ')}} DA</td>
-                        <td>{{$mrh['datec']}}</td>
+                        <td>{{$cat['datec']}}</td>
                         <td class="actions"><a href="{{route('devis_catnat')}}" class="icon"><i class="mdi mdi-edit"></i></a></td>
                       </tr>
                         @endif
@@ -205,7 +205,7 @@ Home
                 </div>
               </div>
             </div>
-          
+
 
           </div>
 

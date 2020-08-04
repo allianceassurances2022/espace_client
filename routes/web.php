@@ -80,4 +80,8 @@ Route::get('signin', function () {
   return view('signin');
 })->name('signin');
 
+Route::get('inscription', function () {
+  return view('inscription');
+})->name('inscription');
+
 Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisation');

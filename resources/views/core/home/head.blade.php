@@ -16,6 +16,6 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css"/>
 
-   
-    
+
+
 </head>

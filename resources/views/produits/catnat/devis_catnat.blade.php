@@ -12,10 +12,27 @@ Devis MRH
 @section('content')
 
 <div class="row">
-    <div class="col-md-12">
+      <div class="col-md-12">
         <div class="panel panel-default panel-border-color panel-border-color-primary">
             <div class="panel-heading panel-heading-divider">Devis Catastrophe Naturelle<span class="panel-subtitle">Veuillez compléter vos informations pour établire votre devis</span></div>
             <div class="panel-body">
+              <div class="row wizard-row">
+                <div class="col-md-12 fuelux">
+                  <div class="block-wizard panel panel-default">
+                    <div id="wizard1" class="wizard wizard-ux">
+                      <ul class="steps">
+                        <li data-step="1" class="active">Etape 1<span class="chevron"></span></li>
+                        <li data-step="2">Etape 2<span class="chevron"></span></li>
+                        <li data-step="3">Etape 3<span class="chevron"></span></li>
+                      </ul>
+                      <div class="actions">
+                        <button type="button" class="btn btn-xs btn-prev btn-default"><i class="icon mdi mdi-chevron-left"></i>Précédent</button>
+                        <button type="button" data-last="Finish" class="btn btn-xs btn-next btn-default">Suivant<i class="icon mdi mdi-chevron-right"></i></button>
+                      </div>
+                      <div class="step-content">
+
+                        <div data-step="1" class="step-pane active">
+
                 <form action="{{route('validation_devis_catnat')}}" method="post" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                     @csrf
 
@@ -31,14 +48,14 @@ Devis MRH
                         <div class="col-md-4">
                             <label class="col-sm-3 control-label">Date d'effet</label>
                             <div class="col-sm-6">
-                                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
+                                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()" required>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <label class="col-sm-3 control-label">Date expiration</label>
                             <div class="col-sm-6">
-                                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
+                                <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly required>
                             </div>
                         </div>
 
@@ -104,7 +121,7 @@ Devis MRH
                             <div class="col-sm-6">
                                 <select id="appartient" name="appartient" class="select2">
                                     <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
-                                        <option value="non" @if($appartient == "non") selected @endif>NON</option>
+                                    <option value="non" @if($appartient == "non") selected @endif>NON</option>
                                 </select>
                             </div>
                         </div>
@@ -216,14 +233,14 @@ Devis MRH
 
                     @endif
 
-                    <div class="form-group">
-                        <label class="col-sm-9 control-label">Total a payer</label>
-                        <div class="col-sm-3">
-                            <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
-                        </div>
                     </div>
 
-                    <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span></div>
+                    <div data-step="2" class="step-pane">
+
+                    <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span>
+                    <p class="text-center" id="agence_selected"></p>
+
+                    </div>
 
                     <div class="form-group">
                         <div class="col-md-6">
@@ -249,7 +266,7 @@ Devis MRH
 
                     <div class="form-group">
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-top: 15px;">
                             <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
                                 <iframe src="https://maps.google.com/maps?q=cheraga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border: 0;width: -webkit-fill-available;height: inherit;" allowfullscreen></iframe>
                             </div>
@@ -259,9 +276,9 @@ Devis MRH
 
 
                     <div class="col-xs-12">
-                        <p class="text-right">
-                            <button type="submit" class="btn btn-space btn-primary btn-lg">Valider</button>
-                            <button class="btn btn-space btn-default btn-lg">Annuler</button>
+                        <p class="text-right" style="padding-top: 15px;">
+                            <button type="submit" id="btn_validate" class="btn btn-space btn-primary btn-lg" disabled>Valider</button>
+                            <a href="{{route('home')}}" class="btn btn-space btn-default btn-lg">Annuler</a>
                         </p>
                     </div>
 
@@ -273,8 +290,23 @@ Devis MRH
                 </form>
             </div>
         </div>
+
+        <div class="form-group">
+            <h3 class="col-sm-9 text-right">Total a payer :</h3>
+            <div class="col-sm-3">
+                <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
+            </div>
+        </div>
+
     </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
 @endsection
 
@@ -289,11 +321,21 @@ Devis MRH
 <script src="{{asset('assets/js/app-form-elements.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/app-form-masks.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/lib/fuelux/js/wizard.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/app-form-wizard.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
 
 
 <script>
+    function active_button(){
+      if ($('input[value=""]').length > 0) {
+      console.log('certains champs sont vides!')
+      $('#btn_validate').attr('disabled', true);
+    }else {
+      $('#btn_validate').attr('disabled', false);
+    }
+    }
     function dateplusunans() {
 
         var x = document.getElementById("date_effet");
@@ -312,6 +354,7 @@ Devis MRH
         var year = apr.getFullYear();
         var final = day + "/" + month + "/" + year;
         document.getElementById("date_expiration").value = final;
+        active_button();
     }
 </script>
 
@@ -399,6 +442,7 @@ function vers_commune() {
             icon: image,
             title: "{{$agence->Chef_Agence}}",
             code_agence: "{{$agence->id}}",
+            adresse: "{{$agence->Adresse}}",
             html: contentString
         });
 
@@ -414,6 +458,8 @@ function vers_commune() {
             infowindow.open(map, this);
             this.setIcon(image_selected);
             $(code_agence).val(this.code_agence);
+            $(agence_selected).text("Agence: "+this.code_agence+"  "+ this.adresse);
+            active_button();
         });
 
         // To add the marker to the map, call setMap();
@@ -429,6 +475,7 @@ function vers_commune() {
 @section('docready')
 App.formElements();
 App.masks();
+App.wizard();
 
 var map;
 

@@ -1,6 +1,6 @@
 /*!
  * beagle v1.1.1 (http://foxythemes.net/themes/beagle)
- * Copyright 2014-2016 Foxy Themes all rights reserved 
+ * Copyright 2014-2016 Foxy Themes all rights reserved
  */
 
 /*------------------------------------------------------------------
@@ -284,7 +284,7 @@ th {
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
-  
+
 
   *,
   *:before,
@@ -355,7 +355,7 @@ th {
     border: 1px solid #ddd !important;
   }
 
-  
+
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -7495,9 +7495,9 @@ button.close {
   }
 }
 /* General styles for the modal */
-/* 
+/*
 Styles for the html/body for special modal where we want 3d effects
-Note that we need a container wrapping all content on the page for the 
+Note that we need a container wrapping all content on the page for the
 perspective effects (not including the modals and the overlay).
 */
 .modal-perspective,
@@ -20414,6 +20414,6 @@ fieldset[disabled] .full-calendar .fc-button.active {
   .lg-mb-0 {
     margin-bottom: 0px !important;
   }
-  
+
 
 }
