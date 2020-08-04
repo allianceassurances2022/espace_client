@@ -103,15 +103,15 @@ Devis MRH
                             <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
                             <div class="col-sm-6">
                                 <select id="appartient" name="appartient" class="select2">
-                                    <option value="oui">OUI</option>
-                                    <option value="non">NON</option>
+                                    <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
+                                        <option value="non" @if($appartient == "non") selected @endif>NON</option>
                                 </select>
                             </div>
                         </div>
 
                     </div>
 
-                      @if($type_formule == "Habitation")
+                    @if($type_formule == "Habitation")
 
                     <div class="form-group">
 
@@ -139,82 +139,82 @@ Devis MRH
 
                     </div>
 
-                      @endif
+                    @endif
 
-                      @if($type_formule == "Commerce" || $type_formule == "Industrielle")
-                        <div class="form-group">
+                    @if($type_formule == "Commerce" || $type_formule == "Industrielle")
+                    <div class="form-group">
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">Type de la construction</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">Type de la construction</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly="readonly">
+                            </div>
+                        </div>
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">Valeur Contenant</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$Contenant}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">Valeur Contenant</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="contenant" value="{{$Contenant}}" class="form-control input-lg" readonly="readonly">
+                            </div>
+                        </div>
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">Valeur equipement</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$equipement}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
-
-
-
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">Valeur equipement</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="equipement" value="{{$equipement}}" class="form-control input-lg" readonly="readonly">
+                            </div>
                         </div>
 
 
-                        <div class="form-group">
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">Valeur marchandise</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$marchandise}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
+                    </div>
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">Valeur contenu</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$contenu}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
 
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">inscrite au registre de commerce</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$act_reg}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
+                    <div class="form-group">
 
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">Valeur marchandise</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="marchandise" value="{{$marchandise}}" class="form-control input-lg" readonly="readonly">
+                            </div>
                         </div>
 
-
-                        <div class="form-group">
-
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">disposez-vous d’un registre de commerce</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$reg_com}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
-
-                          <div class="col-md-4">
-                              <label class="col-sm-3 control-label">local est-il assuré</label>
-                              <div class="col-sm-6">
-                                  <input type="text" name="type_const" value="{{$loca}}" class="form-control input-lg" readonly="readonly">
-                              </div>
-                          </div>
-
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">Valeur contenu</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="contenu" value="{{$contenu}}" class="form-control input-lg" readonly="readonly">
+                            </div>
                         </div>
 
-                      @endif
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">inscrite au registre de commerce</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control input-lg" readonly="readonly">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">disposez-vous d’un registre de commerce</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="reg_com" value="{{$reg_com}}" class="form-control input-lg" readonly="readonly">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="col-sm-3 control-label">local est-il assuré</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="loca" value="{{$loca}}" class="form-control input-lg" readonly="readonly">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @endif
 
                     <div class="form-group">
                         <label class="col-sm-9 control-label">Total a payer</label>
@@ -316,51 +316,51 @@ Devis MRH
 </script>
 
 <script>
-    function vers_wilaya() {
+function vers_wilaya() {
 
-        var nom = $('#Wilaya_map').children("option:selected").text();
-
-
-        var geocoder = new google.maps.Geocoder();
+    var nom = $('#Wilaya_map').children("option:selected").text();
 
 
-        geocoder.geocode({
-            'address': nom + ', algerie'
-        }, function(results, status) {
-            if (status === 'OK') {
-                map.setCenter(results[0].geometry.location);
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-
-        map.setZoom(10);
+    var geocoder = new google.maps.Geocoder();
 
 
-    }
+    geocoder.geocode({
+        'address': nom + ', algerie'
+    }, function(results, status) {
+        if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
 
-    function vers_commune() {
-
-        var nom = $('#Wilaya_map').children("option:selected").text();
-        var nom_com = $('#Commune_map').children("option:selected").text();
-
-        var geocoder = new google.maps.Geocoder();
-
-
-        geocoder.geocode({
-            'address': nom_com + ', ' + nom + ', algerie'
-        }, function(results, status) {
-            if (status === 'OK') {
-                map.setCenter(results[0].geometry.location);
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-
-        map.setZoom(14);
+    map.setZoom(10);
 
 
-    }
+}
+
+function vers_commune() {
+
+    var nom = $('#Wilaya_map').children("option:selected").text();
+    var nom_com = $('#Commune_map').children("option:selected").text();
+
+    var geocoder = new google.maps.Geocoder();
+
+
+    geocoder.geocode({
+        'address': nom_com + ', ' + nom + ', algerie'
+    }, function(results, status) {
+        if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+
+    map.setZoom(14);
+
+
+}
 
 
     function initialize() {
@@ -372,20 +372,12 @@ Devis MRH
             mapTypeId: google.maps.MapTypeId.ROADMAP,
         }
         map = new google.maps.Map(document.getElementById("map-container-google-1"), mapOptions);
-        var image = '{{asset('
-        images / point.png ')}}';
+        var image = '{{asset('images/point.png ')}}';
+        var image_selected = '{{asset('images/point_selected.png ')}}';
 
         @foreach($agences as $agence)
 
-        var myLatlng = new google.maps.LatLng({
-            {
-                $agence - > Latitude
-            }
-        }, {
-            {
-                $agence - > Longetude
-            }
-        });
+        var myLatlng = new google.maps.LatLng({{$agence->Latitude}},{{$agence->Longetude}});
         var contentString = '<div id="etiquette" style="width:auto; height:auto;">' +
             '<h2 style="color:#048c9b;">{{$agence->Name}}</h2>' +
             '<div>' +
@@ -410,9 +402,17 @@ Devis MRH
             html: contentString
         });
 
+    //     google.maps.event.addListener(map,'click', function () {
+    //     infowindow.close(map);
+    //
+    //     //Change the marker icon
+    //     this.setIcon('https://www.google.com/mapfiles/marker_black.png');
+    // });
+
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(this.html);
             infowindow.open(map, this);
+            this.setIcon(image_selected);
             $(code_agence).val(this.code_agence);
         });
 

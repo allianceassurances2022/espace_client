@@ -19,9 +19,13 @@ class CreateRsqImmobilierTable extends Migration
             $table->integer('etage')->nullable();
             $table->float('superficie',10,2)->nullable();
             $table->string('annee_construction',4)->nullable();
-            $table->float('valeur_contenu', 10, 2)->nullable();
+            $table->float('valeur_contenant', 10, 2)->nullable();
             $table->float('valeur_equipement', 10, 2)->nullable();
             $table->float('valeur_marchandise', 10, 2)->nullable();
+            $table->float('valeur_contenu', 10, 2)->nullable();
+            $table->string('insc_registe_com',10)->nullable();
+            $table->string('registe_com',10)->nullable();
+            $table->string('local_assure',10)->nullable();
             $table->string('nature_activite',20)->nullable();
             $table->string('construction',20)->nullable();
             $table->string('reg_para',20)->nullable();

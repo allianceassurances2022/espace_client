@@ -26,61 +26,58 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
 });
 
+
+/////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
 
+Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 
 Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');
-
 Route::post('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
 Route::get('index' , 'TarificationController@precidanttypeformul')->name('index');
 Route::get('type_formule' , 'TarificationController@precidantconstructuin')->name('type_formule');
-
-
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
-Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
 Route::post('choix_auto' , 'TarificationAutoController@choix_auto')->name('choix_auto');
 Route::post('montant_auto' , 'TarificationAutoController@montant_auto')->name('montant_auto');
-
-
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
+
+///////////////////////////// Panier
 Route::get('panier', 'TarificationController@panier')->name('pannier');
 Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
 Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
 
-Route::get('signup', function () {
-    return view('signup');
-})->name('signup');
-
-Route::get('signin', function () {
-    return view('signin');
-})->name('signin');
 
 
-Auth::routes();
-
+//////////////////////////////// Accueil
 Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');
-Route::get('/devis_catnat', 'ProduitController@devis_catnat')->name('devis_catnat')->middleware('auth');
-Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh')->middleware('auth');
-
+/////////////////////////////// Devis produits
 Route::get('/devis_auto', 'ProduitController@devis_auto')->name('devis_auto')->middleware('auth');
 Route::get('/devis_auto/{id}', 'TarificationAutoController@modification_devis_auto')->name('modification_devis_auto')->middleware('auth');
 
-//Route::post('map_wilaya' , 'TarificationController@fetch')->name('construction.fetch');
+Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');
+Route::post('/validation_devis_mrh' , 'TarificationController@validation_devis_mrh')->name('validation_devis_mrh')->middleware('auth');
+Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->name('modification_devis_mrh')->middleware('auth');
 
-
-Route::post('/validation_devis_mrh' , 'TarificationController@validation_devis_mrh')->name('validation_devis_mrh');
-
+Route::get('/devis_catnat', 'ProduitController@devis_catnat')->name('devis_catnat')->middleware('auth');
 Route::post('/validation_devis_catnat' , 'TarificationController@validation_devis_catnat')->name('validation_devis_catnat');
+Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catnat')->name('modification_devis_catnat')->middleware('auth');
 
+///////////////////////////// Utilisateurs
+Auth::routes();
+
+Route::get('signup', function () {
+  return view('signup');
+})->name('signup');
+
+Route::get('signin', function () {
+  return view('signin');
+})->name('signin');
 
 Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisation');
-

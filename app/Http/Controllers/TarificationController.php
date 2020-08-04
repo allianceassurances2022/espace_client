@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
 use App\zcatnat;
+use App\Agences;
 
 use App\Rsq_Immobilier;
 use App\devis;
@@ -743,6 +744,8 @@ class TarificationController extends Controller
     }
     public function validation_devis_catnat(Request $request){
 
+			//dd($request);
+
     	$var =  $request->date_sous;
     	$date = str_replace('/', '-', $var);
     	$date_sous = date('Y-m-d', strtotime($date));
@@ -760,10 +763,7 @@ class TarificationController extends Controller
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
     		$risque->update([
-    			'adresse'     => $request->adresse,
-    			'code_wilaya' => $request->Wilaya,
-    			'superficie'  => $request->surface,
-    			'etage'       => $request->etage
+    			'appartient'      => $request->appartient,
     		]);
 
     		$devis= devis::find($risque->code_devis);
@@ -785,6 +785,8 @@ class TarificationController extends Controller
     			'code_agence'       => $request->code_agence
     		]);
 
+				if($request->formule == 'Habitation'){
+
     		$res=Rsq_Immobilier::create([
 					'formule'             => $request->formule,
     			'type_habitation'     => $request->type_const,
@@ -797,8 +799,28 @@ class TarificationController extends Controller
     			'reg_para'            => $request->reg_para,
     			'appartient'          => $request->appartient,
     			'code_devis'          => $dev->id
-
     		]);
+
+			}else{
+				$res=Rsq_Immobilier::create([
+					'formule'            => $request->formule,
+    			'type_habitation'    => $request->type_const,
+    			'valeur_contenant'   => $request->contenant,
+    			'valeur_equipement'  => $request->equipement,
+    			'valeur_marchandise' => $request->marchandise,
+					'valeur_contenu'     => $request->contenu,
+    			'insc_registe_com'   => $request->act_reg,
+    			'registe_com'        => $request->reg_com,
+    			'local_assure'       => $request->loca,
+					'superficie'         => $request->surface,
+    			'annee_construction' => $request->anne_cont,
+					'code_wilaya'        => $request->wilaya,
+					'code_commune'       => $request->commune,
+    			'reg_para'           => $request->reg_para,
+    			'appartient'         => $request->appartient,
+    			'code_devis'         => $dev->id
+    		]);
+			}
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
@@ -853,6 +875,62 @@ class TarificationController extends Controller
 
     	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
 			'adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
+
+    }
+
+
+		public function modification_devis_catnat (Request $request,$id){
+
+
+    	$risque             = Rsq_Immobilier::find($id);
+    	$id                 = $risque->id;
+
+    	$devis              = devis::find($risque->code_devis);
+
+    	$var                = $devis->date_souscription;
+    	$date               = str_replace('-', '/', $var);
+    	$date_sous          = date('d-m-Y', strtotime($date));
+
+    	$var                = $devis->date_effet;
+    	$date               = str_replace('-', '/', $var);
+    	$date_eff           = date('d-m-Y', strtotime($date));
+
+    	$var                = $devis->date_expiration;
+    	$date               = str_replace('-', '/', $var);
+    	$date_exp           = date('d-m-Y', strtotime($date));
+
+    	$date_souscription = $date_sous;
+    	$date_eff          = $date_eff;
+    	$date_exp          = $date_exp;
+			$type_formule      = $risque->formule;
+    	$type_const        = $risque->type_habitation;
+    	$Contenant         = $risque->valeur_contenant;
+    	$equipement        = $risque->valeur_equipement;
+    	$marchandise       = $risque->valeur_marchandise;
+    	$contenu           = $risque->valeur_contenu;
+    	$act_reg           = $risque->insc_registe_com;
+    	$reg_com           = $risque->registe_com;
+    	$loca              = $risque->local_assure;
+    	$val_assur         = $risque->valeur_assure;
+    	$permis            = $risque->permis;
+    	$surface           = $risque->superficie;
+    	$anne_cont         = $risque->annee_construction;
+    	$wilaya_selected   = $risque->code_wilaya;
+    	$commune_selected  = $risque->code_commune;
+    	$reg_para          = $risque->reg_para;
+    	$appartient        = $risque->appartient;
+    	$prime_total       = $devis->prime_total;
+    	$wilaya_selected   = $risque->code_wilaya;
+    	$wilaya            = wilaya::all();
+    	$code_agence       = $devis->code_agence;
+			$agences           = Agences::all();
+
+
+
+    	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp',
+			'type_formule','wilaya_selected','commune_selected','surface','wilaya',
+			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement',
+			'marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','id'));
 
     }
 

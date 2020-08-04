@@ -75,7 +75,7 @@ Devis CATNAT
                 </div>
                 <div class="row invoice-footer">
                   <div class="col-md-12">
-                    <a href="{{ route('modification_devis_mrh',$risque->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    <a href="{{route('modification_devis_catnat',$risque->id)}}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
                     <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button>
                     <button class="btn btn-lg btn-space btn-default">Imprimer</button>
                     <a href="{{route('paiement',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>

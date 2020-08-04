@@ -176,9 +176,10 @@ class ProduitController extends Controller
          $agences           = Agences::all();
          $wilaya_selected   = $value_catnat['wilaya_selected'];
          $commune_selected  = $value_catnat['commune_selected'];
+         $appartient        = "oui";
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com',
-        'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences'));
+        'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient'));
     }
 
 }
