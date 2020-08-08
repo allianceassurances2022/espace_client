@@ -26,6 +26,7 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
 });
 
+Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
@@ -38,7 +39,6 @@ Route::post('construction_catanat' , 'TarificationController@construction_catana
 Route::get('index' , 'TarificationController@precidanttypeformul')->name('index');
 Route::get('type_formule' , 'TarificationController@precidantconstructuin')->name('type_formule');
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
-Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
 Route::post('choix_auto' , 'TarificationAutoController@choix_auto')->name('choix_auto');
 Route::post('montant_auto' , 'TarificationAutoController@montant_auto')->name('montant_auto');

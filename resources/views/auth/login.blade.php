@@ -6,12 +6,12 @@
             <div class="panel panel-default panel-border-color panel-border-color-primary">
               <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur.</span></div>
               <div class="panel-body">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" data-parsley-validate="" novalidate="">
                         @csrf
                   <div class="form-group">
                     <input id="username" type="text" placeholder="Utilisateur" autocomplete="off" class="form-control" name="email">
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="parsley-errors-list filled" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -20,7 +20,7 @@
                   <div class="form-group">
                     <input id="password" type="password" placeholder="Mot de passe" class="form-control" name="password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="parsley-errors-list filled" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -40,7 +40,7 @@
                 </form>
               </div>
             </div>
-            <div class="splash-footer"><span>Vous n'avez pas de compte? <a href="#">S'inscrire</a></span></div>
+            <div class="splash-footer"><span>Vous n'avez pas de compte? <a href="{{route('register')}}">S'inscrire</a></span></div>
           </div>
         </div>
 @endsection

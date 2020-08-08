@@ -10174,6 +10174,31 @@ canvas {
     margin-top: 50px;
   }
 }
+.splash-container2 {
+  max-width: 801px;
+  margin: 50px auto;
+}
+.splash-container2 .panel {
+  margin-bottom: 30px;
+}
+.splash-container2 .panel .panel-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+.splash-container2 .panel .panel-body {
+  padding: 20px 30px 15px;
+}
+.splash-container2 .panel .panel-body .be-checkbox {
+  display: inline-block;
+  padding: 0;
+}
+@media (max-width: 767px) {
+  .splash-container2 {
+    margin-top: 50px;
+  }
+}
 .splash-title {
   text-align: center;
   display: block;
@@ -12394,6 +12419,13 @@ li.L9 {
 .splash-container.sign-up .panel .panel-heading {
   margin-bottom: 0;
 }
+.splash-container2.sign-up {
+  max-width: 433px;
+  margin: 10px auto;
+}
+.splash-container2.sign-up .panel .panel-heading {
+  margin-bottom: 0;
+}
 .signup-password {
   margin-bottom: 18px;
 }
@@ -12410,6 +12442,9 @@ li.L9 {
   [Forgot password]
 */
 .splash-container.forgot-password .panel .panel-heading {
+  margin-bottom: 5px;
+}
+.splash-container2.forgot-password .panel .panel-heading {
   margin-bottom: 5px;
 }
 /*------------------------------------------------------------------
@@ -18240,10 +18275,10 @@ form.dropzone .note {
 .fuelux .wizard .step-content .step-pane {
   display: none;
 }
-.fuelux .wizard .step-content > .active {
+.fuelux .wizard .step-content .active {
   display: block;
 }
-.fuelux .wizard .step-content > .active .btn-group .active {
+.fuelux .wizard .step-content .active .btn-group .active {
   display: inline-block;
 }
 .fuelux .wizard.complete > .actions .glyphicon-arrow-right:before {

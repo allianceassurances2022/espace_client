@@ -137,9 +137,10 @@ class ProduitController extends Controller
         $agences = Agences::all();
 
         $wilaya_selected = 1;
+        $agence_map = '';
 
         return view('produits.Auto.devis_auto',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences'));
+        'wilaya_selected','agences','agence_map'));
     }
 
     public function visuelisation()
@@ -177,8 +178,9 @@ class ProduitController extends Controller
          $wilaya_selected   = $value_catnat['wilaya_selected'];
          $commune_selected  = $value_catnat['commune_selected'];
          $appartient        = "oui";
+         $agence_map        = '';
 
-        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com',
+        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
         'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient'));
     }
 

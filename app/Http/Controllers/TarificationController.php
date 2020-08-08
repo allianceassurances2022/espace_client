@@ -536,7 +536,8 @@ class TarificationController extends Controller
 		$select = $request->post('select');
 		$value  = $request->post('value');
 		$data   = commune::where('code_wilaya', $value)->get();
-		$output = '<option value="">Select Commune</option>';
+		$output = '';
+		//$output = '<option value="">Select Commune</option>';
 		foreach($data as $row)
 		{
 			$output .= '<option value="'.$row->code_commune.'"> '.$row->lib_commune.'</option>';
@@ -714,7 +715,8 @@ class TarificationController extends Controller
     			'date_effet'        => $date_eff,
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
-    			'code_agence'       => $request->code_agence
+    			'code_agence'       => $request->code_agence,					
+					'id_user'           => Auth()->user()->id
     		]);
 
     		$res=Rsq_Immobilier::create([
@@ -782,7 +784,8 @@ class TarificationController extends Controller
     			'date_effet'        => $date_eff,
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
-    			'code_agence'       => $request->code_agence
+    			'code_agence'       => $request->code_agence,
+					'id_user'           => Auth()->user()->id
     		]);
 
 				if($request->formule == 'Habitation'){
@@ -924,11 +927,12 @@ class TarificationController extends Controller
     	$wilaya            = wilaya::all();
     	$code_agence       = $devis->code_agence;
 			$agences           = Agences::all();
+			$agence_map        = Agences::where('id',$code_agence)->first();
 
 
 
     	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
-			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','id'));
+			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id'));
 
     }
 
