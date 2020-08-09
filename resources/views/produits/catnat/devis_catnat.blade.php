@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-Devis MRH
+Devis CATNAT
 @endsection
 
 @section('head')
