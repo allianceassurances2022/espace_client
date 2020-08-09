@@ -486,8 +486,10 @@ class TarificationController extends Controller
 			$tva=($prim+$Ctpolice)*0.19;
 			$totale = $prim+$Ctpolice+$tva+$td;
 
+			/////////////////////// sauvegarde session
+
 			$datec=date('d/m/y');
-					//dd($date);
+
 			$data_session = [
 				'terasse'     => $terasse,
 				'habitation'  => $habitation,
@@ -500,17 +502,23 @@ class TarificationController extends Controller
 
 			$request->session()->put('data_mrh', $data_session);
 
+			///////////////////////////////////////////////////////////
 
-					//dd($nbr_piece);
 
-				   // $output = '<input  class="input100" type="text" id="montant_calcul" name="montant_calcul"  value="'.$totale.'" placeholder="Calcul du Montant en cours" disabled="">';
-				   // echo $output;
-			return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
-				//	}else{
 
-					//}
+
+			// return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+
+			try{
+                return response()->json(['total' => $totale ]);
+            } catch (\Exception  $e) {
+                 return response()->json(['Erreur' => $e->errorsMessage()->first() ], 403 );
+            }
+
 
 		}
+
+
 		else{
 
 			return redirect()->route('montant_mrh')

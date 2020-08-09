@@ -255,6 +255,15 @@ Devis MRH
                                                   </div>
                                               </div>
 
+                                              <div class="form-group">
+                                                  <div class="col-sm-12">
+                                                      <p class="text-right">
+                                                          <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
+                                                          <button data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
+                                                      </p>
+                                                  </div>
+                                              </div>
+
                                         </div>
 
                                         <div data-step="3" class="step-pane">
