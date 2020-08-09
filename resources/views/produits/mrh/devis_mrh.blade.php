@@ -478,7 +478,7 @@ Devis MRH
         //
         //     //Change the marker icon
         //     this.setIcon('https://www.google.com/mapfiles/marker_black.png');
-        // });
+        //     });
 
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(this.html);
