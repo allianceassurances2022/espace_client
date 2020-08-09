@@ -715,7 +715,7 @@ class TarificationController extends Controller
     			'date_effet'        => $date_eff,
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
-    			'code_agence'       => $request->code_agence,					
+    			'code_agence'       => $request->code_agence,
 					'id_user'           => Auth()->user()->id
     		]);
 
@@ -873,11 +873,12 @@ class TarificationController extends Controller
     	$surface           = $risque->superficie;
     	$etage             = $risque->etage;
     	$code_agence       = $devis->code_agence;
+			$agence_map        = Agences::where('id',$code_agence)->first();
 
 
 
     	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
-			'adresse','wilaya_selected','surface','etage','id','agences','code_agence'));
+			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map'));
 
     }
 

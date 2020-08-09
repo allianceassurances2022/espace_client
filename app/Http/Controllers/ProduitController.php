@@ -94,9 +94,10 @@ class ProduitController extends Controller
         $wilaya            = wilaya::all();
         $agences           = Agences::all();
         $wilaya_selected   = 1;
+        $agence_map = '';
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences'));
+        'wilaya_selected','agences','agence_map'));
     }
 
     public function devis_auto()
