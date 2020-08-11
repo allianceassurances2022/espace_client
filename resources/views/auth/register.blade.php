@@ -68,8 +68,8 @@ Inscription
 
                               <div class="form-group">
                                 <div class="col-md-12">
-                                    <label class="col-sm-3 control-label">Adresse</label>
-                                    <div class="col-sm-9">
+                                    <label class="col-sm-3 control-label" style="width: 11.95%;">Adresse</label>
+                                    <div class="col-sm-9" style="width: 88%;">
                                         <input id="adresse" type="text" name="adresse" class="form-control" required>
                                     </div>
                                 </div>
@@ -123,8 +123,8 @@ Inscription
 
                               <div class="form-group">
                                 <div class="col-md-12">
-                                    <label class="col-sm-3 control-label">{{ __('E-Mail Address') }}</label>
-                                    <div class="col-sm-9">
+                                    <label class="col-sm-3 control-label" style="width: 11.95%;">{{ __('E-Mail Address') }}</label>
+                                    <div class="col-sm-9" style="width: 88%;">
                                         <input id="email" type="email" name="email" class="form-control" required autocomplete="email">
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ Inscription
 
                               <div class="form-group row social-signup">
                                 <div class="col-xs-6">
-                                  <button type="button" class="btn btn-block btn-default btn-xl"> Annuler</button>
+                                  <a href="{{route('login')}}" type="button" class="btn btn-block btn-default btn-xl"> Annuler</a>
                                 </div>
                                 <div class="col-xs-6">
                                   <button type="submit" class="btn btn-block btn-primary btn-xl"> Valider</button>

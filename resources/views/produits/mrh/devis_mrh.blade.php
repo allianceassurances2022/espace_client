@@ -96,14 +96,6 @@ Devis MRH
                                             <div class="form-group">
 
 
-
-
-
-                                            </div>
-
-                                            <div class="form-group">
-
-
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Sexe</label>
                                                     <div class="col-sm-9">
@@ -266,8 +258,9 @@ Devis MRH
 
                                         </div>
 
-                                        <div data-step="3" class="step-pane">
+                                      </div>
 
+                                        <div data-step="3" class="step-pane">
 
                                             <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span>
                                                 <p class="text-center" id="agence_selected">@if($agence_map)  Agence : {{$agence_map->Name}}  {{$agence_map->Adresse}} @endif</p>
@@ -320,10 +313,12 @@ Devis MRH
                                         <input type="hidden" name="prime_total" value="{{$prime_total}}">
                                         <input type="hidden" name="id" value="{{$id ?? ''}}">
                                         <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">
-                                        <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+                                        <input type="hidden" id="signup-token" name="_token"  value="{{csrf_token()}}">
 
                                     </form>
-                                </div>
+
+                                 </div>
+
                             </div>
 
                             <div class="form-group">
@@ -360,7 +355,6 @@ Devis MRH
 <script src="{{asset('assets/js/app-form-wizard.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
-
 
 <script>
     function active_button() {

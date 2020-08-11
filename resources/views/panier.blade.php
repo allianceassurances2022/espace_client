@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/iconic/css/material-design-iconic-font.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
-    <style> 
+    <style>
      @media screen and (max-width: 880px) {
         .all_header{
-            background-color: transparent;             
+            background-color: transparent;
         }
         .all_header img{
          background-color: #007481;
@@ -22,7 +22,7 @@
     }
     .my-menu-inside{
       padding: 30px 55px 0px 30px;
-      text-align: center; 
+      text-align: center;
     }
 
     .my-menu-inside li{
@@ -127,6 +127,7 @@
                 <br> <span class='thin product_title'>{{$cat['nom']}}</span>
                 <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
                 <div class="product_actions">
+									<a href="{{route('devis_catnat')}}" class="bot-button">Devis  <i class="fa fa-edit" aria-hidden="true"></i></a>
                 	<a href="{{route('pannier_supp','catnat')}}" class="bot-button">Supprimer  <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                  </div>
               </td>
@@ -154,7 +155,7 @@
             {{number_format($total, 2,',', ' ')}} DA
           </span>
         </div>
-   
+
 </div>
 </div>
       </div>

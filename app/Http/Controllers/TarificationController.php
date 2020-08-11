@@ -375,19 +375,19 @@ class TarificationController extends Controller
 	public function montant_mrh(Request $request)
 	{
 
-		$habitation = $request->post('hab');
+		$habitation = $request->habitation;
 
 
 		$ct=0;
 		$taux=0.0;
 		$p_res_civile=0;
 
-		$terasse = $request->post('terasse');
+		$terasse = $request->terasse;
 		($habitation);
-		$montant = $request->post('montant');
+		$montant = $request->montant;
 
-		$juredique = $request->post('juredique');
-		$nbr_piece = $request->post('nbr_piece');
+		$juredique = $request->juredique;
+		$nbr_piece = $request->nbr_piece;
 
 		$sup_log = 35 + ($nbr_piece - 1) * 15;
 
