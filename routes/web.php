@@ -50,6 +50,10 @@ Route::get('panier', 'TarificationController@panier')->name('pannier');
 Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
 Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
 
+Route::get('panier_', function () {
+  return view('panier_save');
+});
+
 
 
 //////////////////////////////// Accueil

@@ -147,54 +147,27 @@ Devis CATNAT
 
                                         <div data-step="2" class="step-pane">
 
-
-
-                                            <div class="form-group">
-
-                                                <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Date souscription</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control input-lg" readonly>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Date d'effet</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Date expiration</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly required>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
                                             <div class="form-group">
 
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Formule</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="formule" value="{{$type_formule}} " class="form-control input-lg" readonly>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="formule" value="{{$type_formule}} " class="form-control" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control input-lg" readonly>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Commune</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="commune" value="{{$commune_selected}}" class="form-control input-lg" readonly>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="commune" value="{{$commune_selected}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
 
@@ -206,36 +179,20 @@ Devis CATNAT
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Surface</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" name="surface" value="{{$surface}}" class="form-control input-lg" readonly>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" name="surface" value="{{$surface}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Année de construction</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" name="anne_cont" value="{{$anne_cont}}" class="form-control input-lg" readonly>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" name="anne_cont" value="{{$anne_cont}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">construite ou vérifiée conforme aux règles parasismiques</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="reg_para" value="{{$reg_para}}" class="form-control input-lg" readonly>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-
-
-                                            <div class="form-group">
-
-                                                <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
-                                                    <div class="col-sm-6">
-                                                        <select id="appartient" name="appartient" class="select2">
-                                                            <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
-                                                                <option value="non" @if($appartient == "non") selected @endif>NON</option>
-                                                        </select>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="reg_para" value="{{$reg_para}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
 
@@ -247,23 +204,23 @@ Devis CATNAT
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Type de la construction</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="type_const" value="{{$type_const}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur assurée</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" name="val_assur" value="{{$val_assur}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="number" name="val_assur" value="{{$val_assur}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">permis de construire
                                                     </label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="permis" value="{{$permis}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="permis" value="{{$permis}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
@@ -276,22 +233,22 @@ Devis CATNAT
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Type de la construction</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="type_const" value="{{$type_const}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="type_const" value="{{$type_const}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur Contenant</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="contenant" value="{{$Contenant}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="contenant" value="{{$Contenant}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur equipement</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="equipement" value="{{$equipement}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="equipement" value="{{$equipement}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
@@ -304,22 +261,22 @@ Devis CATNAT
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur marchandise</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="marchandise" value="{{$marchandise}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="marchandise" value="{{$marchandise}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur contenu</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="contenu" value="{{$contenu}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="contenu" value="{{$contenu}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">inscrite au registre de commerce</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
@@ -330,21 +287,62 @@ Devis CATNAT
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">disposez-vous d’un registre de commerce</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="reg_com" value="{{$reg_com}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="reg_com" value="{{$reg_com}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">local est-il assuré</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="loca" value="{{$loca}}" class="form-control input-lg" readonly="readonly">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="loca" value="{{$loca}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                             </div>
 
                                             @endif
+
+                                            <div class="form-group">
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Date souscription</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Date d'effet</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Date expiration</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly required>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="form-group">
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
+                                                    <div class="col-sm-9">
+                                                        <select id="appartient" name="appartient" class="select2">
+                                                            <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
+                                                                <option value="non" @if($appartient == "non") selected @endif>NON</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
 
 
                                             <div class="form-group">
@@ -369,7 +367,7 @@ Devis CATNAT
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-9">
                                                         <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
                                                             @foreach($wilaya as $wilay)
                                                             <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
@@ -380,7 +378,7 @@ Devis CATNAT
 
                                                 <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Commune</label>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-9">
                                                         <select onchange="vers_commune()" id="Commune_map" name="Commune_map" class="select2">
                                                             <option value="">-</option>
                                                         </select>
@@ -420,7 +418,7 @@ Devis CATNAT
                             <div class="form-group">
                                 <h3 class="col-sm-9 text-right">Total a payer :</h3>
                                 <div class="col-sm-3">
-                                    <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
+                                    <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                                 </div>
                             </div>
 

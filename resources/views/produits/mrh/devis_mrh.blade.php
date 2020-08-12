@@ -145,22 +145,22 @@ Devis MRH
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date souscription</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Montant forfaitaire</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" name="montant_" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="montant_" value="{{number_format($montant, 2,',', ' ')}} DA" class="form-control" readonly>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Nombre de pieces</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -170,22 +170,22 @@ Devis MRH
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Habitation</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" name="hab" value="{{$habitation}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="hab" value="{{$habitation}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Qualité juredique</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" name="juredique" value="{{$juredique}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="juredique" value="{{$juredique}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Terrasse</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" name="terasse" value="{{$terasse}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="terasse" value="{{$terasse}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -195,22 +195,44 @@ Devis MRH
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Nombre d'Etage</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="number" name="etage" value="{{$etage ?? ''}}" class="form-control input-lg">
+                                                  <div class="col-sm-9">
+                                                      <input type="number" name="etage" value="{{$etage ?? ''}}" class="form-control">
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date d'effet</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control input-lg" onchange="dateplusunans()">
+                                                  <div class="col-sm-9">
+                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()">
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date expiration</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control input-lg" readonly>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                          <div class="form-group">
+
+                                              <div class="col-md-8">
+                                                  <label class="col-sm-2 control-label" style="width: 12%;">Adress</label>
+                                                  <div class="col-sm-9" style="width: 88%;">
+                                                      <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control">
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <label class="col-sm-3 control-label">Wilaya</label>
+                                                  <div class="col-sm-9">
+                                                      <select id="Wilaya" name="Wilaya" class="select2">
+                                                          @foreach($wilaya as $wilay)
+                                                          <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
+                                                              @endforeach
+                                                      </select>
                                                   </div>
                                               </div>
 
@@ -220,32 +242,12 @@ Devis MRH
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Surface</label>
-                                                  <div class="col-sm-6">
-                                                      <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control input-lg">
+                                                  <div class="col-sm-9">
+                                                      <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control">
                                                   </div>
                                               </div>
 
                                           </div>
-
-                                          <div class="form-group">
-
-                                              <div class="col-md-8">
-                                                  <label class="col-sm-2 control-label">Adress</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control input-lg">
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Wilaya</label>
-                                                  <div class="col-sm-6">
-                                                      <select id="Wilaya" name="Wilaya" class="select2">
-                                                          @foreach($wilaya as $wilay)
-                                                          <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
-                                                              @endforeach
-                                                      </select>
-                                                  </div>
-                                              </div>
 
                                               <div class="form-group">
                                                   <div class="col-sm-12">
@@ -256,7 +258,7 @@ Devis MRH
                                                   </div>
                                               </div>
 
-                                        </div>
+
 
                                       </div>
 
@@ -270,7 +272,7 @@ Devis MRH
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-9">
                                                         <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
                                                             @foreach($wilaya as $wilay)
                                                             <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
@@ -281,7 +283,7 @@ Devis MRH
 
                                                 <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Commune</label>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-9">
                                                         <select onchange="vers_commune()" id="Commune_map" name="Commune_map" class="select2">
                                                             <option value="">-</option>
                                                         </select>
@@ -324,7 +326,7 @@ Devis MRH
                             <div class="form-group">
                                 <h3 class="col-sm-9 text-right">Total a payer :</h3>
                                 <div class="col-sm-3">
-                                    <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control input-lg" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
+                                    <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                                 </div>
                             </div>
 
