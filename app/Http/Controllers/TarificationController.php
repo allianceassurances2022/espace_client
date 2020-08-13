@@ -611,57 +611,7 @@ class TarificationController extends Controller
 
 
 	}
-	public function paiement ($id){
 
-
-		$risqueh     = Rsq_Immobilier::where('id',$id)->first();
-		//$devis     = devis::where('id',$id)->GET('prime_total');
-		$code_devis  = $risqueh->code_devis;
-		$id          = $risqueh->id;
-		$devis       = devis::where('id',$code_devis)->first();
-		$prime_total = $devis->prime_total;
-		$cat         = '';
-		$auto        = '';
-
-/*      $value_cat = session('data_catnat');
-        $value_mrh = session('data_mrh');
-        $cat='';
-        $auto='';
-        $mrh='';
-        $total = 0;
-
-        if ($value_cat) {
-
-        	$nom = 'Catastrophe Naturelle';
-        	$montant = $value_cat['prime_total'];
-        	$total=$total+$montant;
-
-        	$cat = [
-        		'nom' => $nom,
-        		'montant' => $montant
-        	];
-
-        }
-
-        if ($value_mrh) {
-
-        	$nom = 'Multirisques Habitation';
-        	$montant = $value_mrh['prime_total'];
-        	$total=$total+$montant;
-
-        	$mrh = [
-        		'nom' => $nom,
-        		'montant' => $montant
-        	];
-
-        }
-*/
-
-
-        return view('paiement',compact('risqueh','auto','cat','prime_total','id'));
-
-
-    }
 
     public function panier_supp (Request $request, $produit){
 

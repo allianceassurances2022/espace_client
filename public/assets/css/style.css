@@ -20588,3 +20588,21 @@ fieldset[disabled] .full-calendar .fc-button.active {
   left: auto;
   margin-top: 3.5em;
 }
+
+.bouton-blanc a{
+    padding: 0.9em 1.1em;
+    font-weight: 600;
+    margin: 0em 1;
+    border: 1px #007481 solid;
+    background: white;
+    color: #007481;
+    text-transform: capitalize;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+}
+.bouton-blanc a:hover{
+  background-color: #007481;
+  color: white;
+  transition: 0.3s;
+}

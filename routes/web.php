@@ -48,12 +48,16 @@ Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montan
 ///////////////////////////// Panier
 Route::get('panier', 'TarificationController@panier')->name('pannier');
 Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
-Route::get('paiement/{id}', 'TarificationController@paiement')->name('paiement');
+
 
 Route::get('panier_', function () {
   return view('panier_save');
 });
 
+
+/////////////////////////// paiement
+Route::get('paiement/{id}', 'PaiementController@paiement')->name('paiement');
+Route::get('paiementSend', 'PaiementController@test')->name('test');
 
 
 //////////////////////////////// Accueil
