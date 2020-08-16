@@ -11,25 +11,29 @@ class TarificationAutoController extends Controller
     public function choix_auto(Request $request){
 
     	$auto=$request->all();
-        
-        $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0"]);
 
-    	//dd($auto);
+      $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0"]);
 
     	$devis = 0;
 
-    	return view('produits.auto.formule_laki',compact('auto','devis'));
+    if ($request->type_assurance == "AUTO_P"){
+        return view('produits.auto.formule_part',compact('auto','devis'));
+    }elseif($request->type_assurance == "OTO_L"){
+        return view('produits.auto.formule_laki',compact('auto','devis'));
+    }
 
-    } 
+
+
+    }
 
     public function montant_auto(Request $request){
 
-    	$auto=$request->all();
+    $auto=$request->all();
 
-        $wilaya=Wilaya::where('code_wilaya',$request->Wilaya)->first();
+    $wilaya=Wilaya::where('code_wilaya',$request->Wilaya)->first();
 
 		$zone = $wilaya->zone;
-		 
+
 		$AssSM = 1000;
 		$AssTran = 2400;
 		$AssTranP= 4500;
@@ -40,23 +44,23 @@ class TarificationAutoController extends Controller
 		$genre = "00";
 		$Ass = 0;
 		$reduction=0;
-		
+
 		$usage = $request->usage;
 		$puissance = $request->puissance;
 		$valeur = $request->valeur_auto;
 		$daten = $request->date_conducteur;
-		
+
 		$jours = substr($daten, -2);
 		$mois = substr($daten, -5, 2);
 		$annee = substr($daten, 0, 4);
-		
+
 		$date_permis = $request->date_permis;
 		$annee_auto = $request->annee_auto;
-		
+
 		$offre = $request->type_assurance;
 
 		$dure=$request->dure;
-		
+
 		if ($offre == "OTO_L") {
 			$formule = $request->formule;
 			$option = "";
@@ -76,23 +80,23 @@ class TarificationAutoController extends Controller
 		    }
 		}
 		$assistance = $request->assistance;
-		
+
 		$code_tarif = $genre.$zone.$usage.$puissance ;
 		$code_particulier = $zone.$usage.$puissance ;
 
 		$BDG = 0 ;
-		
-		// RC ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-		
+
+		// RC /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		$TRC = array(
 			100 => array("1ans"=>1045.31,"6mois"=>574.92),
 			101 => array("1ans"=>1495.18,"6mois"=>822.35),
-			102 => array("1ans"=>1712,"6mois"=>941.60),    
+			102 => array("1ans"=>1712,"6mois"=>941.60),
 			103 => array("1ans"=>1933.91,"6mois"=>1063.64),
 			104 => array("1ans"=>3624.31,"6mois"=>1993.37),
 			105 => array("1ans"=>3892.38,"6mois"=>2140.81),
 			106 => array("1ans"=>4073.48,"6mois"=>2240.41),
-			110 => array("1ans"=>784.06,"6mois"=>431.23),  
+			110 => array("1ans"=>784.06,"6mois"=>431.23),
 			111 => array("1ans"=>1121.39,"6mois"=>616.76),
 			112 => array("1ans"=>1284.14,"6mois"=>706.28),
 			113 => array("1ans"=>1450.43,"6mois"=>797.74),
@@ -145,27 +149,27 @@ class TarificationAutoController extends Controller
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		//Fonction diff Date
 		function diff($date){
-			$Mois = substr($date ,-5,2) ; 
+			$Mois = substr($date ,-5,2) ;
 			$Jour = substr($date ,-2,2) ;
 			$Annee = substr($date ,0,4) ;
 			$datedepart = (mktime (0,0,0,$Mois,$Jour,$Annee));
 			$date1 = date("Y-m-d",($datedepart));
-			$dateactuelle = time(); 
+			$dateactuelle = time();
 			$date2 = date("Y-m-d",$dateactuelle);
-			$diff= $dateactuelle-$datedepart ; 
+			$diff= $dateactuelle-$datedepart ;
 			$difdate = date("Y-m-d",$diff);
 			$difAn = substr($difdate,0,4)-1970;
 			return $difAn;
 		}
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		//Prime nette
-		//$Assistance = 0 ; 
-		$DC = 0 ; 
-		
+		//$Assistance = 0 ;
+		$DC = 0 ;
+
 		//////////////////////////////////////////////////////////////////////////////////////////////
-		$RC = $TRC[$code_particulier][$dureee] ; 
+		$RC = $TRC[$code_particulier][$dureee] ;
 		//$RC = $TRC[$code_particulier]['1ans'] ;
 		$RC1 = ($RC*10)/100;
 		$RC = $RC1+$RC;
@@ -175,12 +179,12 @@ class TarificationAutoController extends Controller
 		if(diff($date_permis)<1){
 			$MAJp = ($RC*25)/100 ;
 		}
-		$MAJ = max($MAJp , $MAJa); 
+		$MAJ = max($MAJp , $MAJa);
 		$RC+=$MAJ ;
-		
-		
+
+
 		//////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		switch ($assistance) {
 			case ("Sir_mhani") : $Ass = $AssSM;
 								break;
@@ -189,18 +193,18 @@ class TarificationAutoController extends Controller
 			case ("Tranquilité_plus") : $Ass = $AssTranP;
 								break ;
 			case ("Liberté") : $Ass = $AssLib;
-								break ; 
+								break ;
 		}
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		if ($offre == "OTO_L") {
-		
+
          switch ($assistance) {
 			case ("Tranquilité_plus") : $Ass = 0;
 								break ;
 			case ("Liberté") : $Ass = 4000;
-								break ; 
+								break ;
 		}
 
 
@@ -211,19 +215,19 @@ class TarificationAutoController extends Controller
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
-				      $reduction = 0;	
+				      $reduction = 0;
 						break;
 				}
-				
+
 				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
 			}
-			
+
 		}
 		else if ($offre == "AUTO_P") {
 
 
 		 switch ($usage) {
-			case '0' || '1' : 
+			case '0' || '1' :
 			    switch ($assistance) {
 			    	case ("Sir_mhanni") : $Ass = 1000;
 								break ;
@@ -232,10 +236,10 @@ class TarificationAutoController extends Controller
 			        case ("Tranquilité_plus") : $Ass = 4500;
 								break ;
 			        case ("Liberté") : $Ass = 6500;
-								break ; 
+								break ;
 		        }
 					break ;
-			case '2' : 
+			case '2' :
 			    switch ($assistance) {
 			    	case ("Sir_mhanni") : $Ass = 1490;
 								break ;
@@ -246,9 +250,9 @@ class TarificationAutoController extends Controller
 			        case ("Liberté") : $Ass = 10000;
 								break ;
 		        }
-					break ; 
+					break ;
 		 }
-         
+
 
 
 			if ($formule == "1") {
@@ -258,16 +262,16 @@ class TarificationAutoController extends Controller
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
-				      $reduction = 0;	
+				      $reduction = 0;
 						break ;
 				}
-				
+
 				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
 			}
-			
+
 		}
 
-		//echo ' RC:'.$RC.' D:'.$DC20.' BDG:'.$BDG.' vol:'.$VOL.' DR:'.$DR.' ASS:'.$Ass;	
+		//echo ' RC:'.$RC.' D:'.$DC20.' BDG:'.$BDG.' vol:'.$VOL.' DR:'.$DR.' ASS:'.$Ass;
 		//$TVA = (($prime_nette+$CP)*17)/100 ; // (CP-PTA)*0.17
 		$TVA = round(((($prime_nette+$CP)*19)/100), 2);
 		//echo $TVA." ".$TVA2;
@@ -282,20 +286,20 @@ class TarificationAutoController extends Controller
 			case ($prime_nette<=2500) : $TG = 300 ;
 				break ;
 			case ($prime_nette<=10000) : $TG = 300+(($prime_nette-2500)*5)/100;
-				break ; 
+				break ;
 			case ($prime_nette<=50000) : $TG = 300+375+(($prime_nette-10000)*3)/100;
 				break;
-			case ($prime_nette>50000) : $TG = 300+375+1200+($prime_nette-50000)*0.02 ; 
-				break; 
+			case ($prime_nette>50000) : $TG = 300+375+1200+($prime_nette-50000)*0.02 ;
+				break;
 		}
 		if ( $puissance > 3 ) {
-			$TG = $TG*2; 
+			$TG = $TG*2;
 		}
 		//////////////
-		$TAXE = $TVA+$FGA+$TD+$TG+$CP ; 
+		$TAXE = $TVA+$FGA+$TD+$TG+$CP ;
 
 		//////////////////////////////////////////////
-		$devis = $prime_nette + $TAXE ; 
+		$devis = $prime_nette + $TAXE ;
 
 		$devis = round($devis,2) ;
 
@@ -321,9 +325,9 @@ class TarificationAutoController extends Controller
 
         $request->session()->put('data_auto', $data_session);
 
-		
+
         return view('produits.auto.formule_laki',compact('auto','devis'));
 
-    } 
+    }
 
 }

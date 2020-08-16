@@ -89,9 +89,9 @@ border-inline-start: initial;
 
 
 
-                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="{{asset('assets/img/logo_satim.svg')}}"   />
+                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="{{asset('assets/img/logo_satim.svg')}}"/>
 
-               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="85" height="85"  src="{{asset('assets/img/logo_poste.svg')}}"   />
+               <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="85" height="85"  src="{{asset('assets/img/logo_poste.svg')}}"/>
 
              </div>
 

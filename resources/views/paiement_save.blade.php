@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/iconic/css/material-design-iconic-font.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('produit_assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
-    <style> 
+    <style>
      @media screen and (max-width: 880px) {
         .all_header{
-            background-color: transparent;             
+            background-color: transparent;
         }
         .all_header img{
          background-color: #007481;
@@ -23,7 +23,7 @@
     }
     .my-menu-inside{
       padding: 30px 55px 0px 30px;
-      text-align: center; 
+      text-align: center;
     }
 
     .my-menu-inside li{
@@ -47,7 +47,7 @@
       border: 1px #007480 solid;
       color: white;
       transition: 0.3s;
-      
+
     }
     .menu-header{
       display: block;
@@ -81,7 +81,7 @@ border-inline-start: initial;
       <div class="all_header">
         <img src="{{asset('produit_assets/images/icons/alliance-assurance.png')}}" alt="">
       </div>
-    
+
 
 
         @if($risqueh != '')
@@ -94,34 +94,31 @@ border-inline-start: initial;
               <td>
                 <br> <span class='thin product_title'> MULTIRISQUES HABITATION</span>
                 <br> <br> <span class='thin small'> <br><br></span>
-              
+
               </td>
             </tr>
-            
+
           </tbody>
         </table>
         @endif
 
-       
+
 
         <div class='line'></div>
       <div class='total'>
           <span style='float:left;'>
-           
+
             MONTANT
           </span>
           <span style='float:right; text-align:right;'>
-           
+
             {{number_format($prime_total, 2,',', ' ')}} DA
           </span>
         </div>
-   
+
 
         <div class="action">
-       
-          {{-- <form> --}}
-	        
-           
+
       <h3><span>1 - </span> Confirmer que vous etes un etre humain </h3>
       <div class="text-center">
       <div class="d-flex justify-content-center">
@@ -131,22 +128,22 @@ border-inline-start: initial;
 
       </div>
     </div>
-         
-		  
+
+
         <div class="radio_section_slice">
                  <h3><span>2 - </span> SÉLECTIONNER UN MOYEN DE PAIEMENT</h6>
 
-               
-                 
+
+
                      <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="https://www.bitakati.dz/assets/front/img/logo.svg"   />
-               
+
                <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="100" height="100"  src="https://secureservercdn.net/45.40.149.34/jkq.199.myftpupload.com/wp-content/uploads/2019/10/20191024_142836_0000-696x392.png"   />
-                   
+
              </div>
-              
-      
-          
-      
+
+
+
+
 		    <h3> <span>3 - </span> Acception des conditions generales</h3>
 
       </br>
@@ -154,12 +151,12 @@ border-inline-start: initial;
           <p>
             <input type="checkbox">J'accepte les termes et conditions d’utilisation</input>
            </p>
-          
+
         </div>
 			{{-- </form> --}}
-        	 <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a> 
-         <a href="{{route('paiement',$id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a> 
-            
+        	 <a href="{{route('devis_mrh')}}" class="bot-button"> Devis <i class="fa fa-arrow-circle-left"></i></a>
+         <a href="{{route('paiement',$id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+
         </div>
 </div>
 </div>
@@ -174,7 +171,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
 
   <script>
-      
+
 
       function test(){
         $("#POST").removeClass("image-clignote");
@@ -185,10 +182,6 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         $("#CIB").removeClass("image-clignote");
         $("#POST").addClass("image-clignote");
       }
-      
+
   </script>
 </html>
-
-
-
-

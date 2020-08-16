@@ -20,6 +20,7 @@ class TarificationController extends Controller
 	public function type_formule_catnat(Request $request)
 	{
 
+		
 
 		$formul=$request->formule;
 
@@ -337,7 +338,7 @@ class TarificationController extends Controller
 
 
 		$prime_total_ = $val+$CP+$TD+$maj;
-		$prime_total  = number_format($prime_total_,2);
+		$prime_total  = number_format($prime_total_, 2,',', ' ');
 		//dd($prime_total);
 
 		$datec=date('d/m/y');

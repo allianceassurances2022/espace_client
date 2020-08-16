@@ -125,34 +125,22 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 $(document).ready(function(){
 
  $('#Wilaya').change(function(){
-  if($(this).val() != '')
-  {
+  if($(this).val() != ''){
    var select = $(this).attr("id");
-
    var value = $(this).val();
-
-
-
-
    var _token = $('#signup-token').val();
-
    $.ajax({
-
     url:"{{ route('construction.fetch') }}",
     method:"POST",
     data:{select:select, value:value, _token: $('#signup-token').val()},
-    success:function(result)
-    {
+    success:function(result){
      $('#Commune').html(result);
-
-
     }
-
    })
   }
  });
 
-
 });
 </script>
+
 @endsection
