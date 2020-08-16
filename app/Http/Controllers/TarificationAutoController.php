@@ -8,6 +8,7 @@ use App\Wilaya;
 
 class TarificationAutoController extends Controller
 {
+  
     public function choix_auto(Request $request){
 
     	$auto=$request->all();
@@ -225,7 +226,6 @@ class TarificationAutoController extends Controller
 		}
 		else if ($offre == "AUTO_P") {
 
-
 		 switch ($usage) {
 			case '0' || '1' :
 			    switch ($assistance) {
@@ -252,8 +252,6 @@ class TarificationAutoController extends Controller
 		        }
 					break ;
 		 }
-
-
 
 			if ($formule == "1") {
 				switch ($dure) {
@@ -303,25 +301,23 @@ class TarificationAutoController extends Controller
 
 		$devis = round($devis,2) ;
 
-
 		$datec=date('d/m/y');
 
 		$data_session = [
     	              'date_conducteur' => $daten,
-	                  'date_permis' => $date_permis,
-	                  'wilaya' => $wilaya,
-	                  'annee_auto' => $annee_auto,
-					  'puissance' => $puissance,
-					  'usage' => $usage,
-	                  'valeur' => $valeur,
-	                  'offre' => $offre,
-	                  'dure' => $dure,
-	                  'formule' => $formule,
-	                  'assistance' => $assistance,
-	                  'prime_total' => $devis,
-	                  'datec' =>
-	                  $datec,
-                       ];
+	                  'date_permis'     => $date_permis,
+	                  'wilaya'          => $wilaya,
+	                  'annee_auto'      => $annee_auto,
+					          'puissance'       => $puissance,
+					          'usage'           => $usage,
+	                  'valeur'          => $valeur,
+	                  'offre'           => $offre,
+	                  'dure'            => $dure,
+	                  'formule'         => $formule,
+	                  'assistance'      => $assistance,
+	                  'prime_total'     => $devis,
+	                  'datec'           => $datec,
+                    ];
 
         $request->session()->put('data_auto', $data_session);
 

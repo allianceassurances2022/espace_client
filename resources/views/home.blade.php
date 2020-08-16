@@ -14,8 +14,8 @@ Home
       <div class="user-display-bottom">
         <div class="user-display-avatar"><img src="assets/img/avatar-150.png" alt="Avatar"></div>
         <div class="user-display-info">
-          <div class="name">Djilali EL Medjadji</div>
-          <div class="nick"><span class="mdi mdi-account"></span> Ingénieur Développeur</div>
+          <div class="name">{{Auth()->user()->prenom}} {{Auth()->user()->name}}</div>
+          <div class="nick"><span class="mdi mdi-account"></span> {{Auth()->user()->profession}}</div>
       </div>
       <div class="row user-display-details">
           <div class="col-xs-4">

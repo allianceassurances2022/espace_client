@@ -12,9 +12,27 @@ var App = (function () {
     });
 
     $(".wizard-next").click(function(e){
+
       var id = $(this).data("wizard");
+
+      // $('#etape1').click(function() {
+      //     $(id).wizard('next');
+      //     e.preventDefault();
+      // });
+      // $('#etape2').click(function() {
+      //   if ($('#date_effet').val() == '' ){
+      //
+      //   }else{
+      //     $(id).wizard('next');
+      //     e.preventDefault();
+      //   }
+      // });
+
+
       $(id).wizard('next');
       e.preventDefault();
+
+
     });
 
     $(".wizard-previous").click(function(e){

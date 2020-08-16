@@ -130,7 +130,7 @@ Devis MRH
                                                 <div class="col-sm-offset-2 col-sm-10">
                                                     <p class="text-right">
                                                         <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
-                                                        <button data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
+                                                        <button data-wizard="#wizard1" id="etape1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
                                                     </p>
                                                 </div>
                                             </div>
@@ -203,7 +203,7 @@ Devis MRH
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date d'effet</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()">
+                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
                                                   </div>
                                               </div>
 
@@ -253,7 +253,7 @@ Devis MRH
                                                   <div class="col-sm-12">
                                                       <p class="text-right">
                                                           <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
-                                                          <button data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
+                                                          <button data-wizard="#wizard1" id="etape2" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
                                                       </p>
                                                   </div>
                                               </div>
@@ -354,7 +354,7 @@ Devis MRH
 <script src="{{asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/app-form-masks.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/lib/fuelux/js/wizard.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/app-form-wizard.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/app-form-wizard-mrh.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
 
@@ -505,6 +505,9 @@ Devis MRH
 @endsection
 
 @section('docready')
+
+
+
 App.formElements();
 App.masks();
 App.wizard();

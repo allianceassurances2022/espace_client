@@ -7,8 +7,8 @@
                 <ul role="menu" class="dropdown-menu">
                   <li>
                     <div class="user-info">
-                      <div class="user-name">Djilali EL Medjadji</div>
-                      <div class="user-position online">Available</div>
+                      <div class="user-name">{{Auth()->user()->prenom}} {{Auth()->user()->name}}</div>
+                      <div class="user-position online">online</div>
                     </div>
                   </li>
                   <li><a href="#"><span class="icon mdi mdi-face"></span> Profil</a></li>

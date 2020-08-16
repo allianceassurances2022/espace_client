@@ -18360,12 +18360,12 @@ form.dropzone .note {
   border-radius: 0;
 }
 .fuelux .wizard > .steps li.active {
-  background: #ffffff;
+  background: #ffd45a;
   color: #007481;
 }
 .fuelux .wizard > .steps li.active .chevron:before {
   -moz-transform: scale(0.9999);
-  border-left: 14px solid #ffffff;
+  border-left: 14px solid #ffd45a;
 }
 .fuelux .wizard > .steps li.complete {
   color: #ffffff;
