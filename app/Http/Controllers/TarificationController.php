@@ -7,6 +7,7 @@ use App\Wilaya;
 use App\commune;
 use App\zcatnat;
 use App\Agences;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Rsq_Immobilier;
 use App\devis;
@@ -20,15 +21,11 @@ class TarificationController extends Controller
 	public function type_formule_catnat(Request $request)
 	{
 
-		
-
 		$formul=$request->formule;
 
 		if($formul=='Habitation'){
 			$request->session()->put('formul', $formul);
 			return view('produits.catnat.formule_habitation',compact('formul'));
-
-
 
 		}elseif($formul=='Commerce'){
 			$request->session()->put('formul', $formul);
@@ -39,14 +36,10 @@ class TarificationController extends Controller
 			return view('produits.catnat.formule_industrielle',compact('formul'));
 
 
-
-
-
 		}
 	}
 	public function precidanttypeformul(Request $request)
 	{
-
 
 		$formul=session('formul');
 
@@ -530,12 +523,6 @@ class TarificationController extends Controller
 
 
 
-	 //  return view('produits.mrh.resultat',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
-
-
-
-
-
 
 
 
@@ -634,18 +621,21 @@ class TarificationController extends Controller
 
     public function validation_devis_mrh (Request $request){
 
+			if ($request->code_agence == ""){
+			Alert::warning('Avertissement', 'Merci de choisir une Agence');
+      return back();
+			}
 
-    	$var       = $request->date_sous;
-    	$date      = str_replace('/', '-', $var);
-    	$date_sous = date('Y-m-d', strtotime($date));
+			$rules = array(
+				'code_agence'  => 'bail|string|max:5',
+			);
 
-    	$var       = $request->date_eff;
-    	$date      = str_replace('/', '-', $var);
-    	$date_eff  = date('Y-m-d', strtotime($date));
+			$this->validate($request, $rules);
 
-    	$var       = $request->date_exp;
-    	$date      = str_replace('/', '-', $var);
-    	$date_exp  = date('Y-m-d', strtotime($date));
+
+			$date_sous = $request->date_sous;
+			$date_eff  = $request->date_eff;
+			$date_exp  = $request->date_exp;
 
     	$prime_total= $request->prime_total;
 
@@ -705,26 +695,33 @@ class TarificationController extends Controller
     }
     public function validation_devis_catnat(Request $request){
 
-			//dd($request);
+			if ($request->code_agence == ""){
+			Alert::warning('Avertissement', 'Merci de choisir une Agence');
+      return back();
+			}
 
-    	$var =  $request->date_sous;
-    	$date = str_replace('/', '-', $var);
-    	$date_sous = date('Y-m-d', strtotime($date));
+			$rules = array(
+				'code_agence'  => 'bail|string|max:5',
+			);
 
-			$var =  $request->date_eff;
-    	$date = str_replace('/', '-', $var);
-    	$date_eff = date('Y-m-d', strtotime($date));
+			$this->validate($request, $rules);
 
-    	$var =  $request->date_exp;
-    	$date = str_replace('/', '-', $var);
-    	$date_exp = date('Y-m-d', strtotime($date));
+			$date_sous = $request->date_sous;
+			$date_eff  = $request->date_eff;
+			$date_exp  = $request->date_exp;
 
     	$prime_total= $request->prime_total;
+
+			if ($request->appartient ="on"){
+				$appartient = "oui";
+			}else{
+				$appartient = "non";
+			}
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
     		$risque->update([
-    			'appartient'      => $request->appartient,
+    			'appartient'  => $appartient,
     		]);
 
     		$devis= devis::find($risque->code_devis);
@@ -734,9 +731,7 @@ class TarificationController extends Controller
     			'code_agence'     => $request->code_agence
     		]);
 
-
     	}else{
-
 
     		$dev=devis::create([
     			'date_souscription' => $date_sous,
@@ -784,8 +779,11 @@ class TarificationController extends Controller
     		]);
 			}
 
+
+
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
+				dd(json_encode($devis));
 
     	}
 
@@ -805,21 +803,9 @@ class TarificationController extends Controller
 
     	$devis=devis::find($risque->code_devis);
 
-    	$var =  $devis->date_souscription;
-    	$date = str_replace('-', '/', $var);
-    	$date_sous = date('d-m-Y', strtotime($date));
-
-    	$var =  $devis->date_effet;
-    	$date = str_replace('-', '/', $var);
-    	$date_eff = date('d-m-Y', strtotime($date));
-
-    	$var =  $devis->date_expiration;
-    	$date = str_replace('-', '/', $var);
-    	$date_exp = date('d-m-Y', strtotime($date));
-
-    	$date_souscription = $date_sous;
-    	$date_eff          = $date_eff;
-    	$date_exp          = $date_exp;
+			$date_souscription = $devis->date_souscription;
+			$date_eff          = $devis->date_effet;
+			$date_exp          = $devis->date_expiration;
     	$terasse           = $risque->terrasse;
     	$habitation        = $risque->type_habitation;
     	$montant           = $risque->montant_forfaitaire;
@@ -831,10 +817,9 @@ class TarificationController extends Controller
     	$adresse           = $risque->adresse;
     	$surface           = $risque->superficie;
     	$etage             = $risque->etage;
+			$agences           = Agences::all();
     	$code_agence       = $devis->code_agence;
 			$agence_map        = Agences::where('id',$code_agence)->first();
-
-
 
     	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
 			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map'));
@@ -844,27 +829,14 @@ class TarificationController extends Controller
 
 		public function modification_devis_catnat (Request $request,$id){
 
-
     	$risque             = Rsq_Immobilier::find($id);
     	$id                 = $risque->id;
 
     	$devis              = devis::find($risque->code_devis);
 
-    	$var                = $devis->date_souscription;
-    	$date               = str_replace('-', '/', $var);
-    	$date_sous          = date('d-m-Y', strtotime($date));
-
-    	$var                = $devis->date_effet;
-    	$date               = str_replace('-', '/', $var);
-    	$date_eff           = date('d-m-Y', strtotime($date));
-
-    	$var                = $devis->date_expiration;
-    	$date               = str_replace('-', '/', $var);
-    	$date_exp           = date('d-m-Y', strtotime($date));
-
-    	$date_souscription = $date_sous;
-    	$date_eff          = $date_eff;
-    	$date_exp          = $date_exp;
+    	$date_souscription = $devis->date_souscription;
+    	$date_eff          = $devis->date_effet;
+    	$date_exp          = $devis->date_expiration;
 			$type_formule      = $risque->formule;
     	$type_const        = $risque->type_habitation;
     	$Contenant         = $risque->valeur_contenant;
@@ -892,7 +864,7 @@ class TarificationController extends Controller
 
 
     	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
-			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id'));
+			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'));
 
     }
 

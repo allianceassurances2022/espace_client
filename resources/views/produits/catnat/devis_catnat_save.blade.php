@@ -14,21 +14,28 @@ Devis CATNAT
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default panel-border-color panel-border-color-primary">
-            <div class="panel-heading panel-heading-divider">Devis Catastrophe Naturelle</div>
+            <div class="panel-heading panel-heading-divider">Devis Catastrophe Naturelle<span class="panel-subtitle">Veuillez compléter vos informations pour établire votre devis</span></div>
             <div class="panel-body">
-
-
+                <div class="row wizard-row">
+                    <div class="col-md-12 fuelux">
+                        <div class="block-wizard panel panel-default">
+                            <div id="wizard1" class="wizard wizard-ux">
+                                <ul class="steps">
+                                    <li data-step="1" class="active">Etape 1<span class="chevron"></span></li>
+                                    <li data-step="2">Etape 2<span class="chevron"></span></li>
+                                    <li data-step="3">Etape 3<span class="chevron"></span></li>
+                                </ul>
+                                <div class="actions">
+                                    <button type="button" class="btn btn-xs btn-prev btn-default"><i class="icon mdi mdi-chevron-left"></i>Précédent</button>
+                                    <button type="button" data-last="Terminé" class="btn btn-xs btn-next btn-default">Suivant<i class="icon mdi mdi-chevron-right"></i></button>
+                                </div>
+                                <div class="step-content">
 
                                     <form action="{{route('validation_devis_catnat')}}" method="post" class="form-horizontal group-border-dashed">
                                         @csrf
 
-                                        <div class="panel-heading panel-heading-divider">
-                                          <div class="icon-container">
-                                             <div class="icon"><span class="mdi mdi-collection-item-1"></span></div>
-                                             <span class="icon-class">Information Assuré</span>
-                                           </div>
-                                         </div>
 
+                                        <div data-step="1" class="step-pane active">
 
                                             <div class="form-group">
 
@@ -55,7 +62,7 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date de naissance</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{auth()->user()->date_naissance}}" readonly>
+                                                        <input type="text" data-mask="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{auth()->user()->date_naissance}}" readonly>
                                                     </div>
                                                 </div>
 
@@ -86,6 +93,13 @@ Devis CATNAT
 
                                             </div>
 
+                                            <div class="form-group">
+
+
+
+
+
+                                            </div>
 
                                             <div class="form-group">
 
@@ -120,13 +134,18 @@ Devis CATNAT
 
                                             </div>
 
-                                            <div class="panel-heading panel-heading-divider">
-                                              <div class="icon-container">
-                                                 <div class="icon"><span class="mdi mdi-collection-item-2"></span></div>
-                                                 <span class="icon-class">Veuillez compléter les informations du risque ci-dessous</span>
-                                               </div>
-                                             </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <p class="text-right">
+                                                        <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
+                                                        <button data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
+                                                    </p>
+                                                </div>
+                                            </div>
 
+                                        </div>
+
+                                        <div data-step="2" class="step-pane">
 
                                             <div class="form-group">
 
@@ -171,7 +190,7 @@ Devis CATNAT
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Construite ou vérifiée conforme aux règles parasismiques</label>
+                                                    <label class="col-sm-3 control-label">construite ou vérifiée conforme aux règles parasismiques</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="reg_para" value="{{$reg_para}}" class="form-control" readonly>
                                                     </div>
@@ -198,7 +217,8 @@ Devis CATNAT
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Permis de construire</label>
+                                                    <label class="col-sm-3 control-label">permis de construire
+                                                    </label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="permis" value="{{$permis}}" class="form-control" readonly="readonly">
                                                     </div>
@@ -254,7 +274,7 @@ Devis CATNAT
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Inscrite au registre de commerce</label>
+                                                    <label class="col-sm-3 control-label">inscrite au registre de commerce</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control" readonly="readonly">
                                                     </div>
@@ -266,14 +286,14 @@ Devis CATNAT
                                             <div class="form-group">
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Disposez-vous d’un registre de commerce</label>
+                                                    <label class="col-sm-3 control-label">disposez-vous d’un registre de commerce</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="reg_com" value="{{$reg_com}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Local est-il assuré</label>
+                                                    <label class="col-sm-3 control-label">local est-il assuré</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="loca" value="{{$loca}}" class="form-control" readonly="readonly">
                                                     </div>
@@ -288,21 +308,21 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date souscription</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date d'effet</label>
                                                     <div class="col-sm-9">
-                                                          <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date expiration</label>
                                                     <div class="col-sm-9">
-                                                          <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
+                                                        <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly required>
                                                     </div>
                                                 </div>
 
@@ -315,32 +335,37 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
                                                     <div class="col-sm-9">
-                                                      <div class="switch-button switch-button-yesno">
-                                                        <input type="checkbox" @if($appartient == "oui") checked @endif name="appartient" id="swt8"><span>
-                                                          <label for="swt8"></label></span>
-                                                      </div>
-                                                        {{-- <select id="appartient" name="appartient" class="select2">
+                                                        <select id="appartient" name="appartient" class="select2">
                                                             <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
                                                                 <option value="non" @if($appartient == "non") selected @endif>NON</option>
-                                                        </select> --}}
+                                                        </select>
                                                     </div>
                                                 </div>
 
                                             </div>
 
 
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <p class="text-right">
+                                                        <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
+                                                        <button data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                                            <div class="panel-heading panel-heading-divider">
-                                              <div class="icon-container">
-                                                 <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                                 <span class="icon-class">Veuillez choisir une agence la plus proche</span>
-                                               </div>
-                                             </div>
+                                        </div>
 
-                                                <p class="text-center" id="agence_selected" style="font-size: 20px;">@if($agence_map)  Agence : {{$agence_map->Name}}  {{$agence_map->Adresse}} @endif</p>
+                                        <div data-step="3" class="step-pane">
+
+
+                                            <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span>
+                                                <p class="text-center" id="agence_selected">@if($agence_map)  Agence : {{$agence_map->Name}}  {{$agence_map->Adresse}} @endif</p>
+
+                                            </div>
 
                                             <div class="form-group">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
                                                     <div class="col-sm-9">
                                                         <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
@@ -351,7 +376,7 @@ Devis CATNAT
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="col-sm-3 control-label">Commune</label>
                                                     <div class="col-sm-9">
                                                         <select onchange="vers_commune()" id="Commune_map" name="Commune_map" class="select2">
@@ -375,7 +400,7 @@ Devis CATNAT
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                     <p class="text-right">
-                                                        <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
+                                                        <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
                                                         <button type="submit" id="btn_validate" class="btn btn-primary btn-space btn-lg">Valider</button>
                                                     </p>
                                                 </div>
@@ -387,6 +412,8 @@ Devis CATNAT
                                         <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 
                                     </form>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <h3 class="col-sm-9 text-right">Total a payer :</h3>
@@ -395,7 +422,10 @@ Devis CATNAT
                                 </div>
                             </div>
 
-
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -436,9 +466,9 @@ Devis CATNAT
         var x = document.getElementById("date_effet");
         var dat = x.value;
         //alert(dat);
-        var a = dat.substring(0, 4);
-        var m = dat.substring(5, 7);
-        var d = dat.substring(8, 10);
+        var a = dat.substring(6, 10);
+        var m = dat.substring(3, 5);
+        var d = dat.substring(0, 2);
         var t = m + "-" + d + "-" + a;
         var act = new Date(t);
         var apr = new Date(act.setFullYear(act.getFullYear() + 1));
@@ -447,7 +477,7 @@ Devis CATNAT
         var day = ('0' + apr.getDate()).slice(-2);
         var month = ('0' + (apr.getMonth() + 1)).slice(-2);
         var year = apr.getFullYear();
-        var final = year + "-" + month + "-" + day;
+        var final = day + "/" + month + "/" + year;
         document.getElementById("date_expiration").value = final;
         active_button();
     }

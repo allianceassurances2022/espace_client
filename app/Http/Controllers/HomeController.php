@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Status_ods;
 use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -23,7 +24,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { 
+    {
         $user=auth::user();
         $value_cat = session('data_catnat');
         $value_mrh = session('data_mrh');
@@ -78,8 +79,9 @@ class HomeController extends Controller
             ];
 
         }
+
         return view('home',compact('user','mrh','auto','cat','total'));
     }
 
-    
+
 }

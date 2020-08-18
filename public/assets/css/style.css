@@ -10322,10 +10322,10 @@ canvas {
   padding-left: 10px;
 }
 .switch-button.switch-button-yesno label:before {
-  content: "NO";
+  content: "NON";
 }
 .switch-button.switch-button-yesno input[type="checkbox"]:checked + span label:before {
-  content: "YES";
+  content: "OUI";
 }
 .switch-button.switch-button-xs {
   height: 20px;

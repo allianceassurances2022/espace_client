@@ -14,28 +14,24 @@ Devis MRH
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default panel-border-color panel-border-color-primary">
-            <div class="panel-heading panel-heading-divider">Devis Mulitirisque Habitation<span class="panel-subtitle">Veuillez compléter vos informations pour établire votre devis</span></div>
+            <div class="panel-heading panel-heading-divider">Devis Mulitirisque Habitation</div>
             <div class="panel-body">
-                <div class="row wizard-row">
                     <div class="col-md-12 fuelux">
-                        <div class="block-wizard panel panel-default">
-                            <div id="wizard1" class="wizard wizard-ux">
-                                <ul class="steps">
-                                    <li data-step="1" class="active">Etape 1<span class="chevron"></span></li>
-                                    <li data-step="2">Etape 2<span class="chevron"></span></li>
-                                    <li data-step="3">Etape 3<span class="chevron"></span></li>
-                                </ul>
-                                <div class="actions">
-                                    <button type="button" class="btn btn-xs btn-prev btn-default"><i class="icon mdi mdi-chevron-left"></i>Précédent</button>
-                                    <button type="button" data-last="Terminé" class="btn btn-xs btn-next btn-default">Suivant<i class="icon mdi mdi-chevron-right"></i></button>
-                                </div>
-                                <div class="step-content">
+
+
 
                                     <form action="{{route('validation_devis_mrh')}}" method="post" class="form-horizontal group-border-dashed">
                                         @csrf
 
+                                        <div class="panel-heading panel-heading-divider">
+                                          <div class="icon-container">
+                                             <div class="icon"><span class="mdi mdi-collection-item-1"></span></div>
+                                             <span class="icon-class">Information Assuré</span>
+                                           </div>
+                                         </div>
 
-                                        <div data-step="1" class="step-pane active">
+
+
 
                                             <div class="form-group">
 
@@ -62,7 +58,7 @@ Devis MRH
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date de naissance</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" data-mask="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{auth()->user()->date_naissance}}" readonly>
+                                                        <input type="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{auth()->user()->date_naissance}}" readonly>
                                                     </div>
                                                 </div>
 
@@ -126,19 +122,12 @@ Devis MRH
 
                                             </div>
 
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-2 col-sm-10">
-                                                    <p class="text-right">
-                                                        <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
-                                                        <button data-wizard="#wizard1" id="etape1" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div data-step="2" class="step-pane">
-
+                                            <div class="panel-heading panel-heading-divider">
+                                              <div class="icon-container">
+                                                 <div class="icon"><span class="mdi mdi-collection-item-2"></span></div>
+                                                 <span class="icon-class">Veuillez compléter les informations du risque ci-dessous</span>
+                                               </div>
+                                             </div>
 
 
                                           <div class="form-group">
@@ -146,7 +135,7 @@ Devis MRH
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date souscription</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
+                                                      <input type="date" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -196,21 +185,21 @@ Devis MRH
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Nombre d'Etage</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control">
+                                                      <input type="text" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date d'effet</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
+                                                      <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date expiration</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" data-mask="date" placeholder="DD/MM/YYYY" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
+                                                      <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -221,14 +210,14 @@ Devis MRH
                                               <div class="col-md-8">
                                                   <label class="col-sm-2 control-label" style="width: 12%;">Adress</label>
                                                   <div class="col-sm-9" style="width: 88%;">
-                                                      <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control">
+                                                      <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Wilaya</label>
                                                   <div class="col-sm-9">
-                                                      <select id="Wilaya" name="Wilaya" class="select2">
+                                                      <select id="Wilaya" name="Wilaya" class="select2" required>
                                                           @foreach($wilaya as $wilay)
                                                           <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
                                                               @endforeach
@@ -243,34 +232,24 @@ Devis MRH
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Surface</label>
                                                   <div class="col-sm-9">
-                                                      <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control">
+                                                      <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
                                           </div>
 
-                                              <div class="form-group">
-                                                  <div class="col-sm-12">
-                                                      <p class="text-right">
-                                                          <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
-                                                          <button data-wizard="#wizard1" id="etape2" class="btn btn-primary btn-space wizard-next btn-lg">Prochaine étape</button>
-                                                      </p>
-                                                  </div>
-                                              </div>
 
+                                            <div class="panel-heading panel-heading-divider">
+                                              <div class="icon-container">
+                                                 <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
+                                                 <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                               </div>
+                                             </div>
 
-
-                                      </div>
-
-                                        <div data-step="3" class="step-pane">
-
-                                            <div class="panel-heading panel-heading-divider"><span class="panel-subtitle">Veuillez choisir une agence la plus proche</span>
-                                                <p class="text-center" id="agence_selected">@if($agence_map)  Agence : {{$agence_map->Name}}  {{$agence_map->Adresse}} @endif</p>
-
-                                            </div>
+                                            <p class="text-center" id="agence_selected" style="font-size: 20px;">@if($agence_map)  Agence : {{$agence_map->Name}}  {{$agence_map->Adresse}} @endif</p>
 
                                             <div class="form-group">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
                                                     <div class="col-sm-9">
                                                         <select onchange="vers_wilaya()" id="Wilaya_map" name="Wilaya_map" class="select2">
@@ -281,7 +260,7 @@ Devis MRH
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Commune</label>
                                                     <div class="col-sm-9">
                                                         <select onchange="vers_commune()" id="Commune_map" name="Commune_map" class="select2">
@@ -304,8 +283,8 @@ Devis MRH
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <p class="text-right">
-                                                        <button data-wizard="#wizard1" class="btn btn-default btn-space wizard-previous btn-lg">Précédent</button>
+                                                    <p class="text-center">
+                                                        <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
                                                         <button type="submit" id="btn_validate" class="btn btn-primary btn-space btn-lg">Valider</button>
                                                     </p>
                                                 </div>
@@ -314,14 +293,14 @@ Devis MRH
                                         <input type="hidden" name="montant" value="{{$montant}}">
                                         <input type="hidden" name="prime_total" value="{{$prime_total}}">
                                         <input type="hidden" name="id" value="{{$id ?? ''}}">
-                                        <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">
+                                        <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}" required>
                                         <input type="hidden" id="signup-token" name="_token"  value="{{csrf_token()}}">
 
                                     </form>
 
-                                 </div>
 
-                            </div>
+
+
 
                             <div class="form-group">
                                 <h3 class="col-sm-9 text-right">Total a payer :</h3>
@@ -331,9 +310,6 @@ Devis MRH
                             </div>
 
                         </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -353,8 +329,6 @@ Devis MRH
 <script src="{{asset('assets/js/app-form-elements.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/app-form-masks.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/lib/fuelux/js/wizard.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/app-form-wizard-mrh.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
 
@@ -373,9 +347,9 @@ Devis MRH
         var x = document.getElementById("date_effet");
         var dat = x.value;
         //alert(dat);
-        var a = dat.substring(6, 10);
-        var m = dat.substring(3, 5);
-        var d = dat.substring(0, 2);
+        var a = dat.substring(0, 4);
+        var m = dat.substring(5, 7);
+        var d = dat.substring(8, 10);
         var t = m + "-" + d + "-" + a;
         var act = new Date(t);
         var apr = new Date(act.setFullYear(act.getFullYear() + 1));
@@ -384,7 +358,7 @@ Devis MRH
         var day = ('0' + apr.getDate()).slice(-2);
         var month = ('0' + (apr.getMonth() + 1)).slice(-2);
         var year = apr.getFullYear();
-        var final = day + "/" + month + "/" + year;
+        var final = year + "-" + month + "-" + day;
         document.getElementById("date_expiration").value = final;
         active_button();
     }
@@ -510,7 +484,6 @@ Devis MRH
 
 App.formElements();
 App.masks();
-App.wizard();
 
 var map;
 

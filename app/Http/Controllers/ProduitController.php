@@ -83,7 +83,7 @@ class ProduitController extends Controller
     {
 
         $value_mrh         = session('data_mrh');
-        $date_souscription = date('d/m/Y');
+        $date_souscription = date('Y-m-d');
         $terasse           = $value_mrh['terasse'];
         $habitation        = $value_mrh['habitation'];
         $montant           = $value_mrh['montant'];
@@ -120,7 +120,7 @@ class ProduitController extends Controller
           ];
 
         $value_auto        = session('data_auto');
-        $date_souscription = date('d/m/Y');
+        $date_souscription = date('Y-m-d');
         $date_conducteur   = $value_auto['terasse'];
         $date_permis       = $value_mrh['habitation'];
         $wilaya            = $value_mrh['montant'];
@@ -156,7 +156,7 @@ class ProduitController extends Controller
     public function devis_catnat()
     {
          $value_catnat      = session('data_catnat');
-         $date_souscription = date('d/m/Y');
+         $date_souscription = date('Y-m-d');
          $type_formule      = $value_catnat['type_formule'];
          $type_const        = $value_catnat['type_const'];
          $Contenant         = $value_catnat['Contenant'];

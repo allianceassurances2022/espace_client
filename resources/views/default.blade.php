@@ -5,7 +5,7 @@
     <body>
 
        <div class="be-wrapper">
-            
+
             @include('core.home.topbar')
 
             <!-- Start right Content here -->
@@ -19,17 +19,17 @@
 
                             {{-- @include('core.breadcrumb') --}}
 
-                            {{-- @include('core.messages') --}}
+                            @include('core.home.messages')
 
-                            {{-- @include('sweetalert::alert') --}}
+                            @include('sweetalert::alert')
 
                             @yield('content')
-                     
+
                     </div>
 
                 </div> <!-- content -->
 
-              
+
 
             </div>
             <!-- End Right content here -->
@@ -45,4 +45,3 @@
     @include('core.home.js')
 
 </html>
-

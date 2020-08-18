@@ -8,7 +8,7 @@ use App\Wilaya;
 
 class TarificationAutoController extends Controller
 {
-  
+
     public function choix_auto(Request $request){
 
     	$auto=$request->all();
@@ -22,8 +22,6 @@ class TarificationAutoController extends Controller
     }elseif($request->type_assurance == "OTO_L"){
         return view('produits.auto.formule_laki',compact('auto','devis'));
     }
-
-
 
     }
 
@@ -224,6 +222,7 @@ class TarificationAutoController extends Controller
 			}
 
 		}
+
 		else if ($offre == "AUTO_P") {
 
 		 switch ($usage) {
@@ -256,7 +255,7 @@ class TarificationAutoController extends Controller
 			if ($formule == "1") {
 				switch ($dure) {
 					case '1':
-					  $DASC = (2.5 * $valeur)/100 ;
+					    $DASC = (2.5 * $valeur)/100 ;
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
