@@ -501,13 +501,13 @@ class TarificationController extends Controller
 
 
 
-			// return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+			return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
-			try{
-                return response()->json(['total' => $totale ]);
-            } catch (\Exception  $e) {
-                 return response()->json(['Erreur' => $e->errorsMessage()->first() ], 403 );
-            }
+			// try{
+      //           return response()->json(['total' => $totale ]);
+      //       } catch (\Exception  $e) {
+      //            return response()->json(['Erreur' => $e->errorsMessage()->first() ], 403 );
+      //       }
 
 
 		}
@@ -783,7 +783,6 @@ class TarificationController extends Controller
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
-				dd(json_encode($devis));
 
     	}
 

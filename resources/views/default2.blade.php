@@ -13,9 +13,9 @@
 
                             {{-- @include('core.breadcrumb') --}}
 
-                            {{-- @include('core.messages') --}}
+                             @include('core.home.messages') 
 
-                            {{-- @include('sweetalert::alert') --}}
+                             @include('sweetalert::alert')
 
                             @yield('content')
 
