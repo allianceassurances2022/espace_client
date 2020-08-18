@@ -22,18 +22,19 @@ class TarificationController extends Controller
 	{
 
 		$formul=$request->formule;
+		$request->session()->put('formul', $formul);
+		$type_const = "Bloc indépendant";
+		$activite = "oui";
+		$registre = "oui";
+		$local = "oui";
 
 		if($formul=='Habitation'){
-			$request->session()->put('formul', $formul);
 			return view('produits.catnat.formule_habitation',compact('formul'));
-
 		}elseif($formul=='Commerce'){
-			$request->session()->put('formul', $formul);
-			return view('produits.catnat.formule_commerce',compact('formul'));
+			return view('produits.catnat.formule_commerce',compact('formul','type_const','activite','registre','local'));
 
 		}elseif($formul=='Industrielle'){
-			$request->session()->put('formul', $formul);
-			return view('produits.catnat.formule_industrielle',compact('formul'));
+			return view('produits.catnat.formule_industrielle',compact('formul','type_const','activite','registre','local'));
 
 
 		}
@@ -71,22 +72,23 @@ class TarificationController extends Controller
 
 			$type_const=$request->type_const;
 			$request->session()->put('type_const', $type_const);
+
 			return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
 
 
 		}else{
 
 			$type_formule = $request->type_formule;
-			$request->session()->put('type_formulecom', $type_formule);
+			$request->session()->put('type_formule', $type_formule);
 
 			$val_assur    = $request->val_assur;
-			$request->session()->put('val_assurcomm', $val_assur);
+			$request->session()->put('val_assur', $val_assur);
 
 			$permis       = $request->permis;
-			$request->session()->put('permiscomm', $permis);
+			$request->session()->put('permis', $permis);
 
 			$type_const   = $request->type_const;
-			$request->session()->put('type_constcomm', $type_const);
+			$request->session()->put('type_const', $type_const);
 
 			$Contenant    = $request->Contenant;
 			$request->session()->put('Contenant', $Contenant);
@@ -117,16 +119,17 @@ class TarificationController extends Controller
 
 
 	}
-	public function precidantconstructuin(Request $request)
+	public function precidantconstruction(Request $request)
 	{
 
 
 		$formul=session('formul');
+
 		if($formul=="Commerce"){
 			//$type_formulecom-=session('type_formulecom');
-			$val_assurcomm  =session('val_assurcomm');
-			$permiscomm     =session('permiscomm');
-			$type_constcomm =session('type_constcomm');
+			$val_assur  =session('val_assur');
+			$permis    =session('permis');
+			$type_const =session('type_const');
 			$Contenant      =session('Contenant');
 			$equipement     =session('equipement');
 			$marchandise    =session('marchandise');
@@ -134,8 +137,8 @@ class TarificationController extends Controller
 			$activite       =session('activite');
 			$registre       =session('registre');
 			$local          =session('local');
-			$request->session()->forget('formul');
-			return view('produits.catnat.formule_commerce',compact('val_assurcomm','permiscomm','type_constcomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
+			//$request->session()->forget('formul');
+			return view('produits.catnat.formule_commerce',compact('val_assur','permis','type_const','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local','formul'));
 
 		}
 		elseif($formul=="Habitation"){
@@ -144,13 +147,13 @@ class TarificationController extends Controller
 			$val_assur  =session('val_assur');
 			$permis     =session('permis');
 			$type_const =session('type_const');
-			$request->session()->forget('formul');
-			return view('produits.catnat.formule_habitation',compact('val_assur','permis','type_const'));
+			//$request->session()->forget('formul');
+			return view('produits.catnat.formule_habitation',compact('val_assur','permis','type_const','formul'));
 		}elseif($formul="Industrielle"){
 		//$request-=session('type_formulecom');
-			$val_assurcomm  =session('val_assurcomm');
-			$permiscomm     =session('permiscomm');
-			$type_constcomm =session('type_constcomm');
+			$val_assur  =session('val_assur');
+			$permis     =session('permis');
+			$type_const =session('type_const');
 			$Contenant      =session('Contenant');
 			$equipement     =session('equipement');
 			$marchandise    =session('marchandise');
@@ -158,8 +161,8 @@ class TarificationController extends Controller
 			$activite       =session('activite');
 			$registre       =session('registre');
 			$local          =session('local');
-			$request->session()->forget('formul');
-			return view('produits.catnat.formule_industrielle',compact('val_assurcomm','permiscomm','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local'));
+			//$request->session()->forget('formul');
+			return view('produits.catnat.formule_industrielle',compact('val_assur','permis','type_const','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local','formul'));
 
 
 		}
@@ -369,6 +372,24 @@ class TarificationController extends Controller
 	public function montant_mrh(Request $request)
 	{
 
+
+
+		$rules = array(
+			'habitation' => 'bail|required|string|max:190',
+			'terasse'    => 'bail|required|string',
+			'montant'    => 'bail|required|Numeric',
+			'juredique'  => 'bail|required|string',
+			'nbr_piece'  => 'bail|required|integer',
+		);
+
+		$this->validate($request, $rules);
+
+		if ($request->nbr_piece > 15){
+		 Alert::warning('Avertissement', 'Nombre de piéces doit etre inferieur a 16 ');
+		   return redirect()->route('type_produit',['mrh','index']);
+			//return back();
+		 }
+
 		$habitation = $request->habitation;
 
 
@@ -422,30 +443,22 @@ class TarificationController extends Controller
 		}
 
 
-		$rules = array(
-			'habitation' => 'bail|string|max:190',
-			'terasse'    => 'bail|string|max:3',
-			'montant'    => 'bail|required|integer',
-			'juredique'  => 'bail|string',
-			'nbr_piece'  => 'bail|string|max:3',
-		);
 
-		if($this->validate($request, $rules)){
+
 			$ct=0;$taux=0.0;$p_res_civile=0;
 
 
-				//	if((!is_null($habitation)) and (!is_null($terasse)) and (!is_null($montant)) and (!is_null($juredique)) and (!is_null($nbr_piece))){
-					//dd($nbr_piece);
+
 			$sup_log = 35 + ($nbr_piece - 1) * 15;
 
-				//	dd($sup_log);
+
 			if ($habitation =="individuelle") {
 				$ct = 60000;
 			}
 			else if ($habitation == "collective") {
 				$ct = 40000;
 			}
-					//dd($ct);
+
 			$val_batim = $sup_log * $ct;
 
 			if ($juredique == "proprietaire") {
@@ -456,9 +469,9 @@ class TarificationController extends Controller
 				$taux = 0.0003;
 				$p_res_civile = 200;
 			}
-					//dd($p_res_civile);
+
 			$p_inc = $val_batim * $taux;
-					//dd($p_inc);
+
 			$p_con_inc = $montant * 0.0009;
 
 			$p_in = $p_inc + $p_con_inc;
@@ -500,7 +513,7 @@ class TarificationController extends Controller
 
 
 
-
+      //session()->flash('success', 'text goes here');
 			return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
 			// try{
@@ -510,14 +523,14 @@ class TarificationController extends Controller
       //       }
 
 
-		}
-
-
-		else{
-
-			return redirect()->route('montant_mrh')
-			->withError("veuillez corriger les champs ci-dessous");
-		}
+		// }
+		//
+		//
+		// else{
+		//
+		// 	return redirect()->route('montant_mrh')
+		// 	->withError("veuillez corriger les champs ci-dessous");
+		// }
 
 
 

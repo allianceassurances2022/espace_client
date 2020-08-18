@@ -36,8 +36,8 @@ Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant
 
 Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');
 Route::post('construction_catanat' , 'TarificationController@construction_catanat')->name('construction_catanat');
-Route::get('index' , 'TarificationController@precidanttypeformul')->name('index');
-Route::get('type_formule' , 'TarificationController@precidantconstructuin')->name('type_formule');
+Route::get('index' , 'TarificationController@precidanttypeformul')->name('index_catnat');
+Route::get('type_formule' , 'TarificationController@precidantconstruction')->name('type_formule');
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
 
 Route::post('choix_auto' , 'TarificationAutoController@choix_auto')->name('choix_auto');

@@ -28,18 +28,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Choix de la formule <span>1</span></h5>
             </div>
-            
+
             <h6>Formule <span>(Choisissez votre formule)</span></h6>
             <div class="wrap-input100 validate-input2">
                 <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
-                    <option value="Habitation">Habitation</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Industrielle">Industrielle</option>
+                    <option @if($formul =="Habitation") selected @endif  value="Habitation">Habitation</option>
+                    <option @if($formul =="Commerce") selected @endif value="Commerce">Commerce</option>
+                    <option @if($formul =="Industrielle") selected @endif value="Industrielle">Industrielle</option>
                 </select>
-            </div>            
+            </div>
             <div class="container-contact100-form-btn">
-            <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >   
-                
+            <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >
+
             </div>
         </form>
     </div>

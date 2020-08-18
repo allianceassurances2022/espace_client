@@ -29,8 +29,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Type de la construction </h6>
                 <div class="wrap-input100 validate-input2">
                     <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                        <option value="Bloc indépendant">Bloc indépendant</option>
-                        <option value="Autres">Autres</option>
+                        <option value="Bloc indépendant" @if ($type_const == "Bloc indépendant") selected @endif>Bloc indépendant</option>
+                        <option value="Autres" @if ($type_const == "Autres") selected @endif>Autres</option>
                     </select>
 
                 </div>
@@ -46,7 +46,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="equipement" class="input100" type="number" name="equipement" value="{{$equipement ?? ''}}" placeholder="Valeur equipement" min=0 required>
+                    <input id="equipement" onchange="calcul_contenu();" class="input100" type="number" name="equipement" value="{{$equipement ?? 0}}" placeholder="Valeur equipement" min=0 required>
 
                 </div>
             </div>
@@ -55,14 +55,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="marchandise" class="input100" type="number" name="marchandise" value="{{$marchandise ?? ''}}" placeholder="Valeur marchandise" min=0 required>
+                    <input id="marchandise" onchange="calcul_contenu();" class="input100" type="number" name="marchandise" value="{{$marchandise ?? 0}}" placeholder="Valeur marchandise" min=0 required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? ''}}" placeholder="Valeur contenu" min=0 required>
+                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? 0}}" placeholder="Valeur contenu" min=0 required readonly>
 
                 </div>
             </div>
@@ -71,15 +71,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Es une activité qui doit être inscrite au registre de commerce ?</h6>
                         <label>
-                            <input type="radio" name="activite" id="oui" value="oui" checked/>
+                            <input type="radio" name="activite" id="oui" value="oui" checked @if ($activite == "oui") checked @endif/>
                             <span>Oui</span>
                         </label>
                         <label>
-                            <input type="radio" name="activite" id="non" value="non" />
+                            <input type="radio" name="activite" id="non" value="non" @if ($activite == "non") checked @endif />
                             <span>Non</span>
                         </label>
                         <label>
-                            <input type="radio" name="activite" id="ne_sais_pas" value="ne_sais_pas" />
+                            <input type="radio" name="activite" id="ne_sais_pas" value="ne_sais_pas"  @if ($activite == "ne_sais_pas") checked @endif/>
                             <span>Ne sais pas</span>
                         </label>
                     </div>
@@ -88,11 +88,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Si oui, disposez-vous d’un registre de commerce ?</h6>
                         <label>
-                            <input type="radio" name="registre" value="oui" checked/>
+                            <input type="radio" name="registre" value="oui" checked  @if ($registre == "oui") checked @endif/>
                             <span>Oui</span>
                         </label>
                         <label>
-                            <input type="radio" name="registre" value="non" />
+                            <input type="radio" name="registre" value="non"   @if ($registre == "non") checked @endif/>
                             <span>Non</span>
                         </label>
                     </div>
@@ -101,15 +101,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ?</h6>
                         <label>
-                            <input type="radio" name="local" value="oui" checked/>
+                            <input type="radio" name="local" value="oui" checked @if ($local == "oui") checked @endif/>
                             <span>Oui</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" value="non" />
+                            <input type="radio" name="local" value="non"  @if ($local == "non") checked @endif/>
                             <span>Non</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" value="ne_sais_pas" />
+                            <input type="radio" name="local" value="ne_sais_pas"  @if ($local == "ne_sais_pas") checked @endif/>
                             <span>Ne sais pas</span>
                         </label>
                     </div>
@@ -120,7 +120,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <div class="container-contact100-form-btn">
 
-                <a href="{{route('index')}}" class="contact100-form-btn">
+                <a href="{{route('index_catnat')}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
 
@@ -132,4 +132,19 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+function calcul_contenu(){
+
+  var equipement = $('#equipement').val();
+  var marchandise = $('#marchandise').val();
+  var somme = parseFloat(equipement) + parseFloat(marchandise);
+  $('#contenu').val(somme);
+
+}
+</script>
+
 @endsection

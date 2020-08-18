@@ -12,6 +12,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
 
 
+
 <div class="container-contact100">
     <div class="wrap-contact100">
         <button class="btn-hide-contact100">
@@ -24,11 +25,17 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </span>
         </div>
         @include('core.produit.inside-menu')
-        <form class="contact100-form " action="{{route('montant_mrh')}}" method="post" >
-        @csrf
+
+
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Informations situation du risque <span>1</span></h5>
             </div>
+
+            @include('core.home.messages')
+
+
+            <form class="contact100-form " action="{{route('montant_mrh')}}" method="post" >
+            @csrf
 
            <div class="slice">
                 <h6>Montant forfaitaire</h6>
@@ -54,11 +61,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                    <h6>Habitation</h6>
                      <label>
-                       <input type="radio" name="habitation"  value="individuelle" @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif/ required>
+                       <input type="radio" name="habitation"  value="individuelle" checked @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif required>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="habitation"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif/ required>
+                       <input type="radio" name="habitation"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif required>
                        <span>Collective</span>
                    </label>
                </div>
@@ -67,11 +74,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                     <h6>Qualité juredique</h6>
                     <label>
-                        <input type="radio" name="juredique" value="proprietaire"  @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif/ required>
+                        <input type="radio" name="juredique" value="proprietaire" checked @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif required>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif/ required>
+                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif required>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -81,11 +88,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
               <div class="radio_section_slice">
                  <h6>Terrasse</h6>
                      <label>
-                     <input type="radio" name="terasse" id="oui" value="oui" @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif / required>
+                     <input type="radio" name="terasse" id="oui" value="oui" checked @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif required>
                      <span>Oui</span>
                      </label>
                      <label>
-                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif / required>
+                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif  required>
                      <span>Non</span>
                      </label>
              </div>

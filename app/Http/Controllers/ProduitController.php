@@ -37,9 +37,10 @@ class ProduitController extends Controller
                 }
                 break;
             case 'catnat':
+              $formul = "Habitation";
                 switch ($req->phase){
                     case 'index':
-                        return view('produits.catnat.index');
+                        return view('produits.catnat.index',compact('formul'));
                         break;
                     case 'commerce':
                         return view('produits.catnat.formule_commerce');

@@ -36,9 +36,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6>Type de la construction</h6>
                <div class="wrap-input100 validate-input3">
                    <select id="type_const" class="input100" type="text" name="type_const" placeholder="type_const">
-                       <option value="Habitation individuelle">Habitation individuelle</option>
-                       <option value="Habitation collective">Habitation collective</option>
-                       <option value="Immeuble">Immeuble</option>
+                       <option value="Habitation individuelle" @if ($type_const == "Habitation individuelle") selected @endif>Habitation individuelle</option>
+                       <option value="Habitation collective" @if ($type_const == "Habitation collective") selected @endif>Habitation collective</option>
+                       <option value="Immeuble" @if ($type_const == "Immeuble") selected @endif>Immeuble</option>
                    </select>
 
                </div>
@@ -48,13 +48,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                   <h6>La construction dispose-t-elle d'un permis de construire ? </h6>
                   <label>
 
-                      <input type="radio" name="permis" id="oui" value="oui"  checked />
+                      <input type="radio" name="permis" id="oui" value="oui"  checked  @if ($permis == "oui") checked @endif />
 
                       <span>Oui</span>
 
                   </label>
                   <label>
-                      <input type="radio" name="permis" id="non" value="non" />
+                      <input type="radio" name="permis" id="non" value="non" @if ($permis == "non") checked @endif />
                       <span>Non</span>
                   </label>
               </div>
@@ -63,7 +63,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
 
             <div class="container-contact100-form-btn">
-                <a href="{{ route('type_produit',['catnat','index']) }}" class="contact100-form-btn">
+                <a href="{{route('index_catnat')}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
                 <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant">
