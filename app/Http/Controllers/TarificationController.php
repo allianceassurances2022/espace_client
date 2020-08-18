@@ -27,9 +27,11 @@ class TarificationController extends Controller
 		$activite = "oui";
 		$registre = "oui";
 		$local = "oui";
+		$type_const = "Habitation individuelle";
+		$permis = "oui";
 
 		if($formul=='Habitation'){
-			return view('produits.catnat.formule_habitation',compact('formul'));
+			return view('produits.catnat.formule_habitation',compact('formul','type_const','permis'));
 		}elseif($formul=='Commerce'){
 			return view('produits.catnat.formule_commerce',compact('formul','type_const','activite','registre','local'));
 
@@ -175,6 +177,8 @@ class TarificationController extends Controller
 
 	public function montant_catnat(Request $request)
 	{
+
+
 
 		$maj=0.0;
 
@@ -387,7 +391,6 @@ class TarificationController extends Controller
 		if ($request->nbr_piece > 15){
 		 Alert::warning('Avertissement', 'Nombre de piéces doit etre inferieur a 16 ');
 		   return redirect()->route('type_produit',['mrh','index']);
-			//return back();
 		 }
 
 		$habitation = $request->habitation;
