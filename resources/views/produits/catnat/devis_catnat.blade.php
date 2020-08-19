@@ -295,7 +295,7 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Date d'effet</label>
                                                     <div class="col-sm-9">
-                                                          <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" onchange="dateplusunans()" required>
+                                                          <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" min="" onchange="dateplusunans()" required>
                                                     </div>
                                                 </div>
 
@@ -422,14 +422,23 @@ Devis CATNAT
 
 
 <script>
-    function active_button() {
-        if ($('input[value=""]').length > 0) {
-            console.log('certains champs sont vides!')
-            // $('#btn_validate').attr('disabled', true);
-        } else {
-            // $('#btn_validate').attr('disabled', false);
-        }
-    }
+
+$(function(){
+  var dtToday = new Date();
+
+  var month = dtToday.getMonth() + 1;
+  var day = dtToday.getDate();
+  var year = dtToday.getFullYear();
+
+  if(month < 10)
+      month = '0' + month.toString();
+  if(day < 10)
+      day = '0' + day.toString();
+
+  var maxDate = year + '-' + month + '-' + day;
+  $('#date_effet').attr('min', maxDate);
+
+});
 
     function dateplusunans() {
 
@@ -449,7 +458,6 @@ Devis CATNAT
         var year = apr.getFullYear();
         var final = year + "-" + month + "-" + day;
         document.getElementById("date_expiration").value = final;
-        active_button();
     }
 </script>
 
