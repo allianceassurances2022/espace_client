@@ -39,7 +39,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
            <div class="slice">
                 <h6>
-               <a href="javascript:mtnf();"><img src="{{asset('images/info.png')}}" alt="Informations" title="Informations" style="margin-right: 5px;"></a>
+               <a href="javascript:mtnf();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                Montant forfaitaire</h6>
                <div class="wrap-input100 validate-input2">
 
@@ -62,7 +62,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
                 <div class="radio_section_slice">
                    <h6>
-                   <a href="javascript:habi();"><img src="{{asset('images/info.png')}}" alt="Informations" title="Informations" style="margin-right: 5px;"></a>
+                   <a href="javascript:habi();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                    Habitation</h6>
                      <label>
                        <input type="radio" name="habitation"  value="individuelle" checked @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif required>
@@ -90,7 +90,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
            <div class="slice slice_third">
               <div class="radio_section_slice">
-                 <h6><a href="javascript:terass();"><img src="{{asset('images/info.png')}}" alt="Informations" title="Informations" style="margin-right: 5px;"></a>
+                 <h6><a href="javascript:terass();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                    Terrasse</h6>
                      <label>
                      <input type="radio" name="terasse" id="oui" value="oui" checked @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif required>

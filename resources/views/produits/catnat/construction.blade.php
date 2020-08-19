@@ -28,7 +28,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div> --}}
 
             <div class="slice">
-                <h6><a href="javascript:surface();"><img src="{{asset('images/info.png')}}" alt="Informations" title="Informations" style="margin-right: 5px;"></a>
+                <h6><a href="javascript:surface();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                 Surface</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0 required>
