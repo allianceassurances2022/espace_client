@@ -21,9 +21,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         <form class="contact100-form validate-form"  action="{{route('construction_catanat')}}" method="post">
             @csrf
 
-            <div class="tite_container">
+            {{-- <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i>Formule Habitation <span>2</span></h5>
-            </div>
+            </div> --}}
             <div class="slice">
                 <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">

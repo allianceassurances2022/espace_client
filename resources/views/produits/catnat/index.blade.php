@@ -25,9 +25,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
         <form class="contact100-form validate-form" action="{{route('type_formule_catnat')}}" method="post">
             @csrf
-            <div class="tite_container">
+            {{-- <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Choix de la formule <span>1</span></h5>
-            </div>
+            </div> --}}
 
             <h6>Formule <span>(Choisissez votre formule)</span></h6>
             <div class="wrap-input100 validate-input2">

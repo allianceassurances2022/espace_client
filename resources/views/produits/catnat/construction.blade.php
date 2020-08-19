@@ -23,12 +23,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         @include('core.produit.inside-menu')
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
-            <div class="tite_container">
+            {{-- <div class="tite_container">
                 <h5 class="active"><i class="fa fa-building-o"></i> La construction<span>3</span></h5>
-            </div>
+            </div> --}}
 
             <div class="slice">
-                <h6>Superficie</h6>
+                <h6><a href="javascript:surface();"><img src="{{asset('images/info.png')}}" alt="Informations" title="Informations" style="margin-right: 5px;"></a>
+                Surface</h6>
                 <div class="wrap-input100 validate-input2">
                     <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0 required>
 
@@ -120,6 +121,28 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script>
+
+function surface(){
+
+//alert("oui");
+//Swal.fire('Any fool can use a computer');
+Swal.fire({
+title: 'Information',
+html: '<p style="line-height:18px;"><br/><br/>'+
+      '<strong style="font-weight:bold; font-size:14px;">Superficie totale bâtie : </strong><br/><br/>'+
+      'Si le bien à assurer comprend plusieurs étage additionner les superficies de tous les étages.'+
+      '</p>',
+icon: 'info',
+confirmButtonText: 'OK'
+})
+
+}
+
+</script>
 
 <script>
 $(document).ready(function(){
