@@ -149,7 +149,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 function montant_forfaitaire(){
 
   var mtn = $('#money').val();
-  var mtn_apres = mtn.split('.').join('');
+  var mtn_apres = mtn.split(' ').join('');
   var mtn_apres = mtn_apres.split(',').join('.');
   $('#montant').val(mtn_apres);
 
@@ -204,6 +204,6 @@ function terass(){
 
 @section('ready')
 $(function() {
-  $('.money').mask('#.##0,00', {reverse: true});
+  $('.money').mask('# ##0,00', {reverse: true});
 });
 @endsection
