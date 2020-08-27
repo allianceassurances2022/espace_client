@@ -16,8 +16,7 @@ class CreateListeProfessionTable extends Migration
         Schema::create('liste_professions', function (Blueprint $table) {
             $table->id();
             $table->string('code_profession');
-            $table->text('lib_professions');
-            
+            $table->text('lib_professions');            
             $table->timestamps();
         });
     }
@@ -31,4 +30,5 @@ class CreateListeProfessionTable extends Migration
     {
         Schema::dropIfExists('liste_professions');
     }
+
 }

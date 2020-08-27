@@ -10732,7 +10732,7 @@ canvas {
   -webkit-transition: background-color 300ms ease-in-out;
   -o-transition: background-color 300ms ease-in-out;
   transition: background-color 300ms ease-in-out;
-  background-color: #f5f5f5;
+  background-color: #007481;
   border-radius: 50%;
   display: inline-block;
   height: 50px;
@@ -10748,7 +10748,7 @@ canvas {
   -o-transition: color 300ms ease-in-out;
   transition: color 300ms ease-in-out;
   font-size: 25px;
-  color: #696767;
+  color: #ffffff;
 }
 .icon-container .icon:hover {
   background-color: #007481;

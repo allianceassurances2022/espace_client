@@ -14,6 +14,9 @@
 <script src="{{asset('produit_assets/vendor/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
 <script src="{{asset('produit_assets/js/main.js')}}"></script>
+
+
+@yield('js')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="{{asset('https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')}}"></script>
 <script>
@@ -118,4 +121,3 @@ document.addEventListener("click", closeAllSelect);
     @yield('ready')
   });
 </script>
-@yield('js')

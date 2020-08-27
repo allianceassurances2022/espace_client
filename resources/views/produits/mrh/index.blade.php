@@ -5,7 +5,6 @@
 
 @section('produit_url')
 background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg')}});
-
 @endsection
 
 @section('content')
@@ -43,7 +42,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                Montant forfaitaire</h6>
                <div class="wrap-input100 validate-input2">
 
-                 <input class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}" min="0" required>
+                 {{-- <input class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}" min="0" required> --}}
+                 {{-- <input type="text" id="money" name="montant" placeholder="" value="{{$montant ?? ''}}"  required> --}}
+                 <input class="input100 money" onchange="montant_forfaitaire();" value="{{$montant ?? ''}}" type="text" id="money" required>
 
                </div>
 
@@ -122,9 +123,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
             @endif
 
-                <input type="hidden" nom="habl" id="habl" value="{{$habitation ?? '' ?? ''}}">
-            <input type="hidden" nom="juridiquee" id="juridiquee" value="{{$juredique ?? '' ?? ''}}">
-            <input type="hidden" nom="terassedd" id="terassedd" value="{{$terasse ?? '' ?? ''}}">
+            <input type="hidden" name="habl" id="habl" value="{{$habitation ?? ''}}">
+            <input type="hidden" name="juridiquee" id="juridiquee" value="{{$juredique ?? ''}}">
+            <input type="hidden" name="terassedd" id="terassedd" value="{{$terasse ?? ''}}">
+            <input type="hidden" name="montant" id="montant" placeholder="" value="{{$montant ?? ''}}">
 
             </div>
 
@@ -138,8 +140,20 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> --}}
+  <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
 
   <script>
+
+function montant_forfaitaire(){
+
+  var mtn = $('#money').val();
+  var mtn_apres = mtn.split('.').join('');
+  var mtn_apres = mtn_apres.split(',').join('.');
+  $('#montant').val(mtn_apres);
+
+}
 
 function mtnf(){
 
@@ -185,4 +199,11 @@ function terass(){
 }
 
 </script>
+@endsection
+
+
+@section('ready')
+$(function() {
+  $('.money').mask('#.##0,00', {reverse: true});
+});
 @endsection

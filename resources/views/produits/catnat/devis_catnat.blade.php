@@ -39,7 +39,7 @@ Devis CATNAT
                                                         <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}" readonly autocomplete="name" autofocus>
                                                         @error('name')
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
+                                                            <strong>{{$message}}</strong>
                                                         </span>
                                                         @enderror
                                                     </div>
@@ -141,14 +141,18 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control" readonly>
+                                                      <select name="wilaya" class="form-control" readonly>
+                                                          <option value="{{$wilaya_selected->code_wilaya}}">{{$wilaya_selected->nlib_wilaya}}</option>
+                                                      </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Commune</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="commune" value="{{$commune_selected}}" class="form-control" readonly>
+                                                      <select name="commune" class="form-control" readonly>
+                                                          <option value="{{$commune_selected->code_commune}}">{{$commune_selected->lib_commune}}</option>
+                                                      </select>
                                                     </div>
                                                 </div>
 
@@ -583,6 +587,8 @@ App.wizard();
 var map;
 
 initialize();
+
+//$('#wilaya').select2("readonly", true);
 
 $('#Wilaya_map').change(function(){
 

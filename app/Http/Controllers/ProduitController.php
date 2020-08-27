@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Wilaya;
+use App\commune;
 use App\Agences;
 
 use PDF;
@@ -182,6 +183,9 @@ class ProduitController extends Controller
          $commune_selected  = $value_catnat['commune_selected'];
          $appartient        = "oui";
          $agence_map        = '';
+
+         $commune_selected  = commune::where('code_commune',$commune_selected)->first();
+         $wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
         'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient'));

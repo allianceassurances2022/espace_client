@@ -876,6 +876,9 @@ class TarificationController extends Controller
 			$agences           = Agences::all();
 			$agence_map        = Agences::where('id',$code_agence)->first();
 
+			$commune_selected  = commune::where('code_commune',$commune_selected)->first();
+			$wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
+
 
 
     	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
