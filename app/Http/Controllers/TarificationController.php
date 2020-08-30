@@ -185,9 +185,8 @@ class TarificationController extends Controller
 		$type_formule     = $request->type_formule;
 		$type_const       = $request->type_const;
 		$valeur_c         = $request->Contenant;
-		$Contenant        = $valeur_c;
-		$equipement       = $request->equipement;
-		$marchandise      = $request->marchandise;
+		$valeur_e         = $request->equipement;
+		$valeur_m         = $request->marchandise;
 		$contenu          = $request->contenu;
 		$act_reg          = $request->activite;
 		$activite         = $act_reg;
@@ -211,128 +210,142 @@ class TarificationController extends Controller
 		$wilaya = wilaya::all();
 		$commune = commune::where('code_wilaya',$wilaya_selected)->get();
 
-    	/////////////////////Habitation-----------------------------------------
+		$val_assure=0;
+    $maj=0;
+    $taux=0;
 
-		if ($type_formule=="Habitation"){
 
-			if ($type_const=="Habitation individuelle"){
-				if ($zone=="0"){
-					$val_assure=$surface*28000;
-					$taux=0.00055;
-				}
-				else if ($zone=="1"){
-					$val_assure=$surface*31000;
-					if ($reg_para=="oui")
-						$taux=0.00060;
-					else $taux=0.00065;
-				}
-				else if ($zone=="2a"){
-					$val_assure=$surface*35000;
-					if ($reg_para=="oui")
-						$taux=0.00065;
-					else $taux=0.00080;
-				}
-				else if ($zone=="2b"){
-					$val_assure=$surface*39000;
-					if ($reg_para=="oui")
-						$taux=0.00070;
-					else $taux=0.001;
-				}
-				else if ($zone=="3"){
-					$val_assure=$surface*47000;
-					if ($reg_para=="oui")
-						$taux=0.00075;
-					else $taux=0.00125;
-				}
-			}
-			else{
-				if ($zone=="0"){
-					$val_assure=$surface*25000;
-					$taux=0.00055;
-				}
-				else if ($zone=="1"){
-					$val_assure=$surface*28000;
-					if ($reg_para=="oui")
-						$taux=0.00060;
-					else $taux=0.00065;
-				}
-				else if ($zone=="2a"){
-					$val_assure=$surface*31000;
-					if ($reg_para=="oui")
-						$taux=0.00065;
-					else $taux=0.00080;
-				}
-				else if ($zone=="2b"){
-					$val_assure=$surface*35000;
-					if ($reg_para=="oui")
-						$taux=0.00070;
-					else $taux=0.001;
-				}
-				else if ($zone=="3"){
-					$val_assure=$surface*38000;
-					if ($reg_para=="oui")
-						$taux=0.00075;
-					else $taux=0.00125;
-				}
-			}
-			$valeur_normative=$val_assure;
 
+
+/////////////////////Habitation-----------------------------------------
+
+if ($type_formule=="Habitation"){
+$activite="";
+$valeur_c=$val_assur;
+$valeur_e=0;
+$valeur_m=0;
+if ($type_const=="Habitation individuelle"){
+	if ($zone=="0"){
+	$val_assure=$surface*28000;
+	$taux=0.00055;
+	}
+		else if ($zone=="1"){
+			$val_assure=$surface*31000;
+			if ($reg_para=="oui")
+				$taux=0.00060;
+			else $taux=0.00065;
 		}
+		else if ($zone=="2a"){
+			$val_assure=$surface*35000;
+			if ($reg_para=="oui")
+				$taux=0.00065;
+			else $taux=0.00080;
+		}
+		else if ($zone=="2b"){
+			$val_assure=$surface*39000;
+			if ($reg_para=="oui")
+				$taux=0.00070;
+			else $taux=0.001;
+		}
+		else if ($zone=="3"){
+			$val_assure=$surface*47000;
+			if ($reg_para=="oui")
+				$taux=0.00075;
+			else $taux=0.00125;
+		}
+}
+else{
+	if ($zone=="0"){
+	$val_assure=$surface*25000;
+	$taux=0.00055;
+	}
+		else if ($zone=="1"){
+			$val_assure=$surface*28000;
+			if ($reg_para=="oui")
+				$taux=0.00060;
+			else $taux=0.00065;
+		}
+		else if ($zone=="2a"){
+			$val_assure=$surface*31000;
+			if ($reg_para=="oui")
+				$taux=0.00065;
+			else $taux=0.00080;
+		}
+		else if ($zone=="2b"){
+			$val_assure=$surface*35000;
+			if ($reg_para=="oui")
+				$taux=0.00070;
+			else $taux=0.001;
+		}
+		else if ($zone=="3"){
+			$val_assure=$surface*38000;
+			if ($reg_para=="oui")
+				$taux=0.00075;
+			else $taux=0.00125;
+		}
+}
+	if ($valeur_c>$val_assure)
+		 $val_assure=$valeur_c;
+}
 
 ///////////////////////industrie et commercial--------------------------------------
-		else {
-			$valeur_e=0;
-			$valeur_m=0;
-			$valeur_normative=0;
-			$val_assure=$valeur_c+$valeur_e+$valeur_m;
+else {
+
+$val_assure=$valeur_c+$valeur_e+$valeur_m;
 
 
 			if ($zone=="0"){
-				$taux=0.00037;
-			}
-			else if ($zone=="1"){
-				if ($reg_para=="oui")
-					$taux=0.00040;
-				else $taux=0.00043;
-			}
-			else if ($zone=="2a"){
-				if ($reg_para=="oui")
-					$taux=0.00043;
-				else $taux=0.00053;
-			}
-			else if ($zone=="2b"){
-				if ($reg_para=="oui")
-					$taux=0.00047;
-				else $taux=0.00067;
-			}
-			else if ($zone=="3"){
-				if ($reg_para=="oui")
-					$taux=0.00050;
-				else $taux=0.00083;
-			}
+	$taux=0.00037;
+	}
+		else if ($zone=="1"){
+			if ($reg_para=="oui")
+				$taux=0.00040;
+			else $taux=0.00043;
 		}
-///////////////////////////////majoration------------------------------------------------------------------
-		if ($permis=="non" ){
+		else if ($zone=="2a"){
+			if ($reg_para=="oui")
+				$taux=0.00043;
+			else $taux=0.00053;
+		}
+		else if ($zone=="2b"){
+			if ($reg_para=="oui")
+				$taux=0.00047;
+			else $taux=0.00067;
+		}
+		else if ($zone=="3"){
+			if ($reg_para=="oui")
+				$taux=0.00050;
+			else $taux=0.00083;
+		}
+
+
+			if ($act_reg=="non"){
 			$maj=$val_assure*$taux*0.2;
-		}
+			}
+
+}
+///////////////////////////////majoration------------------------------------------------------------------
+if ($permis=="non" ){
+			$maj=$val_assure*$taux*0.2;
+			}
 
 
-		$val=$val_assure*$taux;
+	$val=$val_assure*$taux;
 
-		if ($type_formule=="Habitation"){
+	if ($type_formule=="Habitation"){
 
-			if ($val<1500)
-				$val=1500;
-			else $val=$val_assure*$taux;
-		}
-		else
-		{
-			if ($val<2500)
-				$val=2500;
-			else $val=$val_assure*$taux;
-		}
-		$CP=1000;
-		$TD=80;
+	if ($val<1500)
+		$val=1500;
+	else $val=$val_assure*$taux;
+}
+else
+{
+if ($val<2500)
+		$val=2500;
+	else $val=$val_assure*$taux;
+}
+$CP=1000;
+$TD=80;
 
 
 
@@ -367,8 +380,8 @@ class TarificationController extends Controller
 
 		$request->session()->put('data_catnat', $data_session);
 
-		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
-		            'marchandise','contenu','act_reg','reg_com','loca','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','valeur_c','valeur_e',
+		            'valeur_m','contenu','act_reg','reg_com','loca','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 
 	}
 

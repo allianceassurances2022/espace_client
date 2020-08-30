@@ -67,7 +67,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <option value="10001">Adrar</option>
                        @endif
                     </select>
-
                 </div>
             </div>
             <div class="radio_section">
@@ -81,6 +80,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <span>Non</span>
                 </label>
             </div>
+
 
             <div class="tarificateur">
                 <h5>Montant à payer </h5>

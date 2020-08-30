@@ -33,7 +33,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="wrap-input100 validate-input2">
                 <select id="formule" class="input100" type="text" name="formule" placeholder="Formule">
                     <option @if($formul =="Habitation") selected @endif  value="Habitation">Habitation</option>
-                    <option @if($formul =="Commerce") selected @endif value="Commerce">Commerce</option>
+                      <option @if($formul =="Commerce") selected @endif value="Commerce">Commerce</option>
                     <option @if($formul =="Industrielle") selected @endif value="Industrielle">Industrielle</option>
                 </select>
             </div>
