@@ -101,15 +101,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <div class="radio_section_slice">
                         <h6>Si le local n’appartient pas à l’assuré, ce local est-il assuré ?</h6>
                         <label>
-                            <input type="radio" name="local" value="oui" checked @if ($local == "oui") checked @endif/>
+                            <input type="radio" name="local" id="local" onchange="desactiveC();" value="oui" @if ($local == "oui") checked @endif/>
                             <span>Oui</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" value="non"  @if ($local == "non") checked @endif/>
+                            <input type="radio" name="local" onchange="desactiveC();" value="non" checked @if ($local == "non") checked @endif/>
                             <span>Non</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" value="ne_sais_pas"  @if ($local == "ne_sais_pas") checked @endif/>
+                            <input type="radio" name="local" onchange="desactiveC();" value="ne_sais_pas"  @if ($local == "ne_sais_pas") checked @endif/>
                             <span>Ne sais pas</span>
                         </label>
                     </div>
@@ -143,6 +143,17 @@ function calcul_contenu(){
   var marchandise = $('#marchandise').val();
   var somme = parseFloat(equipement) + parseFloat(marchandise);
   $('#contenu').val(somme);
+
+}
+
+function desactiveC(){
+
+ if($('#local').is(':checked')){
+  $('#Contenant').val(0);
+  $('#Contenant').attr('readonly', true);
+}else{
+  $('#Contenant').attr('readonly', false);
+}
 
 }
 </script>

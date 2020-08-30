@@ -1,6 +1,6 @@
 .my-menu-inside{
   padding: 30px 55px 0px 30px;
-  text-align: center; 
+  text-align: center;
   float: right;
 }
 
@@ -210,7 +210,7 @@ form h6 span{
     margin-bottom: 1em;
     font-size: 15px;
     padding-bottom: 1em;
-    padding-top: 15px; 
+    padding-top: 15px;
     border-top: 1px #e6e6e6 solid;
     border-bottom: 1px #e6e6e6 solid;
     margin-top: -20px;
@@ -380,13 +380,18 @@ a:hover {
 }
 
 .contact100-form-btn, .contact100-form-btn:hover {
-    box-shadow: none; 
+    box-shadow: none;
 }
 
 input.input100 {
     height: 40px;
     font-size: 12px;
 }
+
+input.input100:read-only {
+  background-color: #efefef;
+}
+
 .my-menu-humb{
     font-size: 1em;
     color: #ffffff;
@@ -467,7 +472,7 @@ select{
     }
     .validate-input2{
         margin: auto;
-        margin-bottom: 20px;       
+        margin-bottom: 20px;
     }
     .radio_section_slice h6, .radio_section h6 {
       text-align: left;
@@ -484,7 +489,7 @@ select{
     }
 
     .tarificateur h5 {
-      text-align: right; 
+      text-align: right;
     }
     .validate-input2 {
       margin: auto;

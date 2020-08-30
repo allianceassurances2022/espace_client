@@ -145,6 +145,15 @@ function calcul_contenu(){
   $('#contenu').val(somme);
 
 }
+
+function desactiveC(){
+ if($('#local_oui').is(':checked')){
+  $('#Contenant').val(0);
+  $('#Contenant').attr('readonly', true);
+}else{
+  $('#Contenant').attr('readonly', false);
+}
+}
 </script>
 
 @endsection
