@@ -507,6 +507,10 @@ $TD=80;
 			$td =80;
 			$Ctpolice =500;
 			$tva=($prim+$Ctpolice)*0.19;
+
+			$prim= $prim*0.4;
+
+
 			$totale = $prim+$Ctpolice+$tva+$td;
 
 			/////////////////////// sauvegarde session

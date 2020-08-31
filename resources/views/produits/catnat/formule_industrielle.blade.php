@@ -109,7 +109,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                             <span>Non</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" onchange="desactiveC();" value="ne_sais_pas"  @if ($local == "ne_sais_pas") checked @endif/>
+                            <input type="radio" name="local" onchange="desactiveC();" value="ne_sais_pas" @if ($local == "ne_sais_pas") checked @endif/>
                             <span>Ne sais pas</span>
                         </label>
                     </div>

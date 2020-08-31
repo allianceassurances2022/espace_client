@@ -130,8 +130,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
             </div>
 
-
-
         </form>
 
     </div>
@@ -140,7 +138,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> --}}
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
 
 
@@ -151,14 +148,22 @@ function montant_forfaitaire(){
   var mtn = $('#money').val();
   var mtn_apres = mtn.split(' ').join('');
   var mtn_apres = mtn_apres.split(',').join('.');
-  $('#montant').val(mtn_apres);
+  if(mtn_apres >= 200000 && mtn_apres <= 5000000 && mtn_apres%50000 == 0 ) {
+    $('#montant').val(mtn_apres);
+  } else {
+    Swal.fire({
+    title: 'Attention!',
+    text: 'Le capital mobilier doit être entre 200 000 DA et 5 000 000 DA avec des paliers de 50 000 DA',
+    icon: 'warning',
+    confirmButtonText: 'OK'
+     })
+      $('#money').val('');
+  }
 
 }
 
 function mtnf(){
 
-//alert("oui");
-  //Swal.fire('Any fool can use a computer');
   Swal.fire({
   title: 'Information',
   html: '<p style="line-height:18px;"><br/><br/><strong style="font-weight:bold;">Montant forfaitaire :</strong> capital mobilier assuré <br/><br/></p>',
@@ -170,9 +175,8 @@ function mtnf(){
 
 function habi(){
 
-//alert("oui");
-  //Swal.fire('Any fool can use a computer');
   Swal.fire({
+
   title: 'Information',
   html: '<p style="line-height:18px;"><br/><br/>'+
         '<strong style="font-weight:bold; font-size:14px;">Habitation :</strong><br/><br/>'+
@@ -181,14 +185,12 @@ function habi(){
         '</p>',
   icon: 'info',
   confirmButtonText: 'OK'
-})
+ })
 
 }
 
 function terass(){
 
-//alert("oui");
-  //Swal.fire('Any fool can use a computer');
   Swal.fire({
   title: 'Information',
   html: '<p style="line-height:18px;"><br/><br/><strong style="font-weight:bold;">Terasse :</strong> existence d\'une terrasse <br/><br/></p>',
