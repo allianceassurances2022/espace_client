@@ -27,7 +27,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur assurée </h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0 required>
+                    {{-- <input id="val_assur" class="input100" type="number" name="val_assur" placeholder="Valeur assurée" value="{{$val_assur ?? ''}}" min=0 required> --}}
+                    <input class="input100 money" onchange="montant_assure();" value="{{$val_assur ?? ''}}" type="text" id="money" required>
 
                 </div>
             </div>
@@ -60,6 +61,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
               </div>
           </div>
 
+            <input type="hidden" id="valeur_assure_" type="number" name="val_assur" value="{{$val_assur ?? ''}}">
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
 
             <div class="container-contact100-form-btn">
@@ -72,4 +74,29 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+  <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
+  <script>
+
+  function montant_assure(){
+
+  var mtn = $('#money').val();
+  var mtn_apres = mtn.split(' ').join('');
+  var mtn_apres = mtn_apres.split(',').join('.');
+   $('#valeur_assure_').val(mtn_apres);
+
+  }
+
+  </script>
+
+@endsection
+
+@section('ready')
+$(function() {
+  $('.money').mask('# ##0,00', {reverse: true});
+});
 @endsection

@@ -52,6 +52,8 @@ class TarificationController extends Controller
 	public function construction_catanat(Request $request)
 	{
 
+
+
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
 		$surface          = '';
@@ -177,8 +179,6 @@ class TarificationController extends Controller
 
 	public function montant_catnat(Request $request)
 	{
-
-
 
 		$maj=0.0;
 

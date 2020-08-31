@@ -39,14 +39,16 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur Contenant</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0 required>
+                    {{-- <input id="Contenant" class="input100" type="number" name="Contenant" value="{{$Contenant ?? ''}}" placeholder="Valeur Contenant" min=0 required> --}}
+                    <input class="input100 money" onchange="montant_contenant();" value="{{$Contenant ?? ''}}" type="text" id="Contenant" required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur equipement</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="equipement" onchange="calcul_contenu();" class="input100" type="number" name="equipement" value="{{$equipement ?? 0}}" placeholder="Valeur equipement" min=0 required>
+                    {{-- <input id="equipement" onchange="calcul_contenu();" class="input100" type="number" name="equipement" value="{{$equipement ?? 0}}" placeholder="Valeur equipement" min=0 required> --}}
+                    <input class="input100 money" onchange="calcul_contenu();" value="{{$equipement ?? '0'}}" type="text" id="equipement" required>
 
                 </div>
             </div>
@@ -55,14 +57,16 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Valeur marchandise</h6>
                 <div class="wrap-input100 validate-input3">
-                    <input id="marchandise" onchange="calcul_contenu();" class="input100" type="number" name="marchandise" value="{{$marchandise ?? 0}}" placeholder="Valeur marchandise" min=0 required>
+                    {{-- <input id="marchandise" onchange="calcul_contenu();" class="input100" type="number" name="marchandise" value="{{$marchandise ?? 0}}" placeholder="Valeur marchandise" min=0 required> --}}
+                    <input class="input100 money" onchange="calcul_contenu();" value="{{$marchandise ?? '0'}}" type="text" id="marchandise" required>
 
                 </div>
             </div>
             <div class="slice">
                 <h6>Valeur contenu</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="contenu" class="input100" type="number" name="contenu" value="{{$contenu ?? 0}}" placeholder="Valeur contenu" min=0 required readonly>
+                    {{-- <input id="contenu" class="input100 money" type="text" name="contenu" value="{{$contenu ?? 0}}" placeholder="Valeur contenu" min=0 required readonly> --}}
+                    <input class="input100 money" value="{{$contenu ?? '0'}}" type="text" id="contenu" required readonly>
 
                 </div>
             </div>
@@ -117,6 +121,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             </div>
 
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
+            <input type="hidden" id="Contenant_" name="Contenant" value="{{$Contenant ?? ''}}">
+            <input type="hidden" id="equipement_" name="equipement" value="{{$equipement ?? 0}}">
+            <input type="hidden" id="marchandise_" name="marchandise" value="{{$marchandise ?? 0}}">
+            <input type="hidden" id="contenu_" name="contenu" value="{{$contenu ?? 0}}">
 
             <div class="container-contact100-form-btn">
 
@@ -136,13 +144,36 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
 @section('js')
 
-<script>
+  <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
+  <script>
+
+  function montant_contenant(){
+
+  var mtn = $('#Contenant').val();
+  var mtn_apres = mtn.split(' ').join('');
+  var mtn_apres = mtn_apres.split(',').join('.');
+   $('#Contenant_').val(mtn_apres);
+
+  }
+
 function calcul_contenu(){
 
-  var equipement = $('#equipement').val();
-  var marchandise = $('#marchandise').val();
+  var mtn = $('#equipement').val();
+  var mtn_apres = mtn.split(' ').join('');
+  var mtn_apres = mtn_apres.split(',').join('.');
+   $('#equipement_').val(mtn_apres);
+
+   var mtn = $('#marchandise').val();
+   var mtn_apres = mtn.split(' ').join('');
+   var mtn_apres = mtn_apres.split(',').join('.');
+    $('#marchandise_').val(mtn_apres);
+
+  var equipement = $('#equipement_').val();
+  var marchandise = $('#marchandise_').val();
   var somme = parseFloat(equipement) + parseFloat(marchandise);
-  $('#contenu').val(somme);
+  $('#contenu').val(number_format(somme, 2,',', ' '));
+  $('#contenu_').val(number_format(somme, 2,'.', ''));
 
 }
 
@@ -157,6 +188,42 @@ function desactiveC(){
 
 }
 
+function number_format(number, decimals, dec_point, thousands_point) {
+
+    if (number == null || !isFinite(number)) {
+        throw new TypeError("number is not valid");
+    }
+
+    if (!decimals) {
+        var len = number.toString().split('.').length;
+        decimals = len > 1 ? len : 0;
+    }
+
+    if (!dec_point) {
+        dec_point = '.';
+    }
+
+    if (!thousands_point) {
+        thousands_point = '';
+    }
+
+    number = parseFloat(number).toFixed(decimals);
+
+    number = number.replace(".", dec_point);
+
+    var splitNum = number.split(dec_point);
+    splitNum[0] = splitNum[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands_point);
+    number = splitNum.join(dec_point);
+
+    return number;
+}
+
 </script>
 
+@endsection
+
+@section('ready')
+$(function() {
+  $('.money').mask('# ##0,00', {reverse: true});
+});
 @endsection
