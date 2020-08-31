@@ -189,11 +189,8 @@ class TarificationController extends Controller
 		$valeur_m         = $request->marchandise;
 		$contenu          = $request->contenu;
 		$act_reg          = $request->activite;
-		$activite         = $act_reg;
 		$reg_com          = $request->registre;
-		$registre         = $reg_com;
 		$loca             = $request->local;
-		$local            = $loca;
 		$Commune_selected = $request->Commune;
 		$wilaya_selected  = $request->Wilaya;
 		$anne_cont        = $request->anne_cont;
@@ -220,7 +217,6 @@ class TarificationController extends Controller
 /////////////////////Habitation-----------------------------------------
 
 if ($type_formule=="Habitation"){
-$activite="";
 $valeur_c=$val_assur;
 $valeur_e=0;
 $valeur_m=0;
@@ -380,8 +376,15 @@ $TD=80;
 
 		$request->session()->put('data_catnat', $data_session);
 
-		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','valeur_c','valeur_e',
-		            'valeur_m','contenu','act_reg','reg_com','loca','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+		$Contenant   = $valeur_c;
+    $equipement  = $valeur_e;
+    $marchandise = $valeur_m;
+    $activite    = $act_reg;
+    $registre    = $reg_com;
+    $local       = $loca;
+
+		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+		            'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 
 	}
 
