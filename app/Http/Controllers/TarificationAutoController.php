@@ -13,23 +13,23 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
-      $data_session = [
-      	              'date_conducteur' => $daten,
-  	                  'date_permis'     => $date_permis,
-  	                  'wilaya'          => $wilaya,
-  	                  'annee_auto'      => $annee_auto,
-  					          'puissance'       => $puissance,
-  					          'usage'           => $usage,
-  	                  'valeur'          => $valeur,
-  	                  'offre'           => $offre,
-  	                  'dure'            => $dure,
-  	                  'formule'         => $formule,
-  	                  'assistance'      => $assistance,
-  	                  'prime_total'     => $devis,
-  	                  'datec'           => $datec,
-                      ];
-
-      $request->session()->put('data_auto', $data_session);
+      // $data_session = [
+      // 	              'date_conducteur' => $daten,
+  	  //                 'date_permis'     => $date_permis,
+  	  //                 'wilaya'          => $wilaya,
+  	  //                 'annee_auto'      => $annee_auto,
+  		// 			          'puissance'       => $puissance,
+  		// 			          'usage'           => $usage,
+  	  //                 'valeur'          => $valeur,
+  	  //                 'offre'           => $offre,
+  	  //                 'dure'            => $dure,
+  	  //                 'formule'         => $formule,
+  	  //                 'assistance'      => $assistance,
+  	  //                 'prime_total'     => $devis,
+  	  //                 'datec'           => $datec,
+      //                 ];
+      //
+      // $request->session()->put('data_auto', $data_session);
 
       $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0","taxe"=>"non"]);
 
