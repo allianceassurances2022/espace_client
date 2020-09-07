@@ -49,6 +49,8 @@ class TarificationController extends Controller
 		return view('produits.catnat.index',compact('formul'));
 
 	}
+
+	
 	public function construction_catanat(Request $request)
 	{
 

@@ -61,6 +61,25 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+
+            <div class="slice">
+                <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                  <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change()" id="taxe">
+                      <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
+                      <option value="oui" @if($auto['taxe'] == 'oui') selected @endif>Oui</option>
+                  </select>
+                    <span class="focus-input100"></span>
+                </div>
+            </div>
+
+            <div class="slice" id="date-taxe" @if($auto['taxe'] == 'non') style="display:none; @endif">
+                <h6>Date effet de la taxe<span>(Choix Obligatoire)</span></h6>
+                <div class="wrap-input100">
+                  <input class="input100" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
+                    <span class="focus-input100"></span>
+                </div>
+            </div>
             <!-- fin produit laki + -->
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
@@ -80,18 +99,33 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 
             <div class="container-contact100-form-btn">
-                <a href="{{route('type_produit',['auto','index'])}}" class="contact100-form-btn">
-                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent  
+                <a href="{{route('precedent_auto')}}" class="contact100-form-btn">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
 
-                <input  class="contact100-form-btn" type='submit' name="calculer">
+                <input  class="contact100-form-btn" type='submit' name="calculer" value="calculer">
                 @if($devis != 0)
                 <a href="{{route('home')}}" class="contact100-form-btn">
-                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> 
+                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </a>
                 @endif
             </div>
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+
+  function taxe_change(){
+    if($('#taxe').val() == "oui"){
+      $('#date-taxe').css("display","block");
+    }else {
+      $('#date-taxe').css("display","none");
+  }
+
+  }
+
+</script>
 @endsection

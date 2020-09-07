@@ -41,6 +41,7 @@ Route::get('type_formule' , 'TarificationController@precidantconstruction')->nam
 Route::post('montant_catnat' , 'TarificationController@montant_catnat')->name('montant_catnat');
 
 Route::post('choix_auto' , 'TarificationAutoController@choix_auto')->name('choix_auto');
+Route::get('precedent_auto' , 'TarificationAutoController@precedent')->name('precedent_auto');
 Route::post('montant_auto' , 'TarificationAutoController@montant_auto')->name('montant_auto');
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 

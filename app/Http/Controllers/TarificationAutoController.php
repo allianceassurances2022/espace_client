@@ -13,7 +13,25 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
-      $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0"]);
+      $data_session = [
+      	              'date_conducteur' => $daten,
+  	                  'date_permis'     => $date_permis,
+  	                  'wilaya'          => $wilaya,
+  	                  'annee_auto'      => $annee_auto,
+  					          'puissance'       => $puissance,
+  					          'usage'           => $usage,
+  	                  'valeur'          => $valeur,
+  	                  'offre'           => $offre,
+  	                  'dure'            => $dure,
+  	                  'formule'         => $formule,
+  	                  'assistance'      => $assistance,
+  	                  'prime_total'     => $devis,
+  	                  'datec'           => $datec,
+                      ];
+
+      $request->session()->put('data_auto', $data_session);
+
+      $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0","taxe"=>"non"]);
 
     	$devis = 0;
 
@@ -22,6 +40,13 @@ class TarificationAutoController extends Controller
     }elseif($request->type_assurance == "OTO_L"){
         return view('produits.auto.formule_laki',compact('auto','devis'));
     }
+
+    }
+
+    public function precedent(Request $request){
+      $auto=$request->all();
+
+      dd($auto);
 
     }
 
@@ -59,6 +84,9 @@ class TarificationAutoController extends Controller
 		$offre = $request->type_assurance;
 
 		$dure=$request->dure;
+
+    $taxe=$request->taxe;
+    $date_taxe=$request->date_taxe;
 
 		if ($offre == "OTO_L") {
 			$formule = $request->formule;
@@ -170,7 +198,7 @@ class TarificationAutoController extends Controller
 		//////////////////////////////////////////////////////////////////////////////////////////////
 		$RC = $TRC[$code_particulier][$dureee] ;
 		//$RC = $TRC[$code_particulier]['1ans'] ;
-		$RC1 = ($RC*10)/100;
+		$RC1 = ($RC*20)/100;
 		$RC = $RC1+$RC;
 		if(diff($daten)<25){
 			$MAJa = ($RC*15)/100 ;
@@ -181,14 +209,16 @@ class TarificationAutoController extends Controller
 		$MAJ = max($MAJp , $MAJa);
 		$RC+=$MAJ ;
 
+    //dd($RC);
+
 
 		//////////////////////////////////////////////////////////////////////////////////////////////
 
 		switch ($assistance) {
 			case ("Sir_mhani") : $Ass = $AssSM;
-								break;
+								break ;
 			case ("Tranquilité") : $Ass = $AssTran;
-								break;
+								break ;
 			case ("Tranquilité_plus") : $Ass = $AssTranP;
 								break ;
 			case ("Liberté") : $Ass = $AssLib;
@@ -210,7 +240,7 @@ class TarificationAutoController extends Controller
 			if ($formule == "1") {
 				switch ($dure) {
 					case '1':
-					  $DASC = (2.5 * $valeur)/100 ;
+					    $DASC = (2.5 * $valeur)/100 ;
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
@@ -224,10 +254,12 @@ class TarificationAutoController extends Controller
 		}
 
 		else if ($offre == "AUTO_P") {
-
 		 switch ($usage) {
-			case '0' || '1' :
+			case '0' :
+
+        if($dure == 1){
 			    switch ($assistance) {
+
 			    	case ("Sir_mhanni") : $Ass = 1000;
 								break ;
 			    	case ("Tranquilité") : $Ass = 2400;
@@ -237,9 +269,55 @@ class TarificationAutoController extends Controller
 			        case ("Liberté") : $Ass = 6500;
 								break ;
 		        }
+
+          }else if($dure == 2){
+
+            switch ($assistance) {
+  			    	case ("Sir_mhanni") : $Ass = 1000-(1000*0.4);
+  								break ;
+  			    	case ("Tranquilité") : $Ass = 2400-(2400*0.4);
+  								break ;
+  			        case ("Tranquilité_plus") : $Ass = 4500-(4500*0.4);
+  								break ;
+  			        case ("Liberté") : $Ass = 6500-(6500*0.4);
+  								break ;
+  		        }
+          }
 					break ;
+
+          case '1' :
+
+            if($dure == 1){
+    			    switch ($assistance) {
+
+    			    	case ("Sir_mhanni") : $Ass = 1000;
+    								break ;
+    			    	case ("Tranquilité") : $Ass = 2400;
+    								break ;
+    			        case ("Tranquilité_plus") : $Ass = 4500;
+    								break ;
+    			        case ("Liberté") : $Ass = 6500;
+    								break ;
+    		        }
+
+              }else if($dure == 2){
+
+                switch ($assistance) {
+      			    	case ("Sir_mhanni") : $Ass = 1000-(1000*0.4);
+      								break ;
+      			    	case ("Tranquilité") : $Ass = 2400-(2400*0.4);
+      								break ;
+      			        case ("Tranquilité_plus") : $Ass = 4500-(4500*0.4);
+      								break ;
+      			        case ("Liberté") : $Ass = 6500-(6500*0.4);
+      								break ;
+      		        }
+              }
+    					break ;
 			case '2' :
+        if($dure == 1){
 			    switch ($assistance) {
+
 			    	case ("Sir_mhanni") : $Ass = 1490;
 								break ;
 			    	case ("Tranquilité") : $Ass = 2990;
@@ -249,28 +327,89 @@ class TarificationAutoController extends Controller
 			        case ("Liberté") : $Ass = 10000;
 								break ;
 		        }
+
+          }else if($dure == 2){
+
+            switch ($assistance) {
+  			    	case ("Sir_mhanni") : $Ass = 1490-(1490*0.4);
+  								break ;
+  			    	case ("Tranquilité") : $Ass = 2990-(2990*0.4);
+  								break ;
+  			        case ("Tranquilité_plus") : $Ass = 4990-(4990*0.4);
+  								break ;
+  			        case ("Liberté") : $Ass = 10000-(10000*0.4);
+  								break ;
+  		        }
+          }
 					break ;
 		 }
 
+
+
 			if ($formule == "1") {
-				switch ($dure) {
-					case '1':
-					    $DASC = (2.5 * $valeur)/100 ;
-				      $VOL = (0.25 * $valeur)/100 ;
-				      $BDG = 1000;
-				      $DR = 1200;
-				      $reduction = 0;
-						break ;
-				}
+
+
+
+              switch ($dure) {
+      					case '1':
+                $DASC = (5 * $valeur)/100 ;
+                $VOL = (0.5 * $valeur)/100 ;
+                $BDG = 2000;
+                $DR = 1200;
+                $reduction = 0;
+      						break;
+
+                case '2':
+                $DASC = (5 * $valeur)/100 ;
+                $DASC = $DASC*0.55 ;
+                $VOL = (0.5 * $valeur)/100 ;
+                $VOL = $VOL*0.55 ;
+                $BDG = 2000;
+                $BDG = $BDG*0.55;
+                $DR = 1200;
+                $reduction = 0;
+        				  break;
+      				}
+
 
 				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
-			}
+
+			} else if ($formule == "2") {
+
+
+        switch ($dure) {
+          case '1':
+          $DCVV = (2.5 * $valeur)/100;
+          $VOL = (1 * $valeur)/100;
+          $BDG = 2000;
+          $DR = 1200;
+          $reduction = 0;
+            break;
+
+          case '2':
+          $DCVV = (2.5 * $valeur)/100;
+          $DCVV = $DCVV*0.55;
+          $VOL = (1 * $valeur)/100;
+          $VOL = $VOL*0.55 ;
+          $BDG = 2000;
+          $BDG = $BDG*0.55;
+          $DR = 1200;
+          $reduction = 0;
+            break;
+        }
+
+        $prime_nette = $RC+$DR+$BDG+((($VOL+$DCVV)*(100-$reduction))/100)+$Ass;
+
+      }
 
 		}
+
 
 		//echo ' RC:'.$RC.' D:'.$DC20.' BDG:'.$BDG.' vol:'.$VOL.' DR:'.$DR.' ASS:'.$Ass;
 		//$TVA = (($prime_nette+$CP)*17)/100 ; // (CP-PTA)*0.17
 		$TVA = round(((($prime_nette+$CP)*19)/100), 2);
+
+
 		//echo $TVA." ".$TVA2;
 		//$FGA = (($RC+$MAJ+$CP)*3)/100;
 		$FGA = round(((($RC+$MAJ+$CP)*3)/100), 2);
@@ -280,20 +419,43 @@ class TarificationAutoController extends Controller
 		/////////////
 		///TG
 		switch ($prime_nette){
-			case ($prime_nette<=2500) : $TG = 300 ;
-				break ;
+			case ($prime_nette<=2500) : $TG = 300;
+				break;
 			case ($prime_nette<=10000) : $TG = 300+(($prime_nette-2500)*5)/100;
-				break ;
+				break;
 			case ($prime_nette<=50000) : $TG = 300+375+(($prime_nette-10000)*3)/100;
 				break;
-			case ($prime_nette>50000) : $TG = 300+375+1200+($prime_nette-50000)*0.02 ;
+			case ($prime_nette>50000) : $TG = 300+375+1200+($prime_nette-50000)*0.02;
 				break;
 		}
 		if ( $puissance > 3 ) {
 			$TG = $TG*2;
 		}
+
+    /// Taxe pollution
+
+    $TP=1500;
+
+    if ($taxe == "oui" ){
+      if ($dure == 1 ){
+      $date_exp=date("Y-m-d", strtotime('+1 year'));
+      }else if ($dure == 2){
+      $date_exp=date("Y-m-d", strtotime('+6 months'));
+      }
+
+      $date_exp_taxe=date('Y-m-d', strtotime('+1 year', strtotime($date_taxe)) );
+
+
+      if($date_exp_taxe > $date_exp){
+        $TP=0;
+      }
+
+
+    }
+
+
 		//////////////
-		$TAXE = $TVA+$FGA+$TD+$TG+$CP ;
+		$TAXE = $TVA+$FGA+$TD+$TG+$CP+$TP ;
 
 		//////////////////////////////////////////////
 		$devis = $prime_nette + $TAXE ;
@@ -320,8 +482,11 @@ class TarificationAutoController extends Controller
 
         $request->session()->put('data_auto', $data_session);
 
-
+        if ($offre == "OTO_L") {
         return view('produits.auto.formule_laki',compact('auto','devis'));
+        }else if($offre == "AUTO_P") {
+        return view('produits.auto.formule_part',compact('auto','devis'));
+        }
 
     }
 

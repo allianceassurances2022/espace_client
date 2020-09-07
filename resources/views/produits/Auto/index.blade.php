@@ -19,23 +19,23 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         </div>
         <form class="contact100-form validate-form" action="{{route('choix_auto')}}" method="post">
             @csrf
-            <div class="intro">
+            {{-- <div class="intro">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officiis itaque, eveniet veniam labore in voluptatum quidem alias.
             </div>
             <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Informations<span>1</span></h5>
-            </div>
+            </div> --}}
             <div class="slice">
                 <h6>Date de naissance assuré/conducteur <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="date" id="date_conducteur" name="date_conducteur" placeholder="Date de naissance assuré/conducteur">
+                    <input class="input100" type="date" id="date_conducteur" name="date_conducteur" value="{{$auto['date_conducteur'] ?? ''}}" placeholder="Date de naissance assuré/conducteur">
                     <span class="focus-input100"></span>
                 </div>
             </div>
             <div class="slice">
                 <h6>Date d'obtention du permis <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="date" name="date_permis" placeholder="Date d'obtention du permis">
+                    <input class="input100" id="date_permis" type="date" name="date_permis" placeholder="Date d'obtention du permis">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -75,7 +75,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Valeur estimée du vehicule <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="number" name="valeur_auto" placeholder="Valeur estimée du vehicule">
+                    {{-- <input class="input100" type="number" name="valeur_auto" placeholder="Valeur estimée du vehicule"> --}}
+                    <input class="input100 money" onchange="valeur_vehicule();" type="text" id="money" required>
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -89,12 +90,61 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
-            
+
+            <input type="hidden" name="valeur_auto" id="valeur_auto" type="number">
+
             <div class="container-contact100-form-btn">
-            <input  class="contact100-form-btn" type='submit' name="suivant">   
+            <input  class="contact100-form-btn" type='submit' name="suivant" value="suivant">
             </div>
         </form>
     </div>
 </div>
 
+@endsection
+
+
+@section('js')
+
+
+  <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
+
+<script>
+  $(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+    $('#date_permis').attr('max', maxDate);
+    $('#date_conducteur').attr('max', maxDate);
+
+  });
+</script>
+
+<script>
+function valeur_vehicule(){
+
+  var mtn = $('#money').val();
+  var mtn_apres = mtn.split(' ').join('');
+  var mtn_apres = mtn_apres.split(',').join('.');
+  $('#valeur_auto').val(mtn_apres);
+
+}
+
+</script>
+
+@endsection
+
+@section('ready')
+$(function() {
+  $('.money').mask('# ##0,00', {reverse: true});
+});
 @endsection
