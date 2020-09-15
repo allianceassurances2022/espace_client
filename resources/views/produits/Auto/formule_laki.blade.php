@@ -81,13 +81,15 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <!-- fin produit laki + -->
+            @if($devis != 0)
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" name="montant_paye" placeholder="Calcul du Montant en cours" value="{{$devis}}" readonly >
+                    <input class="input100" type="text" name="montant_paye" placeholder="Calcul du Montant en cours" value="{{number_format($devis, 2,',', ' ')}}" readonly >
                     <span class="focus-input100"></span>
                 </div>
             </div>
+            @endif
 
             <input type="hidden" name="date_conducteur" value="{{$auto['date_conducteur']}}">
             <input type="hidden" name="date_permis" value="{{$auto['date_permis']}}">
@@ -95,7 +97,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <input type="hidden" name="puissance" value="{{$auto['puissance']}}">
             <input type="hidden" name="valeur_auto" value="{{$auto['valeur_auto']}}">
             <input type="hidden" name="type_assurance" value="{{$auto['type_assurance']}}">
-            <input type="hidden" name="Wilaya" value="{{$auto['Wilaya']}}">
+            <input type="hidden" name="Wilaya_selected" value="{{$auto['Wilaya_selected']}}">
 
 
             <div class="container-contact100-form-btn">
@@ -105,7 +107,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
                 <input  class="contact100-form-btn" type='submit' name="calculer" value="calculer">
                 @if($devis != 0)
-                <a href="{{route('home')}}" class="contact100-form-btn">
+                <a href="{{route('devis_auto')}}" class="contact100-form-btn">
                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </a>
                 @endif

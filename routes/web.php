@@ -68,6 +68,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /////////////////////////////// Devis produits
 Route::get('/devis_auto', 'ProduitController@devis_auto')->name('devis_auto')->middleware('auth');
+Route::post('/validation_devis_auto' , 'TarificationAutoController@validation_devis_auto')->name('validation_devis_auto')->middleware('auth');
 Route::get('/devis_auto/{id}', 'TarificationAutoController@modification_devis_auto')->name('modification_devis_auto')->middleware('auth');
 
 Route::get('/devis_mrh', 'ProduitController@devis_mrh')->name('devis_mrh')->middleware('auth');

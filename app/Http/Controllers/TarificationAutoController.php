@@ -13,23 +13,9 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
-      // $data_session = [
-      // 	              'date_conducteur' => $daten,
-  	  //                 'date_permis'     => $date_permis,
-  	  //                 'wilaya'          => $wilaya,
-  	  //                 'annee_auto'      => $annee_auto,
-  		// 			          'puissance'       => $puissance,
-  		// 			          'usage'           => $usage,
-  	  //                 'valeur'          => $valeur,
-  	  //                 'offre'           => $offre,
-  	  //                 'dure'            => $dure,
-  	  //                 'formule'         => $formule,
-  	  //                 'assistance'      => $assistance,
-  	  //                 'prime_total'     => $devis,
-  	  //                 'datec'           => $datec,
-      //                 ];
-      //
-      // $request->session()->put('data_auto', $data_session);
+      $data_session = $auto;
+
+      $request->session()->put('data_auto', $data_session);
 
       $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0","taxe"=>"non"]);
 
@@ -43,10 +29,13 @@ class TarificationAutoController extends Controller
 
     }
 
-    public function precedent(Request $request){
-      $auto=$request->all();
+    public function precedent(){
 
-      dd($auto);
+      $auto  = session('data_auto');
+
+      $wilaya = Wilaya::all();
+
+      return view('produits.auto.index',compact('wilaya','auto'));
 
     }
 
@@ -54,7 +43,7 @@ class TarificationAutoController extends Controller
 
     $auto=$request->all();
 
-    $wilaya=Wilaya::where('code_wilaya',$request->Wilaya)->first();
+    $wilaya=Wilaya::where('code_wilaya',$request->Wilaya_selected)->first();
 
 		$zone = $wilaya->zone;
 
@@ -478,6 +467,8 @@ class TarificationAutoController extends Controller
 	                  'assistance'      => $assistance,
 	                  'prime_total'     => $devis,
 	                  'datec'           => $datec,
+                    'taxe'            => $taxe,
+                    'date_taxe'       => $date_taxe
                     ];
 
         $request->session()->put('data_auto', $data_session);

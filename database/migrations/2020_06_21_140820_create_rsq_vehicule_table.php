@@ -26,6 +26,8 @@ class CreateRsqVehiculeTable extends Migration
             $table->string('code_formule',10);
             $table->string('personne_transporte',10);
             $table->string('genre',10);
+            $table->boolean('taxe');
+            $table->Date('effet_taxe');
             $table->timestamps();
         });
     }

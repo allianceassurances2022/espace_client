@@ -25,9 +25,14 @@ class ProduitController extends Controller
         switch ($req->produit) {
             case 'auto':
             $wilaya = wilaya::all();
+            $auto = [
+              "Wilaya_selected" => "1",
+              "puissance"       => "0",
+              "type_assurance"  => "AUTO_P"
+            ];
                 switch ($req->phase){
                     case 'index':
-                        return view('produits.auto.index',compact('wilaya'));
+                        return view('produits.auto.index',compact('wilaya','auto'));
                         break;
                     case 'laki':
                         return view('produits.auto.formule_laki');
@@ -106,45 +111,32 @@ class ProduitController extends Controller
     public function devis_auto()
     {
 
-          $data_session     = [
-          'date_conducteur' => $daten,
-          'date_permis'     => $date_permis,
-          'wilaya'          => $wilaya,
-          'annee_auto'      => $annee_auto,
-          'puissance'       => $puissance,
-          'usage'           => $usage,
-          'valeur'          => $valeur,
-          'offre'           => $offre,
-          'dure'            => $dure,
-          'formule'         => $formule,
-          'assistance'      => $assistance,
-          'prime_total'     => $devis,
-          ];
 
         $value_auto        = session('data_auto');
         $date_souscription = date('Y-m-d');
-        $date_conducteur   = $value_auto['terasse'];
-        $date_permis       = $value_mrh['habitation'];
-        $wilaya            = $value_mrh['montant'];
-        $annee_auto        = $value_mrh['juredique'];
-        $puissance         = $value_mrh['nbr_piece'];
-        $usage             = $value_mrh['usage'];
-        $valeur            = $value_mrh['valeur'];
-        $offre             = $value_mrh['offre'];
-        $dure              = $value_mrh['dure'];
-        $formule           = $value_mrh['formule'];
-        $assistance        = $value_mrh['assistance'];
-        $prime_total       = $value_mrh['prime_total'];
-        $datec             = $value_mrh['datec'];
+        $date_conducteur   = $value_auto['date_conducteur'];
+        $date_permis       = $value_auto['date_permis'];
+        $wilaya_selected   = $value_auto['wilaya'];
+        $annee_auto        = $value_auto['annee_auto'];
+        $puissance         = $value_auto['puissance'];
+        $usage             = $value_auto['usage'];
+        $valeur            = $value_auto['valeur'];
+        $offre             = $value_auto['offre'];
+        $dure              = $value_auto['dure'];
+        $formule           = $value_auto['formule'];
+        $assistance        = $value_auto['assistance'];
+        $taxe              = $value_auto['taxe'];
+        $date_taxe         = $value_auto['date_taxe'];
+        $prime_total       = $value_auto['prime_total'];
+        $datec             = $value_auto['datec'];
 
-        $wilaya  = wilaya::all();
+
+        $wilaya  = Wilaya::all();
         $agences = Agences::all();
-
-        $wilaya_selected = 1;
         $agence_map = '';
 
-        return view('produits.Auto.devis_auto',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences','agence_map'));
+        return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map'));
     }
 
     public function visuelisation()

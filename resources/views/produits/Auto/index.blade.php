@@ -35,16 +35,16 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Date d'obtention du permis <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" id="date_permis" type="date" name="date_permis" placeholder="Date d'obtention du permis">
+                    <input class="input100" id="date_permis" type="date" name="date_permis" value="{{$auto['date_permis'] ?? ''}}" placeholder="Date d'obtention du permis">
                     <span class="focus-input100"></span>
                 </div>
             </div>
             <div class="slice">
                 <h6>Immatriculé à<span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="Wilaya" placeholder="Wilaya">
+                    <select class="input100" type="text" name="Wilaya_selected" placeholder="Wilaya">
                     @foreach($wilaya as $wilay)
-                        <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
+                        <option value="{{$wilay->code_wilaya}}" @if($auto['Wilaya_selected'] == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
                     @endforeach
                    </select>
                     <span class="focus-input100"></span>
@@ -53,7 +53,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="number" name="annee_auto" placeholder="Année de mise en circulation" min=0 max="9999">
+                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" min=0 max="9999">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -61,13 +61,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Puissance <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                    <select class="input100" type="text" name="puissance" placeholder="Puissance">
-                            <option value="0">2 CV</option>
-                            <option value="1">3 à 4 CV</option>
-                            <option value="2">5 à 6 CV</option>
-                            <option value="3">7 à 10 CV</option>
-                            <option value="4">11 à 14 CV</option>
-                            <option value="5">15 à 23 CV</option>
-                            <option value="6">Plus de 24 CV</option>
+                            <option value="0" @if($auto['puissance'] == '0') selected @endif>2 CV</option>
+                            <option value="1" @if($auto['puissance'] == '1') selected @endif>3 à 4 CV</option>
+                            <option value="2" @if($auto['puissance'] == '2') selected @endif>5 à 6 CV</option>
+                            <option value="3" @if($auto['puissance'] == '3') selected @endif>7 à 10 CV</option>
+                            <option value="4" @if($auto['puissance'] == '4') selected @endif>11 à 14 CV</option>
+                            <option value="5" @if($auto['puissance'] == '5') selected @endif>15 à 23 CV</option>
+                            <option value="6" @if($auto['puissance'] == '6') selected @endif>Plus de 24 CV</option>
                     </select>
                     <span class="focus-input100"></span>
                 </div>
@@ -76,7 +76,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Valeur estimée du vehicule <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     {{-- <input class="input100" type="number" name="valeur_auto" placeholder="Valeur estimée du vehicule"> --}}
-                    <input class="input100 money" onchange="valeur_vehicule();" type="text" id="money" required>
+                    <input class="input100 money" onchange="valeur_vehicule();" value="{{$auto['valeur_auto'] ?? ''}}" type="text" id="money" required>
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -84,14 +84,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Type d'assurance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="type_assurance" placeholder="Type d'assurance">
-                        <option value="AUTO_P">AUTO Particulier</option>
-                        <option value="OTO_L">OTO + LAKI</option>
+                        <option value="AUTO_P" @if($auto['type_assurance'] == 'AUTO_P') selected @endif>AUTO Particulier</option>
+                        <option value="OTO_L" @if($auto['type_assurance'] == 'OTO_L') selected @endif>OTO + LAKI</option>
                     </select>
                     <span class="focus-input100"></span>
                 </div>
             </div>
 
-            <input type="hidden" name="valeur_auto" id="valeur_auto" type="number">
+            <input type="hidden" name="valeur_auto" id="valeur_auto" type="number" value="{{$auto['valeur_auto'] ?? ''}}">
 
             <div class="container-contact100-form-btn">
             <input  class="contact100-form-btn" type='submit' name="suivant" value="suivant">

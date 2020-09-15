@@ -15,7 +15,6 @@ class CreateDevisTable extends Migration
     {
         Schema::create('devis', function (Blueprint $table) {
             $table->id();
-
             $table->string('code_devis')->nullable();
             $table->date('date_souscription')->nullable();
             $table->date('date_effet')->nullable();
@@ -31,7 +30,7 @@ class CreateDevisTable extends Migration
             $table->text('periode')->nullable();
             $table->float('prime_total')->nullable();
             $table->string('code_agence')->nullable();
-            $table->Integer('id_user'); 
+            $table->Integer('id_user');
             $table->timestamps();
         });
     }
