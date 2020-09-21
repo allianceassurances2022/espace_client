@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rsq_Vehicule extends Model
 {
-    protected $fillable = ['code_assure',    'matricule',    'marque',    'modele',    'annee_mise_circulation',    'puissance',    'usage',    'valeur_vehicule',    'code_formule', 'personne_transporte', 'genre'];
-    
+    protected $fillable = ['matricule','marque','modele','annee_mise_circulation','date_conducteur', 'date_permis', 'wilaya_obtention',
+    'puissance', 'usage', 'dure','code_formule','assistance','offre','valeur_vehicule','personne_transporte','genre','taxe','effet_taxe','code_devis'];
+
     protected $table = 'rsq_vehicule';
 }

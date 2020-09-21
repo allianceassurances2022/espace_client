@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Wilaya;
 
+use App\Rsq_Vehicule;
+use App\devis;
+
+use auth;
+
 class TarificationAutoController extends Controller
 {
 
@@ -196,7 +201,7 @@ class TarificationAutoController extends Controller
 			$MAJp = ($RC*25)/100 ;
 		}
 		$MAJ = max($MAJp , $MAJa);
-		$RC+=$MAJ ;
+		$RC+=$MAJ;
 
     //dd($RC);
 
@@ -478,6 +483,148 @@ class TarificationAutoController extends Controller
         }else if($offre == "AUTO_P") {
         return view('produits.auto.formule_part',compact('auto','devis'));
         }
+
+    }
+
+    public function validation_devis_auto (Request $request) {
+
+      $taxe="";
+      $date_effet_taxe=null;
+      if($request->taxe == "non"){
+        $taxe=0;
+      }else {
+          $taxe = 1;
+          $date_effet_taxe=$request->effet_taxe;
+        }
+
+
+      if ($request->code_agence == ""){
+			Alert::warning('Avertissement', 'Merci de choisir une Agence');
+      return back();
+			}
+
+			$rules = array(
+				'code_agence'  => 'bail|string|max:5',
+			);
+
+			$this->validate($request, $rules);
+
+      $date_sous = $request->date_sous;
+			$date_eff  = $request->date_eff;
+			$date_exp  = $request->date_exp;
+
+    	$prime_total= $request->prime_total;
+
+      if($request->id){
+
+    		$risque= Rsq_Vehicule::find($request->id);
+    		$risque->update([
+    			'adresse'     => $request->adresse,
+    			'code_wilaya' => $request->Wilaya,
+    			'superficie'  => $request->surface,
+    			'etage'       => $request->etage
+    		]);
+
+    		$devis= devis::find($risque->code_devis);
+    		$devis->update([
+    			'date_effet'      => $date_eff,
+    			'date_expiration' => $date_exp,
+    			'code_agence'     => $request->code_agence
+    		]);
+
+
+    	}else{
+
+
+    		$dev=devis::create([
+    			'date_souscription' => $date_sous,
+    			'date_effet'        => $date_eff,
+    			'date_expiration'   => $date_exp,
+    			'prime_total'       => $request->prime_total,
+    			'code_agence'       => $request->code_agence,
+					'id_user'           => Auth()->user()->id
+    		]);
+
+    		$res=Rsq_Vehicule::create([
+    			'matricule'              => $request->matricule,
+    			'marque'                 => $request->marque,
+    			'modele'                 => $request->model,
+    			'annee_mise_circulation' => $request->annee_auto,
+    			'date_conducteur'        => $request->date_conducteur,
+    			'date_permis'            => $request->date_permis,
+    			'wilaya_obtention'       => $request->wilaya_obtention,
+    			'puissance'              => $request->puissance,
+    			'usage'                  => $request->usage,
+    			'dure'                   => $request->dure,
+    			'code_formule'           => $request->formule,
+    			'assistance'             => $request->assistance,
+    			'offre'                  => $request->offre,
+    			'valeur_vehicule'        => $request->valeur,
+    			'personne_transporte'    => 0,
+    			'genre'                  => 00,
+    			'taxe'                   => $taxe,
+    			'effet_taxe'             => $date_effet_taxe,
+    			'code_devis'             => $dev->id
+
+    		]);
+
+    		$devis= devis::find($dev->id);
+    		$risque= Rsq_Vehicule::find($res->id);
+
+    	}
+
+      $user=auth::user();
+
+      return view('produits.Auto.resultat',compact('user','devis','risque','prime_total'));
+
+
+    }
+
+    public function modification_devis_auto(Request $request,$id){
+
+      $risque=Rsq_Vehicule::find($id);
+    	$id=$risque->id;
+      $devis=devis::find($risque->code_devis);
+
+      $date_souscription = $devis->date_souscription;
+			$date_eff          = $devis->date_effet;
+			$date_exp          = $devis->date_expiration;
+
+
+
+
+
+      // personne_transporte
+
+      $date_conducteur   = $risque->date_conducteur;
+      $date_permis       = $risque->date_permis;
+      $wilaya_selected   = $risque->wilaya_obtention;
+      $annee_auto        = $risque->annee_mise_circulation;
+      $puissance         = $risque->puissance;
+      $usage             = $risque->usage;
+      $dure              = $risque->dure;
+      $formule           = $risque->code_formule;
+      $assistance        = $risque->assistance;
+      $taxe              = $risque->taxe;
+      $date_taxe         = $risque->effet_taxe;
+      $offre             = $risque->offre;
+      $valeur            = $risque->valeur_vehicule;
+      $matricule         = $risque->matricule;
+      $marque            = $risque->marque;
+      $model             = $risque->modele;
+      $num_chassis       = $risque->;
+      $type              = $risque->;
+      $couleur           = $risque->;
+      $permis_num        = $risque->;
+      $categorie         = $risque->;
+      $delivre_a         = $risque->wilaya_obtention;
+      $wilaya            = wilaya::all();
+      $prime_total       = $devis->prime_total;
+      $agences           = Agences::all();
+    	$code_agence       = $devis->code_agence;
+			$agence_map        = Agences::where('id',$code_agence)->first();
+
+      return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp'));
 
     }
 

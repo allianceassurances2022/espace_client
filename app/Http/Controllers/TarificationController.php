@@ -37,9 +37,8 @@ class TarificationController extends Controller
 
 		}elseif($formul=='Industrielle'){
 			return view('produits.catnat.formule_industrielle',compact('formul','type_const','activite','registre','local'));
-
-
 		}
+
 	}
 	public function precidanttypeformul(Request $request)
 	{
@@ -50,7 +49,7 @@ class TarificationController extends Controller
 
 	}
 
-	
+
 	public function construction_catanat(Request $request)
 	{
 

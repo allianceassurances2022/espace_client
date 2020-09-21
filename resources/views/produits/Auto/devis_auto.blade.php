@@ -160,7 +160,7 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Immatriculé à</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="wilaya" value="{{$wilaya_selected->nlib_wilaya}}" class="form-control" readonly>
+                                                      <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -175,31 +175,6 @@ Devis Automobile
                                                   <label class="col-sm-3 control-label">Puissance</label>
                                                   <div class="col-sm-9">
                                                       <input type="text" name="puissance" value="{{$puissance}}" class="form-control" readonly>
-                                                  </div>
-                                              </div>
-
-                                          </div>
-
-                                          <div class="form-group">
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="text" name="valeur" value="{{$valeur}}" class="form-control" readonly>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Type d'assurance</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="text" name="offre" value="{{$offre}}" class="form-control" readonly>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Date expiration</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -259,6 +234,42 @@ Devis Automobile
 
                                           <div class="form-group">
 
+                                          <div class="col-md-4">
+                                              <label class="col-sm-3 control-label">Type d'assurance</label>
+                                              <div class="col-sm-9">
+                                                  <input type="text" name="offre" value="{{$offre}}" class="form-control" readonly>
+                                              </div>
+                                          </div>
+
+                                          </div>
+
+                                          <div class="form-group">
+
+                                              <div class="col-md-4">
+                                                  <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
+                                                  <div class="col-sm-9">
+                                                      <input type="text" name="valeur" value="{{$valeur}}" class="form-control" readonly>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <label class="col-sm-3 control-label">Date d'effet</label>
+                                                  <div class="col-sm-9">
+                                                      <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" min="" onchange="dateplusunans()" required >
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-4">
+                                                  <label class="col-sm-3 control-label">Date expiration</label>
+                                                  <div class="col-sm-9">
+                                                      <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                          <div class="form-group">
+
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Matricule</label>
                                                   <div class="col-sm-9">
@@ -269,7 +280,7 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">N° Chassis</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="num_chassis" value="{{$num_chassis ?? ''}}" class="form-control" required>
+                                                      <input type="text" name="num_chassis" value="{{$num_chassis ?? ''}}" class="form-control" maxlength="17" required>
                                                   </div>
                                               </div>
 
@@ -321,7 +332,7 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Catégorie</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="model" value="{{$categorie ?? ''}}" class="form-control" required>
+                                                      <input type="text" name="categorie" value="{{$categorie ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
@@ -329,44 +340,13 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Délivré à</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="type" value="{{$delivre_a ?? ''}}" class="form-control" required>
+                                                      <input type="text" name="wilaya_obtention" value="{{$delivre_a ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
                                           </div>
 
-                                          {{-- <div class="form-group">
 
-                                              <div class="col-md-8">
-                                                  <label class="col-sm-2 control-label" style="width: 12%;">Adress</label>
-                                                  <div class="col-sm-9" style="width: 88%;">
-                                                      <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control" required>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Wilaya</label>
-                                                  <div class="col-sm-9">
-                                                      <select id="Wilaya" name="Wilaya" class="select2" required>
-                                                          @foreach($wilaya as $wilay)
-                                                          <option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
-                                                              @endforeach
-                                                      </select>
-                                                  </div>
-                                              </div>
-
-                                          </div>
-
-                                          <div class="form-group">
-
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Surface</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="number" name="surface" value="{{$surface ?? ''}}" class="form-control" required min="0">
-                                                  </div>
-                                              </div>
-
-                                          </div> --}}
 
 
                                             <div class="panel-heading panel-heading-divider">
