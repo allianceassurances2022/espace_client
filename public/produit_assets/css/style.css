@@ -1,0 +1,626 @@
+.my-menu-inside{
+  padding: 30px 55px 0px 30px;
+  text-align: center;
+  float: right;
+}
+
+.my-menu-inside li{
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.my-menu-inside li a{
+  padding: 8px 19px;
+  border: 1px #286f74 solid;
+  border-radius: 57px;
+  font-weight: bold !important;
+  background: #ffffff;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #007480;
+}
+.my-menu-inside li a:hover{
+  background-color: #007480;
+  border: 1px #007480 solid;
+  color: white;
+  transition: 0.3s;
+}
+
+
+.btn-show-contact100 {
+	display: inline-block;
+	color: #007480;
+}
+
+.btn-show-contact100:hover {
+    color: #fff;
+    background-color: #007480;
+}
+
+.container-contact100 {
+    background: #0074809c;
+}
+
+.contact100-form-btn {
+    background: #007480;
+    margin: 10px;
+}
+.contact100-form-btn-white{
+    border: 2px white solid;
+    background: transparent;
+    color: white;
+}
+
+.contact100-form-btn-white:hover {
+    color: #007480;
+    background-color: #ffffff;
+}
+
+.focus-input100 {
+    border-color: #007480;
+}
+
+.label-input100 {
+    font-size: 18px;
+    color: #999999;
+
+}
+
+.contact100-header-logo img {
+    max-height: 36px;
+}
+#mobile-menu{
+    display: none;
+}
+
+.tarificateur input.input100 {
+    height: 50px;
+    font-size: 17px;
+    text-align: right;
+}
+
+.tarificateur h5 {
+    text-align: right;
+    margin-right: 26px;
+    margin-bottom: 14px;
+}
+.tarificateur .validate-input2 {
+    margin: auto;
+    margin-bottom: 20px;
+    float: right;
+    width: 50%;
+}
+.tarificateur .validate-input2{
+  border-radius: 50px;
+}
+
+
+
+/*radio buttons styling*/
+.radio_section_slice label, .radio_section label {
+  display: -webkit-box;
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+}
+.radio_section_slice label input, .radio_section label input {
+  position: absolute;
+  left: -9999px;
+}
+.radio_section_slice label input:checked + span, .radio_section label input:checked + span {
+  background-color: #d6d6e5;
+}
+.radio_section_slice label input:checked + span:before, .radio_section label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #00005c;
+}
+.radio_section_slice label span, .radio_section label span {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  -webkit-transition: 0.25s ease;
+  transition: 0.25s ease;
+}
+.radio_section_slice label span:hover, .radio_section label span:hover {
+  background-color: #d6d6e5;
+}
+.radio_section_slice label span:before, .radio_section label span:before {
+  display: -webkit-box;
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  -webkit-transition: 0.25s ease;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #00005c;
+}
+.radio_section_slice label, .radio_section label{
+    display: inline;
+}
+
+form h6 {
+    line-height: 2.0em;
+    font-weight: bold;
+}
+form h6 span{
+    font-size: 10px;
+    color: #a0a0a0;
+    font-weight: normal;
+}
+.radio_section_slice h6, .radio_section h6{
+    line-height: 1.2em;
+}
+.radio_section_slice h6 span, .radio_section h6 span{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.radio_section_slice label span, .radio_section label span{
+    display: inline-block !important;
+    font-size: 12px;
+}
+
+.radio_section_slice label span:before, .radio_section label span:before {
+    display: inline-block !important;
+    position: relative;
+    top: 2.5px;
+}
+.radio_section_slice{
+    display: block !important;
+    margin-bottom: 1em;
+    width: 48%;
+    margin-right: 2%;
+}
+.radio_section{
+    display: block !important;
+    margin-bottom: 1em;
+    width: 100%;
+    margin-right: 2%;
+}
+.tarificateur h5{
+    margin-top: 7px;
+    margin-bottom: 10px;
+    color: #909090;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+.tarificateur{
+    display: block;
+    border-top: 1px #e6e6e6 solid;
+    padding:  10px 0;
+    width: 100%;
+    border-bottom: 1px #e6e6e6 solid;
+}
+.tarificateur input{
+    text-align: center;
+    background-color: #eaeaea;
+}
+.intro{
+    display: block;
+    margin-bottom: 1em;
+    font-size: 15px;
+    padding-bottom: 1em;
+    padding-top: 15px;
+    border-top: 1px #e6e6e6 solid;
+    border-bottom: 1px #e6e6e6 solid;
+    margin-top: -20px;
+    width: 100%;
+}
+
+.wrap-input100 {
+    width: 100%;
+    position: relative;
+    border: 1px solid #00a4b5;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.radio_section_slice label input:checked + span:before, .radio_section label input:checked + span:before {
+    box-shadow: inset 0 0 0 0.4375em #007480;
+}
+select{
+    padding:17px 15px !important;
+}
+select option{
+    padding: 2em;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.d-inline{
+    display: inline-block !important;
+    width: 50% !important;
+}
+
+.radio_section_slice label, .radio_section label {
+    display: inline;
+    top: -4px;
+}
+.tite_container {
+    display: block;
+    width: 99.4%;
+}
+.tite_container h5{
+    width: 100%;
+    padding: 0.5% 2%;
+    display: inline-block;
+    background-color: #00a4b514;
+    color: #6d6d6d;
+    text-transform: uppercase;
+    font-size: 0.90em;
+    margin-bottom: 0.8em;
+    margin-top: 1em;
+    border: 1px #00a4b5 solid;
+    text-align: left;
+}
+
+.tite_container h5 i{
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    border-right: 1px #00000025 solid;
+    margin-right: 10px;
+}
+.tite_container h5 span{
+    padding: 9px;
+    float: right;
+    background-color: #e5fdff;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.tite_container h5.active{
+    background-color: #00a4b540;
+    font-weight: bold;
+}
+
+.contact100-form-title img{
+  vertical-align: middle;
+  border-style: none;
+  width: 10%;
+  padding: 5px;
+  background: #ffffff2e;
+  border-radius: 0;
+}
+.contact100-form-title span{
+  text-align: center;
+  background: #00000024;
+  font-size: 0.95em;
+}
+a:hover {
+    color: #007481;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.container-contact100-form-btn a .fa-arrow-circle-right{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.container-contact100-form-btn a .fa-arrow-circle-left{
+  display: inline-block;
+  margin-right: 5px;
+}
+.contact100-form-btn:hover {
+    background: #ffffff;
+    color: #007480;
+    border: 1px #007480 solid;
+}
+
+.container-contact100-form-btn{
+  border-top: 1px #0074802e solid;
+}
+
+.contact100-form-btn, .contact100-form-btn:hover {
+    box-shadow: none;
+}
+
+input.input100 {
+    height: 40px;
+    font-size: 12px;
+}
+
+input.input100:read-only {
+  background-color: #efefef;
+}
+
+.my-menu-humb{
+    font-size: 1em;
+    color: #ffffff;
+    padding: 7px 14px;
+    border: 1px #ffffff solid;
+    border-radius: 6px;
+    opacity: 0.7;
+    display: none;
+    background: #ffffff0d;
+}
+.my-menu-humb:hover{
+  color: white;
+}
+form h6 span {
+    display: block;
+    margin-top: -10px;
+}
+select{
+  padding: 10px 15px !important;
+  font-size: 12px !important;
+}
+.slice{
+  width: 100%;
+}
+.radio_secion{
+  display: block;
+  width: 100%;
+}
+.radio_secion .slice_third{
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tarificateur .validate-input, .tarificateur input.input100{
+    border-radius: 50px;
+}
+
+@media screen and (min-width: 1200px) {
+    .slice{
+      width: 50%;
+    }
+    .slice_third{
+      width: 27%;
+    }
+    .radio_section_slice{
+      width: 100%;
+    }
+    .slice h6, .wrap-input100 .validate-input2{
+      width: 100%;
+    }
+    .slice .validate-input2{
+       float: left;
+        width: 50%
+    }
+    .slice .validate-input3{
+       float: left;
+        width: 50%;
+    }
+    form h6 {
+        line-height: 2.0em;
+        font-weight: bold;
+        width: 47%;
+    }
+
+    .wrap-input100 {
+        width: 52%;
+        position: relative;
+        border: 1px solid #00a4b5;
+        border-radius: 2px;
+        margin-bottom: 15px;
+    }
+    .wrap-contact100 {
+        width: 65%;
+    }
+    form h6 span {
+      display: block;
+    }
+    .validate-input2{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .radio_section_slice h6, .radio_section h6 {
+      text-align: left;
+    }
+    .radio_section_slice, .radio_section {
+      text-align: left;
+    }
+    .radio_section_slice h6{
+      width: 100%;
+    }
+    .radio_section_slice h6, .radio_section h6 {
+      text-align: left;
+      width: 100%;
+    }
+
+    .tarificateur h5 {
+      text-align: right;
+    }
+    .validate-input2 {
+      margin: auto;
+      margin-bottom: 20px;
+      float: right;
+    }
+    .contact100-form-title span {
+      text-align: center;
+      background: #00000024;
+      font-size: 0.95em;
+      width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 784px) {
+    #my-menu button{
+        display: none;
+    }
+    #mobile-menu {
+      display: block;
+      position: absolute;
+      top: 150px !important;
+      text-align: center;
+      margin: auto;
+      width: 102%;
+      margin: 40px -45px !important;
+      height: 100vh;
+      top: 2.5em !important;
+      padding-top: 5em;
+      background-color: #00000026;
+      overflow: hidden;
+      display: none;
+    }
+    #mobile-menu button {
+      display: block;
+      margin: auto;
+      margin: 18px auto;
+      font-size: 1.3em;
+      width: 63%;
+      line-height: 1.5em;
+      height: 3em;
+    }
+     .my-menu-humb{
+      display: inline-block;
+    }
+    .container2{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 4.9em !important;
+      bottom: 0;
+      width: 100%;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 5;
+      height: 100vh;
+      overflow: auto;
+      padding-bottom: 9em;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tarificateur .validate-input {
+        width: 100%;
+        text-align: center;
+    }
+    .tarificateur input.input100 {
+      text-align: center;
+    }
+    .radio_section_slice {
+      width: 100% !important;
+    }
+    .slice_third {
+      width: 100% !important;
+    }
+}
+
+.contact100-form-title span {
+  text-align: center;
+  background: #00000024;
+  font-size: 0.75em;
+}
+.btn-btn{
+    font-family: Montserrat-Bold;
+    color: #007481;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    min-width: 160px;
+    height: 42px;
+    background-color: #fff;
+    border-radius: 21px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.btn-btn:hover{
+  background-color: #007480;
+  border: #007480;
+  color: white;
+}
+
+#my-menu a{
+  font-weight: bold;
+}
+
+.tarificateur .validate-input, .tarificateur input.input100 {
+    border-radius: 50px;
+    float: right;
+    font-weight: bold;
+}
+form h6{
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.radio_section_slice label span, .radio_section label span {
+    display: inline-block !important;
+    font-size: 12px;
+    display: block !important;
+}
+
+.radio_section_slice label input:checked + span, .radio_section label input:checked + span {
+    background-color: #d6d6e5;
+    display: inline-block !important;
+}
