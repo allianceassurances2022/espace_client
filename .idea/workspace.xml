@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/Nouveau dossier/automobile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/Nouveau dossier/catastrophe naturelle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/Nouveau dossier/entreprie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/Nouveau dossier/habitation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/Nouveau dossier/juridique.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/automobile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/catastrophe-naturelle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/entreprise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/habitation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/index.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/index.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/produit_assets/images/backgrounds/juridique.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +20,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/produits/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="192" column="90" selection-start-line="192" selection-start-column="90" selection-end-line="192" selection-end-column="90" />
+            <state relative-caret-position="459">
+              <caret line="157" column="32" lean-forward="true" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -296,12 +285,12 @@
       <updated>1600349591967</updated>
       <workItem from="1600349594835" duration="2964000" />
       <workItem from="1600587177496" duration="9799000" />
-      <workItem from="1600760308041" duration="3775000" />
+      <workItem from="1600760308041" duration="5225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16538000" />
+    <option name="totallyTimeSpent" value="17988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -423,8 +412,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="192" column="90" selection-start-line="192" selection-start-column="90" selection-end-line="192" selection-end-column="90" />
+        <state relative-caret-position="459">
+          <caret line="157" column="32" lean-forward="true" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
         </state>
       </provider>
     </entry>
