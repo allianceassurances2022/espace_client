@@ -138,7 +138,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
     <div class="card">
         <a href="{{route('type_produit',['auto','index'])}}">
           <div class="card-img">
-              <img src="{{asset('produit_assets/images/backgrounds/automobile.png')}}" />
+              <img src="{{asset('produit_assets/images/backgrounds/automobile.jpg')}}" />
           </div>
           <div class="card-body">
               <h2 class="card-title">
@@ -156,7 +156,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
     <div class="card">
         <a href="{{route('type_produit',['mrh','index'])}}">
           <div class="card-img">
-              <img src="{{asset('produit_assets/images/backgrounds/habitation.png')}}" />
+              <img src="{{asset('produit_assets/images/backgrounds/habitation.jpg')}}" />
           </div>
           <div class="card-body">
               <h2 class="card-title">
@@ -173,7 +173,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
     <div class="card">
         <a href="{{route('type_produit',['mrp','index'])}}">
           <div class="card-img">
-              <img src="{{asset('produit_assets/images/backgrounds/entreprise.png')}}" />
+              <img src="{{asset('produit_assets/images/backgrounds/entreprise.jpg')}}" />
           </div>
           <div class="card-body">
               <h2 class="card-title">
@@ -190,7 +190,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
     <div class="card">
       <a href="{{route('type_produit',['catnat','index'])}}">
         <div class="card-img">
-            <img src="{{asset('produit_assets/images/backgrounds/catastrophe-naturelle.png')}}" style="height: 216.55px;"/>
+            <img src="{{asset('produit_assets/images/backgrounds/catastrophe-naturelle.jpg')}}" style="height: 216.55px;"/>
         </div>
         <div class="card-body">
             <h2 class="card-title">
