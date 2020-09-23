@@ -15,6 +15,7 @@ body {
 }
 
 .card {
+    height: 500px;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -60,6 +61,7 @@ body {
 }
 
 .card-intro {
+  height: 100px;
   margin-top: .75rem;
   line-height: 1.5;
 }
@@ -143,7 +145,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
           <div class="card-body">
               <h2 class="card-title">
               Automobile
-              <img src="{{asset('produit_assets/images/icons/auto_black.svg')}}" /> 
+              <img src="{{asset('produit_assets/images/icons/auto_black.svg')}}" />
               </h2>
               <p class="card-intro">
                   Un accident est vite arrivé.
