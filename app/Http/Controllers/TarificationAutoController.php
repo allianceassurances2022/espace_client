@@ -239,11 +239,11 @@ class TarificationAutoController extends Controller
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
-				      $reduction = 0;
+				      $reduction = 50;
 						break;
 				}
 
-				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
+				$prime_nette = $RC+$BDG+((($VOL+$DASC+$DR)*(100-$reduction))/100)+$Ass;
 			}
 
 		}
@@ -351,7 +351,7 @@ class TarificationAutoController extends Controller
                 $VOL = (0.5 * $valeur)/100 ;
                 $BDG = 2000;
                 $DR = 1200;
-                $reduction = 0;
+                $reduction = 50;
       						break;
 
                 case '2':
@@ -362,12 +362,12 @@ class TarificationAutoController extends Controller
                 $BDG = 2000;
                 $BDG = $BDG*0.55;
                 $DR = 1200;
-                $reduction = 0;
+                $reduction = 50;
         				  break;
       				}
 
 
-				$prime_nette = $RC+$DR+$BDG+((($VOL+$DASC)*(100-$reduction))/100)+$Ass;
+				$prime_nette = $RC+$BDG+((($VOL+$DASC+$DR)*(100-$reduction))/100)+$Ass;
 
 			} else if ($formule == "2") {
 
@@ -378,7 +378,7 @@ class TarificationAutoController extends Controller
           $VOL = (1 * $valeur)/100;
           $BDG = 2000;
           $DR = 1200;
-          $reduction = 0;
+          $reduction = 50;
             break;
 
           case '2':
@@ -389,11 +389,11 @@ class TarificationAutoController extends Controller
           $BDG = 2000;
           $BDG = $BDG*0.55;
           $DR = 1200;
-          $reduction = 0;
+          $reduction = 50;
             break;
         }
 
-        $prime_nette = $RC+$DR+$BDG+((($VOL+$DCVV)*(100-$reduction))/100)+$Ass;
+        $prime_nette = $RC+$BDG+((($VOL+$DCVV+$DR)*(100-$reduction))/100)+$Ass;
 
       }
 
