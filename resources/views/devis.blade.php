@@ -29,7 +29,7 @@
     <!-- Icons font CSS-->
     <link href="{{asset('signup_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('signup_assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
-    
+
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -94,13 +94,13 @@
             outline: none;
         }
         .page-wrapper{
-            background-color: #f2f2f2 !important; 
+            background-color: #f2f2f2 !important;
         }
 
-       
+
         a {
   color: hotpink;
-} 
+}
 
 input,select {
     outline: none;
@@ -154,7 +154,7 @@ float: right;
     margin-bottom: 45px;
 }
 </style>
-          
+
     </style>
 </head>
 
@@ -165,7 +165,7 @@ float: right;
                 <div class="card-body">
                     <div class="all_header">
                         <img src="produit_assets/images/icons/alliance-assurance.png" alt="">
-                      
+
                     </div>
                     <form action="">
                         <div class="slice">
@@ -177,7 +177,7 @@ float: right;
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div class="slice">
                             <div class="tarificateur">
                                 <h5>Date de d'effet </h5>
@@ -187,7 +187,7 @@ float: right;
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Date de d'expiration </h5>
                             <div class="wrap-input100 validate-input">
@@ -195,7 +195,7 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>adresse </h5>
                             <div class="wrap-input100 validate-input">
@@ -203,7 +203,7 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Wilaya </h5>
                             <div class="wrap-input100 validate-input">
@@ -211,31 +211,31 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Habitation </h5>
                             <div class="wrap-input100 validate-input">
                                 <select name="" id="">
                                     <option value="oui">Individuelle</option>
                                     <option value="non">Collective</option>
-                                </select>  
+                                </select>
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>qualité jurédique </h5>
                             <div class="wrap-input100 validate-input">
                                 <select name="" id="">
                                     <option value="oui">Propetaire</option>
                                     <option value="non">Locataire</option>
-                                </select> 
-                                
+                                </select>
+
                                 <span class="focus-input100"></span>
                             </div>
-                        </div>                    
-                        
-                        
+                        </div>
+
+
                         <div class="tarificateur">
                             <h5>montant forfaitaire </h5>
                             <div class="wrap-input100 validate-input">
@@ -243,7 +243,7 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Nombre de pieces</h5>
                             <div class="wrap-input100 validate-input">
@@ -251,7 +251,7 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Surface</h5>
                             <div class="wrap-input100 validate-input">
@@ -259,7 +259,7 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Etage</h5>
                             <div class="wrap-input100 validate-input">
@@ -267,17 +267,17 @@ float: right;
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
-                        
+
                         <div class="tarificateur">
                             <h5>Terrasse </h5>
                             <div class="wrap-input100 validate-input">
                                 <select name="" id="">
                                     <option value="oui">oui</option>
                                     <option value="non">non</option>
-                                </select>                            
+                                </select>
                                 <span class="focus-input100"></span>
                             </div>
-                        </div>      
+                        </div>
                         <button type="submit">Valider</button>
                                         <!---    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('signin') }}">
@@ -285,8 +285,8 @@ float: right;
                                        <br>     <span> {{Session()->get('mantant_mrh')}}   </span><br>
                                             <span> {{Session()->get('type_produit')}}   </span>
                                         </a>
-                        
-                                     
+
+
                                     </div>--></form>
                 </div>
             </div>
