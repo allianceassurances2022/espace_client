@@ -239,7 +239,7 @@ class TarificationAutoController extends Controller
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
-				      $reduction = 50;
+				      $reduction = 0;
 						break;
 				}
 
