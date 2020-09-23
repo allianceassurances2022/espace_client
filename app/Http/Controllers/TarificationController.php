@@ -393,8 +393,6 @@ $TD=80;
 	public function montant_mrh(Request $request)
 	{
 
-
-
 		$rules = array(
 			'habitation' => 'bail|required|string|max:190',
 			'terasse'    => 'bail|required|string',
@@ -500,20 +498,32 @@ $TD=80;
 			$p_bris = 100 * $nbr_piece;
 
 			if ($terasse == "oui") {
-				$Majter = $p_degat * 1.5;
-				$prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
-			}
-			else {
-				$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+				$p_degat = $p_degat * 1.5;
 			}
 
 
-			$td =80;
+			$red=$p_in*0.4;
+			$p_in=$p_in-$red;
+
+			$red=$p_vol*0.4;
+			$p_vol=$p_vol-$red;
+
+			$red=$p_degat*0.4;
+			$p_degat=$p_degat-$red;
+
+			$red=$p_bris*0.4;
+			$p_bris=$p_bris-$red;
+
+
+			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+
+			$td =120;
 			$Ctpolice =500;
 			$tva=($prim+$Ctpolice)*0.19;
 
-			$reduction = $prim*0.4;
-			$prim = $prim-$reduction;
+
+
+
 
 			$totale = $prim+$Ctpolice+$tva+$td;
 
