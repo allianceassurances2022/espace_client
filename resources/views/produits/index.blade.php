@@ -146,7 +146,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
               <img src="{{asset('produit_assets/images/icons/auto_black.svg')}}" /> 
               </h2>
               <p class="card-intro">
-                  Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
+                  Un accident est vite arrivé.
+                  Offrez la meilleure assurance à votre OTO !
               </p>
               <a href="{{route('type_produit',['auto','index'])}}"  class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
           </div>
@@ -164,7 +165,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
                 <img src="{{asset('produit_assets/images/icons/hab_black.svg')}}" />
               </h2>
               <p class="card-intro">
-                  Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
+                  Avoir un toit est synonyme d’un projet de toute une vie !
+                  C’est pourquoi Alliance vous propose de protéger votre maison et vos meubles en cas de sinistre.
               </p>
               <a href="{{route('type_produit',['mrh','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
           </div>
@@ -181,7 +183,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
                 <img src="{{asset('produit_assets/images/icons/pro_black.svg')}}" />
               </h2>
               <p class="card-intro">
-                  Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
+                  « Mieux vaut prévenir que guérir »
+                  Vous êtes artisan, commerçant ou vous exercez une profession libérale ?
+                  Exercez votre activité en toute sérénité grâce à notre offre MRP.
+
               </p>
               <a href="{{route('type_produit',['mrp','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </a>
@@ -198,7 +203,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
                 <img src="{{asset('produit_assets/images/icons/cat_nat_black.svg')}}" />
             </h2>
             <p class="card-intro">
-                Driver is a skilled Hollywood stuntman who moonlights as a getaway driv...
+                Assurez votre logement ou votre local professionnel contre toute  catastrophe  naturelle  !
+
             </p>
             <a href="{{route('type_produit',['catnat','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </div>
