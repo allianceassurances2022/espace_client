@@ -314,7 +314,7 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Couleur</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="type" value="{{$couleur ?? ''}}" class="form-control" required>
+                                                      <input type="text" name="couleur" value="{{$couleur ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 
@@ -325,7 +325,7 @@ Devis Automobile
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Permis N°</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="marque" value="{{$permis_num ?? ''}}" class="form-control" required>
+                                                      <input type="text" name="permis_num" value="{{$permis_num ?? ''}}" class="form-control" required>
                                                   </div>
                                               </div>
 

@@ -512,8 +512,8 @@ $TD=80;
 			$Ctpolice =500;
 			$tva=($prim+$Ctpolice)*0.19;
 
-			$prim= $prim*0.4;
-
+			$reduction = $prim*0.4;
+			$prim = $prim-$reduction;
 
 			$totale = $prim+$Ctpolice+$tva+$td;
 

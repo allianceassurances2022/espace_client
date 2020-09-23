@@ -31,10 +31,16 @@ class CreateRsqVehiculeTable extends Migration
             $table->float('valeur_vehicule', 10, 2);
             $table->string('personne_transporte',10);
             $table->string('genre',10);
+            $table->string('num_chassis',50);
+            $table->string('type',50);
+            $table->string('couleur',50);
+            $table->string('permis_num',50);
+            $table->string('categorie',50);
             $table->boolean('taxe');
             $table->Date('effet_taxe')->nullable();
             $table->string('code_devis')->nullable();
             $table->timestamps();
+
         });
     }
 

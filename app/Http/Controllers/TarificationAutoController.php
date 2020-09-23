@@ -8,6 +8,7 @@ use App\Wilaya;
 
 use App\Rsq_Vehicule;
 use App\devis;
+use App\Agences;
 
 use auth;
 
@@ -488,6 +489,8 @@ class TarificationAutoController extends Controller
 
     public function validation_devis_auto (Request $request) {
 
+      //dd($request);
+
       $taxe="";
       $date_effet_taxe=null;
       if($request->taxe == "non"){
@@ -519,10 +522,15 @@ class TarificationAutoController extends Controller
 
     		$risque= Rsq_Vehicule::find($request->id);
     		$risque->update([
-    			'adresse'     => $request->adresse,
-    			'code_wilaya' => $request->Wilaya,
-    			'superficie'  => $request->surface,
-    			'etage'       => $request->etage
+          'matricule'              => $request->matricule,
+    			'marque'                 => $request->marque,
+    			'modele'                 => $request->model,
+    			'num_chassis'            => $request->num_chassis,
+    			'type'                   => $request->type,
+    			'couleur'                => $request->couleur,
+    			'permis_num'             => $request->permis_num,
+    			'wilaya_obtention'       => $request->wilaya_obtention,
+    			'categorie'              => $request->categorie
     		]);
 
     		$devis= devis::find($risque->code_devis);
@@ -532,9 +540,7 @@ class TarificationAutoController extends Controller
     			'code_agence'     => $request->code_agence
     		]);
 
-
     	}else{
-
 
     		$dev=devis::create([
     			'date_souscription' => $date_sous,
@@ -559,7 +565,12 @@ class TarificationAutoController extends Controller
     			'code_formule'           => $request->formule,
     			'assistance'             => $request->assistance,
     			'offre'                  => $request->offre,
-    			'valeur_vehicule'        => $request->valeur,
+          'valeur_vehicule'        => $request->valeur,
+    			'num_chassis'            => $request->num_chassis,
+    			'type'                   => $request->type,
+    			'couleur'                => $request->couleur,
+    			'permis_num'             => $request->permis_num,
+    			'categorie'              => $request->categorie,
     			'personne_transporte'    => 0,
     			'genre'                  => 00,
     			'taxe'                   => $taxe,
@@ -612,11 +623,11 @@ class TarificationAutoController extends Controller
       $matricule         = $risque->matricule;
       $marque            = $risque->marque;
       $model             = $risque->modele;
-      $num_chassis       = $risque->;
-      $type              = $risque->;
-      $couleur           = $risque->;
-      $permis_num        = $risque->;
-      $categorie         = $risque->;
+      $num_chassis       = $risque->num_chassis;
+      $type              = $risque->type;
+      $couleur           = $risque->couleur;
+      $permis_num        = $risque->permis_num;
+      $categorie         = $risque->categorie;
       $delivre_a         = $risque->wilaya_obtention;
       $wilaya            = wilaya::all();
       $prime_total       = $devis->prime_total;
@@ -624,7 +635,8 @@ class TarificationAutoController extends Controller
     	$code_agence       = $devis->code_agence;
 			$agence_map        = Agences::where('id',$code_agence)->first();
 
-      return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp'));
+      return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance','taxe','date_taxe',
+      'offre','valeur','matricule','marque','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id'));
 
     }
 
