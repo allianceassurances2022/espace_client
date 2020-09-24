@@ -53,7 +53,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" min=0 max="9999">
+                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" id="anne_auto" max="9999">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -115,15 +115,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
+    var year = dtToday.getFullYear() ;
+    var year_ = dtToday.getFullYear() - 18;
+    var year_auto = dtToday.getFullYear() - 10;
 
     if(month < 10)
         month = '0' + month.toString();
     if(day < 10)
         day = '0' + day.toString();
 
-    var maxDate = year + '-' + month + '-' + day;
-    $('#date_permis').attr('max', maxDate);
+    var maxDate_permis = year + '-' + month + '-' + day;
+    var maxDate = year_ + '-' + month + '-' + day;
+    $('#date_permis').attr('max', maxDate_permis);
     $('#date_conducteur').attr('max', maxDate);
 
       var  minyear = year - 85;
@@ -133,6 +136,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
       $('#date_permis').attr('min', minDatePermis);
       $('#date_conducteur').attr('min', minDate);
+
+
+      $('#anne_auto').attr('min', year_auto);
 
   });
 </script>

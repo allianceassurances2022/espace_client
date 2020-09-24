@@ -39,6 +39,8 @@ class TarificationAutoController extends Controller
 
       $auto  = session('data_auto');
 
+      //dd($auto);
+
       $wilaya = Wilaya::all();
 
       return view('produits.auto.index',compact('wilaya','auto'));
@@ -459,10 +461,14 @@ class TarificationAutoController extends Controller
 
 		$datec=date('d/m/y');
 
+    $wilaya_selected = $wilaya->code_wilaya;
+
+    $wilaya=Wilaya::All();
+
 		$data_session = [
     	              'date_conducteur' => $daten,
 	                  'date_permis'     => $date_permis,
-	                  'wilaya'          => $wilaya,
+	                  'Wilaya'          => $wilaya,
 	                  'annee_auto'      => $annee_auto,
 					          'puissance'       => $puissance,
 					          'usage'           => $usage,
@@ -474,8 +480,13 @@ class TarificationAutoController extends Controller
 	                  'prime_total'     => $devis,
 	                  'datec'           => $datec,
                     'taxe'            => $taxe,
-                    'date_taxe'       => $date_taxe
+                    'date_taxe'       => $date_taxe,
+                    'Wilaya_selected' => $wilaya_selected,
+                    'type_assurance'  => $offre,
+                    'valeur_auto'     => $valeur
                     ];
+
+        //dd($data_session);
 
         $request->session()->put('data_auto', $data_session);
 
