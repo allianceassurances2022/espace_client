@@ -126,6 +126,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
     $('#date_permis').attr('max', maxDate);
     $('#date_conducteur').attr('max', maxDate);
 
+      var  minyear = year - 85;
+
+      var minDate = minyear + '-01-01' ;
+      var minDatePermis =  (minyear+ 18) + '-01-01' ;
+
+      $('#date_permis').attr('min', minDatePermis);
+      $('#date_conducteur').attr('min', minDate);
+
   });
 </script>
 
