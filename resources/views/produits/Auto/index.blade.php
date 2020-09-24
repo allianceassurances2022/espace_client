@@ -91,7 +91,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
-            <input type="hidden" name="valeur_auto" id="valeur_auto" type="number" value="{{$auto['valeur_auto'] ?? ''}}">
+            <input type="hidden" name="valeur_auto" id="valeur_auto" type="number" value="{{$auto['valeur_auto'] ?? ''}}" >
 
             <div class="container-contact100-form-btn">
             <input  class="contact100-form-btn" type='submit' name="suivant" value="suivant">
@@ -105,7 +105,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 @section('js')
 
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
 
 
@@ -149,7 +149,24 @@ function valeur_vehicule(){
   var mtn = $('#money').val();
   var mtn_apres = mtn.split(' ').join('');
   var mtn_apres = mtn_apres.split(',').join('.');
+
+  if(mtn_apres < 800000){
+
+  Swal.fire({
+  title: 'Information',
+  html: '<p style="line-height:18px;"><br/><br/><strong style="font-weight:bold;">Valeur Véhicule :</strong> la valeur du véhicule ne doit pas etre inferieure a 800 000 DA <br/><br/></p>',
+  icon: 'info',
+  confirmButtonText: 'OK'
+})
+
+  $('#money').val('');
+
+} else{
+
   $('#valeur_auto').val(mtn_apres);
+
+}
+
 
 }
 

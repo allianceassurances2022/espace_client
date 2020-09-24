@@ -20,9 +20,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         <form class="contact100-form validate-form" action="{{route('montant_auto')}}" method="post">
             @csrf
             <!-- produit laki + -->
-            <div class="tite_container">
+            {{-- <div class="tite_container">
                 <h5 class="active"><i class="fa fa-info-circle"></i> Laki + <span>2</span></h5>
-            </div>
+            </div> --}}
             <div class="slice">
                 <h6>Usage <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
