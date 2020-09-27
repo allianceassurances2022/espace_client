@@ -28,8 +28,13 @@ class CreateDevisTable extends Migration
             $table->date('date_epaiement')->nullable();
             $table->string('statut_devis')->nullable();
             $table->text('periode')->nullable();
+            $table->float('prime_nette')->nullable();
             $table->float('prime_total')->nullable();
             $table->string('code_agence')->nullable();
+            $table->float('tva')->nullable();
+            $table->float('cp')->nullable();
+            $table->float('td')->nullable();
+
             $table->Integer('id_user');
             $table->timestamps();
         });

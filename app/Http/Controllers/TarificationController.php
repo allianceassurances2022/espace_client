@@ -11,6 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Rsq_Immobilier;
 use App\devis;
+use App\Prime;
 
 use auth;
 
@@ -532,13 +533,22 @@ $TD=80;
 			$datec=date('d/m/y');
 
 			$data_session = [
-				'terasse'     => $terasse,
-				'habitation'  => $habitation,
-				'montant'     => $montant,
-				'juredique'   => $juredique,
-				'nbr_piece'   => $nbr_piece,
-				'datec'       => $datec,
-				'prime_total' => $totale
+				'terasse'          => $terasse,
+				'habitation'       => $habitation,
+				'montant'          => $montant,
+				'juredique'        => $juredique,
+				'nbr_piece'        => $nbr_piece,
+				'datec'            => $datec,
+				'prime_total'      => $totale,
+				'incendie'         => $p_in,
+				'degats_eaux'      => $p_degat,
+				'bris_glace'       => $p_bris,
+				'vol'              => $p_vol,
+				'rc_chef_famille'  => $p_res_civile,
+				'prime_nette'      => $prim,
+				'cout_police'      => $Ctpolice,
+				'timbre_dimension' => $td,
+				'tva'              => $tva,
 			];
 
 			$request->session()->put('data_mrh', $data_session);
@@ -679,6 +689,10 @@ $TD=80;
 
 			$this->validate($request, $rules);
 
+			$value_mrh  = session('data_mrh');
+
+			//dd($value_mrh);
+
 
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
@@ -705,15 +719,49 @@ $TD=80;
 
     	}else{
 
-
     		$dev=devis::create([
     			'date_souscription' => $date_sous,
     			'date_effet'        => $date_eff,
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
+					'prime_nette'       => $value_mrh['prime_nette'],
+					'tva'               => $value_mrh['tva'],
+					'cp'                => $value_mrh['cout_police'],
+					'td'                => $value_mrh['timbre_dimension'],
 					'id_user'           => Auth()->user()->id
     		]);
+
+				Prime::create([
+					'code'              => '080120',
+					'libelle'           => 'Incendie',
+					'valeur'            => $value_mrh['incendie'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '090120',
+					'libelle'           => 'Dégâts des Eaux',
+					'valeur'            => $value_mrh['degats_eaux'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '090220',
+					'libelle'           => 'Bris de Glace',
+					'valeur'            => $value_mrh['bris_glace'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '090340',
+					'libelle'           => 'Vol en Mobilier',
+					'valeur'            => $value_mrh['vol'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '080120',
+					'libelle'           => 'RC Chef de Famille',
+					'valeur'            => $value_mrh['rc_chef_famille'],
+					'id_devis'          => $dev->id
+				]);
 
     		$res=Rsq_Immobilier::create([
     			'adresse'             => $request->adresse,
@@ -734,9 +782,12 @@ $TD=80;
 
     	}
 
-    	$user=auth::user();
+			$prime= Prime::where('id_devis',$devis->id)->get();
 
-    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total'));
+    	$user=auth::user();
+			$agence=Agences::where('Name',$devis->code_agence)->first();
+
+    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));
 
 
     }
