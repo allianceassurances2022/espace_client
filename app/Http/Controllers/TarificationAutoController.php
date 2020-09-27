@@ -465,25 +465,45 @@ class TarificationAutoController extends Controller
 
     $wilaya=Wilaya::All();
 
+
+
+
+
+
+
+
 		$data_session = [
-    	              'date_conducteur' => $daten,
-	                  'date_permis'     => $date_permis,
-	                  'Wilaya'          => $wilaya,
-	                  'annee_auto'      => $annee_auto,
-					          'puissance'       => $puissance,
-					          'usage'           => $usage,
-	                  'valeur'          => $valeur,
-	                  'offre'           => $offre,
-	                  'dure'            => $dure,
-	                  'formule'         => $formule,
-	                  'assistance'      => $assistance,
-	                  'prime_total'     => $devis,
-	                  'datec'           => $datec,
-                    'taxe'            => $taxe,
-                    'date_taxe'       => $date_taxe,
-                    'Wilaya_selected' => $wilaya_selected,
-                    'type_assurance'  => $offre,
-                    'valeur_auto'     => $valeur
+    	              'date_conducteur'  => $daten,
+	                  'date_permis'      => $date_permis,
+	                  'Wilaya'           => $wilaya,
+	                  'annee_auto'       => $annee_auto,
+					          'puissance'        => $puissance,
+					          'usage'            => $usage,
+	                  'valeur'           => $valeur,
+	                  'offre'            => $offre,
+	                  'dure'             => $dure,
+	                  'formule'          => $formule,
+	                  'assistance'       => $assistance,
+	                  'prime_total'      => $devis,
+	                  'datec'            => $datec,
+                    'taxe'             => $taxe,
+                    'date_taxe'        => $date_taxe,
+                    'Wilaya_selected'  => $wilaya_selected,
+                    'type_assurance'   => $offre,
+                    'valeur_auto'      => $valeur,
+            				'prime_nette'      => $prime_nette,
+            				'cout_police'      => $CP,
+            				'timbre_dimension' => $TD,
+            				'tva'              => $TVA,
+            				'timbre_gradue'    => $TG,
+            				'fga'              => $FGA,
+            				'taxe_pollution'   => $TP,
+                    'bris_de_glace'    => $BDG,
+            				'vol'              => $VOL,
+            				'dasc'             => $DASC,
+            				'rc'               => $RC,
+            				'defense_recours'  => $DR,
+            				'assistance'       => $Ass,
                     ];
 
         //dd($data_session);

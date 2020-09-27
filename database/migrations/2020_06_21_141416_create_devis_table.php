@@ -34,7 +34,10 @@ class CreateDevisTable extends Migration
             $table->float('tva')->nullable();
             $table->float('cp')->nullable();
             $table->float('td')->nullable();
-
+            $table->float('fga')->nullable();
+            $table->float('tg')->nullable();
+            $table->float('tp')->nullable();
+            $table->float('taxe_pollution')->nullable();
             $table->Integer('id_user');
             $table->timestamps();
         });
