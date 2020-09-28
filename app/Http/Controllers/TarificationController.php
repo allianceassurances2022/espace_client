@@ -173,10 +173,6 @@ class TarificationController extends Controller
 
 		}
 
-
-
-
-
 	}
 
 	public function montant_catnat(Request $request)
@@ -212,6 +208,8 @@ class TarificationController extends Controller
 		$val_assure=0;
     $maj=0;
     $taux=0;
+
+
 
 
 
@@ -345,45 +343,49 @@ if ($val<2500)
 $CP=1000;
 $TD=80;
 
+        $prime_total_ = $val+$CP+$TD+$maj;
+        $prime_total  = number_format($prime_total_, 2,',', ' ');
 
 
-
-		$prime_total_ = $val+$CP+$TD+$maj;
-		$prime_total  = number_format($prime_total_, 2,',', ' ');
 		//dd($prime_total);
 
 		$datec=date('d/m/y');
 
 
 		$data_session     = [
-			'type_formule'    => $request->type_formule,
-			'type_const'      => $request->type_const,
-			'Contenant'       => $request->Contenant,
-			'equipement'      => $request->equipement,
+		'type_formule'    => $request->type_formule,
+		'type_const'      => $request->type_const,
+		'Contenant'       => $request->Contenant,
+		'equipement'      => $request->equipement,
 	    'marchandise'     => $request->marchandise,
 	    'contenu'         => $request->contenu,
 	    'act_reg'         => $request->activite,
 	    'reg_com'         => $request->registre,
 	    'loca'            => $request->local,
-			'commune_selected'=> $request->Commune,
-			'wilaya_selected' => $request->Wilaya,
-			'anne_cont'       => $request->anne_cont,
-			'surface'         => $request->Superficie,
-			'permis'          => $request->permis,
-			'val_assur'       => $request->val_assur,
-			'reg_para'        => $request->seisme,
-			'datec'           => $datec,
-			'prime_total'     => $prime_total_
+		'commune_selected'=> $request->Commune,
+		'wilaya_selected' => $request->Wilaya,
+		'anne_cont'       => $request->anne_cont,
+		'surface'         => $request->Superficie,
+		'permis'          => $request->permis,
+		'val_assur'       => $request->val_assur,
+		'reg_para'        => $request->seisme,
+		'datec'           => $datec,
+		'prime_total'     => $prime_total_,
+        'cout_police'      => $CP,
+        'timbre_dimension' => $TD,
+        'prime_nette'       => $val,
 		];
+
+
 
 		$request->session()->put('data_catnat', $data_session);
 
 		$Contenant   = $valeur_c;
-    $equipement  = $valeur_e;
-    $marchandise = $valeur_m;
-    $activite    = $act_reg;
-    $registre    = $reg_com;
-    $local       = $loca;
+        $equipement  = $valeur_e;
+        $marchandise = $valeur_m;
+        $activite    = $act_reg;
+        $registre    = $reg_com;
+        $local       = $loca;
 
 		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
 		            'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
@@ -461,9 +463,6 @@ $TD=80;
 			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
 		}
 
-
-
-
 			$ct=0;$taux=0.0;$p_res_civile=0;
 
 
@@ -523,9 +522,6 @@ $TD=80;
 			$tva=($prim+$Ctpolice)*0.19;
 
 
-
-
-
 			$totale = $prim+$Ctpolice+$tva+$td;
 
 			/////////////////////// sauvegarde session
@@ -548,10 +544,12 @@ $TD=80;
 				'prime_nette'      => $prim,
 				'cout_police'      => $Ctpolice,
 				'timbre_dimension' => $td,
-				'tva'              => $tva,
+
+
 			];
 
 			$request->session()->put('data_mrh', $data_session);
+
 
 			///////////////////////////////////////////////////////////
 
@@ -691,7 +689,7 @@ $TD=80;
 
 			$value_mrh  = session('data_mrh');
 
-			//dd($value_mrh);
+
 
 
 			$date_sous = $request->date_sous;
@@ -784,7 +782,7 @@ $TD=80;
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
 
-    	$user=auth::user();
+    	    $user=auth::user();
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
     	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));
@@ -795,7 +793,7 @@ $TD=80;
 
 			if ($request->code_agence == ""){
 			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-      return back();
+            return back();
 			}
 
 			$rules = array(
@@ -803,6 +801,10 @@ $TD=80;
 			);
 
 			$this->validate($request, $rules);
+
+            $value_catnat  = session('data_catnat');
+
+
 
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
@@ -827,7 +829,9 @@ $TD=80;
     			'date_effet'      => $date_eff,
     			'date_expiration' => $date_exp,
     			'code_agence'     => $request->code_agence
+
     		]);
+    		$dev=$devis;
 
     	}else{
 
@@ -837,20 +841,23 @@ $TD=80;
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-					'id_user'           => Auth()->user()->id
+                'id_user'           => Auth()->user()->id,
+                'prime_nette'       => $value_catnat['prime_nette'],
+                'cp'                => $value_catnat['cout_police'],
+                'td'                => $value_catnat['timbre_dimension']
     		]);
 
 				if($request->formule == 'Habitation'){
 
     		$res=Rsq_Immobilier::create([
-					'formule'             => $request->formule,
+    		    'formule'             => $request->formule,
     			'type_habitation'     => $request->type_const,
     			'valeur_assure'       => $request->val_assur,
     			'permis'              => $request->permis,
-					'superficie'          => $request->surface,
+                'superficie'          => $request->surface,
     			'annee_construction'  => $request->anne_cont,
-					'code_wilaya'         => $request->wilaya,
-					'code_commune'        => $request->commune,
+                'code_wilaya'         => $request->wilaya,
+                'code_commune'        => $request->commune,
     			'reg_para'            => $request->reg_para,
     			'appartient'          => $request->appartient,
     			'code_devis'          => $dev->id
@@ -882,11 +889,16 @@ $TD=80;
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
 
+
+
     	}
+
+        $agence=Agences::where('Name',$devis->code_agence)->first();
+        $prime=Prime::where('id_devis',$dev->id)->first();
 
     	$user=auth::user();
 
-    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total'));
+    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total','agence','prime'));
 
 
     }
@@ -956,7 +968,7 @@ $TD=80;
     	$wilaya            = wilaya::all();
     	$code_agence       = $devis->code_agence;
 			$agences           = Agences::all();
-			$agence_map        = Agences::where('id',$code_agence)->first();
+            $agence_map        = Agences::where('id',$code_agence)->first();
 
 			$commune_selected  = commune::where('code_commune',$commune_selected)->first();
 			$wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();

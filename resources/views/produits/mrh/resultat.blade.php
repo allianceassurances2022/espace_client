@@ -72,14 +72,10 @@ Devis MRH
                         <td class="amount">{{number_format($devis->tva, 2,',', ' ')}} DA</td>
                       </tr>
 
-                      {{-- <tr>
-                        <td></td>
-                        <td class="summary">TVA (19%)</td>
-                        <td class="amount">0 DA</td>
-                      </tr> --}}
                       <tr>
                         <td></td>
                       </tr>
+
                       <tr>
                         <td></td>
                         <td class="summary total">Total</td>
