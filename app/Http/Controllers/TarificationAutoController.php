@@ -9,6 +9,7 @@ use App\Wilaya;
 use App\Rsq_Vehicule;
 use App\devis;
 use App\Agences;
+use App\Prime;
 
 use auth;
 
@@ -65,6 +66,8 @@ class TarificationAutoController extends Controller
 		$genre = "00";
 		$Ass = 0;
 		$reduction=0;
+    $DASC = '';
+    $DCVV = '';
 
 		$usage = $request->usage;
 		$puissance = $request->puissance;
@@ -501,6 +504,7 @@ class TarificationAutoController extends Controller
                     'bris_de_glace'    => $BDG,
             				'vol'              => $VOL,
             				'dasc'             => $DASC,
+                    'dcvv'             => $DCVV,
             				'rc'               => $RC,
             				'defense_recours'  => $DR,
             				'assistance'       => $Ass,
@@ -536,6 +540,8 @@ class TarificationAutoController extends Controller
 			Alert::warning('Avertissement', 'Merci de choisir une Agence');
       return back();
 			}
+
+      $value_auto  = session('data_auto');
 
 			$rules = array(
 				'code_agence'  => 'bail|string|max:5',
@@ -579,8 +585,52 @@ class TarificationAutoController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
+          'prime_nette'       => $value_auto['prime_nette'],
+					'tva'               => $value_auto['tva'],
+					'cp'                => $value_auto['cout_police'],
+					'td'                => $value_auto['timbre_dimension'],
+					'fga'               => $value_auto['timbre_gradue'],
+					'tg'                => $value_auto['fga'],
+					'tp'                => $value_auto['taxe_pollution'],
 					'id_user'           => Auth()->user()->id
     		]);
+
+        Prime::create([
+          'code'              => '030120',
+          'libelle'           => 'Bris de Glace',
+          'valeur'            => $value_auto['bris_de_glace'],
+          'id_devis'          => $dev->id
+        ]);
+        Prime::create([
+					'code'              => '030131',
+					'libelle'           => 'Vol & Incendie',
+					'valeur'            => $value_auto['vol'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '030141',
+					'libelle'           => 'DASC',
+					'valeur'            => $value_auto['dasc'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '100110',
+					'libelle'           => 'Responsabilité Civile',
+					'valeur'            => $value_auto['rc'],
+					'id_devis'          => $dev->id
+				]);
+				Prime::create([
+					'code'              => '170110',
+					'libelle'           => 'Défense et Recours',
+					'valeur'            => $value_auto['defense_recours'],
+					'id_devis'          => $dev->id
+				]);
+        Prime::create([
+					'code'              => '180214',
+					'libelle'           => 'Assistance',
+					'valeur'            => $value_auto['assistance'],
+					'id_devis'          => $dev->id
+				]);
 
     		$res=Rsq_Vehicule::create([
     			'matricule'              => $request->matricule,
@@ -615,9 +665,12 @@ class TarificationAutoController extends Controller
 
     	}
 
-      $user=auth::user();
+      $prime= Prime::where('id_devis',$devis->id)->get();
 
-      return view('produits.Auto.resultat',compact('user','devis','risque','prime_total'));
+      $user=auth::user();
+			$agence=Agences::where('Name',$devis->code_agence)->first();
+
+      return view('produits.Auto.resultat',compact('user','devis','risque','prime_total','agence','prime'));
 
 
     }

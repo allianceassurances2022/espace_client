@@ -116,7 +116,7 @@ class ProduitController extends Controller
         $date_souscription = date('Y-m-d');
         $date_conducteur   = $value_auto['date_conducteur'];
         $date_permis       = $value_auto['date_permis'];
-        $wilaya_selected   = $value_auto['wilaya'];
+        $wilaya_selected   = $value_auto['Wilaya_selected'];
         $annee_auto        = $value_auto['annee_auto'];
         $puissance         = $value_auto['puissance'];
         $usage             = $value_auto['usage'];
