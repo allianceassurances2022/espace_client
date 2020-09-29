@@ -11,7 +11,7 @@
                       <div class="user-position online">online</div>
                     </div>
                   </li>
-                  <li><a href="#"><span class="icon mdi mdi-face"></span> Profil</a></li>
+                  <li><a href="{{ route('profil') }}"><span class="icon mdi mdi-face"></span> Profil</a></li>
                   <li><a href="#"><span class="icon mdi mdi-settings"></span> Pdaramètres</a></li>
                   <li><a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="icon mdi mdi-power"></span> Déconnexion</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

@@ -14,7 +14,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     @yield('head')
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css"/>
+
   </head>
   <body class="be-splash-screen">
     <div class="be-wrapper be-login">

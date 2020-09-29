@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Status_ods;
 use Auth;
 
+
 class HomeController extends Controller
 {
     /**
@@ -81,6 +82,16 @@ class HomeController extends Controller
         }
 
         return view('home',compact('user','mrh','auto','cat','total'));
+    }
+
+    public function profil(){
+
+        $user=auth::user();
+      //  $wilaya = wilaya::where('code_wilaya', $user->wilaya );
+
+       // dd($user);
+       // dd($wilaya);
+        return view('core.home.profil', compact('user'));
     }
 
 

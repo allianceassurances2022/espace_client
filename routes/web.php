@@ -95,3 +95,5 @@ Route::get('inscription', function () {
 })->name('inscription');
 
 Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisation');
+
+Route::get('profil','HomeController@profil')->name('profil');
