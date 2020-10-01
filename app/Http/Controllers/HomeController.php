@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\commune;
 use Illuminate\Http\Request;
 use App\Status_ods;
 use Auth;
+use App\wilaya;
 
 
 class HomeController extends Controller
@@ -87,11 +89,19 @@ class HomeController extends Controller
     public function profil(){
 
         $user=auth::user();
-      //  $wilaya = wilaya::where('code_wilaya', $user->wilaya );
+        $wilaya = wilaya::where('code_wilaya', $user->wilaya )->first();;
 
-       // dd($user);
-       // dd($wilaya);
-        return view('core.home.profil', compact('user'));
+
+        return view('core.home.profil', compact('user', 'wilaya'));
+    }
+
+    public function  edit_profil(){
+
+        $user=auth::user();
+        $wilayas = wilaya::all();
+        $communes = commune::all();
+
+        return view('core.home.edit_profil', compact('user', 'wilayas','communes'));
     }
 
 

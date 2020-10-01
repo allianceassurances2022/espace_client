@@ -66,8 +66,8 @@ class RegisterController extends Controller
     {
 
       $var       = $data['date_naissance'];
-    	$date      = str_replace('/', '-', $var);
-    	$date_naissance      = date('Y-m-d', strtotime($date));
+      $date      = str_replace('/', '-', $var);
+      $date_naissance      = date('Y-m-d', strtotime($date));
 
 
         return User::create([

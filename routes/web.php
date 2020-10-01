@@ -96,4 +96,6 @@ Route::get('inscription', function () {
 
 Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisation');
 
-Route::get('profil','HomeController@profil')->name('profil');
+Route::get('profil','UserController@profil')->name('profil');
+Route::get('edit_profil','UserController@edit_profil')->name('edit_profil');
+Route::post('update_profil','UserController@update_profil')->name('update_profil');

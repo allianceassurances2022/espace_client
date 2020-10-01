@@ -13,7 +13,7 @@
 @section('content')
 
     <div class="container emp-profile">
-        <form method="post">
+        <form method="post"">
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
@@ -37,14 +37,15 @@
                             {{  $user->date_naissance  }}
 
                             <br>
-                            {{  $user->adresse }}
+                            {{  $user->adresse }} <span>
+
                             <br>
                             {{  $user->email  }}
                             <br>
                             {{  $user->telephone  }}
 
                         </p>
-
+<!--
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">A propos</a>
@@ -53,11 +54,16 @@
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Liste</a>
                             </li>
                         </ul>
+
+                        -->
                     </div>
                 </div>
+
                 <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    <!--input type="submit" class="profile-edit-btn" name="btnAddMore" value="Modifier le profil"/-->
+                    <a href="{{ route('edit_profil') }}" class="profile-edit-btn" name="btnAddMore">Modifier le profil</a>
                 </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-md-4">

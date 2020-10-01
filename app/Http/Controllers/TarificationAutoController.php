@@ -668,7 +668,7 @@ class TarificationAutoController extends Controller
       $prime= Prime::where('id_devis',$devis->id)->get();
 
       $user=auth::user();
-			$agence=Agences::where('Name',$devis->code_agence)->first();
+      $agence=Agences::where('Name',$devis->code_agence)->first();
 
       return view('produits.Auto.resultat',compact('user','devis','risque','prime_total','agence','prime'));
 
@@ -716,8 +716,8 @@ class TarificationAutoController extends Controller
       $wilaya            = wilaya::all();
       $prime_total       = $devis->prime_total;
       $agences           = Agences::all();
-    	$code_agence       = $devis->code_agence;
-			$agence_map        = Agences::where('id',$code_agence)->first();
+      $code_agence       = $devis->code_agence;
+      $agence_map        = Agences::where('id',$code_agence)->first();
 
       return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance','taxe','date_taxe',
       'offre','valeur','matricule','marque','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id'));

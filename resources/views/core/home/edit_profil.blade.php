@@ -1,0 +1,243 @@
+@extends('default')
+
+@section('title')
+    page de profil
+@endsection
+
+
+@section('head')
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/lib/select2/css/select2.min.css')}}" />
+
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/profil_style.css')}}" />
+
+@endsection
+
+
+@section('content')
+
+    <div class="container emp-profile">
+        <h2 style="text-align:center; margin-bottom: 50px">
+            Modifier le profil
+        </h2>
+
+
+        <form method="POST" action="{{ route('update_profil') }}" class="form-horizontal col-lg-12" >
+            @csrf
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Nom</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') ?? $user->name }}" required autocomplete="name" autofocus>
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Prénom</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="prenom" id="prenom" class="form-control"  value="{{  old('prenom') ?? $user->prenom }}" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Wilaya</label>
+                        <div class="col-sm-9">
+                            <select  name="wilaya" class="custom-select select2" required>
+                                @foreach($wilayas as $wilaya)
+                                    <option value="#">{{ $wilaya->nlib_wilaya }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Commune</label>
+                        <div class="col-sm-9">
+                            <select  name="commune" class="custom-select select2" required>
+                            @foreach($communes as $commune)
+                                <option value="#">{{ $commune->lib_commune }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label" style="width: 11.95%;">Adresse</label>
+                        <div class="col-sm-9" style="width: 88%;">
+                            <input id="adresse" type="text" name="adresse" class="form-control" value="{{ old('adress') ?? $user->adresse}}" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Date de naissance</label>
+                        <div class="col-sm-9">
+                         <!--   <input type="text" data-mask="date"  class="form-control" type="text" name="date_naissance" id="date_naissance"-->
+                            <input type="date" class="form-control" type="text" name="date_naissance" name="date_naissance" id="date_naissance"
+                                   value="{{ old('date_naissance') ?? $user->date_naissance}}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Sexe</label>
+                        <div class="col-sm-9">
+                            <div class="be-radio-icon inline">
+                                <input type="radio"  name="sexe" value="Femme"
+
+                                       {{ $gender =='Femme' ? 'checked' : ''  }}
+
+                                       id="rad1">
+                                <label for="rad1"><span class="mdi mdi-female"></span></label>
+                            </div>
+                            <div class="be-radio-icon inline">
+                                <input type="radio" name="sexe" value="Homme"
+                                       {{ $gender =='Homme' ? 'checked' : ''  }} id="rad2">
+                                <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Profession</label>
+                        <div class="col-sm-9">
+                            <select id="profession" name="profession" class="select2">
+                                <option value="Salarié"
+                                        {{ $job =='Salarié' ? 'selected' : ''  }}
+                                >Salarié</option>
+                                <option value="Fonctionnaire"
+                                        {{ $job =='Fonctionnaire' ? 'selected' : ''  }}
+                                >Fonctionnaire</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Telephone</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone') ?? $user->telephone}}" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label" style="width: 11.95%;">{{ __('E-Mail Address') }}</label>
+                        <div class="col-sm-9" style="width: 88%;">
+                            <input id="email" type="email" name="email" class="form-control" required autocomplete="email" value="{{ old('email') ?? $user->email}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">{{ __('Password') }}</label>
+                        <div class="col-sm-9">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">{{ __('Confirm Password') }}</label>
+                        <div class="col-sm-9">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-xs-6" style="float: right;margin-top: 5%">
+                        <a href="{{route('profil')}}" type="button" class="btn  btn-default btn-xl col-md-4" style="margin: 2%"> Annuler</a>
+                        <button type="submit" class="btn  btn-primary btn-xl col-md-4" style="margin: 2%"> Valider</button>
+                    </div>
+                </div>
+
+                <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+
+
+
+            </form>
+
+
+    </div>
+@endsection
+
+@section('js')
+    <script src="{{asset('assets/lib/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/jquery.nestable/jquery.nestable.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/moment.js/min/moment.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/select2/js/select2.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/bootstrap-slider/js/bootstrap-slider.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/app-form-elements.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/app-form-masks.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/lib/fuelux/js/wizard.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/app-form-wizard.js')}}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVBmJKrz6WzPT7HVLaGhC2hJA5V-rkwaA&sensor=false"></script>
+
+
+@endsection
+
+@section('docready')
+    App.formElements();
+    App.masks();
+
+    $('#wilaya').change(function(){
+
+
+    if($(this).val() != '')
+    {
+    var select = $(this).attr("id");
+
+    var value = $(this).val();
+
+
+    //alter(dependent);
+
+    var _token = $('#signup-token').val();
+    //alert( _token );
+    $.ajax({
+
+    //alert(value);
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+    $('#commune').html(result);
+    //alert(value);
+
+    }
+
+    })
+    }
+    });
+
+@endsection
