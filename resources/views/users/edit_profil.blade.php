@@ -21,7 +21,7 @@
         </h2>
 
 
-        <form method="POST" action="{{ route('update_profil') }}" class="form-horizontal col-lg-12" >
+        <form method="post" action="{{ route('update_profil') }}" class="form-horizontal col-lg-12" enctype="multipart/form-data" >
             @csrf
                 <div class="form-group">
                     <div class="col-md-6">
@@ -52,7 +52,7 @@
                         <div class="col-sm-9">
                             <select  name="wilaya" class="custom-select select2" required>
                                 @foreach($wilayas as $wilaya)
-                                    <option value="#">{{ $wilaya->nlib_wilaya }}</option>
+                                    <option value="$wilaya->code_wilaya" @if($wilaya->code_wilaya == Auth()->user()->wilaya) selected  @endif>{{ $wilaya->nlib_wilaya }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -63,7 +63,7 @@
                         <div class="col-sm-9">
                             <select  name="commune" class="custom-select select2" required>
                             @foreach($communes as $commune)
-                                <option value="#">{{ $commune->lib_commune }}</option>
+                                <option value="$commune->code_commune" @if($commune->code_commune == Auth()->user()->commune) selected  @endif >{{ $commune->lib_commune }}</option>
                             @endforeach
                             </select>
                         </div>
@@ -97,7 +97,7 @@
                             <div class="be-radio-icon inline">
                                 <input type="radio"  name="sexe" value="Femme"
 
-                                       {{ $gender =='Femme' ? 'checked' : ''  }}
+
 
                                        id="rad1">
                                 <label for="rad1"><span class="mdi mdi-female"></span></label>
@@ -145,7 +145,14 @@
                         </div>
                     </div>
                 </div>
+<!--
+                <div class="profile-img">
+                   <label>Modifier l'image</label>
 
+                    <input type="file" id="avatar"/>
+
+                </div>
+<!--
                 <div class="form-group">
 
                     <div class="col-md-6">
@@ -169,7 +176,7 @@
                     </div>
 
                 </div>
-
+-->
                 <div class="form-group row">
                     <div class="col-xs-6" style="float: right;margin-top: 5%">
                         <a href="{{route('profil')}}" type="button" class="btn  btn-default btn-xl col-md-4" style="margin: 2%"> Annuler</a>
@@ -178,9 +185,6 @@
                 </div>
 
                 <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
-
-
-
             </form>
 
 
