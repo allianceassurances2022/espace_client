@@ -5,7 +5,11 @@
 
 @section('produit_url')
 background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg')}});
+
 @endsection
+
+
+
 
 @section('content')
 

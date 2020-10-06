@@ -688,15 +688,11 @@ $TD=80;
 			$this->validate($request, $rules);
 
 			$value_mrh  = session('data_mrh');
-
-
-
-
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
-    	$prime_total= $request->prime_total;
+    	    $prime_total= $request->prime_total;
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
@@ -728,7 +724,7 @@ $TD=80;
 					'cp'                => $value_mrh['cout_police'],
 					'td'                => $value_mrh['timbre_dimension'],
 					'id_user'           => Auth()->user()->id,
-                    'type_assurance'    => 'mrh'
+                    'type_assurance'    => 'Multirisques Habitation'
     		]);
 
 				Prime::create([
@@ -846,7 +842,7 @@ $TD=80;
                 'prime_nette'       => $value_catnat['prime_nette'],
                 'cp'                => $value_catnat['cout_police'],
                 'td'                => $value_catnat['timbre_dimension'],
-                'type_assurance'    => 'catnat'
+                'type_assurance'    => 'Catastrophe Naturelle'
     		]);
 
 				if($request->formule == 'Habitation'){

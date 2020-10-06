@@ -16,11 +16,9 @@
 @section('content')
 
     <div class="container emp-profile">
-        <h2 style="text-align:center; margin-bottom: 50px">
+        <h2 style="text-align:center; margin-bottom: 70px; margin-top: -20px;">
             Modifier le profil
         </h2>
-
-
         <form method="post" action="{{ route('update_profil') }}" class="form-horizontal col-lg-12" enctype="multipart/form-data" >
             @csrf
                 <div class="form-group">
@@ -52,7 +50,7 @@
                         <div class="col-sm-9">
                             <select  name="wilaya" class="custom-select select2" required>
                                 @foreach($wilayas as $wilaya)
-                                    <option value="$wilaya->code_wilaya" @if($wilaya->code_wilaya == Auth()->user()->wilaya) selected  @endif>{{ $wilaya->nlib_wilaya }}</option>
+                                    <option value="{{ $wilaya->code_wilaya }}" @if($wilaya->code_wilaya == Auth()->user()->wilaya) selected  @endif>{{ $wilaya->nlib_wilaya }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -63,7 +61,7 @@
                         <div class="col-sm-9">
                             <select  name="commune" class="custom-select select2" required>
                             @foreach($communes as $commune)
-                                <option value="$commune->code_commune" @if($commune->code_commune == Auth()->user()->commune) selected  @endif >{{ $commune->lib_commune }}</option>
+                                <option value="{{ $commune->code_commune }}" @if($commune->code_commune == Auth()->user()->commune) selected  @endif >{{ $commune->lib_commune }}</option>
                             @endforeach
                             </select>
                         </div>
@@ -86,7 +84,7 @@
                         <label class="col-sm-3 control-label">Date de naissance</label>
                         <div class="col-sm-9">
                          <!--   <input type="text" data-mask="date"  class="form-control" type="text" name="date_naissance" id="date_naissance"-->
-                            <input type="date" class="form-control" type="text" name="date_naissance" name="date_naissance" id="date_naissance"
+                            <input type="date" class="form-control" name="date_naissance" id="date_naissance"
                                    value="{{ old('date_naissance') ?? $user->date_naissance}}" required>
                         </div>
                     </div>
@@ -96,9 +94,7 @@
                         <div class="col-sm-9">
                             <div class="be-radio-icon inline">
                                 <input type="radio"  name="sexe" value="Femme"
-
-
-
+                                       {{ $gender =='Femme' ? 'checked' : ''  }}
                                        id="rad1">
                                 <label for="rad1"><span class="mdi mdi-female"></span></label>
                             </div>
@@ -152,31 +148,7 @@
                     <input type="file" name="avatar" id="avatar"/>
 
                 </div>
-<!--
-                <div class="form-group">
 
-                    <div class="col-md-6">
-                        <label class="col-sm-3 control-label">{{ __('Password') }}</label>
-                        <div class="col-sm-9">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="col-sm-3 control-label">{{ __('Confirm Password') }}</label>
-                        <div class="col-sm-9">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                    </div>
-
-                </div>
--->
                 <div class="form-group row">
                     <div class="col-xs-6" style="float: right;margin-top: 5%">
                         <a href="{{route('profil')}}" type="button" class="btn  btn-default btn-xl col-md-4" style="margin: 2%"> Annuler</a>
@@ -192,6 +164,24 @@
 @endsection
 
 @section('js')
+
+    <script>
+        $(function() {
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear() ;
+
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = (year - 18) + '-' + month + '-' + day;
+            $('#date_naissance').attr('max', maxDate);
+        });
+    </script>
+
     <script src="{{asset('assets/lib/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/lib/jquery.nestable/jquery.nestable.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/lib/moment.js/min/moment.min.js')}}" type="text/javascript"></script>

@@ -130,34 +130,27 @@ Home
                       </tr>
                     </thead>
                     <tbody>
+                    @foreach($devis as $devi)
+                      <tr>
+                        <td class="user-avatar"> <img @if($devi->type_assurance == 'Automobile')
+                                                      src="{{asset('produit_assets/images/icons/auto_col.svg')}}"
+                                                      @endif
 
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
-                        <td>1 000 DA</td>
-                        <td>Aug 6, 2015</td>
+                                                      @if($devi->type_assurance == 'Catastrophe Naturelle')
+                                                        src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}"
+                                                      @endif
+
+                                                      @if($devi->type_assurance == 'Multirisques Habitation')
+                                                        src="{{asset('produit_assets/images/icons/hab_col.svg')}}"
+                                                      @endif
+                                                      alt="Avatar">{{ $devi->type_assurance }} </td>
+
+                        <td>{{ $devi->prime_total }}</td>
+                        <td>{{ $devi->created_at }}</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
                       </tr>
-                   
-                    <!--
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 28, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 15, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
-       -->
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
-                        <td>1 000 DA</td>
-                        <td>Jun 30, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
+                    @endforeach
+
                     </tbody>
                   </table>
                 </div>

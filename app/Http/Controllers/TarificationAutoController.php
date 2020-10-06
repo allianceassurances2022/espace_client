@@ -468,13 +468,6 @@ class TarificationAutoController extends Controller
 
     $wilaya=Wilaya::All();
 
-
-
-
-
-
-
-
 		$data_session = [
     	              'date_conducteur'  => $daten,
 	                  'date_permis'      => $date_permis,
@@ -593,7 +586,7 @@ class TarificationAutoController extends Controller
 					'tg'                => $value_auto['fga'],
 					'tp'                => $value_auto['taxe_pollution'],
 					'id_user'           => Auth()->user()->id,
-                'type_assurance'    => 'auto'
+                'type_assurance'    => 'Automobile'
     		]);
 
         Prime::create([

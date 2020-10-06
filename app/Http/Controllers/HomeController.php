@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\commune;
+use App\devis;
 use Illuminate\Http\Request;
 use App\Status_ods;
 use Auth;
@@ -48,9 +49,6 @@ class HomeController extends Controller
                 'datec' => $datec,
         		'montant' => $montant
         	];
-
-
-
         }
 
         if ($value_mrh) {
@@ -83,7 +81,10 @@ class HomeController extends Controller
 
         }
 
-        return view('home',compact('user','mrh','auto','cat','total'));
+        $devis = devis::where('id_user', $user->id )->get();
+
+
+        return view('home',compact('user','mrh','auto','cat','total', 'devis'));
     }
 
     public function profil(){

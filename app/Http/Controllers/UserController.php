@@ -33,21 +33,25 @@ class UserController extends Controller
         $gender = $user->sexe;
         $job = $user->profession;
         $wilayas = wilaya::all();
-        $wilaya_ = wilaya::where('code_wilaya', $user->wilaya )->first();
-
-
         $communes = commune::all();
-        $commune_ = commune::where('code_commune', $user->commune )->first();
 
+/*
 
-        return view('users.edit_profil', compact('user', 'wilayas','wilaya_','communes', 'commune_','gender', 'job'));
+        $data = [
+            'gender'    =>  $gender = $user->sexe,
+            'job'       =>  $user->profession,
+            'wilaya'    =>  wilaya::all(),
+            'commune'   =>  commune::all(),
+        ];
+
+*/
+
+        return view('users.edit_profil', compact('user', 'wilayas','communes','gender', 'job'));
     }
 
     public function update_profil( request $request ){
 
         $user=auth::user();
-
-
 
         $user->update([
             'name'      => $request->name,
