@@ -130,12 +130,15 @@ Home
                       </tr>
                     </thead>
                     <tbody>
+
                       <tr>
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
                         <td>1 000 DA</td>
                         <td>Aug 6, 2015</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
                       </tr>
+                   
+                    <!--
                       <tr>
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
                         <td>1 000 DA</td>
@@ -148,6 +151,7 @@ Home
                         <td>Jul 15, 2015</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
                       </tr>
+       -->
                       <tr>
                         <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
                         <td>1 000 DA</td>

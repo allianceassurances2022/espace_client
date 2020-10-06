@@ -480,8 +480,8 @@ class TarificationAutoController extends Controller
 	                  'date_permis'      => $date_permis,
 	                  'Wilaya'           => $wilaya,
 	                  'annee_auto'       => $annee_auto,
-					          'puissance'        => $puissance,
-					          'usage'            => $usage,
+                      'puissance'        => $puissance,
+					   'usage'            => $usage,
 	                  'valeur'           => $valeur,
 	                  'offre'            => $offre,
 	                  'dure'             => $dure,
@@ -489,11 +489,11 @@ class TarificationAutoController extends Controller
 	                  'assistance'       => $assistance,
 	                  'prime_total'      => $devis,
 	                  'datec'            => $datec,
-                    'taxe'             => $taxe,
-                    'date_taxe'        => $date_taxe,
-                    'Wilaya_selected'  => $wilaya_selected,
-                    'type_assurance'   => $offre,
-                    'valeur_auto'      => $valeur,
+                      'taxe'             => $taxe,
+                      'date_taxe'        => $date_taxe,
+                      'Wilaya_selected'  => $wilaya_selected,
+                      'type_assurance'   => $offre,
+                      'valeur_auto'      => $valeur,
             				'prime_nette'      => $prime_nette,
             				'cout_police'      => $CP,
             				'timbre_dimension' => $TD,
@@ -501,10 +501,10 @@ class TarificationAutoController extends Controller
             				'timbre_gradue'    => $TG,
             				'fga'              => $FGA,
             				'taxe_pollution'   => $TP,
-                    'bris_de_glace'    => $BDG,
+                            'bris_de_glace'    => $BDG,
             				'vol'              => $VOL,
             				'dasc'             => $DASC,
-                    'dcvv'             => $DCVV,
+                            'dcvv'             => $DCVV,
             				'rc'               => $RC,
             				'defense_recours'  => $DR,
             				'assistance'       => $Ass,
@@ -549,11 +549,11 @@ class TarificationAutoController extends Controller
 
 			$this->validate($request, $rules);
 
-      $date_sous = $request->date_sous;
+            $date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
-    	$prime_total= $request->prime_total;
+			$prime_total= $request->prime_total;
 
       if($request->id){
 
@@ -585,14 +585,15 @@ class TarificationAutoController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-          'prime_nette'       => $value_auto['prime_nette'],
+                'prime_nette'       => $value_auto['prime_nette'],
 					'tva'               => $value_auto['tva'],
 					'cp'                => $value_auto['cout_police'],
 					'td'                => $value_auto['timbre_dimension'],
 					'fga'               => $value_auto['timbre_gradue'],
 					'tg'                => $value_auto['fga'],
 					'tp'                => $value_auto['taxe_pollution'],
-					'id_user'           => Auth()->user()->id
+					'id_user'           => Auth()->user()->id,
+                'type_assurance'    => 'auto'
     		]);
 
         Prime::create([
@@ -646,7 +647,7 @@ class TarificationAutoController extends Controller
     			'code_formule'           => $request->formule,
     			'assistance'             => $request->assistance,
     			'offre'                  => $request->offre,
-          'valeur_vehicule'        => $request->valeur,
+                'valeur_vehicule'        => $request->valeur,
     			'num_chassis'            => $request->num_chassis,
     			'type'                   => $request->type,
     			'couleur'                => $request->couleur,

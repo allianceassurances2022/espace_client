@@ -727,7 +727,8 @@ $TD=80;
 					'tva'               => $value_mrh['tva'],
 					'cp'                => $value_mrh['cout_police'],
 					'td'                => $value_mrh['timbre_dimension'],
-					'id_user'           => Auth()->user()->id
+					'id_user'           => Auth()->user()->id,
+                    'type_assurance'    => 'mrh'
     		]);
 
 				Prime::create([
@@ -844,7 +845,8 @@ $TD=80;
                 'id_user'           => Auth()->user()->id,
                 'prime_nette'       => $value_catnat['prime_nette'],
                 'cp'                => $value_catnat['cout_police'],
-                'td'                => $value_catnat['timbre_dimension']
+                'td'                => $value_catnat['timbre_dimension'],
+                'type_assurance'    => 'catnat'
     		]);
 
 				if($request->formule == 'Habitation'){

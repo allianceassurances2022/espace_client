@@ -39,6 +39,7 @@ class CreateDevisTable extends Migration
             $table->float('tp')->nullable();
             $table->float('taxe_pollution')->nullable();
             $table->Integer('id_user');
+            $table->string('type_assurance');
             $table->timestamps();
         });
     }

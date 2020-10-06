@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Image as InterventionImage;
 
 use App\commune;
 use App\Status_ods;
 use Auth;
 use App\wilaya;
-use Svg\Tag\Image;
+
 
 
 class UserController extends Controller
@@ -65,23 +67,42 @@ class UserController extends Controller
      //   if($request->hasFile('photo')){
 
            // dd('helllo');
-            $avatar = $request->file('avatar');
+          //$avatar = $request->file('avatar');
+
+           //filename = time().'.'.$avatar->getClientOriginalExtension();
+
+           //mage::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/'.$filename));
+           // $user = Auth::user();
+
+
+
+        /*    $user->update([
+
+                'profil_picture'     => $filename,
+                ]);
+*/
+         //   $user->profil_picture = $filename;
+
+           // $user->save();
+    //    }
+
+
+        if ( request('avatar')){
+
+            $avatar = request('avatar');
 
             $filename = time().'.'.$avatar->getClientOriginalExtension();
 
-            Image::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/'.$filename));
-           // $user = Auth::user();
+            $image  = image::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/'.$filename));
+
+            $image->save();
 
             $user->update([
 
                 'profil_picture'     => $filename,
-                ]);
+            ]);
 
-         //   $user->profil_picture = $filename;
-
-            $user->save();
-    //    }
-
+        }
 
 
 

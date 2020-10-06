@@ -145,11 +145,11 @@
                         </div>
                     </div>
                 </div>
-<!--
+
                 <div class="profile-img">
                    <label>Modifier l'image</label>
 
-                    <input type="file" id="avatar"/>
+                    <input type="file" name="avatar" id="avatar"/>
 
                 </div>
 <!--
