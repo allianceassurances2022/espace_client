@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\marque;
 use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
@@ -111,8 +112,8 @@ class ProduitController extends Controller
     public function devis_auto()
     {
 
-
         $value_auto        = session('data_auto');
+        $data_session        = session('data_session');
         $date_souscription = date('Y-m-d');
         $date_conducteur   = $value_auto['date_conducteur'];
         $date_permis       = $value_auto['date_permis'];
@@ -128,15 +129,92 @@ class ProduitController extends Controller
         $taxe              = $value_auto['taxe'];
         $date_taxe         = $value_auto['date_taxe'];
         $prime_total       = $value_auto['prime_total'];
-        $datec             = $value_auto['datec'];
+        $datec             = $value_auto['datec'];   
+        $assistance_nom    = $value_auto['assistance_nom'];
+
+
 
 
         $wilaya  = Wilaya::all();
         $agences = Agences::all();
         $agence_map = '';
 
+        $wilaya_selected = Wilaya::where('code_wilaya', $wilaya_selected)->first();
+
+
+        $marques = marque::all();
+
+        //Detail des catégorie du permis
+        $cat_permi = [
+            'Catégorie A',
+            'Catégorie B',
+            'Catégorie C',
+            'Catégorie D',
+            'Catégorie F',
+            'Catégorie F',
+        ];
+
+        //Detail des puissances
+        switch ($puissance){
+            case ($puissance == '0') : $puissance = '2 CV';
+                break;
+            case ($puissance == '1') : $puissance = '5 à 6 CV';
+                break;
+            case ($puissance == '2') : $puissance = '7 à 10 CV';
+                break;
+            case ($puissance == '3') : $puissance = '11 à 14 CV';
+                break;
+            case ($puissance == '4') : $puissance = '15 à 23 CV';
+                break;
+            case ($puissance == '5') : $puissance = 'Plus de 24 CV';
+                break;
+        }
+
+        //Detail usage
+        switch ($usage) {
+            case ($usage == '0') :
+                $usage = 'Affaire';
+                break;
+            case ($usage == '1') :
+                $usage = 'Fonctionnaire';
+                break;
+            case ($usage == '2') :
+                $usage = 'Commerce';
+                break;
+        }
+
+        //Detail formule
+        switch ($formule) {
+            case ($formule == '1') :
+                $formule = 'Tous Risques';
+                break;
+            case ($formule == '2') :
+                $formule = 'D.C Valeur Vénale';
+                break;
+        }
+
+        //detail assistance
+        switch ($formule) {
+            case ($formule == '1') :
+                $formule = 'Tous Risques';
+                break;
+            case ($formule == '2') :
+                $formule = 'D.C Valeur Vénale';
+                break;
+        }
+
+        //Detail type d'assurance
+        switch ($offre) {
+            case ($offre == 'AUTO_P') :
+                $offre = 'Auto particulier';
+                break;
+            case ($offre == 'OTO_L') :
+                $offre = 'OTO Laki';
+                break;
+        }
+
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
-        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map'));
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom'));
     }
 
     public function visuelisation()

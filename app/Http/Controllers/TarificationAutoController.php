@@ -468,6 +468,8 @@ class TarificationAutoController extends Controller
 
     $wilaya=Wilaya::All();
 
+    //dd($assistance);
+
 		$data_session = [
     	              'date_conducteur'  => $daten,
 	                  'date_permis'      => $date_permis,
@@ -479,7 +481,7 @@ class TarificationAutoController extends Controller
 	                  'offre'            => $offre,
 	                  'dure'             => $dure,
 	                  'formule'          => $formule,
-	                  'assistance'       => $assistance,
+	                  'assistance_nom'       => $assistance,
 	                  'prime_total'      => $devis,
 	                  'datec'            => $datec,
                       'taxe'             => $taxe,
@@ -552,7 +554,7 @@ class TarificationAutoController extends Controller
 
     		$risque= Rsq_Vehicule::find($request->id);
     		$risque->update([
-          'matricule'              => $request->matricule,
+                'matricule'              => $request->matricule,
     			'marque'                 => $request->marque,
     			'modele'                 => $request->model,
     			'num_chassis'            => $request->num_chassis,
@@ -619,12 +621,16 @@ class TarificationAutoController extends Controller
 					'valeur'            => $value_auto['defense_recours'],
 					'id_devis'          => $dev->id
 				]);
-        Prime::create([
+                Prime::create([
 					'code'              => '180214',
 					'libelle'           => 'Assistance',
 					'valeur'            => $value_auto['assistance'],
 					'id_devis'          => $dev->id
 				]);
+
+
+
+
 
     		$res=Rsq_Vehicule::create([
     			'matricule'              => $request->matricule,
@@ -678,10 +684,6 @@ class TarificationAutoController extends Controller
       $date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
 			$date_exp          = $devis->date_expiration;
-
-
-
-
 
       // personne_transporte
 
