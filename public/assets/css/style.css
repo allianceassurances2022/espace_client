@@ -131,10 +131,12 @@ template {
 }
 a {
   background-color: transparent;
+
 }
 a:active,
 a:hover {
   outline: 0;
+
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -20606,3 +20608,7 @@ fieldset[disabled] .full-calendar .fc-button.active {
   color: white;
   transition: 0.3s;
 }
+
+
+/**************************************page de souscription**********************************************/
+

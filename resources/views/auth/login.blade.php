@@ -8,23 +8,38 @@
               <div class="panel-body">
                 <form method="POST" action="{{ route('login') }}" data-parsley-validate="" novalidate="">
                         @csrf
+
+
+
+
                   <div class="form-group">
                     <input id="username" type="text" placeholder="Utilisateur" autocomplete="off" class="form-control" name="email">
-                                @error('email')
+                            <!--    @error('email')
                                     <span class="parsley-errors-list filled" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
+-->
                   </div>
                   <div class="form-group">
                     <input id="password" type="password" placeholder="Mot de passe" class="form-control" name="password">
-                                @error('password')
-                                    <span class="parsley-errors-list filled" role="alert">
+                  <!--        @error('password')
+                                    <span class=" help-block parsley-errors-list filled" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                              @enderror
+                               -->
                   </div>
+
+                    @if ($errors->has('email'))
+                        <span class="parsley-errors-list ">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @elseif ($errors->has('password'))
+                        <span class="parsley-errors-list ">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
 
                   <div class="form-group row login-tools">
                     <div class="col-xs-6 login-forgot-password">

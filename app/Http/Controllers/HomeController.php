@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
 use App\commune;
 use App\devis;
 use Illuminate\Http\Request;
@@ -81,7 +83,8 @@ class HomeController extends Controller
 
         }
 
-        $devis = devis::where('id_user', $user->id )->get();
+       // $devis = devis::where('id_user', $user->id )->get();
+        $devis = devis::where('id_user', $user->id )->paginate(4);
 
 
         return view('home',compact('user','mrh','auto','cat','total', 'devis'));

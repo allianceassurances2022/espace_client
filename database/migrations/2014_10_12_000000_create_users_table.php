@@ -27,8 +27,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->default('1602407770.png');
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
@@ -39,6 +41,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+       // Schema::dropIfExists('users');
+        Schema::drop('profil_picture');
+
     }
 }
