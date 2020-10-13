@@ -109,8 +109,8 @@ Route::get('file_validation', function () {
 
 
 
-Route::get('page', function () {
-    return view('page');
-})->name('page');
+Route::get('pdf_mrh', function () {
+    return view('pdf.mrh');
+})->name('pdf_mrh');
 
 Route::get('page_pdf','UserController@generate_pdf')->name('page_pdf');

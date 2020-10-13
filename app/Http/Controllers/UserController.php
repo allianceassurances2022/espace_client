@@ -107,17 +107,18 @@ class UserController extends Controller
         return view('users.profil', compact('user'));
     }
 
-    public function generate_pdf(Request $request)
+    public function generate_pdf()
     {
 
 
         //$items = DB::table("items")->get();
        // view()->share('items', $items);
-        if ($request->has('download')) {
 
-            $pdf = App::make('dompdf.wrapper');
-            $pdf ->loadView('page');
-            return $pdf->download('page.pdf');
-        }
+
+            $pdf = Barryvdh\DomPDF\PDF::loadView('pdf.mrh');
+
+        return $pdf->stream();
+
     }
+
 }
