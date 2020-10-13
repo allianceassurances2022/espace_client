@@ -10,6 +10,7 @@ use App\Rsq_Vehicule;
 use App\devis;
 use App\Agences;
 use App\Prime;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use auth;
 
@@ -19,6 +20,17 @@ class TarificationAutoController extends Controller
     public function choix_auto(Request $request){
 
     	$auto=$request->all();
+
+      // $rules = array(
+  		// 	'valeur_auto' => 'bail|required|string|min:800000',
+  		// );
+      //
+  		// $this->validate($request, $rules);
+
+  		if ($request->valeur_auto < 800000){
+  		 Alert::warning('Avertissement', 'la valeur du véhicule ne doit pas etre inferieure a 800 000 DA ');
+  		   return redirect()->route('type_produit',['auto','index']);
+  		 }
 
       $data_session = $auto;
 
@@ -383,7 +395,7 @@ class TarificationAutoController extends Controller
           $VOL = (1 * $valeur)/100;
           $BDG = 2000;
           $DR = 1200;
-          $reduction = 50;
+          $reduction = 30;
             break;
 
           case '2':
@@ -394,7 +406,7 @@ class TarificationAutoController extends Controller
           $BDG = 2000;
           $BDG = $BDG*0.55;
           $DR = 1200;
-          $reduction = 50;
+          $reduction = 30;
             break;
         }
 
@@ -412,7 +424,7 @@ class TarificationAutoController extends Controller
 
 		//echo $TVA." ".$TVA2;
 		//$FGA = (($RC+$MAJ+$CP)*3)/100;
-		$FGA = round(((($RC+$MAJ+$CP)*3)/100), 2);
+		$FGA = round(((($RC+$CP)*3)/100), 2);
 		//echo "<br/>".$FGA." ".$FGA2;
 		$TD = 40 ;
 		$TG = 0 ;
@@ -451,11 +463,14 @@ class TarificationAutoController extends Controller
       }
 
 
+
+
     }
 
 
 		//////////////
 		$TAXE = $TVA+$FGA+$TD+$TG+$CP+$TP ;
+
 
 		//////////////////////////////////////////////
 		$devis = $prime_nette + $TAXE ;
@@ -475,20 +490,20 @@ class TarificationAutoController extends Controller
 	                  'date_permis'      => $date_permis,
 	                  'Wilaya'           => $wilaya,
 	                  'annee_auto'       => $annee_auto,
-                      'puissance'        => $puissance,
-					   'usage'            => $usage,
+                    'puissance'        => $puissance,
+					          'usage'            => $usage,
 	                  'valeur'           => $valeur,
 	                  'offre'            => $offre,
 	                  'dure'             => $dure,
 	                  'formule'          => $formule,
-	                  'assistance_nom'       => $assistance,
+	                  'assistance_nom'   => $assistance,
 	                  'prime_total'      => $devis,
 	                  'datec'            => $datec,
-                      'taxe'             => $taxe,
-                      'date_taxe'        => $date_taxe,
-                      'Wilaya_selected'  => $wilaya_selected,
-                      'type_assurance'   => $offre,
-                      'valeur_auto'      => $valeur,
+                    'taxe'             => $taxe,
+                    'date_taxe'        => $date_taxe,
+                    'Wilaya_selected'  => $wilaya_selected,
+                    'type_assurance'   => $offre,
+                    'valeur_auto'      => $valeur,
             				'prime_nette'      => $prime_nette,
             				'cout_police'      => $CP,
             				'timbre_dimension' => $TD,
@@ -496,10 +511,10 @@ class TarificationAutoController extends Controller
             				'timbre_gradue'    => $TG,
             				'fga'              => $FGA,
             				'taxe_pollution'   => $TP,
-                            'bris_de_glace'    => $BDG,
+                    'bris_de_glace'    => $BDG,
             				'vol'              => $VOL,
             				'dasc'             => $DASC,
-                            'dcvv'             => $DCVV,
+                    'dcvv'             => $DCVV,
             				'rc'               => $RC,
             				'defense_recours'  => $DR,
             				'assistance'       => $Ass,
@@ -508,6 +523,8 @@ class TarificationAutoController extends Controller
         //dd($data_session);
 
         $request->session()->put('data_auto', $data_session);
+
+
 
         if ($offre == "OTO_L") {
         return view('produits.auto.formule_laki',compact('auto','devis'));
@@ -646,7 +663,7 @@ class TarificationAutoController extends Controller
     			'code_formule'           => $request->formule,
     			'assistance'             => $request->assistance,
     			'offre'                  => $request->offre,
-                'valeur_vehicule'        => $request->valeur,
+          'valeur_vehicule'        => $request->valeur,
     			'num_chassis'            => $request->num_chassis,
     			'type'                   => $request->type,
     			'couleur'                => $request->couleur,

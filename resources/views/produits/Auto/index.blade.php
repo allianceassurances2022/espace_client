@@ -8,6 +8,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @endsection
 
 @section('content')
+
 <div class="container-contact100">
     <div class="wrap-contact100">
         <button class="btn-hide-contact100">
@@ -19,6 +20,20 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
         </div>
 
         @include('core.produit.inside-menu')
+
+        {{-- <noscript>
+
+      			Votre navigateur ne supporte pas Javascript. L'application peut ne pas fonctionner correctement. Contacter votre administrateur.
+
+      			<br />
+
+      			Cliquez <a href='../menu/connexion.php' style='color : #fff;font-size:20px;'>ici</a> pour revenir à la page de connexion.
+
+      		</noscript> --}}
+
+          <noscript>
+          <meta http-equiv="refresh" content="0; url=http://127.0.0.1:8000">
+          </noscript>
 
         <form class="contact100-form validate-form" action="{{route('choix_auto')}}" method="post">
             @csrf

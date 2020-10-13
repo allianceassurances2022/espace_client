@@ -34,22 +34,26 @@ class PaiementController extends Controller
           public function test (){
 
             $var = [
-              "code"             => "1231265",
-              "rgnId"            => "16023",
-              "civitlite"        => "1",
-              "nom"              => "Belabebs",
-              "prenom"           => "Mohamed Abdelillah",
-              "nationalite"      => "Algérienne",
-              "tel_mobile"       => "07961074144",
-              "email"            => "mo.belabbzes6@live.com",
-              "address"          => "Bordj el Kiffan",
-              "dateSouscription" => "10/08/2020",
-              "dateEffet"        => "20/08/2020",
-              "dateExpiration"   => "19/08/2021",
-              "modePayment"      => "4",
-              "remarque"         => "remarque",
-              "description"      => "description",
-              "netApayer"        => "10200"
+              "regionId"          => "16",
+              "agenceId"          => "00000",
+              "classId"           => "12",
+              "branchId"          => "1226",
+              "souscriptionDate"  => "04/10/2020",
+              "effetDate"         => "30/09/2020",
+              "expirationDate"    => "03/10/2021",
+              "periode"           => 1,
+              "periodeType"       => 2,
+              "wilayaId"          => "01",
+              "villeId"           => "0101",
+              "address"           => "ADRAR",
+              "batimentType"      => "1",
+              "batimentCategorie" => "1",
+              "surface"           => "0",
+              "nombrePieces"      => "3",
+              "etage"             => "0",
+              "terasse"           => 0,
+              "formule"           => "8",
+              "capitaleAssure"    => 500000
             ];
 
             $var=json_encode($var);
@@ -65,8 +69,6 @@ class PaiementController extends Controller
             $response = json_decode($request->getBody(), true);
 
             dd($response);
-
-
 
           }
 

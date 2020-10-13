@@ -544,6 +544,7 @@ $TD=80;
 				'prime_nette'      => $prim,
 				'cout_police'      => $Ctpolice,
 				'timbre_dimension' => $td,
+				'tva'              => $tva
 
 
 			];
@@ -848,17 +849,17 @@ $TD=80;
 				if($request->formule == 'Habitation'){
 
     		$res=Rsq_Immobilier::create([
-    		    'formule'             => $request->formule,
-    			'type_habitation'     => $request->type_const,
-    			'valeur_assure'       => $request->val_assur,
-    			'permis'              => $request->permis,
-                'superficie'          => $request->surface,
-    			'annee_construction'  => $request->anne_cont,
-                'code_wilaya'         => $request->wilaya,
-                'code_commune'        => $request->commune,
-    			'reg_para'            => $request->reg_para,
-    			'appartient'          => $request->appartient,
-    			'code_devis'          => $dev->id
+    		  'formule'            => $request->formule,
+    			'type_habitation'    => $request->type_const,
+    			'valeur_assure'      => $request->val_assur,
+    			'permis'             => $request->permis,
+          'superficie'         => $request->surface,
+    			'annee_construction' => $request->anne_cont,
+          'code_wilaya'        => $request->wilaya,
+          'code_commune'       => $request->commune,
+    			'reg_para'           => $request->reg_para,
+    			'appartient'         => $request->appartient,
+    			'code_devis'         => $dev->id
     		]);
 
 			}else{
