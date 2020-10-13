@@ -151,14 +151,15 @@ Home
                       </tr>
                     @endforeach
 
-
-
                     </tbody>
                   </table>
                 </div>
               </div>
+                <div style="float: right">
+                        {{ $devis->links() }}
+                </div>
             </div>
-  {{ $devis->links() }}
+
             <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Contrat

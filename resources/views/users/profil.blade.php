@@ -13,36 +13,36 @@
 
     <div class="container emp-profile col-lg-offset-3 col-lg-6">
         <div class="row">
-            <form method="post col-lg-6">
-                @csrf
+
+
                 <div class="col-lg-offset-3 center profile-img" >
                     <img  src="{{ asset('user_assets/assets/uploads/avatars/'.$user->avatar) }}" class="img-circle" alt="HelPic" />
                 </div>
 
-                <div class="">
-                    <div class="profile-head">
-                        <h5>
-                            {{  $user->name  }} {{  $user->prenom }}
-                        </h5>
-                        <h6>
-                        </h6>
-                        <p>
-                            {{  $user->date_naissance  }}
 
-                            <br>
-                            {{  $user->adresse }} <span>
+                <div class="profile-head">
+                    <h5>
+                        {{  $user->name  }} {{  $user->prenom }}
+                    </h5>
+                    <p>
+                        {{  $user->date_naissance  }}
 
-                            <br>
-                                {{  $user->email  }}
-                                <br>
-                            {{  $user->telephone  }}
+                        <br>
+                        {{  $user->adresse }} <span>
 
-                        </p>
+                         <br>
+                         {{  $user->email  }}
+                         <br>
+                        {{  $user->telephone  }}
 
-                    </div>
+                    </p>
+
                 </div>
-                <a href="{{ route('edit_profil') }}" class="profile-edit-btn" name="btnAddMore">Modifier le profil</a>
-            </form>
+
+
+                   <a href="{{ route('edit_profil') }}" class="profile-edit-btn" style="float: right" name="btnAddMore">Modifier le profil</a>
+
+
         </div>
     </div>
 
