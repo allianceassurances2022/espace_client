@@ -34,10 +34,6 @@
 
                            <br>
                            <strong class="strong">Adresse</strong> <span class="span">{{  $user->adresse }} </span>
-
-
-
-
                            <br>
                            <strong class="strong">E-mail</strong> <span class="span">{{  $user->email  }}</span>
 
