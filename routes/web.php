@@ -99,4 +99,18 @@ Route::get('visuelisation', 'ProduitController@visuelisation')->name('visuelisat
 Route::get('profil','UserController@profil')->name('profil');
 Route::get('edit_profil','UserController@edit_profil')->name('edit_profil');
 Route::post('update_profil','UserController@update_profil')->name('update_profil');
-Route::post('update_avatar','UserController@update_avatar')->name('update_avatar');
+
+
+
+
+Route::get('file_validation', function () {
+    return view('file_validation');
+})->name('file_validation');
+
+
+
+Route::get('page', function () {
+    return view('page');
+})->name('page');
+
+Route::get('page_pdf','UserController@generate_pdf')->name('page_pdf');

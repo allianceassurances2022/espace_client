@@ -12,7 +12,7 @@ Home
     <div class="user-display">
       <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div>
       <div class="user-display-bottom">
-        <div class="user-display-avatar"><img src="assets/img/avatar-150.png" alt="Avatar"></div>
+        <div class="user-display-avatar"><img src="{{ asset('user_assets/assets/uploads/avatars/'.Auth()->user()->avatar) }}" alt="Avatar"></div>
         <div class="user-display-info">
           <div class="name">{{Auth()->user()->prenom}} {{Auth()->user()->name}}</div>
           <div class="nick"><span class="mdi mdi-account"></span> {{Auth()->user()->profession}}</div>
@@ -155,6 +155,9 @@ Home
                   </table>
                 </div>
               </div>
+                <div style="float: right">
+                        {{ $devis->links() }}
+                </div>
             </div>
 
             <div class="col-sm-4">

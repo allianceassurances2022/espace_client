@@ -7,7 +7,6 @@
 
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{asset('assets/lib/select2/css/select2.min.css')}}" />
-
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/profil_style.css')}}" />
 
 @endsection
@@ -145,14 +144,21 @@
                 <div class="profile-img">
                    <label>Modifier l'image</label>
 
-                    <input type="file" name="avatar" id="avatar"/>
+                    <input type="file" name="avatar" id="avatar" class="form-control "
+
+                    />
+                    @error('avatar')
+                    <span class="parsley-errors-list filled" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
 
                 </div>
 
                 <div class="form-group row">
                     <div class="col-xs-6" style="float: right;margin-top: 5%">
                         <a href="{{route('profil')}}" type="button" class="btn  btn-default btn-xl col-md-4" style="margin: 2%"> Annuler</a>
-                        <button type="submit" class="btn  btn-primary btn-xl col-md-4" style="margin: 2%"> Valider</button>
+                        <button type="submit" class="btn btn-primary btn-xl col-md-4" style="margin: 2%"> Valider</button>
                     </div>
                 </div>
 

@@ -14,7 +14,7 @@ class ChangeUsersColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            /*
             $table->string('prenom');
             $table->string('wilaya');
             $table->string('commune');
@@ -22,7 +22,7 @@ class ChangeUsersColumn extends Migration
             $table->string('sexe');
             $table->string('prefession');
             $table->integer('telephone');
-
+*/
         });
     }
 

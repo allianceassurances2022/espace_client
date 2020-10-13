@@ -113,4 +113,60 @@
     '800' => $fontDir . '/poppins-800_8a415ce4cd3ed732ea7cd8104614a632',
     '900' => $fontDir . '/poppins-900_84477f94a9c7b3142fbdf1fae2f3e8fc',
   ),
+  'material icons' => array(
+    'normal' => $fontDir . '/material-icons-normal_210cad6fc5fa9c6dcfdb5b94946df88e',
+  ),
+  'glyphicons halflings' => array(
+    'normal' => $fontDir . '/glyphicons-halflings-normal_c81a7ba9ca0641493e791d03386b7315',
+  ),
+  'roboto' => array(
+    '100' => $fontDir . '/roboto-100_e78b5e7ecb644ac1888a9673dadb82b1',
+    '100_italic' => $fontDir . '/roboto-100-italic_0f5f644782a4c87a9be50a9f50cd31bd',
+    '300' => $fontDir . '/roboto-300_e599ceb9c8748c085892224419f81bf9',
+    '300_italic' => $fontDir . '/roboto-300-italic_4ab9aa01f9ac5a7d05f76221dc4648df',
+    'normal' => $fontDir . '/roboto-normal_ee219185afd567710bc0504a4c56222d',
+    'italic' => $fontDir . '/roboto-italic_c07e15c3656906ffc0a3da529e97af3d',
+    '500' => $fontDir . '/roboto-500_01b7cf66e659d6cf2bf007d33edd1884',
+    '500_italic' => $fontDir . '/roboto-500-italic_f762f39523f87bd2e26d4ff1763b1cfc',
+    'bold' => $fontDir . '/roboto-bold_82a01046075516c1bf1a1e2ec96761df',
+    'bold_italic' => $fontDir . '/roboto-bold-italic_be68411fb96de810a1951a669af9d4b5',
+    '900' => $fontDir . '/roboto-900_7fde8ba7bf76ae98f47ee58e3d1d0966',
+    '900_italic' => $fontDir . '/roboto-900-italic_37e5832f244a34649549445f6d55d092',
+  ),
+  'roboto-thin' => array(
+    'normal' => $fontDir . '/roboto-thin-normal_e78b5e7ecb644ac1888a9673dadb82b1',
+  ),
+  'roboto-thinitalic' => array(
+    'normal' => $fontDir . '/roboto-thinitalic-normal_0f5f644782a4c87a9be50a9f50cd31bd',
+  ),
+  'roboto-light' => array(
+    'normal' => $fontDir . '/roboto-light-normal_e599ceb9c8748c085892224419f81bf9',
+  ),
+  'roboto-lightitalic' => array(
+    'normal' => $fontDir . '/roboto-lightitalic-normal_4ab9aa01f9ac5a7d05f76221dc4648df',
+  ),
+  'roboto-regular' => array(
+    'normal' => $fontDir . '/roboto-regular-normal_ee219185afd567710bc0504a4c56222d',
+  ),
+  'roboto-regularitalic' => array(
+    'normal' => $fontDir . '/roboto-regularitalic-normal_c07e15c3656906ffc0a3da529e97af3d',
+  ),
+  'roboto-medium' => array(
+    'normal' => $fontDir . '/roboto-medium-normal_01b7cf66e659d6cf2bf007d33edd1884',
+  ),
+  'roboto-mediumitalic' => array(
+    'normal' => $fontDir . '/roboto-mediumitalic-normal_f762f39523f87bd2e26d4ff1763b1cfc',
+  ),
+  'roboto-bold' => array(
+    'normal' => $fontDir . '/roboto-bold-normal_82a01046075516c1bf1a1e2ec96761df',
+  ),
+  'roboto-bolditalic' => array(
+    'normal' => $fontDir . '/roboto-bolditalic-normal_be68411fb96de810a1951a669af9d4b5',
+  ),
+  'roboto-black' => array(
+    'normal' => $fontDir . '/roboto-black-normal_7fde8ba7bf76ae98f47ee58e3d1d0966',
+  ),
+  'roboto-blackitalic' => array(
+    'normal' => $fontDir . '/roboto-blackitalic-normal_37e5832f244a34649549445f6d55d092',
+  ),
 ) ?>

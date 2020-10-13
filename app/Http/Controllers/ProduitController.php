@@ -129,7 +129,7 @@ class ProduitController extends Controller
         $taxe              = $value_auto['taxe'];
         $date_taxe         = $value_auto['date_taxe'];
         $prime_total       = $value_auto['prime_total'];
-        $datec             = $value_auto['datec'];   
+        $datec             = $value_auto['datec'];
         $assistance_nom    = $value_auto['assistance_nom'];
 
 
@@ -156,17 +156,17 @@ class ProduitController extends Controller
 
         //Detail des puissances
         switch ($puissance){
-            case ($puissance == '0') : $puissance = '2 CV';
+            case ($puissance == '1') : $puissance = '2 CV';
                 break;
-            case ($puissance == '1') : $puissance = '5 à 6 CV';
+            case ($puissance == '2') : $puissance = '5 à 6 CV';
                 break;
-            case ($puissance == '2') : $puissance = '7 à 10 CV';
+            case ($puissance == '3') : $puissance = '7 à 10 CV';
                 break;
-            case ($puissance == '3') : $puissance = '11 à 14 CV';
+            case ($puissance == '4') : $puissance = '11 à 14 CV';
                 break;
-            case ($puissance == '4') : $puissance = '15 à 23 CV';
+            case ($puissance == '5') : $puissance = '15 à 23 CV';
                 break;
-            case ($puissance == '5') : $puissance = 'Plus de 24 CV';
+            case ($puissance == '6') : $puissance = 'Plus de 24 CV';
                 break;
         }
 
