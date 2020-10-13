@@ -141,18 +141,18 @@
                     </div>
                 </div>
 
-                <div class="profile-img">
-                   <label>Modifier l'image</label>
-
-                    <input type="file" name="avatar" id="avatar" class="form-control "
-
-                    />
-                    @error('avatar')
-                    <span class="parsley-errors-list filled" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
-
+                <div class="form-group">
+                    <div class="col-md-12">
+                       <label class="col-sm-3 control-label" style="width: 11.95%;">Modifier l'image</label>
+                        <div  class="col-sm-9" style="width: 88%;"">
+                            <input type="file" name="avatar" id="avatar" class="form-control"/>
+                            @error('avatar')
+                            <span class="parsley-errors-list filled" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -161,6 +161,7 @@
                         <button type="submit" class="btn btn-primary btn-xl col-md-4" style="margin: 2%"> Valider</button>
                     </div>
                 </div>
+
 
                 <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
             </form>
