@@ -6,7 +6,7 @@ body{
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
-    position: center;
+    display: block;
 
 }
 
@@ -14,6 +14,7 @@ body{
 .profile-img img {
 
     border: 2px solid #007481;
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -22,26 +23,27 @@ body{
     margin: 5%;
     margin-right: 20%;
     margin-left: 20%;
+   // text-align: center;
+    text-align: left;
 
-
-    border: 2px solid black;
 }
 .profile-head h5{
+    margin-bottom: 5%;
     color: #003366;
     font: 40px bold;
+    text-align: center;
 }
-.profile-head h6{
-    color: #0062cc;
-
+.user-info{
+    margin-left: 22%;
 }
-.profile-edit-btn{
-    border: none;
+.strong{
+    color: #98a6ad;
+    font-size: 17px !important;
+}
 
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
+.span{
+    margin-left: 10%;
+    font-size: 15px !important;
 }
 
 /* edit form */

@@ -12,10 +12,11 @@
 @section('content')
 
     <div class="container emp-profile col-lg-offset-3 col-lg-6">
-        <div class="row">
+        <div class="row" style="padding-left: 5%;
+    padding-right: 5%;">
 
 
-                <div class="col-lg-offset-3 center profile-img" >
+                <div class="profile-img" >
                     <img  src="{{ asset('user_assets/assets/uploads/avatars/'.$user->avatar) }}" class="img-circle" alt="HelPic" />
                 </div>
 
@@ -24,23 +25,35 @@
                     <h5>
                         {{  $user->name  }} {{  $user->prenom }}
                     </h5>
-                    <p>
-                        {{  $user->date_naissance  }}
+                   <div class="user-info">
+                       <p>
+                           <strong class="strong">Fonction</strong> <span class="span">{{  $user->profession }}</span>
 
-                        <br>
-                        {{  $user->adresse }} <span>
+                           <br>
+                           <strong class="strong">Date de naissance</strong> <span class="span">{{  $user->date_naissance  }}</span>
 
-                         <br>
-                         {{  $user->email  }}
-                         <br>
-                        {{  $user->telephone  }}
+                           <br>
+                           <strong class="strong">Adresse</strong> <span class="span">{{  $user->adresse }} </span>
 
-                    </p>
+
+
+
+                           <br>
+                           <strong class="strong">E-mail</strong> <span class="span">{{  $user->email  }}</span>
+
+                           <br>
+                           <strong class="strong">Téléphone</strong> <span class="span">{{  $user->telephone  }}</span>
+
+
+                       </p>
+                   </div>
 
                 </div>
 
 
-                   <a href="{{ route('edit_profil') }}" class="profile-edit-btn" style="float: right" name="btnAddMore">Modifier le profil</a>
+                   <a href="{{ route('edit_profil') }}" class="btn btn-lg btn-pink  btn-custom btn-rounded waves-effect waves-" style="float: right" name="btnAddMore">Modifier le profil</a>
+
+
 
 
         </div>
