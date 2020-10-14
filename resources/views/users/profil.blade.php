@@ -45,12 +45,7 @@
                    </div>
 
                 </div>
-
-
                    <a href="{{ route('edit_profil') }}" class="btn btn-lg btn-pink  btn-custom btn-rounded waves-effect waves-" style="float: right" name="btnAddMore">Modifier le profil</a>
-
-
-
 
         </div>
     </div>

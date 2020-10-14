@@ -83,11 +83,18 @@ class HomeController extends Controller
 
         }
 
-       // $devis = devis::where('id_user', $user->id )->get();
-        $devis = devis::where('id_user', $user->id )->paginate(4);
+
+        $devis = devis::where('id_user', $user->id )
+                            ->where('type_devis', "1")
+                            ->paginate(4);
+
+        $contrats = devis::where('id_user', $user->id )
+                            ->where('type_devis', "2")
+                            ->paginate(4);
 
 
-        return view('home',compact('user','mrh','auto','cat','total', 'devis'));
+
+        return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats'));
     }
 
     public function profil(){
