@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/delete_devis.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +34,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="67" column="87" selection-start-line="67" selection-start-column="87" selection-end-line="67" selection-end-column="87" />
+            <state relative-caret-position="228">
+              <caret line="65" column="87" selection-start-line="65" selection-start-column="87" selection-end-line="65" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -57,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="507">
-              <caret line="988" column="36" lean-forward="true" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
+              <caret line="988" column="36" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -74,11 +70,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="429">
+              <caret line="206" column="103" lean-forward="true" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topbar.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/core/home/topbar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="150" column="10" lean-forward="true" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
+              <caret line="150" column="10" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -118,14 +126,14 @@
       <find>ontant_auto</find>
       <find>montant_auto</find>
       <find>money</find>
-      <find />
+      <find>valeur es</find>
       <find>table</find>
       <find>devis_mrh</find>
       <find>modification_devis_catnat</find>
-      <find />
+      <find>modifier devi</find>
       <find>resultat</find>
       <find>validation_devis_mrh</find>
-      <find />
+      <find>mes devis</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -161,7 +169,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
         <option value="$PROJECT_DIR$/resources/views/file_validation.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/users/edit_profil.blade.php" />
@@ -178,6 +185,7 @@
         <option value="$PROJECT_DIR$/resources/views/delete_devis.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
       </list>
     </option>
   </component>
@@ -316,7 +324,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1662" />
     <option name="y" value="-94" />
     <option name="width" value="838" />
@@ -379,23 +387,15 @@
               <item name="epaiement" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="produits" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
               <item name="epaiement" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="produits" type="462c0819:PsiDirectoryNode" />
-              <item name="Auto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="produits" type="462c0819:PsiDirectoryNode" />
-              <item name="catnat" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -458,12 +458,12 @@
       <workItem from="1601457904629" duration="100847000" />
       <workItem from="1602401194871" duration="21065000" />
       <workItem from="1602489835338" duration="41076000" />
-      <workItem from="1602686108971" duration="8420000" />
+      <workItem from="1602686108971" duration="10947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252479000" />
+    <option name="totallyTimeSpent" value="255006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -591,13 +591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/core/home/topbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="10" column="74" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -738,8 +731,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="67" column="87" selection-start-line="67" selection-start-column="87" selection-end-line="67" selection-end-column="87" />
+        <state relative-caret-position="228">
+          <caret line="65" column="87" selection-start-line="65" selection-start-column="87" selection-end-line="65" selection-end-column="87" />
         </state>
       </provider>
     </entry>
@@ -750,20 +743,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1289">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-          <folding>
-            <element signature="e#41#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
-          <caret line="988" column="36" lean-forward="true" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
+          <caret line="988" column="36" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -810,14 +793,34 @@
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="150" column="10" lean-forward="true" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
+          <caret line="150" column="10" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
+        <state relative-caret-position="429">
+          <caret line="206" column="103" lean-forward="true" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1289">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/core/home/topbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
