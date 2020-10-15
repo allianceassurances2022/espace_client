@@ -905,11 +905,13 @@ $TD=80;
 
     public function modification_devis_mrh (Request $request,$id){
 
+	    $devis=devis::find($id);
 
-    	$risque=Rsq_Immobilier::find($id);
+    	$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+
     	$id=$risque->id;
 
-    	$devis=devis::find($risque->code_devis);
+
 
 			$date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
@@ -979,23 +981,14 @@ $TD=80;
 
     }
 
-		public function generate_pdf($id)
-		{
+    public function delete_devis(Request $request, $id){
 
-			$devis= devis::find($id);
-			$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
+	    $devi = devis::find($id);
+	    $devi->delete();
 
+        return view('delete_devis');
 
-		  $prime= Prime::where('id_devis',$devis->id)->get();
-
-		  $user=auth::user();
-		  $agence=Agences::where('Name',$devis->code_agence)->first();
-
-			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
-
-			return $pdf->stream();
-
-		}
+    }
 
 
 

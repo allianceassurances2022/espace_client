@@ -107,7 +107,7 @@ Devis MRH
                 </div>
                 <div class="row invoice-footer">
                   <div class="col-md-12">
-                    <a href="{{ route('modification_devis_mrh',$risque->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    <a href="{{ route('modification_devis_mrh',$devis->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button>--}}
                     <a href="{{route('page_pdf',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
                     <a href="{{route('paiement_mrh',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>

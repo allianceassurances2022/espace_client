@@ -26,7 +26,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Usage <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                   <select class="input100" type="text" name="usage" placeholder="Usage">
+                   <select class="input100" type="text" name="usage" id="usage" onchange="disable_devis()" placeholder="Usage">
                             <option value="0" @if($auto['usage'] == '0') selected @endif>Affaire</option>
                             <option value="1" @if($auto['usage'] == '1') selected @endif>Fonctionnaire</option>
                     </select>
@@ -36,7 +36,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="dure" placeholder="Montant Forfetaire">
+                    <select class="input100" type="text" name="dure" onchange="disable_devis()" placeholder="Montant Forfetaire">
                         <option value="1" @if($auto['dure'] == '1') selected @endif>1 Année</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -45,7 +45,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Formule <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="formule" placeholder="Montant Forfetaire">
+                    <select class="input100" type="text" name="formule" onchange="disable_devis()" placeholder="Montant Forfetaire">
                         <option value="1" @if($auto['formule'] == '1') selected @endif>Tous Risques</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -54,8 +54,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Assistance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="assistance" placeholder="Montant Forfetaire">
-                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif onchange="test()">Tranquillité Plus</option>
+                    <select class="input100" type="text" name="assistance" onchange="disable_devis()" placeholder="Montant Forfetaire">
+                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif onchange="alert('change')">Tranquillité Plus</option>
                         <option value="Liberté" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -65,7 +65,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                  <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change()" id="taxe">
+                  <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change() && disable_devis()" id="taxe">
                       <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
                       <option value="oui" @if($auto['taxe'] == 'oui') selected @endif>Oui</option>
                   </select>
@@ -107,9 +107,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
                 <input  class="contact100-form-btn" type='submit' name="calculer" value="calculer">
                 @if($devis != 0)
-                <a href="{{route('devis_auto')}}" class="contact100-form-btn">
-                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                </a>
+                    <div id="-">
+                        <a  href="{{route('devis_auto')}}" class="contact100-form-btn devi-btn">
+                            Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
                 @endif
             </div>
         </form>
@@ -121,6 +124,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 <script>
 
   function taxe_change(){
+
+
     if($('#taxe').val() == "oui"){
       $('#date-taxe').css("display","block");
     }else {
@@ -130,6 +135,57 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
   }
 
 
+  function disable_devis(){
+
+      var button = document.getElementById("devi-btn");
+      button.style.display = "none";
+
+  }
+
+
 
 </script>
+@endsection
+
+@section('docready')
+
+
+
+    App.formElements();
+    App.masks();
+
+    var map;
+
+    initialize();
+
+    $('#Wilaya_map').change(function(){
+
+
+    if($(this).val() != '')
+    {
+    var select = $(this).attr("id");
+
+    var value = $(this).val();
+
+
+    //alter(dependent);
+
+    var _token = $('#signup-token').val();
+    //alert( _token );
+    $.ajax({
+
+    //alert(value);
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+    $('#Commune_map').html(result);
+    //alert(value);
+
+    }
+
+    })
+    }
+    });
 @endsection

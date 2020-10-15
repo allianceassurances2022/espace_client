@@ -97,23 +97,9 @@ class HomeController extends Controller
         return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats'));
     }
 
-    public function profil(){
-
-        $user=auth::user();
-        $wilaya = wilaya::where('code_wilaya', $user->wilaya )->first();;
 
 
-        return view('core.home.profil', compact('user', 'wilaya'));
-    }
 
-    public function  edit_profil(){
-
-        $user=auth::user();
-        $wilayas = wilaya::all();
-        $communes = commune::all();
-
-        return view('core.home.edit_profil', compact('user', 'wilayas','communes'));
-    }
 
 
 }
