@@ -276,7 +276,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="valeur" name="valeur" value="{{$valeur}}" class="form-control"
+                                        <input type="text" id="valeur" name="valeur" value="{{$valeur}}" class="form-control valeur"
                                                readonly>
                                     </div>
                                 </div>
@@ -726,5 +726,9 @@
 
     })
     }
+    });
+
+    (function() {
+    $('.valeur').mask('# ##0,00', {reverse: true});
     });
 @endsection

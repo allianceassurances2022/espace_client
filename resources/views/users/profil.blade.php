@@ -25,23 +25,30 @@
                     <h5>
                         {{  $user->name  }} {{  $user->prenom }}
                     </h5>
-                   <div class="user-info">
-                       <p>
-                           <strong class="strong">Fonction</strong> <span class="span">{{  $user->profession }}</span>
+                   <div class="user-info col-lg-12">
+                       <table style="list-style: none;">
+                           <tr>
+                               <strong class="strong">Fonction</strong>
+                               <span class="span">{{  $user->profession }}</span>
+                           </>
+                           <tr>
+                               <strong class="strong">Date de naissance</strong>
+                               <span class="span">{{  $user->date_naissance  }}</span>
+                           </>
+                           <tr>
+                               <strong class="strong">Adresse</strong>
+                               <span class="span">{{  $user->adresse }} </span>
+                           </>
+                           <tr>
+                               <strong class="strong">E-maile</strong>
+                               <span class="span">{{  $user->email  }}</span>
+                           <tr>
+                           <tr>
+                               <strong class="strong">Téléphone</strong>
+                               <span class="span">{{  $user->telephone  }}</span>
+                           </>
+                       </table>
 
-                           <br>
-                           <strong class="strong">Date de naissance</strong> <span class="span">{{  $user->date_naissance  }}</span>
-
-                           <br>
-                           <strong class="strong">Adresse</strong> <span class="span">{{  $user->adresse }} </span>
-                           <br>
-                           <strong class="strong">E-mail</strong> <span class="span">{{  $user->email  }}</span>
-
-                           <br>
-                           <strong class="strong">Téléphone</strong> <span class="span">{{  $user->telephone  }}</span>
-
-
-                       </p>
                    </div>
 
                 </div>

@@ -905,11 +905,13 @@ $TD=80;
 
     public function modification_devis_mrh (Request $request,$id){
 
+	    $devis=devis::find($id);
 
-    	$risque=Rsq_Immobilier::find($id);
+    	$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+
     	$id=$risque->id;
 
-    	$devis=devis::find($risque->code_devis);
+
 
 			$date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
@@ -978,6 +980,8 @@ $TD=80;
 			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'));
 
     }
+
+    
 
 
 
