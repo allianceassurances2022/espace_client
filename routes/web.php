@@ -45,21 +45,19 @@ Route::get('precedent_auto' , 'TarificationAutoController@precedent')->name('pre
 Route::post('montant_auto' , 'TarificationAutoController@montant_auto')->name('montant_auto');
 Route::get('montant_auto' , 'TarificationController@montant_auto')->name('montant_auto');
 
-
 ///////////////////////////// Panier
 Route::get('panier', 'TarificationController@panier')->name('pannier');
 Route::get('panier_supp/{produit}', 'TarificationController@panier_supp')->name('pannier_supp');
-
 
 Route::get('panier_', function () {
   return view('panier_save');
 });
 
-
 /////////////////////////// paiement
-Route::get('paiement/{id}', 'PaiementController@paiement')->name('paiement');
-Route::get('paiementSend', 'PaiementController@test')->name('test');
-
+Route::get('paiement_mrh/{id}', 'PaiementController@paiement_mrh')->name('paiement_mrh');
+// Route::get('paiementauto/{id}', 'PaiementController@paiementauto')->name('paiement');
+Route::get('paiementSend/{id}', 'PaiementController@save_mrh')->name('test');
+// Route::get('paiementauto', 'PaiementController@test2')->name('test2');
 
 //////////////////////////////// Accueil
 Route::get('/' , 'HomeController@index')->name('home');
@@ -100,14 +98,9 @@ Route::get('profil','UserController@profil')->name('profil');
 Route::get('edit_profil','UserController@edit_profil')->name('edit_profil');
 Route::post('update_profil','UserController@update_profil')->name('update_profil');
 
-
-
-
 Route::get('file_validation', function () {
     return view('file_validation');
 })->name('file_validation');
-
-
 
 Route::get('pdf_mrh', function () {
     return view('pdf.mrh');

@@ -85,16 +85,13 @@ border-inline-start: initial;
 
 
         <div class="radio_section_slice">
-                 <h3><span>2 - </span> Séléctionner un myen de paiement </h6>
+                 <h3><span>2 - </span> Séléctionner un moyen de paiement </h6>
 
-
-
-                     <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="{{asset('assets/img/logo_satim.svg')}}"/>
+               <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100" height="100"  src="{{asset('assets/img/logo_satim.svg')}}"/>
 
                <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="85" height="85"  src="{{asset('assets/img/logo_poste.svg')}}"/>
 
-             </div>
-
+        </div>
 
       <div class='line'></div>
 
@@ -109,7 +106,7 @@ border-inline-start: initial;
 
 				<div class='line'></div>
         <div class="bouton-blanc">
-				<a href="{{route('test')}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+				<a href="{{route('test',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
         </div>

@@ -109,7 +109,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
 
 
-
+            @if(isset($totale))
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input">
@@ -117,10 +117,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+            @endif
             <div class="container-contact100-form-btn">
             <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer">
 
             @if(isset($totale))
+
             <a href="{{route('devis_mrh')}}" class="contact100-form-btn">
                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                 </a>

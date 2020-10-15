@@ -660,7 +660,6 @@ $TD=80;
 
     public function panier_supp (Request $request, $produit){
 
-        //dd($request);
     	if($produit == 'mrh'){
     		$request->session()->forget('data_mrh');
     	}

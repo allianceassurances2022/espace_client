@@ -10,13 +10,14 @@ use App\zcatnat;
 use App\Agences;
 
 use App\Rsq_Immobilier;
+use App\Rsq_Vehicule;
 use App\devis;
 
 use auth;
 
 class PaiementController extends Controller
 {
-    public function paiement ($id){
+    public function paiement_mrh ($id){
 
   		$mrh         = Rsq_Immobilier::where('id',$id)->first();
   		$code_devis  = $mrh->code_devis;
@@ -26,18 +27,31 @@ class PaiementController extends Controller
   		$catnat      = '';
   		$auto        = '';
 
+      return view('paiement',compact('mrh','auto','catnat','prime_total','id','devis'));
 
-          return view('paiement',compact('mrh','auto','catnat','prime_total','id'));
+      }
 
-          }
+          public function save_mrh ($id){
 
-          public function test (){
+            $devis = devis::find($id);
 
             $var = [
+              "categorie"         => "1",
+              "civitlite"         => "1",
+              "nom"               => "Belabbes",
+              "prenom"            => "Mohamed Abdelillah",
+              "dateNaissance"     => "04/07/1995",
+              "lieuNaissance"     => "Rahouia",
+              "nationalite"       => "Algérienne",
+              "activite"          => "1",
+              "proffession"       => "1",
+              "assureAddresse"    => "Fort de l'eau",
+              "assureWilayaId"    => "01",
+              "assureVilleId"     => "0101",
               "regionId"          => "16",
               "agenceId"          => "00000",
               "classId"           => "12",
-              "branchId"          => "1226",
+              "branchId"          => "1225",
               "souscriptionDate"  => "04/10/2020",
               "effetDate"         => "30/09/2020",
               "expirationDate"    => "03/10/2021",
@@ -66,9 +80,20 @@ class PaiementController extends Controller
             'body'    => $var
             ]);
 
+            // $response = json_decode($request->getBody(), true);
             $response = json_decode($request->getBody(), true);
 
-            dd($response);
+            if($response['status']){
+
+              $devis->update([
+          			'type_devis'      => 2,
+          			'reference_police' => $response['data']["reference"],
+          		]);
+          		$dev=$devis;
+
+            }
+
+            return redirect()->route('home');
 
           }
 

@@ -185,7 +185,7 @@ Devis MRH
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Nombre d'Etage</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required min="0">
+                                                      <input type="number" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required min="0">
                                                   </div>
                                               </div>
 
