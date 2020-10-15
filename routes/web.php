@@ -65,6 +65,7 @@ Route::get('paiementSend', 'PaiementController@test')->name('test');
 Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/delete_devis/{id}', 'TarificationController@delete_devis')->name('delete_devis');
 
 /////////////////////////////// Devis produits
 Route::get('/devis_auto', 'ProduitController@devis_auto')->name('devis_auto')->middleware('auth');
@@ -78,6 +79,9 @@ Route::get('/devis_mrh/{id}', 'TarificationController@modification_devis_mrh')->
 Route::get('/devis_catnat', 'ProduitController@devis_catnat')->name('devis_catnat')->middleware('auth');
 Route::post('/validation_devis_catnat' , 'TarificationController@validation_devis_catnat')->name('validation_devis_catnat');
 Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catnat')->name('modification_devis_catnat')->middleware('auth');
+
+
+//Route::get('/devis_catnat/{id}', 'TarificationController@delete_devis')->name('delete_devis')->middleware('auth');
 
 ///////////////////////////// Utilisateurs
 Auth::routes();

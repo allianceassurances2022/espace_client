@@ -981,7 +981,14 @@ $TD=80;
 
     }
 
-    
+    public function delete_devis(Request $request, $id){
+
+	    $devi = devis::find($id);
+	    $devi->delete();
+
+        return view('delete_devis');
+
+    }
 
 
 

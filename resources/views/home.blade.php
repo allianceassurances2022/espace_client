@@ -147,7 +147,7 @@ Home
 
                         <td>{{ $devi->prime_total }}</td>
                         <td>{{ $devi->created_at }}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                        <td class="actions"><a href="{{ route('delete_devis', $devi->id) }}" class="icon"><i class="mdi mdi-delete" onclick="delete()"></i></a></td>
                         <td class="actions"><a  @if($devi->type_assurance == 'Automobile')
                                                 href="{{ route('modification_devis_auto',$devi->id) }}"
                                                 @endif
@@ -230,4 +230,16 @@ Home
     </div>
   </div>
 
+@endsection
+
+@section('js')
+
+    <script>
+
+
+
+        function delete(){
+            window.alert('vouler vous vraiment supprimer ce devis ?');
+        }
+    </script>
 @endsection
