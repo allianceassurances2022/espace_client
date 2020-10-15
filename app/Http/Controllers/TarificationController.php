@@ -12,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Rsq_Immobilier;
 use App\devis;
 use App\Prime;
+use PDF;
 
 use auth;
 
@@ -693,7 +694,7 @@ $TD=80;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
-    	    $prime_total= $request->prime_total;
+    	$prime_total= $request->prime_total;
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
@@ -780,7 +781,7 @@ $TD=80;
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
 
-    	    $user=auth::user();
+    	$user=auth::user();
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
     	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));
@@ -839,11 +840,11 @@ $TD=80;
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-                'id_user'           => Auth()->user()->id,
-                'prime_nette'       => $value_catnat['prime_nette'],
-                'cp'                => $value_catnat['cout_police'],
-                'td'                => $value_catnat['timbre_dimension'],
-                'type_assurance'    => 'Catastrophe Naturelle'
+          'id_user'           => Auth()->user()->id,
+          'prime_nette'       => $value_catnat['prime_nette'],
+          'cp'                => $value_catnat['cout_police'],
+          'td'                => $value_catnat['timbre_dimension'],
+          'type_assurance'    => 'Catastrophe Naturelle'
     		]);
 
 				if($request->formule == 'Habitation'){
@@ -978,6 +979,24 @@ $TD=80;
 			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'));
 
     }
+
+		public function generate_pdf($id)
+		{
+
+			$devis= devis::find($id);
+			$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
+
+
+		  $prime= Prime::where('id_devis',$devis->id)->get();
+
+		  $user=auth::user();
+		  $agence=Agences::where('Name',$devis->code_agence)->first();
+
+			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
+
+			return $pdf->stream();
+
+		}
 
 
 

@@ -113,4 +113,4 @@ Route::get('pdf_mrh', function () {
     return view('pdf.mrh');
 })->name('pdf_mrh');
 
-Route::get('page_pdf','UserController@generate_pdf')->name('page_pdf');
+Route::get('page_pdf/{id}','TarificationController@generate_pdf')->name('page_pdf');

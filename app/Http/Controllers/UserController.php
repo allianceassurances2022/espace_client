@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 
-use Barryvdh\DomPDF\PDF;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +14,7 @@ use App\Status_ods;
 use Auth;
 use App\wilaya;
 use Intervention\Image\Facades\Image;
+
 
 
 
@@ -105,20 +106,6 @@ class UserController extends Controller
         //   $wilaya = wilaya::where('code_wilaya', $user->wilaya )->first();
 
         return view('users.profil', compact('user'));
-    }
-
-    public function generate_pdf()
-    {
-
-
-        //$items = DB::table("items")->get();
-       // view()->share('items', $items);
-
-
-            $pdf = Barryvdh\DomPDF\PDF::loadView('pdf.mrh');
-
-        return $pdf->stream();
-
     }
 
 }
