@@ -137,11 +137,11 @@ Home
                                                       @endif
 
                                                       @if($devi->type_assurance == 'Catastrophe Naturelle')
-                                                        src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}"
+                                                      src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}"
                                                       @endif
 
                                                       @if($devi->type_assurance == 'Multirisques Habitation')
-                                                        src="{{asset('produit_assets/images/icons/hab_col.svg')}}"
+                                                      src="{{asset('produit_assets/images/icons/hab_col.svg')}}"
                                                       @endif
                                                       alt="Avatar">{{ $devi->type_assurance }} </td>
 
@@ -155,9 +155,6 @@ Home
                   </table>
                 </div>
               </div>
-                <div style="float: right">
-                        {{ $devis->links() }}
-                </div>
             </div>
 
             <div class="col-sm-4">
@@ -176,37 +173,48 @@ Home
                       </tr>
                     </thead>
                     <tbody>
+
+                    @foreach($contrats as $contrat)
                       <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Aug 6, 2015</td>
+                        <td class="user-avatar"> <img @if($contrat->type_assurance == 'Automobile')
+                                                      src="{{asset('produit_assets/images/icons/auto_col.svg')}}"
+                                                      @endif
+
+                                                      @if($contrat->type_assurance == 'Catastrophe Naturelle')
+                                                      src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}"
+                                                      @endif
+
+                                                      @if($contrat->type_assurance == 'Multirisques Habitation')
+                                                      src="{{asset('produit_assets/images/icons/hab_col.svg')}}"
+                                                      @endif
+                                                      alt="Avatar">{{ $contrat->type_assurance }} </td>
+
+                        <td>{{ $contrat->prime_total }}</td>
+                        <td>{{ $contrat->created_at }}</td>
                         <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
                       </tr>
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" alt="Avatar">Multirisques Habitation</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 28, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" alt="Avatar">Automobile</td>
-                        <td>1 000 DA</td>
-                        <td>Jul 15, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td class="user-avatar"> <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" alt="Avatar">Catastrophe Naturelle</td>
-                        <td>1 000 DA</td>
-                        <td>Jun 30, 2015</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
-                      </tr>
+                    @endforeach
+
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+</div>
 
-
-          </div>
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+      <div style="float: right">
+        {{ $devis->links() }}
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div style="float: right">
+        {{ $contrats->links() }}
+      </div>
+    </div>
+  </div>
 
 @endsection

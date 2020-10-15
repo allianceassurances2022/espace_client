@@ -55,7 +55,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Assistance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="assistance" placeholder="Montant Forfetaire">
-                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif>Tranquillité Plus</option>
+                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif onchange="test()">Tranquillité Plus</option>
                         <option value="Liberté" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -125,9 +125,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
       $('#date-taxe').css("display","block");
     }else {
       $('#date-taxe').css("display","none");
-  }
+    }
 
   }
+
+
 
 </script>
 @endsection
