@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Devis</title>
+    <title>MRH</title>
     <style>
     @font-face {
       font-family: SourceSansPro;
@@ -46,6 +46,15 @@
   height: 98px;
 }
 
+#qr {
+float: left;
+margin-left: 200px;
+}
+
+#qr img {
+height: 100px;
+}
+
     #company {
       float: right;
       text-align: left;
@@ -56,10 +65,15 @@
       margin-bottom: 10px;
     }
 
+    #date {
+      margin-top: -23px;
+    }
+
     #client {
       padding-left: 6px;
       border-left: 6px solid #00899A;
       float: left;
+      margin-right: 270px;
     }
 
     #client .to {
@@ -101,8 +115,18 @@
       margin: 0;
     }
 
+    .date_left{
+        float: left;
+        text-align: left;
+    }
+
+    .date_right{
+        float: right;
+        text-align: left;
+    }
+
     #invoice {
-      float: right;
+      float: left;
       text-align: left;
     }
 
@@ -111,14 +135,26 @@
       font-size: 2.4em;
       line-height: 1em;
       font-weight: normal;
-      margin: 0  0 10px 0;
+      margin-top: -10px;
     }
 
-    #invoice .date {
-      font-size: 1.1em;
-      color: #777777;
-
+    #invoice h2 {
+      color: #00899A;
+      font-size: 1.4em;
+      line-height: 1em;
+      font-weight: normal;
+      margin-top: -25px;
     }
+
+    #invoice h3 {
+      color: #00899A;
+      font-size: 1.4em;
+      line-height: 1em;
+      font-weight: normal;
+      margin-top: -10px;
+    }
+
+
 
     .espace {
       margin-top: 15px;
@@ -224,17 +260,6 @@
       font-size: 1.2em;
     }
 
-    /* footer {
-      color: #777777;
-      width: 100%;
-      height: 30px;
-      position: absolute;
-      bottom: 0;
-      border-top: 1px solid #AAAAAA;
-      padding: 8px 0;
-      text-align: center;
-    } */
-
     footer {
       position: fixed;
       bottom: -60px;
@@ -258,6 +283,11 @@
        <div id="logo">
          <img src="{{ public_path('assets/img/Alliance_assurances_logo_etat.jpg') }}" alt="">
       </div>
+     @if($devis->type_devis == 2)
+      <div id="qr">
+        <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate($devis->reference_police)) }} " >
+     </div>
+     @endif
        <div id="company">
         <h2 class="name">ALLIANCE ASSURANCES</h2>
         <div>EL-QODS CHERAGA, ALGER</div>
@@ -269,17 +299,25 @@
     <main>
       <div id="details" class="clearfix">
         <div id="client">
-          <div class="to">Devis pour Assuré :</div>
+          <div class="to">Assuré :</div>
           <h2 class="name">{{$user->name}} {{$user->prenom}}</h2>
           <div class="address">{{$user->adresse}}</div>
           <div class="email">{{$user->email}}</div>
         </div>
         <div id="invoice">
+          @if($devis->type_devis == 1)
           <h1>DEVIS #{{$devis->id}}</h1>
-          <div class="date">Effet: {{$devis->date_effet}}</div>
-          <div class="date">Expiration: {{$devis->date_expiration}}</div>
+          @elseif($devis->type_devis == 2)
+          <h1>Police d'assurance</h1>
+          <h2>Multirisque habitation +</h2>
+          <h3>{{$devis->reference_police}}</h3>
+          @endif
         </div>
       </div>
+     <div id="date" class="clearfix">
+      <div class="date_left">Effet: {{$devis->date_effet}}</div>
+      <div class="date_right">Expiration: {{$devis->date_expiration}}</div>
+    </div>
 
       <div class="separateur"></div>
 

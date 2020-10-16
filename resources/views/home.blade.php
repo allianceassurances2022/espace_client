@@ -204,7 +204,7 @@ Home
 
                         <td>{{ $contrat->prime_total }}</td>
                         <td>{{ $contrat->created_at }}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                        <td class="actions"><a href="{{route('contrat_mrh',$contrat->id)}}" class="icon"><i class="mdi mdi-eye"></i></a></td>
                       </tr>
                     @endforeach
 

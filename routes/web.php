@@ -111,3 +111,5 @@ Route::get('pdf_mrh', function () {
 })->name('pdf_mrh');
 
 Route::get('page_pdf/{id}','TarificationController@generate_pdf')->name('page_pdf');
+
+Route::get('contrat_mrh/{id}','TarificationController@contrat_mrh')->name('contrat_mrh');

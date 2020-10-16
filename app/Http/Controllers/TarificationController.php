@@ -990,6 +990,35 @@ $TD=80;
 
     }
 
+		public function contrat_mrh ($id){
+
+
+		$devis= devis::find($id);
+		$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
+    $prime= Prime::where('id_devis',$devis->id)->get();
+		$user=auth::user();
+		$agence=Agences::where('Name',$devis->code_agence)->first();
+
+		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime'));
+
+		}
+
+		public function generate_pdf($id)
+		{
+
+			$devis= devis::find($id);
+			$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
+      $prime= Prime::where('id_devis',$devis->id)->get();
+      $user=auth::user();
+		  $agence=Agences::where('Name',$devis->code_agence)->first();
+
+			//return view('pdf.mrh',compact('user','devis','risque','agence','prime'));
+
+			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
+			return $pdf->stream();
+
+		}
+
 
 
 }

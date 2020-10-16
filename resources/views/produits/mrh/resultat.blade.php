@@ -14,7 +14,15 @@ Devis MRH
                   <div class="col-xs-7">
                     <div class="invoice-logo"></div>
                   </div>
-                  <div class="col-xs-5 invoice-order"><span class="invoice-id">Devis #{{$devis->id}}</span><span class="incoice-date">{{$devis->created_at}}</span></div>
+                  <div class="col-xs-5 invoice-order"><span class="invoice-id">
+                    @if($devis->type_devis == 1)
+                    Devis #{{$devis->id}}
+                    @elseif($devis->type_devis == 2)
+                    Police d'assurance
+                    <h2>Multirisque habitation +</h2>
+                    <h3>{{$devis->reference_police}}</h3>
+                    @endif
+                  </span><span class="incoice-date">{{$devis->created_at}}</span></div>
                 </div>
                 <div class="row invoice-data">
                   <div class="col-xs-5 invoice-person"><span class="name">{{$user->name}} {{$user->prenom}}</span><span>{{$user->profession}}</span><span>{{$user->email}}</span><span>{{$user->adresse}}</span></div>
@@ -79,7 +87,7 @@ Devis MRH
                       <tr>
                         <td></td>
                         <td class="summary total">Total</td>
-                        <td class="amount total-value">{{number_format($prime_total, 2,',', ' ')}} DA</td>
+                        <td class="amount total-value">{{number_format($devis->prime_total, 2,',', ' ')}} DA</td>
                       </tr>
                     </table>
                   </div>
@@ -107,10 +115,14 @@ Devis MRH
                 </div>
                 <div class="row invoice-footer">
                   <div class="col-md-12">
+                    @if($devis->type_devis==1)
                     <a href="{{ route('modification_devis_mrh',$devis->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    @endif
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button>--}}
                     <a href="{{route('page_pdf',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
+                    @if($devis->type_devis==1)
                     <a href="{{route('paiement_mrh',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
+                    @endif
                   </div>
                 </div>
               </div>
