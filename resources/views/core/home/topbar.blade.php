@@ -17,7 +17,7 @@
 
 
                   <li><a href="{{ route('profil') }}"><span class="icon mdi mdi-face"></span> Profil</a></li>
-                  <li><a href="#"><span class="icon mdi mdi-settings"></span> Pdaramètres</a></li>
+                  <li><a href="#"><span class="icon mdi mdi-settings"></span> Paramètres</a></li>
                   <li><a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="icon mdi mdi-power"></span> Déconnexion</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form></li>
@@ -61,6 +61,9 @@
                   </li>
                 </ul>
               </li-->
+              <li>
+                <a href="{{ route ('home') }}" ><span class="icon mdi mdi-home" ></span></a>
+              </li>
               <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="icon mdi mdi-apps"></span></a>
                 <ul class="dropdown-menu be-connections">
                   <li>
