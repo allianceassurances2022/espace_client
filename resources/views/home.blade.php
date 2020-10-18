@@ -1,11 +1,18 @@
 @extends('default')
 
+
 @section('head_title')
 Home
 @endsection
 
 
 @section('content')
+
+    @if (Session::has('sweet_alert.alert'))
+        <script>
+            swal({!! Session::get('sweet_alert.alert') !!});
+        </script>
+    @endif
 
 <div class="row">
   <div class="col-md-5">
@@ -147,7 +154,8 @@ Home
 
                         <td>{{ $devi->prime_total }}</td>
                         <td>{{ $devi->created_at }}</td>
-                        <td class="actions"><a href="{{ route('delete_devis', $devi->id) }}" class="icon"><i class="mdi mdi-delete" onclick="delete()"></i></a></td>
+                        <td class="actions"><a href="#" class="icon" onclick="delete_devis()"><i class="mdi mdi-delete" ></i></a></td>
+
                         <td class="actions"><a  @if($devi->type_assurance == 'Automobile')
                                                 href="{{ route('modification_devis_auto',$devi->id) }}"
                                                 @endif
@@ -234,12 +242,37 @@ Home
 
 @section('js')
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
+
     <script>
+        function delete_devis() {
+          //  swal.fire("Hello World");
+             Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            });
 
 
 
-        function delete(){
-            window.alert('vouler vous vraiment supprimer ce devis ?');
+
+
         }
     </script>
 @endsection
+

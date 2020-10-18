@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use App\Status_ods;
 use Auth;
 use App\wilaya;
+use Illuminate\Support\Facades\Redirect;
+use UxWeb\SweetAlert\SweetAlert;
+
 
 
 class HomeController extends Controller
@@ -96,9 +99,6 @@ class HomeController extends Controller
 
         return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats'));
     }
-
-
-
 
 
 
