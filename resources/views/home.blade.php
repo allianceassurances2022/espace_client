@@ -212,7 +212,7 @@ Home
 
                         <td>{{ $contrat->prime_total }}</td>
                         <td>{{ $contrat->created_at }}</td>
-                        <td class="actions"><a href="#" class="icon"><i class="mdi mdi-delete"></i></a></td>
+                        <td class="actions"><a href="{{route('contrat_mrh',$contrat->id)}}" class="icon"><i class="mdi mdi-eye"></i></a></td>
                       </tr>
                     @endforeach
 
@@ -240,16 +240,17 @@ Home
 
 @endsection
 
-@section('js')
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+            @section('js')
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
 
 
     <script>
         function delete_devis() {
-          //  swal.fire("Hello World");
-             Swal.fire({
+            //  swal.fire("Hello World");
+            Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
@@ -271,8 +272,6 @@ Home
 
 
 
-
         }
     </script>
 @endsection
-

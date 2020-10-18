@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/core/home/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/core/home/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,21 +54,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="950" column="48" lean-forward="true" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="48" />
+              <caret line="950" column="48" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="259" column="20" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
-              <caret line="265" column="33" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
+            <state relative-caret-position="534">
+              <caret line="277" lean-forward="true" selection-start-line="277" selection-end-line="277" />
             </state>
           </provider>
         </entry>
@@ -96,7 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showRegistrationForm</find>
       <find>register</find>
       <find>default</find>
       <find>width</find>
@@ -114,18 +111,19 @@
       <find>ontant_auto</find>
       <find>montant_auto</find>
       <find>money</find>
-      <find>valeur es</find>
+      <find />
       <find>table</find>
       <find>devis_mrh</find>
       <find>modification_devis_catnat</find>
-      <find>modifier devi</find>
+      <find />
       <find>resultat</find>
-      <find>mes devis</find>
+      <find />
       <find>validation_devis_mrh</find>
       <find>home</find>
       <find>swal</find>
       <find>valeur_vehicule</find>
       <find>delete</find>
+      <find>modification_devis_cat</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -176,8 +174,8 @@
         <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
       </list>
     </option>
   </component>
@@ -316,7 +314,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1663" />
     <option name="y" value="-184" />
     <option name="width" value="839" />
@@ -460,12 +458,12 @@
       <workItem from="1602401194871" duration="21065000" />
       <workItem from="1602489835338" duration="41076000" />
       <workItem from="1602686108971" duration="15402000" />
-      <workItem from="1603005174888" duration="16396000" />
+      <workItem from="1603005174888" duration="17008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275857000" />
+    <option name="totallyTimeSpent" value="276469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -806,18 +804,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="259" column="20" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
-          <caret line="265" column="33" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="950" column="48" lean-forward="true" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="48" />
+          <caret line="950" column="48" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="277" lean-forward="true" selection-start-line="277" selection-end-line="277" />
         </state>
       </provider>
     </entry>
