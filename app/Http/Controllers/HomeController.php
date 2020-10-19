@@ -95,9 +95,15 @@ class HomeController extends Controller
                             ->where('type_devis', "2")
                             ->paginate(4);
 
+     //   $sum_auto = $devis->where('type_assurance', 'Automobile')->count();
+      //  $sum_mrh = $devis->where('type_assurance', 'Multirisques Habitation')->count();
+       // $sum_catnat = $devis->where('type_assurance', 'Catastrophe Naturelle')->count();
 
+        $sum_devis = $devis->count();
 
-        return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats'));
+        $sum_contr = $contrats->count();
+
+        return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats', 'sum_contr', 'sum_devis'));
     }
 
 

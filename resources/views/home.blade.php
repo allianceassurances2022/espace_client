@@ -25,17 +25,20 @@ Home
           <div class="nick"><span class="mdi mdi-account"></span> {{Auth()->user()->profession}}</div>
       </div>
       <div class="row user-display-details">
-          <div class="col-xs-4">
+          <div class="col-xs-">
+              <!--
             <div class="title">Issues</div>
             <div class="counter">26</div>
+
+            -->
         </div>
-        <div class="col-xs-4">
-            <div class="title">Commits</div>
-            <div class="counter">26</div>
+        <div class="col-xs-6">
+            <div class="title">Nombre de devis</div>
+            <div class="counter" >{{ $sum_devis }}</div>
         </div>
-        <div class="col-xs-4">
-            <div class="title">Followers</div>
-            <div class="counter">26</div>
+        <div class="col-xs-6">
+            <div class="title">Nombre de souscriptions</div>
+            <div class="counter">{{ $sum_contr }}</div>
         </div>
     </div>
 </div>
@@ -78,7 +81,7 @@ Home
     <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mon Panier
-                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                  <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
@@ -124,7 +127,7 @@ Home
     <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Devis
-                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                  <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
@@ -154,7 +157,7 @@ Home
 
                         <td>{{ $devi->prime_total }}</td>
                         <td>{{ $devi->created_at }}</td>
-                        <td class="actions"><a href="#" class="icon" onclick="delete_devis()"><i class="mdi mdi-delete" ></i></a></td>
+                        <td class="actions"><a href="#" class="icon" onclick="delete_devis({{$devi->id}})"><i class="mdi mdi-delete" ></i></a></td>
 
                         <td class="actions"><a  @if($devi->type_assurance == 'Automobile')
                                                 href="{{ route('modification_devis_auto',$devi->id) }}"
@@ -181,7 +184,7 @@ Home
             <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Contrat
-                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                  <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
@@ -248,8 +251,11 @@ Home
 
 
     <script>
-        function delete_devis() {
+        function delete_devis( id ) {
             //  swal.fire("Hello World");
+
+
+          //  window.alert(id);
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -260,12 +266,7 @@ Home
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    window.location.href = "/delete_devis/" +id;
                 }
             });
 

@@ -2,6 +2,7 @@
         <div class="container-fluid">
           <div class="navbar-header"><a href="{{route('index_produit')}}" class="navbar-brand"></a></div>
           <div class="be-right-navbar">
+
             <ul class="nav navbar-nav navbar-right be-user-nav">
               <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('user_assets/assets/uploads/avatars/'.Auth()->user()->avatar) }}" alt="Avatar"><span class="user-name">Djilali EL Medjadji</span></a>
                 <ul role="menu" class="dropdown-menu">
@@ -26,9 +27,11 @@
             </ul>
             {{-- <div class="page-title"><span>Alliance Assurances</span></div> --}}
             <ul class="nav navbar-nav navbar-right be-icons-nav">
-              <li>
-                <a href="{{ route ('home') }}" class="icon" > <span style="font-size: 25px; " class="icon mdi mdi-home"></span> </a>
+
+              <li class="dropdown">
+                <a  href="{{ route ('home') }}"  role="button" aria-expanded="false"><span class="icon mdi mdi-home"></span></a>
               </li>
+
               <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="icon mdi mdi-apps"></span></a>
                 <ul class="dropdown-menu be-connections">
                   <li>
@@ -47,8 +50,11 @@
                     </div>
                     <div class="footer"> <a href="{{route('index_produit')}}">Tous les Produits</a></div>
                   </li>
+
+
                 </ul>
               </li>
+
             </ul>
           </div>
         </div>

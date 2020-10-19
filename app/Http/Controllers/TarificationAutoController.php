@@ -10,6 +10,7 @@ use App\Rsq_Vehicule;
 use App\devis;
 use App\Agences;
 use App\Prime;
+use App\marque;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use auth;
@@ -694,11 +695,16 @@ class TarificationAutoController extends Controller
 
     public function modification_devis_auto(Request $request,$id){
 
-      $risque=Rsq_Vehicule::find($id);
-    	$id=$risque->id;
-      $devis=devis::find($risque->code_devis);
 
-      $date_souscription = $devis->date_souscription;
+
+        $devis=devis::find($id);
+
+        $risque=Rsq_Vehicule::where('code_devis',$devis->id)->first();
+
+        $id=$risque->id;
+
+
+        $date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
 			$date_exp          = $devis->date_expiration;
 
@@ -712,13 +718,13 @@ class TarificationAutoController extends Controller
       $usage             = $risque->usage;
       $dure              = $risque->dure;
       $formule           = $risque->code_formule;
-      $assistance        = $risque->assistance;
+      $assistance_nom        = $risque->assistance;
       $taxe              = $risque->taxe;
       $date_taxe         = $risque->effet_taxe;
       $offre             = $risque->offre;
       $valeur            = $risque->valeur_vehicule;
       $matricule         = $risque->matricule;
-      $marque            = $risque->marque;
+      $marque_selected            = $risque->marque;
       $model             = $risque->modele;
       $num_chassis       = $risque->num_chassis;
       $type              = $risque->type;
@@ -731,9 +737,20 @@ class TarificationAutoController extends Controller
       $agences           = Agences::all();
       $code_agence       = $devis->code_agence;
       $agence_map        = Agences::where('id',$code_agence)->first();
+      $marques           = marque::all();
+      $cat_permi         = [
+            'Catégorie A',
+            'Catégorie B',
+            'Catégorie C',
+            'Catégorie D',
+            'Catégorie F',
+            'Catégorie F',
+      ];
 
-      return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance','taxe','date_taxe',
-      'offre','valeur','matricule','marque','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id'));
+      //dd($wilaya_selected );
+
+      return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
+      'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id'));
 
     }
 

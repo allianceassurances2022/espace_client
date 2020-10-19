@@ -169,7 +169,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Immatriculé à</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="wilaya" value="{{$wilaya_selected->nlib_wilaya}}"
+                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}"
                                                class="form-control" readonly>
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@
                                     <div class="col-sm-9">
                                         <select name="marque" id="marque" class="form-control select2" required >
                                             @foreach( $marques as $marque)
-                                                <option  value="{{ $marque->lib_marque }}" selected>{{ $marque->lib_marque }}</option>
+                                                <option  value="{{ $marque->lib_marque }}" @if($marque->lib_marque == $marque_selected) selected @endif>{{ $marque->lib_marque }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -377,7 +377,7 @@
                                                class="form-control" required-->
                                             <select  name="categorie" id="categorie" class="form-control select2" required >
                                                 @foreach($cat_permi as $cat)
-                                                        <option  value="{{ $cat }}">{{ $cat  }}</option>
+                                                        <option  value="{{ $cat }}" @if($cat == $categorie) selected @endif>{{ $cat  }}</option>
                                                   @endforeach
                                             </select>
 
@@ -388,12 +388,10 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Délivré à</label>
                                     <div class="col-sm-9">
-                                        <!--input type="text" name="wilaya_obtention" value="{{$delivre_a ?? ''}}"
-                                               class="form-control" required-->
 
                                         <select  name="wilaya_obtention" id="wilaya_obtention" class="form-control select2" required >
                                             @foreach($wilaya as $wilay)
-                                                <option  value="{{ $wilay->nlib_wilaya }}" selected>{{ $wilay->nlib_wilaya }}</option>
+                                                <option  value="{{ $wilay->nlib_wilaya }}" @if($wilay->nlib_wilaya == $wilaya_selected)  selected @endif>{{ $wilay->nlib_wilaya }}</option>
                                             @endforeach
                                         </select>
                                     </div>

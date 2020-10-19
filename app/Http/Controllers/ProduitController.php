@@ -213,8 +213,12 @@ class ProduitController extends Controller
                 break;
         }
 
+        $marque_selected ='';
+        $categorie ='';
+
+
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
-        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom'));
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie'));
     }
 
     public function visuelisation()
