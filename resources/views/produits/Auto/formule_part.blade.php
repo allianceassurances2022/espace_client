@@ -47,7 +47,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Formule <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="formule" onchange="disable_devis()" placeholder="Montant Forfetaire">
+                    <select class="input100" id="formule" type="text" name="formule" onchange="disable_devis()" placeholder="Montant Forfetaire">
                         <option value="1" @if($auto['formule'] == '1') selected @endif>Tous Risques</option>
                         <option value="2" @if($auto['formule'] == '2') selected @endif>D.C Valeur Vénale</option>
                     </select>
@@ -63,6 +63,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                         <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif>Tranquillité Plus</option>
                         <option value="Liberté" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
                     </select>
+                    <span class="focus-input100"></span>
+                </div>
+            </div>
+
+            <div class="slice">
+                <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" id="anne_auto" max="9999">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -98,7 +106,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
             <input type="hidden" name="date_conducteur" value="{{$auto['date_conducteur']}}">
             <input type="hidden" name="date_permis" value="{{$auto['date_permis']}}">
-            <input type="hidden" name="annee_auto" value="{{$auto['annee_auto']}}">
             <input type="hidden" name="puissance" value="{{$auto['puissance']}}">
             <input type="hidden" name="valeur_auto" value="{{$auto['valeur_auto']}}">
             <input type="hidden" name="type_assurance" value="{{$auto['type_assurance']}}">
@@ -127,6 +134,28 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @section('js')
 <script>
 
+$(function(){
+annee_max_auto();
+});
+
+function annee_max_auto(){
+  var dtToday = new Date();
+
+  var year_auto_now = dtToday.getFullYear();
+  var year_auto = dtToday.getFullYear() - 10;
+
+  $('#anne_auto').attr('max', year_auto_now);
+  $('#anne_auto').attr('min', year_auto);
+}
+
+function verif_annee(){
+    if($('#formule').val()== 2) {
+    $('#anne_auto').removeAttr("min");
+  }else if($('#formule').val()== 1) {
+    annee_max_auto();
+  }
+}
+
   function taxe_change(){
     if($('#taxe').val() == "oui"){
       $('#date-taxe').css("display","block");
@@ -138,6 +167,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
   function disable_devis(){
 
+      verif_annee();
       var button = document.getElementById("devi-btn");
       button.style.display = "none";
 
@@ -145,4 +175,3 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 </script>
 @endsection
-

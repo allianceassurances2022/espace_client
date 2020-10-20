@@ -63,6 +63,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
             <div class="slice">
+                <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" id="anne_auto" max="9999">
+                    <span class="focus-input100"></span>
+                </div>
+            </div>
+
+            <div class="slice">
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                   <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change() && disable_devis()" id="taxe">
@@ -93,7 +101,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
             <input type="hidden" name="date_conducteur" value="{{$auto['date_conducteur']}}">
             <input type="hidden" name="date_permis" value="{{$auto['date_permis']}}">
-            <input type="hidden" name="annee_auto" value="{{$auto['annee_auto']}}">
             <input type="hidden" name="puissance" value="{{$auto['puissance']}}">
             <input type="hidden" name="valeur_auto" value="{{$auto['valeur_auto']}}">
             <input type="hidden" name="type_assurance" value="{{$auto['type_assurance']}}">
@@ -123,6 +130,17 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @section('js')
 <script>
 
+$(function(){
+  var dtToday = new Date();
+
+
+  var year_auto = dtToday.getFullYear() - 10;
+
+
+    $('#anne_auto').attr('min', year_auto);
+
+});
+
   function taxe_change(){
 
 
@@ -141,7 +159,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
       button.style.display = "none";
 
   }
-
 
 
 </script>
