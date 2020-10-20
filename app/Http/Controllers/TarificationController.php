@@ -928,6 +928,8 @@ $TD=80;
 
     public function modification_devis_mrh (Request $request,$id){
 
+
+
 	    $devis=devis::find($id);
 
     	$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
@@ -962,10 +964,13 @@ $TD=80;
 
 		public function modification_devis_catnat (Request $request,$id){
 
-    	$risque             = Rsq_Immobilier::find($id);
-    	$id                 = $risque->id;
+            $devis=devis::find($id);
 
-    	$devis              = devis::find($risque->code_devis);
+            $risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+
+            $id=$risque->id;
+
+
 
     	$date_souscription = $devis->date_souscription;
     	$date_eff          = $devis->date_effet;
@@ -1006,8 +1011,8 @@ $TD=80;
 
     public function delete_devis(Request $request, $id){
 
-	    $devi = devis::find($id);
-	    $devi->delete();
+	   // $devi = devis::find($id);
+	  //  $devi->delete();
 
         return view('delete_devis');
 
@@ -1018,7 +1023,7 @@ $TD=80;
 
 		$devis= devis::find($id);
 		$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
-    $prime= Prime::where('id_devis',$devis->id)->get();
+        $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
 

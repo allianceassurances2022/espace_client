@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/delete_devis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/delete_devis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,17 +42,17 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="65" column="87" selection-start-line="65" selection-start-column="87" selection-end-line="65" selection-end-column="87" />
+            <state relative-caret-position="174">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delete_devis.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/delete_devis.blade.php">
+      <file leaf-file-name="devis_auto.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="17">
+              <caret line="393" column="119" selection-start-line="393" selection-start-column="119" selection-end-line="393" selection-end-column="119" />
             </state>
           </provider>
         </entry>
@@ -52,8 +60,38 @@
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="988" column="36" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
+            <state relative-caret-position="204">
+              <caret line="1002" column="8" selection-start-line="1002" selection-start-column="8" selection-end-line="1002" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TarificationAutoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="714" column="22" selection-start-line="714" selection-start-column="6" selection-end-line="714" selection-end-column="22" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="220" column="188" selection-start-line="220" selection-start-column="188" selection-end-line="220" selection-end-column="188" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="83" column="134" selection-start-line="83" selection-start-column="134" selection-end-line="83" selection-end-column="134" />
             </state>
           </provider>
         </entry>
@@ -61,41 +99,21 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1289">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="592">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delete_devis.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/delete_devis.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
               <folding>
-                <element signature="e#41#75#0#PHP" expanded="true" />
+                <element signature="e#218#241#0#HTML" expanded="true" />
+                <element signature="e#751#773#0#HTML" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="206" column="103" lean-forward="true" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="103" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topbar.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/core/home/topbar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formule_commerce.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="150" column="10" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -104,23 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>choix_auto</find>
-      <find>wilaya</find>
-      <find>avatar</find>
-      <find>showRegistrationForm</find>
-      <find>register</find>
-      <find>default</find>
-      <find>width</find>
-      <find>home</find>
-      <find>img</find>
-      <find>user-disp</find>
-      <find>hover</find>
-      <find>index</find>
-      <find>devis_auto</find>
-      <find>devis</find>
-      <find>input100</find>
-      <find>contact100</find>
-      <find>contact100-form-btn</find>
       <find>onchange=&quot;test()&quot;</find>
       <find>test</find>
       <find>ontant_auto</find>
@@ -132,8 +133,25 @@
       <find>modification_devis_catnat</find>
       <find>modifier devi</find>
       <find>resultat</find>
-      <find>validation_devis_mrh</find>
       <find>mes devis</find>
+      <find>validation_devis_mrh</find>
+      <find>home</find>
+      <find>swal</find>
+      <find>valeur_vehicule</find>
+      <find>delete</find>
+      <find>modification_devis_cat</find>
+      <find>validation_devis_auto</find>
+      <find>modifier</find>
+      <find>wilaya_selected</find>
+      <find>modi</find>
+      <find>assistance_nom</find>
+      <find>mod</find>
+      <find>marques</find>
+      <find>head</find>
+      <find>notification</find>
+      <find>be-icons</find>
+      <find>ISSUES</find>
+      <find>Mon Panier</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -151,7 +169,6 @@
         <option value="$PROJECT_DIR$/resources/views/produits/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/core/home/js.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/core/home/head.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/core/home/edit_profil.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/core/home/profil.blade.php" />
@@ -166,26 +183,28 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_10_01_124143_add_profil_picture_to_user_table.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/resources/file_validation.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
         <option value="$PROJECT_DIR$/resources/views/file_validation.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/users/edit_profil.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_10_14_075529_add_column_contrat_to_devi.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/profil_style.css" />
         <option value="$PROJECT_DIR$/resources/views/users/profil.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/core/home/head.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
+        <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/delete_devis.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
       </list>
     </option>
   </component>
@@ -325,9 +344,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1662" />
-    <option name="y" value="-94" />
-    <option name="width" value="838" />
+    <option name="x" value="-1517" />
+    <option name="y" value="-104" />
+    <option name="width" value="840" />
     <option name="height" value="727" />
   </component>
   <component name="ProjectView">
@@ -363,13 +382,13 @@
             <path>
               <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
               <item name="epaiement" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
               <item name="epaiement" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
@@ -397,6 +416,26 @@
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="produits" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="produits" type="462c0819:PsiDirectoryNode" />
+              <item name="Auto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -420,6 +459,7 @@
       <recent name="C:\wamp64\www\epaiement\resources\views\core\home" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\epaiement\public\images" />
       <recent name="C:\wamp64\www\epaiement\database\migrations" />
       <recent name="C:\wamp64\www\epaiement\public\user_assets\assets\uploads\avatars" />
       <recent name="C:\wamp64\www\epaiement\public\user_assets\assets\profil\images" />
@@ -458,18 +498,21 @@
       <workItem from="1601457904629" duration="100847000" />
       <workItem from="1602401194871" duration="21065000" />
       <workItem from="1602489835338" duration="41076000" />
-      <workItem from="1602686108971" duration="10947000" />
+      <workItem from="1602686108971" duration="15402000" />
+      <workItem from="1603005174888" duration="22827000" />
+      <workItem from="1603093298538" duration="395000" />
+      <workItem from="1603093718676" duration="14926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255006000" />
+    <option name="totallyTimeSpent" value="297609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" visible="true" weight="0.31770834" />
+      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" visible="true" weight="0.17838542" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32843137" />
@@ -497,15 +540,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/user_assets/assets/images/avatar-3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/user_assets/assets/images/avatar-4.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/user_assets/assets/images/avatar-5.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/user_assets/assets/images/bitbucket.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -587,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/core/home/head.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/file_validation.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -658,13 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4777">
-          <caret line="281" column="38" selection-start-line="281" selection-start-column="38" selection-end-line="281" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -695,16 +715,6 @@
           <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
           <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-          <folding>
-            <element signature="e#798#823#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="514" column="29" selection-start-line="514" selection-start-column="29" selection-end-line="514" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -722,55 +732,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="232" column="58" selection-start-line="232" selection-start-column="58" selection-end-line="232" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="65" column="87" selection-start-line="65" selection-start-column="87" selection-end-line="65" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/delete_devis.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="988" column="36" selection-start-line="988" selection-start-column="36" selection-end-line="988" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2329">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="41" column="11" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="41" selection-end-column="11" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1496" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/resultat.blade.php">
@@ -792,35 +758,125 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="150" column="10" selection-start-line="150" selection-start-column="2" selection-end-line="150" selection-end-column="10" />
+        <state relative-caret-position="2550">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="206" column="103" lean-forward="true" selection-start-line="206" selection-start-column="45" selection-end-line="206" selection-end-column="103" />
+        <state relative-caret-position="17">
+          <caret line="502" selection-start-line="502" selection-end-line="502" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1289">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="2992">
+          <caret line="176" column="25" selection-start-line="172" selection-start-column="2" selection-end-line="176" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="118" column="14" selection-start-line="118" selection-start-column="14" selection-end-line="118" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/core/home/head.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="79" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Y:/Djilali New/beagle-v1.1.1/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="99" column="17" selection-start-line="42" selection-start-column="11" selection-end-line="99" selection-end-column="17" />
           <folding>
-            <element signature="e#41#75#0#PHP" expanded="true" />
+            <element signature="n#ul#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/core/home/topbar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+        <state relative-caret-position="629">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#ul#0;n#li#1;n#ul#1;n#div#1;n#div#0;n#nav#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Y:/Djilali New/beagle-v1.1.1/html/pages-pricing-tables2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="220" column="188" selection-start-line="220" selection-start-column="188" selection-end-line="220" selection-end-column="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="714" column="22" selection-start-line="714" selection-start-column="6" selection-end-line="714" selection-end-column="22" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/delete_devis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding>
+            <element signature="e#218#241#0#HTML" expanded="true" />
+            <element signature="e#751#773#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="1002" column="8" selection-start-line="1002" selection-start-column="8" selection-end-line="1002" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="393" column="119" selection-start-line="393" selection-start-column="119" selection-end-line="393" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="83" column="134" selection-start-line="83" selection-start-column="134" selection-end-line="83" selection-end-column="134" />
         </state>
       </provider>
     </entry>

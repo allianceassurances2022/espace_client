@@ -55,7 +55,7 @@ Route::get('panier_', function () {
 
 /////////////////////////// paiement
 Route::get('paiement_mrh/{id}', 'PaiementController@paiement_mrh')->name('paiement_mrh');
-// Route::get('paiementauto/{id}', 'PaiementController@paiementauto')->name('paiement');
+Route::get('paiementauto/{id}', 'PaiementController@paiementauto')->name('paiement');
 Route::get('paiementSend/{id}', 'PaiementController@save_mrh')->name('test');
 // Route::get('paiementauto', 'PaiementController@test2')->name('test2');
 
@@ -64,6 +64,7 @@ Route::get('/' , 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/delete_devis/{id}', 'TarificationController@delete_devis')->name('delete_devis');
+
 
 /////////////////////////////// Devis produits
 Route::get('/devis_auto', 'ProduitController@devis_auto')->name('devis_auto')->middleware('auth');
