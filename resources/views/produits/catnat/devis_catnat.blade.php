@@ -378,7 +378,7 @@ Devis CATNAT
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <p class="text-right">
+                                                    <p class="text-center">
                                                         <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
                                                         <button type="submit" id="btn_validate" class="btn btn-primary btn-space btn-lg">Valider</button>
                                                     </p>
