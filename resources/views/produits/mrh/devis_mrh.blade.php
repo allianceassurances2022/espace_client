@@ -69,14 +69,14 @@ Devis MRH
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="wilaya_assure" value="{{auth()->user()->wilaya}}" readonly>
+                                                        <input type="text" class="form-control" name="wilaya_assure" value="{{$user_wilaya->nlib_wilaya}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Commune</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="commune_assure" value="{{auth()->user()->commune}}" readonly>
+                                                        <input type="text" class="form-control" name="commune_assure" value="{{$user_commune->lib_commune}}" readonly>
                                                     </div>
                                                 </div>
 

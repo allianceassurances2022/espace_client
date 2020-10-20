@@ -66,14 +66,14 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Wilaya</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="wilaya_assure" value="{{auth()->user()->wilaya}}" readonly>
+                                                        <input type="text" class="form-control" name="wilaya_assure" value=" {{ $user_wilaya->nlib_wilaya }}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Commune</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="commune_assure" value="{{auth()->user()->commune}}" readonly>
+                                                        <input type="text" class="form-control" name="commune_assure" value="{{$user_commune->lib_commune}}" readonly>
                                                     </div>
                                                 </div>
 
@@ -197,14 +197,14 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur assurée</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="val_assur" value="{{$val_assur}}" class="form-control" readonly="readonly">
+                                                        <input type="number" name="val_assur" value="{{number_format($val_assur, 2,',', ' ')}} DA"  class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Permis de construire</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="permis" value="{{$permis}}" class="form-control" readonly="readonly">
+                                                        <input type="text" name="permis"  value="{{$permis}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 

@@ -69,7 +69,7 @@
                                     <label class="col-sm-3 control-label">Wilaya</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="wilaya_assure"
-                                               value="{{auth()->user()->wilaya}}" readonly>
+                                               value="{{ $user_wilaya->nlib_wilaya }}" readonly>
                                     </div>
                                 </div>
 
@@ -77,7 +77,7 @@
                                     <label class="col-sm-3 control-label">Commune</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="commune_assure"
-                                               value="{{auth()->user()->commune}}" readonly>
+                                               value="{{$user_commune->lib_commune}}" readonly>
                                     </div>
                                 </div>
 
@@ -169,7 +169,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Immatriculé à</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}"
+                                        <input type="text" name="wilaya" value="{{$wilaya_selected->nlib_wilaya}}"
                                                class="form-control" readonly>
                                     </div>
                                 </div>
@@ -276,8 +276,9 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="valeur" name="valeur" value="{{$valeur}}" class="form-control valeur"
+                                        <input type="text" id="valeur" name="valeur" value="{{number_format($valeur, 2,',', ' ')}} DA"" class="form-control valeur"
                                                readonly>
+
                                     </div>
                                 </div>
 
@@ -537,11 +538,6 @@
 
             // Format num châchi.
             $('#num_chassis').mask("xxx xxxxxx xxxxxxx", {placeholder:"xxx xxxxxx xxxxxxx"});
-
-
-
-
-
 
         });
 

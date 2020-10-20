@@ -47,6 +47,11 @@ body{
 /* edit form */
 
 .edit_form{
+
+    display: block;
+
     padding-top: 50px;
-    float: right;
+    float: left;
 }
+
+

@@ -14,7 +14,7 @@ Home
         </script>
     @endif
 
-<div class="row">
+    <div class="row">
   <div class="col-md-5">
     <div class="user-display">
       <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div>
@@ -77,11 +77,12 @@ Home
 </div>
 </div>
 
-<div class="row">
+    <div class="row">
+<!--
     <div class="col-sm-4">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mon Panier
-                  <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
+                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
@@ -123,8 +124,8 @@ Home
                 </div>
               </div>
             </div>
-
-    <div class="col-sm-4">
+ -->
+    <div class="col-sm-6">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Devis
                   <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
@@ -180,8 +181,7 @@ Home
                 </div>
               </div>
             </div>
-
-            <div class="col-sm-4">
+    <div class="col-sm-6">
               <div class="panel panel-default panel-table">
                 <div class="panel-heading">Mes Contrat
                   <!--div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div-->
@@ -224,17 +224,17 @@ Home
                 </div>
               </div>
             </div>
-</div>
 
-  <div class="row">
-    <div class="col-sm-4">
     </div>
-    <div class="col-sm-4">
+
+    <div class="row">
+
+    <div class="col-sm-6">
       <div style="float: right">
         {{ $devis->links() }}
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <div style="float: right">
         {{ $contrats->links() }}
       </div>

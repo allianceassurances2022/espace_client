@@ -747,7 +747,7 @@ class TarificationAutoController extends Controller
             'Catégorie F',
       ];
 
-      //dd($wilaya_selected );
+
 
       return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
       'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id'));
