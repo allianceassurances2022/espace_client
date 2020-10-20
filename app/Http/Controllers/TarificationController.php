@@ -354,27 +354,27 @@ $TD=80;
 
 
 		$data_session     = [
-		'type_formule'    => $request->type_formule,
-		'type_const'      => $request->type_const,
-		'Contenant'       => $request->Contenant,
-		'equipement'      => $request->equipement,
-	    'marchandise'     => $request->marchandise,
-	    'contenu'         => $request->contenu,
-	    'act_reg'         => $request->activite,
-	    'reg_com'         => $request->registre,
-	    'loca'            => $request->local,
-		'commune_selected'=> $request->Commune,
-		'wilaya_selected' => $request->Wilaya,
-		'anne_cont'       => $request->anne_cont,
-		'surface'         => $request->Superficie,
-		'permis'          => $request->permis,
-		'val_assur'       => $request->val_assur,
-		'reg_para'        => $request->seisme,
-		'datec'           => $datec,
-		'prime_total'     => $prime_total_,
-        'cout_police'      => $CP,
-        'timbre_dimension' => $TD,
-        'prime_nette'       => $val,
+		'type_formule'     => $request->type_formule,
+		'type_const'       => $request->type_const,
+		'Contenant'        => $request->Contenant,
+		'equipement'       => $request->equipement,
+	  'marchandise'      => $request->marchandise,
+	  'contenu'          => $request->contenu,
+	  'act_reg'          => $request->activite,
+	  'reg_com'          => $request->registre,
+	  'loca'             => $request->local,
+		'commune_selected' => $request->Commune,
+		'wilaya_selected'  => $request->Wilaya,
+		'anne_cont'        => $request->anne_cont,
+		'surface'          => $request->Superficie,
+		'permis'           => $request->permis,
+		'val_assur'        => $request->val_assur,
+		'reg_para'         => $request->seisme,
+		'datec'            => $datec,
+		'prime_total'      => $prime_total_,
+    'cout_police'      => $CP,
+    'timbre_dimension' => $TD,
+    'prime_nette'      => $val,
 		];
 
 
@@ -846,6 +846,29 @@ $TD=80;
           'type_assurance'    => 'Catastrophe Naturelle'
     		]);
 
+				if($value_catnat['type_formule']=='Habitation'){
+				Prime::create([
+					'code'              => '080431',
+					'libelle'           => 'CatNat Habitation',
+					'valeur'            => $value_catnat['prime_nette'],
+					'id_devis'          => $dev->id
+				]);
+			}elseif ($value_catnat['type_formule']=='Commerce') {
+				Prime::create([
+					'code'              => '080432',
+					'libelle'           => 'CatNat Commercial',
+					'valeur'            => $value_catnat['prime_nette'],
+					'id_devis'          => $dev->id
+				]);
+			}elseif ($value_catnat['type_formule']=='Industrielle') {
+				Prime::create([
+					'code'              => '080433',
+					'libelle'           => 'CatNat Indistriel',
+					'valeur'            => $value_catnat['prime_nette'],
+					'id_devis'          => $dev->id
+				]);
+			}
+
 				if($request->formule == 'Habitation'){
 
     		$res=Rsq_Immobilier::create([
@@ -1019,7 +1042,11 @@ $TD=80;
 
 			//return view('pdf.mrh',compact('user','devis','risque','agence','prime'));
 
+			if ($devis->type_assurance == 'Multirisques Habitation'){
 			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
+	   	}elseif ($devis->type_assurance == 'Catastrophe Naturelle' ){
+      $pdf = PDF::loadView('pdf.catnat',compact('user','devis','risque','agence','prime'));
+	  	}
 			return $pdf->stream();
 
 		}

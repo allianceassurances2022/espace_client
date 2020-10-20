@@ -278,6 +278,8 @@ class ProduitController extends Controller
         $user= auth::user();
 
 
+        //dd($val_assur);
+
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 

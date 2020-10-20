@@ -62,8 +62,29 @@ border-inline-start: initial;
             </tr>
           </tbody>
         </table>
+        @endif
+
+				@if($catnat != '')
+        <div class='line'></div>
 
 
+				<table class='order-table'>
+          <tbody>
+            <tr>
+              <td><img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class='full-width-icon'></img>
+              </td>
+              <td>
+                <br> <span class='thin product_title'>Catastrophe Naturelle</span>
+                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class='price'>{{number_format($prime_total, 2,',', ' ')}} DA</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         @endif
 
 				<div class='line'></div>
@@ -106,7 +127,12 @@ border-inline-start: initial;
 
 				<div class='line'></div>
         <div class="bouton-blanc">
-				<a href="{{route('test',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+					@if($mrh != '')
+				<a href="{{route('save_mrh',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+			    @endif
+					@if($catnat != '')
+				<a href="{{route('save_catnat',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+				  @endif
         </div>
 
         </div>

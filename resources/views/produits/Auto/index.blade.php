@@ -69,13 +69,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
-                <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100" type="number" name="annee_auto" value="{{$auto['annee_auto'] ?? ''}}" placeholder="Année de mise en circulation" id="anne_auto" max="9999">
-                    <span class="focus-input100"></span>
-                </div>
-            </div>
-            <div class="slice">
                 <h6>Puissance <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                    <select class="input100" type="text" name="puissance" placeholder="Puissance">

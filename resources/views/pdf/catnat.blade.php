@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>MRH</title>
+    <title>CATNAT</title>
     <style>
     @font-face {
       font-family: SourceSansPro;
@@ -93,7 +93,7 @@ height: 100px;
 
     #risque_droite {
       margin-top: 21px;
-      margin-left: 45px;
+      margin-left: 245px;
       padding-left: 6px;
       border-left: 6px solid #00899A;
       float: left;
@@ -309,7 +309,7 @@ height: 100px;
           <h1>DEVIS #{{$devis->id}}</h1>
           @elseif($devis->type_devis == 2)
           <h1>Police d'assurance</h1>
-          <h2>Multirisque habitation +</h2>
+          <h2>Catastrophe Naturelle</h2>
           <h3>{{$devis->reference_police}}</h3>
           @endif
         </div>
@@ -325,18 +325,17 @@ height: 100px;
         <div id="risque">
           <div class="to">Risque :</div>
           <div class="libelle">Adresse : {{$risque->adresse}}</div>
-          <div class="libelle">Type habitation : {{$risque->type_habitation}}</div>
-          <div class="libelle">Valeur contenant : La valeur de reconstruction à dire d'expert.</div>
-          <div class="libelle">Valeur contenu : {{number_format($risque->montant_forfaitaire, 2,',', ' ')}}</div>
-          <div class="libelle">Valeur assurée : {{number_format($risque->montant_forfaitaire, 2,',', ' ')}}</div>
+          <div class="libelle">Activite : {{$risque->formule}}</div>
+          <div class="libelle">Type Batiment : {{$risque->type_habitation}}</div>
+          <div class="libelle">Valeur Déclarée : {{number_format($risque->valeur_assure, 2,',', ' ')}}</div>
+          <div class="libelle">Valeur normative : {{number_format(0, 2,',', ' ')}}</div>
         </div>
         <div id="risque_droite">
-          <div class="espace"></div>
-          <div class="libelle">Qualité assuré : {{$risque->qualite_juridique}}</div>
+          <div class="libelle">Zone : {{$risque->code_zone}}</div>
           <div class="libelle">Etage : {{$risque->etage}}</div>
-          <div class="libelle">Surface : {{$risque->superficie}}</div>
-          <div class="libelle">Nombre de pièces : {{$risque->nombre_piece}}</div>
-          <div class="libelle">Année de construction : 0</div>
+          <div class="libelle">Superficie : {{$risque->superficie}}</div>
+          <div class="libelle">Nombre de Chambre : {{$risque->nombre_piece}}</div>
+          <div class="libelle">Année de construction : {{$risque->annee_construction}}</div>
         </div>
       </div>
 
@@ -357,22 +356,13 @@ height: 100px;
           @foreach ($prime as $prim )
           <tr>
             <td class="desc">{{$prim->libelle}}</td>
-            <td class="unit">{{number_format($risque->montant_forfaitaire, 2,',', ' ')}}</td>
-            <td class="qty">{{number_format($risque->montant_forfaitaire, 2,',', ' ')}}</td>
+            <td class="unit">{{number_format($risque->valeur_contenant, 2,',', ' ')}}</td>
+            <td class="qty">{{number_format($risque->valeur_contenant, 2,',', ' ')}}</td>
             <td class="total">{{number_format($prim->valeur, 2,',', ' ')}}</td>
           </tr>
           @endforeach
         </tbody>
       </table>
-
-      <div class="separateur"></div>
-
-      <div id="details" class="clearfix">
-        <div id="risque">
-          <div class="to">Franchises :</div>
-          <div class="libelle">pour tous dommage garanti, il est appliqué une franchise de 10% sur le montant des dommages avec un minimum de 1 000,00 DA</div>
-        </div>
-      </div>
 
       <div class="separateur"></div>
 

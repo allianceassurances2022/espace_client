@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/pdf/catnat.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/profil_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/profil_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/paiement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/paiement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/paiement_save.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panier_save.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/profil.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profil.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/resultat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="69" column="23" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="23" />
+              <caret line="71" column="23" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -73,8 +78,8 @@
       <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="280" column="20" lean-forward="true" selection-start-line="280" selection-start-column="9" selection-end-line="280" selection-end-column="20" />
+            <state relative-caret-position="364">
+              <caret line="280" column="10" selection-start-line="280" selection-start-column="10" selection-end-line="280" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -82,8 +87,8 @@
       <file leaf-file-name="devis_catnat.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="202" lean-forward="true" selection-start-line="202" selection-end-line="202" />
+            <state relative-caret-position="233">
+              <caret line="199" column="115" selection-start-line="199" selection-start-column="115" selection-end-line="199" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -91,7 +96,7 @@
       <file leaf-file-name="devis_mrh.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="-4119">
               <caret line="144" column="139" selection-start-line="144" selection-start-column="89" selection-end-line="144" selection-end-column="139" />
             </state>
           </provider>
@@ -101,8 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modification_devis_cat</find>
-      <find>modifier</find>
       <find>wilaya_selected</find>
       <find>modi</find>
       <find>assistance_nom</find>
@@ -128,8 +131,10 @@
       <find>wilaya</find>
       <find>valeur es</find>
       <find>Montant_</find>
-      <find>devis_mrh</find>
       <find>Valeur estimée du vehicule</find>
+      <find>devis_mrh</find>
+      <find>val_assur</find>
+      <find>valeur</find>
       <find>value=&quot;{{number_format($montant, 2,',', ' ')}} DA&quot;</find>
     </findStrings>
     <dirStrings>
@@ -518,12 +523,12 @@
       <workItem from="1603005174888" duration="22827000" />
       <workItem from="1603093298538" duration="395000" />
       <workItem from="1603093718676" duration="15369000" />
-      <workItem from="1603178703086" duration="13523000" />
+      <workItem from="1603178703086" duration="14542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311575000" />
+    <option name="totallyTimeSpent" value="312594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -853,7 +858,7 @@
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="69" column="23" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="23" />
+          <caret line="71" column="23" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -867,13 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="280" column="20" lean-forward="true" selection-start-line="280" selection-start-column="9" selection-end-line="280" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -881,17 +879,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="280" column="10" selection-start-line="280" selection-start-column="10" selection-end-line="280" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="-4119">
           <caret line="144" column="139" selection-start-line="144" selection-start-column="89" selection-end-line="144" selection-end-column="139" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="202" lean-forward="true" selection-start-line="202" selection-end-line="202" />
+        <state relative-caret-position="233">
+          <caret line="199" column="115" selection-start-line="199" selection-start-column="115" selection-end-line="199" selection-end-column="115" />
         </state>
       </provider>
     </entry>

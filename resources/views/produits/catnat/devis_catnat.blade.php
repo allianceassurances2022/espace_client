@@ -197,7 +197,7 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur assurée</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="val_assur" value="{{number_format($val_assur, 2,',', ' ')}} DA"  class="form-control" readonly="readonly">
+                                                        <input type="number" name="val_assur" value="{{$val_assur}}"  class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 
@@ -378,7 +378,7 @@ Devis CATNAT
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <p class="text-right">
+                                                    <p class="text-center">
                                                         <a href="{{route('home')}}" class="btn btn-default btn-space btn-lg">Annuler</a>
                                                         <button type="submit" id="btn_validate" class="btn btn-primary btn-space btn-lg">Valider</button>
                                                     </p>
