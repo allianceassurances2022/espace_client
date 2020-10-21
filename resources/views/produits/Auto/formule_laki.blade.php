@@ -62,9 +62,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="slice" id="tax-poll">
-=======
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
@@ -73,8 +70,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
+            <div class="slice" id="tax-poll">
+
+
             <div class="slice">
->>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
+
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                   <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change()" id="taxe">
@@ -92,6 +92,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+
+             </div>
             <!-- fin produit laki + -->
             @if($devis != 0)
             <div class="tarificateur">
@@ -133,27 +135,27 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 @section('js')
 <script>
-    $('#tax-poll').hide();
+
+
     function disable_taxe() {
         if($('#dure').val() == "2"){
-
-<<<<<<< HEAD
             $('#tax-poll').show();
         }
-=======
-$(function(){
-  var dtToday = new Date();
+      }
 
+$(function(){
+
+  $('#tax-poll').hide();
+
+  var dtToday = new Date();
 
   var year_auto = dtToday.getFullYear() - 10;
 
-
-    $('#anne_auto').attr('min', year_auto);
+  $('#anne_auto').attr('min', year_auto);
 
 });
 
   function taxe_change(){
->>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
 
 
         var button = document.getElementById("devi-btn");

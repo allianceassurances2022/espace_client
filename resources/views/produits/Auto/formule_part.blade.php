@@ -67,9 +67,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="slice" id="tax-poll">
-=======
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
@@ -78,8 +75,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
+
+          <div class="slice" id="tax-poll">
+
             <div class="slice">
->>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                   <select class="input100" type="text" name="taxe"  id="taxe" onchange="taxe_change()" placeholder="Taxe Pollution">
@@ -97,6 +96,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+
+          </div>
             <!-- fin produit particulier -->
             @if($devis != 0)
             <div class="tarificateur">
@@ -138,20 +139,21 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @section('js')
 <script>
 
-<<<<<<< HEAD
-    $('#tax-poll').hide();
-    function disable_taxe() {
-        if($('#dure').val() == "2"){
-
-            $('#tax-poll').show();
-        }
-
-
-        var button = document.getElementById("devi-btn");
-        button.style.display = "none";
-    }
-=======
 $(function(){
+//$('#tax-poll').hide();
+
+if($('#taxe').val() == "oui"){
+  $('#date-taxe').css("display","block");
+}else {
+  $('#date-taxe').css("display","none");
+}
+
+if($('#dure').val() == "2"){
+    $('#tax-poll').show();
+}else{
+    $('#tax-poll').hide();
+}
+
 annee_max_auto();
 });
 
@@ -172,7 +174,7 @@ function verif_annee(){
     annee_max_auto();
   }
 }
->>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
+
 
   function taxe_change(){
     if($('#taxe').val() == "oui"){
@@ -180,10 +182,18 @@ function verif_annee(){
     }else {
       $('#date-taxe').css("display","none");
     }
+    disable_devis();
 
+  }
 
-      var button = document.getElementById("devi-btn");
-      button.style.display = "none";
+  function disable_taxe() {
+      if($('#dure').val() == "2"){
+          $('#tax-poll').show();
+      }else{
+          $('#tax-poll').hide();
+      }
+      disable_devis();
+
 
   }
 
