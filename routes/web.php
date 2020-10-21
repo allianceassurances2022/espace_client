@@ -113,6 +113,11 @@ Route::get('pdf_mrh', function () {
     return view('pdf.mrh');
 })->name('pdf_mrh');
 
+Route::get('djilali', function () {
+    return view('pdf.auto');
+})->name('djilali');
+
 Route::get('page_pdf/{id}','TarificationController@generate_pdf')->name('page_pdf');
+Route::get('page_pdf','TarificationAutoController@generate_pdf')->name('page_pdf_auto');
 
 Route::get('contrat_mrh/{id}','TarificationController@contrat_mrh')->name('contrat_mrh');
