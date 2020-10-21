@@ -104,16 +104,25 @@ class ProduitController extends Controller
         $wilaya_selected   = 1;
         $agence_map = '';
 
+        $user= auth::user();
+
+
+        $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+        $user_commune = commune::where('code_commune', $user->commune)->first();
+
+
+
+
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences','agence_map'));
+        'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune'));
     }
 
     public function devis_auto()
     {
 
         $value_auto        = session('data_auto');
-        $data_session        = session('data_session');
+        $data_session      = session('data_session');
         $date_souscription = date('Y-m-d');
         $date_conducteur   = $value_auto['date_conducteur'];
         $date_permis       = $value_auto['date_permis'];
@@ -133,11 +142,15 @@ class ProduitController extends Controller
         $assistance_nom    = $value_auto['assistance_nom'];
 
 
+        $user= auth::user();
 
 
         $wilaya  = Wilaya::all();
         $agences = Agences::all();
         $agence_map = '';
+
+        $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+        $user_commune = commune::where('code_commune', $user->commune)->first();
 
         $wilaya_selected = Wilaya::where('code_wilaya', $wilaya_selected)->first();
 
@@ -218,7 +231,8 @@ class ProduitController extends Controller
 
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
-        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie'));
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie',
+        'user_wilaya', 'user_commune'));
     }
 
     public function visuelisation()
@@ -261,8 +275,18 @@ class ProduitController extends Controller
          $commune_selected  = commune::where('code_commune',$commune_selected)->first();
          $wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
 
+        $user= auth::user();
+
+
+        //dd($val_assur);
+
+        $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+        $user_commune = commune::where('code_commune', $user->commune)->first();
+
+
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
-        'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient'));
+        'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient',
+            'user_wilaya', 'user_commune'));
     }
 
 }

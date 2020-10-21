@@ -37,8 +37,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="dure" onchange="disable_devis()" placeholder="Montant Forfetaire">
-                        <option value="1" @if($auto['dure'] == '1') selected @endif>1 Année</option>
+                    <select class="input100" type="text" name="dure" id="dure" onchange="disable_taxe()" placeholder="Montant Forfetaire">
+                        <option value="1" @if($auto['dure'] == '1') selected @endif >1 Année</option>
                         <option value="2" @if($auto['dure'] == '2') selected @endif>6 Mois</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -67,6 +67,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
+<<<<<<< HEAD
+            <div class="slice" id="tax-poll">
+=======
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
@@ -76,9 +79,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
             <div class="slice">
+>>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                  <select class="input100" type="text" name="taxe"  onchange="taxe_change() && disable_devis()" id="taxe" placeholder="Taxe Pollution">
+                  <select class="input100" type="text" name="taxe"  id="taxe" onchange="taxe_change()" placeholder="Taxe Pollution">
                       <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
                       <option value="oui" @if($auto['taxe'] == 'oui') selected @endif>Oui</option>
                   </select>
@@ -134,6 +138,19 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @section('js')
 <script>
 
+<<<<<<< HEAD
+    $('#tax-poll').hide();
+    function disable_taxe() {
+        if($('#dure').val() == "2"){
+
+            $('#tax-poll').show();
+        }
+
+
+        var button = document.getElementById("devi-btn");
+        button.style.display = "none";
+    }
+=======
 $(function(){
 annee_max_auto();
 });
@@ -155,6 +172,7 @@ function verif_annee(){
     annee_max_auto();
   }
 }
+>>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
 
   function taxe_change(){
     if($('#taxe').val() == "oui"){
@@ -162,6 +180,10 @@ function verif_annee(){
     }else {
       $('#date-taxe').css("display","none");
     }
+
+
+      var button = document.getElementById("devi-btn");
+      button.style.display = "none";
 
   }
 

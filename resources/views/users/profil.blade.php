@@ -26,34 +26,39 @@
                         {{  $user->name  }} {{  $user->prenom }}
                     </h5>
                    <div class="user-info col-lg-12">
-                       <table style="list-style: none;">
+                       <table style="list-style: none;" class="table">
+                           <tbody>
+
                            <tr>
-                               <strong class="strong">Fonction</strong>
-                               <span class="span">{{  $user->profession }}</span>
-                           </>
+                               <td class="strong">Fonction</td>
+                               <td class="span">{{  $user->profession }}</td>
+                           </tr>
                            <tr>
-                               <strong class="strong">Date de naissance</strong>
-                               <span class="span">{{  $user->date_naissance  }}</span>
-                           </>
+                               <td class="strong">Date de naissance</td>
+                               <td class="span">{{  $user->date_naissance  }}</td>
+                           </tr>
                            <tr>
-                               <strong class="strong">Adresse</strong>
-                               <span class="span">{{  $user->adresse }} </span>
-                           </>
+                               <td class="strong">Adresse</td>
+                               <td class="span">{{  $user->adresse }} </td>
+                           </tr>
                            <tr>
-                               <strong class="strong">E-maile</strong>
-                               <span class="span">{{  $user->email  }}</span>
+                               <td class="strong">E-maile</td>
+                               <td class="span">{{  $user->email  }}</td>
                            <tr>
                            <tr>
-                               <strong class="strong">Téléphone</strong>
-                               <span class="span">{{  $user->telephone  }}</span>
-                           </>
+                               <td class="strong">Téléphone</td>
+                               <td class="span">{{  $user->telephone  }}</td>
+                           </tr>
+                           </tbody>
                        </table>
 
                    </div>
 
-                </div>
-                   <a href="{{ route('edit_profil') }}" class="btn btn-lg btn-pink  btn-custom btn-rounded waves-effect waves-" style="float: right" name="btnAddMore">Modifier le profil</a>
+                </div >
+            <div class="edit_form col-md-12">
+                <a href="{{ route('edit_profil') }}" class="btn btn-lg btn-pink  btn-custom btn-rounded waves-effect waves-" style="float: right" name="btnAddMore">Modifier le profil</a>
 
+            </div>
         </div>
     </div>
 

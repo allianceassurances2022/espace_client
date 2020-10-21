@@ -36,7 +36,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                    <select class="input100" type="text" name="dure" onchange="disable_devis()" placeholder="Montant Forfetaire">
+                    <select class="input100" type="text" name="dure" id="dure" onchange="disable_devis()" placeholder="Montant Forfetaire">
                         <option value="1" @if($auto['dure'] == '1') selected @endif>1 Année</option>
                     </select>
                     <span class="focus-input100"></span>
@@ -62,6 +62,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
+<<<<<<< HEAD
+            <div class="slice" id="tax-poll">
+=======
             <div class="slice">
                 <h6>Année de mise en circulation <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
@@ -71,9 +74,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
             <div class="slice">
+>>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                  <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change() && disable_devis()" id="taxe">
+                  <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change()" id="taxe">
                       <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
                       <option value="oui" @if($auto['taxe'] == 'oui') selected @endif>Oui</option>
                   </select>
@@ -114,7 +118,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
                 <input  class="contact100-form-btn" type='submit' name="calculer" value="calculer">
                 @if($devis != 0)
-                    <div id="-">
+                    <div id="devi-btn">
                         <a  href="{{route('devis_auto')}}" class="contact100-form-btn devi-btn">
                             Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                         </a>
@@ -129,7 +133,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 @section('js')
 <script>
+    $('#tax-poll').hide();
+    function disable_taxe() {
+        if($('#dure').val() == "2"){
 
+<<<<<<< HEAD
+            $('#tax-poll').show();
+        }
+=======
 $(function(){
   var dtToday = new Date();
 
@@ -142,15 +153,25 @@ $(function(){
 });
 
   function taxe_change(){
+>>>>>>> 6346b05214a94029bd1d782dd2047f7be19d22f3
 
 
-    if($('#taxe').val() == "oui"){
-      $('#date-taxe').css("display","block");
-    }else {
-      $('#date-taxe').css("display","none");
+        var button = document.getElementById("devi-btn");
+        button.style.display = "none";
     }
 
-  }
+    function taxe_change(){
+        if($('#taxe').val() == "oui"){
+            $('#date-taxe').css("display","block");
+        }else {
+            $('#date-taxe').css("display","none");
+        }
+
+
+        var button = document.getElementById("devi-btn");
+        button.style.display = "none";
+
+    }
 
 
   function disable_devis(){
