@@ -169,7 +169,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Immatriculé à</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="wilaya" value="{{$wilaya_selected->nlib_wilaya}}"
+                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}"
                                                class="form-control" readonly>
                                     </div>
                                 </div>

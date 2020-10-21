@@ -941,23 +941,28 @@ $TD=80;
 			$date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
 			$date_exp          = $devis->date_expiration;
-    	$terasse           = $risque->terrasse;
-    	$habitation        = $risque->type_habitation;
-    	$montant           = $risque->montant_forfaitaire;
-    	$juredique         = $risque->qualite_juridique;
-    	$nbr_piece         = $risque->nombre_piece;
-    	$prime_total       = $devis->prime_total;
-    	$wilaya_selected   = $risque->code_wilaya;
-    	$wilaya            = wilaya::all();
-    	$adresse           = $risque->adresse;
-    	$surface           = $risque->superficie;
-    	$etage             = $risque->etage;
-			$agences           = Agences::all();
-    	$code_agence       = $devis->code_agence;
-			$agence_map        = Agences::where('id',$code_agence)->first();
+            $terasse           = $risque->terrasse;
+            $habitation        = $risque->type_habitation;
+            $montant           = $risque->montant_forfaitaire;
+            $juredique         = $risque->qualite_juridique;
+            $nbr_piece         = $risque->nombre_piece;
+            $prime_total       = $devis->prime_total;
+            $wilaya_selected   = $risque->code_wilaya;
+            $wilaya            = wilaya::all();
+            $adresse           = $risque->adresse;
+            $surface           = $risque->superficie;
+            $etage             = $risque->etage;
+            $agences           = Agences::all();
+            $code_agence       = $devis->code_agence;
+            $agence_map        = Agences::where('id',$code_agence)->first();
+
+            $user= auth::user();
+
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
 
     	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
-			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map'));
+			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune'));
 
     }
 
@@ -1003,9 +1008,17 @@ $TD=80;
 			$wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
 
 
+            $user= auth::user();
 
-    	return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
-			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'));
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
+
+
+
+
+            return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
+			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'
+            , 'user_wilaya', 'user_commune'));
 
     }
 

@@ -277,11 +277,9 @@ class ProduitController extends Controller
 
         $user= auth::user();
 
-
-        //dd($val_assur);
-
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
+
 
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
