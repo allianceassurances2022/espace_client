@@ -55,8 +55,6 @@ class TarificationController extends Controller
 	public function construction_catanat(Request $request)
 	{
 
-
-
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
 		$surface          = '';
@@ -961,7 +959,7 @@ $TD=80;
             $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
             $user_commune = commune::where('code_commune', $user->commune)->first();
 
-    	return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
+    	    return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
 			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune'));
 
     }

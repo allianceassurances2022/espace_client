@@ -48,7 +48,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
                  {{-- <input class="input100" type="number" name="montant" placeholder="" value="{{$montant ?? ''}}" min="0" required> --}}
                  {{-- <input type="text" id="money" name="montant" placeholder="" value="{{$montant ?? ''}}"  required> --}}
-                 <input class="input100 money" onchange="montant_forfaitaire();" value="{{$montant ?? ''}}" type="text" id="money" required>
+                 <input class="input100 money" onchange="montant_forfaitaire();" oninput="disable_devis()" value="{{$montant ?? ''}}" type="text" id="money" required>
 
                </div>
 
@@ -58,7 +58,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <h6>Nombre de pieces</h6>
 
                <div class="wrap-input100 validate-input3">
-                   <input  class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}" min="0" required>
+                   <input  class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}" min="0" oninput="disable_devis()" required>
                    <span class="focus-input100"></span>
                </div>
            </div>
@@ -70,11 +70,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                    <a href="javascript:habi();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                    Habitation</h6>
                      <label>
-                       <input type="radio" name="habitation"  value="individuelle" checked @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif required>
+                       <input type="radio" name="habitation"  value="individuelle" checked @if( (isset($habitation)) && $habitation  ==="individuelle")  checked @endif onclick="disable_devis()" required>
                        <span>Individuelle</span>
                    </label>
                    <label>
-                       <input type="radio" name="habitation"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif required>
+                       <input type="radio" name="habitation"  value="collective" @if( (isset($habitation)) && $habitation  ==="collective") checked @endif onclick="disable_devis()" required>
                        <span>Collective</span>
                    </label>
                </div>
@@ -83,11 +83,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                 <div class="radio_section_slice">
                     <h6>Qualité juredique</h6>
                     <label>
-                        <input type="radio" name="juredique" value="proprietaire" checked @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif required>
+                        <input type="radio" name="juredique" value="proprietaire" checked @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif onclick="disable_devis()" required>
                         <span>Propretaire</span>
                     </label>
                     <label>
-                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif required>
+                        <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif onclick="disable_devis()" required>
                         <span>locataire</span>
                     </label>
                 </div>
@@ -98,11 +98,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
                  <h6><a href="javascript:terass();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                    Terrasse</h6>
                      <label>
-                     <input type="radio" name="terasse" id="oui" value="oui" checked @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif required>
+                     <input type="radio" name="terasse" id="oui" value="oui" checked @if(  (isset($terasse)) &&   $terasse ==="oui") checked @endif onclick="disable_devis()" required>
                      <span>Oui</span>
                      </label>
                      <label>
-                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif  required>
+                     <input type="radio" name="terasse" id="non" value="non"  @if(  (isset($terasse)) &&   $terasse ==="non") checked @endif onclick="disable_devis()" required>
                      <span>Non</span>
                      </label>
              </div>
@@ -122,11 +122,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <input class="contact100-form-btn" type ='submit' id="calculer" nom="calculer" value="calculer">
 
             @if(isset($totale))
-
-            <a href="{{route('devis_mrh')}}" class="contact100-form-btn">
-                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                </a>
-
+               <div id="devi-btn">
+                   <a href="{{route('devis_mrh')}}" class="contact100-form-btn">
+                       Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                   </a>
+               </div>
             @endif
 
             <input type="hidden" name="habl" id="habl" value="{{$habitation ?? ''}}">
@@ -206,7 +206,18 @@ function terass(){
 
 }
 
+function disable_devis(){
+    var button = document.getElementById("devi-btn");
+    button.style.display = "none";
+
+    //window.alert('ca marche!!')
+}
+
+
+
 </script>
+
+
 @endsection
 
 

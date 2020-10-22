@@ -31,14 +31,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 <h6><a href="javascript:surface();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
                 Surface</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0 required>
-
+                    <input id="Superficie" class="input100" type="number" name="Superficie" placeholder="Superficie" value="{{$surface ?? ''}}" min=0 oninput="disable_devis()" required>
                 </div>
             </div>
             <div class="slice">
                 <h6>Année de construction</h6>
                 <div class="wrap-input100 validate-input2">
-                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999" required>
+                    <input id="anne_cont" class="input100" type="number" name="anne_cont" placeholder="Année de construction" value="{{$anne_cont ?? ''}}" min=0 max="9999" oninput="disable_devis()" required>
 
 
                 </div>
@@ -46,19 +45,17 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="slice">
                 <h6>Wilaya</h6>
                 <div class="wrap-input100 validate-input2">
-                   <select id="Wilaya" class="input100" type="text" name="Wilaya" placeholder="Wilaya">
+                   <select id="Wilaya" class="input100" type="text" name="Wilaya" onchange="disable_devis()" placeholder="Wilaya">
                     @foreach($wilaya as $wilay)
                         <option value="{{$wilay->code_wilaya}}" @if ($wilay->code_wilaya == $wilaya_selected) selected @endif>{{$wilay->nlib_wilaya}}</option>
                     @endforeach
                    </select>
-
-
                 </div>
             </div>
             <div class="slice">
                 <h6>Commune</h6>
                 <div class="wrap-input100 validate-input3">
-                    <select id="Commune" class="input100" type="text" name="Commune" placeholder="Commune">
+                    <select id="Commune" class="input100" type="text" name="Commune" onchange="disable_devis()" placeholder="Commune">
                        @if($Commune_selected)
                          @foreach($commune as $commun)
                            <option value="{{$commun->code_commune}}" @if ($commun->code_commune == $Commune_selected) selected @endif>{{$commun->lib_commune}}</option>
@@ -72,11 +69,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_section">
                 <h6>A t-elle été construite ou vérifiée conforme aux règles parasismiques </h6>
                 <label>
-                    <input type="radio" name="seisme" value="oui" @if($reg_para == "oui") checked @endif/>
+                    <input type="radio" name="seisme" value="oui" @if($reg_para == "oui") checked @endif onclick="disable_devis()"/>
                     <span>Oui</span>
                 </label>
                 <label>
-                    <input type="radio" name="seisme" value="non" @if($reg_para  == "non") checked @endif/>
+                    <input type="radio" name="seisme" value="non" @if($reg_para  == "non") checked @endif onclick="disable_devis()"/>
                     <span>Non</span>
                 </label>
             </div>
@@ -97,9 +94,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
                 <input class="contact100-form-btn" type ="submit" id="calculer" name="calculer" value="calculer">
             @if($prime_total != 0)
-                <a href="{{route('devis_catnat')}}" class="contact100-form-btn">
-                     Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                </a>
+              <div id="devi-btn">
+                  <a href="{{route('devis_catnat')}}" class="contact100-form-btn">
+                      Devis <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                  </a>
+              </div>
             @endif
             </div>
             <input type="hidden" name="Contenant" id="Contenant" value="{{$Contenant ?? ''}}">
@@ -165,6 +164,13 @@ $(document).ready(function(){
  });
 
 });
+
+function disable_devis(){
+    var button = document.getElementById("devi-btn");
+    button.style.display = "none";
+
+    //window.alert('ca marche!!')
+}
 </script>
 
 @endsection

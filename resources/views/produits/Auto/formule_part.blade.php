@@ -118,7 +118,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 
             <div class="container-contact100-form-btn">
-                <a href="{{route('type_produit',['auto','index'])}}" class="contact100-form-btn">
+                <a href="{{route('precedent_auto')}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
 
