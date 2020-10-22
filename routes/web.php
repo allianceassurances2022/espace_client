@@ -118,6 +118,6 @@ Route::get('djilali', function () {
 })->name('djilali');
 
 Route::get('page_pdf/{id}','TarificationController@generate_pdf')->name('page_pdf');
-Route::get('page_pdf','TarificationAutoController@generate_pdf')->name('page_pdf_auto');
+Route::get('page_pdf/{id}','TarificationAutoController@generate_pdf')->name('page_pdf_auto');
 
 Route::get('contrat_mrh/{id}','TarificationController@contrat_mrh')->name('contrat_mrh');

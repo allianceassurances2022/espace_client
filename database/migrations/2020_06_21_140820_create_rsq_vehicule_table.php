@@ -28,7 +28,7 @@ class CreateRsqVehiculeTable extends Migration
             $table->string('code_formule',10);
             $table->string('assistance',20);
             $table->string('offre',10);
-            $table->float('valeur_vehicule', 10, 2);
+            $table->float('valeur_vehicule', 20, 2);
             $table->string('personne_transporte',10);
             $table->string('genre',10);
             $table->string('num_chassis',50);

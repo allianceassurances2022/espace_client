@@ -276,7 +276,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="valeur" name="valeur" value="{{number_format($valeur, 2,',', ' ')}} DA"" class="form-control valeur"
+                                        <input type="text" id="valeur" name="valeur_estime" value="{{number_format($valeur, 2,',', ' ')}} DA"" class="form-control valeur"
                                                readonly>
 
                                     </div>
@@ -463,6 +463,7 @@
                             {{-- <input type="hidden" name="montant" value="{{$montant}}"> --}}
                             <input type="hidden" name="prime_total" value="{{$prime_total}}">
                             <input type="hidden" name="id" value="{{$id ?? ''}}">
+                            <input type="hidden" name="valeur" value="{{$valeur ?? ''}}">
                             <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}"
                                    required>
                             <input type="hidden" id="signup-token" name="_token" value="{{csrf_token()}}">

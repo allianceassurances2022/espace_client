@@ -153,6 +153,7 @@ class ProduitController extends Controller
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
         $wilaya_selected = Wilaya::where('code_wilaya', $wilaya_selected)->first();
+        $wilaya_selected = $wilaya_selected->nlib_wilaya;
 
 
         $marques = marque::all();
