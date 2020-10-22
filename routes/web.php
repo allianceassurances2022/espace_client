@@ -28,6 +28,10 @@ Route::get('/clear-cache', function() {
 
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
+/////////////////////////// renouvellement///
+Route::get('renouvellement_auto' , 'HomeController@renouvellement_auto')->name('renouvellement_auto');
+
+
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
