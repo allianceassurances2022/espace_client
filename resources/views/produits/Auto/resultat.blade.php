@@ -119,6 +119,9 @@ Devis Auto
                     @endif
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button> --}}
                     <a href="{{route('page_pdf_auto',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
+                    @if($devis->type_devis==2)
+                    <a href="{{route('attestation',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer attestation</a>
+                    @endif
                     @if($devis->type_devis==1)
                     <a href="{{route('paiement_auto',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
                     @endif

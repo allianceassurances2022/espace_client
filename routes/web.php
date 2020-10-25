@@ -128,3 +128,4 @@ Route::get('page_pdf_auto/{id}','TarificationAutoController@generate_pdf')->name
 Route::get('contrat_mrh/{id}','TarificationController@contrat_mrh')->name('contrat_mrh');
 Route::get('contrat_catnat/{id}','TarificationController@contrat_catnat')->name('contrat_catnat');
 Route::get('contrat_auto/{id}','TarificationAutoController@contrat_auto')->name('contrat_auto');
+Route::get('attestation/{id}','TarificationAutoController@attestation')->name('attestation');

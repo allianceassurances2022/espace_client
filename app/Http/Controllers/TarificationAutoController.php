@@ -794,4 +794,18 @@ class TarificationAutoController extends Controller
 
 		}
 
+    public function attestation ($id){
+      $devis= devis::find($id);
+			$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
+      $user=auth::user();
+		  $agence=Agences::where('Name',$devis->code_agence)->first();
+
+
+			$pdf = PDF::loadView('pdf.attestation',compact('user','devis','risque','agence'));
+      //return view('pdf.auto',compact('user','devis','risque','agence','prime'));
+
+			return $pdf->stream();
+
+    }
+
 }
