@@ -34,8 +34,8 @@
       position: absolute;
       width: 335px;
       height: 575px;
-      left: 0px;
-      top: 0px;
+      top: 208px;
+      left: 223px;
     }
     .gwd-p-fm2v {
       height: 29px;
@@ -47,81 +47,83 @@
     }
     .gwd-p-fh47 {
       height: 16px;
-      left: 30px;
       position: absolute;
       width: 214px;
       transform-origin: 50% 50% 0px;
-      top: 294px;
+      top: 502px;
+      left: 253px;
     }
     .gwd-p-5978 {
       height: 17px;
-      left: 184px;
       position: absolute;
       width: 77px;
       transform-origin: 50% 50% 0px;
-      top: 319px;
+      top: 527px;
+      left: 407px;
     }
     .gwd-p-1sa9 {
       height: 18px;
-      left: 11px;
       position: absolute;
       width: 79px;
-      top: 318px;
+      top: 526px;
+      left: 234px;
     }
     .gwd-p-ayvg {
-      top: 254px;
       height: 19px;
-      left: 15px;
       width: 305px;
+      top: 462px;
+      left: 238px;
     }
     .gwd-p-1v7b {
       position: absolute;
       width: 85px;
       height: 20px;
-      left: 234px;
-      top: 379px;
       text-align: center;
       transform-origin: 42.5px 10px 0px;
       font-size: 14px;
+      top: 587px;
+      left: 457px;
     }
     .gwd-p-z1rd {
       position: absolute;
       width: 99px;
-      left: 115px;
       transform-origin: 50% 50% 0px;
       height: 19px;
-      top: 380px;
       text-align: center;
       font-size: 14px;
+      top: 588px;
+      left: 338px;
     }
     .gwd-p-1opd {
       position: absolute;
       width: 91px;
-      left: 9px;
       transform-origin: 50% 50% 0px;
       height: 19px;
-      top: 380px;
       text-align: center;
       font-size: 12px;
+      top: 588px;
+      left: 232px;
     }
     .gwd-p-jwqr {
       width: 222px;
+      top: 428px;
+      left: 269px;
     }
     .gwd-p-1l6l {
       position: absolute;
       height: 20px;
       transform-origin: 50% 50% 0px;
-      left: 9px;
-      top: 98px;
       width: 123px;
+      top: 306px;
+      left: 232px;
     }
     .gwd-p-u5pu {
       position: absolute;
       height: 19px;
       transform-origin: 50% 50% 0px;
       width: 29px;
-      left: 40px;
-      top: 50px;
+      top: 258px;
+      left: 263px;
     }
   </style>
 </head>
