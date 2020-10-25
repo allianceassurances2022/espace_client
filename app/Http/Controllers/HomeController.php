@@ -99,13 +99,21 @@ class HomeController extends Controller
       //  $sum_mrh = $devis->where('type_assurance', 'Multirisques Habitation')->count();
        // $sum_catnat = $devis->where('type_assurance', 'Catastrophe Naturelle')->count();
 
-        $sum_devis = $devis->count();
+        $sum_devis = devis::where('id_user', $user->id )
+                             ->where('type_devis', "1")
+                             ->count();
 
-        $sum_contr = $contrats->count();
+        $sum_contr = devis::where('id_user', $user->id )
+                            ->where('type_devis', "2")
+                            ->count();
 
         return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats', 'sum_contr', 'sum_devis'));
     }
 
+
+    public function renouvellement_auto(){
+        return view('renouvellment.renouvellement_auto');
+    }
 
 
 }

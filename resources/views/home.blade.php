@@ -45,7 +45,8 @@ Home
 </div>
 </div>
 <div class="col-md-7">
-
+<!--
+Accordion
          <div id="accordion2" class="panel-group accordion accordion-color">
                 <div class="panel panel-full-primary">
                   <div class="panel-heading">
@@ -74,6 +75,48 @@ Home
 
 
     </div>
+
+    -->
+    <div class="bord-title">
+        <h1>Bienvenu sur notre plateforme E-commerce</h1>
+    </div>
+    <div class="panel ">
+
+        <div class="row">
+            <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
+        </div>
+       <div class="row" style="padding: 20px;">
+           <div class="col-md-3 item-renouvellement">
+               <a href="{{ route('renouvellement_auto') }}" >
+                   <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
+                   <br>
+                   <span> renouvellment Auto</span>
+               </a>
+           </div>
+           <div class="col-md-3 item-renouvellement">
+               <a href="#" >
+                   <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="Automobile">
+                   <br>
+                   <span> renouvellment Auto</span>
+               </a>
+           </div >
+           <div class="col-md-3 item-renouvellement">
+               <a href="#" >
+                   <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="Automobile">
+                   <br>
+                   <span> renouvellment Auto</span>
+               </a>
+           </div>
+           <div class="col-md-3 item-renouvellement">
+               <a href="#" >
+                   <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="Automobile">
+                   <br>
+                   <span> renouvellment Auto</span>
+               </a>
+           </div>
+       </div>
+    </div>
+
 </div>
 </div>
 
