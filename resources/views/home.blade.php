@@ -77,12 +77,15 @@ Accordion
     </div>
 
     -->
+    <div class="bord-title">
+        <h1>Bienvenu sur notre plateforme E-commerce</h1>
+    </div>
     <div class="panel ">
 
         <div class="row">
-            <h1 style="padding-top: 24px; padding-bottom: 24px; margin-left: 56px;">si vous êtes déjà souscrit, renouvellez votre contrat ici :</h1>
+            <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
         </div>
-       <div class="row" style="padding: 12px;">
+       <div class="row" style="padding: 20px;">
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement_auto') }}" >
                    <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">

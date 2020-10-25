@@ -1243,6 +1243,14 @@ img {
   width: 75px;
 }
 
+.bord-title {
+    text-align: center;
+    font-family: fantasy;
+    color: steelblue;
+    padding-bottom:26px;
+    margin-top: -1px;
+
+}
 
 
 .item-renouvellement{
