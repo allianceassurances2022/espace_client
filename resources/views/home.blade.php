@@ -258,7 +258,16 @@ Accordion
 
                         <td>{{ $contrat->prime_total }}</td>
                         <td>{{ $contrat->created_at }}</td>
+                        @if($contrat->type_assurance == 'Multirisques Habitation')
                         <td class="actions"><a href="{{route('contrat_mrh',$contrat->id)}}" class="icon"><i class="mdi mdi-eye"></i></a></td>
+                        @endif
+                        @if($contrat->type_assurance == 'Catastrophe Naturelle')
+                        <td class="actions"><a href="{{route('contrat_catnat',$contrat->id)}}" class="icon"><i class="mdi mdi-eye"></i></a></td>
+                        @endif
+                        @if($contrat->type_assurance == 'Automobile')
+                        <td class="actions"><a href="{{route('contrat_auto',$contrat->id)}}" class="icon"><i class="mdi mdi-eye"></i></a></td>
+                        @endif
+
                       </tr>
                     @endforeach
 

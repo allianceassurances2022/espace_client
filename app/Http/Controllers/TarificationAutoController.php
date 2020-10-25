@@ -780,4 +780,18 @@ class TarificationAutoController extends Controller
 
 		}
 
+    public function contrat_auto ($id){
+
+
+		$devis= devis::find($id);
+		$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
+    $prime= Prime::where('id_devis',$devis->id)->get();
+		$user=auth::user();
+		$agence=Agences::where('Name',$devis->code_agence)->first();
+    $prime_total=$devis->prime_total;
+
+		return view('produits.Auto.resultat',compact('user','devis','risque','agence','prime','prime_total'));
+
+		}
+
 }
