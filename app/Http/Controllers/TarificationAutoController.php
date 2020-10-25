@@ -600,7 +600,7 @@ class TarificationAutoController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-                'prime_nette'       => $value_auto['prime_nette'],
+          'prime_nette'       => $value_auto['prime_nette'],
 					'tva'               => $value_auto['tva'],
 					'cp'                => $value_auto['cout_police'],
 					'td'                => $value_auto['timbre_dimension'],
@@ -774,6 +774,7 @@ class TarificationAutoController extends Controller
 
 
 			$pdf = PDF::loadView('pdf.auto',compact('user','devis','risque','agence','prime'));
+      //return view('pdf.auto',compact('user','devis','risque','agence','prime'));
 
 			return $pdf->stream();
 

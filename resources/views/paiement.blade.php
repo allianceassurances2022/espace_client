@@ -41,6 +41,29 @@ border-inline-start: initial;
 		      <h2> Votre Paiement <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
         </div>
 
+				@if($auto != '')
+        <div class='line'></div>
+
+
+				<table class='order-table'>
+          <tbody>
+            <tr>
+              <td><img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class='full-width-icon'></img>
+              </td>
+              <td>
+                <br> <span class='thin product_title'>Automobile</span>
+                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class='price'>{{number_format($prime_total, 2,',', ' ')}} DA</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        @endif
+
 				@if($mrh != '')
         <div class='line'></div>
 
@@ -127,6 +150,9 @@ border-inline-start: initial;
 
 				<div class='line'></div>
         <div class="bouton-blanc">
+					@if($auto != '')
+				<a href="{{route('save_auto',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
+			    @endif
 					@if($mrh != '')
 				<a href="{{route('save_mrh',$devis->id)}}" class="bot-button"> Payer <i class="fa fa-arrow-circle-right"></i></a>
 			    @endif

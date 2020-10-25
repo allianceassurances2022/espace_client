@@ -107,10 +107,14 @@ Devis Auto
                 </div>
                 <div class="row invoice-footer">
                   <div class="col-md-12">
+                    @if($devis->type_devis==1)
                     <a href="{{ route('modification_devis_auto',$devis->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    @endif
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button> --}}
                     <a href="{{route('page_pdf_auto',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
-                    {{-- <a href="{{route('paiement',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a> --}}
+                    @if($devis->type_devis==1)
+                    <a href="{{route('paiement_auto',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
+                    @endif
                   </div>
                 </div>
               </div>
