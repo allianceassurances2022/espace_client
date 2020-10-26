@@ -600,7 +600,7 @@ class TarificationAutoController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-                'prime_nette'       => $value_auto['prime_nette'],
+          'prime_nette'       => $value_auto['prime_nette'],
 					'tva'               => $value_auto['tva'],
 					'cp'                => $value_auto['cout_police'],
 					'td'                => $value_auto['timbre_dimension'],
@@ -774,9 +774,38 @@ class TarificationAutoController extends Controller
 
 
 			$pdf = PDF::loadView('pdf.auto',compact('user','devis','risque','agence','prime'));
+      //return view('pdf.auto',compact('user','devis','risque','agence','prime'));
 
 			return $pdf->stream();
 
 		}
+
+    public function contrat_auto ($id){
+
+
+		$devis= devis::find($id);
+		$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
+    $prime= Prime::where('id_devis',$devis->id)->get();
+		$user=auth::user();
+		$agence=Agences::where('Name',$devis->code_agence)->first();
+    $prime_total=$devis->prime_total;
+
+		return view('produits.Auto.resultat',compact('user','devis','risque','agence','prime','prime_total'));
+
+		}
+
+    public function attestation ($id){
+      $devis= devis::find($id);
+			$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
+      $user=auth::user();
+		  $agence=Agences::where('Name',$devis->code_agence)->first();
+
+
+			$pdf = PDF::loadView('pdf.attestation',compact('user','devis','risque','agence'));
+      //return view('pdf.auto',compact('user','devis','risque','agence','prime'));
+
+			return $pdf->stream();
+
+    }
 
 }

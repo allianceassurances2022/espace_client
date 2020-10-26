@@ -14,7 +14,14 @@ Devis Auto
                   <div class="col-xs-7">
                     <div class="invoice-logo"></div>
                   </div>
-                  <div class="col-xs-5 invoice-order"><span class="invoice-id">Devis #{{$devis->id}}</span><span class="incoice-date">{{$devis->created_at}}</span></div>
+                  <div class="col-xs-5 invoice-order"><span class="invoice-id">@if($devis->type_devis == 1)
+                  Devis #{{$devis->id}}
+                  @elseif($devis->type_devis == 2)
+                  Police d'assurance
+                  <h2>Automobile</h2>
+                  <h3>{{$devis->reference_police}}</h3>
+                  @endif
+                </span><span class="incoice-date">{{$devis->created_at}}</span></div>
                 </div>
                 <div class="row invoice-data">
                   <div class="col-xs-5 invoice-person"><span class="name">{{$user->name}} {{$user->prenom}}</span><span>{{$user->profession}}</span><span>{{$user->email}}</span><span>{{$user->adresse}}</span></div>
@@ -107,10 +114,17 @@ Devis Auto
                 </div>
                 <div class="row invoice-footer">
                   <div class="col-md-12">
+                    @if($devis->type_devis==1)
                     <a href="{{ route('modification_devis_auto',$devis->id) }}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    @endif
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button> --}}
                     <a href="{{route('page_pdf_auto',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
-                    {{-- <a href="{{route('paiement',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a> --}}
+                    @if($devis->type_devis==2)
+                    <a href="{{route('attestation',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer attestation</a>
+                    @endif
+                    @if($devis->type_devis==1)
+                    <a href="{{route('paiement_auto',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
+                    @endif
                   </div>
                 </div>
               </div>

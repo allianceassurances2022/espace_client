@@ -14,7 +14,15 @@ Devis CATNAT
                   <div class="col-xs-7">
                     <div class="invoice-logo"></div>
                   </div>
-                  <div class="col-xs-5 invoice-order"><span class="invoice-id">Devis #{{$devis->id}}</span><span class="incoice-date">{{ $devis->created_at }}</span></div>
+                  <div class="col-xs-5 invoice-order"><span class="invoice-id">
+                    @if($devis->type_devis == 1)
+                    Devis #{{$devis->id}}
+                    @elseif($devis->type_devis == 2)
+                    Police d'assurance
+                    <h2>Catastrophe Naturelle</h2>
+                    <h3>{{$devis->reference_police}}</h3>
+                    @endif
+                  </span><span class="incoice-date">{{$devis->created_at}}</span></div>
                 </div>
                 <div class="row invoice-data">
                   <div class="col-xs-5 invoice-person"><span class="name">{{ $user->name  }} {{ $user->prenom }}</span><span>{{ $user->profession }}</span><span>{{ $user->email }}</span><span>{{ $user->adresse }}</span></div>

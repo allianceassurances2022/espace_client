@@ -63,9 +63,10 @@ Route::get('panier_', function () {
 /////////////////////////// paiement
 Route::get('paiement_mrh/{id}', 'PaiementController@paiement_mrh')->name('paiement_mrh');
 Route::get('paiement_catnat{id}', 'PaiementController@paiement_catnat')->name('paiement_catnat');
-Route::get('paiementauto/{id}', 'PaiementController@paiementauto')->name('paiement');
+Route::get('paiement_auto/{id}', 'PaiementController@paiement_auto')->name('paiement_auto');
 Route::get('paiement_send_mrh/{id}', 'PaiementController@save_mrh')->name('save_mrh');
 Route::get('paiement_send_catnat/{id}', 'PaiementController@save_catnat')->name('save_catnat');
+Route::get('paiement_send_auto/{id}', 'PaiementController@save_auto')->name('save_auto');
 // Route::get('paiementauto', 'PaiementController@test2')->name('test2');
 
 //////////////////////////////// Accueil
@@ -125,6 +126,9 @@ Route::get('djilali', function () {
 })->name('djilali');
 
 Route::get('page_pdf/{id}','TarificationController@generate_pdf')->name('page_pdf');
-Route::get('page_pdf/{id}','TarificationAutoController@generate_pdf')->name('page_pdf_auto');
+Route::get('page_pdf_auto/{id}','TarificationAutoController@generate_pdf')->name('page_pdf_auto');
 
 Route::get('contrat_mrh/{id}','TarificationController@contrat_mrh')->name('contrat_mrh');
+Route::get('contrat_catnat/{id}','TarificationController@contrat_catnat')->name('contrat_catnat');
+Route::get('contrat_auto/{id}','TarificationAutoController@contrat_auto')->name('contrat_auto');
+Route::get('attestation/{id}','TarificationAutoController@attestation')->name('attestation');

@@ -1042,6 +1042,19 @@ $TD=80;
 
 		}
 
+		public function contrat_catnat ($id){
+
+
+		$devis= devis::find($id);
+		$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
+    $prime= Prime::where('id_devis',$devis->id)->get();
+		$user=auth::user();
+		$agence=Agences::where('Name',$devis->code_agence)->first();
+
+		return view('produits.catnat.resultat',compact('user','devis','risque','agence','prime'));
+
+		}
+
 		public function generate_pdf($id)
 		{
 

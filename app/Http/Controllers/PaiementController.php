@@ -188,4 +188,57 @@ class PaiementController extends Controller
 
             }
 
+            public function paiement_auto ($id){
+
+          		$auto         = Rsq_Vehicule::where('id',$id)->first();
+          		$code_devis  = $auto->code_devis;
+          		$id          = $auto->id;
+          		$devis       = devis::where('id',$code_devis)->first();
+          		$prime_total = $devis->prime_total;
+          		$catnat      = '';
+          		$mrh         = '';
+
+              return view('paiement',compact('mrh','auto','catnat','prime_total','id','devis'));
+
+              }
+
+              public function save_auto ($id){
+
+                $devis = devis::find($id);
+
+                // $var = [
+                //
+                // ];
+                //
+                // $var=json_encode($var);
+                //
+                // $client = new \GuzzleHttp\Client();
+                // $url = "http://10.0.0.131:8443/api/polices/addPolice";
+                //
+                // $request = $client->post($url,[
+                // 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                // 'body'    => $var
+                // ]);
+                //
+                // // $response = json_decode($request->getBody(), true);
+                // $response = json_decode($request->getBody(), true);
+                //
+                // if($response['status']){
+                //
+                //   $devis->update([
+              	// 		'type_devis'      => 2,
+              	// 		'reference_police' => $response['data']["reference"],
+              	// 	]);
+              	// 	$dev=$devis;
+                //
+                // }
+                $devis->update([
+                'type_devis'      => 2,
+              	'reference_police' => "00000 00 0000 0000",
+                ]);
+
+                return redirect()->route('home');
+
+              }
+
 }
