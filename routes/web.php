@@ -29,7 +29,10 @@ Route::get('/clear-cache', function() {
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
 /////////////////////////// renouvellement///
-Route::get('renouvellement_auto' , 'HomeController@renouvellement_auto')->name('renouvellement_auto');
+Route::get('renouvellemen/auto' , 'HomeController@renouvellement_auto')->name('renouvellement.auto');
+Route::get('renouvellemen/mrh' , 'HomeController@renouvellement_mrh')->name('renouvellement.mrh');
+Route::get('renouvellemen/catnat' , 'HomeController@renouvellement_catnat')->name('renouvellement.catnat');
+Route::get('renouvellemen/mrp' , 'HomeController@renouvellement_mrp')->name('renouvellement.mrp');
 
 
 /////////////////////////////// Tarificateur

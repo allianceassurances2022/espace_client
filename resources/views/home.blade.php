@@ -80,38 +80,38 @@ Accordion
     <div class="bord-title">
         <h1>Bienvenu sur notre plateforme E-commerce</h1>
     </div>
-    <div class="panel ">
+    <div class="panel">
 
         <div class="row">
             <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
         </div>
        <div class="row" style="padding: 20px;">
            <div class="col-md-3 item-renouvellement">
-               <a href="{{ route('renouvellement_auto') }}" >
+               <a href="{{ route('renouvellement.auto') }}" >
                    <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
                    <br>
-                   <span> renouvellment Auto</span>
+                   <span>Renouvellement Auto</span>
                </a>
            </div>
            <div class="col-md-3 item-renouvellement">
-               <a href="#" >
-                   <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="Automobile">
+               <a href="{{ route('renouvellement.mrh') }}" >
+                   <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="mrh">
                    <br>
-                   <span> renouvellment Auto</span>
+                   <span>Renouvellement Multirisque habitation</span>
                </a>
            </div >
            <div class="col-md-3 item-renouvellement">
-               <a href="#" >
-                   <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="Automobile">
+               <a href="{{ route('renouvellement.mrp') }}">
+                   <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="mrp">
                    <br>
-                   <span> renouvellment Auto</span>
+                   <span>Renouvellement multirisque professionnelle</span>
                </a>
            </div>
            <div class="col-md-3 item-renouvellement">
-               <a href="#" >
-                   <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="Automobile">
+               <a href="{{ route('renouvellement.catnat') }}" >
+                   <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="catnat">
                    <br>
-                   <span> renouvellment Auto</span>
+                   <span>Renouvellement catastrophe naturelle</span>
                </a>
            </div>
        </div>

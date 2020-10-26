@@ -89,11 +89,11 @@ class HomeController extends Controller
 
         $devis = devis::where('id_user', $user->id )
                             ->where('type_devis', "1")
-                            ->paginate(4);
+                            ->paginate(4, ['*'], 'p');
 
         $contrats = devis::where('id_user', $user->id )
                             ->where('type_devis', "2")
-                            ->paginate(4);
+                            ->paginate(4,  ['*'], 'p1');
 
      //   $sum_auto = $devis->where('type_assurance', 'Automobile')->count();
       //  $sum_mrh = $devis->where('type_assurance', 'Multirisques Habitation')->count();
@@ -112,8 +112,22 @@ class HomeController extends Controller
 
 
     public function renouvellement_auto(){
-        return view('renouvellment.renouvellement_auto');
+        return view('renouvellement.auto');
     }
+
+    public function renouvellement_mrh(){
+        return view('renouvellement.mrh');
+    }
+
+    public function renouvellement_catnat(){
+        return view('renouvellement.catnat');
+    }
+
+    public function renouvellement_mrp(){
+        return view('renouvellement.mrp');
+    }
+
+
 
 
 }
