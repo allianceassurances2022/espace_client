@@ -356,11 +356,10 @@ $TD=80;
 		'type_const'       => $request->type_const,
 		'Contenant'        => $request->Contenant,
 		'equipement'       => $request->equipement,
-	  'marchandise'      => $request->marchandise,
-	  'contenu'          => $request->contenu,
-	  'act_reg'          => $request->activite,
-	  'reg_com'          => $request->registre,
-	  'loca'             => $request->local,
+	    'marchandise'      => $request->marchandise,
+	    'contenu'          => $request->contenu,
+	    'reg_com'          => $request->registre,
+	    'loca'             => $request->local,
 		'commune_selected' => $request->Commune,
 		'wilaya_selected'  => $request->Wilaya,
 		'anne_cont'        => $request->anne_cont,
@@ -370,9 +369,9 @@ $TD=80;
 		'reg_para'         => $request->seisme,
 		'datec'            => $datec,
 		'prime_total'      => $prime_total_,
-    'cout_police'      => $CP,
-    'timbre_dimension' => $TD,
-    'prime_nette'      => $val,
+        'cout_police'      => $CP,
+        'timbre_dimension' => $TD,
+        'prime_nette'      => $val,
 		];
 
 
@@ -673,11 +672,30 @@ $TD=80;
 
     }
 
+    /**
+     * @param Request $request
+     * @return string
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function validation_devis_mrh (Request $request){
+
+           // $data_mrh  = session('mrh');
+
+      //  $value_mrh         = session('data_mrh');
+       // $value_mrh['etage']   = $request->etage;
+        $request->session()->put('etage', $request->etage);
+        $request->session()->put('date_eff', $request->date_eff );
+        $request->session()->put('date_exp', $request->date_exp );
+        $request->session()->put('adresse', $request->adresse );
+        $request->session()->put('Wilaya', $request->Wilaya );
+        $request->session()->put('surface', $request->surface );
+
+
 
 			if ($request->code_agence == ""){
 			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-      return back();
+          //  return back();
+                return redirect()->route('devis_mrh')->with('value_mrh');
 			}
 
 			$rules = array(
@@ -686,12 +704,13 @@ $TD=80;
 
 			$this->validate($request, $rules);
 
+
 			$value_mrh  = session('data_mrh');
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
-    	$prime_total= $request->prime_total;
+    	    $prime_total= $request->prime_total;
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
@@ -778,7 +797,7 @@ $TD=80;
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
 
-    	$user=auth::user();
+    	    $user=auth::user();
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
     	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));

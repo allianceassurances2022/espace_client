@@ -38,7 +38,6 @@ Route::get('renouvellemen/mrp' , 'HomeController@renouvellement_mrp')->name('ren
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
 Route::get('/produits/{produit}/{phase}' , 'ProduitController@selection')->name('type_produit');
-
 Route::post('montant_mrh' , 'TarificationController@montant_mrh')->name('montant_mrh');
 
 Route::post('type_formule_catnat' , 'TarificationController@type_formule_catnat')->name('type_formule_catnat');

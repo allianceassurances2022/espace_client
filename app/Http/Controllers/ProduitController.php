@@ -19,6 +19,9 @@ class ProduitController extends Controller
      */
     public function index()
     {
+
+
+
       return view('produits.index');
     }
     public function selection(request $req)
@@ -99,20 +102,19 @@ class ProduitController extends Controller
         $nbr_piece         = $value_mrh['nbr_piece'];
         $datec             = $value_mrh['datec'];
         $prime_total       = $value_mrh['prime_total'];
+
         $wilaya            = wilaya::all();
         $agences           = Agences::all();
         $wilaya_selected   = 1;
         $agence_map = '';
+
+
 
         $user= auth::user();
 
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
-
-
-
-
 
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
         'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune'));

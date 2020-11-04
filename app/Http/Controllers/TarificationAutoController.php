@@ -539,7 +539,20 @@ class TarificationAutoController extends Controller
 
     public function validation_devis_auto (Request $request) {
 
-      //dd($request);
+        $request->session()->put('date_eff', $request->date_eff);
+        $request->session()->put('date_exp', $request->date_exp);
+        $request->session()->put('matricule', $request->matricule);
+        $request->session()->put('num_chassis', $request->num_chassis);
+        $request->session()->put('type', $request->type);
+        $request->session()->put('marque', $request->marque);
+        $request->session()->put('model', $request->model);
+        $request->session()->put('couleur', $request->couleur);
+        $request->session()->put('permis_num', $request->permis_num);
+        $request->session()->put('cat_permi', $request->cat_permi);
+        $request->session()->put('wilaya_obtention', $request->wilaya_obtention);
+        $request->session()->put('categorie', $request->categorie);
+
+
 
       $taxe="";
       $date_effet_taxe=null;

@@ -19,7 +19,7 @@
 
                             {{-- @include('core.breadcrumb') --}}
 
-                            @include('core.home.messages')
+                        {{--    @include('core.home.messages')--}}
 
                             @include('sweetalert::alert')
 

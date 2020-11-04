@@ -285,7 +285,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date d'effet</label>
                                     <div class="col-sm-9">
-                                        <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}"
+                                        <input type="date" id="date_effet" name="date_eff" value="{{Session::get('date_eff') ?? ''}}"
                                                class="form-control" min="" onchange="dateplusunans()" required>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
                                     <label class="col-sm-3 control-label">Date expiration</label>
                                     <div class="col-sm-9">
                                         <input type="date" id="date_expiration" name="date_exp"
-                                               value="{{$date_exp ?? ''}}" class="form-control" readonly>
+                                               value="{{Session::get('date_exp') ?? ''}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -305,7 +305,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Matricule</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="matricule" name="matricule" value="{{$matricule ?? ''}}"
+                                        <input type="text" id="matricule" name="matricule" value="{{Session::get('matricule') ?? ''}}"
                                                class="form-control"  required>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">N° Chassis</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="num_chassis" name="num_chassis" value="{{$num_chassis ?? ''}}"
+                                        <input type="text" id="num_chassis" name="num_chassis" value="{{Session::get('num_chassis') ?? ''}}"
                                                class="form-control" maxlength="17" required>
                                     </div>
                                 </div>
@@ -322,7 +322,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Type</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="type" value="{{$type ?? ''}}" class="form-control"
+                                        <input type="text" name="type" value="{{Session::get('type') ?? ''}}" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -335,6 +335,7 @@
                                     <label class="col-sm-3 control-label">Marque</label>
                                     <div class="col-sm-9">
                                         <select name="marque" id="marque" class="form-control select2" required >
+                                            <option value="{{ session('marque') }}">{{ session('marque') }}</option>
                                             @foreach( $marques as $marque)
                                                 <option  value="{{ $marque->lib_marque }}" @if($marque->lib_marque == $marque_selected) selected @endif>{{ $marque->lib_marque }}</option>
                                             @endforeach
@@ -345,7 +346,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Model</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="model" value="{{$model ?? ''}}" class="form-control"
+                                        <input type="text" name="model" value="{{Session::get('model') ?? ''}}" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -354,7 +355,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Couleur</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="couleur" value="{{$couleur ?? ''}}"
+                                        <input type="text" name="couleur" value="{{Session::get('couleur') ?? ''}}"
                                                class="form-control" required>
                                     </div>
                                 </div>
@@ -366,7 +367,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Permis N°</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="permis_num" value="{{$permis_num ?? ''}}"
+                                        <input type="text" name="permis_num" value="{{Session::get('permis_num') ?? ''}}"
                                                class="form-control" required>
                                     </div>
                                 </div>
@@ -377,9 +378,10 @@
                                         <!--input type="text" name="categorie" value="{{$categorie ?? ''}}"
                                                class="form-control" required-->
                                             <select  name="categorie" id="categorie" class="form-control select2" required >
+                                                <option value="{{ session('categorie') }}">{{ session('categorie') }}</option>
                                                 @foreach($cat_permi as $cat)
-                                                        <option  value="{{ $cat }}" @if($cat == $categorie) selected @endif>{{ $cat  }}</option>
-                                                  @endforeach
+                                                    <option  value="{{ $cat }}" @if($cat == $categorie) selected @endif>{{ $cat  }}</option>
+                                                @endforeach
                                             </select>
 
                                     </div>
@@ -391,8 +393,9 @@
                                     <div class="col-sm-9">
 
                                         <select  name="wilaya_obtention" id="wilaya_obtention" class="form-control select2" required >
+                                                <option value="{{ session('wilaya_obtention') }}">{{ session('wilaya_obtention') }}</option>
                                             @foreach($wilaya as $wilay)
-                                                <option  value="{{ $wilay->nlib_wilaya }}" @if($wilay->nlib_wilaya == $wilaya_selected)  selected @endif>{{ $wilay->nlib_wilaya }}</option>
+                                                <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -88,7 +88,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice" id="date-taxe" @if($auto['taxe'] == 'non') style="display:none; @endif">
                 <h6>Date effet de la taxe<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100">
-                  <input class="input100" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
+                  <input class="input100" id="date_taxe" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -150,8 +150,16 @@ $(function(){
   var dtToday = new Date();
 
   var year_auto = dtToday.getFullYear() - 10;
-
   $('#anne_auto').attr('min', year_auto);
+
+  // recuperer la date d'aujourdhui
+  var month = dtToday.getMonth() + 1;
+  var day = dtToday.getDate();
+  var year = dtToday.getFullYear() ;
+
+  $('#date_taxe').attr('max',dtToday);
+
+
 
 });
 

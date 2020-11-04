@@ -92,7 +92,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice" id="date-taxe" @if($auto['taxe'] == 'non') style="display:none; @endif">
                 <h6>Date effet de la taxe<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100">
-                  <input class="input100" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
+                  <input class="input100" id="date_taxe" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -142,6 +142,21 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 $(function(){
 //$('#tax-poll').hide();
 
+    // recuperer la date d'aujourdhui
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear() ;
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var minDate = year + '-' + month + '-' + day;
+
+    $('#date_taxe').attr('max',minDate);
+
 if($('#taxe').val() == "oui"){
   $('#date-taxe').css("display","block");
 }else {
@@ -155,6 +170,8 @@ if($('#dure').val() == "2"){
 }
 
 annee_max_auto();
+
+
 });
 
 function annee_max_auto(){
