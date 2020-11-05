@@ -51,11 +51,12 @@ class TarificationAutoController extends Controller
 
     }
 
-    public function precedent(){
+    public function precedent(Request $request){
 
-      $auto  = session('data_auto');
 
-      //dd($auto);
+    //  $auto  = session('data_auto');
+        $auto=$request->all();
+      dd($auto);
 
       $wilaya = Wilaya::all();
 

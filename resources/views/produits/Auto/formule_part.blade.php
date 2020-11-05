@@ -26,7 +26,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Usage <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                   <select class="input100" type="text" name="usage" onchange="disable_devis()" placeholder="Usage">
+                   <select class="input100" type="text" name="usage" id="usage" onchange="disable_devis()" placeholder="Usage">
                             <option value="0" @if($auto['usage'] == '0') selected @endif>Affaire</option>
                             <option value="1" @if($auto['usage'] == '1') selected @endif>Fonctionnaire</option>
                             <option value="2" @if($auto['usage'] == '2') selected @endif>Commerce</option>
@@ -38,6 +38,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="dure" id="dure" onchange="disable_taxe()" placeholder="Montant Forfetaire">
+                        @if($auto['dure'] != '')
+                        <option value="{{ $auto['dure'] }}" >{{ $auto['dure'] }}</option>
+                        @endif
                         <option value="1" @if($auto['dure'] == '1') selected @endif >1 Année</option>
                         <option value="2" @if($auto['dure'] == '2') selected @endif>6 Mois</option>
                     </select>
@@ -92,7 +95,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice" id="date-taxe" @if($auto['taxe'] == 'non') style="display:none; @endif">
                 <h6>Date effet de la taxe<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100">
-                  <input class="input100" id="date_taxe" type="date" name="date_taxe" value="{{$auto['date_taxe'] ?? ''}}">
+                  <input value="{{$auto['date_taxe'] ?? ''}}" class="input100" id="date_taxe" type="date" name="date_taxe" >
                     <span class="focus-input100"></span>
                 </div>
             </div>
@@ -121,6 +124,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <a href="{{route('precedent_auto')}}" class="contact100-form-btn">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> precedent
                 </a>
+
 
                 <input  class="contact100-form-btn" type='submit' name="calculer" value="calculer">
                 @if($devis != 0)
