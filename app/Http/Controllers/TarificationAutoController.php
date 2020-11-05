@@ -56,7 +56,7 @@ class TarificationAutoController extends Controller
 
     //  $auto  = session('data_auto');
         $auto=$request->all();
-      dd($auto);
+    //  dd($auto);
 
       $wilaya = Wilaya::all();
 
