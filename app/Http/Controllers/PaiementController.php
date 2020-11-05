@@ -206,36 +206,89 @@ class PaiementController extends Controller
 
                 $devis = devis::find($id);
 
-                // $var = [
-                //
-                // ];
-                //
-                // $var=json_encode($var);
-                //
-                // $client = new \GuzzleHttp\Client();
-                // $url = "http://10.0.0.131:8443/api/polices/addPolice";
-                //
-                // $request = $client->post($url,[
-                // 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-                // 'body'    => $var
-                // ]);
-                //
-                // // $response = json_decode($request->getBody(), true);
-                // $response = json_decode($request->getBody(), true);
-                //
-                // if($response['status']){
-                //
-                //   $devis->update([
-              	// 		'type_devis'      => 2,
-              	// 		'reference_police' => $response['data']["reference"],
-              	// 	]);
-              	// 	$dev=$devis;
-                //
-                // }
-                $devis->update([
-                'type_devis'      => 2,
-              	'reference_police' => "00000 00 0000 0000",
+                $var = [
+    "nom"                     => "Belabbes",
+    "prenom"                  => "Mohamed Abdelillah",
+    "categorie"               => "2",
+    "civitlite"               => "1",
+    "dateNaissance"           => "04/07/1995",
+    "lieuNaissance"           => "Rahouia",
+    "nationalite"             => "Algérienne",
+    "activite"                => "1",
+    "proffession"             => "1",
+    "assureAddresse"          => "Fort de l'eau",
+    "assureWilayaId"          => "01",
+    "assureVilleId"           => "0101",
+    "regionId"                => "16",
+    "agenceId"                => "00000",
+    "classId"                 => "11",
+    "branchId"                => "1100",
+    "souscriptionDate"        => "04/10/2020",
+    "effetDate"               => "30/09/2020",
+    "expirationDate"          => "03/10/2021",
+    "periode"                 => 1,
+    "periodeType"             => 2,
+    "wilayaId"                => "16",
+    "villeId"                 => "1605",
+    "matricule"               => "123456",
+    "constructionAnnee"       => 2014,
+    "chassisNo"               => "12345678912345678",
+    "chassisType"             => "0",
+    "matriculeLieu"           => "16",
+    "marque"                  => "531",
+    "model"                   => "5454454",
+    "genre"                   => "03",
+    "usage"                   => "00",
+    "puissance"               => "5454454",
+    "typeCarburant"           => "1",
+    "couleur"                 => "1",
+    "nbrPersonne"             => 3,
+    "cUtil"                   => 0,
+    "pTac"                    => 0,
+    "formule"                 => "1",
+    "attestation"             => "123456swqdf",
+    "capitaleAssure"          => 20000,
+    "autoRadio"               => 0,
+    "chiffreAffaire"          => 0,
+    "tauxReduction"           => "0",
+    "assistance"              => "0",
+    "alarme"                  => 0,
+    "turbo"                   => 0,
+    "hautGamme"               => 1,
+    "liquidInflamable"        => 0,
+    "controleTechnique"       => 0,
+    "conducteurCode"          => "1000000061454",
+    "conducteurNom"           => "HAROUN MILAT",
+    "conducteurDateNaissance" => "04/04/1985",
+    "permisNo"                => "1231564",
+    "permisCategorie"         => "2",
+    "permisDate"              => "01/01/2014",
+    "permisLieu"              => "Alger"
+
+                ];
+
+                $var=json_encode($var);
+
+                $client = new \GuzzleHttp\Client();
+                $url = "http://10.0.0.131:8443/api/polices/addPolice";
+
+                $request = $client->post($url,[
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => $var
                 ]);
+
+                $response = json_decode($request->getBody(), true);
+
+                if($response['status']){
+
+                  $devis->update([
+              			'type_devis'      => 2,
+              			'reference_police' => $response['data']["reference"],
+              		]);
+              		$dev=$devis;
+
+                }
+
 
                 return redirect()->route('home');
 
