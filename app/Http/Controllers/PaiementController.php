@@ -38,10 +38,10 @@ class PaiementController extends Controller
             $var = [
               "categorie"         => "1",
               "civitlite"         => "1",
-              "nom"               => auth()->user()->name,
-              "prenom"            => auth()->user()->prenom,
-              "dateNaissance"     => auth()->user()->date_naissance,
-              "lieuNaissance"     => auth()->user()->wilaya,
+              "nom"               => auth()->user()->name->toString(),
+              "prenom"            => auth()->user()->prenom->toString(),
+              "dateNaissance"     => auth()->user()->date_naissance->toString(),
+              "lieuNaissance"     => auth()->user()->wilaya->toString(),
               "nationalite"       => "Algérienne",
               "activite"          => "1",
               "proffession"       => "1",
@@ -52,9 +52,9 @@ class PaiementController extends Controller
               "agenceId"          => "00000",
               "classId"           => "12",
               "branchId"          => "1225",
-              "souscriptionDate"  => $devis->date_souscription,
-              "effetDate"         => $devis->date_effet,
-              "expirationDate"    => $devis->date_expiration,
+              "souscriptionDate"  => $devis->date_souscription->toString(),
+              "effetDate"         => $devis->date_effet->toString(),
+              "expirationDate"    => $devis->date_expiration->toString(),
               "periode"           => 1,
               "periodeType"       => 2,
               "wilayaId"          => "01",
@@ -69,7 +69,7 @@ class PaiementController extends Controller
               "formule"           => "8",
               "capitaleAssure"    => 500000
             ];
-
+dd($var);
             $var=json_encode($var);
 
             $client = new \GuzzleHttp\Client();
