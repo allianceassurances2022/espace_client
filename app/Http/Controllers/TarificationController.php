@@ -709,14 +709,18 @@ $TD=80;
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
-
     	    $prime_total= $request->prime_total;
+
+    	    $code_wilaya = wilaya::where('nlib_wilaya', $request->Wilaya)->first()->code_wilaya;
+
+    	  //  dd($code_wilaya);
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
     		$risque->update([
     			'adresse'     => $request->adresse,
-    			'code_wilaya' => $request->Wilaya,
+    		//	'code_wilaya' => $request->Wilaya,
+    			'code_wilaya' => $code_wilaya,
     			'superficie'  => $request->surface,
     			'etage'       => $request->etage
     		]);
@@ -778,7 +782,8 @@ $TD=80;
 
     		$res=Rsq_Immobilier::create([
     			'adresse'             => $request->adresse,
-    			'code_wilaya'         => $request->Wilaya,
+    		//	'code_wilaya'         => $request->Wilaya,
+    			'code_wilaya'         => $code_wilaya,
     			'type_habitation'     => $request->hab,
     			'qualite_juridique'   => $request->juredique,
     			'montant_forfaitaire' => $request->montant,

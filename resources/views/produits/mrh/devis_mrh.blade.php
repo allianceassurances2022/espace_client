@@ -210,17 +210,9 @@ Devis MRH
                                                   <label class="col-sm-3 control-label">Wilaya</label>
                                                   <div class="col-sm-9">
                                                       <select id="Wilaya" name="Wilaya" class="select2" required>
-                                                          @foreach($wilaya as $wilay)
-                                                          <!--option value="{{$wilay->code_wilaya}}" @if($wilaya_selected == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option-->
-                                                          <option
-                                                                  @if(Session::has('Wilaya'))
-                                                                  value="{{Session::get('Wilaya')}}"
-                                                                  selected
-                                                                  @else
-                                                                  value="{{$wilay->code_wilaya}}"
-                                                                  @endif
-                                                          >{{$wilay->nlib_wilaya}}
-                                                          </option>
+                                                              <option value="{{ session('Wilaya') }}">{{ session('Wilaya') }}</option>
+                                                              @foreach($wilaya as $wilay)
+                                                                  <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
                                                               @endforeach
                                                       </select>
                                                   </div>
