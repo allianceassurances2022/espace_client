@@ -14,7 +14,7 @@ use App\Rsq_Immobilier;
 use App\Rsq_Vehicule;
 use App\devis;
 
-use Carbon\Carbon;
+
 
 use auth;
 
@@ -45,7 +45,7 @@ class PaiementController extends Controller
               "civitlite"         => "1",
               "nom"               => auth()->user()->name,
               "prenom"            => auth()->user()->prenom,
-              "dateNaissance"     => "04/07/1995",
+              "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
               "lieuNaissance"     => auth()->user()->adresse,
               "nationalite"       => "Algérienne",
               "activite"          => "1",
