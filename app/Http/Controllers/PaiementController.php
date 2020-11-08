@@ -13,6 +13,8 @@ use App\Rsq_Immobilier;
 use App\Rsq_Vehicule;
 use App\devis;
 
+use Carbon\Carbon;
+
 use auth;
 
 class PaiementController extends Controller
@@ -206,13 +208,19 @@ class PaiementController extends Controller
 
                 $devis = devis::find($id);
 
+                $date_naissance = Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y');
+
+                $date_souscription = Carbon::parse(auth()->user()->date_souscription)->format('d/m/Y');
+                $date_effet        = Carbon::parse(auth()->user()->date_effet)->format('d/m/Y');
+                $date_expiration   = Carbon::parse(auth()->user()->date_expiration)->format('d/m/Y');
+
                 $var = [
-    "nom"                     => "Belabbes",
-    "prenom"                  => "Mohamed Abdelillah",
+    "nom"                     => auth()->user()->name,
+    "prenom"                  => auth()->user()->prenom,
     "categorie"               => "2",
     "civitlite"               => "1",
-    "dateNaissance"           => "04/07/1995",
-    "lieuNaissance"           => "Rahouia",
+    "dateNaissance"           => $date_naissance,
+    "lieuNaissance"           => auth()->user()->wilaya,
     "nationalite"             => "Algérienne",
     "activite"                => "1",
     "proffession"             => "1",
@@ -220,12 +228,12 @@ class PaiementController extends Controller
     "assureWilayaId"          => "01",
     "assureVilleId"           => "0101",
     "regionId"                => "16",
-    "agenceId"                => "00000",
+    "agenceId"                => $devis->code_agence,
     "classId"                 => "11",
     "branchId"                => "1100",
-    "souscriptionDate"        => "04/10/2020",
-    "effetDate"               => "30/09/2020",
-    "expirationDate"          => "03/10/2021",
+    "souscriptionDate"        => $date_souscription,
+    "effetDate"               => $date_effet,
+    "expirationDate"          => $date_expiration,
     "periode"                 => 1,
     "periodeType"             => 2,
     "wilayaId"                => "16",
