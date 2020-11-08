@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Wilaya;
@@ -540,6 +541,9 @@ class TarificationAutoController extends Controller
 
     public function validation_devis_auto (Request $request) {
 
+        //dd( $request->date_eff);
+        $date = $request->date_eff;
+     //   dd(Carbon::parse($request->date_eff)->format('d/m/Y'));
         $request->session()->put('date_eff', $request->date_eff);
         $request->session()->put('date_exp', $request->date_exp);
         $request->session()->put('matricule', $request->matricule);
