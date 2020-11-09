@@ -38,9 +38,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Durée <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="dure" id="dure" onchange="disable_taxe()" placeholder="Montant Forfetaire">
-                        @if($auto['dure'] != '')
-                        <option value="{{ $auto['dure'] }}" >{{ $auto['dure'] }}</option>
-                        @endif
+
                         <option value="1" @if($auto['dure'] == '1') selected @endif >1 Année</option>
                         <option value="2" @if($auto['dure'] == '2') selected @endif>6 Mois</option>
                     </select>
@@ -77,6 +75,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+                <div class="d-flex justify-content-center">
+                    <div class="cc-selector">
+                        <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                    </div>
+
+                </div>
 
 
           <div class="slice" id="tax-poll">
@@ -99,6 +103,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+
 
           </div>
             <!-- fin produit particulier -->
@@ -141,7 +146,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 @endsection
 
 @section('js')
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
+
 
 $(function(){
 //$('#tax-poll').hide();

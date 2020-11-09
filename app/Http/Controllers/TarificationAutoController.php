@@ -25,7 +25,8 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
-        $request->session()->put('Wilaya_selected', $request->Wilaya_selected);
+      //  $request->session()->put('Wilaya_selected', $request->Wilaya_selected);
+
 
       // $rules = array(
   		// 	'valeur_auto' => 'bail|required|string|min:800000',
@@ -37,6 +38,8 @@ class TarificationAutoController extends Controller
   		 Alert::warning('Avertissement', 'la valeur du véhicule ne doit pas etre inferieure a 800 000 DA ');
   		   return redirect()->route('type_produit',['auto','index']);
   		 }
+
+
 
       $data_session = $auto;
 
@@ -56,10 +59,10 @@ class TarificationAutoController extends Controller
 
     public function precedent(Request $request){
 
-
-    //  $auto  = session('data_auto');
         $auto=$request->all();
-    //  dd($auto);
+      $auto  = session('data_auto');
+    //    $auto=$request->all();
+      dd($auto);
 
       $wilaya = Wilaya::all();
 
@@ -527,11 +530,8 @@ class TarificationAutoController extends Controller
             				'assistance'       => $Ass,
                     ];
 
-        //dd($data_session);
 
         $request->session()->put('data_auto', $data_session);
-
-
 
         if ($offre == "OTO_L") {
         return view('produits.auto.formule_laki',compact('auto','devis'));

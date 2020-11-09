@@ -92,6 +92,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+                <div class="d-flex justify-content-center">
+                    <div class="cc-selector">
+                        <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                    </div>
+
+                </div>
 
              </div>
             <!-- fin produit laki + -->

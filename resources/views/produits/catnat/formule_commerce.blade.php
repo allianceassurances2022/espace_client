@@ -146,6 +146,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
 
+
   <script>
 
   function montant_contenant(){

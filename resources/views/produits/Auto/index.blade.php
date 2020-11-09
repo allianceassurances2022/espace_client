@@ -58,13 +58,13 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
+
                 <h6>Immatriculé à<span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="Wilaya_selected" placeholder="Wilaya">
-                        <option value="{{ session('Wilaya_selected') }}">{{ session('Wilaya_selected') }}</option>
-                        @foreach($wilaya as $wilay)
-                            <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
-                        @endforeach
+                    @foreach($wilaya as $wilay)
+                        <option value="{{$wilay->code_wilaya}}" @if($auto['Wilaya_selected'] == $wilay->code_wilaya) selected @endif>{{$wilay->nlib_wilaya}}</option>
+                    @endforeach
                    </select>
                     <span class="focus-input100"></span>
                 </div>
