@@ -216,9 +216,9 @@ class PaiementController extends Controller
 
                 $date_naissance = Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y');
 
-                $date_souscription = Carbon::parse(auth()->user()->date_souscription)->format('d/m/Y');
-                $date_effet        = Carbon::parse(auth()->user()->date_effet)->format('d/m/Y');
-                $date_expiration   = Carbon::parse(auth()->user()->date_expiration)->format('d/m/Y');
+                $date_souscription = Carbon::parse($devis->date_souscription)->format('d/m/Y');
+                $date_effet        = Carbon::parse($devis->date_effet)->format('d/m/Y');
+                $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
 
                 $var = [
     "nom"                     => auth()->user()->name,
