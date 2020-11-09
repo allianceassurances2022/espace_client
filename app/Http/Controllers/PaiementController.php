@@ -122,11 +122,11 @@ class PaiementController extends Controller
               $devis = devis::find($id);
 
               $var = [
-    "nom"               => "Belabbes",
-    "prenom"            => "Mohamed Abdelillah",
+    "nom"               => auth()->user()->name,
+    "prenom"            => auth()->user()->prenom,
     "categorie"         => "1",
     "civitlite"         => "1",
-    "dateNaissance"     => "04/07/1995",
+    "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
     "lieuNaissance"     => "Rahouia",
     "nationalite"       => "Algérienne",
     "activite"          => "1",
@@ -138,9 +138,9 @@ class PaiementController extends Controller
     "agenceId"          => "00000",
     "classId"           => "12",
     "branchId"          => "1290",
-    "souscriptionDate"  => "04/10/2020",
-    "effetDate"         => "30/09/2020",
-    "expirationDate"    => "03/10/2021",
+    "souscriptionDate"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
+    "effetDate"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+    "expirationDate"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
     "periode"           => 1,
     "periodeType"       => 2,
     "wilayaId"          => "01",
@@ -166,6 +166,8 @@ class PaiementController extends Controller
     "appartient"        => 1
 
               ];
+
+              dd($var);
 
               $var=json_encode($var);
 

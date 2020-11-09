@@ -25,6 +25,8 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
+        $request->session()->put('Wilaya_selected', $request->Wilaya_selected);
+
       // $rules = array(
   		// 	'valeur_auto' => 'bail|required|string|min:800000',
   		// );
