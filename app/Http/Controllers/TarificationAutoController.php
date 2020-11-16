@@ -61,8 +61,6 @@ class TarificationAutoController extends Controller
 
         $auto=$request->all();
       $auto  = session('data_auto');
-    //    $auto=$request->all();
-      dd($auto);
 
       $wilaya = Wilaya::all();
 
@@ -545,7 +543,7 @@ class TarificationAutoController extends Controller
 
         //dd( $request->date_eff);
         $date = $request->date_eff;
-     //   dd(Carbon::parse($request->date_eff)->format('d/m/Y'));
+
         $request->session()->put('date_eff', $request->date_eff);
         $request->session()->put('date_exp', $request->date_exp);
         $request->session()->put('matricule', $request->matricule);
@@ -686,7 +684,7 @@ class TarificationAutoController extends Controller
     			'code_formule'           => $request->formule,
     			'assistance'             => $request->assistance,
     			'offre'                  => $request->offre,
-          'valeur_vehicule'        => $request->valeur,
+                'valeur_vehicule'        => $request->valeur,
     			'num_chassis'            => $request->num_chassis,
     			'type'                   => $request->type,
     			'couleur'                => $request->couleur,
@@ -740,13 +738,13 @@ class TarificationAutoController extends Controller
       $usage             = $risque->usage;
       $dure              = $risque->dure;
       $formule           = $risque->code_formule;
-      $assistance_nom        = $risque->assistance;
+      $assistance_nom    = $risque->assistance;
       $taxe              = $risque->taxe;
       $date_taxe         = $risque->effet_taxe;
       $offre             = $risque->offre;
       $valeur            = $risque->valeur_vehicule;
       $matricule         = $risque->matricule;
-      $marque_selected            = $risque->marque;
+      $marque_selected   = $risque->marque;
       $model             = $risque->modele;
       $num_chassis       = $risque->num_chassis;
       $type              = $risque->type;
