@@ -185,7 +185,6 @@ Accordion
                     </thead>
                     <tbody>
 
-
                     @foreach($devis as $devi)
                       <tr>
                         <td class="user-avatar"> <img @if($devi->type_assurance == 'Automobile')
