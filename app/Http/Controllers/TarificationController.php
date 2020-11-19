@@ -385,8 +385,36 @@ $TD=80;
         $registre    = $reg_com;
         $local       = $loca;
 
-		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
-		            'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+        $recap='g-recaptcha-response';
+        //dd($request->$recap);
+
+        $response=$request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array (
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ".strlen($query)."\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success=json_decode($verify);
+
+        if ($captcha_success->success==true) {
+
+            return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+                'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+
+        }
+
 
 	}
 
@@ -552,10 +580,40 @@ $TD=80;
 
 			///////////////////////////////////////////////////////////
 
+            ////Verificateur captcha
+        ///
+        $recap='g-recaptcha-response';
+        //dd($request->$recap);
 
+        $response=$request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array (
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ".strlen($query)."\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success=json_decode($verify);
+
+        if ($captcha_success->success==true) {
+
+            return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
+
+
+        }
 
       //session()->flash('success', 'text goes here');
-			return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+			//return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
 
 			// try{
       //           return response()->json(['total' => $totale ]);

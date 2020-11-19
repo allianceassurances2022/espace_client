@@ -531,11 +531,53 @@ class TarificationAutoController extends Controller
 
         $request->session()->put('data_auto', $data_session);
 
-        if ($offre == "OTO_L") {
-        return view('produits.auto.formule_laki',compact('auto','devis'));
-        }else if($offre == "AUTO_P") {
-        return view('produits.auto.formule_part',compact('auto','devis'));
+
+
+        ////Verificateur captcha
+        ///
+        $recap='g-recaptcha-response';
+        //dd($request->$recap);
+
+        $response=$request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array (
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ".strlen($query)."\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success=json_decode($verify);
+
+        if ($captcha_success->success==true) {
+
+            if ($offre == "OTO_L") {
+                return view('produits.auto.formule_laki',compact('auto','devis'));
+            }else if($offre == "AUTO_P") {
+                return view('produits.auto.formule_part',compact('auto','devis'));
+            }
+
+            return $this->sendFailedLoginResponse($request);
+        } else if ($captcha_success->success==false) {
+
+            echo '<script language="javascript" type="text/javascript">';
+            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+            echo 'window.location.replace("login");';
+            echo '</script>';
+
         }
+
+
+
 
     }
 
