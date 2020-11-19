@@ -604,6 +604,12 @@ select{
   font-weight: bold;
 }
 
+.recaptcha{
+  margin-bottom: 24px;
+  width: 100%;
+  text-align: center;
+}
+
 .tarificateur .validate-input, .tarificateur input.input100 {
     border-radius: 50px;
     float: right;
