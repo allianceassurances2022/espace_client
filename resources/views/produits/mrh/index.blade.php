@@ -108,11 +108,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
              </div>
            </div>
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center recaptcha">
                     <div class="cc-selector">
                         <div class="g-recaptcha"  data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
                     </div>
-
                 </div>
 
             @if(isset($totale))

@@ -213,6 +213,8 @@ class PaiementController extends Controller
               public function save_auto ($id){
 
                 $devis = devis::find($id);
+                $risque = Rsq_Vehicule::where('code_devis',$devis->id)->first();
+                //dd($risque);
 
                 $date_naissance = Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y');
 

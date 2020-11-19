@@ -76,11 +76,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
 
-            <div class="slice">
-                <div class="cc-selector">
-                    <div class="g-recaptcha"  data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
-                </div>
-            </div>
+
 
 
           <div class="slice" id="tax-poll">
@@ -105,6 +101,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
 
+          </div>
+
+          <div class="d-flex justify-content-center recaptcha">
+              <div class="cc-selector">
+                  <div class="g-recaptcha"  data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
+              </div>
           </div>
             <!-- fin produit particulier -->
             @if($devis != 0)
