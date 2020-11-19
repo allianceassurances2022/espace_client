@@ -41,6 +41,12 @@
                         </span>
                     @endif
 
+                    <div class="d-flex justify-content-center">
+                        <div class="cc-selector">
+                            <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                        </div>
+                    </div>
+
                   <div class="form-group row login-tools">
                     <div class="col-xs-6 login-forgot-password">
                         @if (Route::has('password.request'))
@@ -58,4 +64,9 @@
             <div class="splash-footer"><span>Vous n'avez pas de compte? <a href="{{route('register')}}">S'inscrire</a></span></div>
           </div>
         </div>
+@endsection
+
+
+@section('js')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endsection

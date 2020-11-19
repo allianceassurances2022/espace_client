@@ -58,6 +58,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
+
                 <h6>Immatriculé à<span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="Wilaya_selected" placeholder="Wilaya">

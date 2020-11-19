@@ -1,3 +1,4 @@
+
 @extends('default_produit')
 @section('tab_title')
 CATNAT

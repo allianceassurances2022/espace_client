@@ -78,6 +78,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </label>
             </div>
 
+           <div class="row">
+               <div class="slice" style="margin: 20px;">
+                   <div class="cc-selector">
+                       <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                   </div>
+               </div>
+           </div>
+
            @if($prime_total != 0)
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
@@ -101,6 +109,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
               </div>
             @endif
             </div>
+
+
             <input type="hidden" name="Contenant" id="Contenant" value="{{$Contenant ?? ''}}">
             <input type="hidden" name="equipement" id="equipement" value="{{$equipement ?? ''}}">
             <input type="hidden" name="marchandise" id="marchandise" value="{{$marchandise ?? ''}}">
@@ -123,6 +133,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 

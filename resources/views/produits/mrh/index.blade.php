@@ -108,6 +108,12 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
              </div>
            </div>
 
+                <div class="d-flex justify-content-center">
+                    <div class="cc-selector">
+                        <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                    </div>
+
+                </div>
 
             @if(isset($totale))
             <div class="tarificateur">
@@ -136,6 +142,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
             </div>
 
+
+
         </form>
 
     </div>
@@ -145,6 +153,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
   <script>

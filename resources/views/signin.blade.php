@@ -152,6 +152,9 @@
                                 </button>
                                 </div>
                         </div>
+
+
+
                         <div class="text-center p-t-115">
 						<span class="txt1">
 							Vous n'avez pas de compte ?
@@ -192,6 +195,8 @@
 	<script src="{{asset('signin_assets/vendor/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('signin_assets/js/main.js')}}"></script>
+
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </body>
 </html>

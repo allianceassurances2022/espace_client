@@ -393,7 +393,7 @@
                                     <div class="col-sm-9">
 
                                         <select  name="wilaya_obtention" id="wilaya_obtention" class="form-control select2" required >
-                                                <option value="{{ session('wilaya_obtention') }}">{{ session('wilaya_obtention') }}</option>
+                                            <option value="{{ session('wilaya_obtention') }}">{{ session('wilaya_obtention') }}</option>
                                             @foreach($wilaya as $wilay)
                                                 <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
                                             @endforeach
