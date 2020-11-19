@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'sexe'           => $data['sexe'],
             'profession'     => $data['profession'],
             'telephone'      => $data['telephone'],
-            'avatar' => '1602407770.png'
+            'avatar'         => '1602407770.png'
         ]);
     }
 }
