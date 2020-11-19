@@ -92,14 +92,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                     <span class="focus-input100"></span>
                 </div>
             </div>
+             </div>
+
                 <div class="d-flex justify-content-center">
                     <div class="cc-selector">
                         <div class="g-recaptcha"  data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
                     </div>
 
                 </div>
-
-             </div>
             <!-- fin produit laki + -->
             @if($devis != 0)
             <div class="tarificateur">
@@ -139,7 +139,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 </div>
 @endsection
 
+
 @section('js')
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
 
 

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,48 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TarificationAutoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="112" column="104" selection-start-line="112" selection-start-column="104" selection-end-line="112" selection-end-column="104" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#strong#1;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#strong#2;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="562" column="65" selection-start-line="562" selection-start-column="65" selection-end-line="562" selection-end-column="65" />
+            <state relative-caret-position="321">
+              <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
             </state>
           </provider>
         </entry>
@@ -105,11 +64,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <file leaf-file-name="construction.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+            <state relative-caret-position="473">
+              <caret line="94" column="22" lean-forward="true" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,17 +80,8 @@
       <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="593">
               <caret line="260" column="6" selection-start-line="260" selection-start-column="6" selection-end-line="260" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formule_laki.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="96" column="104" selection-start-line="96" selection-start-column="104" selection-end-line="96" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -135,8 +89,8 @@
       <file leaf-file-name="formule_part.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="80" column="100" selection-start-line="80" selection-start-column="100" selection-end-line="80" selection-end-column="100" />
+            <state relative-caret-position="119">
+              <caret line="149" column="79" lean-forward="true" selection-start-line="149" selection-start-column="3" selection-end-line="149" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -145,7 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>index_catnat</find>
       <find>calculer</find>
       <find>precidanttypeformul</find>
       <find>index</find>
@@ -173,8 +126,9 @@
       <find>mo</find>
       <find>devis</find>
       <find>register</find>
-      <find>montant_auto</find>
       <find>montant_mrh</find>
+      <find>montant_auto</find>
+      <find>catnat</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -224,19 +178,19 @@
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/signin.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
       </list>
     </option>
@@ -442,7 +396,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="produits" type="462c0819:PsiDirectoryNode" />
-              <item name="mrh" type="462c0819:PsiDirectoryNode" />
+              <item name="catnat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
@@ -533,7 +487,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="452007000" />
+    <option name="totallyTimeSpent" value="454236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -752,13 +706,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../appli_alliance/index.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -841,41 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="96" column="104" selection-start-line="96" selection-start-column="104" selection-end-line="96" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="80" column="100" selection-start-line="80" selection-start-column="100" selection-end-line="80" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="260" column="6" selection-start-line="260" selection-start-column="6" selection-end-line="260" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -883,10 +795,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="575" lean-forward="true" selection-start-line="575" selection-end-line="575" />
+          <folding>
+            <element signature="e#40#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="112" column="104" selection-start-line="112" selection-start-column="104" selection-end-line="112" selection-end-column="104" />
+        <state relative-caret-position="303">
+          <caret line="156" column="79" lean-forward="true" selection-start-line="156" selection-start-column="3" selection-end-line="156" selection-end-column="79" />
           <folding>
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
@@ -900,6 +822,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="149" column="79" lean-forward="true" selection-start-line="149" selection-start-column="3" selection-end-line="149" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
@@ -910,10 +853,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="94" column="22" lean-forward="true" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="260" column="6" selection-start-line="260" selection-start-column="6" selection-end-line="260" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="562" column="65" selection-start-line="562" selection-start-column="65" selection-end-line="562" selection-end-column="65" />
+        <state relative-caret-position="321">
+          <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
         </state>
       </provider>
     </entry>

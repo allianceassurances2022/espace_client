@@ -385,8 +385,36 @@ $TD=80;
         $registre    = $reg_com;
         $local       = $loca;
 
-		return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
-		            'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+        $recap='g-recaptcha-response';
+        //dd($request->$recap);
+
+        $response=$request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array (
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ".strlen($query)."\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success=json_decode($verify);
+
+        if ($captcha_success->success==true) {
+
+            return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+                'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
+
+        }
+
 
 	}
 
@@ -579,35 +607,8 @@ $TD=80;
 
         if ($captcha_success->success==true) {
 
-            return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+            return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
 
-
-            // If the class is using the ThrottlesLogins trait, we can automatically throttle
-            // the login attempts for this application. We'll key this by the username and
-            // the IP address of the client making these requests into this application.
-            if (method_exists($this, 'hasTooManyLoginAttempts') &&
-                $this->hasTooManyLoginAttempts($request)) {
-                $this->fireLockoutEvent($request);
-
-                return $this->sendLockoutResponse($request);
-            }
-
-            if ($this->attemptLogin($request)) {
-                return $this->sendLoginResponse($request);
-            }
-
-            // If the login attempt was unsuccessful we will increment the number of attempts
-            // to login and redirect the user back to the login form. Of course, when this
-            // user surpasses their maximum number of attempts they will get locked out.
-            $this->incrementLoginAttempts($request);
-
-            return $this->sendFailedLoginResponse($request);
-        } else if ($captcha_success->success==false) {
-
-            echo '<script language="javascript" type="text/javascript">';
-            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-            echo 'window.location.replace("login");';
-            echo '</script>';
 
         }
 
