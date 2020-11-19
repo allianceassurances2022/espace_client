@@ -110,7 +110,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 
                 <div class="d-flex justify-content-center">
                     <div class="cc-selector">
-                        <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
+                        <div class="g-recaptcha"  data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
                     </div>
 
                 </div>

@@ -531,6 +531,8 @@ class TarificationAutoController extends Controller
 
         $request->session()->put('data_auto', $data_session);
 
+
+
         if ($offre == "OTO_L") {
         return view('produits.auto.formule_laki',compact('auto','devis'));
         }else if($offre == "AUTO_P") {
