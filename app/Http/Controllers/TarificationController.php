@@ -60,10 +60,6 @@ class TarificationController extends Controller
 
 	public function construction_catanat(Request $request)
 	{
-	    dd($request->type_const);
-	    $rules = array(
-	        'type_const'    =>  'bail|required|string|max:190',
-        );
 
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
@@ -187,7 +183,79 @@ class TarificationController extends Controller
 	public function montant_catnat(Request $request)
 	{
 
-		$maj=0.0;
+	//    dd($request);
+/*
+        //////// Verificateur captcha ////////
+        $recap='g-recaptcha-response';
+
+        $response=$request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array (
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ".strlen($query)."\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success= json_decode($verify);
+
+        if ($captcha_success->success==false) {
+
+            echo '<script language="javascript" type="text/javascript">';
+            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+            echo 'window.history.go(-1);';
+            echo '</script>';
+
+        } else if ($captcha_success->success==true) {
+
+
+            $tableau = array(
+                'habitation', 'commerce', 'industrielle'
+            );
+
+        //    dd($request->type_formule);
+
+            if ( in_array( $request->type_formule , $tableau )) {
+
+            //    Alert::warning('Avertissement', 'Usage incorrect');
+            //    return redirect()->route('type_formule_catnat', ['auto', 'index']);
+dd('true');
+            }else{
+                dd('false');
+            }
+        }
+
+*/
+        $tableau = array(
+            'Habitation', 'Commerce', 'Industrielle'
+        );
+
+           // dd($request->type_formule);
+
+        if ( in_array( $request->type_formule , $tableau )) {
+
+            switch ($request->type_formule){
+                case 'Habitation';
+                dd('test vars');
+                break;
+
+            }
+
+
+        }else {
+            Alert::warning('Avertissement', 'Formule incorrects');
+            return redirect()->route('index_catnat');
+        }
+        $maj=0.0;
 
 		$type_formule     = $request->type_formule;
 		$type_const       = $request->type_const;
@@ -395,35 +463,6 @@ $TD=80;
         $registre    = $reg_com;
         $local       = $loca;
 
-        $recap='g-recaptcha-response';
-        //dd($request->$recap);
-
-        $response=$request->$recap;
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array(
-            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-            'response' => $request->$recap
-        );
-        $query = http_build_query($data);
-        $options = array(
-            'http' => array (
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: ".strlen($query)."\r\n".
-                "User-Agent:MyAgent/1.0\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $verify = file_get_contents($url, false, $context);
-        $captcha_success=json_decode($verify);
-
-        if ($captcha_success->success==true) {
-
-            return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
-                'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
-
-        }
 
 
 	}
