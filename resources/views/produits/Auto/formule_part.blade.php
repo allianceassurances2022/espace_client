@@ -79,10 +79,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 
 
-          <div class="slice" id="tax-poll">
+          {{-- <div id="tax-poll"> --}}
 
-            <div class="slice">
-                <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
+            <div class="slice" id="tax-poll">
+                <h6 style="width: 340px;">Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                   <select class="input100" type="text" name="taxe"  id="taxe" onchange="taxe_change()" placeholder="Taxe Pollution">
                       <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
@@ -101,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
 
-          </div>
+          {{-- </div> --}}
 
           <div class="d-flex justify-content-center recaptcha">
               <div class="cc-selector">
