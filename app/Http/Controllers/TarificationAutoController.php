@@ -59,7 +59,7 @@ class TarificationAutoController extends Controller
 
     public function precedent(Request $request){
 
-        $auto=$request->all();
+      $auto=$request->all();
       $auto  = session('data_auto');
 
       $wilaya = Wilaya::all();
@@ -71,6 +71,51 @@ class TarificationAutoController extends Controller
     public function montant_auto(Request $request){
 
     $auto=$request->all();
+
+
+
+    //Verificateur captcha
+    $recap='g-recaptcha-response';
+
+    $response=$request->$recap;
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = array(
+        'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+        'response' => $request->$recap
+    );
+    $query = http_build_query($data);
+    $options = array(
+        'http' => array (
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            "Content-Length: ".strlen($query)."\r\n".
+            "User-Agent:MyAgent/1.0\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context  = stream_context_create($options);
+    $verify = file_get_contents($url, false, $context);
+    $captcha_success= json_decode($verify);
+
+    if ($captcha_success->success==false) {
+
+      echo '<script language="javascript" type="text/javascript">';
+      echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+      echo 'window.history.go(-1);';
+      echo '</script>';
+
+    } else if ($captcha_success->success==true) {
+
+      if ($request->usage < "0" || $request->usage > "2"  ){
+
+         Alert::warning('Avertissement', 'Usage incorrect');
+  		   return redirect()->route('type_produit',['auto','index']);
+         
+  		 }
+
+
+
+
 
     $wilaya=Wilaya::where('code_wilaya',$request->Wilaya_selected)->first();
 
@@ -533,32 +578,7 @@ class TarificationAutoController extends Controller
 
 
 
-        ////Verificateur captcha
-        ///
-        $recap='g-recaptcha-response';
-        //dd($request->$recap);
 
-        $response=$request->$recap;
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array(
-            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-            'response' => $request->$recap
-        );
-        $query = http_build_query($data);
-        $options = array(
-            'http' => array (
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: ".strlen($query)."\r\n".
-                "User-Agent:MyAgent/1.0\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $verify = file_get_contents($url, false, $context);
-        $captcha_success=json_decode($verify);
-
-        if ($captcha_success->success==true) {
 
             if ($offre == "OTO_L") {
                 return view('produits.auto.formule_laki',compact('auto','devis'));
@@ -566,18 +586,7 @@ class TarificationAutoController extends Controller
                 return view('produits.auto.formule_part',compact('auto','devis'));
             }
 
-            return $this->sendFailedLoginResponse($request);
-        } else if ($captcha_success->success==false) {
-
-            echo '<script language="javascript" type="text/javascript">';
-            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-            echo 'window.location.replace("login");';
-            echo '</script>';
-
-        }
-
-
-
+}
 
     }
 
