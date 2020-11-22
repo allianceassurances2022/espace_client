@@ -73,7 +73,6 @@ class TarificationAutoController extends Controller
     $auto=$request->all();
 
 
-
     //Verificateur captcha
     $recap='g-recaptcha-response';
 
@@ -110,8 +109,65 @@ class TarificationAutoController extends Controller
 
          Alert::warning('Avertissement', 'Usage incorrect');
   		   return redirect()->route('type_produit',['auto','index']);
-         
+
   		 }
+
+       if ($request->usage < "0" || $request->usage > "2"  ){
+
+          Alert::warning('Avertissement', 'Usage incorrect');
+          return redirect()->route('type_produit',['auto','index']);
+
+        }
+
+        if ($request->dure < "1" || $request->dure > "2"  ){
+
+           Alert::warning('Avertissement', 'Durée incorrect');
+           return redirect()->route('type_produit',['auto','index']);
+
+         }
+
+         if ($request->formule < "1" || $request->formule > "2"  ){
+
+            Alert::warning('Avertissement', 'Formule incorrect');
+     		   return redirect()->route('type_produit',['auto','index']);
+
+     		 }
+
+
+          if (!isset($request->assistance) || ($request->assistance != "Sir_mhanni" || $request->assistance != "Tranquilité" || $request->assistance != "Tranquilité_plus" || $request->assistance != "Liberté" ) ){
+
+             Alert::warning('Avertissement', 'Assistance incorrect');
+      		   return redirect()->route('type_produit',['auto','index']);
+
+      		 }
+
+          if ($request->puissance < "0" || $request->puissance > "6"  ){
+
+             Alert::warning('Avertissement', 'Puissance incorrect');
+      		   return redirect()->route('type_produit',['auto','index']);
+
+      		 }
+
+          if ($request->valeur_auto < "800000"  ){
+
+             Alert::warning('Avertissement', 'Valuer incorrect');
+      		   return redirect()->route('type_produit',['auto','index']);
+
+      		 }
+
+          if ($request->type_assurance != "AUTO_P" || $request->type_assurance != "OTO_L"  ){
+
+             Alert::warning('Avertissement', 'Assurance incorrect');
+      		   return redirect()->route('type_produit',['auto','index']);
+
+      		 }
+
+          if ($request->Wilaya_selected < "1" || $request->Wilaya_selected > "48"  ){
+
+             Alert::warning('Avertissement', 'Wilaya incorrect');
+      		   return redirect()->route('type_produit',['auto','index']);
+
+      		 }
 
 
 
