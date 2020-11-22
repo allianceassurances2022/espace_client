@@ -52,8 +52,8 @@
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="247" column="32" selection-start-line="247" selection-start-column="32" selection-end-line="247" selection-end-column="32" />
+            <state relative-caret-position="527">
+              <caret line="264" column="46" selection-start-line="264" selection-start-column="46" selection-end-line="264" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -62,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="159" column="16" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="16" />
+              <caret line="222" column="16" selection-start-line="222" selection-start-column="12" selection-end-line="222" selection-end-column="16" />
               <folding>
                 <element signature="e#40#58#0#PHP" expanded="true" />
               </folding>
@@ -482,12 +482,12 @@
       <workItem from="1605080353254" duration="588000" />
       <workItem from="1605427251065" duration="12630000" />
       <workItem from="1606034780223" duration="10871000" />
-      <workItem from="1606060249555" duration="91000" />
+      <workItem from="1606060249555" duration="250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="474861000" />
+    <option name="totallyTimeSpent" value="475020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -827,7 +827,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="159" column="16" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="16" />
+          <caret line="222" column="16" selection-start-line="222" selection-start-column="12" selection-end-line="222" selection-end-column="16" />
           <folding>
             <element signature="e#40#58#0#PHP" expanded="true" />
           </folding>
@@ -836,8 +836,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="247" column="32" selection-start-line="247" selection-start-column="32" selection-end-line="247" selection-end-column="32" />
+        <state relative-caret-position="527">
+          <caret line="264" column="46" selection-start-line="264" selection-start-column="46" selection-end-line="264" selection-end-column="46" />
         </state>
       </provider>
     </entry>

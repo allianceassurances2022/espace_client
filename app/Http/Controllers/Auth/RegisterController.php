@@ -64,25 +64,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-      $var       = $data['date_naissance'];
-      $date      = str_replace('/', '-', $var);
-      $date_naissance      = date('Y-m-d', strtotime($date));
-
-
         return User::create([
-            'name'           => $data['name'],
-            'email'          => $data['email'],
-            'password'       => Hash::make($data['password']),
-            'prenom'         => $data['prenom'],
-            'wilaya'         => $data['wilaya'],
-            'commune'        => $data['commune'],
-            'adresse'        => $data['adresse'],
-            'date_naissance' => $date_naissance,
-            'sexe'           => $data['sexe'],
-            'profession'     => $data['profession'],
-            'telephone'      => $data['telephone'],
-            'avatar'         => '1602407770.png'
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 }
