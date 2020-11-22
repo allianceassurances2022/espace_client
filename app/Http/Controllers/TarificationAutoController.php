@@ -133,15 +133,18 @@ class TarificationAutoController extends Controller
 
      		 }
 
+         $tableau_assis = array(
+            'Sir_mhanni', 'Tranquilité', 'Tranquilité_plus', 'Liberté'
+         );
 
-          if (!isset($request->assistance) || ($request->assistance != "Sir_mhanni" || $request->assistance != "Tranquilité" || $request->assistance != "Tranquilité_plus" || $request->assistance != "Liberté" ) ){
+         if ( !in_array( $request->assistance , $tableau_assis )) {
 
-             Alert::warning('Avertissement', 'Assistance incorrect');
-      		   return redirect()->route('type_produit',['auto','index']);
+           Alert::warning('Avertissement', 'Assistance incorrect');
+           return redirect()->route('type_produit',['auto','index']);
 
-      		 }
+         }
 
-          if ($request->puissance < "0" || $request->puissance > "6"  ){
+         if ($request->puissance < "0" || $request->puissance > "6"  ){
 
              Alert::warning('Avertissement', 'Puissance incorrect');
       		   return redirect()->route('type_produit',['auto','index']);
@@ -155,7 +158,11 @@ class TarificationAutoController extends Controller
 
       		 }
 
-          if ($request->type_assurance != "AUTO_P" || $request->type_assurance != "OTO_L"  ){
+           $tableau_assurance = array(
+              'AUTO_P', 'OTO_L'
+           );
+
+          if (!in_array( $request->type_assurance , $tableau_assurance )){
 
              Alert::warning('Avertissement', 'Assurance incorrect');
       		   return redirect()->route('type_produit',['auto','index']);
