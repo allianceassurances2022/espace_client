@@ -140,9 +140,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
             <input type="hidden" name="montant" id="montant" placeholder="" value="{{$montant ?? ''}}">
 
             </div>
-
-
-
         </form>
 
     </div>
@@ -152,9 +149,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 
   <script>
 

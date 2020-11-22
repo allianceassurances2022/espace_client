@@ -23,6 +23,12 @@ class TarificationController extends Controller
 	public function type_formule_catnat(Request $request)
 	{
 
+        $rules = array(
+            'formule' => 'bail|required|string|max:190',
+        );
+
+        $this->validate($request, $rules);
+
 		$formul=$request->formule;
 		$request->session()->put('formul', $formul);
 		$type_const = "Bloc indépendant";
@@ -54,6 +60,10 @@ class TarificationController extends Controller
 
 	public function construction_catanat(Request $request)
 	{
+	    dd($request->type_const);
+	    $rules = array(
+	        'type_const'    =>  'bail|required|string|max:190',
+        );
 
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
@@ -757,7 +767,8 @@ $TD=80;
 			}
 
 			$rules = array(
-				'code_agence'  => 'bail|string|max:5',
+			    'code_agence'   => 'bail|string|max:5',
+                'etage'         => 'bail|'
 			);
 
 			$this->validate($request, $rules);
