@@ -505,8 +505,8 @@ $TD=80;
             echo '</script>';
         } else if ($captcha_success->success == true) {
 
-            if ($request->montant < "2000000.00" || $request->montant > "5000000.00") {
-                Alert::warning('Avertissement', 'Mantant est incorrect');
+            if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
+                Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
@@ -528,8 +528,8 @@ $TD=80;
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
-            if ($request->nbr_piece < "0" || $request->nbr_piece > "1000") {
-                Alert::warning('Avertissement', 'Nombre de pièces incorrect');
+            if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
+                Alert::warning('Nombre de piéces doit etre inferieur a 16');
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
