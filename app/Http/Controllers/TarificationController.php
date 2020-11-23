@@ -505,8 +505,8 @@ $TD=80;
             echo '</script>';
         } else if ($captcha_success->success == true) {
 
-            if ($request->montant < "2000000.00" || $request->montant > "5000000.00") {
-                Alert::warning('Avertissement', 'Mantant est incorrect');
+            if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
+                Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
@@ -528,8 +528,8 @@ $TD=80;
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
-            if ($request->nbr_piece < "0" || $request->nbr_piece > "1000") {
-                Alert::warning('Avertissement', 'Nombre de pièces incorrect');
+            if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
+                Alert::warning('Nombre de piéces doit etre inferieur a 16');
                 return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
@@ -804,20 +804,52 @@ $TD=80;
         $request->session()->put('Wilaya', $request->Wilaya );
         $request->session()->put('surface', $request->surface );
 
+		// dd($request->name);
 
-
-			if ($request->code_agence == ""){
-			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-          //  return back();
-                return redirect()->route('devis_mrh')->with('value_mrh');
+			if ($request->code_agence == "" && strlen($request->code_agence) > 5){
+			Alert::warning('Avertissement', 'Merci de verifier code d Agence');
+          	//  return back();
+				//return redirect()->route('devis_mrh')->with('value_mrh');
+				return redirect()->route('devis_mrh', ['mrh', 'index']);
 			}
 
-			$rules = array(
-			    'code_agence'   => 'bail|string|max:5',
-                'etage'         => 'bail|'
-			);
+			//$newDate=date('Y-m-d', strtotime('-18 year'));
+			if ($request->date_eff < date('Y-m-d')){
+			Alert::warning('Avertissement', 'Merci de verifier la date d effet');
+          	//  return back();
+			  return redirect()->route('devis_mrh', ['mrh', 'index']);
+			}
 
-			$this->validate($request, $rules);
+			if ($request->etage == "" || $request->etage < 0 || $request->etage > 100){
+			Alert::warning('Avertissement', 'Merci de verifier nombre d etage');
+          	//  return back();
+			  return redirect()->route('devis_mrh', ['mrh', 'index']);
+			}
+			
+			if ($request->adresse == "" || strlen($request->adresse) > 200){
+			Alert::warning('Avertissement', 'Merci de verifier l adresse');
+          	//  return back();
+			  return redirect()->route('devis_mrh', ['mrh', 'index']);
+			}
+
+			if ($request->surface == "" || $request->surface < 0 || $request->surface > 1000){
+			Alert::warning('Avertissement', 'Merci de verifier la surface');
+          	//  return back();
+			  return redirect()->route('devis_mrh', ['mrh', 'index']);
+			}
+			
+			// if ($request->code_agence == ""){
+			// Alert::warning('Avertissement', 'Merci de choisir une Agence');
+          	// //  return back();
+            //     return redirect()->route('devis_mrh')->with('value_mrh');
+			// }
+
+			// $rules = array(
+			//     'code_agence'   => 'bail|string|max:5',
+            //     'etage'         => 'bail|'
+			// );
+
+			// $this->validate($request, $rules);
 
 
 			$value_mrh  = session('data_mrh');
