@@ -147,6 +147,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
 @endsection
 
 @section('js')
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script type="text/javascript" src="{{asset('assets/js/jquery.mask.min.js')}}"></script>
 

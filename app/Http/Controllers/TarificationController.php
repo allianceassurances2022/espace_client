@@ -470,171 +470,15 @@ $TD=80;
 	//mrh
 	public function montant_mrh(Request $request)
 	{
-
-		$rules = array(
-			'habitation' => 'bail|required|string|max:190',
-			'terasse'    => 'bail|required|string',
-			'montant'    => 'bail|required|Numeric',
-			'juredique'  => 'bail|required|string',
-			'nbr_piece'  => 'bail|required|integer',
-		);
-
-		$this->validate($request, $rules);
-
-		if ($request->nbr_piece > 15){
-		 Alert::warning('Avertissement', 'Nombre de piéces doit etre inferieur a 16 ');
-		   return redirect()->route('type_produit',['mrh','index']);
-		 }
-
-		$habitation = $request->habitation;
-
-
-		$ct=0;
-		$taux=0.0;
-		$p_res_civile=0;
-
-		$terasse = $request->terasse;
-		($habitation);
-		$montant = $request->montant;
-
-		$juredique = $request->juredique;
-		$nbr_piece = $request->nbr_piece;
-
-		$sup_log = 35 + ($nbr_piece - 1) * 15;
-
-
-		if ($habitation =="individuelle") {
-			$ct = 60000;
-		}
-		else if ($habitation == "collective") {
-			$ct = 40000;
-		}
-
-		$val_batim = $sup_log * $ct;
-
-		if ($juredique == "proprietaire") {
-			$taux = 0.0005 ;
-			$p_res_civile = 100;
-		}
-		else if ($juredique == "locataire") {
-			$taux = 0.0003;
-			$p_res_civile = 200;
-		}
-
-		$p_inc = $val_batim * $taux;
-
-		$p_con_inc = $montant * 0.0009;
-
-		$p_in = $p_inc + $p_con_inc;
-		$p_vol = $montant * 0.001;
-		$p_degat = $montant * 0.0009;
-		$p_bris = 100 * $nbr_piece;
-
-		if ($terasse == "oui") {
-			$Majter = $p_degat * 1.5;
-			$prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
-		}
-		else {
-			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-		}
-
-			$ct=0;$taux=0.0;$p_res_civile=0;
-
-
-
-			$sup_log = 35 + ($nbr_piece - 1) * 15;
-
-
-			if ($habitation =="individuelle") {
-				$ct = 60000;
-			}
-			else if ($habitation == "collective") {
-				$ct = 40000;
-			}
-
-			$val_batim = $sup_log * $ct;
-
-			if ($juredique == "proprietaire") {
-				$taux = 0.0005 ;
-				$p_res_civile = 100;
-			}
-			else if ($juredique == "locataire") {
-				$taux = 0.0003;
-				$p_res_civile = 200;
-			}
-
-			$p_inc = $val_batim * $taux;
-
-			$p_con_inc = $montant * 0.0009;
-
-			$p_in = $p_inc + $p_con_inc;
-			$p_vol = $montant * 0.001;
-			$p_degat = $montant * 0.0009;
-			$p_bris = 100 * $nbr_piece;
-
-			if ($terasse == "oui") {
-				$p_degat = $p_degat * 1.5;
-			}
-
-
-			$red=$p_in*0.4;
-			$p_in=$p_in-$red;
-
-			$red=$p_vol*0.4;
-			$p_vol=$p_vol-$red;
-
-			$red=$p_degat*0.4;
-			$p_degat=$p_degat-$red;
-
-			$red=$p_bris*0.4;
-			$p_bris=$p_bris-$red;
-
-
-			$prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-
-			$td =120;
-			$Ctpolice =500;
-			$tva=($prim+$Ctpolice)*0.19;
-
-
-			$totale = $prim+$Ctpolice+$tva+$td;
-
-			/////////////////////// sauvegarde session
-
-			$datec=date('d/m/y');
-
-			$data_session = [
-				'terasse'          => $terasse,
-				'habitation'       => $habitation,
-				'montant'          => $montant,
-				'juredique'        => $juredique,
-				'nbr_piece'        => $nbr_piece,
-				'datec'            => $datec,
-				'prime_total'      => $totale,
-				'incendie'         => $p_in,
-				'degats_eaux'      => $p_degat,
-				'bris_glace'       => $p_bris,
-				'vol'              => $p_vol,
-				'rc_chef_famille'  => $p_res_civile,
-				'prime_nette'      => $prim,
-				'cout_police'      => $Ctpolice,
-				'timbre_dimension' => $td,
-				'tva'              => $tva
-
-
-			];
-
-			$request->session()->put('data_mrh', $data_session);
-
-
-			///////////////////////////////////////////////////////////
-
-            ////Verificateur captcha
+ //dd($request->terasse);
+        //die();name="nbr_piece"
+        ///////////////////////////////////////////////////////////
+        ////Verificateur captcha
         ///
-        $recap='g-recaptcha-response';
+        $recap = 'g-recaptcha-response';
         //dd($request->$recap);
 
-        $response=$request->$recap;
+        $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = array(
             'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
@@ -642,52 +486,215 @@ $TD=80;
         );
         $query = http_build_query($data);
         $options = array(
-            'http' => array (
+            'http' => array(
                 'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: ".strlen($query)."\r\n".
+                "Content-Length: " . strlen($query) . "\r\n" .
                 "User-Agent:MyAgent/1.0\r\n",
                 'method' => 'POST',
                 'content' => http_build_query($data)
             )
         );
-        $context  = stream_context_create($options);
+        $context = stream_context_create($options);
         $verify = file_get_contents($url, false, $context);
-        $captcha_success=json_decode($verify);
+        $captcha_success = json_decode($verify);
+        if ($captcha_success->success == false) {
 
-        if ($captcha_success->success==true) {
+            echo '<script language="javascript" type="text/javascript">';
+            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+            echo 'window.history.go(-1);';
+            echo '</script>';
+        } else if ($captcha_success->success == true) {
 
-            return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
+            if ($request->montant < "2000000.00" || $request->montant > "5000000.00") {
+                Alert::warning('Avertissement', 'Mantant est incorrect');
+                return redirect()->route('type_produit', ['mrh', 'index']);
+            }
+
+            $tab = array("oui", "non");
+            if (!in_array($request->terasse, $tab)) {
+                Alert::warning('Avertissement', 'terasse est incorrecte');
+                return redirect()->route('type_produit', ['mrh', 'index']);
+            }
+
+            $tab = array("proprietaire", "locataire");
+            if (!in_array($request->juredique, $tab)) {
+                Alert::warning('Avertissement', 'juredique est incorrecte');
+                return redirect()->route('type_produit', ['mrh', 'index']);
+            }
+
+            $tab = array("individuelle", "collective");
+            if (!in_array($request->habitation, $tab)) {
+                Alert::warning('Avertissement', 'habitation est incorrecte');
+                return redirect()->route('type_produit', ['mrh', 'index']);
+            }
+
+            if ($request->nbr_piece < "0" || $request->nbr_piece > "1000") {
+                Alert::warning('Avertissement', 'Nombre de pièces incorrect');
+                return redirect()->route('type_produit', ['mrh', 'index']);
+            }
 
 
+//        if ($request->nbr_piece > 15) {
+//            Alert::warning('Avertissement', 'Nombre de piéces doit etre inferieur a 16 ');
+//            return redirect()->route('type_produit', ['mrh', 'index']);
+//        }
+
+            $habitation = $request->habitation;
+
+
+            $ct = 0;
+            $taux = 0.0;
+            $p_res_civile = 0;
+
+            $terasse = $request->terasse;
+            ($habitation);
+            $montant = $request->montant;
+
+            $juredique = $request->juredique;
+            $nbr_piece = $request->nbr_piece;
+
+            $sup_log = 35 + ($nbr_piece - 1) * 15;
+
+
+            if ($habitation == "individuelle") {
+                $ct = 60000;
+            } else if ($habitation == "collective") {
+                $ct = 40000;
+            }
+
+            $val_batim = $sup_log * $ct;
+
+            if ($juredique == "proprietaire") {
+                $taux = 0.0005;
+                $p_res_civile = 100;
+            } else if ($juredique == "locataire") {
+                $taux = 0.0003;
+                $p_res_civile = 200;
+            }
+
+            $p_inc = $val_batim * $taux;
+
+            $p_con_inc = $montant * 0.0009;
+
+            $p_in = $p_inc + $p_con_inc;
+            $p_vol = $montant * 0.001;
+            $p_degat = $montant * 0.0009;
+            $p_bris = 100 * $nbr_piece;
+
+            if ($terasse == "oui") {
+                $Majter = $p_degat * 1.5;
+                $prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
+            } else {
+                $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+            }
+
+            $ct = 0;
+            $taux = 0.0;
+            $p_res_civile = 0;
+
+
+
+            $sup_log = 35 + ($nbr_piece - 1) * 15;
+
+
+            if ($habitation == "individuelle") {
+                $ct = 60000;
+            } else if ($habitation == "collective") {
+                $ct = 40000;
+            }
+
+            $val_batim = $sup_log * $ct;
+
+            if ($juredique == "proprietaire") {
+                $taux = 0.0005;
+                $p_res_civile = 100;
+            } else if ($juredique == "locataire") {
+                $taux = 0.0003;
+                $p_res_civile = 200;
+            }
+
+            $p_inc = $val_batim * $taux;
+
+            $p_con_inc = $montant * 0.0009;
+
+            $p_in = $p_inc + $p_con_inc;
+            $p_vol = $montant * 0.001;
+            $p_degat = $montant * 0.0009;
+            $p_bris = 100 * $nbr_piece;
+
+            if ($terasse == "oui") {
+                $p_degat = $p_degat * 1.5;
+            }
+
+
+            $red = $p_in * 0.4;
+            $p_in = $p_in - $red;
+
+            $red = $p_vol * 0.4;
+            $p_vol = $p_vol - $red;
+
+            $red = $p_degat * 0.4;
+            $p_degat = $p_degat - $red;
+
+            $red = $p_bris * 0.4;
+            $p_bris = $p_bris - $red;
+
+
+            $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
+
+            $td = 120;
+            $Ctpolice = 500;
+            $tva = ($prim + $Ctpolice) * 0.19;
+
+
+            $totale = $prim + $Ctpolice + $tva + $td;
+
+            /////////////////////// sauvegarde session
+
+            $datec = date('d/m/y');
+
+            $data_session = [
+                'terasse' => $terasse,
+                'habitation' => $habitation,
+                'montant' => $montant,
+                'juredique' => $juredique,
+                'nbr_piece' => $nbr_piece,
+                'datec' => $datec,
+                'prime_total' => $totale,
+                'incendie' => $p_in,
+                'degats_eaux' => $p_degat,
+                'bris_glace' => $p_bris,
+                'vol' => $p_vol,
+                'rc_chef_famille' => $p_res_civile,
+                'prime_nette' => $prim,
+                'cout_police' => $Ctpolice,
+                'timbre_dimension' => $td,
+                'tva' => $tva
+            ];
+
+            $request->session()->put('data_mrh', $data_session);
+
+            //session()->flash('success', 'text goes here');
+            //return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
+            // try{
+            //           return response()->json(['total' => $totale ]);
+            //       } catch (\Exception  $e) {
+            //            return response()->json(['Erreur' => $e->errorsMessage()->first() ], 403 );
+            //       }
+            // }
+            //
+            //
+            // else{
+            //
+            // 	return redirect()->route('montant_mrh')
+            // 	->withError("veuillez corriger les champs ci-dessous");
+            // }
+         return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
         }
 
-      //session()->flash('success', 'text goes here');
-			//return view('produits.mrh.index',compact('habitation','terasse','montant','juredique','nbr_piece','totale'));
-
-			// try{
-      //           return response()->json(['total' => $totale ]);
-      //       } catch (\Exception  $e) {
-      //            return response()->json(['Erreur' => $e->errorsMessage()->first() ], 403 );
-      //       }
-
-
-		// }
-		//
-		//
-		// else{
-		//
-		// 	return redirect()->route('montant_mrh')
-		// 	->withError("veuillez corriger les champs ci-dessous");
-		// }
-
-
-
-
-
-
-
-
 	}
+
+	
 	function fetch(Request $request)
 	{
 		$select = $request->post('select');
