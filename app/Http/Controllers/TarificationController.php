@@ -859,7 +859,7 @@ $TD=80;
 
 		// dd($request->name);
 
-			if ($request->code_agence == "" && strlen($request->code_agence) > 5){
+			if ($request->code_agence == "" || strlen($request->code_agence) > 5){
 			Alert::warning('Avertissement', 'Merci de verifier code d Agence');
           	//  return back();
 				//return redirect()->route('devis_mrh')->with('value_mrh');

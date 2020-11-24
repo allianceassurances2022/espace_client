@@ -110,6 +110,40 @@ class HomeController extends Controller
         return view('home',compact('user','mrh','auto','cat','total', 'devis', 'contrats', 'sum_contr', 'sum_devis'));
     }
 
+    public function index_table_devis(){
+
+      $user=auth::user();
+
+      $devis = devis::where('id_user', $user->id )
+                          ->where('type_devis', "1");
+
+      return datatables()->of($devis)
+         ->addColumn('edit', function ($data) {
+                    $tab = array(
+                       $data->type_assurance, $data->id
+                    );
+                    return $tab;
+          })->rawColumns(['edit'])
+            ->make(true);
+    }
+
+    public function index_table_contrat(){
+
+      $user=auth::user();
+
+      $devis = devis::where('id_user', $user->id )
+                          ->where('type_devis', "2");
+
+      return datatables()->of($devis)
+         ->addColumn('show', function ($data) {
+                    $tab = array(
+                       $data->type_assurance, $data->id
+                    );
+                    return $tab;
+          })->rawColumns(['show'])
+            ->make(true);
+    }
+
 
     public function renouvellement_auto(){
         return view('renouvellement.auto');
