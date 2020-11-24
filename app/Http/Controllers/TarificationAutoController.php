@@ -671,7 +671,7 @@ class TarificationAutoController extends Controller
 
     public function validation_devis_auto (Request $request) {
 
-        //dd( $request->date_eff);
+       // dd( $request->date_eff);
         $date = $request->date_eff;
 
         $request->session()->put('date_eff', $request->date_eff);
@@ -696,21 +696,67 @@ class TarificationAutoController extends Controller
       }else {
           $taxe = 1;
           $date_effet_taxe=$request->effet_taxe;
-        }
-
-
-      if ($request->code_agence == ""){
-			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-      return back();
+		}
+		
+		//VERIFICATION VALUES
+		//$newDate=date('Y-m-d', strtotime('-18 year'));
+		if ($request->date_eff < date('Y-m-d')){
+			Alert::warning('Avertissement', 'Merci de verifier la date d effet');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
 			}
+
+		$pattern="/[0-9]{5} - [0-9]{3} - [0-9]{2}/";
+		if ($request->matricule == "" || !preg_match($pattern, $request->matricule)){
+			Alert::warning('Avertissement', 'Merci de verifier le matricule ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+			
+		if ($request->num_chassis == "" || strlen($request->num_chassis)>17 || strlen($request->num_chassis)<1){
+			Alert::warning('Avertissement', 'Merci de verifier le N° chassis ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+
+		if ($request->type == "" || strlen($request->type)>20 || strlen($request->type)<0){
+			Alert::warning('Avertissement', 'Merci de verifier le type ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+		
+		if ($request->couleur == "" || strlen($request->couleur)>20 || strlen($request->couleur)<0){
+			Alert::warning('Avertissement', 'Merci de verifier la couleur ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+
+		if ($request->permis_num == "" || strlen($request->permis_num)>16 || strlen($request->permis_num)<1){
+			Alert::warning('Avertissement', 'Merci de verifier la couleur ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+			
+		if ($request->code_agence == "" || strlen($request->code_agence)>5 || strlen($request->code_agence)<0){
+			Alert::warning('Avertissement', 'Merci de verifier le code agence ');
+          	//  return back();
+			  return redirect()->route('type_produit',['auto','index']);
+			}
+			
+
+
+    //   if ($request->code_agence == ""){
+	// 		Alert::warning('Avertissement', 'Merci de choisir une Agence');
+    //   return back();
+	// 		}
 
       $value_auto  = session('data_auto');
 
-			$rules = array(
-				'code_agence'  => 'bail|string|max:5',
-			);
+			// $rules = array(
+			// 	'code_agence'  => 'bail|string|max:5',
+			// );
 
-			$this->validate($request, $rules);
+			// $this->validate($request, $rules);
 
             $date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
