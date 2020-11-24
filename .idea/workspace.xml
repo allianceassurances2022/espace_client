@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/epaiement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/epaiement.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +39,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="43" column="112" selection-start-line="43" selection-start-column="91" selection-end-line="43" selection-end-column="112" />
+            <state relative-caret-position="209">
+              <caret line="88" column="59" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -43,8 +48,26 @@
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="518" column="7" selection-start-line="518" selection-start-column="7" selection-end-line="518" selection-end-column="7" />
+            <state relative-caret-position="304">
+              <caret line="446" column="36" selection-start-line="446" selection-start-column="36" selection-end-line="446" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="259" column="17" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="devis_catnat.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="262" column="111" selection-start-line="262" selection-start-column="111" selection-end-line="262" selection-end-column="111" />
             </state>
           </provider>
         </entry>
@@ -52,8 +75,8 @@
       <file leaf-file-name="TarificationAutoController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="36" />
+            <state relative-caret-position="29">
+              <caret line="102" column="36" lean-forward="true" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
               <folding>
                 <element signature="e#40#58#0#PHP" expanded="true" />
               </folding>
@@ -64,8 +87,8 @@
       <file leaf-file-name="construction.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="127" selection-start-line="33" selection-start-column="127" selection-end-line="33" selection-end-column="134" />
+            <state relative-caret-position="1569">
+              <caret line="104" column="36" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
@@ -96,16 +119,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>choix</find>
-      <find>cal</find>
-      <find>wil</find>
       <find>calcu</find>
       <find>paiement_auto</find>
       <find>login</find>
       <find>prece</find>
       <find>modification_devis_auto</find>
       <find>mo</find>
-      <find>devis</find>
       <find>register</find>
       <find>montant_mrh</find>
       <find>catnat</find>
@@ -124,8 +143,12 @@
       <find>construction_catanat</find>
       <find>ann</find>
       <find>type_formule_catnat</find>
-      <find>montant_catnat</find>
       <find>reg_para</find>
+      <find>devis_ca</find>
+      <find>devis_catnat</find>
+      <find>devis</find>
+      <find>act_reg</find>
+      <find>montant_catnat</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -151,7 +174,6 @@
         <option value="$PROJECT_DIR$/resources/views/delete_devis.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/profil_style.css" />
         <option value="$PROJECT_DIR$/resources/views/users/profil.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellment/renouvellement_auto.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/core/home/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellment/mrh.blade.php" />
@@ -169,7 +191,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php" />
@@ -188,6 +209,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
       </list>
     </option>
@@ -325,14 +348,14 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
-      <path value="$PROJECT_DIR$/vendor/google/recaptcha" />
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1384" />
-    <option name="y" value="-130" />
+    <option name="x" value="-2149" />
+    <option name="y" value="-69" />
     <option name="width" value="1367" />
     <option name="height" value="727" />
   </component>
@@ -479,18 +502,18 @@
       <workItem from="1605427251065" duration="12630000" />
       <workItem from="1606034780223" duration="10871000" />
       <workItem from="1606060249555" duration="303000" />
-      <workItem from="1606203955363" duration="10624000" />
+      <workItem from="1606203955363" duration="15281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="485697000" />
+    <option name="totallyTimeSpent" value="490354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" visible="true" weight="0.33691275" />
+      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" visible="true" weight="0.23154363" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32843137" />
@@ -587,13 +610,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="262" column="89" selection-start-line="262" selection-start-column="81" selection-end-line="262" selection-end-column="89" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
@@ -786,34 +802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="237" column="24" selection-start-line="237" selection-start-column="24" selection-end-line="237" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="25" column="88" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="36" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="43" column="112" selection-start-line="43" selection-start-column="91" selection-end-line="43" selection-end-column="112" />
         </state>
       </provider>
     </entry>
@@ -824,10 +816,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="88" column="59" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="102" column="36" lean-forward="true" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+          <folding>
+            <element signature="e#40#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="127" selection-start-line="33" selection-start-column="127" selection-end-line="33" selection-end-column="134" />
+        <state relative-caret-position="1569">
+          <caret line="104" column="36" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
@@ -835,10 +844,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="262" column="111" selection-start-line="262" selection-start-column="111" selection-end-line="262" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="259" column="17" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="518" column="7" selection-start-line="518" selection-start-column="7" selection-end-line="518" selection-end-column="7" />
+        <state relative-caret-position="304">
+          <caret line="446" column="36" selection-start-line="446" selection-start-column="36" selection-end-line="446" selection-end-column="36" />
         </state>
       </provider>
     </entry>

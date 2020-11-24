@@ -208,304 +208,272 @@ class TarificationController extends Controller
 	}
 
 	public function montant_catnat(Request $request)
-	{
+    {
 
-	//    dd($request);
-/*
-        //////// Verificateur captcha ////////
-        $recap='g-recaptcha-response';
+        //    dd($request);
+        /*
+                //////// Verificateur captcha ////////
+                $recap='g-recaptcha-response';
 
-        $response=$request->$recap;
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array(
-            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-            'response' => $request->$recap
-        );
-        $query = http_build_query($data);
-        $options = array(
-            'http' => array (
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: ".strlen($query)."\r\n".
-                "User-Agent:MyAgent/1.0\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $verify = file_get_contents($url, false, $context);
-        $captcha_success= json_decode($verify);
+                $response=$request->$recap;
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $data = array(
+                    'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+                    'response' => $request->$recap
+                );
+                $query = http_build_query($data);
+                $options = array(
+                    'http' => array (
+                        'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                        "Content-Length: ".strlen($query)."\r\n".
+                        "User-Agent:MyAgent/1.0\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($data)
+                    )
+                );
+                $context  = stream_context_create($options);
+                $verify = file_get_contents($url, false, $context);
+                $captcha_success= json_decode($verify);
 
-        if ($captcha_success->success==false) {
+                if ($captcha_success->success==false) {
 
-            echo '<script language="javascript" type="text/javascript">';
-            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-            echo 'window.history.go(-1);';
-            echo '</script>';
+                    echo '<script language="javascript" type="text/javascript">';
+                    echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+                    echo 'window.history.go(-1);';
+                    echo '</script>';
 
-        } else if ($captcha_success->success==true) {
+                } else if ($captcha_success->success==true) {
 
 
-            $tableau = array(
-                'habitation', 'commerce', 'industrielle'
-            );
+                    $tableau = array(
+                        'habitation', 'commerce', 'industrielle'
+                    );
 
-        //    dd($request->type_formule);
+                //    dd($request->type_formule);
 
-            if ( in_array( $request->type_formule , $tableau )) {
+                    if ( in_array( $request->type_formule , $tableau )) {
 
-            //    Alert::warning('Avertissement', 'Usage incorrect');
-            //    return redirect()->route('type_formule_catnat', ['auto', 'index']);
-dd('true');
-            }else{
-                dd('false');
-            }
-        }
+                    //    Alert::warning('Avertissement', 'Usage incorrect');
+                    //    return redirect()->route('type_formule_catnat', ['auto', 'index']);
+        dd('true');
+                    }else{
+                        dd('false');
+                    }
+                }
 
-*/
+        */
+
+
+        $maj = 0.0;
+
+        $type_formule = $request->type_formule;
+        $type_const = $request->type_const;
+        $valeur_c = $request->Contenant;
+        $valeur_e = $request->equipement;
+        $valeur_m = $request->marchandise;
+        $contenu = $request->contenu;
+        $act_reg = $request->activite;
+        $reg_com = $request->registre;
+        $loca = $request->local;
+        $Commune_selected = $request->Commune;
+        $wilaya_selected = $request->Wilaya;
+        $anne_cont = $request->anne_cont;
+        $surface = $request->Superficie;
+        $permis = $request->permis;
+        $val_assur = $request->val_assur;
+        $reg_para = $request->seisme;
+
         $tableau = array(
             'Habitation', 'Commerce', 'Industrielle'
         );
 
-        $type_formule = $request->type_formule;
-        $surface = $request->surface;
-        $wilaya           = wilaya::all();
-        $wilaya_selected  = '';
-        $Commune_selected = '';
-        $prime_total      = '';
-        $reg_para         = 'oui';
+        $zone = zcatnat::select('zone')
+            ->where('code_commune', $Commune_selected)
+            ->first();
+        $zone = $zone->zone;
 
-         //  dd($request);
+        $wilaya = wilaya::all();
+        $commune = commune::where('code_wilaya', $wilaya_selected)->get();
 
-        if ( in_array( $request->type_formule , $tableau )) {
-
-            switch ($request->type_formule){
-                case 'Habitation';
-               // dd('test vars');
-
-                   // dd($request->type_const);
-
-                    if ($request->surface < 0 || $request->surface === 0) {
-                        Alert::warning('Avertissement', 'Veuillez entrer une surface');
-                        // return redirect()->route('construction_catanat');
-                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
-
-                    }
-
-                    if ($request->anne_cont > date("Y") ) {
-                        Alert::warning('Avertissement', 'La date deconstruction dépasse l\'année en cours');
-                       // return redirect()->route('construction_catanat');
-                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
-
-                    }
-
-                break;
-
-            }
-
-
-        }else {
-            Alert::warning('Avertissement', 'Formule incorrects');
-            return redirect()->route('index_catnat');
-        }
-
-        $maj=0.0;
-
-		$type_formule     = $request->type_formule;
-		$type_const       = $request->type_const;
-		$valeur_c         = $request->Contenant;
-		$valeur_e         = $request->equipement;
-		$valeur_m         = $request->marchandise;
-		$contenu          = $request->contenu;
-		$act_reg          = $request->activite;
-		$reg_com          = $request->registre;
-		$loca             = $request->local;
-		$Commune_selected = $request->Commune;
-		$wilaya_selected  = $request->Wilaya;
-		$anne_cont        = $request->anne_cont;
-		$surface          = $request->Superficie;
-		$permis           = $request->permis;
-		$val_assur        = $request->val_assur;
-		$reg_para         = $request->seisme;
-
-		$zone = zcatnat::select('zone')
-		->where('code_commune', $Commune_selected)
-		->first();
-		$zone = $zone->zone;
-
-		$wilaya = wilaya::all();
-		$commune = commune::where('code_wilaya',$wilaya_selected)->get();
-
-		$val_assure=0;
-    $maj=0;
-    $taux=0;
-
-
-
-
+        $val_assure = 0;
+        $maj = 0;
+        $taux = 0;
 
 
 /////////////////////Habitation-----------------------------------------
 
-if ($type_formule=="Habitation"){
-$valeur_c=$val_assur;
-$valeur_e=0;
-$valeur_m=0;
-if ($type_const=="Habitation individuelle"){
-	if ($zone=="0"){
-	$val_assure=$surface*28000;
-	$taux=0.00055;
-	}
-		else if ($zone=="1"){
-			$val_assure=$surface*31000;
-			if ($reg_para=="oui")
-				$taux=0.00060;
-			else $taux=0.00065;
-		}
-		else if ($zone=="2a"){
-			$val_assure=$surface*35000;
-			if ($reg_para=="oui")
-				$taux=0.00065;
-			else $taux=0.00080;
-		}
-		else if ($zone=="2b"){
-			$val_assure=$surface*39000;
-			if ($reg_para=="oui")
-				$taux=0.00070;
-			else $taux=0.001;
-		}
-		else if ($zone=="3"){
-			$val_assure=$surface*47000;
-			if ($reg_para=="oui")
-				$taux=0.00075;
-			else $taux=0.00125;
-		}
-}
-else{
-	if ($zone=="0"){
-	$val_assure=$surface*25000;
-	$taux=0.00055;
-	}
-		else if ($zone=="1"){
-			$val_assure=$surface*28000;
-			if ($reg_para=="oui")
-				$taux=0.00060;
-			else $taux=0.00065;
-		}
-		else if ($zone=="2a"){
-			$val_assure=$surface*31000;
-			if ($reg_para=="oui")
-				$taux=0.00065;
-			else $taux=0.00080;
-		}
-		else if ($zone=="2b"){
-			$val_assure=$surface*35000;
-			if ($reg_para=="oui")
-				$taux=0.00070;
-			else $taux=0.001;
-		}
-		else if ($zone=="3"){
-			$val_assure=$surface*38000;
-			if ($reg_para=="oui")
-				$taux=0.00075;
-			else $taux=0.00125;
-		}
-}
-	if ($valeur_c>$val_assure)
-		 $val_assure=$valeur_c;
-}
+        if ($type_formule == "Habitation") {
+            $valeur_c = $val_assur;
+            $valeur_e = 0;
+            $valeur_m = 0;
+            if ($type_const == "Habitation individuelle") {
+                if ($zone == "0") {
+                    $val_assure = $surface * 28000;
+                    $taux = 0.00055;
+                } else if ($zone == "1") {
+                    $val_assure = $surface * 31000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00060;
+                    else $taux = 0.00065;
+                } else if ($zone == "2a") {
+                    $val_assure = $surface * 35000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00065;
+                    else $taux = 0.00080;
+                } else if ($zone == "2b") {
+                    $val_assure = $surface * 39000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00070;
+                    else $taux = 0.001;
+                } else if ($zone == "3") {
+                    $val_assure = $surface * 47000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00075;
+                    else $taux = 0.00125;
+                }
+            } else {
+                if ($zone == "0") {
+                    $val_assure = $surface * 25000;
+                    $taux = 0.00055;
+                } else if ($zone == "1") {
+                    $val_assure = $surface * 28000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00060;
+                    else $taux = 0.00065;
+                } else if ($zone == "2a") {
+                    $val_assure = $surface * 31000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00065;
+                    else $taux = 0.00080;
+                } else if ($zone == "2b") {
+                    $val_assure = $surface * 35000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00070;
+                    else $taux = 0.001;
+                } else if ($zone == "3") {
+                    $val_assure = $surface * 38000;
+                    if ($reg_para == "oui")
+                        $taux = 0.00075;
+                    else $taux = 0.00125;
+                }
+            }
+            if ($valeur_c > $val_assure)
+                $val_assure = $valeur_c;
+        } ///////////////////////industrie et commercial--------------------------------------
+        else {
 
-///////////////////////industrie et commercial--------------------------------------
-else {
-
-$val_assure=$valeur_c+$valeur_e+$valeur_m;
+            $val_assure = $valeur_c + $valeur_e + $valeur_m;
 
 
-			if ($zone=="0"){
-	$taux=0.00037;
-	}
-		else if ($zone=="1"){
-			if ($reg_para=="oui")
-				$taux=0.00040;
-			else $taux=0.00043;
-		}
-		else if ($zone=="2a"){
-			if ($reg_para=="oui")
-				$taux=0.00043;
-			else $taux=0.00053;
-		}
-		else if ($zone=="2b"){
-			if ($reg_para=="oui")
-				$taux=0.00047;
-			else $taux=0.00067;
-		}
-		else if ($zone=="3"){
-			if ($reg_para=="oui")
-				$taux=0.00050;
-			else $taux=0.00083;
-		}
+            if ($zone == "0") {
+                $taux = 0.00037;
+            } else if ($zone == "1") {
+                if ($reg_para == "oui")
+                    $taux = 0.00040;
+                else $taux = 0.00043;
+            } else if ($zone == "2a") {
+                if ($reg_para == "oui")
+                    $taux = 0.00043;
+                else $taux = 0.00053;
+            } else if ($zone == "2b") {
+                if ($reg_para == "oui")
+                    $taux = 0.00047;
+                else $taux = 0.00067;
+            } else if ($zone == "3") {
+                if ($reg_para == "oui")
+                    $taux = 0.00050;
+                else $taux = 0.00083;
+            }
 
 
-			if ($act_reg=="non"){
-			$maj=$val_assure*$taux*0.2;
-			}
+            if ($act_reg == "non") {
+                $maj = $val_assure * $taux * 0.2;
+            }
 
-}
+        }
 ///////////////////////////////majoration------------------------------------------------------------------
-if ($permis=="non" ){
-			$maj=$val_assure*$taux*0.2;
-			}
+        if ($permis == "non") {
+            $maj = $val_assure * $taux * 0.2;
+        }
 
 
-	$val=$val_assure*$taux;
+        $val = $val_assure * $taux;
 
-	if ($type_formule=="Habitation"){
+        if ($type_formule == "Habitation") {
 
-	if ($val<1500)
-		$val=1500;
-	else $val=$val_assure*$taux;
-}
-else
-{
-if ($val<2500)
-		$val=2500;
-	else $val=$val_assure*$taux;
-}
-$CP=1000;
-$TD=80;
+            if ($val < 1500)
+                $val = 1500;
+            else $val = $val_assure * $taux;
+        } else {
+            if ($val < 2500)
+                $val = 2500;
+            else $val = $val_assure * $taux;
+        }
+        $CP = 1000;
+        $TD = 80;
 
-        $prime_total_ = $val+$CP+$TD+$maj;
-        $prime_total  = number_format($prime_total_, 2,',', ' ');
+        $prime_total_ = $val + $CP + $TD + $maj;
+        $prime_total = number_format($prime_total_, 2, ',', ' ');
 
 
-		//dd($prime_total);
+        //dd($prime_total);
 
-		$datec=date('d/m/y');
-
-
-		$data_session     = [
-		'type_formule'     => $request->type_formule,
-		'type_const'       => $request->type_const,
-		'Contenant'        => $request->Contenant,
-		'equipement'       => $request->equipement,
-	    'marchandise'      => $request->marchandise,
-	    'contenu'          => $request->contenu,
-	    'reg_com'          => $request->registre,
-	    'loca'             => $request->local,
-		'commune_selected' => $request->Commune,
-		'wilaya_selected'  => $request->Wilaya,
-		'anne_cont'        => $request->anne_cont,
-		'surface'          => $request->Superficie,
-		'permis'           => $request->permis,
-		'val_assur'        => $request->val_assur,
-		'reg_para'         => $request->seisme,
-		'datec'            => $datec,
-		'prime_total'      => $prime_total_,
-        'cout_police'      => $CP,
-        'timbre_dimension' => $TD,
-        'prime_nette'      => $val,
-		];
+        $datec = date('d/m/y');
 
 
+        if ($type_formule == 'Habitation') {
+
+            $data_session = [
+                'type_formule' => $request->type_formule,
+                'type_const' => $request->type_const,
+                'Contenant' => $request->Contenant,
+                'equipement' => $request->equipement,
+                'marchandise' => $request->marchandise,
+                'contenu' => $request->contenu,
+                'reg_com' => $request->registre,
+                'loca' => $request->local,
+                'commune_selected' => $request->Commune,
+                'wilaya_selected' => $request->Wilaya,
+                'anne_cont' => $request->anne_cont,
+                'surface' => $request->Superficie,
+                'permis' => $request->permis,
+                'val_assur' => $request->val_assur,
+                'reg_para' => $request->seisme,
+                'datec' => $datec,
+                'prime_total' => $prime_total_,
+                'cout_police' => $CP,
+                'timbre_dimension' => $TD,
+                'prime_nette' => $val,
+                'act_reg'     => '',
+            ];
+        } else {
+
+
+        $data_session = [
+            'type_formule' => $request->type_formule,
+            'type_const' => $request->type_const,
+            'Contenant' => $request->Contenant,
+            'equipement' => $request->equipement,
+            'marchandise' => $request->marchandise,
+            'contenu' => $request->contenu,
+            'reg_com' => $request->registre,
+            'loca' => $request->local,
+            'commune_selected' => $request->Commune,
+            'wilaya_selected' => $request->Wilaya,
+            'anne_cont' => $request->anne_cont,
+            'surface' => $request->Superficie,
+            'permis' => $request->permis,
+            'val_assur' => $request->val_assur,
+            'reg_para' => $request->seisme,
+            'datec' => $datec,
+            'prime_total' => $prime_total_,
+            'cout_police' => $CP,
+            'timbre_dimension' => $TD,
+            'prime_nette' => $val,
+
+        ];
+
+    }
 
 		$request->session()->put('data_catnat', $data_session);
 
@@ -516,6 +484,41 @@ $TD=80;
         $registre    = $reg_com;
         $local       = $loca;
 
+        if ( in_array( $request->type_formule , $tableau )) {
+
+            switch ($request->type_formule){
+                case 'Habitation';
+                    // dd('test vars');
+
+                    // dd($request->type_const);
+
+                    if ($request->surface < 0 || $request->surface === 0) {
+                        Alert::warning('Avertissement', 'Veuillez entrer une surface');
+                        // return redirect()->route('construction_catanat');
+                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
+
+                    }
+
+                    if ($request->anne_cont > date("Y") ) {
+                        Alert::warning('Avertissement', 'La date deconstruction dépasse l\'année en cours');
+                        // return redirect()->route('construction_catanat');
+                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
+
+                    }
+
+                    break;
+
+            }
+
+
+        }else {
+            Alert::warning('Avertissement', 'Formule incorrects');
+            return redirect()->route('index_catnat');
+        }
+
+
+        return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+            'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 
 
 	}
@@ -859,7 +862,7 @@ $TD=80;
 
 		// dd($request->name);
 
-			if ($request->code_agence == "" || strlen($request->code_agence) > 5){
+			if ($request->code_agence == "" && strlen($request->code_agence) > 5){
 			Alert::warning('Avertissement', 'Merci de verifier code d Agence');
           	//  return back();
 				//return redirect()->route('devis_mrh')->with('value_mrh');
@@ -1109,19 +1112,19 @@ $TD=80;
 
 			}else{
 				$res=Rsq_Immobilier::create([
-					'formule'            => $request->formule,
+				'formule'            => $request->formule,
     			'type_habitation'    => $request->type_const,
     			'valeur_contenant'   => $request->contenant,
     			'valeur_equipement'  => $request->equipement,
     			'valeur_marchandise' => $request->marchandise,
-					'valeur_contenu'     => $request->contenu,
+				'valeur_contenu'     => $request->contenu,
     			'insc_registe_com'   => $request->act_reg,
     			'registe_com'        => $request->reg_com,
     			'local_assure'       => $request->loca,
-					'superficie'         => $request->surface,
+				'superficie'         => $request->surface,
     			'annee_construction' => $request->anne_cont,
-					'code_wilaya'        => $request->wilaya,
-					'code_commune'       => $request->commune,
+				'code_wilaya'        => $request->wilaya,
+				'code_commune'       => $request->commune,
     			'reg_para'           => $request->reg_para,
     			'appartient'         => $request->appartient,
     			'code_devis'         => $dev->id
