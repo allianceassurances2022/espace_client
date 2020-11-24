@@ -20636,5 +20636,9 @@ fieldset[disabled] .full-calendar .fc-button.active {
 
   width: 20%;
 }
+.dataTables_wrapper .row{
+	margin-left :0px;
+	margin-right :0px;
+}
 
 /**************************************page de souscription**********************************************/

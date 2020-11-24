@@ -70,6 +70,8 @@ Route::get('paiement_send_auto/{id}', 'PaiementController@save_auto')->name('sav
 
 //////////////////////////////// Accueil
 Route::get('/' , 'HomeController@index')->name('home');
+Route::post('/devis','HomeController@index_table_devis')->name('devis.table');
+Route::post('/contrat','HomeController@index_table_contrat')->name('contrat.table');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/delete_devis/{id}', 'TarificationController@delete_devis')->name('delete_devis');

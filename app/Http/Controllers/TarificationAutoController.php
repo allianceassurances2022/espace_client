@@ -25,21 +25,10 @@ class TarificationAutoController extends Controller
 
     	$auto=$request->all();
 
-      //  $request->session()->put('Wilaya_selected', $request->Wilaya_selected);
-
-
-      // $rules = array(
-  		// 	'valeur_auto' => 'bail|required|string|min:800000',
-  		// );
-      //
-  		// $this->validate($request, $rules);
-
   		if ($request->valeur_auto < 800000){
   		 Alert::warning('Avertissement', 'la valeur du véhicule ne doit pas etre inferieure a 800 000 DA ');
   		   return redirect()->route('type_produit',['auto','index']);
   		 }
-
-
 
       $data_session = $auto;
 
@@ -72,6 +61,7 @@ class TarificationAutoController extends Controller
 
     $auto=$request->all();
 
+   //dd($request);
 
     //Verificateur captcha
     $recap='g-recaptcha-response';
@@ -105,19 +95,45 @@ class TarificationAutoController extends Controller
 
     } else if ($captcha_success->success==true) {
 
+      $date_conduc=date('Y-m-d',strtotime('-18 year'));
+
+      if ($request->date_conducteur > $date_conduc){
+
+         Alert::warning('Avertissement', 'Date naissance incorrect');
+  		   return redirect()->route('type_produit',['auto','index']);
+
+  		 }
+
+       $date_permis=date('Y-m-d');
+
+       if ($request->date_permis > $date_permis){
+
+          Alert::warning('Avertissement', 'Date permis incorrect');
+   		   return redirect()->route('type_produit',['auto','index']);
+
+   		 }
+
+       if( $request->formule == "1") {
+
+       $annee_now=date('Y');
+
+       $annee_dix=date('Y',strtotime('-10 year'));
+
+       if ($request->annee_auto > $annee_now || $request->annee_auto < $annee_dix ){
+
+          Alert::warning('Avertissement', 'Annee vehicule incorrect');
+   		   return redirect()->route('type_produit',['auto','index']);
+
+   		 }
+
+       }
+
       if ($request->usage < "0" || $request->usage > "2"  ){
 
          Alert::warning('Avertissement', 'Usage incorrect');
   		   return redirect()->route('type_produit',['auto','index']);
 
   		 }
-
-       if ($request->usage < "0" || $request->usage > "2"  ){
-
-          Alert::warning('Avertissement', 'Usage incorrect');
-          return redirect()->route('type_produit',['auto','index']);
-
-        }
 
         if ($request->dure < "1" || $request->dure > "2"  ){
 
