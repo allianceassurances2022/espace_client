@@ -691,7 +691,7 @@ class TarificationAutoController extends Controller
 			}
 
 		$pattern="/[0-9]{5} - [0-9]{3} - [0-9]{2}/";
-		if ($request->matricule == "" || preg_match($pattern, $request->matricule)){
+		if ($request->matricule == "" || !preg_match($pattern, $request->matricule)){
 			Alert::warning('Avertissement', 'Merci de verifier le matricule ');
           	//  return back();
 			  return redirect()->route('type_produit',['auto','index']);
