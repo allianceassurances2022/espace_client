@@ -45,7 +45,10 @@ class TarificationController extends Controller
 
 		}elseif($formul=='Industrielle'){
 			return view('produits.catnat.formule_industrielle',compact('formul','type_const','activite','registre','local'));
-		}
+		}else{
+            Alert::warning('Avertissement', 'Formule incorrecte');
+            return redirect()->route('index_catnat');
+        }
 
 	}
 	public function precidanttypeformul(Request $request)
@@ -69,23 +72,47 @@ class TarificationController extends Controller
 		$commune          = '';
 		$Commune_selected = '';
 		$reg_para         = 'oui';
+		$formul           = $request->type_formule;
+
+        $val_assur=$request->val_assur;
+        $type_const=$request->type_const;
+        $permis=$request->permis;
+
+		$list_contruction = array(
+		    'Habitation individuelle',
+            'Habitation collective',
+            'Immeuble');
 
 		if ($request->type_formule == 'Habitation') {
 
 			$type_formule=$request->type_formule;
 			$request->session()->put('type_formule', $type_formule);
 
-			$val_assur=$request->val_assur;
-			$request->session()->put('val_assur', $val_assur);
+			if ($val_assur > 10000){
 
-			$permis=$request->permis;
-			$request->session()->put('permis', $permis);
+                $request->session()->put('val_assur', $val_assur);
 
-			$type_const=$request->type_const;
-			$request->session()->put('type_const', $type_const);
+              //  $permis=$request->permis;
+                $request->session()->put('permis', $permis);
 
-			return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
+                if(in_array($request->type_const, $list_contruction)){
+                 //   $type_const=$request->type_const;
+                    $request->session()->put('type_const', $type_const);
 
+                    return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total',
+                        'wilaya_selected','Commune_selected','reg_para'));
+
+                }else{
+                  //  $type_const=$request->type_const;
+
+                    Alert::warning('Avertissement', 'Type de formule incorrect !!');
+                    return view('produits.catnat.formule_habitation',compact('formul','type_const','permis', 'val_assur'));
+                }
+
+            }else{
+                Alert::warning('Avertissement', 'La valeur doit être supérieur à 10 000 DA !!');
+                return view('produits.catnat.formule_habitation',compact('formul','type_const','permis'));
+            }
 
 		}else{
 
@@ -239,13 +266,38 @@ dd('true');
             'Habitation', 'Commerce', 'Industrielle'
         );
 
-           // dd($request->type_formule);
+        $type_formule = $request->type_formule;
+        $surface = $request->surface;
+        $wilaya           = wilaya::all();
+        $wilaya_selected  = '';
+        $Commune_selected = '';
+        $prime_total      = '';
+        $reg_para         = 'oui';
+
+         //  dd($request);
 
         if ( in_array( $request->type_formule , $tableau )) {
 
             switch ($request->type_formule){
                 case 'Habitation';
-                dd('test vars');
+               // dd('test vars');
+
+                   // dd($request->type_const);
+
+                    if ($request->surface < 0 || $request->surface === 0) {
+                        Alert::warning('Avertissement', 'Veuillez entrer une surface');
+                        // return redirect()->route('construction_catanat');
+                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
+
+                    }
+
+                    if ($request->anne_cont > date("Y") ) {
+                        Alert::warning('Avertissement', 'La date deconstruction dépasse l\'année en cours');
+                       // return redirect()->route('construction_catanat');
+                        return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
+
+                    }
+
                 break;
 
             }
@@ -255,6 +307,7 @@ dd('true');
             Alert::warning('Avertissement', 'Formule incorrects');
             return redirect()->route('index_catnat');
         }
+
         $maj=0.0;
 
 		$type_formule     = $request->type_formule;
