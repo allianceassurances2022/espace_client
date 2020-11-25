@@ -249,7 +249,6 @@ class ProduitController extends Controller
     public function devis_catnat()
     {
 
-
          $value_catnat      = session('data_catnat');
          $date_souscription = date('Y-m-d');
          $type_formule      = $value_catnat['type_formule'];
