@@ -18,46 +18,16 @@ Home
     @endif
 
     <div class="row">
-  <div class="col-md-5">
-    <div class="user-display">
-      <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div>
-      <div class="user-display-bottom">
-        <div class="user-display-avatar"><img src="{{ asset('user_assets/assets/uploads/avatars/'.Auth()->user()->avatar) }}" alt="Avatar"></div>
-        <div class="user-display-info">
-          <div class="name">{{Auth()->user()->prenom}} {{Auth()->user()->name}}</div>
-          <div class="nick"><span class="mdi mdi-account"></span> {{Auth()->user()->profession}}</div>
-      </div>
-      <div class="row user-display-details">
-          <div class="col-xs-">
-              <!--
-            <div class="title">Issues</div>
-            <div class="counter">26</div>
 
-            -->
-        </div>
-        <div class="col-xs-6">
-            <div class="title">Nombre de devis</div>
-            <div class="counter" >{{ $sum_devis }}</div>
-        </div>
-        <div class="col-xs-6">
-            <div class="title">Nombre de souscriptions</div>
-            <div class="counter">{{ $sum_contr }}</div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
 <div class="col-md-7">
 
-    <div class="bord-title">
-        <h1>Bienvenu sur notre plateforme E-commerce</h1>
-    </div>
+
     <div class="panel">
 
         <div class="row">
-            <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
+            <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">Si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
         </div>
-       <div class="row" style="padding: 20px;">
+       <div class="row" style="padding: 20px; font-weight: bold;">
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement.auto') }}" >
                    <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
@@ -90,9 +60,42 @@ Home
     </div>
 
 </div>
+<div class="col-md-5">
+  <div class="bord-title">
+      <h1>Bienvenu sur notre plateforme E-commerce</h1>
+  </div>
+
+  <div class="user-display" style="margin-top: 20px;">
+    {{-- <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div> --}}
+    <div class="user-display-bottom">
+      <div class="user-display-avatar"><img src="{{ asset('user_assets/assets/uploads/avatars/'.Auth()->user()->avatar) }}" alt="Avatar"></div>
+      <div class="user-display-info">
+        <div class="name">{{Auth()->user()->prenom}} {{Auth()->user()->name}}</div>
+        <div class="nick"><span class="mdi mdi-account"></span> {{Auth()->user()->profession}}</div>
+    </div>
+    <div class="row user-display-details">
+        <div class="col-xs-">
+            <!--
+          <div class="title">Issues</div>
+          <div class="counter">26</div>
+
+          -->
+      </div>
+      <div class="col-xs-6">
+          <div class="title">Nombre de devis</div>
+          <div class="counter" >{{ $sum_devis }}</div>
+      </div>
+      <div class="col-xs-6">
+          <div class="title">Nombre de souscriptions</div>
+          <div class="counter">{{ $sum_contr }}</div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
 </div>
 
-    
+
 
       <div class="row">
         <div class="col-sm-6">
