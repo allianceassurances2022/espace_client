@@ -242,6 +242,7 @@ Home
 					"order": [[0, "asc"]],
 					"searching": true,
 					"deferRender": true,
+          "pageLength": 3,
 					"scrollY":"180px",
 					"language": {
 						"info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
@@ -252,6 +253,7 @@ Home
 						"infoPostFix": "",
 						"thousands": ",",
 						"lengthMenu": " <select>" +
+                '<option value="3">3</option>' +
 								'<option value="10">10</option>' +
 								'<option value="20">20</option>' +
 								'<option value="30">30</option>' +
@@ -260,7 +262,6 @@ Home
 								'<option value="100">100</option>' +
 								'<option value="-1">Tous</option>' +
 								"</select>  lignes à afficher", //_MENU_
-
 						"loadingRecords": "Veuillez patienter - Chargement...",
 //"processing":     "<img src='{{asset('assets/images/loading_bar.gif')}}' > Chargement...",
 						"search": "Recherche:",
@@ -340,6 +341,7 @@ var table_ods = $('#contrat').DataTable({
       "order": [[0, "asc"]],
       "searching": true,
       "deferRender": true,
+      "pageLength": 3,
       "scrollY":"180px",
       "language": {
         "info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
@@ -350,6 +352,7 @@ var table_ods = $('#contrat').DataTable({
         "infoPostFix": "",
         "thousands": ",",
         "lengthMenu": " <select>" +
+        '<option value="3">3</option>' +
             '<option value="10">10</option>' +
             '<option value="20">20</option>' +
             '<option value="30">30</option>' +
