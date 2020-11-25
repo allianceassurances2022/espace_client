@@ -116,27 +116,68 @@ class TarificationController extends Controller
 
 		}else{
 
+
+
 			$type_formule = $request->type_formule;
 			$request->session()->put('type_formule', $type_formule);
 
-			$val_assur    = $request->val_assur;
+/*			$val_assur    = $request->val_assur;
 			$request->session()->put('val_assur', $val_assur);
 
 			$permis       = $request->permis;
 			$request->session()->put('permis', $permis);
+*/
 
-			$type_const   = $request->type_const;
-			$request->session()->put('type_const', $type_const);
+            if ($request->type_formule == 'Commerce') {
 
-			$Contenant    = $request->Contenant;
-			$request->session()->put('Contenant', $Contenant);
+                $type_const   = $request->type_const;
+                $list_type_const = array(
+                    'Bloc indépendant',
+                    'Autres',
+                );
 
-			$equipement   = $request->equipement;
-			$request->session()->put('equipement', $equipement);
+                if(in_array($type_const,$list_type_const)){
+                    $request->session()->put('type_const', $type_const);
 
-			$marchandise  = $request->marchandise;
-			$request->session()->put('marchandise', $marchandise);
+                }else{
 
+                    Alert::warning('Avertissement', 'Type de construction incorrect !!');
+                    return redirect()->back();
+                }
+
+                if($request->Contenant == 0){
+                    Alert::warning('Avertissement', 'La valeur du contenant doit être supérieur à zéro !!');
+                    return redirect()->back();
+                }else{
+                    $Contenant    = $request->Contenant;
+                    $request->session()->put('Contenant', $Contenant);
+                }
+
+                if($request->equipement == 0){
+                    Alert::warning('Avertissement', 'La valeur des équipements doit être supérieur à zéro !!');
+                    return redirect()->back();
+                }else{
+                    $equipement   = $request->equipement;
+                    $request->session()->put('equipement', $equipement);
+                }
+
+                if($request->marchandise == 0){
+                    Alert::warning('Avertissement', 'La valeur de la marchandise doit être supérieur à zéro !!');
+                    return redirect()->back();
+                }else{
+                    $marchandise  = $request->marchandise;
+                    $request->session()->put('marchandise', $marchandise);
+                }
+
+                if($request->contenu == 0){
+                    Alert::warning('Avertissement', 'La valeur du contenu doit être supérieur à zéro !!');
+                    return redirect()->back();
+                }else{
+                    $marchandise  = $request->marchandise;
+                    $request->session()->put('marchandise', $marchandise);
+                }
+
+            }
 			$contenu      = $request->contenu;
 			$request->session()->put('contenu', $contenu);
 
@@ -470,12 +511,14 @@ class TarificationController extends Controller
             'cout_police' => $CP,
             'timbre_dimension' => $TD,
             'prime_nette' => $val,
+            'act_reg'     => $request->act_reg,
 
         ];
 
     }
 
 		$request->session()->put('data_catnat', $data_session);
+
 
 		$Contenant   = $valeur_c;
         $equipement  = $valeur_e;

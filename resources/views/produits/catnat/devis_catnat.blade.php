@@ -260,7 +260,7 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Inscrite au registre de commerce</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="act_reg" value="{{$act_reg ?? ''}}" class="form-control" readonly="readonly">
+                                                        <input type="text" name="act_reg" value="{{$act_reg}}" class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
 

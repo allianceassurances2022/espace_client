@@ -61,14 +61,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
               </div>
           </div>
 
-            <div class="row">
-                <div class="slice" style="margin: 20px;">
-                    <div class="cc-selector">
-                        <div class="g-recaptcha"  data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
-                    </div>
-                </div>
-            </div>
-
             <input type="hidden" id="valeur_assure_" type="number" name="val_assur" value="{{$val_assur ?? ''}}">
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
 
