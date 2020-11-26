@@ -113,12 +113,26 @@ class ProduitController extends Controller
 
         $user= auth::user();
 
+        $assure = [
+          'nom'            => $user->name,
+ 		 	    'prenom'         => $user->prenom,
+ 		 	    'date_naissance' => $user->date_naissance ,
+ 			    'code_wilaya'    => $user->wilaya_assure ,
+ 			    'profession'     => $user->profession ,
+ 			    'telephone'      => $user->telephone ,
+          'sexe'           => $user->sexe,
+ 			    'adresse'        => $user->adresse,
+        ];
+
+        $assure = (object)$assure;
+
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
+
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune'));
+        'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune','assure'));
     }
 
     public function devis_auto()

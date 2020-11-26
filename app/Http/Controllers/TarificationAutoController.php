@@ -13,6 +13,7 @@ use App\devis;
 use App\Agences;
 use App\Prime;
 use App\marque;
+use App\Assure;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
@@ -788,9 +789,7 @@ class TarificationAutoController extends Controller
 
     	}else{
 
-        $assure=Assure::create([
-          'nom'     => 
-        ]);
+
 
     		$dev=devis::create([
     			'date_souscription' => $date_sous,
@@ -877,6 +876,19 @@ class TarificationAutoController extends Controller
     			'code_devis'             => $dev->id
 
     		]);
+
+        $user=auth::user();
+
+        $assure=Assure::create([
+  				'nom'                => $request->name,
+  				'prenom'             => $request->prenom,
+  				'code_wilaya'        => $code_wilaya,
+  				'date_naissance'     => $request->date_naissance,
+  				'sexe'               => $user->sexe,
+  				'telephone'          => $request->telephone,
+  				'profession'         => $request->commune_assure,
+  				'id_devis'           => $dev->id
+  			]);
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Vehicule::find($res->id);
