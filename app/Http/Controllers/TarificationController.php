@@ -511,7 +511,7 @@ class TarificationController extends Controller
             'cout_police' => $CP,
             'timbre_dimension' => $TD,
             'prime_nette' => $val,
-            'act_reg'     => $request->act_reg,
+            'act_reg'     => $act_reg,
 
         ];
 
@@ -793,7 +793,7 @@ class TarificationController extends Controller
 
 	}
 
-	
+
 	function fetch(Request $request)
 	{
 		$select = $request->post('select');
@@ -924,7 +924,7 @@ class TarificationController extends Controller
           	//  return back();
 			  return redirect()->route('devis_mrh', ['mrh', 'index']);
 			}
-			
+
 			if ($request->adresse == "" || strlen($request->adresse) > 200){
 			Alert::warning('Avertissement', 'Merci de verifier l adresse');
           	//  return back();
@@ -936,7 +936,7 @@ class TarificationController extends Controller
           	//  return back();
 			  return redirect()->route('devis_mrh', ['mrh', 'index']);
 			}
-			
+
 			// if ($request->code_agence == ""){
 			// Alert::warning('Avertissement', 'Merci de choisir une Agence');
           	// //  return back();
@@ -1292,8 +1292,8 @@ class TarificationController extends Controller
 
     public function delete_devis(Request $request, $id){
 
-	   // $devi = devis::find($id);
-	  //  $devi->delete();
+	    $devi = devis::find($id);
+	    $devi->delete();
 
         return view('delete_devis');
 
