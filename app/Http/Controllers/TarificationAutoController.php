@@ -697,7 +697,7 @@ class TarificationAutoController extends Controller
           $taxe = 1;
           $date_effet_taxe=$request->effet_taxe;
 		}
-		
+
 		//VERIFICATION VALUES
 		//$newDate=date('Y-m-d', strtotime('-18 year'));
 		if ($request->date_eff < date('Y-m-d')){
@@ -712,7 +712,7 @@ class TarificationAutoController extends Controller
           	//  return back();
 			  return redirect()->route('type_produit',['auto','index']);
 			}
-			
+
 		if ($request->num_chassis == "" || strlen($request->num_chassis)>17 || strlen($request->num_chassis)<1){
 			Alert::warning('Avertissement', 'Merci de verifier le N° chassis ');
           	//  return back();
@@ -724,7 +724,7 @@ class TarificationAutoController extends Controller
           	//  return back();
 			  return redirect()->route('type_produit',['auto','index']);
 			}
-		
+
 		if ($request->couleur == "" || strlen($request->couleur)>20 || strlen($request->couleur)<0){
 			Alert::warning('Avertissement', 'Merci de verifier la couleur ');
           	//  return back();
@@ -736,13 +736,13 @@ class TarificationAutoController extends Controller
           	//  return back();
 			  return redirect()->route('type_produit',['auto','index']);
 			}
-			
+
 		if ($request->code_agence == "" || strlen($request->code_agence)>5 || strlen($request->code_agence)<0){
 			Alert::warning('Avertissement', 'Merci de verifier le code agence ');
           	//  return back();
 			  return redirect()->route('type_produit',['auto','index']);
 			}
-			
+
 
 
     //   if ($request->code_agence == ""){
@@ -758,7 +758,7 @@ class TarificationAutoController extends Controller
 
 			// $this->validate($request, $rules);
 
-            $date_sous = $request->date_sous;
+      $date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
@@ -787,6 +787,10 @@ class TarificationAutoController extends Controller
     		]);
 
     	}else{
+
+        $assure=Assure::create([
+          'nom'     => 
+        ]);
 
     		$dev=devis::create([
     			'date_souscription' => $date_sous,

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
 use App\Agences;
+use App\Assure;
 
 use PDF;
 use auth;
