@@ -901,6 +901,8 @@ class TarificationAutoController extends Controller
 
         $risque=Rsq_Vehicule::where('code_devis',$devis->id)->first();
 
+     //   dd($risque);
+
         $id=$risque->id;
 
 
@@ -946,6 +948,8 @@ class TarificationAutoController extends Controller
             'Catégorie F',
             'Catégorie F',
       ];
+
+
 
 
         $user= auth::user();
