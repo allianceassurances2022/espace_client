@@ -97,7 +97,7 @@ Devis CATNAT
                 <div class="row invoice-footer">
                   <div class="col-md-12">
                     @if($devis->type_devis==1)
-                    <a href="{{route('modification_devis_catnat',$risque->id)}}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
+                    <a href="{{route('modification_devis_catnat',$devis->id)}}" class="btn btn-lg btn-space btn-default">Modifier devis</a>
                     @endif
                     <a href="{{route('page_pdf',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
                     @if($devis->type_devis==1)
