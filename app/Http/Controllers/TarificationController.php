@@ -1317,23 +1317,9 @@ class TarificationController extends Controller
 			 $user= auth::user();
 			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
 
-			 $user->name = $assure['nom'];
-			 $user->prenom = $assure['prenom'];
-			 $user->date_naissance = $assure['date_naissance'];
-			 $user->wilaya_assure = $assure['code_wilaya'];
-			 $user->commune_assure = $assure['profession'];
-			 $user->telephone = $assure['telephone'];
-			 $user->sexe = $assure['sexe'];
-
-            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
-            $user_commune = commune::where('code_commune', $user->commune)->first();
-
-
-
-
             return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
 			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'
-            , 'user_wilaya', 'user_commune'));
+            , 'user_wilaya', 'user_commune','assure'));
 
     }
 
