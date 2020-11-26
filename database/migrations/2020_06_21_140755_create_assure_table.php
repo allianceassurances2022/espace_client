@@ -26,6 +26,7 @@ class CreateAssureTable extends Migration
             $table->string('sexe',10);
             $table->Date('date_permis');
             $table->string('code_activite',10);
+            $table->string('id_devis');
             $table->timestamps();
         });
     }
