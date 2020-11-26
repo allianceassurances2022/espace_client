@@ -1224,7 +1224,7 @@ class TarificationController extends Controller
 
 	    $devis=devis::find($id);
 
-    	$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+		$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
 
     	$id=$risque->id;
 
@@ -1248,10 +1248,22 @@ class TarificationController extends Controller
             $code_agence       = $devis->code_agence;
             $agence_map        = Agences::where('id',$code_agence)->first();
 
-            $user= auth::user();
+			//$user= auth::user();
+			
+			 $assure=Assure::where('id_devis',$devis->id)->first();
+			 $user= auth::user();
+			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
 
-            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
-            $user_commune = commune::where('code_commune', $user->commune)->first();
+			 $user->name = $assure['nom'];
+			 $user->prenom = $assure['prenom'];
+			 $user->date_naissance = $assure['date_naissance'];
+			 $user->wilaya_assure = $assure['code_wilaya'];
+			 $user->commune_assure = $assure['profession'];
+			 $user->telephone = $assure['telephone'];
+			 $user->sexe = $assure['sexe'];
+
+             $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+             $user_commune = commune::where('code_commune', $user->commune)->first();
 
     	    return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
 			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune'));
@@ -1300,7 +1312,19 @@ class TarificationController extends Controller
 			$wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
 
 
-            $user= auth::user();
+            //$user= auth::user();
+			
+			 $assure=Assure::where('id_devis',$devis->id)->first();
+			 $user= auth::user();
+			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
+
+			 $user->name = $assure['nom'];
+			 $user->prenom = $assure['prenom'];
+			 $user->date_naissance = $assure['date_naissance'];
+			 $user->wilaya_assure = $assure['code_wilaya'];
+			 $user->commune_assure = $assure['profession'];
+			 $user->telephone = $assure['telephone'];
+			 $user->sexe = $assure['sexe'];
 
             $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
             $user_commune = commune::where('code_commune', $user->commune)->first();
