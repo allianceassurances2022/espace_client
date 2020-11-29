@@ -296,6 +296,20 @@ class ProduitController extends Controller
 
         $user= auth::user();
 
+        $assure = [
+            'nom'            => $user->name,
+                    'prenom'         => $user->prenom,
+                    'date_naissance' => $user->date_naissance ,
+                   'code_wilaya'    => $user->wilaya_assure ,
+                   'profession'     => $user->profession ,
+                   'telephone'      => $user->telephone ,
+            'sexe'           => $user->sexe,
+                   'adresse'        => $user->adresse,
+          ];
+  
+          $assure = (object)$assure;
+  
+
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
@@ -303,7 +317,7 @@ class ProduitController extends Controller
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
         'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient',
-            'user_wilaya', 'user_commune'));
+            'user_wilaya', 'user_commune','assure'));
     }
 
 }
