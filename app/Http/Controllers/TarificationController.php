@@ -1063,7 +1063,9 @@ class TarificationController extends Controller
     	}
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
-			$assure= Prime::where('id_devis',$devis->id)->first();
+			$assure= Assure::where('id_devis',$devis->id)->first();
+
+			
 
 
 			$agence=Agences::where('Name',$devis->code_agence)->first();
