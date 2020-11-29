@@ -892,6 +892,8 @@ class TarificationController extends Controller
      */
     public function validation_devis_mrh (Request $request){
 
+
+        dd($request->sexe);
            // $data_mrh  = session('mrh');
 
       //  $value_mrh         = session('data_mrh');

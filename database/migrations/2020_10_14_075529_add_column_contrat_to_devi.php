@@ -14,8 +14,8 @@ class AddColumnContratToDevi extends Migration
     public function up()
     {
         Schema::table('devis', function (Blueprint $table) {
-            $table->string('reference_police')->nullable();
-            $table->string('type_devis')->default('1');
+         //   $table->string('reference_police')->nullable();
+          //  $table->string('type_devis')->default('1');
         });
     }
 

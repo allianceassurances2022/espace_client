@@ -185,7 +185,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Puissance</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="puissance" value="{{$puissance}}" class="form-control"
+                                        <input type="text" name="puissance" value="{{$puissance->libelle}}" class="form-control"
                                                readonly>
                                     </div>
                                 </div>
@@ -379,10 +379,11 @@
                                                class="form-control" required-->
                                             <select  name="categorie" id="categorie" class="form-control select2" required >
                                                 <option value="{{ session('categorie') }}">{{ session('categorie') }}</option>
-                                                @foreach($cat_permi as $cat)
-                                                    <option  value="{{ $cat }}" @if($cat == $categorie) selected @endif>{{ $cat  }}</option>
+                                                @foreach($categorie as $cat)
+                                                    <option  value="{{ $cat->libelle }}" @if($cat->libelle == $categorie) selected @endif>{{ $cat->libelle  }}</option>
                                                 @endforeach
                                             </select>
+
 
                                     </div>
                                 </div>

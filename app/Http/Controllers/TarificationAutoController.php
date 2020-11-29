@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Puissance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Wilaya;
 use App\commune;
+use App\Categorie_permis;
 
 use App\Rsq_Vehicule;
 use App\devis;
@@ -160,7 +162,9 @@ class TarificationAutoController extends Controller
 
          }
 
-         if ($request->puissance < "0" || $request->puissance > "6"  ){
+       //  dd($request->puissance);
+
+         if ($request->puissance < '0' || $request->puissance > '6'  ){
 
              Alert::warning('Avertissement', 'Puissance incorrect');
       		   return redirect()->route('type_produit',['auto','index']);
@@ -688,7 +692,6 @@ class TarificationAutoController extends Controller
         $request->session()->put('categorie', $request->categorie);
 
 
-
       $taxe="";
       $date_effet_taxe=null;
       if($request->taxe == "non"){
@@ -794,7 +797,7 @@ class TarificationAutoController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-          'prime_nette'       => $value_auto['prime_nette'],
+                'prime_nette'       => $value_auto['prime_nette'],
 					'tva'               => $value_auto['tva'],
 					'cp'                => $value_auto['cout_police'],
 					'td'                => $value_auto['timbre_dimension'],
@@ -841,6 +844,8 @@ class TarificationAutoController extends Controller
 					'valeur'            => $value_auto['assistance'],
 					'id_devis'          => $dev->id
 				]);
+
+        //    $categorie_code = categorie_permis::where(code,$request->categorie)->first();
 
 
 
@@ -901,6 +906,9 @@ class TarificationAutoController extends Controller
 
         $id=$risque->id;
 
+        $puissance = puissance::where('libelle', $risque->puissance)->first();
+
+
 
         $date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
@@ -912,7 +920,7 @@ class TarificationAutoController extends Controller
       $date_permis       = $risque->date_permis;
       $wilaya_selected   = $risque->wilaya_obtention;
       $annee_auto        = $risque->annee_mise_circulation;
-      $puissance         = $risque->puissance;
+    //  $puissance         = $risque->puissance;
       $usage             = $risque->usage;
       $dure              = $risque->dure;
       $formule           = $risque->code_formule;
@@ -928,7 +936,7 @@ class TarificationAutoController extends Controller
       $type              = $risque->type;
       $couleur           = $risque->couleur;
       $permis_num        = $risque->permis_num;
-      $categorie         = $risque->categorie;
+  //    $categorie         = $risque->categorie;
       $delivre_a         = $risque->wilaya_obtention;
       $wilaya            = wilaya::all();
       $prime_total       = $devis->prime_total;
@@ -936,14 +944,7 @@ class TarificationAutoController extends Controller
       $code_agence       = $devis->code_agence;
       $agence_map        = Agences::where('id',$code_agence)->first();
       $marques           = marque::all();
-      $cat_permi         = [
-            'Catégorie A',
-            'Catégorie B',
-            'Catégorie C',
-            'Catégorie D',
-            'Catégorie F',
-            'Catégorie F',
-      ];
+      $categorie         = categorie_permis::all();
 
 
 
@@ -956,7 +957,7 @@ class TarificationAutoController extends Controller
 
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
-      'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id',
+      'offre','valeur','matricule','marques','categorie','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id',
             'user_wilaya', 'user_commune'));
 
     }

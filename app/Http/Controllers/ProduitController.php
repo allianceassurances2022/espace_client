@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\marque;
+use App\Puissance;
 use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
 use App\Agences;
+use App\Categorie_permis;
 
 use PDF;
 use auth;
@@ -29,14 +31,16 @@ class ProduitController extends Controller
         switch ($req->produit) {
             case 'auto':
             $wilaya = wilaya::all();
+            $puissances = puissance::all();
             $auto = [
               "Wilaya_selected" => "1",
               "puissance"       => "0",
               "type_assurance"  => "AUTO_P"
             ];
+
                 switch ($req->phase){
                     case 'index':
-                        return view('produits.auto.index',compact('wilaya','auto'));
+                        return view('produits.auto.index',compact('wilaya','auto','puissances'));
                         break;
                     case 'laki':
                         return view('produits.auto.formule_laki');
@@ -160,31 +164,16 @@ class ProduitController extends Controller
 
         $marques = marque::all();
 
+      //  dd($marques);
+
         //Detail des catégorie du permis
-        $cat_permi = [
-            'Catégorie A',
-            'Catégorie B',
-            'Catégorie C',
-            'Catégorie D',
-            'Catégorie F',
-            'Catégorie F',
-        ];
+        $categorie = categorie_permis::all();
+
 
         //Detail des puissances
-        switch ($puissance){
-            case ($puissance == '1') : $puissance = '2 CV';
-                break;
-            case ($puissance == '2') : $puissance = '5 à 6 CV';
-                break;
-            case ($puissance == '3') : $puissance = '7 à 10 CV';
-                break;
-            case ($puissance == '4') : $puissance = '11 à 14 CV';
-                break;
-            case ($puissance == '5') : $puissance = '15 à 23 CV';
-                break;
-            case ($puissance == '6') : $puissance = 'Plus de 24 CV';
-                break;
-        }
+        $puissance = puissance::where('code', $puissance)->first();
+
+
 
         //Detail usage
         switch ($usage) {
@@ -230,11 +219,11 @@ class ProduitController extends Controller
         }
 
         $marque_selected ='';
-        $categorie ='';
+       // $categorie ='';
 
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
-        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie',
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'categorie','assistance_nom','marque_selected','categorie',
         'user_wilaya', 'user_commune'));
     }
 
