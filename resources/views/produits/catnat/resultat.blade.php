@@ -25,7 +25,7 @@ Devis CATNAT
                   </span><span class="incoice-date">{{$devis->created_at}}</span></div>
                 </div>
                 <div class="row invoice-data">
-                  <div class="col-xs-5 invoice-person"><span class="name">{{ $user->name  }} {{ $user->prenom }}</span><span>{{ $user->profession }}</span><span>{{ $user->email }}</span><span>{{ $user->adresse }}</span></div>
+                  <div class="col-xs-5 invoice-person"><span class="name">{{ $assure->nom  }} {{ $assure->prenom }}</span><span>{{ $assure->profession }}</span><span>{{ $assure->mail }}</span><span>{{ $assure->adresse }}</span></div>
                   <div class="col-xs-2 invoice-payment-direction"><i class="icon mdi mdi-chevron-right"></i></div>
                   <div class="col-xs-5 invoice-person"><span class="name">Alliance Assurances</span><span>Agence {{ $agence->Name}}</span><span>{{ $agence->Mail}}</span><span>{{ $agence->Adresse}}</span></div>
                 </div>

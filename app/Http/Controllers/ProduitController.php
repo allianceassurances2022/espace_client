@@ -247,10 +247,23 @@ class ProduitController extends Controller
         $marque_selected ='';
         $categorie ='';
 
+        $assure = [
+            'nom'            => $user->name,
+                    'prenom'         => $user->prenom,
+                    'date_naissance' => $user->date_naissance ,
+                   'code_wilaya'    => $user->wilaya_assure ,
+                   'profession'     => $user->profession ,
+                   'telephone'      => $user->telephone ,
+            'sexe'           => $user->sexe,
+                   'adresse'        => $user->adresse,
+          ];
+  
+          $assure = (object)$assure;
+
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
         'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie',
-        'user_wilaya', 'user_commune'));
+        'user_wilaya', 'user_commune','assure'));
     }
 
     public function visuelisation()

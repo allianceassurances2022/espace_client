@@ -170,6 +170,6 @@
     'normal' => $fontDir . '/roboto-blackitalic-normal_37e5832f244a34649549445f6d55d092',
   ),
   'sourcesanspro' => array(
-    'normal' => $fontDir . '/sourcesanspro-normal_675ebbc0d5140f4cef0e8a6f17697118',
+    'normal' => $fontDir . '/sourcesanspro-normal_20d1df70f36ab5865abd5cf13c4e6041',
   ),
 ) ?>

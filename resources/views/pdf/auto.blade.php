@@ -248,9 +248,9 @@ height: 100px;
       <div id="details" class="clearfix"   @if($devis->type_devis == 1) style="margin-bottom:20px;" @endif>
         <div id="client">
           <div class="to">Assuré :</div>
-          <h2 class="name">{{$user->name}} {{$user->prenom}}</h2>
-          <div class="address">{{$user->adresse}}</div>
-          <div class="email">né(e) le : {{$user->date_naissance}}</div>
+          <h2 class="name">{{$assure->nom}} {{$assure->prenom}}</h2>
+          <div class="address">{{$assure->adresse}}</div>
+          <div class="email">{{$assure->mail}}</div> 
         </div>
         <div id="invoice">
           @if($devis->type_devis == 1)
@@ -272,12 +272,12 @@ height: 100px;
       <div id="details" class="clearfix">
         <div id="risque">
           <div class="to">Conducteur :</div>
-          <div class="libelle">Conducteur : {{$user->name}} {{$user->prenom}}</div>
+          <div class="libelle">Conducteur : {{$assure->nom}} {{$assure->prenom}}</div>
           <div class="libelle">Permis de conduire : {{$risque->permis_num}} / {{$risque->categorie}}</div>
         </div>
         <div id="risque_droite">
           <div class="espace"></div>
-          <div class="libelle">né(e) le : {{$user->date_naissance}}</div>
+          <div class="libelle">né(e) le : {{$assure->date_naissance}}</div>
           <div class="libelle">Date délivrance : {{$risque->date_permis}}</div>
         </div>
       </div>

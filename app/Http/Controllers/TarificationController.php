@@ -1063,11 +1063,12 @@ class TarificationController extends Controller
     	}
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
+			$assure= Prime::where('id_devis',$devis->id)->first();
 
 
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
-    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));
+    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 
 
     }
@@ -1211,10 +1212,11 @@ class TarificationController extends Controller
     	}
 
         $agence=Agences::where('Name',$devis->code_agence)->first();
-        $prime=Prime::where('id_devis',$dev->id)->first();
+		$prime=Prime::where('id_devis',$dev->id)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
 
-    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total','agence','prime'));
+    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 
 
     }
@@ -1283,7 +1285,7 @@ class TarificationController extends Controller
     	$date_souscription = $devis->date_souscription;
     	$date_eff          = $devis->date_effet;
     	$date_exp          = $devis->date_expiration;
-			$type_formule      = $risque->formule;
+		$type_formule      = $risque->formule;
     	$type_const        = $risque->type_habitation;
     	$Contenant         = $risque->valeur_contenant;
     	$equipement        = $risque->valeur_equipement;
@@ -1340,8 +1342,10 @@ class TarificationController extends Controller
     $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
+		dd($assure);
 
-		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime'));
+		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime','assure'));
 
 		}
 
@@ -1353,8 +1357,9 @@ class TarificationController extends Controller
     $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
-		return view('produits.catnat.resultat',compact('user','devis','risque','agence','prime'));
+		return view('produits.catnat.resultat',compact('user','devis','risque','agence','prime','assure'));
 
 		}
 
@@ -1364,15 +1369,17 @@ class TarificationController extends Controller
 			$devis= devis::find($id);
 			$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
       $prime= Prime::where('id_devis',$devis->id)->get();
-      $user=auth::user();
+	  $user=auth::user();
+	  $assure=Assure::where('id_devis',$devis->id)->first();
+
 		  $agence=Agences::where('Name',$devis->code_agence)->first();
 
 			//return view('pdf.mrh',compact('user','devis','risque','agence','prime'));
 
 			if ($devis->type_assurance == 'Multirisques Habitation'){
-			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
+			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime','assure'));
 	   	}elseif ($devis->type_assurance == 'Catastrophe Naturelle' ){
-      $pdf = PDF::loadView('pdf.catnat',compact('user','devis','risque','agence','prime'));
+      $pdf = PDF::loadView('pdf.catnat',compact('user','devis','risque','agence','prime','assure'));
 	  	}
 			return $pdf->stream();
 

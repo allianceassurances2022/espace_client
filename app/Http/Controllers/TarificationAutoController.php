@@ -877,13 +877,16 @@ class TarificationAutoController extends Controller
 
     		]);
 
-        $user=auth::user();
+		$user=auth::user();
+		$code_wilaya =  wilaya::where('nlib_wilaya',$request->wilaya)->first()->code_wilaya;
+		//dd($code_wilaya);
 
         $assure=Assure::create([
   				'nom'                => $request->name,
   				'prenom'             => $request->prenom,
   				'code_wilaya'        => $code_wilaya,
   				'date_naissance'     => $request->date_naissance,
+  				'adresse'            => $user->adresse,
   				'sexe'               => $user->sexe,
   				'telephone'          => $request->telephone,
   				'profession'         => $request->commune_assure,
@@ -898,9 +901,11 @@ class TarificationAutoController extends Controller
       $prime= Prime::where('id_devis',$devis->id)->get();
 
       $user=auth::user();
-      $agence=Agences::where('Name',$devis->code_agence)->first();
+	  $agence=Agences::where('Name',$devis->code_agence)->first();
+	 
+	  $assure=Assure::where('id_devis',$devis->id)->first();
 
-      return view('produits.Auto.resultat',compact('user','devis','risque','prime_total','agence','prime'));
+      return view('produits.Auto.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 
 
     }
@@ -964,7 +969,9 @@ class TarificationAutoController extends Controller
 
 
 
-        $user= auth::user();
+		$user= auth::user();
+		
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
@@ -973,7 +980,7 @@ class TarificationAutoController extends Controller
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
       'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id',
-            'user_wilaya', 'user_commune'));
+            'user_wilaya', 'user_commune','assure'));
 
     }
 
@@ -982,12 +989,13 @@ class TarificationAutoController extends Controller
 
 			$devis= devis::find($id);
 			$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
-      $prime= Prime::where('id_devis',$devis->id)->get();
-      $user=auth::user();
+      		$prime= Prime::where('id_devis',$devis->id)->get();
+      		$user=auth::user();
 		  $agence=Agences::where('Name',$devis->code_agence)->first();
+		  $assure=Assure::where('id_devis',$devis->id)->first();
 
 
-			$pdf = PDF::loadView('pdf.auto',compact('user','devis','risque','agence','prime'));
+			$pdf = PDF::loadView('pdf.auto',compact('user','devis','risque','agence','prime','assure'));
       //return view('pdf.auto',compact('user','devis','risque','agence','prime'));
 
 			return $pdf->stream();
@@ -999,12 +1007,13 @@ class TarificationAutoController extends Controller
 
 		$devis= devis::find($id);
 		$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
-    $prime= Prime::where('id_devis',$devis->id)->get();
+    	$prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
-    $prime_total=$devis->prime_total;
+		$prime_total=$devis->prime_total;
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
-		return view('produits.Auto.resultat',compact('user','devis','risque','agence','prime','prime_total'));
+		return view('produits.Auto.resultat',compact('user','devis','risque','agence','prime','prime_total','assure'));
 
 		}
 
