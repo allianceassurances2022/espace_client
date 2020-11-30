@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\dure;
 use App\Puissance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ use App\devis;
 use App\Agences;
 use App\Prime;
 use App\marque;
+
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
@@ -38,7 +40,9 @@ class TarificationAutoController extends Controller
 
       $auto=array_merge($auto, ["dure"=>"1","formule"=>"1","assistance"=>"Liberté","usage"=>"0","taxe"=>"non"]);
 
-    	$devis = 0;
+      $devis = 0;
+
+      $dure = dure::all();
 
     if ($request->type_assurance == "AUTO_P"){
         return view('produits.auto.formule_part',compact('auto','devis'));
@@ -54,8 +58,9 @@ class TarificationAutoController extends Controller
       $auto  = session('data_auto');
 
       $wilaya = Wilaya::all();
+      $puissances = puissance::all();
 
-      return view('produits.auto.index',compact('wilaya','auto'));
+      return view('produits.auto.index',compact('wilaya','auto', 'puissances'));
 
     }
 
@@ -902,7 +907,7 @@ class TarificationAutoController extends Controller
 
         $risque=Rsq_Vehicule::where('code_devis',$devis->id)->first();
 
-     //   dd($risque);
+        dd($risque);
 
         $id=$risque->id;
 
