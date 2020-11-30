@@ -78,8 +78,8 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                   <select class="input100" type="text" name="taxe" placeholder="Taxe Pollution" onchange="taxe_change()" id="taxe">
-                      <option value="non" @if($auto['taxe'] == 'non') selected @endif>Non</option>
-                      <option value="oui" @if($auto['taxe'] == 'oui') selected @endif>Oui</option>
+                      <option value="0" @if($auto['taxe'] == '0') selected @endif>Non</option>
+                      <option value="1" @if($auto['taxe'] == '1') selected @endif>Oui</option>
                   </select>
                     <span class="focus-input100"></span>
                 </div>

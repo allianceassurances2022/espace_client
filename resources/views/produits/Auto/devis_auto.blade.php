@@ -205,8 +205,8 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Durée</label>
                                     <div class="col-sm-9">
-                                        <!--input type="text" name="dure" value="{{$dure.'année'}}" class="form-control" readonly-->
-                                        <input type="text" name="dure"
+                                        <!--input type="text" name="dure" value="{{$dure}}'année'" class="form-control" readonly-->
+                                        <input type="text" name="dure_affiche"
 
                                                @if($dure == '1')
                                                value="{{' 1 année'}}"
@@ -217,6 +217,7 @@
                                                @endif
 
                                                class="form-control" readonly>
+                                        <input type="hidden" name="dure" value="{{$dure}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -243,7 +244,18 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Taxe pollution</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="taxe" value="{{$taxe}}" class="form-control" readonly>
+                                        <input type="text_affiche" name="dure_affiche"
+
+                                               @if($taxe == '0')
+                                               value="{{'non'}}"
+                                               @endif
+
+                                               @if($taxe == '1')
+                                               value="{{'oui'}}"
+                                               @endif
+
+                                               class="form-control" readonly>
+                                        <input type="hidden" name="taxe" value="{{$taxe}}" class="form-control" readonly>
                                     </div>
                                 </div>
 

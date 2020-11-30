@@ -73,13 +73,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Puissance <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                    <select class="input100" type="text" name="puissance" placeholder="Puissance">
-                            <!--option value="0" @if($auto['puissance'] == '0') selected @endif>2 CV</option>
-                            <option value="1" @if($auto['puissance'] == '1') selected @endif>3 à 4 CV</option>
-                            <option value="2" @if($auto['puissance'] == '2') selected @endif>5 à 6 CV</option>
-                            <option value="3" @if($auto['puissance'] == '3') selected @endif>7 à 10 CV</option>
-                            <option value="4" @if($auto['puissance'] == '4') selected @endif>11 à 14 CV</option>
-                            <option value="5" @if($auto['puissance'] == '5') selected @endif>15 à 23 CV</option>
-                            <option value="6" @if($auto['puissance'] == '6') selected @endif>Plus de 24 CV</option-->
                         @foreach($puissances as $puissance)
                              <option value="{{$puissance->code}}" @if($auto['puissance'] == $puissance->code) selected @endif>{{$puissance->libelle}}</option>
                          @endforeach

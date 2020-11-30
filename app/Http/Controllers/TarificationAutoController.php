@@ -45,7 +45,7 @@ class TarificationAutoController extends Controller
       $dure = dure::all();
 
     if ($request->type_assurance == "AUTO_P"){
-        return view('produits.auto.formule_part',compact('auto','devis'));
+        return view('produits.auto.formule_part',compact('auto','devis', 'dure'));
     }elseif($request->type_assurance == "OTO_L"){
         return view('produits.auto.formule_laki',compact('auto','devis'));
     }
@@ -854,8 +854,7 @@ class TarificationAutoController extends Controller
 
 
 
-
-
+//dd($request->dure);
     		$res=Rsq_Vehicule::create([
     			'matricule'              => $request->matricule,
     			'marque'                 => $request->marque,
@@ -907,7 +906,7 @@ class TarificationAutoController extends Controller
 
         $risque=Rsq_Vehicule::where('code_devis',$devis->id)->first();
 
-        dd($risque);
+      //  dd($risque);
 
         $id=$risque->id;
 
@@ -972,10 +971,11 @@ class TarificationAutoController extends Controller
 
 			$devis= devis::find($id);
 			$risque= Rsq_Vehicule::where('code_devis',$devis->id)->first();
-      $prime= Prime::where('id_devis',$devis->id)->get();
-      $user=auth::user();
-		  $agence=Agences::where('Name',$devis->code_agence)->first();
+            $prime= Prime::where('id_devis',$devis->id)->get();
 
+            $user=auth::user();
+
+            $agence=Agences::where('Name',$devis->code_agence)->first();
 
 			$pdf = PDF::loadView('pdf.auto',compact('user','devis','risque','agence','prime'));
       //return view('pdf.auto',compact('user','devis','risque','agence','prime'));

@@ -164,8 +164,6 @@ class ProduitController extends Controller
 
         $marques = marque::all();
 
-      //  dd($marques);
-
         //Detail des catégorie du permis
         $categorie = categorie_permis::all();
 

@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-sm-10" style="    display: inline-flex;    padding: 42px;    margin-left: 50px;">
                             <input type="text" class="form-control">
-                            <a href="#" class="btn btn-info btn-lg col-sm-6">valider</a>
+                            <a href="{{route('devis_renouvlement_auto')}}" class="btn btn-info btn-lg col-sm-6">valider</a>
                         </div>
                     </div>
                 </div>
