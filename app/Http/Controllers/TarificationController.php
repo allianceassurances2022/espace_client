@@ -1065,8 +1065,6 @@ class TarificationController extends Controller
 			$prime= Prime::where('id_devis',$devis->id)->get();
 			$assure= Assure::where('id_devis',$devis->id)->first();
 
-			
-
 
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
@@ -1075,7 +1073,7 @@ class TarificationController extends Controller
 
     }
     public function validation_devis_catnat(Request $request){
-
+dd($request->code_agence);
 			if ($request->code_agence == ""){
 			Alert::warning('Avertissement', 'Merci de choisir une Agence');
             return back();
@@ -1226,10 +1224,14 @@ class TarificationController extends Controller
 
     public function modification_devis_mrh (Request $request,$id){
 
+		$user= auth::user();
 
 
-	    $devis=devis::find($id);
-
+		$devis=devis::find($id);
+		// print_r($devis->id_user." ".$user->id);
+		// die();
+		if($devis->id_user == $user->id){
+		
 		$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
 
     	$id=$risque->id;
@@ -1258,7 +1260,6 @@ class TarificationController extends Controller
 
 			 $assure=Assure::where('id_devis',$devis->id)->first();
 
-			 $user= auth::user();
 			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
 
 
@@ -1271,12 +1272,21 @@ class TarificationController extends Controller
     	    return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
 			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune','assure'));
 
-    }
+	 	}else{
+			return view('welcome');
+		 }
+	}
 
 
 		public function modification_devis_catnat (Request $request,$id){
 
-            $devis=devis::find($id);
+            $user= auth::user();
+
+
+		$devis=devis::find($id);
+		// print_r($devis->id_user." ".$user->id);
+		// die();
+		if($devis->id_user == $user->id){
 
             $risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
 
@@ -1325,7 +1335,10 @@ class TarificationController extends Controller
 			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'
             , 'user_wilaya', 'user_commune','assure'));
 
-    }
+	}else{
+		return view('welcome');
+	}
+}
 
     public function delete_devis(Request $request, $id){
 

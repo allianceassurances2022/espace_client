@@ -912,7 +912,13 @@ class TarificationAutoController extends Controller
 
     public function modification_devis_auto(Request $request,$id){
 
+		$user= auth::user();
 
+
+		$devis=devis::find($id);
+		// print_r($devis->id_user." ".$user->id);
+		// die();
+		if($devis->id_user == $user->id){
 
         $devis=devis::find($id);
 
@@ -982,7 +988,10 @@ class TarificationAutoController extends Controller
       'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id',
             'user_wilaya', 'user_commune','assure'));
 
-    }
+	}else{
+		return view('welcome'); 
+	}
+}
 
     public function generate_pdf($id)
 		{
