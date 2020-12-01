@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
 use App\Agences;
+
 use App\Categorie_permis;
+
+use App\Assure;
 
 use PDF;
 use auth;
@@ -116,12 +119,26 @@ class ProduitController extends Controller
 
         $user= auth::user();
 
+        $assure = [
+          'nom'            => $user->name,
+ 		 	    'prenom'         => $user->prenom,
+ 		 	    'date_naissance' => $user->date_naissance ,
+ 			    'code_wilaya'    => $user->wilaya_assure ,
+ 			    'profession'     => $user->profession ,
+ 			    'telephone'      => $user->telephone ,
+          'sexe'           => $user->sexe,
+ 			    'adresse'        => $user->adresse,
+        ];
+
+        $assure = (object)$assure;
+
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
+
         return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','datec','prime_total','date_souscription','wilaya',
-        'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune'));
+        'wilaya_selected','agences','agence_map', 'user_wilaya','user_commune','assure'));
     }
 
     public function devis_auto()
@@ -219,10 +236,24 @@ class ProduitController extends Controller
         $marque_selected ='';
        // $categorie ='';
 
+        $assure = [
+            'nom'            => $user->name,
+                    'prenom'         => $user->prenom,
+                    'date_naissance' => $user->date_naissance ,
+                   'code_wilaya'    => $user->wilaya_assure ,
+                   'profession'     => $user->profession ,
+                   'telephone'      => $user->telephone ,
+            'sexe'           => $user->sexe,
+                   'adresse'        => $user->adresse,
+          ];
+  
+          $assure = (object)$assure;
+
 
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
-        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'categorie','assistance_nom','marque_selected','categorie',
-        'user_wilaya', 'user_commune'));
+
+        'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie',
+        'user_wilaya', 'user_commune','assure'));
     }
 
     public function visuelisation()
@@ -268,6 +299,20 @@ class ProduitController extends Controller
 
         $user= auth::user();
 
+        $assure = [
+            'nom'            => $user->name,
+                    'prenom'         => $user->prenom,
+                    'date_naissance' => $user->date_naissance ,
+                   'code_wilaya'    => $user->wilaya_assure ,
+                   'profession'     => $user->profession ,
+                   'telephone'      => $user->telephone ,
+            'sexe'           => $user->sexe,
+                   'adresse'        => $user->adresse,
+          ];
+  
+          $assure = (object)$assure;
+  
+
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
@@ -275,7 +320,7 @@ class ProduitController extends Controller
 
         return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
         'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient',
-            'user_wilaya', 'user_commune'));
+            'user_wilaya', 'user_commune','assure'));
     }
 
 }

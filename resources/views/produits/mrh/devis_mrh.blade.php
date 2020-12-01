@@ -31,7 +31,7 @@ Devis MRH
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Nom</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}" readonly autocomplete="name" autofocus>
+                                        <input type="text" id="name" name="name" class="form-control" value="{{$assure->nom}}" readonly autocomplete="name" autofocus>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,14 +43,14 @@ Devis MRH
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Prénom</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="prenom" id="prenom" class="form-control" value="{{auth()->user()->prenom}}" readonly>
+                                        <input type="text" name="prenom" id="prenom" class="form-control" value="{{$assure->prenom}}" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date de naissance</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{auth()->user()->date_naissance}}" readonly>
+                                        <input type="date" class="form-control" type="text" name="date_naissance" id="date_naissance" value="{{$assure->date_naissance}}" readonly>
                                     </div>
                                 </div>
 
@@ -75,7 +75,7 @@ Devis MRH
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Adresse</label>
                                     <div class="col-sm-9">
-                                        <input id="adresse" type="text" name="adresse" class="form-control" value="{{auth()->user()->adresse}}" readonly>
+                                        <input id="adresse" type="text" name="adresse" class="form-control" value="{{$assure->adresse}}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -87,11 +87,11 @@ Devis MRH
                                                     <label class="col-sm-3 control-label">Sexe</label>
                                                     <div class="col-sm-9">
                                                         <div class="be-radio-icon inline">
-                                                            <input type="radio" @if(auth()->user()->sexe == 'Femme') checked @endif name="sexe" value="Femme" id="rad1" disabled>
+                                                            <input type="radio" @if($assure->sexe == 'Femme') checked @endif name="sexe" value="Femme" id="rad1" disabled>
                                                             <label for="rad1"><span class="mdi mdi-female"></span></label>
                                                         </div>
                                                         <div class="be-radio-icon inline">
-                                                            <input type="radio" @if(auth()->user()->sexe == 'Homme') checked @endif name="sexe" value="Homme" id="rad2" disabled>
+                                                            <input type="radio" @if($assure->sexe == 'Homme') checked @endif name="sexe" value="Homme" id="rad2" disabled>
                                                             <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
                                                         </div>
                                                     </div>
@@ -100,14 +100,14 @@ Devis MRH
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Profession</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="commune_assure" value="{{auth()->user()->profession}}" readonly>
+                                                        <input type="text" class="form-control" name="commune_assure" value="{{$assure->profession}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Telephone</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="telephone" value="{{auth()->user()->telephone}}" id="telephone" class="form-control" readonly>
+                                                        <input type="text" name="telephone" value="{{$assure->telephone}}" id="telephone" class="form-control" readonly>
                                                     </div>
                                                 </div>
 

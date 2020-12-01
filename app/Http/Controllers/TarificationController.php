@@ -12,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Rsq_Immobilier;
 use App\devis;
 use App\Prime;
+use App\Assure;
 use PDF;
 
 use auth;
@@ -957,11 +958,11 @@ class TarificationController extends Controller
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
-    	    $prime_total= $request->prime_total;
+    	$prime_total= $request->prime_total;
+    	$code_wilaya = wilaya::where('nlib_wilaya', $request->Wilaya)->first()->code_wilaya;
+		  $user=auth::user();
 
-    	    $code_wilaya = wilaya::where('nlib_wilaya', $request->Wilaya)->first()->code_wilaya;
-
-    	  //  dd($code_wilaya);
+    	    //dd($request->adresse);
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
@@ -1041,7 +1042,22 @@ class TarificationController extends Controller
     			'terrasse'            => $request->terasse,
     			'code_devis'          => $dev->id
 
-    		]);
+			]);
+
+
+			//dd($user->sexe);
+
+			$assure=Assure::create([
+				'nom'                => $request->name,
+				'prenom'             => $request->prenom,
+				'code_wilaya'        => $code_wilaya,
+				'date_naissance'     => $request->date_naissance,
+				'sexe'               => $user->sexe,
+				'telephone'          => $request->telephone,
+				'adresse'            => $request->adresse,
+				'profession'         => $request->commune_assure,
+				'id_devis'           => $dev->id
+			]);
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
@@ -1049,16 +1065,17 @@ class TarificationController extends Controller
     	}
 
 			$prime= Prime::where('id_devis',$devis->id)->get();
+			$assure= Assure::where('id_devis',$devis->id)->first();
 
-    	    $user=auth::user();
+
 			$agence=Agences::where('Name',$devis->code_agence)->first();
 
-    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime'));
+    	return view('produits.mrh.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 
 
     }
     public function validation_devis_catnat(Request $request){
-
+dd($request->code_agence);
 			if ($request->code_agence == ""){
 			Alert::warning('Avertissement', 'Merci de choisir une Agence');
             return back();
@@ -1181,16 +1198,27 @@ class TarificationController extends Controller
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
 
-
+			$user=auth::user();
+			$assure=Assure::create([
+				'nom'               => $request->name,
+				'prenom'             => $request->prenom,
+				'code_wilaya'        => $request->wilaya,
+				'date_naissance'     => $request->date_naissance,
+				'sexe'               => $user->sexe,
+				'telephone'          => $request->telephone,
+				'adresse'            => $request->adresse,
+				'profession'         => $request->commune_assure,
+				'id_devis'           => $dev->id
+			]);
 
     	}
 
         $agence=Agences::where('Name',$devis->code_agence)->first();
-        $prime=Prime::where('id_devis',$dev->id)->first();
+		$prime=Prime::where('id_devis',$dev->id)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
-    	$user=auth::user();
 
-    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total','agence','prime'));
+    	return view('produits.catnat.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 
 
     }
@@ -1198,11 +1226,15 @@ class TarificationController extends Controller
 
     public function modification_devis_mrh (Request $request,$id){
 
+		$user= auth::user();
 
 
-	    $devis=devis::find($id);
-
-    	$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+		$devis=devis::find($id);
+		// print_r($devis->id_user." ".$user->id);
+		// die();
+		if($devis->id_user == $user->id){
+		
+		$risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
 
     	$id=$risque->id;
 
@@ -1226,20 +1258,37 @@ class TarificationController extends Controller
             $code_agence       = $devis->code_agence;
             $agence_map        = Agences::where('id',$code_agence)->first();
 
-            $user= auth::user();
 
-            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
-            $user_commune = commune::where('code_commune', $user->commune)->first();
+
+			 $assure=Assure::where('id_devis',$devis->id)->first();
+
+			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
+
+
+
+
+
+             $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+             $user_commune = commune::where('code_commune', $user->commune)->first();
 
     	    return view('produits.mrh.devis_mrh',compact('terasse','habitation','montant','juredique','nbr_piece','prime_total','date_souscription','wilaya','date_eff','date_exp',
-			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune'));
+			'adresse','wilaya_selected','surface','etage','id','agences','code_agence','agence_map', 'user_wilaya', 'user_commune','assure'));
 
-    }
+	 	}else{
+			return view('welcome');
+		 }
+	}
 
 
 		public function modification_devis_catnat (Request $request,$id){
 
-            $devis=devis::find($id);
+            $user= auth::user();
+
+
+		$devis=devis::find($id);
+		// print_r($devis->id_user." ".$user->id);
+		// die();
+		if($devis->id_user == $user->id){
 
             $risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
 
@@ -1250,7 +1299,7 @@ class TarificationController extends Controller
     	$date_souscription = $devis->date_souscription;
     	$date_eff          = $devis->date_effet;
     	$date_exp          = $devis->date_expiration;
-			$type_formule      = $risque->formule;
+		$type_formule      = $risque->formule;
     	$type_const        = $risque->type_habitation;
     	$Contenant         = $risque->valeur_contenant;
     	$equipement        = $risque->valeur_equipement;
@@ -1278,19 +1327,20 @@ class TarificationController extends Controller
 			$wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
 
 
-            $user= auth::user();
+            //$user= auth::user();
 
-            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
-            $user_commune = commune::where('code_commune', $user->commune)->first();
-
-
-
+			 $assure=Assure::where('id_devis',$devis->id)->first();
+			 $user= auth::user();
+			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
 
             return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',
 			'anne_cont','reg_para','appartient','type_const','val_assur','permis','Contenant','equipement','marchandise','contenu','act_reg','reg_com','loca','prime_total','agences','agence_map','id','code_agence'
-            , 'user_wilaya', 'user_commune'));
+            , 'user_wilaya', 'user_commune','assure'));
 
-    }
+	}else{
+		return view('welcome');
+	}
+}
 
     public function delete_devis(Request $request, $id){
 
@@ -1309,8 +1359,10 @@ class TarificationController extends Controller
     $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
+		dd($assure);
 
-		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime'));
+		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime','assure'));
 
 		}
 
@@ -1322,8 +1374,9 @@ class TarificationController extends Controller
     $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
+		$assure=Assure::where('id_devis',$devis->id)->first();
 
-		return view('produits.catnat.resultat',compact('user','devis','risque','agence','prime'));
+		return view('produits.catnat.resultat',compact('user','devis','risque','agence','prime','assure'));
 
 		}
 
@@ -1333,15 +1386,17 @@ class TarificationController extends Controller
 			$devis= devis::find($id);
 			$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
       $prime= Prime::where('id_devis',$devis->id)->get();
-      $user=auth::user();
+	  $user=auth::user();
+	  $assure=Assure::where('id_devis',$devis->id)->first();
+
 		  $agence=Agences::where('Name',$devis->code_agence)->first();
 
 			//return view('pdf.mrh',compact('user','devis','risque','agence','prime'));
 
 			if ($devis->type_assurance == 'Multirisques Habitation'){
-			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime'));
+			$pdf = PDF::loadView('pdf.mrh',compact('user','devis','risque','agence','prime','assure'));
 	   	}elseif ($devis->type_assurance == 'Catastrophe Naturelle' ){
-      $pdf = PDF::loadView('pdf.catnat',compact('user','devis','risque','agence','prime'));
+      $pdf = PDF::loadView('pdf.catnat',compact('user','devis','risque','agence','prime','assure'));
 	  	}
 			return $pdf->stream();
 
