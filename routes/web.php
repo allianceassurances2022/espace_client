@@ -34,6 +34,11 @@ Route::get('renouvellemen/mrh' , 'HomeController@renouvellement_mrh')->name('ren
 Route::get('renouvellemen/catnat' , 'HomeController@renouvellement_catnat')->name('renouvellement.catnat');
 Route::get('renouvellemen/mrp' , 'HomeController@renouvellement_mrp')->name('renouvellement.mrp');
 
+Route::get('renouvellemen/auto/devis' , 'RenouvellementController@renouvellement_mrh')->name('devis_renouvlement_mrh');
+Route::post('/validation_devis_renouvellement_mrh' , 'RenouvellementController@validation_devis_mrh')->name('validation_devis_renouvellement_mrh')->middleware('auth');
+
+
+
 
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');

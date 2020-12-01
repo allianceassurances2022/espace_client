@@ -150,7 +150,7 @@ class HomeController extends Controller
     }
 
     public function renouvellement_mrh(){
-        return view('renouvellement.mrh');
+        return view('renouvellement.mrh.mrh');
     }
 
     public function renouvellement_catnat(){
