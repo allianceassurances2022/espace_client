@@ -9,39 +9,59 @@ use App\Rsq_Immobilier;
 use App\wilaya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RenouvellementController extends Controller
 {
-    public function renouvellement_mrh (Request $request){
+    public function renouvellement_mrh (Request $request)
+    {
 
 
         $reference = $request->ref;
 
-        $devis = devis::where('id', $reference)
-            ->where('type_devis', "2" )->first();
+        $id_devis = devis::all();
 
-        $risque = Rsq_Immobilier::where('code_devis',$reference)->first();
+        $plucked =  $id_devis->pluck('id')->toArray();
 
-        $user= auth::user();
+     //   $id_devis = $id_devis->keys('id');
+
+      //  dd($plucked);
+
+        if (in_array($reference, $plucked)) {
+            /*  if ($reference == "" || $reference > 20 || $reference< 1){
+                  Alert::warning('Avertissement', 'Merci de faire entrer une référence');
+                  //  return back();
+                  return back();
+              }else{
+      */
+
+            $devis = devis::where('id', $reference)
+                ->where('type_devis', "2")->first();
+
+            $risque = Rsq_Immobilier::where('code_devis', $reference)->first();
+
+            $user = auth::user();
 
 
-        $wilaya  = Wilaya::all();
-        $agences = Agences::all();
-        $agence_map = '';
+            $wilaya = Wilaya::all();
+            $agences = Agences::all();
+            $agence_map = '';
 
-        $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
-        $user_commune = commune::where('code_commune', $user->commune)->first();
-
-
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
 
 
+            return view('renouvellement.mrh.devis_renouvellement', compact('risque', 'devis', 'user_wilaya', 'user_commune', 'wilaya', 'agences',
+                'agence_map'));
 
-        //   dd($risque);
+        } else {
 
-        return view('renouvellement.mrh.devis_renouvellement', compact('risque','devis','user_wilaya','user_commune','wilaya','agences',
-        'agence_map'));
+            Alert::warning('Avertissement', 'Merci de faire entrer une référence');
+
+            return back();
+        }
+
     }
-
 
     public function validation_devis_mrh(Request $request){
 

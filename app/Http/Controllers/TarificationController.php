@@ -1076,11 +1076,7 @@ class TarificationController extends Controller
     }
     public function validation_devis_catnat(Request $request){
 dd($request->code_agence);
-			if ($request->code_agence == ""){
-			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-            return back();
-			}
-
+			c
 			$rules = array(
 				'code_agence'  => 'bail|string|max:5',
 			);
