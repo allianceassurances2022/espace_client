@@ -142,4 +142,77 @@ class RenouvellementController extends Controller
     public function validation_devis_auto(Request $request){
 
     }
+
+    public function renouvellement_catnat (Request $request)
+    {
+        $reference = $request->ref;
+        $id_devis = devis::all();
+        $plucked =  $id_devis->pluck('id')->toArray();
+
+
+
+        if (in_array($reference, $plucked)) {
+
+            $devis = devis::where('id', $reference)
+                ->where('type_devis', "2")->first();
+
+            $risque = rsq_immobilier::where('code_devis', $reference)->first();
+
+            $user= auth::user();
+
+            $assure = [
+                'nom'            => $user->name,
+                'prenom'         => $user->prenom,
+                'date_naissance' => $user->date_naissance ,
+                'code_wilaya'    => $user->wilaya_assure ,
+                'profession'     => $user->profession ,
+                'telephone'      => $user->telephone ,
+                'sexe'           => $user->sexe,
+                'adresse'        => $user->adresse,
+            ];
+
+            $assure = (object)$assure;
+            $type_formule = '';
+            $type_const = $risque->type_habitation;
+            $Contenant= $risque->valeur_contenant;
+            $equipement = $risque->valeur_contenant;
+            $marchandise = $risque->valeur_marchandise;
+            $contenu = $risque->valeur_contenu;
+            $act_reg = $risque->registe_com;
+            $reg_com = '';
+            $agence_map = '';
+            $loca= $risque->local_assure;
+            $anne_cont = $risque->annee_construction;
+            $surface =$risque->superficie;
+            $permis=$risque->permis;
+            $val_assur=$risque->valeur_assure;
+            $reg_para=$risque->reg_para;
+            $datec='';
+            $prime_total='';
+
+            $date_souscription = '';
+            $wilaya_selected = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $commune_selected = commune::where('code_commune', $user->commune)->first();
+
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
+
+            $appartient ='';
+            $agences = Agences::all();
+
+            $wilaya = Wilaya::all();
+
+            return view('renouvellement.catnat.devis',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
+                'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya_selected','commune_selected','agences','appartient',
+                'assure','user_wilaya','user_commune','wilaya'));
+
+        } else {
+
+            Alert::warning('Avertissement', 'Merci de faire entrer une référence');
+            return back();
+        }
+
+
+
+        }
 }

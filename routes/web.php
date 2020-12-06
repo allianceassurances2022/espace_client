@@ -40,6 +40,8 @@ Route::post('/validation_devis_renouvellement_mrh' , 'RenouvellementController@v
 Route::get('renouvellement/auto/devis' , 'RenouvellementController@renouvellement_auto')->name('devis_renouvlement_auto');
 Route::post('/validation_devis_renouvellement_auto' , 'RenouvellementController@validation_devis_auto')->name('validation_devis_renouvellement_auto')->middleware('auth');
 
+Route::get('renouvellement/catnat/devis' , 'RenouvellementController@renouvellement_catnat')->name('devis_renouvlement_catnat');
+Route::post('/validation_devis_renouvellement_catnat' , 'RenouvellementController@validation_devis_catnat')->name('validation_devis_renouvellement_catnat')->middleware('auth');
 
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');
