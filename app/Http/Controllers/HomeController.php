@@ -146,7 +146,7 @@ class HomeController extends Controller
 
 
     public function renouvellement_auto(){
-        return view('renouvellement.auto');
+        return view('renouvellement.auto.auto');
     }
 
     public function renouvellement_mrh(){
@@ -154,11 +154,11 @@ class HomeController extends Controller
     }
 
     public function renouvellement_catnat(){
-        return view('renouvellement.catnat');
+        return view('renouvellement.catnat.catnat');
     }
 
     public function renouvellement_mrp(){
-        return view('renouvellement.mrp');
+        return view('renouvellement.mrp.mrp');
     }
 
 

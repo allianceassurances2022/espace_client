@@ -1075,8 +1075,8 @@ class TarificationController extends Controller
 
     }
     public function validation_devis_catnat(Request $request){
-dd($request->code_agence);
-			c
+//dd($request->code_agence);
+
 			$rules = array(
 				'code_agence'  => 'bail|string|max:5',
 			);

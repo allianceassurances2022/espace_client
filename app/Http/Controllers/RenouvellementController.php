@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Agences;
 use App\commune;
 use App\devis;
+use App\marque;
 use App\Rsq_Immobilier;
+use App\Rsq_Vehicule;
 use App\wilaya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,20 +22,10 @@ class RenouvellementController extends Controller
         $reference = $request->ref;
 
         $id_devis = devis::all();
-
         $plucked =  $id_devis->pluck('id')->toArray();
 
-     //   $id_devis = $id_devis->keys('id');
-
-      //  dd($plucked);
 
         if (in_array($reference, $plucked)) {
-            /*  if ($reference == "" || $reference > 20 || $reference< 1){
-                  Alert::warning('Avertissement', 'Merci de faire entrer une référence');
-                  //  return back();
-                  return back();
-              }else{
-      */
 
             $devis = devis::where('id', $reference)
                 ->where('type_devis', "2")->first();
@@ -83,6 +75,71 @@ class RenouvellementController extends Controller
         $user= auth::user();
         return view('renouvellement.mrh.resultat', compact('user'));
 
+
+    }
+
+    public function renouvellement_auto (Request $request)
+    {
+        $reference = $request->ref;
+
+        $id_devis = devis::all();
+        $plucked =  $id_devis->pluck('id')->toArray();
+
+
+        if (in_array($reference, $plucked)) {
+
+            $devis = devis::where('id', $reference)
+                ->where('type_devis', "2")->first();
+
+            $risque = Rsq_Vehicule::where('code_devis', $reference)->first();
+
+         //   dd($risque);
+
+            $user = auth::user();
+
+
+            $wilaya = Wilaya::all();
+            $agences = Agences::all();
+            $agence_map = '';
+
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
+
+
+
+            $categorie = $risque->categorie;
+
+            $date_permis = $risque->date_conducteur;
+            $wilaya_obtention = $risque->wilaya_obtention;
+            $annee_auto = $risque->annee_mise_circulation;
+            $puissance = $risque->puissance;
+            $usage = $risque->usage;
+            $formule = $risque->code_formule;
+            $assistance_nom = $risque->assistance;
+            $offre = $risque->offre;
+            $taxe = $risque->taxe;
+            $matricule = $risque->matricule;
+            $num_chassis = $risque->num_chassis;
+            $type = $risque->type;
+            $couleur = $risque->couleur;
+            $marque_selected = $risque->marque;
+            $model = $risque->modele;
+            $permis_num = $risque->permis_num;
+
+            return view('renouvellement.auto.devis_renouvellement', compact('risque', 'devis', 'user_wilaya', 'user_commune', 'wilaya', 'agences',
+                'agence_map','marque_selected','categorie','date_permis','wilaya_obtention','annee_auto','puissance','usage',
+                'formule','assistance_nom','taxe','matricule','num_chassis','type','couleur','model','permis_num'));
+
+        } else {
+
+            Alert::warning('Avertissement', 'Merci de faire entrer une référence');
+            return back();
+        }
+
+    }
+
+
+    public function validation_devis_auto(Request $request){
 
     }
 }
