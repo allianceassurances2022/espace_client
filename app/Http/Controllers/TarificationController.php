@@ -607,7 +607,8 @@ class TarificationController extends Controller
 
             if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
                 Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+               // return redirect()->route('type_produit', ['mrh', 'index', ]);
+                return back();
             }
 
             $tab = array("oui", "non");
