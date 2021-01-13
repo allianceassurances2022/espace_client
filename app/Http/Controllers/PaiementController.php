@@ -16,6 +16,8 @@ use App\devis;
 
 
 
+
+
 use auth;
 
 class PaiementController extends Controller
@@ -37,63 +39,119 @@ class PaiementController extends Controller
           public function save_mrh ($id){
 
             $devis = devis::find($id);
+            $risque = Rsq_Immobilier::where('code_devis', $id)->first();
 
 
 
+          //  dd($risque);
             $var = [
-              "categorie"         => "1",
-              "civitlite"         => "1",
-              "nom"               => auth()->user()->name,
-              "prenom"            => auth()->user()->prenom,
-              "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
-              "lieuNaissance"     => auth()->user()->adresse,
-              "nationalite"       => "Algérienne",
-              "activite"          => "1",
-              "proffession"       => "1",
-              "assureAddresse"    => "Fort de l'eau",
-              "assureWilayaId"    => "01",
-              "assureVilleId"     => "0101",
-              "regionId"          => "16",
-              "agenceId"          => "00000",
-              "classId"           => "12",
-              "branchId"          => "1225",
-              "souscriptionDate"  => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
-              "effetDate"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
-              "expirationDate"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
-              "periode"           => 1,
-              "periodeType"       => 2,
-              "wilayaId"          => "01",
-              "villeId"           => "0101",
-              "address"           => "ADRAR",
-              "batimentType"      => "1",
-              "batimentCategorie" => "1",
-              "surface"           => "0",
-              "nombrePieces"      => "3",
-              "etage"             => "0",
-              "terasse"           => 0,
-              "formule"           => "8",
-              "capitaleAssure"    => 500000
+                "categorie"         => "1",
+                "civitlite"         => "1",
+                "nom"               => auth()->user()->name,
+                "prenom"            => auth()->user()->prenom,
+                "date_naissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+                "lieu_naissance"     => auth()->user()->adresse,
+                "nationalite"       => "Algérienne",
+                "activite"          => "1",
+                "proffession"       => "1",
+                "assureAddresse"    => "Fort de l'eau",
+                "assureWilayaId"    => "01",
+                "assureVilleId"     => "0101",
+                "region"          => "16",
+                "agence"          => "00000",
+                "class_id"           => "12",
+                "branch_id"          => "1225",
+                "date_souscription"  => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
+                "date_effet"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+                "date_expiration"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+                "periode"           => 1,
+                "periodeType"       => 2,
+                "wilayaId"          => "01",
+                "villeId"           => "0101",
+                "address"           => "ADRAR",
+                "batimentType"      => "1",
+                "batimentCategorie" => "1",
+                "surface"           => "0",
+                "nombrePieces"      => "3",
+                "etage"             => "0",
+                "terasse"           => 0,
+                "formule"           => "8",
+                "capitaleAssure"    => 500000
             ];
 
-            dd($var);
+//dd($risque->code_commune);
+
+              /*
+            $var = [
+              "categorie"           => "1",
+              "civitlite"           => "10",
+              "nom"                 => auth()->user()->name,
+              "prenom"              => auth()->user()->prenom,
+              "date_naissance"      => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+              "lieu_naissance"      => auth()->user()->adresse,
+              "nationalite"         => "Algérienne",
+              "activite"            => "1",
+              "proffession"         => "1",
+              "addresse_assure"    => "Fort de l'eau",
+              "wilaya_assure_id"    => "01",
+              "ville_assure_id"     => "0101",
+              "region"              => "16",
+              "agence"              => "00000",
+              "class_id"            => "12",
+              "branch_id"           => "1225",
+              "date_souscription"   => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
+              "date_effet"          => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+              "date_expiration"     => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+              "wilaya_id"           => $risque->code_wilaya,
+              "ville_id"            =>  "0101",
+              "address"             => "ADRAR",
+              "type_batiment"       => $risque->type_habitation,
+              "categorie_batiment"  => "1",
+              "surface_batiment"    => $risque->superficie,
+              "chambre_batiment"    => $risque->nombre_piece,
+              "etage_batiment"      => $risque->etage,
+              "terasse"             => $risque->terrasse,
+              "capitale_assure"     => 500000
+            ];
+
+
+            $var =[
+
+                "region"=> "16",
+                "agence" => "00000",
+                "class_id" => "11",
+                "branch_id" => "1100",
+                "date_effet" => "01/12/2020",
+                "date_expiration" => "1/12/2021 ",
+                "date_souscription" => "01/12/2020 11:00:55",
+                "nom" => "hariti",
+                "prenom" => "sarah",
+                "date_naissance" => "01/12/2020 11:00:55"
+
+            ];
+*/
+      //      dd($var);
             $var=json_encode($var);
 
             $client = new \GuzzleHttp\Client();
-            $url = "http://10.0.0.131:8443/api/polices/addPolice";
+            //$url = "http://10.0.0.131:8443/api/polices/addPolice";
+            $url = "http://10.0.0.131:8888/api/create_police/";
 
             $request = $client->post($url,[
             'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+            'auth' => ['djilali', 'API.create_police'],
             'body'    => $var
             ]);
 
             // $response = json_decode($request->getBody(), true);
             $response = json_decode($request->getBody(), true);
 
+
             if($response['status']){
 
               $devis->update([
           			'type_devis'      => 2,
-          			'reference_police' => $response['data']["reference"],
+          			'reference_police' => $response['data']['Code de référence'],
           		]);
           		$dev=$devis;
 
@@ -120,36 +178,80 @@ class PaiementController extends Controller
             public function save_catnat ($id){
 
               $devis = devis::find($id);
+              $risque = Rsq_Immobilier::where('code_devis', $id)->first();
 
+
+                $var = [
+                    "region"                => "16",
+                    "agence"                => $devis->code_agence,
+                    "class_id"              => "12",
+                    "branch_id"             => "1290",
+                    "date_effet"            => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+                    "date_expiration"       => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+                    "date_souscription"     => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
+                    "categorie"             => "1",
+                    "civitlite"             => "10",
+                    "nom"                   => auth()->user()->name,
+                    "prenom"                => auth()->user()->prenom,
+                    "date_naissance"        => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+                    "lieu_naissance"        => "bejaia",
+                    "nationalite"           => "algerienne",
+                    "activite"              => "1",
+                    "proffession"           => "1",
+                    "addresse_assure"       => auth()->user()->adresse,
+                    "pay_assure_id"         => "",
+                    "wilaya_assure_id"      => auth()->user()->wilaya,
+                    "ville_assure_id"       => auth()->user()->commune,
+                    "zone"                  => "est",
+                    "formule_catnat"        => $risque->code_formule ,
+                    "annee_construction"    => $risque->annee_construction ,
+                    "proprietaire"          => 0 ,
+                    "activite2"             => 1 ,
+                    "equipement"            => $risque->valeur_equipement ,
+                    "marchandise"           => $risque->valeur_marchandise ,
+                    "contenant"             => $risque->valeur_contenant,
+                    "regles_parasismiques"        => 0,
+                    "insc_registre_commerce"      => 1 ,
+                    "registre_commerce"           => 0 ,
+                    "local_assure"                =>  1,
+                    "regles_parasismiques"            =>  1,
+                    "construction_vous_appartient"    => 0 ,
+                    "permis_construire"               =>  1,
+
+
+                ];
+
+             //   dd($var);
+/*
               $var = [
-    "nom"               => auth()->user()->name,
-    "prenom"            => auth()->user()->prenom,
-    "categorie"         => "1",
-    "civitlite"         => "1",
-    "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
-    "lieuNaissance"     => "Rahouia",
-    "nationalite"       => "Algérienne",
-    "activite"          => "1",
-    "proffession"       => "1",
-    "assureAddresse"    => "Fort de l'eau",
-    "assureWilayaId"    => "01",
-    "assureVilleId"     => "0101",
-    "regionId"          => "16",
-    "agenceId"          => "00000",
-    "classId"           => "12",
-    "branchId"          => "1290",
-    "souscriptionDate"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
-    "effetDate"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
-    "expirationDate"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
-    "periode"           => 1,
-    "periodeType"       => 2,
-    "wilayaId"          => "01",
-    "villeId"           => "0101",
-    "address"           => "ADRAR",
-    "zone"              => "5",
-    "formule"           => "3",
-    "batimentType"      => "1",
-    "batimentCategorie" => "1",
+                    "nom"               => auth()->user()->name,
+                    "prenom"            => auth()->user()->prenom,
+                    "categorie"         => "1",
+                    "civitlite"         => "1",
+                    "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+                    "lieuNaissance"     => "Rahouia",
+                    "nationalite"       => "Algérienne",
+                    "activite"          => "1",
+                    "proffession"       => "1",
+                    "assureAddresse"    => "Fort de l'eau",
+                    "assureWilayaId"    => "01",
+                    "assureVilleId"     => "0101",
+                    "regionId"          => "16",
+                    "agenceId"          => "00000",
+                    "classId"           => "12",
+                    "branchId"          => "1290",
+                    "souscriptionDate"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
+                    "effetDate"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+                    "expirationDate"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+                    "periode"           => 1,
+                    "periodeType"       => 2,
+                    "wilayaId"          => "01",
+                    "villeId"           => "0101",
+                    "address"           => "ADRAR",
+                    "zone"              => "5",
+                    "formule"           => "3",
+                    "batimentType"      => "1",
+                    "batimentCategorie" => "1",
     "surface"           => "0",
     "nombrePieces"      => "3",
     "etage"             => "0",
@@ -166,22 +268,85 @@ class PaiementController extends Controller
     "appartient"        => 1
 
               ];
+*/
+/*
+                $var = [
+                    "nom"               => auth()->user()->name,
+                    "prenom"            => auth()->user()->prenom,
+                    "categorie"         => "1",
+                    "civitlite"         => "1",
+                    "date_naissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+                    "lieu_naissance"     => "Rahouia",
+                    "nationalite"       => "Algérienne",
+                    "activite"          => "1",
+                    "proffession"       => "1",
+                    "addresse_assure "    => "Fort de l'eau",
+                    "pay_assure_id"     => "Algérie",
+                    "wilaya_assure_id"    => "01",
+                    "ville_assure_id"     => "0101",
+                    "region"          => "16",
+                    "agence"          => "00000",
+                    "class_id"           => "12",
+                    "branch_id"          => "1290",
+                    "date_souscription"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
+                    "date_effet"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+                    "date_expiration"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+                    "periode"           => 1,
+                    "periodeType"       => 2,
+                    "wilayaId"          => "01",
+                    "villeId"           => "0101",
+                    "address"           => "ADRAR",
+                    "zone"              => "5",
+                    "formule_catna"           => "3",
+                    "batimentType"      => "1",
+                    "batimentCategorie" => "1",
+                    "surface"           => "0",
+                    "nombrePieces"      => "3",
+                    "etage"             => "0",
+                    "annee_construction" => 2015,
+                    "proprietaire"      => 1,
+                    "activiteRisque"    => "1",
+                    "capitaleAssure"    => 500000,
+                    "valeurEquipement"  => 200000,
+                    "valeurMarchandise" => 300000,
+                    "valeurContenant"   => 500000,
+                    "regPara"           => 1,
+                    "inscRegisteCom"    => 1,
+                    "registeCom"        => 1,
+                    "equipement"        => 1 ,
+                    "marchandise"       => 1 ,
+                    "contenant"         => 1 ,
+                    "regles_parasismiques" => 0,
+                    "insc_registre_commerce" => 1 ,
+                    "registre_commerce" => 0 ,
+                    "local_assure" =>  1,
+                    "regles_parasismiques" =>  1,
+                    "construction_vous_appartient" => 0 ,
+                    "permis_construire" =>  1,
 
-              dd($var);
+
+                ];
+*/
+
+
+
+                //dd($var);
 
               $var=json_encode($var);
 
               $client = new \GuzzleHttp\Client();
-              $url = "http://10.0.0.131:8443/api/polices/addPolice";
+                $url = "http://10.0.0.131:8888/api/create_police/";
 
               $request = $client->post($url,[
               'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                  'auth' => ['djilali', 'API.create_police'],
               'body'    => $var
               ]);
 
+
               // $response = json_decode($request->getBody(), true);
               $response = json_decode($request->getBody(), true);
-
+                dd( $response);
               if($response['status']){
 
                 $devis->update([

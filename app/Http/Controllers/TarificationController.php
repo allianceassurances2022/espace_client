@@ -24,6 +24,8 @@ class TarificationController extends Controller
 	public function type_formule_catnat(Request $request)
 	{
 
+
+
         $rules = array(
             'formule' => 'bail|required|string|max:190',
         );
@@ -38,14 +40,20 @@ class TarificationController extends Controller
 		$local = "oui";
 		$type_const = "Habitation individuelle";
 		$permis = "oui";
+        $code_formule = "";
+
+
 
 		if($formul=='Habitation'){
-			return view('produits.catnat.formule_habitation',compact('formul','type_const','permis'));
+		    $code_formule = 1;
+			return view('produits.catnat.formule_habitation',compact('formul','type_const','permis','code_formule'));
 		}elseif($formul=='Commerce'){
-			return view('produits.catnat.formule_commerce',compact('formul','type_const','activite','registre','local'));
+            $code_formule = 2;
+			return view('produits.catnat.formule_commerce',compact('formul','type_const','activite','registre','local','code_formule'));
 
 		}elseif($formul=='Industrielle'){
-			return view('produits.catnat.formule_industrielle',compact('formul','type_const','activite','registre','local'));
+            $code_formule = 3;
+			return view('produits.catnat.formule_industrielle',compact('formul','type_const','activite','registre','local','code_formule'));
 		}else{
             Alert::warning('Avertissement', 'Formule incorrecte');
             return redirect()->route('index_catnat');
@@ -57,13 +65,16 @@ class TarificationController extends Controller
 
 		$formul=session('formul');
 
-		return view('produits.catnat.index',compact('formul'));
+        $code_formule=session('code_formule');
+
+		return view('produits.catnat.index',compact('formul', 'code_formule'));
 
 	}
 
 
 	public function construction_catanat(Request $request)
 	{
+
 
 		$wilaya           = wilaya::all();
 		$prime_total      = 0;
@@ -79,15 +90,23 @@ class TarificationController extends Controller
         $type_const=$request->type_const;
         $permis=$request->permis;
 
-		$list_contruction = array(
+        $code_formule     = $request->code_formule;
+        $request->session()->put('code_formule', $code_formule);
+
+
+        $list_contruction = array(
 		    'Habitation individuelle',
             'Habitation collective',
             'Immeuble');
 
-		if ($request->type_formule == 'Habitation') {
+		if ($request->type_formule == 'Habitation' ) {
 
 			$type_formule=$request->type_formule;
 			$request->session()->put('type_formule', $type_formule);
+
+
+            $code_formule     = $request->code_formule;
+            $request->session()->put('code_formule', $code_formule);
 
 			if ($val_assur > 10000){
 
@@ -101,18 +120,18 @@ class TarificationController extends Controller
                     $request->session()->put('type_const', $type_const);
 
                     return view('produits.catnat.construction',compact('type_formule','val_assur','permis','type_const','wilaya','prime_total',
-                        'wilaya_selected','Commune_selected','reg_para'));
+                        'wilaya_selected','Commune_selected','reg_para','code_formule'));
 
                 }else{
                   //  $type_const=$request->type_const;
 
                     Alert::warning('Avertissement', 'Type de formule incorrect !!');
-                    return view('produits.catnat.formule_habitation',compact('formul','type_const','permis', 'val_assur'));
+                    return view('produits.catnat.formule_habitation',compact('formul','type_const','permis', 'val_assur','code_formule'));
                 }
 
             }else{
                 Alert::warning('Avertissement', 'La valeur doit être supérieur à 10 000 DA !!');
-                return view('produits.catnat.formule_habitation',compact('formul','type_const','permis'));
+                return view('produits.catnat.formule_habitation',compact('formul','type_const','permis','code_formule'));
             }
 
 		}else{
@@ -122,6 +141,9 @@ class TarificationController extends Controller
 			$type_formule = $request->type_formule;
 			$request->session()->put('type_formule', $type_formule);
 
+            $code_formule     = $request->code_formule;
+            $request->session()->put('code_formule', $code_formule);
+
 /*			$val_assur    = $request->val_assur;
 			$request->session()->put('val_assur', $val_assur);
 
@@ -129,7 +151,8 @@ class TarificationController extends Controller
 			$request->session()->put('permis', $permis);
 */
 
-            if ($request->type_formule == 'Commerce') {
+            if ($request->type_formule == 'Commerce' || $request->type_formule == 'Industrielle') {
+
 
                 $type_const   = $request->type_const;
                 $list_type_const = array(
@@ -193,7 +216,7 @@ class TarificationController extends Controller
 
 
 			return view('produits.catnat.construction',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','activite','registre','local',
-			'val_assur','permis','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para'));
+			'val_assur','permis','wilaya','prime_total','wilaya_selected','Commune_selected','reg_para','code_formule'));
 
 		}
 
@@ -217,6 +240,7 @@ class TarificationController extends Controller
 			$activite       =session('activite');
 			$registre       =session('registre');
 			$local          =session('local');
+
 			//$request->session()->forget('formul');
 			return view('produits.catnat.formule_commerce',compact('val_assur','permis','type_const','Contenant','equipement', 'marchandise','contenu','activite', 'registre','local','formul'));
 
@@ -252,8 +276,8 @@ class TarificationController extends Controller
 	public function montant_catnat(Request $request)
     {
 
-        //    dd($request);
-        /*
+
+
                 //////// Verificateur captcha ////////
                 $recap='g-recaptcha-response';
 
@@ -291,24 +315,25 @@ class TarificationController extends Controller
                         'habitation', 'commerce', 'industrielle'
                     );
 
-                //    dd($request->type_formule);
+                /*    dd($request->type_formule);
 
                     if ( in_array( $request->type_formule , $tableau )) {
 
-                    //    Alert::warning('Avertissement', 'Usage incorrect');
-                    //    return redirect()->route('type_formule_catnat', ['auto', 'index']);
-        dd('true');
+                       Alert::warning('Avertissement', 'Usage incorrect');
+                        return redirect()->route('type_formule_catnat', ['auto', 'index']);
+       // dd('true');
                     }else{
                         dd('false');
-                    }
+                    }*/
                 }
 
-        */
+
 
 
         $maj = 0.0;
 
         $type_formule = $request->type_formule;
+        $code_formule =session('code_formule');
         $type_const = $request->type_const;
         $valeur_c = $request->Contenant;
         $valeur_e = $request->equipement;
@@ -324,6 +349,8 @@ class TarificationController extends Controller
         $permis = $request->permis;
         $val_assur = $request->val_assur;
         $reg_para = $request->seisme;
+
+
 
         $tableau = array(
             'Habitation', 'Commerce', 'Industrielle'
@@ -467,6 +494,7 @@ class TarificationController extends Controller
 
             $data_session = [
                 'type_formule' => $request->type_formule,
+                'code_formule'  => $code_formule,
                 'type_const' => $request->type_const,
                 'Contenant' => $request->Contenant,
                 'equipement' => $request->equipement,
@@ -488,11 +516,14 @@ class TarificationController extends Controller
                 'prime_nette' => $val,
                 'act_reg'     => '',
             ];
+
+
         } else {
 
 
         $data_session = [
             'type_formule' => $request->type_formule,
+            'code_formule'  => $code_formule,
             'type_const' => $request->type_const,
             'Contenant' => $request->Contenant,
             'equipement' => $request->equipement,
@@ -561,7 +592,7 @@ class TarificationController extends Controller
         }
 
 
-        return view('produits.catnat.construction',compact('type_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
+        return view('produits.catnat.construction',compact('type_formule','code_formule','val_assur','permis','wilaya','prime_total','type_const','Contenant','equipement',
             'marchandise','contenu','activite','registre','local','surface','anne_cont','wilaya_selected','commune','Commune_selected','reg_para'));
 
 
@@ -570,6 +601,8 @@ class TarificationController extends Controller
 	//mrh
 	public function montant_mrh(Request $request)
 	{
+
+
  //dd($request->terasse);
         //die();name="nbr_piece"
         ///////////////////////////////////////////////////////////
@@ -607,30 +640,31 @@ class TarificationController extends Controller
 
             if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
                 Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+               // return redirect()->route('type_produit', ['mrh', 'index', ]);
+               // return back();
             }
 
             $tab = array("oui", "non");
             if (!in_array($request->terasse, $tab)) {
                 Alert::warning('Avertissement', 'terasse est incorrecte');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+            //    return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
             $tab = array("proprietaire", "locataire");
             if (!in_array($request->juredique, $tab)) {
                 Alert::warning('Avertissement', 'juredique est incorrecte');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+             //   return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
             $tab = array("individuelle", "collective");
             if (!in_array($request->habitation, $tab)) {
                 Alert::warning('Avertissement', 'habitation est incorrecte');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+              //  return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
             if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
                 Alert::warning('Nombre de piéces doit etre inferieur a 16');
-                return redirect()->route('type_produit', ['mrh', 'index']);
+               // return redirect()->route('type_produit', ['mrh', 'index']);
             }
 
 
@@ -958,11 +992,11 @@ class TarificationController extends Controller
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
-    	$prime_total= $request->prime_total;
-    	$code_wilaya = wilaya::where('nlib_wilaya', $request->Wilaya)->first()->code_wilaya;
-		  $user=auth::user();
+    	    $prime_total= $request->prime_total;
+    	    $code_wilaya = wilaya::where('nlib_wilaya', $request->Wilaya)->first()->code_wilaya;
 
-    	    //dd($request->adresse);
+		    $user=auth::user();
+
 
     	if($request->id){
     		$risque= Rsq_Immobilier::find($request->id);
@@ -1045,7 +1079,7 @@ class TarificationController extends Controller
 			]);
 
 
-			//dd($user->sexe);
+
 
 			$assure=Assure::create([
 				'nom'                => $request->name,
@@ -1058,6 +1092,8 @@ class TarificationController extends Controller
 				'profession'         => $request->commune_assure,
 				'id_devis'           => $dev->id
 			]);
+
+			dd($res);
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
@@ -1075,11 +1111,7 @@ class TarificationController extends Controller
 
     }
     public function validation_devis_catnat(Request $request){
-dd($request->code_agence);
-			if ($request->code_agence == ""){
-			Alert::warning('Avertissement', 'Merci de choisir une Agence');
-            return back();
-			}
+//dd($request->code_agence);
 
 			$rules = array(
 				'code_agence'  => 'bail|string|max:5',
@@ -1088,8 +1120,6 @@ dd($request->code_agence);
 			$this->validate($request, $rules);
 
             $value_catnat  = session('data_catnat');
-
-
 
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
@@ -1158,15 +1188,18 @@ dd($request->code_agence);
 
 				if($request->formule == 'Habitation'){
 
+
+
     		$res=Rsq_Immobilier::create([
-    		  'formule'            => $request->formule,
+    		    'formule'            => $request->formule,
+                'code_formule'       => $request->code_formule,
     			'type_habitation'    => $request->type_const,
     			'valeur_assure'      => $request->val_assur,
     			'permis'             => $request->permis,
-          'superficie'         => $request->surface,
+                'superficie'         => $request->surface,
     			'annee_construction' => $request->anne_cont,
-          'code_wilaya'        => $request->wilaya,
-          'code_commune'       => $request->commune,
+                'code_wilaya'        => $request->wilaya,
+                'code_commune'       => $request->commune,
     			'reg_para'           => $request->reg_para,
     			'appartient'         => $request->appartient,
     			'code_devis'         => $dev->id
@@ -1175,6 +1208,7 @@ dd($request->code_agence);
 			}else{
 				$res=Rsq_Immobilier::create([
 				'formule'            => $request->formule,
+                'code_formule'            => $request->code_formule,
     			'type_habitation'    => $request->type_const,
     			'valeur_contenant'   => $request->contenant,
     			'valeur_equipement'  => $request->equipement,
@@ -1294,12 +1328,11 @@ dd($request->code_agence);
 
             $id=$risque->id;
 
-
-
     	$date_souscription = $devis->date_souscription;
     	$date_eff          = $devis->date_effet;
     	$date_exp          = $devis->date_expiration;
 		$type_formule      = $risque->formule;
+		$code_formule      = $risque->fcode_formule ;
     	$type_const        = $risque->type_habitation;
     	$Contenant         = $risque->valeur_contenant;
     	$equipement        = $risque->valeur_equipement;
@@ -1331,6 +1364,9 @@ dd($request->code_agence);
 
 			 $assure=Assure::where('id_devis',$devis->id)->first();
 			 $user= auth::user();
+
+            $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
+            $user_commune = commune::where('code_commune', $user->commune)->first();
 			// $wilaya = wilaya::where('code_wilaya', $assure['code_wilaya'])->first()->nlib_wilaya;
 
             return view('produits.catnat.devis_catnat',compact('date_souscription','date_eff','date_exp','type_formule','wilaya_selected','commune_selected','surface','wilaya',

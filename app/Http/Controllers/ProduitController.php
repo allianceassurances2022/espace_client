@@ -119,13 +119,13 @@ class ProduitController extends Controller
         $user= auth::user();
 
         $assure = [
-          'nom'            => $user->name,
+                'nom'            => $user->name,
  		 	    'prenom'         => $user->prenom,
  		 	    'date_naissance' => $user->date_naissance ,
  			    'code_wilaya'    => $user->wilaya_assure ,
  			    'profession'     => $user->profession ,
  			    'telephone'      => $user->telephone ,
-          'sexe'           => $user->sexe,
+                'sexe'           => $user->sexe,
  			    'adresse'        => $user->adresse,
         ];
 
@@ -236,13 +236,13 @@ class ProduitController extends Controller
        // $categorie ='';
 
         $assure = [
-            'nom'            => $user->name,
+                    'nom'            => $user->name,
                     'prenom'         => $user->prenom,
                     'date_naissance' => $user->date_naissance ,
                    'code_wilaya'    => $user->wilaya_assure ,
                    'profession'     => $user->profession ,
                    'telephone'      => $user->telephone ,
-            'sexe'           => $user->sexe,
+                    'sexe'           => $user->sexe,
                    'adresse'        => $user->adresse,
           ];
 
@@ -266,6 +266,8 @@ class ProduitController extends Controller
     public function devis_catnat()
     {
 
+
+
          $value_catnat      = session('data_catnat');
          $date_souscription = date('Y-m-d');
          $type_formule      = $value_catnat['type_formule'];
@@ -286,12 +288,15 @@ class ProduitController extends Controller
          $reg_para          = $value_catnat['reg_para'];
          $datec             = $value_catnat['datec'];
          $prime_total       = $value_catnat['prime_total'];
+        $code_formule       = $value_catnat['code_formule'];
          $wilaya            = wilaya::all();
          $agences           = Agences::all();
          $wilaya_selected   = $value_catnat['wilaya_selected'];
          $commune_selected  = $value_catnat['commune_selected'];
          $appartient        = "oui";
          $agence_map        = '';
+
+
 
          $commune_selected  = commune::where('code_commune',$commune_selected)->first();
          $wilaya_selected   = wilaya::where('code_wilaya',$wilaya_selected)->first();
@@ -317,7 +322,7 @@ class ProduitController extends Controller
 
 
 
-        return view('produits.catnat.devis_catnat',compact('type_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
+        return view('produits.catnat.devis_catnat',compact('type_formule','code_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map',
         'loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient',
             'user_wilaya', 'user_commune','assure'));
     }

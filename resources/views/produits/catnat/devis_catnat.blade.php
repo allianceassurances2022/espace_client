@@ -36,7 +36,7 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Nom</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" id="name" name="name" class="form-control" value="{{$assure->nom}}" readonly autocomplete="name" autofocus>
+                                                        <input type="text" id="name" name="name" class="form-control" value="{{$assure->nom }}" readonly autocomplete="name" autofocus>
                                                         @error('name')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{$message}}</strong>
@@ -197,10 +197,9 @@ Devis CATNAT
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Valeur assurée</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="val_assur" value="{{$val_assur}}"  class="form-control" readonly="readonly">
+                                                        <input type="text" name="val_assur" value="{{$val_assur}}"  class="form-control" readonly="readonly">
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Permis de construire</label>
                                                     <div class="col-sm-9">
@@ -388,6 +387,9 @@ Devis CATNAT
                                         <input type="hidden" name="prime_total" value="{{$prime_total}}">
                                         <input type="hidden" name="id" value="{{$id ?? ''}}">
                                         <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">
+                                        <input type="hidden" id="code_formule" name="code_formule" value="{{session('code_formule') ?? ''}}">
+
+
                                         <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
 
                                     </form>

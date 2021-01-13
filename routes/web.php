@@ -29,16 +29,19 @@ Route::get('/clear-cache', function() {
 Route::post('construction' , 'TarificationController@fetch')->name('construction.fetch');
 
 /////////////////////////// renouvellement///
-Route::get('renouvellemen/auto' , 'HomeController@renouvellement_auto')->name('renouvellement.auto');
-Route::get('renouvellemen/mrh' , 'HomeController@renouvellement_mrh')->name('renouvellement.mrh');
-Route::get('renouvellemen/catnat' , 'HomeController@renouvellement_catnat')->name('renouvellement.catnat');
-Route::get('renouvellemen/mrp' , 'HomeController@renouvellement_mrp')->name('renouvellement.mrp');
+Route::get('renouvellement/auto' , 'HomeController@renouvellement_auto')->name('renouvellement.auto');
+Route::get('renouvellement/mrh' , 'HomeController@renouvellement_mrh')->name('renouvellement.mrh');
+Route::get('renouvellement/catnat' , 'HomeController@renouvellement_catnat')->name('renouvellement.catnat');
+Route::get('renouvellement/mrp' , 'HomeController@renouvellement_mrp')->name('renouvellement.mrp');
 
-Route::get('renouvellemen/auto/devis' , 'RenouvellementController@renouvellement_mrh')->name('devis_renouvlement_mrh');
+Route::get('renouvellement/mrh/devis' , 'RenouvellementController@renouvellement_mrh')->name('devis_renouvlement_mrh');
 Route::post('/validation_devis_renouvellement_mrh' , 'RenouvellementController@validation_devis_mrh')->name('validation_devis_renouvellement_mrh')->middleware('auth');
 
+Route::get('renouvellement/auto/devis' , 'RenouvellementController@renouvellement_auto')->name('devis_renouvlement_auto');
+Route::post('/validation_devis_renouvellement_auto' , 'RenouvellementController@validation_devis_auto')->name('validation_devis_renouvellement_auto')->middleware('auth');
 
-
+Route::get('renouvellement/catnat/devis' , 'RenouvellementController@renouvellement_catnat')->name('devis_renouvlement_catnat');
+Route::post('/validation_devis_renouvellement_catnat' , 'RenouvellementController@validation_devis_catnat')->name('validation_devis_renouvellement_catnat')->middleware('auth');
 
 /////////////////////////////// Tarificateur
 Route::get('/produits/index' , 'ProduitController@index')->name('index_produit');

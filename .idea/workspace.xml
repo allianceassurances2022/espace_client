@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" line="892" />
+    <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" line="926" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Assure.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Assure.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_21_140755_create_assure_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_21_140755_create_assure_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pdf/auto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/auto.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pdf/catnat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/catnat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/mrh.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Rsq_Immobilier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rsq_Immobilier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_21_140849_create_rsq_immobilier_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_21_140849_create_rsq_immobilier_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/resultat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/renouvellement/mrh/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/renouvellement/mrh/resultat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/fonts/dompdf_font_family_cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/fonts/dompdf_font_family_cache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +47,38 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="37" column="144" selection-start-line="37" selection-start-column="109" selection-end-line="37" selection-end-column="144" />
+            <state relative-caret-position="850">
+              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaiementController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaiementController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="427" column="35" selection-start-line="426" selection-start-column="3" selection-end-line="427" selection-end-column="35" />
+              <folding>
+                <element signature="e#40#58#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="devis_auto.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="359" column="58" lean-forward="true" selection-start-line="359" selection-start-column="58" selection-end-line="359" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2533">
+              <caret line="149" column="77" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -59,62 +86,17 @@
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="1073" selection-start-line="1073" selection-end-line="1073" />
+            <state relative-caret-position="18394">
+              <caret line="1095" column="21" selection-start-line="1095" selection-start-column="21" selection-end-line="1095" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RenouvellementController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RenouvellementController.php">
+      <file leaf-file-name="construction.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
-              <folding>
-                <element signature="e#40#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultat.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/resultat.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="255" column="49" selection-start-line="255" selection-start-column="49" selection-end-line="255" selection-end-column="49" />
-              <folding>
-                <element signature="e#40#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="devis_renouvellement.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/devis_renouvellement.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TarificationAutoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-159">
-              <caret line="1011" column="64" selection-start-line="1011" selection-start-column="64" selection-end-line="1011" selection-end-column="64" />
-              <folding>
-                <element signature="e#40#53#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="2244">
+              <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -123,36 +105,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>captcha</find>
-      <find>montant_mrh</find>
-      <find>type_produit</find>
-      <find>selection</find>
-      <find>devi</find>
-      <find>montant_aut</find>
-      <find>puissan</find>
-      <find>devis</find>
-      <find>modi</find>
-      <find>ca</find>
-      <find>cat</find>
-      <find>modif</find>
-      <find>modification_devis_auto</find>
-      <find>choix_auto</find>
-      <find>dure</find>
-      <find>mo</find>
-      <find>taxe</find>
-      <find>rsq_vehicule</find>
-      <find>auto</find>
-      <find>precedent</find>
-      <find>where</find>
-      <find>modifi</find>
-      <find>wilaya_selected</find>
+      <find>categorie</find>
+      <find>prime_total</find>
+      <find>Date de naissance</find>
+      <find>chas</find>
       <find>montant</find>
-      <find>montant_</find>
-      <find>date_exp</find>
-      <find>renp</find>
-      <find>devis_mrh</find>
-      <find>validation_devis_mrh</find>
-      <find>nombre d'e</find>
+      <find>$assure</find>
+      <find>wilaya</find>
+      <find>wila</find>
+      <find>user_</find>
+      <find>number</find>
+      <find>type_habitation</find>
+      <find>modi</find>
+      <find>create</find>
+      <find>mrh</find>
+      <find>montant_mrh</find>
+      <find>user</find>
+      <find>catnat</find>
+      <find>$nom</find>
+      <find>number_format</find>
+      <find>Valeur assurée</find>
+      <find>type_formule</find>
+      <find>vale</find>
+      <find>montant_ca</find>
+      <find>montant_catnat</find>
+      <find>type_formule_cat</find>
+      <find>validation</find>
+      <find>Rsq_Immobilier</find>
+      <find>type_formule_catnat</find>
+      <find>devis</find>
+      <find>montant_catna</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -165,18 +147,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/renouvellment/mrp.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/renouvellement/catnat.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/renouvellement/mrp.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/core/home/messages.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/default.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/signin.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
@@ -184,9 +156,6 @@
         <option value="$PROJECT_DIR$/resources/views/signup.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_26_084758_create_civilite.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_26_090539_create_activite.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_26_090607_create_region_agence.php" />
@@ -198,7 +167,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_11_26_090748_create_categorie_permis.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_10_14_075529_add_column_contrat_to_devi.php" />
         <option value="$PROJECT_DIR$/app/Categorie_permis.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Puissance.php" />
         <option value="$PROJECT_DIR$/app/dure.php" />
         <option value="$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php" />
@@ -208,14 +176,28 @@
         <option value="$PROJECT_DIR$/resources/views/renouvellement/auto.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellement/mrh.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellement/devis_renouvellement.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/RenouvellementController.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellement/mrh/devis_renouvellement.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/renouvellement/mrh/resultat.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/renouvellement/auto/auto.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/renouvellement/auto/devis_renouvellement.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/renouvellement/catnat/catnat.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/renouvellement/catnat/devis.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/RenouvellementController.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_06_21_140849_create_rsq_immobilier_table.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" />
+        <option value="$PROJECT_DIR$/app/Rsq_Immobilier.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" />
       </list>
     </option>
   </component>
@@ -358,9 +340,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1583" />
-    <option name="y" value="-131" />
-    <option name="width" value="1367" />
+    <option name="x" value="-1792" />
+    <option name="y" value="-192" />
+    <option name="width" value="1380" />
     <option name="height" value="727" />
   </component>
   <component name="ProjectView">
@@ -373,71 +355,56 @@
         <subPane>
           <expand>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="produits" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="produits" type="462c0819:PsiDirectoryNode" />
-              <item name="mrh" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="renouvellement" type="462c0819:PsiDirectoryNode" />
+              <item name="produits" type="462c0819:PsiDirectoryNode" />
+              <item name="Auto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="renouvellement" type="462c0819:PsiDirectoryNode" />
-              <item name="mrh" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="epaiement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="epaiement" type="462c0819:PsiDirectoryNode" />
+              <item name="epaiement_" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epaiement_" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -449,7 +416,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MariaDB" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../allianceroot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Blade" />
@@ -463,11 +430,11 @@
       <recent name="C:\wamp64\www\epaiement\public\user_assets\assets\profil\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\epaiement_\resources\views\renouvellement\mrp" />
+      <recent name="C:\wamp64\www\epaiement_\resources\views\renouvellement\catnat" />
+      <recent name="C:\wamp64\www\epaiement_\resources\views\renouvellement\auto" />
       <recent name="C:\wamp64\www\epaiement\resources\views\renouvellement\mrh" />
       <recent name="C:\wamp64\www\epaiement\resources\views\produits" />
-      <recent name="C:\wamp64\www\epaiement\resources\views" />
-      <recent name="C:\wamp64\www\epaiement\database\migrations" />
-      <recent name="C:\wamp64\www\epaiement\resources\views\users" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -527,17 +494,29 @@
       <workItem from="1606296492298" duration="4161000" />
       <workItem from="1606377933062" duration="13221000" />
       <workItem from="1606635714665" duration="25640000" />
+      <workItem from="1606905695085" duration="1824000" />
+      <workItem from="1606987099310" duration="7441000" />
+      <workItem from="1607240182954" duration="13974000" />
+      <workItem from="1607337681405" duration="1213000" />
+      <workItem from="1608018914152" duration="4163000" />
+      <workItem from="1608106871464" duration="4247000" />
+      <workItem from="1608217535387" duration="591000" />
+      <workItem from="1608452218730" duration="1108000" />
+      <workItem from="1608554939991" duration="594000" />
+      <workItem from="1609249265756" duration="5025000" />
+      <workItem from="1609399195681" duration="66095000" />
+      <workItem from="1610528495300" duration="894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538705000" />
+    <option name="totallyTimeSpent" value="645874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" visible="true" weight="0.24362417" />
+      <window_info active="true" content_ui="combo" x="-11" y="67" width="228" height="612" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.19127516" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32843137" />
@@ -545,7 +524,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="1" sideWeight="0.5014245" side_tool="true" weight="0.18322147" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -554,7 +533,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32763532" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
@@ -576,121 +555,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="46" column="80" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/signup.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="210" selection-start-line="210" selection-end-line="210" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/signin.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="42" column="3" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_06_21_141140_create_marque_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="18" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090627_create_periode_assurance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090647_create_periode_type.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090700_create_carburant_type.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090710_create_puissance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090722_create_couleur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090748_create_categorie_permis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_26_090539_create_activite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_06_24_082606_create_zcatnat_table.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_27_084012_create_prime_table.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_06_21_141338_create_liste_profession_table.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -722,13 +586,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/commune.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Categorie_permis.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -772,24 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="74" column="97" selection-start-line="74" selection-start-column="97" selection-end-line="74" selection-end-column="97" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#strong#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="257" column="59" selection-start-line="257" selection-start-column="59" selection-end-line="257" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -804,70 +643,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/mrh.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Rsq_Immobilier.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/auto.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="193" column="151" selection-start-line="193" selection-start-column="117" selection-end-line="193" selection-end-column="151" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/resultat.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="153" column="5" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="1073" selection-start-line="1073" selection-end-line="1073" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RenouvellementController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
-          <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="37" column="144" selection-start-line="37" selection-start-column="109" selection-end-line="37" selection-end-column="144" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/devis_renouvellement.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/resultat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -876,23 +653,230 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/devis_renouvellement.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="79" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/mrh/mrh.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="19" selection-start-line="10" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/catnat/catnat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/auto/devis_renouvellement.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3444">
+          <caret line="583" column="28" selection-start-line="583" selection-start-column="28" selection-end-line="583" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/auto/auto.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/renouvellement/catnat/devis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="375" selection-start-line="375" selection-end-line="375" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2159">
+          <caret line="159" column="41" lean-forward="true" selection-start-line="159" selection-start-column="41" selection-end-line="159" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-686" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="95" column="121" selection-start-line="94" selection-start-column="22" selection-end-line="95" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="101" selection-start-line="52" selection-start-column="101" selection-end-line="52" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-159">
-          <caret line="1011" column="64" selection-start-line="1011" selection-start-column="64" selection-end-line="1011" selection-end-column="64" />
+        <state relative-caret-position="620">
+          <caret line="802" column="30" selection-start-line="802" selection-start-column="24" selection-end-line="802" selection-end-column="30" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1794" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RenouvellementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/devis_mrh.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="319" column="8" selection-start-line="319" selection-start-column="8" selection-end-line="319" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat_save.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_06_21_140849_create_rsq_immobilier_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/devis_catnat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5768">
+          <caret line="389" column="99" selection-start-line="389" selection-start-column="99" selection-end-line="389" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Rsq_Immobilier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_commerce.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="124" column="103" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_industrielle.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="123" column="103" selection-start-line="123" selection-start-column="103" selection-end-line="123" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="36" column="43" lean-forward="true" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProduitController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="255" column="49" selection-start-line="255" selection-start-column="49" selection-end-line="255" selection-end-column="49" />
+        <state relative-caret-position="4999">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/formule_habitation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="65" column="102" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/mrh/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2533">
+          <caret line="149" column="77" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/catnat/construction.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18394">
+          <caret line="1095" column="21" selection-start-line="1095" selection-start-column="21" selection-end-line="1095" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaiementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="427" column="35" selection-start-line="426" selection-start-column="3" selection-end-line="427" selection-end-column="35" />
           <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
+            <element signature="e#40#58#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="359" column="58" lean-forward="true" selection-start-line="359" selection-start-column="58" selection-end-line="359" selection-end-column="58" />
         </state>
       </provider>
     </entry>
