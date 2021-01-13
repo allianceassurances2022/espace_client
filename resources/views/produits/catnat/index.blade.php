@@ -37,6 +37,9 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <option @if($formul =="Industrielle") selected @endif value="Industrielle">Industrielle</option>
                 </select>
             </div>
+
+            <input type="hidden" name="code_formule" id="code_formule" value="{{$code_formule?? ''}}">
+
             <div class="container-contact100-form-btn">
             <input  class="contact100-form-btn" type='submit' id="suivant" nom="suivant" value="suivant" >
 

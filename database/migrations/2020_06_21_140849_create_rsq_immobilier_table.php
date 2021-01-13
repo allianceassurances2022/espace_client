@@ -32,6 +32,7 @@ class CreateRsqImmobilierTable extends Migration
             $table->string('appartient',20)->nullable();
             $table->string('type_habitation',30)->nullable();
             $table->string('formule',20)->nullable();
+            $table->string('code_formule',20)->nullable();
             $table->float('valeur_assure', 10, 2)->nullable();
             $table->string('qualite_juridique',20)->nullable();
             $table->float('montant_forfaitaire', 10, 2)->nullable();

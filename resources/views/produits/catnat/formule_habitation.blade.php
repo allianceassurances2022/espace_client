@@ -63,6 +63,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 
             <input type="hidden" id="valeur_assure_" type="number" name="val_assur" value="{{$val_assur ?? ''}}">
             <input type="hidden" name="type_formule" id="type_formule" value="{{$formul ?? ''}}">
+            <input type="hidden" name="code_formule" id="code_formule" value="{{$code_formule?? ''}}">
 
             <div class="container-contact100-form-btn">
                 <a href="{{route('index_catnat')}}" class="contact100-form-btn">

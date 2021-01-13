@@ -19,13 +19,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <span><img src="{{asset('produit_assets/images/icons/catnat_white.svg')}}" alt=""> CATNAT</span>
         </div>
         @include('core.produit.messages')
-
         @include('core.produit.inside-menu')
+
         <form class="contact100-form validate-form" action="{{route('montant_catnat')}}" method="post" >
           @csrf
             {{-- <div class="tite_container">
                 <h5 class="active"><i class="fa fa-building-o"></i> La construction<span>3</span></h5>
             </div> --}}
+
 
             <div class="slice">
                 <h6><a href="javascript:surface();"><img src="{{asset('images/info.svg')}}" alt="Informations" title="Informations" style="margin-right: 5px; height: 23px;"></a>
@@ -78,12 +79,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </label>
             </div>
 
-           @if($prime_total != 0)
+            <div class="d-flex justify-content-center recaptcha">
+                <div class="cc-selector">
+                    <div class="g-recaptcha" data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
+                </div>
+            </div>
+
+
+        @if($prime_total != 0)
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input2">
                     <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{$prime_total}} DA" >
-
                 </div>
             </div>
            @endif
@@ -123,6 +130,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 
