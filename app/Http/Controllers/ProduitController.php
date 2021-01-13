@@ -25,10 +25,9 @@ class ProduitController extends Controller
     public function index()
     {
 
-
-
       return view('produits.index');
     }
+
     public function selection(request $req)
     {
         switch ($req->produit) {
@@ -246,7 +245,7 @@ class ProduitController extends Controller
             'sexe'           => $user->sexe,
                    'adresse'        => $user->adresse,
           ];
-  
+
           $assure = (object)$assure;
 
 
@@ -301,17 +300,17 @@ class ProduitController extends Controller
 
         $assure = [
             'nom'            => $user->name,
-                    'prenom'         => $user->prenom,
-                    'date_naissance' => $user->date_naissance ,
-                   'code_wilaya'    => $user->wilaya_assure ,
-                   'profession'     => $user->profession ,
-                   'telephone'      => $user->telephone ,
+            'prenom'         => $user->prenom,
+            'date_naissance' => $user->date_naissance ,
+            'code_wilaya'    => $user->wilaya_assure ,
+            'profession'     => $user->profession ,
+            'telephone'      => $user->telephone ,
             'sexe'           => $user->sexe,
-                   'adresse'        => $user->adresse,
+            'adresse'        => $user->adresse,
           ];
-  
+
           $assure = (object)$assure;
-  
+
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
