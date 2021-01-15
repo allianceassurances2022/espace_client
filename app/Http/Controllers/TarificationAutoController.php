@@ -215,14 +215,14 @@ class TarificationAutoController extends Controller
 		$AssTran = 2400;
 		$AssTranP= 4500;
 		$AssLib = 6500;
-		$CP = 1000;
+		$CP = 500;
 		$MAJp = 0;
 		$MAJa = 0;
 		$genre = "00";
 		$Ass = 0;
 		$reduction=0;
-    $DASC = '';
-    $DCVV = '';
+    	$DASC = '';
+    	$DCVV = '';
 
 		$usage = $request->usage;
 		$puissance = $request->puissance;
@@ -240,8 +240,8 @@ class TarificationAutoController extends Controller
 
 		$dure=$request->dure;
 
-    $taxe=$request->taxe;
-    $date_taxe=$request->date_taxe;
+    	$taxe=$request->taxe;
+    	$date_taxe=$request->date_taxe;
 
 		if ($offre == "OTO_L") {
 			$formule = $request->formule;

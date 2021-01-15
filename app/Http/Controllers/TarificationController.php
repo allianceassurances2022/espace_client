@@ -478,7 +478,7 @@ class TarificationController extends Controller
                 $val = 2500;
             else $val = $val_assure * $taux;
         }
-        $CP = 1000;
+        $CP = 500;
         $TD = 80;
 
         $prime_total_ = $val + $CP + $TD + $maj;
@@ -1093,7 +1093,7 @@ class TarificationController extends Controller
 				'id_devis'           => $dev->id
 			]);
 
-			dd($res);
+			//dd($res);
 
     		$devis= devis::find($dev->id);
     		$risque= Rsq_Immobilier::find($res->id);
@@ -1392,11 +1392,11 @@ class TarificationController extends Controller
 
 		$devis= devis::find($id);
 		$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
-    $prime= Prime::where('id_devis',$devis->id)->get();
+        $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
 		$assure=Assure::where('id_devis',$devis->id)->first();
-		dd($assure);
+		//dd($assure);
 
 		return view('produits.mrh.resultat',compact('user','devis','risque','agence','prime','assure'));
 
@@ -1407,7 +1407,7 @@ class TarificationController extends Controller
 
 		$devis= devis::find($id);
 		$risque= Rsq_Immobilier::where('code_devis',$devis->id)->first();
-    $prime= Prime::where('id_devis',$devis->id)->get();
+        $prime= Prime::where('id_devis',$devis->id)->get();
 		$user=auth::user();
 		$agence=Agences::where('Name',$devis->code_agence)->first();
 		$assure=Assure::where('id_devis',$devis->id)->first();
