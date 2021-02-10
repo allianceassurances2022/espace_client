@@ -17,6 +17,7 @@ class CreateCivilite extends Migration
             $table->id();
             $table->string('code');
             $table->text('libelle');
+            $table->string('abreveation')->nullable();
             $table->timestamps();
         });
     }

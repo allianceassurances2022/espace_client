@@ -42,23 +42,33 @@ class PaiementController extends Controller
             $risque = Rsq_Immobilier::where('code_devis', $id)->first();
 
 
+            $terasse = $risque->terrasse;
+
+
+            if ($terasse == "oui"){
+                $terasse = 1;
+            }elseif($terasse == "non") {
+                $terasse = 0;
+            }
+
+
 
           //  dd($risque);
             $var = [
                 "categorie"         => "1",
-                "civitlite"         => "1",
+                "civitlite"         => auth()->user()->sexe,
                 "nom"               => auth()->user()->name,
                 "prenom"            => auth()->user()->prenom,
                 "date_naissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
                 "lieu_naissance"     => auth()->user()->adresse,
                 "nationalite"       => "Algérienne",
                 "activite"          => "1",
-                "proffession"       => "1",
-                "assureAddresse"    => "Fort de l'eau",
-                "assureWilayaId"    => "01",
-                "assureVilleId"     => "0101",
-                "region"          => "16",
-                "agence"          => "00000",
+                "proffession"       => auth()->user()->profession,
+                "assureAddresse"    => auth()->user()->adresse,
+                "assureWilayaId"    => auth()->user()->wilaya,
+                "assureVilleId"     => auth()->user()->commune,
+                "region"          => auth()->user()->wilaya,
+                "agence"          => $devis->code_agence,
                 "class_id"           => "12",
                 "branch_id"          => "1225",
                 "date_souscription"  => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
@@ -66,19 +76,20 @@ class PaiementController extends Controller
                 "date_expiration"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
                 "periode"           => 1,
                 "periodeType"       => 2,
-                "wilayaId"          => "01",
-                "villeId"           => "0101",
-                "address"           => "ADRAR",
+                "wilayaId"          => $risque->code_wilaya,
+                "villeId"           => $risque->code_commune,
+                "address"           => $risque->adresse,
                 "batimentType"      => "1",
                 "batimentCategorie" => "1",
-                "surface"           => "0",
+                "surface"           => $risque->superficie,
                 "nombrePieces"      => "3",
-                "etage"             => "0",
-                "terasse"           => 0,
-                "formule"           => "8",
-                "capitaleAssure"    => 500000
+                "etage"             => $risque->etage,
+                "terasse"           => $terasse,
+                "formule"           => "3",
+                "capitaleAssure"    => $risque->montant_forfaitaire
             ];
 
+       //     dd($var);
 //dd($risque->code_commune);
 
               /*
@@ -146,7 +157,7 @@ class PaiementController extends Controller
             // $response = json_decode($request->getBody(), true);
             $response = json_decode($request->getBody(), true);
 
-
+dd( $response);
             if($response['status']){
 
               $devis->update([
@@ -182,7 +193,7 @@ class PaiementController extends Controller
 
 
                 $var = [
-                    "region"                => "16",
+                    "region"                => auth()->user()->wilaya,
                     "agence"                => $devis->code_agence,
                     "class_id"              => "12",
                     "branch_id"             => "1290",
@@ -190,19 +201,19 @@ class PaiementController extends Controller
                     "date_expiration"       => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
                     "date_souscription"     => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
                     "categorie"             => "1",
-                    "civitlite"             => "10",
+                    "civitlite"             => auth()->user()->sexe,
                     "nom"                   => auth()->user()->name,
                     "prenom"                => auth()->user()->prenom,
                     "date_naissance"        => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
                     "lieu_naissance"        => "bejaia",
                     "nationalite"           => "algerienne",
-                    "activite"              => "1",
-                    "proffession"           => "1",
+                    "activite"              => auth()->user()->activite,
+                    "proffession"           => auth()->user()->profession,
                     "addresse_assure"       => auth()->user()->adresse,
-                    "pay_assure_id"         => "",
+                    "pay_assure_id"         => "16",
                     "wilaya_assure_id"      => auth()->user()->wilaya,
                     "ville_assure_id"       => auth()->user()->commune,
-                    "zone"                  => "est",
+                    "zone"                  => $risque->code_zone,
                     "formule_catnat"        => $risque->code_formule ,
                     "annee_construction"    => $risque->annee_construction ,
                     "proprietaire"          => 0 ,
@@ -387,79 +398,85 @@ class PaiementController extends Controller
                 $date_effet        = Carbon::parse($devis->date_effet)->format('d/m/Y');
                 $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
 
+               // dd($date_souscription);
                 $var = [
-    "nom"                     => auth()->user()->name,
-    "prenom"                  => auth()->user()->prenom,
-    "categorie"               => "2",
-    "civitlite"               => "1",
-    "dateNaissance"           => $date_naissance,
-    "lieuNaissance"           => auth()->user()->wilaya,
-    "nationalite"             => "Algérienne",
-    "activite"                => "1",
-    "proffession"             => "1",
-    "assureAddresse"          => "Fort de l'eau",
-    "assureWilayaId"          => "01",
-    "assureVilleId"           => "0101",
-    "regionId"                => "16",
-    "agenceId"                => $devis->code_agence,
-    "classId"                 => "11",
-    "branchId"                => "1100",
-    "souscriptionDate"        => $date_souscription,
-    "effetDate"               => $date_effet,
-    "expirationDate"          => $date_expiration,
-    "periode"                 => 1,
-    "periodeType"             => 2,
-    "wilayaId"                => "16",
-    "villeId"                 => "1605",
-    "matricule"               => "123456",
-    "constructionAnnee"       => 2014,
-    "chassisNo"               => "12345678912345678",
-    "chassisType"             => "0",
-    "matriculeLieu"           => "16",
-    "marque"                  => "531",
-    "model"                   => "5454454",
-    "genre"                   => "03",
-    "usage"                   => "00",
-    "puissance"               => "5454454",
-    "typeCarburant"           => "1",
-    "couleur"                 => "1",
-    "nbrPersonne"             => 3,
-    "cUtil"                   => 0,
-    "pTac"                    => 0,
-    "formule"                 => "1",
-    "attestation"             => "123456swqdf",
-    "capitaleAssure"          => 20000,
-    "autoRadio"               => 0,
-    "chiffreAffaire"          => 0,
-    "tauxReduction"           => "0",
-    "assistance"              => "0",
-    "alarme"                  => 0,
-    "turbo"                   => 0,
-    "hautGamme"               => 1,
-    "liquidInflamable"        => 0,
-    "controleTechnique"       => 0,
-    "conducteurCode"          => "1000000061454",
-    "conducteurNom"           => "HAROUN MILAT",
-    "conducteurDateNaissance" => "04/04/1985",
-    "permisNo"                => "1231564",
-    "permisCategorie"         => "2",
-    "permisDate"              => "01/01/2014",
-    "permisLieu"              => "Alger"
+                        "nom"                     => auth()->user()->name,
+                        "prenom"                  => auth()->user()->prenom,
+                        "categorie"               => "2",
+                        "civitlite"               => auth()->user()->sexe,
+                        "date_naissance"          => $date_naissance,
+                        "lieuNaissance"           => auth()->user()->wilaya,
+                        "nationalite"             => "Algérienne",
+                        "activite"                => auth()->user()->activite,
+                        "proffession"             => auth()->user()->profession,
+                        "assureAddresse"          => auth()->user()->adresse,
+                        "assureWilayaId"          => auth()->user()->wilaya,
+                        "assureVilleId"           => auth()->user()->commune,
+                        "region"                  => auth()->user()->wilaya,
+                        "agence"                  => $devis->code_agence,
+                        "class_id"                => "11",
+                        "branch_id"               => "1100",
+                        "date_souscription"       => $date_souscription,
+                        "date_effet"              => $date_effet,
+                        "date_expiration"         => $date_expiration,
+                        "periode"                 => 1,
+                        "periodeType"             => 2,
+                        "wilayaId"                => auth()->user()->wilaya,
+                        "villeId"                 => auth()->user()->commune,
+                        "matricule"               => $risque->matricule,
+                        "constructionAnnee"       => $risque->annee_mise_circulation,
+                        "chassisNo"               => $risque->num_chassis,
+                        "chassisType"             => "0",
+                        "matriculeLieu"           => "16",
+                        "marque"                  => $risque->marque,
+                        "model"                   => $risque->modele,
+                        "genre"                   => $risque->genre,
+                        "usage"                   => $risque->usage,
+                        "puissance"               => $risque->puissance,
+                        "typeCarburant"           => "1",
+                        "couleur"                 => $risque->couleur,
+                        "nbrPersonne"             => $risque->personne_transporte,
+                        "cUtil"                   => 0,
+                        "pTac"                    => 0,
+                        "formule"                 => $risque->offre,
+                        "attestation"             => "null",
+                        "capitaleAssure"          => $risque->valeur_vehicule,
+                        "autoRadio"               => 0,
+                        "chiffreAffaire"          => 0,
+                        "tauxReduction"           => "0",
+                        "assistance"              => $risque->assistance,
+                        "alarme"                  => 0,
+                        "turbo"                   => 0,
+                        "hautGamme"               => 1,
+                        "liquidInflamable"        => 0,
+                        "controleTechnique"       => 0,
+                        "conducteurCode"          => "1000000061454",
+                        "conducteurNom"           => auth()->user()->name,
+                        "conducteurDateNaissance" => $risque->date_conducteur,
+                        "permisNo"                => $risque->permis_num,
+                        "permisCategorie"         => $risque->categorie,
+                        "permisDate"              => $risque->date_permis,
+                        "permisLieu"              => $risque->wilaya_obtention
 
                 ];
+
+            //    dd($var);
 
                 $var=json_encode($var);
 
                 $client = new \GuzzleHttp\Client();
-                $url = "http://10.0.0.131:8443/api/polices/addPolice";
+               // $url = "http://10.0.0.131:8443/api/polices/addPolice";
+                $url = "http://10.0.0.131:8888/api/create_police/";
 
-                $request = $client->post($url,[
-                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-                'body'    => $var
-                ]);
+
+                  $request = $client->post($url,[
+                      'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                      'auth' => ['djilali', 'API.create_police'],
+                      'body'    => $var
+                  ]);
 
                 $response = json_decode($request->getBody(), true);
-
+dd($response);
                 if($response['status']){
 
                   $devis->update([

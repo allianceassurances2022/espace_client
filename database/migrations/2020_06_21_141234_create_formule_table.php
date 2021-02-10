@@ -15,10 +15,9 @@ class CreateFormuleTable extends Migration
     {
         Schema::create('formules', function (Blueprint $table) {
             $table->id();
-            $table->string('code_formule');
-            $table->text('libelle_formule');
-            $table->string('code_garantie');
-            $table->string('code_branche');
+            $table->string('class_id');
+            $table->string('branch_id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

@@ -26,9 +26,11 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             <div class="slice">
                 <h6>Usage <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
-                   <select class="input100" type="text" name="usage" id="usage" onchange="disable_devis()" placeholder="Usage">
-                            <option value="0" @if($auto['usage'] == '0') selected @endif>Affaire</option>
-                            <option value="1" @if($auto['usage'] == '1') selected @endif>Fonctionnaire</option>
+
+                    <select class="input100" type="text" name="usage" id="usage" onchange="disable_devis()" placeholder="Usage">
+                        <option value="00" @if($auto['usage'] == '00') selected @endif>Affaire</option>
+                        <option value="01" @if($auto['usage'] == '01') selected @endif>Fonctionnaire</option>
+                        <option value="02" @if($auto['usage'] == '02') selected @endif>Commerce</option>
                     </select>
                     <span class="focus-input100"></span>
                 </div>

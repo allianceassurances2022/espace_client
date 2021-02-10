@@ -87,11 +87,11 @@
                                     <label class="col-sm-3 control-label">Sexe</label>
                                     <div class="col-sm-9">
                                         <div class="be-radio-icon inline">
-                                            <input type="radio" @if(auth()->user()->sexe == 'Femme') checked @endif name="sexe" value="Femme" id="rad1" disabled>
+                                            <input type="radio" @if(auth()->user()->sexe == '2') checked @endif name="sexe" value="2" id="rad1" disabled>
                                             <label for="rad1"><span class="mdi mdi-female"></span></label>
                                         </div>
                                         <div class="be-radio-icon inline">
-                                            <input type="radio" @if(auth()->user()->sexe == 'Homme') checked @endif name="sexe" value="Homme" id="rad2" disabled>
+                                            <input type="radio" @if(auth()->user()->sexe == '1') checked @endif name="sexe" value="1" id="rad2" disabled>
                                             <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
                                         </div>
                                     </div>

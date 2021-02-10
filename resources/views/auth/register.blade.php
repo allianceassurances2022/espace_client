@@ -43,28 +43,24 @@ Inscription
 
                                <div class="form-group">
 
-                                <div class="col-md-6">
+                                <!--div class="col-md-6">
                                     <label class="col-sm-3 control-label">Wilaya</label>
                                     <div class="col-sm-9">
                                         <select id="wilaya" name="wilaya" class="select2" required>
-                                            @foreach($wilaya as $wilay)
-                                             <option value="{{$wilay->code_wilaya}}">{{$wilay->nlib_wilaya}}</option>
-                                            @endforeach
+
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <!--div class="col-md-6">
                                   <label class="col-sm-3 control-label">Commune</label>
                                   <div class="col-sm-9">
                                       <select id="commune" name="commune" class="select2">
-                                           @foreach($commune as $commun)
-                                             <option value="{{$commun->code_commune}}">{{$commun->lib_commune}}</option>
-                                           @endforeach
+
                                       </select>
                                   </div>
                                 </div>
-                              </div>
+                              </div-->
 
                               <div class="form-group">
                                 <div class="col-md-12">

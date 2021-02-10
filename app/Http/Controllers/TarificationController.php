@@ -806,6 +806,7 @@ class TarificationController extends Controller
                 'tva' => $tva
             ];
 
+
             $request->session()->put('data_mrh', $data_session);
 
             //session()->flash('success', 'text goes here');
@@ -1005,7 +1006,9 @@ class TarificationController extends Controller
     		//	'code_wilaya' => $request->Wilaya,
     			'code_wilaya' => $code_wilaya,
     			'superficie'  => $request->surface,
-    			'etage'       => $request->etage
+    			'etage'       => $request->etage,
+                'terasse'       =>$request->terasse,
+
     		]);
 
     		$devis= devis::find($risque->code_devis);
@@ -1075,6 +1078,7 @@ class TarificationController extends Controller
     			'etage'               => $request->etage,
     			'terrasse'            => $request->terasse,
     			'code_devis'          => $dev->id
+
 
 			]);
 

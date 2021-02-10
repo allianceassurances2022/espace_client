@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\dure;
 use App\Puissance;
+use App\UsageAuto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -626,6 +627,8 @@ class TarificationAutoController extends Controller
 
     $wilaya=Wilaya::All();
 
+   // $usage = UsageAuto::all();
+
     //dd($assistance);
 
 		$data_session = [
@@ -633,8 +636,8 @@ class TarificationAutoController extends Controller
 	                  'date_permis'      => $date_permis,
 	                  'Wilaya'           => $wilaya,
 	                  'annee_auto'       => $annee_auto,
-                    'puissance'        => $puissance,
-					          'usage'            => $usage,
+                      'puissance'        => $puissance,
+					   'usage'            => $usage,
 	                  'valeur'           => $valeur,
 	                  'offre'            => $offre,
 	                  'dure'             => $dure,
@@ -854,11 +857,10 @@ class TarificationAutoController extends Controller
 					'id_devis'          => $dev->id
 				]);
 
-        //    $categorie_code = categorie_permis::where(code,$request->categorie)->first();
 
+          dd($request->usage);
 
-
-//dd($request->dure);
+         // dd($marques);
     		$res=Rsq_Vehicule::create([
     			'matricule'              => $request->matricule,
     			'marque'                 => $request->marque,
@@ -914,6 +916,8 @@ class TarificationAutoController extends Controller
 	  $agence=Agences::where('Name',$devis->code_agence)->first();
 	 
 	  $assure=Assure::where('id_devis',$devis->id)->first();
+
+
 
       return view('produits.Auto.resultat',compact('user','devis','risque','prime_total','agence','prime','assure'));
 

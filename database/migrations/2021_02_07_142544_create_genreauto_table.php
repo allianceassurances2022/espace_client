@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivite extends Migration
+class CreateGenreautoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateActivite extends Migration
      */
     public function up()
     {
-        Schema::create('activite', function (Blueprint $table) {
+        Schema::create('genreauto', function (Blueprint $table) {
             $table->id();
             $table->string('code');
             $table->text('libelle');
-            $table->string('abreveation');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateActivite extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activite');
+        Schema::dropIfExists('genreauto');
     }
 }

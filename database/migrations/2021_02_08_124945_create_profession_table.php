@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivite extends Migration
+class CreateProfessionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateActivite extends Migration
      */
     public function up()
     {
-        Schema::create('activite', function (Blueprint $table) {
+        Schema::create('profession', function (Blueprint $table) {
             $table->id();
             $table->string('code');
             $table->text('libelle');
-            $table->string('abreveation');
+            $table->string('abreveation')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateActivite extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activite');
+        Schema::dropIfExists('profession');
     }
 }

@@ -94,7 +94,7 @@
                             <div class="form-group">
 
 
-                                <div class="col-md-4">
+                                <!--div class="col-md-4">
                                     <label class="col-sm-3 control-label">Sexe</label>
                                     <div class="col-sm-9">
                                         <div class="be-radio-icon inline">
@@ -107,6 +107,14 @@
                                                    @endif name="sexe" value="Homme" id="rad2" disabled>
                                             <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
                                         </div>
+                                    </div>
+                                </div-->
+
+                                <div class="col-md-4">
+                                    <label class="col-sm-3 control-label">Civilité</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="commune_assure"
+                                                   value="{{auth()->user()->sexe}}" readonly>
                                     </div>
                                 </div>
 
@@ -195,11 +203,17 @@
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Usage</label>
+                                    <!--label class="col-sm-3 control-label">Usage</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="usage" value="{{$usage}}" class="form-control"
+                                        <input type="text" id="usage" name="usage" value="{{$usage}}" class="form-control"
                                                readonly>
-                                    </div>
+                                    </div-->
+                                        <select name="marque" id="marque" class="form-control select2" required >
+                                            <option value="{{ session('marque') }}">{{ session('marque') }}</option>
+                                            @foreach( $usage as $usag)
+                                                <option  value="{{ $usag->code }}" >{{ $usag->libelle }}</option>
+                                            @endforeach
+                                        </select>
                                 </div>
 
                                 <div class="col-md-4">
@@ -349,7 +363,7 @@
                                         <select name="marque" id="marque" class="form-control select2" required >
                                             <option value="{{ session('marque') }}">{{ session('marque') }}</option>
                                             @foreach( $marques as $marque)
-                                                <option  value="{{ $marque->lib_marque }}" @if($marque->lib_marque == $marque_selected) selected @endif>{{ $marque->lib_marque }}</option>
+                                                <option  value="{{ $marque->code }}" @if($marque->libelle == $marque_selected) selected @endif>{{ $marque->libelle }}</option>
                                             @endforeach
                                         </select>
                                     </div>

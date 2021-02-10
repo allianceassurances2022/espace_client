@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use App\Civilite;
+use App\Profession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
@@ -27,25 +30,18 @@ class UserController extends Controller {
 
         $user = auth::user();
         $gender = $user->sexe;
-        $job = $user->profession;
+        $professions = profession::all();
+        $activities = Activity::all();
         $wilayas = wilaya::all();
         $communes = commune::all();
 
-        /*
 
-          $data = [
-          'gender'    =>  $gender = $user->sexe,
-          'job'       =>  $user->profession,
-          'wilaya'    =>  wilaya::all(),
-          'commune'   =>  commune::all(),
-          ];
-
-         */
-
-        return view('users.edit_profil', compact('user', 'wilayas', 'communes', 'gender', 'job'));
+        return view('users.edit_profil', compact('user', 'wilayas', 'communes', 'gender', 'professions','activities'));
     }
 
     public function update_profil(request $request) {
+
+
 
         $user = auth::user();
         //dd($request->name);
@@ -108,6 +104,8 @@ class UserController extends Controller {
             $image = image::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/' . $filename));
             $image->save();
 
+dd($request->activity);
+
             $user->update([
                 'name' => $request->name,
                 'prenom' => $request->prenom,
@@ -115,8 +113,9 @@ class UserController extends Controller {
                 'commune' => $request->commune,
                 'adresse' => $request->adresse,
                 'date_naissance' => $request->date_naissance,
-                'sexe' => $request->sexe,
+                'sexe' => $request->gender,
                 'profession' => $request->profession,
+                'activite'     =>$request->activity,
                 'telephone' => $request->telephone,
                 'email' => $request->email,
                 'password' => $user->password,
@@ -130,8 +129,9 @@ class UserController extends Controller {
                 'commune' => $request->commune,
                 'adresse' => $request->adresse,
                 'date_naissance' => $request->date_naissance,
-                'sexe' => $request->sexe,
+                'sexe' => $request->gender,
                 'profession' => $request->profession,
+                'activite'     =>$request->activity,
                 'telephone' => $request->telephone,
                 'email' => $request->email,
             ]);

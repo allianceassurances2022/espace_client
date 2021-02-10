@@ -88,49 +88,59 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="col-sm-3 control-label">Sexe</label>
+                <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Civilité</label>
                         <div class="col-sm-9">
                             <div class="be-radio-icon inline">
-                                <input type="radio"  name="sexe" value="Femme"
-                                       {{ $gender =='Femme' ? 'checked' : ''  }}
-                                       id="rad1">
+                                <input type="radio"  name="gender" value="2"
+                                       {{ $gender =='2' ? 'checked' : ''  }} id="rad1">
                                 <label for="rad1"><span class="mdi mdi-female"></span></label>
-                            </div>
+                        </div>
                             <div class="be-radio-icon inline">
-                                <input type="radio" name="sexe" value="Homme"
-                                       {{ $gender =='Homme' ? 'checked' : ''  }} id="rad2">
+                                <input type="radio" name="gender" value="1"
+                                        {{ $gender =='1' ? 'checked' : ''  }} id="rad2">
                                 <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-group">
-
                     <div class="col-md-6">
                         <label class="col-sm-3 control-label">Profession</label>
                         <div class="col-sm-9">
                             <select id="profession" name="profession" class="select2">
-                                <option value="Salarié"
-                                        {{ $job =='Salarié' ? 'selected' : ''  }}
-                                >Salarié</option>
-                                <option value="Fonctionnaire"
-                                        {{ $job =='Fonctionnaire' ? 'selected' : ''  }}
-                                >Fonctionnaire</option>
+                                @foreach($professions as $profession)
+                                <option value="{{$profession->code}}"
+                                        {{$profession  ? 'selected' : ''  }}
+                                >{{$profession->libelle}}</option>
+                               @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">Activité</label>
+                        <div class="col-sm-9">
+                            <select id="activity" name="activity" class="select2">
+                                @foreach($activities as $activity)
+                                    <option value="{{$activity->code}}"
+                                            {{$activity  ? 'selected' : ''  }}
+                                    >{{$activity->libelle}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="col-sm-3 control-label">Telephone</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone') ?? $user->telephone}}" required>
-                        </div>
-                    </div>
-
                 </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label class="col-sm-3 control-label">Telephone</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone') ?? $user->telephone}}" required>
+                    </div>
+                </div>
+            </div>
 
                 <div class="form-group">
                     <div class="col-md-12">
