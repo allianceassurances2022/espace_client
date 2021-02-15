@@ -203,17 +203,12 @@
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <!--label class="col-sm-3 control-label">Usage</label>
+                                    <label class="col-sm-3 control-label">Usage</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="usage" name="usage" value="{{$usage}}" class="form-control"
                                                readonly>
-                                    </div-->
-                                        <select name="marque" id="marque" class="form-control select2" required >
-                                            <option value="{{ session('marque') }}">{{ session('marque') }}</option>
-                                            @foreach( $usage as $usag)
-                                                <option  value="{{ $usag->code }}" >{{ $usag->libelle }}</option>
-                                            @endforeach
-                                        </select>
+                                    </div>
+
                                 </div>
 
                                 <div class="col-md-4">
@@ -381,8 +376,12 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Couleur</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="couleur" value="{{Session::get('couleur') ?? ''}}"
-                                               class="form-control" required>
+                                    <select name="couleur" id="couleur" class="form-control select2" required >
+                                        <option value="{{ session('couleur') }}">{{ session('couleur') }}</option>
+                                        @foreach( $couleurs as $couleur)
+                                            <option  value="{{$couleur->code }}">{{ $couleur->libelle }}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
                                 </div>
 

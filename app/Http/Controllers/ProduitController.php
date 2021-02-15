@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Couleur;
 use App\marque;
 use App\Puissance;
 use App\UsageAuto;
@@ -180,6 +181,7 @@ class ProduitController extends Controller
 
 
         $marques = marque::all();
+        $marque_selected ='';
 
         //Detail des catégorie du permis
         $categorie = categorie_permis::all();
@@ -188,13 +190,17 @@ class ProduitController extends Controller
         //Detail des puissances
         $puissance = puissance::where('code', $puissance)->first();
 
-
-
+        //detail assistance
+        switch ($formule) {
+            case ($formule == '1') :
+                $formule = 'Tous Risques';
+                break;
+            case ($formule == '2') :
+                $formule = 'D.C Valeur Vénale';
+                break;
+        }
 
         //Detail usage
-
-
-        dd($usage);
 
         switch ($usage) {
             case ($usage == '00') :
@@ -208,7 +214,7 @@ class ProduitController extends Controller
                 break;
         }
 
-        dd($usage);
+
 
         //Detail formule
         switch ($formule) {
@@ -220,15 +226,7 @@ class ProduitController extends Controller
                 break;
         }
 
-        //detail assistance
-        switch ($formule) {
-            case ($formule == '1') :
-                $formule = 'Tous Risques';
-                break;
-            case ($formule == '2') :
-                $formule = 'D.C Valeur Vénale';
-                break;
-        }
+
 
         //Detail type d'assurance
         switch ($offre) {
@@ -240,8 +238,11 @@ class ProduitController extends Controller
                 break;
         }
 
-        $marque_selected ='';
-       // $categorie ='';
+
+        //Couleurs liste
+        $couleurs = Couleur::all();
+
+
 
         $cat_permi = null;
 
@@ -262,7 +263,7 @@ class ProduitController extends Controller
         return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre',
 
         'dure','taxe','date_taxe','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie',
-        'user_wilaya', 'user_commune','assure','cat_permi'));
+        'user_wilaya', 'user_commune','assure','cat_permi','couleurs'));
     }
 
     public function visuelisation()

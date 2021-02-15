@@ -513,9 +513,12 @@ class TarificationController extends Controller
                 'prime_total' => $prime_total_,
                 'cout_police' => $CP,
                 'timbre_dimension' => $TD,
+                'zone'          =>$zone,
                 'prime_nette' => $val,
                 'act_reg'     => '',
+
             ];
+
 
 
         } else {
@@ -543,6 +546,7 @@ class TarificationController extends Controller
             'cout_police' => $CP,
             'timbre_dimension' => $TD,
             'prime_nette' => $val,
+            'zone'          =>$zone,
             'act_reg'     => $act_reg,
 
         ];
@@ -1077,6 +1081,7 @@ class TarificationController extends Controller
     			'superficie'          => $request->surface,
     			'etage'               => $request->etage,
     			'terrasse'            => $request->terasse,
+    			'offre'               => "mrh",
     			'code_devis'          => $dev->id
 
 
@@ -1125,6 +1130,8 @@ class TarificationController extends Controller
 
             $value_catnat  = session('data_catnat');
 
+
+
 			$date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
@@ -1160,11 +1167,11 @@ class TarificationController extends Controller
     			'date_expiration'   => $date_exp,
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
-          'id_user'           => Auth()->user()->id,
-          'prime_nette'       => $value_catnat['prime_nette'],
-          'cp'                => $value_catnat['cout_police'],
-          'td'                => $value_catnat['timbre_dimension'],
-          'type_assurance'    => 'Catastrophe Naturelle'
+                'id_user'           => Auth()->user()->id,
+                'prime_nette'       => $value_catnat['prime_nette'],
+                'cp'                => $value_catnat['cout_police'],
+                'td'                => $value_catnat['timbre_dimension'],
+                'type_assurance'    => 'Catastrophe Naturelle'
     		]);
 
 				if($value_catnat['type_formule']=='Habitation'){
@@ -1190,6 +1197,8 @@ class TarificationController extends Controller
 				]);
 			}
 
+
+
 				if($request->formule == 'Habitation'){
 
 
@@ -1206,13 +1215,16 @@ class TarificationController extends Controller
                 'code_commune'       => $request->commune,
     			'reg_para'           => $request->reg_para,
     			'appartient'         => $request->appartient,
+                'code_zone'              =>$value_catnat['zone'],
+                'offre'             => "catnat",
     			'code_devis'         => $dev->id
     		]);
+
 
 			}else{
 				$res=Rsq_Immobilier::create([
 				'formule'            => $request->formule,
-                'code_formule'            => $request->code_formule,
+                'code_formule'       => $request->code_formule,
     			'type_habitation'    => $request->type_const,
     			'valeur_contenant'   => $request->contenant,
     			'valeur_equipement'  => $request->equipement,
@@ -1227,6 +1239,7 @@ class TarificationController extends Controller
 				'code_commune'       => $request->commune,
     			'reg_para'           => $request->reg_para,
     			'appartient'         => $request->appartient,
+                'code_zone'              =>$value_catnat['zone'],
     			'code_devis'         => $dev->id
     		]);
 			}
@@ -1320,7 +1333,7 @@ class TarificationController extends Controller
 
 		public function modification_devis_catnat (Request $request,$id){
 
-            $user= auth::user();
+        $user= auth::user();
 
 
 		$devis=devis::find($id);
@@ -1329,6 +1342,8 @@ class TarificationController extends Controller
 		if($devis->id_user == $user->id){
 
             $risque=Rsq_Immobilier::where('code_devis',$devis->id)->first();
+
+
 
             $id=$risque->id;
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Couleur;
 use App\dure;
 use App\Puissance;
 use App\UsageAuto;
@@ -69,10 +70,12 @@ class TarificationAutoController extends Controller
 
     public function montant_auto(Request $request){
 
+
     $auto=$request->all();
 
-   //dd($request);
+  // dd($request->formule);
 
+   /*
     //Verificateur captcha
     $recap='g-recaptcha-response';
 
@@ -160,8 +163,9 @@ class TarificationAutoController extends Controller
      		 }
 
          $tableau_assis = array(
-            'Sir_mhanni', 'Tranquilité', 'Tranquilité_plus', 'Liberté'
+            '1', '2', '3', '4'
          );
+
 
          if ( !in_array( $request->assistance , $tableau_assis )) {
 
@@ -203,12 +207,8 @@ class TarificationAutoController extends Controller
       		   return redirect()->route('type_produit',['auto','index']);
 
       		 }
-
-
-
-
-
-    $wilaya=Wilaya::where('code_wilaya',$request->Wilaya_selected)->first();
+*/
+        $wilaya=Wilaya::where('code_wilaya',$request->Wilaya_selected)->first();
 
 		$zone = $wilaya->zone;
 
@@ -222,8 +222,8 @@ class TarificationAutoController extends Controller
 		$genre = "00";
 		$Ass = 0;
 		$reduction=0;
-    	$DASC = '';
-    	$DCVV = '';
+    	$DASC = null;
+    	$DCVV = null;
 
 		$usage = $request->usage;
 		$puissance = $request->puissance;
@@ -244,6 +244,7 @@ class TarificationAutoController extends Controller
     	$taxe=$request->taxe;
     	$date_taxe=$request->date_taxe;
 
+
 		if ($offre == "OTO_L") {
 			$formule = $request->formule;
 			$option = "";
@@ -255,17 +256,26 @@ class TarificationAutoController extends Controller
 		else if ($offre == "AUTO_P") {
 			$formule = $request->formule;
 			$option = "";
+
+
 			switch ($dure) {
 			case ("1") : $dureee = "1ans";
 								break;
 			case ("2") : $dureee = "6mois";
 								break;
 		    }
+
+
 		}
 		$assistance = $request->assistance;
 
-		$code_tarif = $genre.$zone.$usage.$puissance ;
-		$code_particulier = $zone.$usage.$puissance ;
+		$use = substr($usage,1,1);
+		$puiss =substr($puissance,1,1);
+
+		$code_tarif = $genre.$zone.$use.$puiss ;
+		$code_particulier = $zone.$use.$puiss ;
+
+
 
 		$BDG = 0 ;
 
@@ -353,6 +363,7 @@ class TarificationAutoController extends Controller
 
 		//////////////////////////////////////////////////////////////////////////////////////////////
 		$RC = $TRC[$code_particulier][$dureee] ;
+
 		//$RC = $TRC[$code_particulier]['1ans'] ;
 		$RC1 = ($RC*20)/100;
 		$RC = $RC1+$RC;
@@ -385,31 +396,34 @@ class TarificationAutoController extends Controller
 
 		if ($offre == "OTO_L") {
 
-         switch ($assistance) {
-			case ("Tranquilité_plus") : $Ass = 0;
-								break ;
-			case ("Liberté") : $Ass = 4000;
-								break ;
-		}
+            switch ($assistance) {
+                case ("Tranquilité_plus") :
+                    $Ass = 0;
+                    break;
+                case ("Liberté") :
+                    $Ass = 4000;
+                    break;
+            }
+
 
 
 			if ($formule == "1") {
 				switch ($dure) {
 					case '1':
-					    $DASC = (2.5 * $valeur)/100 ;
+					  $DASC = (2.5 * $valeur)/100 ;
 				      $VOL = (0.25 * $valeur)/100 ;
 				      $BDG = 1000;
 				      $DR = 1200;
 				      $reduction = 0;
 						break;
+
 				}
 
 				$prime_nette = $RC+$BDG+((($VOL+$DASC+$DR)*(100-$reduction))/100)+$Ass;
 			}
 
-		}
+		}else if ($offre == "AUTO_P") {
 
-		else if ($offre == "AUTO_P") {
 		 switch ($usage) {
 			case '0' :
 
@@ -503,8 +517,6 @@ class TarificationAutoController extends Controller
 
 
 			if ($formule == "1") {
-
-
 
               switch ($dure) {
       					case '1':
@@ -606,9 +618,6 @@ class TarificationAutoController extends Controller
         $TP=0;
       }
 
-
-
-
     }
 
 
@@ -627,29 +636,27 @@ class TarificationAutoController extends Controller
 
     $wilaya=Wilaya::All();
 
-   // $usage = UsageAuto::all();
-
     //dd($assistance);
 
 		$data_session = [
-    	              'date_conducteur'  => $daten,
-	                  'date_permis'      => $date_permis,
-	                  'Wilaya'           => $wilaya,
-	                  'annee_auto'       => $annee_auto,
-                      'puissance'        => $puissance,
-					   'usage'            => $usage,
-	                  'valeur'           => $valeur,
-	                  'offre'            => $offre,
-	                  'dure'             => $dure,
-	                  'formule'          => $formule,
-	                  'assistance_nom'   => $assistance,
-	                  'prime_total'      => $devis,
-	                  'datec'            => $datec,
-                    'taxe'             => $taxe,
-                    'date_taxe'        => $date_taxe,
-                    'Wilaya_selected'  => $wilaya_selected,
-                    'type_assurance'   => $offre,
-                    'valeur_auto'      => $valeur,
+    	                'date_conducteur'  => $daten,
+	                    'date_permis'      => $date_permis,
+	                    'Wilaya'           => $wilaya,
+	                    'annee_auto'       => $annee_auto,
+                        'puissance'        => $puissance,
+					    'usage'            => $usage,
+	                    'valeur'           => $valeur,
+	                    'offre'            => $offre,
+	                    'dure'             => $dure,
+	                    'formule'          => $formule,
+	                    'assistance_nom'   => $assistance,
+	                    'prime_total'      => $devis,
+	                    'datec'            => $datec,
+                        'taxe'             => $taxe,
+                        'date_taxe'        => $date_taxe,
+                        'Wilaya_selected'  => $wilaya_selected,
+                        'type_assurance'   => $offre,
+                        'valeur_auto'      => $valeur,
             				'prime_nette'      => $prime_nette,
             				'cout_police'      => $CP,
             				'timbre_dimension' => $TD,
@@ -679,13 +686,13 @@ class TarificationAutoController extends Controller
                 return view('produits.auto.formule_part',compact('auto','devis'));
             }
 
-}
+//}
 
     }
 
     public function validation_devis_auto (Request $request) {
 
-       // dd( $request->date_eff);
+
         $date = $request->date_eff;
 
         $request->session()->put('date_eff', $request->date_eff);
@@ -771,7 +778,7 @@ class TarificationAutoController extends Controller
 
 			// $this->validate($request, $rules);
 
-      $date_sous = $request->date_sous;
+        $date_sous = $request->date_sous;
 			$date_eff  = $request->date_eff;
 			$date_exp  = $request->date_exp;
 
@@ -789,8 +796,11 @@ class TarificationAutoController extends Controller
     			'couleur'                => $request->couleur,
     			'permis_num'             => $request->permis_num,
     			'wilaya_obtention'       => $request->wilaya_obtention,
+    			'immatricule_a'          => $request->wilaya,
     			'categorie'              => $request->categorie
     		]);
+
+
 
     		$devis= devis::find($risque->code_devis);
     		$devis->update([
@@ -800,8 +810,6 @@ class TarificationAutoController extends Controller
     		]);
 
     	}else{
-
-
 
     		$dev=devis::create([
     			'date_souscription' => $date_sous,
@@ -820,6 +828,7 @@ class TarificationAutoController extends Controller
                 'type_assurance'    => 'Automobile'
     		]);
 
+    		//dd($value_auto['dasc']);
         Prime::create([
           'code'              => '030120',
           'libelle'           => 'Bris de Glace',
@@ -858,9 +867,11 @@ class TarificationAutoController extends Controller
 				]);
 
 
-          dd($request->usage);
 
-         // dd($marques);
+
+            $usage = UsageAuto::where('libelle',$request->usage )->first();
+
+
     		$res=Rsq_Vehicule::create([
     			'matricule'              => $request->matricule,
     			'marque'                 => $request->marque,
@@ -869,8 +880,9 @@ class TarificationAutoController extends Controller
     			'date_conducteur'        => $request->date_conducteur,
     			'date_permis'            => $request->date_permis,
     			'wilaya_obtention'       => $request->wilaya_obtention,
+                'immatricule_a'          => $request->wilaya,
     			'puissance'              => $request->puissance,
-    			'usage'                  => $request->usage,
+    			'usage'                  => $usage->code,
     			'dure'                   => $request->dure,
     			'code_formule'           => $request->formule,
     			'assistance'             => $request->assistance,
@@ -888,6 +900,7 @@ class TarificationAutoController extends Controller
     			'code_devis'             => $dev->id
 
     		]);
+
 
 		$user=auth::user();
 		$code_wilaya =  wilaya::where('nlib_wilaya',$request->wilaya)->first()->code_wilaya;
@@ -913,8 +926,9 @@ class TarificationAutoController extends Controller
       $prime= Prime::where('id_devis',$devis->id)->get();
 
       $user=auth::user();
+
 	  $agence=Agences::where('Name',$devis->code_agence)->first();
-	 
+
 	  $assure=Assure::where('id_devis',$devis->id)->first();
 
 
@@ -945,7 +959,6 @@ class TarificationAutoController extends Controller
         $puissance = puissance::where('libelle', $risque->puissance)->first();
 
 
-
         $date_souscription = $devis->date_souscription;
 			$date_eff          = $devis->date_effet;
 			$date_exp          = $devis->date_expiration;
@@ -956,7 +969,7 @@ class TarificationAutoController extends Controller
       $date_permis       = $risque->date_permis;
       $wilaya_selected   = $risque->wilaya_obtention;
       $annee_auto        = $risque->annee_mise_circulation;
-    //  $puissance         = $risque->puissance;
+     // $puissance         = $puissance->code;
       $usage             = $risque->usage;
       $dure              = $risque->dure;
       $formule           = $risque->code_formule;
@@ -981,6 +994,7 @@ class TarificationAutoController extends Controller
       $agence_map        = Agences::where('id',$code_agence)->first();
       $marques           = marque::all();
       $categorie         = categorie_permis::all();
+      $couleurs          = Couleur::all();
 
 
 
@@ -989,14 +1003,14 @@ class TarificationAutoController extends Controller
 		
 		$assure=Assure::where('id_devis',$devis->id)->first();
 
+
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
 
-
         return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
 
-      'offre','valeur','matricule','marques','cat_permi','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur','permis_num','categorie','id',
+      'offre','valeur','matricule','marques','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleurs','permis_num','categorie','id',
             'user_wilaya', 'user_commune','assure'));
 
 	}else{

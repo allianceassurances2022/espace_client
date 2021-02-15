@@ -59,10 +59,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 <h6>Assistance <span>(Choix Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <select class="input100" type="text" name="assistance" onchange="disable_devis()" placeholder="Montant Forfetaire">
-                        <option value="Sir_mhanni" @if($auto ['assistance'] == 'Sir_mhanni') selected @endif>Sir Mhanni</option>
-                        <option value="Tranquilité" @if($auto ['assistance'] == 'Tranquilité') selected @endif>Tranquillité</option>
-                        <option value="Tranquilité_plus" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif>Tranquillité Plus</option>
-                        <option value="Liberté" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
+                        <option value="1" @if($auto ['assistance'] == 'Sir_mhanni') selected @endif>Sir Mhanni</option>
+                        <option value="2" @if($auto ['assistance'] == 'Tranquilité') selected @endif>Tranquillité</option>
+                        <option value="3" @if($auto ['assistance'] == 'Tranquilité_plus') selected @endif>Tranquillité Plus</option>
+                        <option value="4" @if($auto['assistance'] == 'Liberté') selected @endif>Liberté</option>
                     </select>
                     <span class="focus-input100"></span>
                 </div>

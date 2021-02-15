@@ -16,6 +16,7 @@ class CreateRsqVehiculeTable extends Migration
         Schema::create('rsq_vehicule', function (Blueprint $table) {
             $table->id();
             $table->string('matricule',20);
+            $table->string('immatricule_a')->nullable();
             $table->string('marque',50);
             $table->string('modele',50);
             $table->string('annee_mise_circulation',4);

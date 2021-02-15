@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Assistance;
+use App\Categorie_permis;
+use App\formule;
+use App\Puissance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -192,11 +196,14 @@ dd( $response);
               $risque = Rsq_Immobilier::where('code_devis', $id)->first();
 
 
+              $formule = formule::where('abreviation', $risque->offre)->first();
+
+
                 $var = [
                     "region"                => auth()->user()->wilaya,
                     "agence"                => $devis->code_agence,
-                    "class_id"              => "12",
-                    "branch_id"             => "1290",
+                    "class_id"              => $formule->class_id,
+                    "branch_id"             => $formule->branch_id,
                     "date_effet"            => Carbon::parse($devis->date_effet)->format('d/m/Y'),
                     "date_expiration"       => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
                     "date_souscription"     => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
@@ -353,8 +360,6 @@ dd( $response);
                   'auth' => ['djilali', 'API.create_police'],
               'body'    => $var
               ]);
-
-
               // $response = json_decode($request->getBody(), true);
               $response = json_decode($request->getBody(), true);
                 dd( $response);
@@ -393,16 +398,26 @@ dd( $response);
                 //dd($risque);
 
                 $date_naissance = Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y');
-
                 $date_souscription = Carbon::parse($devis->date_souscription)->format('d/m/Y');
                 $date_effet        = Carbon::parse($devis->date_effet)->format('d/m/Y');
                 $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
+                $date_permis   = Carbon::parse($risque->date_permis)->format('d/m/Y');
 
-               // dd($date_souscription);
+                $matricule_lieu = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first();
+                $permis_lieu = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first();
+
+                $puissance = Puissance::where('libelle',$risque->puissance )->first();
+
+                $cat_permis = Categorie_permis::where('libelle',$risque->categorie )->first();
+              //  $assistance = Assistance::where('libelle',$risque->assistance)->first();
+
+                  $formule = formule::where('libelle',$risque->offre )->first();
+                //  dd($formule);
+
                 $var = [
                         "nom"                     => auth()->user()->name,
                         "prenom"                  => auth()->user()->prenom,
-                        "categorie"               => "2",
+                        "categorie"               => 1,
                         "civitlite"               => auth()->user()->sexe,
                         "date_naissance"          => $date_naissance,
                         "lieuNaissance"           => auth()->user()->wilaya,
@@ -414,8 +429,8 @@ dd( $response);
                         "assureVilleId"           => auth()->user()->commune,
                         "region"                  => auth()->user()->wilaya,
                         "agence"                  => $devis->code_agence,
-                        "class_id"                => "11",
-                        "branch_id"               => "1100",
+                        "class_id"                => $formule->class_id,
+                        "branch_id"               => $formule->branch_id,
                         "date_souscription"       => $date_souscription,
                         "date_effet"              => $date_effet,
                         "date_expiration"         => $date_expiration,
@@ -426,19 +441,19 @@ dd( $response);
                         "matricule"               => $risque->matricule,
                         "constructionAnnee"       => $risque->annee_mise_circulation,
                         "chassisNo"               => $risque->num_chassis,
-                        "chassisType"             => "0",
-                        "matriculeLieu"           => "16",
+                        "chassisType"             => $risque->type,
+                        "matriculeLieu"           => $matricule_lieu->code_wilaya,
                         "marque"                  => $risque->marque,
                         "model"                   => $risque->modele,
                         "genre"                   => $risque->genre,
                         "usage"                   => $risque->usage,
-                        "puissance"               => $risque->puissance,
+                        "puissance"               => $puissance->code,
                         "typeCarburant"           => "1",
-                        "couleur"                 => $risque->couleur,
+                        "couleur"                 => "02",
                         "nbrPersonne"             => $risque->personne_transporte,
                         "cUtil"                   => 0,
                         "pTac"                    => 0,
-                        "formule"                 => $risque->offre,
+                        "formule"                 => $formule->libelle,
                         "attestation"             => "null",
                         "capitaleAssure"          => $risque->valeur_vehicule,
                         "autoRadio"               => 0,
@@ -447,20 +462,20 @@ dd( $response);
                         "assistance"              => $risque->assistance,
                         "alarme"                  => 0,
                         "turbo"                   => 0,
-                        "hautGamme"               => 1,
+                        "hautGamme"               => 0,
                         "liquidInflamable"        => 0,
                         "controleTechnique"       => 0,
-                        "conducteurCode"          => "1000000061454",
+                        "conducteurCode"          => "null",
                         "conducteurNom"           => auth()->user()->name,
-                        "conducteurDateNaissance" => $risque->date_conducteur,
+                        "conducteurDateNaissance" => $date_naissance,
                         "permisNo"                => $risque->permis_num,
-                        "permisCategorie"         => $risque->categorie,
-                        "permisDate"              => $risque->date_permis,
-                        "permisLieu"              => $risque->wilaya_obtention
+                        "permisCategorie"         => $cat_permis->code,
+                        "permisDate"              => $date_permis,
+                        "permisLieu"              => $permis_lieu->code_wilaya
 
                 ];
 
-            //    dd($var);
+              //  dd($var);
 
                 $var=json_encode($var);
 
@@ -476,7 +491,7 @@ dd( $response);
                   ]);
 
                 $response = json_decode($request->getBody(), true);
-dd($response);
+
                 if($response['status']){
 
                   $devis->update([
