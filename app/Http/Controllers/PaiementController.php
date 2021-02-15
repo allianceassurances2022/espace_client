@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Assistance;
+use App\Assure;
 use App\Categorie_permis;
 use App\formule;
 use App\Puissance;
@@ -393,6 +394,16 @@ dd( $response);
 
               public function save_auto ($id){
 
+                  $auto         = Rsq_Vehicule::where('id',$id)->first();
+                 // $code_devis  = $auto->code_devis;
+                 // dd($id);
+              //    $id          = $auto->id;
+
+                  $devis       = devis::where('id',$id)->first();
+                  $prime_total = $devis->prime_total;
+                  $catnat      = '';
+                  $mrh         = '';
+
                 $devis = devis::find($id);
                 $risque = Rsq_Vehicule::where('code_devis',$devis->id)->first();
                 //dd($risque);
@@ -491,19 +502,32 @@ dd( $response);
                   ]);
 
                 $response = json_decode($request->getBody(), true);
+               //   dd($response);
 
+                  $assure = Assure::where('id_devis', $id)->first();
+                  //dd($assure);
                 if($response['status']){
 
                   $devis->update([
               			'type_devis'      => 2,
-              			'reference_police' => $response['data']["reference"],
+              			'reference_police' => $response['data']["Code de référence"],
               		]);
+
+                    $assure->update([
+                        'code_assure' => $response['data']["Code assure"],
+                    ]);
               		$dev=$devis;
 
+
+
+                    return view('paiement',compact('mrh','auto','catnat','prime_total','id','devis'));
+
+                }else{
+                    dd($response);
                 }
 
 
-                return redirect()->route('home');
+               // return redirect()->route('home');
 
               }
 

@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8623cba9-d2d7-4107-b0da-cbf560f37632" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Assistance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Couleur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_150144_create_assistance_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaiementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TarificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rsq_Immobilier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rsq_Immobilier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rsq_Vehicule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rsq_Vehicule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_21_140820_create_rsq_vehicule_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_21_140820_create_rsq_vehicule_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_laki.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/formule_part.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +37,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="72" column="66" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="66" />
+            <state relative-caret-position="260">
+              <caret line="75" column="86" selection-start-line="75" selection-start-column="77" selection-end-line="75" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -58,7 +46,7 @@
       <file leaf-file-name="TarificationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
+            <state relative-caret-position="-148">
               <caret line="919" column="50" selection-start-line="919" selection-start-column="46" selection-end-line="919" selection-end-column="50" />
             </state>
           </provider>
@@ -68,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="226">
-              <caret line="225" column="21" lean-forward="true" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="21" />
+              <caret line="225" column="21" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="21" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
@@ -88,8 +76,8 @@
       <file leaf-file-name="PaiementController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaiementController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="384" column="47" selection-start-line="384" selection-start-column="45" selection-end-line="384" selection-end-column="47" />
+            <state relative-caret-position="423">
+              <caret line="525" column="34" selection-start-line="525" selection-start-column="34" selection-end-line="525" selection-end-column="34" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -101,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="355">
-              <caret line="125" column="51" selection-start-line="125" selection-start-column="38" selection-end-line="125" selection-end-column="51" />
+              <caret line="125" column="59" selection-start-line="125" selection-start-column="59" selection-end-line="125" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -119,7 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>assi</find>
       <find>montant</find>
       <find>usaf</find>
       <find>$CP</find>
@@ -139,7 +126,6 @@
       <find>produits.catnat.resultat</find>
       <find>valeur</find>
       <find>prime</find>
-      <find>auto</find>
       <find>montant</find>
       <find>form</find>
       <find>$value_auto['dasc']</find>
@@ -147,8 +133,10 @@
       <find>data_auto</find>
       <find>$formule</find>
       <find>$DASC</find>
-      <find>route</find>
+      <find>auto</find>
+      <find>payer</find>
       <find>paiement_auto</find>
+      <find>route</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\epaiement\vendor</dir>
@@ -534,12 +522,12 @@
       <workItem from="1612362389263" duration="883000" />
       <workItem from="1612423390853" duration="3301000" />
       <workItem from="1612448381138" duration="3884000" />
-      <workItem from="1612769422382" duration="72414000" />
+      <workItem from="1612769422382" duration="73947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="730488000" />
+    <option name="totallyTimeSpent" value="732021000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-314" width="1550" height="838" extended-state="6" />
@@ -605,9 +593,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -907,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="919" column="50" selection-start-line="919" selection-start-column="46" selection-end-line="919" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/devis_auto.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -924,31 +902,45 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationAutoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
-          <caret line="225" column="21" lean-forward="true" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="21" />
+          <caret line="225" column="21" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="21" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TarificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="125" column="51" selection-start-line="125" selection-start-column="38" selection-end-line="125" selection-end-column="51" />
+        <state relative-caret-position="-148">
+          <caret line="919" column="50" selection-start-line="919" selection-start-column="46" selection-end-line="919" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="75" column="86" selection-start-line="75" selection-start-column="77" selection-end-line="75" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/paiement.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="72" column="66" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="66" />
+          <caret line="153" column="85" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/produits/Auto/resultat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="125" column="59" selection-start-line="125" selection-start-column="59" selection-end-line="125" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaiementController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="384" column="47" selection-start-line="384" selection-start-column="45" selection-end-line="384" selection-end-column="47" />
+        <state relative-caret-position="423">
+          <caret line="525" column="34" selection-start-line="525" selection-start-column="34" selection-end-line="525" selection-end-column="34" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
