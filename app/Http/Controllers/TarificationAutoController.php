@@ -34,7 +34,7 @@ class TarificationAutoController extends Controller
     	$auto=$request->all();
 
   		if ($request->valeur_auto < 800000){
-  		 Alert::warning('Avertissement', 'la valeur du véhicule ne doit pas etre inferieure a 800 000 DA ');
+  		 Alert::warning('Avertissement', 'la valeur du véhicule ne doit pas etre inferieure a 800 000 DA');
   		   return redirect()->route('type_produit',['auto','index']);
   		 }
 
@@ -410,16 +410,16 @@ class TarificationAutoController extends Controller
 			if ($formule == "1") {
 				switch ($dure) {
 					case '1':
-					  $DASC = (2.5 * $valeur)/100 ;
-				      $VOL = (0.25 * $valeur)/100 ;
+					  $DASC = (2.5 * $valeur)/100;
+				      $VOL = (0.25 * $valeur)/100;
 				      $BDG = 1000;
-				      $DR = 1200;
+				      $DR = 300;
 				      $reduction = 0;
 						break;
 
 				}
 
-				$prime_nette = $RC+$BDG+((($VOL+$DASC+$DR)*(100-$reduction))/100)+$Ass;
+				$prime_nette = $RC+$BDG+$VOL+((($DASC+$DR)*(100-$reduction))/100)+$Ass;
 			}
 
 		}else if ($offre == "AUTO_P") {
@@ -523,7 +523,7 @@ class TarificationAutoController extends Controller
                 $DASC = (5 * $valeur)/100 ;
                 $VOL = (0.5 * $valeur)/100 ;
                 $BDG = 2000;
-                $DR = 1200;
+                $DR = 300;
                 $reduction = 50;
       						break;
 
@@ -534,13 +534,25 @@ class TarificationAutoController extends Controller
                 $VOL = $VOL*0.55 ;
                 $BDG = 2000;
                 $BDG = $BDG*0.55;
-                $DR = 1200;
+                $DR = 300;
                 $reduction = 50;
         				  break;
       				}
 
+                $ratio = 0.025;
+                $valeur_ratio = $valeur * $ratio;
 
-				$prime_nette = $RC+$BDG+((($VOL+$DASC+$DR)*(100-$reduction))/100)+$Ass;
+                $valeur_reduction = (($DASC+$DR)*(100-$reduction))/100;
+                $valeur_prise=0;
+
+                if($valeur_ratio >  $valeur_reduction){
+                    $valeur_prise=$valeur_ratio;
+                }else if ($valeur_ratio < $valeur_reduction){
+                $valeur_prise=$valeur_reduction;
+                }else{ $valeur_prise = $valeur_reduction;
+                }
+
+				$prime_nette = $RC+$BDG+$VOL+$valeur_prise+$Ass;
 
 			} else if ($formule == "2") {
 
@@ -550,7 +562,7 @@ class TarificationAutoController extends Controller
           $DCVV = (2.5 * $valeur)/100;
           $VOL = (1 * $valeur)/100;
           $BDG = 2000;
-          $DR = 1200;
+          $DR = 300;
           $reduction = 30;
             break;
 
@@ -561,12 +573,25 @@ class TarificationAutoController extends Controller
           $VOL = $VOL*0.55 ;
           $BDG = 2000;
           $BDG = $BDG*0.55;
-          $DR = 1200;
+          $DR = 300;
           $reduction = 30;
             break;
         }
 
-        $prime_nette = $RC+$BDG+((($VOL+$DCVV+$DR)*(100-$reduction))/100)+$Ass;
+        $ratio = 0.025;
+        $valeur_ratio = $valeur * $ratio;
+
+        $valeur_reduction = (($DCVV+$DR)*(100-$reduction))/100;
+        $valeur_prise=0;
+
+        if($valeur_ratio >  $valeur_reduction){
+           $valeur_prise=$valeur_ratio;
+        }else if ($valeur_ratio < $valeur_reduction){
+           $valeur_prise=$valeur_reduction;
+        }else{ $valeur_prise = $valeur_reduction;
+            }
+
+        $prime_nette = $RC+$BDG+$VOL+$valeur_prise+$Ass;
 
       }
 
@@ -632,9 +657,9 @@ class TarificationAutoController extends Controller
 
 		$datec=date('d/m/y');
 
-    $wilaya_selected = $wilaya->code_wilaya;
+        $wilaya_selected = $wilaya->code_wilaya;
 
-    $wilaya=Wilaya::All();
+        $wilaya=Wilaya::All();
 
     //dd($assistance);
 
@@ -657,20 +682,20 @@ class TarificationAutoController extends Controller
                         'Wilaya_selected'  => $wilaya_selected,
                         'type_assurance'   => $offre,
                         'valeur_auto'      => $valeur,
-            				'prime_nette'      => $prime_nette,
-            				'cout_police'      => $CP,
-            				'timbre_dimension' => $TD,
-            				'tva'              => $TVA,
-            				'timbre_gradue'    => $TG,
-            				'fga'              => $FGA,
-            				'taxe_pollution'   => $TP,
-                            'bris_de_glace'    => $BDG,
-            				'vol'              => $VOL,
-            				'dasc'             => $DASC,
-                            'dcvv'             => $DCVV,
-            				'rc'               => $RC,
-            				'defense_recours'  => $DR,
-            				'assistance'       => $Ass,
+            			'prime_nette'      => $prime_nette,
+            			'cout_police'      => $CP,
+            			'timbre_dimension' => $TD,
+            			'tva'              => $TVA,
+            			'timbre_gradue'    => $TG,
+            			'fga'              => $FGA,
+            			'taxe_pollution'   => $TP,
+                        'bris_de_glace'    => $BDG,
+            			'vol'              => $VOL,
+            			'dasc'             => $DASC,
+                        'dcvv'             => $DCVV,
+            			'rc'               => $RC,
+            			'defense_recours'  => $DR,
+            			'assistance'       => $Ass,
                     ];
 
 
@@ -1000,7 +1025,7 @@ class TarificationAutoController extends Controller
 
 
 		$user= auth::user();
-		
+
 		$assure=Assure::where('id_devis',$devis->id)->first();
 
 
@@ -1014,7 +1039,7 @@ class TarificationAutoController extends Controller
             'user_wilaya', 'user_commune','assure'));
 
 	}else{
-		return view('welcome'); 
+		return view('welcome');
 	}
 }
 

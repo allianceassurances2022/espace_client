@@ -68,7 +68,7 @@ class UserController extends Controller {
             //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
- 
+
         $date1 = $request->date_naissance;
         $date2 = date("Y-m-d");
         $diff = abs(strtotime($date2) - strtotime($date1));
@@ -87,7 +87,7 @@ class UserController extends Controller {
             //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
-        
+
         $pattern="/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ";
         if ($request->email == "" || strlen($request->email) > 50 || !preg_match($pattern, $request->email)) {
             Alert::warning('Avertissement', 'Merci de verifier l email');
@@ -104,7 +104,7 @@ class UserController extends Controller {
             $image = image::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/' . $filename));
             $image->save();
 
-dd($request->activity);
+//dd($request->activity);
 
             $user->update([
                 'name' => $request->name,
