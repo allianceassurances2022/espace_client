@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\commune;
+use App\wilaya;
 
 class RegisterController extends Controller
 {
@@ -71,13 +73,26 @@ class RegisterController extends Controller
         ]);
 
       */
+      //dd(str_replace('/', '-', $data['date_naissance']));
+      //dd(date('Y-m-d', strtotime(str_replace('/', '-', $data['date_naissance']))));
+     
+
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'prenom'  => $data['prenom'],
+            'adresse' => $data['adresse'],
+            'wilaya' => $data['wilaya'],
+            'commune' => $data['commune'],
+            'activite' => $data['activity'],
+            'date_naissance' => date('Y-m-d', strtotime(str_replace('/', '-', $data['date_naissance']))),
+            'sexe' => $data['sexe'],
+            'profession' => $data['profession'],
+            'telephone' => $data['telephone'],
         ]);
 
-        return view('auth.register');
+        return view('auth.login');
 
     }
 }

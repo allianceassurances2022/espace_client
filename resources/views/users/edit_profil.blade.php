@@ -47,7 +47,7 @@
                     <div class="col-md-6">
                         <label class="col-sm-3 control-label">Wilaya</label>
                         <div class="col-sm-9">
-                            <select  name="wilaya" class="custom-select select2" required>
+                            <select  name="wilaya" class="custom-select select2" id="wilaya" required>
                                 @foreach($wilayas as $wilaya)
                                     <option value="{{ $wilaya->code_wilaya }}" @if($wilaya->code_wilaya == Auth()->user()->wilaya) selected  @endif>{{ $wilaya->nlib_wilaya }}</option>
                                 @endforeach
@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <label class="col-sm-3 control-label">Commune</label>
                         <div class="col-sm-9">
-                            <select  name="commune" class="custom-select select2" required>
+                            <select  name="commune" class="custom-select select2" id="commune" required>
                             @foreach($communes as $commune)
                                 <option value="{{ $commune->code_commune }}" @if($commune->code_commune == Auth()->user()->commune) selected  @endif >{{ $commune->lib_commune }}</option>
                             @endforeach
