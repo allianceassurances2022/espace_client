@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\commune;
 use App\wilaya;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -66,18 +67,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      /*  return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
 
-      */
-      //dd(str_replace('/', '-', $data['date_naissance']));
-      //dd(date('Y-m-d', strtotime(str_replace('/', '-', $data['date_naissance']))));
-     
-
-        User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -92,7 +83,11 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
         ]);
 
-        return view('auth.login');
+        $this->guard()->login($user);
+
+        //return view('auth.login');
+        Alert::success('Information', 'Votre inscription a bien été enregistrée');
+  		   return redirect()->route('home');
 
     }
 }
