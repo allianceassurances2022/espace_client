@@ -112,7 +112,9 @@
                             <select id="profession" name="profession" class="select2">
                                 @foreach($professions as $profession)
                                 <option value="{{$profession->code}}"
-                                        {{$profession  ? 'selected' : ''  }}
+                                       @if ( Auth()->user()->profession == $profession->code )
+                                       selected
+                                       @endif
                                 >{{$profession->libelle}}</option>
                                @endforeach
                             </select>
@@ -124,7 +126,9 @@
                             <select id="activity" name="activity" class="select2">
                                 @foreach($activities as $activity)
                                     <option value="{{$activity->code}}"
-                                            {{$activity  ? 'selected' : ''  }}
+                                            @if ( Auth()->user()->activite == $activity->code )
+                                            selected
+                                            @endif
                                     >{{$activity->libelle}}</option>
                                 @endforeach
                             </select>

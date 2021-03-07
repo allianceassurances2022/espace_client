@@ -64,21 +64,21 @@ class PaiementController extends Controller
                 "civitlite"         => auth()->user()->sexe,
                 "nom"               => auth()->user()->name,
                 "prenom"            => auth()->user()->prenom,
-                "date_naissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
-                "lieu_naissance"     => auth()->user()->adresse,
+                "date_naissance"    => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
+                "lieu_naissance"    => auth()->user()->adresse,
                 "nationalite"       => "Algérienne",
                 "activite"          => "1",
                 "proffession"       => auth()->user()->profession,
                 "assureAddresse"    => auth()->user()->adresse,
                 "assureWilayaId"    => auth()->user()->wilaya,
                 "assureVilleId"     => auth()->user()->commune,
-                "region"          => auth()->user()->wilaya,
-                "agence"          => $devis->code_agence,
-                "class_id"           => "12",
-                "branch_id"          => "1225",
-                "date_souscription"  => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
-                "date_effet"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
-                "date_expiration"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
+                "region"            => auth()->user()->wilaya,
+                "agence"            => $devis->code_agence,
+                "class_id"          => "12",
+                "branch_id"         => "1225",
+                "date_souscription" => Carbon::parse($devis->date_souscription)->format('d/m/Y') ,
+                "date_effet"        => Carbon::parse($devis->date_effet)->format('d/m/Y'),
+                "date_expiration"   => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
                 "periode"           => 1,
                 "periodeType"       => 2,
                 "wilayaId"          => $risque->code_wilaya,
@@ -165,11 +165,11 @@ class PaiementController extends Controller
 dd( $response);
             if($response['status']){
 
-              $devis->update([
+            $devis->update([
           			'type_devis'      => 2,
           			'reference_police' => $response['data']['Code de référence'],
           		]);
-          		$dev=$devis;
+          	$dev=$devis;
 
             }
 

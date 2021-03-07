@@ -701,10 +701,6 @@ class TarificationAutoController extends Controller
 
         $request->session()->put('data_auto', $data_session);
 
-
-
-
-
             if ($offre == "OTO_L") {
                 return view('produits.auto.formule_laki',compact('auto','devis'));
             }else if($offre == "AUTO_P") {
@@ -716,7 +712,6 @@ class TarificationAutoController extends Controller
     }
 
     public function validation_devis_auto (Request $request) {
-
 
         $date = $request->date_eff;
 
@@ -804,10 +799,9 @@ class TarificationAutoController extends Controller
 			// $this->validate($request, $rules);
 
         $date_sous = $request->date_sous;
-			$date_eff  = $request->date_eff;
-			$date_exp  = $request->date_exp;
-
-			$prime_total= $request->prime_total;
+		$date_eff  = $request->date_eff;
+		$date_exp  = $request->date_exp;
+		$prime_total= $request->prime_total;
 
       if($request->id){
 
@@ -985,8 +979,8 @@ class TarificationAutoController extends Controller
 
 
         $date_souscription = $devis->date_souscription;
-			$date_eff          = $devis->date_effet;
-			$date_exp          = $devis->date_expiration;
+		$date_eff          = $devis->date_effet;
+		$date_exp          = $devis->date_expiration;
 
       // personne_transporte
 

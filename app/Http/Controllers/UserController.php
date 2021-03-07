@@ -20,10 +20,11 @@ class UserController extends Controller {
     public function profil() {
 
         $user = auth::user();
+        $profession = Profession::where('code',$user->profession)->first();
         $wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
 
 
-        return view('users.profil', compact('user', 'wilaya'));
+        return view('users.profil', compact('user', 'wilaya', 'profession'));
     }
 
     public function edit_profil() {
@@ -44,6 +45,7 @@ class UserController extends Controller {
 
 
         $user = auth::user();
+        $profession = Profession::where('code',$user->profession)->first();
         //dd($request->name);
         // if ( request()->has('avatar'))
         //  dd($request->has('avatar'));
@@ -140,7 +142,7 @@ class UserController extends Controller {
 
         //   $wilaya = wilaya::where('code_wilaya', $user->wilaya )->first();
 
-        return view('users.profil', compact('user'));
+        return view('users.profil', compact('user','profession'));
     }
 
 }
