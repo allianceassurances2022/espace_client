@@ -77,6 +77,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                     <input type="radio" name="seisme" value="non" @if($reg_para  == "non") checked @endif onclick="disable_devis()"/>
                     <span>Non</span>
                 </label>
+                <label>
+                    <input type="radio" name="seisme" value="ne sais pas"  @if ($reg_para == "ne sais pas") checked @endif onclick="disable_devis()"/>
+                    <span>Ne sais pas</span>
+                </label>
             </div>
 
             <div class="d-flex justify-content-center recaptcha">

@@ -19,7 +19,7 @@ class UserController extends Controller {
 
     public function profil() {
 
-        $user = auth::user();
+        $user = Auth::user();
         $profession = Profession::where('code',$user->profession)->first();
         $wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
 
@@ -35,9 +35,10 @@ class UserController extends Controller {
         $activities = Activity::all();
         $wilayas = wilaya::all();
         $communes = commune::all();
+        $civilites = Civilite::all();
 
 
-        return view('users.edit_profil', compact('user', 'wilayas', 'communes', 'gender', 'professions','activities'));
+        return view('users.edit_profil', compact('user', 'wilayas', 'communes', 'gender', 'professions','activities','civilites'));
     }
 
     public function update_profil(request $request) {
@@ -46,28 +47,19 @@ class UserController extends Controller {
 
         $user = auth::user();
         $profession = Profession::where('code',$user->profession)->first();
-        //dd($request->name);
-        // if ( request()->has('avatar'))
-        //  dd($request->has('avatar'));
 
         if ($request->name == "" || strlen($request->name) > 20) {
             Alert::warning('Avertissement', 'Merci de verifier le nom');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
         if ($request->prenom == "" || strlen($request->prenom) > 20) {
             Alert::warning('Avertissement', 'Merci de verifier le prenom');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
         if ($request->adresse == "" || strlen($request->adresse) > 50) {
             Alert::warning('Avertissement', 'Merci de verifier l adresse');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
@@ -78,23 +70,17 @@ class UserController extends Controller {
 
         if ($request->date_naissance == "" || $years<18 || $years>100) {
             Alert::warning('Avertissement', 'Merci de verifier la date de naissance');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
         if ($request->telephone == "" || strlen($request->telephone) > 10 || strlen($request->telephone) < 1) {
             Alert::warning('Avertissement', 'Merci de verifier le numéro de téléphone');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
         $pattern="/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ";
         if ($request->email == "" || strlen($request->email) > 50 || !preg_match($pattern, $request->email)) {
             Alert::warning('Avertissement', 'Merci de verifier l email');
-            //  return back();
-            //return redirect()->route('devis_mrh')->with('value_mrh');
             return redirect()->route('edit_profil', ['profile', 'index']);
         }
 
@@ -106,8 +92,6 @@ class UserController extends Controller {
             $image = image::make($avatar)->resize(256, 256)->save(public_path('user_assets/assets/uploads/avatars/' . $filename));
             $image->save();
 
-//dd($request->activity);
-
             $user->update([
                 'name' => $request->name,
                 'prenom' => $request->prenom,
@@ -115,7 +99,7 @@ class UserController extends Controller {
                 'commune' => $request->commune,
                 'adresse' => $request->adresse,
                 'date_naissance' => $request->date_naissance,
-                'sexe' => $request->gender,
+                'sexe' => $request->civilite,
                 'profession' => $request->profession,
                 'activite'     =>$request->activity,
                 'telephone' => $request->telephone,
@@ -131,7 +115,7 @@ class UserController extends Controller {
                 'commune' => $request->commune,
                 'adresse' => $request->adresse,
                 'date_naissance' => $request->date_naissance,
-                'sexe' => $request->gender,
+                'sexe' => $request->civilite,
                 'profession' => $request->profession,
                 'activite'     =>$request->activity,
                 'telephone' => $request->telephone,
@@ -140,7 +124,8 @@ class UserController extends Controller {
         }
 
 
-        //   $wilaya = wilaya::where('code_wilaya', $user->wilaya )->first();
+        $user = auth::user();
+        $profession = Profession::where('code',$user->profession)->first();
 
         return view('users.profil', compact('user','profession'));
     }

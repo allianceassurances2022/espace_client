@@ -73,7 +73,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="radio_secion">
                 <div class="slice_third">
                     <div class="radio_section_slice">
-                        <h6>Es une activité qui doit être inscrite au registre de commerce ?</h6>
+                        <h6>S’agit-il d’une activité qui doit être inscrite au registre de commerce (CNRC) ?</h6>
                         <label>
                             <input type="radio" name="activite" id="oui" value="oui" checked @if ($activite == "oui") checked @endif/>
                             <span>Oui</span>
@@ -81,10 +81,6 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                         <label>
                             <input type="radio" name="activite" id="non" value="non" @if ($activite == "non") checked @endif />
                             <span>Non</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="activite" id="ne_sais_pas" value="ne_sais_pas"  @if ($activite == "ne_sais_pas") checked @endif/>
-                            <span>Ne sais pas</span>
                         </label>
                     </div>
                 </div>
@@ -113,7 +109,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                             <span>Non</span>
                         </label>
                         <label>
-                            <input type="radio" name="local" onchange="desactiveC();" value="ne_sais_pas"  @if ($local == "ne_sais_pas") checked @endif/>
+                            <input type="radio" name="local" onchange="desactiveC();" value="ne sais pas"  @if ($local == "ne sais pas") checked @endif/>
                             <span>Ne sais pas</span>
                         </label>
                     </div>

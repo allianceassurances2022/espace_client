@@ -58,6 +58,10 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                       <input type="radio" name="permis" id="non" value="non" @if ($permis == "non") checked @endif />
                       <span>Non</span>
                   </label>
+                  <label>
+                    <input type="radio" name="permis" id="ne sais pas" value="ne sais pas"  @if ($permis == "ne sais pas") checked @endif />
+                    <span>Ne sais pas</span>
+                </label>
               </div>
           </div>
 

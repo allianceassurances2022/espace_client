@@ -20,6 +20,9 @@ use App\Prime;
 use App\marque;
 
 use App\Assure;
+use App\Profession;
+use App\Civilite;
+use App\Assistance;
 
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
@@ -71,143 +74,8 @@ class TarificationAutoController extends Controller
     public function montant_auto(Request $request){
 
 
-    $auto=$request->all();
+        $auto=$request->all();
 
-  // dd($request->formule);
-
-   /*
-    //Verificateur captcha
-    $recap='g-recaptcha-response';
-
-    $response=$request->$recap;
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = array(
-        'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-        'response' => $request->$recap
-    );
-    $query = http_build_query($data);
-    $options = array(
-        'http' => array (
-            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-            "Content-Length: ".strlen($query)."\r\n".
-            "User-Agent:MyAgent/1.0\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context  = stream_context_create($options);
-    $verify = file_get_contents($url, false, $context);
-    $captcha_success= json_decode($verify);
-
-    if ($captcha_success->success==false) {
-
-      echo '<script language="javascript" type="text/javascript">';
-      echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-      echo 'window.history.go(-1);';
-      echo '</script>';
-
-    } else if ($captcha_success->success==true) {
-
-      $date_conduc=date('Y-m-d',strtotime('-18 year'));
-
-      if ($request->date_conducteur > $date_conduc){
-
-         Alert::warning('Avertissement', 'Date naissance incorrect');
-  		   return redirect()->route('type_produit',['auto','index']);
-
-  		 }
-
-       $date_permis=date('Y-m-d');
-
-       if ($request->date_permis > $date_permis){
-
-          Alert::warning('Avertissement', 'Date permis incorrect');
-   		   return redirect()->route('type_produit',['auto','index']);
-
-   		 }
-
-       if( $request->formule == "1") {
-
-       $annee_now=date('Y');
-
-       $annee_dix=date('Y',strtotime('-10 year'));
-
-       if ($request->annee_auto > $annee_now || $request->annee_auto < $annee_dix ){
-
-          Alert::warning('Avertissement', 'Annee vehicule incorrect');
-   		   return redirect()->route('type_produit',['auto','index']);
-
-   		 }
-
-       }
-
-      if ($request->usage < "0" || $request->usage > "2"  ){
-
-         Alert::warning('Avertissement', 'Usage incorrect');
-  		   return redirect()->route('type_produit',['auto','index']);
-
-  		 }
-
-        if ($request->dure < "1" || $request->dure > "2"  ){
-
-           Alert::warning('Avertissement', 'Durée incorrect');
-           return redirect()->route('type_produit',['auto','index']);
-
-         }
-
-         if ($request->formule < "1" || $request->formule > "2"  ){
-
-            Alert::warning('Avertissement', 'Formule incorrect');
-     		   return redirect()->route('type_produit',['auto','index']);
-
-     		 }
-
-         $tableau_assis = array(
-            '1', '2', '3', '4'
-         );
-
-
-         if ( !in_array( $request->assistance , $tableau_assis )) {
-
-           Alert::warning('Avertissement', 'Assistance incorrect');
-           return redirect()->route('type_produit',['auto','index']);
-
-         }
-
-       //  dd($request->puissance);
-
-         if ($request->puissance < '0' || $request->puissance > '6'  ){
-
-             Alert::warning('Avertissement', 'Puissance incorrect');
-      		   return redirect()->route('type_produit',['auto','index']);
-
-      		 }
-
-          if ($request->valeur_auto < "800000"  ){
-
-             Alert::warning('Avertissement', 'Valuer incorrect');
-      		   return redirect()->route('type_produit',['auto','index']);
-
-      		 }
-
-           $tableau_assurance = array(
-              'AUTO_P', 'OTO_L'
-           );
-
-          if (!in_array( $request->type_assurance , $tableau_assurance )){
-
-             Alert::warning('Avertissement', 'Assurance incorrect');
-      		   return redirect()->route('type_produit',['auto','index']);
-
-      		 }
-
-          if ($request->Wilaya_selected < "1" || $request->Wilaya_selected > "48"  ){
-
-             Alert::warning('Avertissement', 'Wilaya incorrect');
-      		   return redirect()->route('type_produit',['auto','index']);
-
-      		 }
-*/
         $wilaya=Wilaya::where('code_wilaya',$request->Wilaya_selected)->first();
 
 		$zone = $wilaya->zone;
@@ -837,17 +705,16 @@ class TarificationAutoController extends Controller
     			'prime_total'       => $request->prime_total,
     			'code_agence'       => $request->code_agence,
                 'prime_nette'       => $value_auto['prime_nette'],
-					'tva'               => $value_auto['tva'],
-					'cp'                => $value_auto['cout_police'],
-					'td'                => $value_auto['timbre_dimension'],
-					'fga'               => $value_auto['timbre_gradue'],
-					'tg'                => $value_auto['fga'],
-					'tp'                => $value_auto['taxe_pollution'],
-					'id_user'           => Auth()->user()->id,
+				'tva'               => $value_auto['tva'],
+				'cp'                => $value_auto['cout_police'],
+				'td'                => $value_auto['timbre_dimension'],
+				'fga'               => $value_auto['timbre_gradue'],
+				'tg'                => $value_auto['fga'],
+				'tp'                => $value_auto['taxe_pollution'],
+				'id_user'           => Auth()->user()->id,
                 'type_assurance'    => 'Automobile'
     		]);
 
-    		//dd($value_auto['dasc']);
         Prime::create([
           'code'              => '030120',
           'libelle'           => 'Bris de Glace',
@@ -859,31 +726,31 @@ class TarificationAutoController extends Controller
 					'libelle'           => 'Vol & Incendie',
 					'valeur'            => $value_auto['vol'],
 					'id_devis'          => $dev->id
-				]);
-				Prime::create([
+		]);
+		Prime::create([
 					'code'              => '030141',
 					'libelle'           => 'DASC',
 					'valeur'            => $value_auto['dasc'],
 					'id_devis'          => $dev->id
-				]);
-				Prime::create([
+		]);
+		Prime::create([
 					'code'              => '100110',
 					'libelle'           => 'Responsabilité Civile',
 					'valeur'            => $value_auto['rc'],
 					'id_devis'          => $dev->id
-				]);
-				Prime::create([
+		]);
+		Prime::create([
 					'code'              => '170110',
 					'libelle'           => 'Défense et Recours',
 					'valeur'            => $value_auto['defense_recours'],
 					'id_devis'          => $dev->id
-				]);
-                Prime::create([
+		]);
+        Prime::create([
 					'code'              => '180214',
 					'libelle'           => 'Assistance',
 					'valeur'            => $value_auto['assistance'],
 					'id_devis'          => $dev->id
-				]);
+		]);
 
 
 
@@ -929,11 +796,14 @@ class TarificationAutoController extends Controller
   				'nom'                => $request->name,
   				'prenom'             => $request->prenom,
   				'code_wilaya'        => $code_wilaya,
+                'code_commune'       => $user->commune,
   				'date_naissance'     => $request->date_naissance,
+                'lieu_naissance'     => $user->lieu_naissance,
   				'adresse'            => $user->adresse,
   				'sexe'               => $user->sexe,
   				'telephone'          => $request->telephone,
-  				'profession'         => $request->commune_assure,
+                'code_activite'      => $user->activite,
+  				'profession'         => $user->profession,
   				'id_devis'           => $dev->id
   			]);
 
@@ -961,76 +831,67 @@ class TarificationAutoController extends Controller
 
 		$user= auth::user();
 
+        $profession = Profession::where('code',$user->profession)->first();
+        $civilite   = Civilite::where('code',$user->sexe)->first();
 
 		$devis=devis::find($id);
-		// print_r($devis->id_user." ".$user->id);
-		// die();
+
 		if($devis->id_user == $user->id){
 
         $devis=devis::find($id);
 
         $risque=Rsq_Vehicule::where('code_devis',$devis->id)->first();
 
-      //  dd($risque);
-
         $id=$risque->id;
 
-        $puissance = puissance::where('libelle', $risque->puissance)->first();
+        $puissance = puissance::where('code', $risque->puissance)->first();
 
 
         $date_souscription = $devis->date_souscription;
-		$date_eff          = $devis->date_effet;
+		$date_effet          = $devis->date_effet;
 		$date_exp          = $devis->date_expiration;
 
-      // personne_transporte
+        // personne_transporte
 
-      $date_conducteur   = $risque->date_conducteur;
-      $date_permis       = $risque->date_permis;
-      $wilaya_selected   = $risque->wilaya_obtention;
-      $annee_auto        = $risque->annee_mise_circulation;
-     // $puissance         = $puissance->code;
-      $usage             = $risque->usage;
-      $dure              = $risque->dure;
-      $formule           = $risque->code_formule;
-      $assistance_nom    = $risque->assistance;
-      $taxe              = $risque->taxe;
-      $date_taxe         = $risque->effet_taxe;
-      $offre             = $risque->offre;
-      $valeur            = $risque->valeur_vehicule;
-      $matricule         = $risque->matricule;
-      $marque_selected   = $risque->marque;
-      $model             = $risque->modele;
-      $num_chassis       = $risque->num_chassis;
-      $type              = $risque->type;
-      $couleur           = $risque->couleur;
-      $permis_num        = $risque->permis_num;
-  //    $categorie         = $risque->categorie;
-      $delivre_a         = $risque->wilaya_obtention;
-      $wilaya            = wilaya::all();
-      $prime_total       = $devis->prime_total;
-      $agences           = Agences::all();
-      $code_agence       = $devis->code_agence;
-      $agence_map        = Agences::where('id',$code_agence)->first();
-      $marques           = marque::all();
-      $categorie         = categorie_permis::all();
-      $couleurs          = Couleur::all();
+        $date_conducteur   = $risque->date_conducteur;
+        $date_permis       = $risque->date_permis;
+        $wilaya_selected   = $risque->wilaya_obtention;
+        $annee_auto        = $risque->annee_mise_circulation;
+        $usage             = $risque->usage;
+        $dure              = $risque->dure;
+        $formule           = $risque->code_formule;
+        $assistance_nom    = $risque->assistance;
+        $taxe              = $risque->taxe;
+        $date_taxe         = $risque->effet_taxe;
+        $offre             = $risque->offre;
+        $valeur            = $risque->valeur_vehicule;
+        $matricule         = $risque->matricule;
+        $marque_selected   = $risque->marque;
+        $model             = $risque->modele;
+        $num_chassis       = $risque->num_chassis;
+        $type              = $risque->type;
+        $couleur_selected  = $risque->couleur;
+        $permis_num        = $risque->permis_num;
+        $categorie_selected= $risque->categorie;
+        $delivre_a         = $risque->wilaya_obtention;
+        $wilaya            = wilaya::all();
+        $prime_total       = $devis->prime_total;
+        $agences           = Agences::all();
+        $code_agence       = $devis->code_agence;
+        $agence_map        = Agences::where('id',$code_agence)->first();
+        $marques           = marque::all();
+        $categorie         = categorie_permis::all();
+        $couleurs          = Couleur::all();
 
+        $assistance=Assistance::where('code',$assistance_nom)->first();
 
-
-
-		$user= auth::user();
 
 		$assure=Assure::where('id_devis',$devis->id)->first();
-
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
 
-
-        return view('produits.Auto.devis_auto',compact('date_souscription','date_eff','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','assistance_nom','taxe','date_taxe',
-
-      'offre','valeur','matricule','marques','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleurs','permis_num','categorie','id',
-            'user_wilaya', 'user_commune','assure'));
+        return view('produits.Auto.devis_auto',compact('date_souscription','date_effet','date_exp','date_conducteur','date_permis','wilaya_selected','annee_auto','puissance','usage','dure','formule','taxe','date_taxe','offre','valeur','matricule','marques','marque_selected','model','delivre_a','wilaya','prime_total','agences','code_agence','agence_map','num_chassis','type','couleur_selected','couleurs','permis_num','categorie_selected','categorie','id','user_wilaya', 'user_commune','assure','profession','civilite','assistance'));
 
 	}else{
 		return view('welcome');
@@ -1045,8 +906,8 @@ class TarificationAutoController extends Controller
 
       		$prime= Prime::where('id_devis',$devis->id)->get();
       		$user=auth::user();
-		  $agence=Agences::where('Name',$devis->code_agence)->first();
-		  $assure=Assure::where('id_devis',$devis->id)->first();
+            $agence=Agences::where('Name',$devis->code_agence)->first();
+            $assure=Assure::where('id_devis',$devis->id)->first();
 
             $agence=Agences::where('Name',$devis->code_agence)->first();
 

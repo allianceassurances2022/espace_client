@@ -77,10 +77,12 @@ class RegisterController extends Controller
             'wilaya' => $data['wilaya'],
             'commune' => $data['commune'],
             'activite' => $data['activity'],
+            'lieu_naissance' => $data['lieu_naissance'],
             'date_naissance' => date('Y-m-d', strtotime(str_replace('/', '-', $data['date_naissance']))),
-            'sexe' => $data['sexe'],
+            'sexe' => $data['civilite'],
             'profession' => $data['profession'],
             'telephone' => $data['telephone'],
+            'avatar' => 'default.png',
         ]);
 
         $this->guard()->login($user);

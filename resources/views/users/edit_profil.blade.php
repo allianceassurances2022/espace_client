@@ -88,19 +88,16 @@
                         </div>
                     </div>
 
-                <div class="col-md-6">
-                        <label class="col-sm-3 control-label">Civilité</label>
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">civilité</label>
                         <div class="col-sm-9">
-                            <div class="be-radio-icon inline">
-                                <input type="radio"  name="gender" value="2"
-                                       {{ $gender =='2' ? 'checked' : ''  }} id="rad1">
-                                <label for="rad1"><span class="mdi mdi-female"></span></label>
-                        </div>
-                            <div class="be-radio-icon inline">
-                                <input type="radio" name="gender" value="1"
-                                        {{ $gender =='1' ? 'checked' : ''  }} id="rad2">
-                                <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
-                            </div>
+                            <select id="civilite" name="civilite" class="select2">
+                                @foreach($civilites as $civilite)
+                                    <option value="{{$civilite->code}}"
+                                            {{$civilite->code == $user->sexe  ? 'selected' : ''  }}
+                                    >{{$civilite->libelle}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

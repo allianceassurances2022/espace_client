@@ -174,7 +174,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
           </div>
         </a>
     </div>
-    <div class="card">
+    {{-- <div class="card">
         <a href="{{route('type_produit',['mrp','index'])}}">
           <div class="card-img">
               <img src="{{asset('produit_assets/images/backgrounds/entreprise.jpg')}}" />
@@ -193,7 +193,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
               <a href="{{route('type_produit',['mrp','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </a>
         </div>
-    </div>
+    </div> --}}
     <div class="card">
       <a href="{{route('type_produit',['catnat','index'])}}">
         <div class="card-img">

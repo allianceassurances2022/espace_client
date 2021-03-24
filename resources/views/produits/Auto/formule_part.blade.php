@@ -79,7 +79,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
 
 
 
-          {{-- <div id="tax-poll"> --}}
+          {{-- <div id="tax-poll">
 
             <div class="slice" id="tax-poll">
                 <h6 style="width: 340px;">Avez-Vous déja payez une taxe pollution ?<span>(Choix Obligatoire)</span></h6>
@@ -101,7 +101,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
             </div>
 
 
-          {{-- </div> --}}
+          </div> --}}
 
           <div class="d-flex justify-content-center recaptcha">
               <div class="cc-selector">

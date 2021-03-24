@@ -20,6 +20,9 @@ Route::get('/my', function () {
     return view('my');
 });
 
+
+//Route::get('404' , 'TarificationController@fetch')->name('construction.fetch');
+
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
@@ -69,7 +72,7 @@ Route::get('panier_', function () {
 
 /////////////////////////// paiement
 Route::get('paiement_mrh/{id}', 'PaiementController@paiement_mrh')->name('paiement_mrh');
-Route::get('paiement_catnat{id}', 'PaiementController@paiement_catnat')->name('paiement_catnat');
+Route::get('paiement_catnat/{id}', 'PaiementController@paiement_catnat')->name('paiement_catnat');
 Route::get('paiement_auto/{id}', 'PaiementController@paiement_auto')->name('paiement_auto');
 Route::get('paiement_send_mrh/{id}', 'PaiementController@save_mrh')->name('save_mrh');
 Route::get('paiement_send_catnat/{id}', 'PaiementController@save_catnat')->name('save_catnat');

@@ -18,7 +18,7 @@ Inscription
       <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur.</span></div>
       <div class="panel-body">
         <form method="POST" action="{{ route('register') }}" class="form-horizontal">
-           
+
                               <div class="form-group">
                                   <div class="col-md-6">
                                       <label class="col-sm-3 control-label">Nom</label>
@@ -53,7 +53,7 @@ Inscription
                                         </select>
                                     </div>
                                 </div>
-            
+
                                 <div class="col-md-6">
                                     <label class="col-sm-3 control-label">Commune</label>
                                     <div class="col-sm-9">
@@ -64,7 +64,7 @@ Inscription
                                         </select>
                                     </div>
                                 </div>
-            
+
                             </div>
 
                               <div class="form-group">
@@ -101,7 +101,7 @@ Inscription
                                         </select>
                                     </div>
                                 </div>
-            
+
                             </div>
 
                               <div class="form-group">
@@ -114,16 +114,26 @@ Inscription
                                   </div>
 
                                     <div class="col-md-6">
-                                    <label class="col-sm-3 control-label">Sexe</label>
-                                     <div class="col-sm-9">
-                                  <div class="be-radio-icon inline">
-                                    <input type="radio" checked name="sexe" value="Femme" id="rad1">
-                                    <label for="rad1"><span class="mdi mdi-female"></span></label>
-                                  </div>
-                                  <div class="be-radio-icon inline">
-                                    <input type="radio" name="sexe" value="Homme" id="rad2">
-                                    <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
-                                  </div>
+                                        <label class="col-sm-3 control-label">lieu de naissance</label>
+                                        <div class="col-sm-9">
+                                            <input id="lieu_naissance" type="text" name="lieu_naissance" class="form-control" value="{{ old('lieu_naissance') }}" required>
+                                        </div>
+                                    </div>
+
+                              </div>
+
+                              <div class="form-group">
+
+                                <div class="col-md-6">
+                                    <label class="col-sm-3 control-label">Civilité</label>
+                                <div class="col-sm-9">
+                                    <select id="civilite" name="civilite" class="select2">
+                                        @foreach($civilites as $civilite)
+                                            <option value="{{$civilite->code}}"
+                                                    {{$civilite->code == old('civilite')  ? 'selected' : ''  }}
+                                            >{{$civilite->libelle}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                               </div>
 
