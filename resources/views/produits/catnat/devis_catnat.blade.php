@@ -107,7 +107,7 @@ Devis CATNAT
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Telephone</label>
+                                                    <label class="col-sm-3 control-label">Téléphone</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="telephone" value="{{$assure->telephone}}" id="telephone" class="form-control" readonly>
                                                     </div>
@@ -298,7 +298,7 @@ Devis CATNAT
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Date expiration</label>
+                                                    <label class="col-sm-3 control-label">Date d'expiration</label>
                                                     <div class="col-sm-9">
                                                           <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                                     </div>
@@ -311,7 +311,7 @@ Devis CATNAT
                                             <div class="form-group">
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Proprietaire </label>
+                                                    <label class="col-sm-3 control-label">Propriétaire </label>
                                                     <div class="col-sm-9" style="padding-top: 10px;">
                                                       <div class="switch-button switch-button-yesno">
                                                         <input type="checkbox" @if($proprietaire == "oui") checked @endif name="proprietaire" id="swt9"><span>
@@ -344,14 +344,14 @@ Devis CATNAT
                                             <div class="form-group">
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Nombre d'Etage</label>
+                                                    <label class="col-sm-3 control-label">Nombre d'étages</label>
                                                     <div class="col-sm-9">
                                                         <input type="number" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required min="0">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Nombre de pieces</label>
+                                                    <label class="col-sm-3 control-label">Nombre de pièces</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control">
                                                     </div>
@@ -375,7 +375,7 @@ Devis CATNAT
                                             <div class="panel-heading panel-heading-divider">
                                               <div class="icon-container">
                                                  <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                                 <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                                 <span class="icon-class">Veuillez choisir l'agence la plus proche</span>
                                                </div>
                                              </div>
 
@@ -436,7 +436,7 @@ Devis CATNAT
                                     </form>
 
                             <div class="form-group">
-                                <h3 class="col-sm-9 text-right">Total a payer :</h3>
+                                <h3 class="col-sm-9 text-right">Total à payer :</h3>
                                 <div class="col-sm-3">
                                     <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                                 </div>

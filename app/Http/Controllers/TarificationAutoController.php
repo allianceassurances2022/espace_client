@@ -529,7 +529,6 @@ class TarificationAutoController extends Controller
 
         $wilaya=Wilaya::All();
 
-    //dd($assistance);
 
 		$data_session = [
     	                'date_conducteur'  => $daten,
@@ -575,7 +574,7 @@ class TarificationAutoController extends Controller
                 return view('produits.auto.formule_part',compact('auto','devis'));
             }
 
-//}
+
 
     }
 
@@ -606,8 +605,6 @@ class TarificationAutoController extends Controller
           $date_effet_taxe=$request->effet_taxe;
 		}
 
-		//VERIFICATION VALUES
-		//$newDate=date('Y-m-d', strtotime('-18 year'));
 		if ($request->date_eff < date('Y-m-d')){
 			Alert::warning('Avertissement', 'Merci de verifier la date d effet');
           	//  return back();
@@ -653,18 +650,7 @@ class TarificationAutoController extends Controller
 
 
 
-    //   if ($request->code_agence == ""){
-	// 		Alert::warning('Avertissement', 'Merci de choisir une Agence');
-    //   return back();
-	// 		}
-
       $value_auto  = session('data_auto');
-
-			// $rules = array(
-			// 	'code_agence'  => 'bail|string|max:5',
-			// );
-
-			// $this->validate($request, $rules);
 
         $date_sous = $request->date_sous;
 		$date_eff  = $request->date_eff;

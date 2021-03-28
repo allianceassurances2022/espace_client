@@ -123,7 +123,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Telephone</label>
+                                    <label class="col-sm-3 control-label">Téléphone</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="telephone" value="{{auth()->user()->telephone}}" id="telephone" class="form-control" readonly>
                                     </div>
@@ -277,7 +277,7 @@
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
+                                    <label class="col-sm-3 control-label">Valeur estimée du véhicule</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="valeur" name="valeur_estime" value="{{number_format($valeur, 2,',', ' ')}} DA"" class="form-control valeur"
                                                readonly>
@@ -314,7 +314,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">N° Chassis</label>
+                                    <label class="col-sm-3 control-label">N° Châssis</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="num_chassis" name="num_chassis" value="{{$num_chassis ?? ''}}"
                                                class="form-control" maxlength="17" required>
@@ -346,7 +346,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Model</label>
+                                    <label class="col-sm-3 control-label">Modèle</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="model" value="{{$model ?? ''}}" class="form-control" required>
                                     </div>
@@ -369,7 +369,7 @@
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Permis N°</label>
+                                    <label class="col-sm-3 control-label">N° Permis</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="permis_num" value="{{$permis_num ?? ''}}"
                                                class="form-control" required>
@@ -408,7 +408,7 @@
                             <div class="panel-heading panel-heading-divider">
                                 <div class="icon-container">
                                     <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                    <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                    <span class="icon-class">Veuillez choisir l'agence la plus proche</span>
                                 </div>
                             </div>
 
@@ -479,7 +479,7 @@
 
 
                         <div class="form-group">
-                            <h3 class="col-sm-9 text-right">Total a payer :</h3>
+                            <h3 class="col-sm-9 text-right">Total à payer :</h3>
                             <div class="col-sm-3">
                                 <input type="text" name="prime_total_"
                                        value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control"

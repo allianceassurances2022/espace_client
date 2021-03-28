@@ -15,7 +15,7 @@ Inscription
   <div class="splash-container2">
 
     <div class="panel panel-default panel-border-color panel-border-color-primary">
-      <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur.</span></div>
+      <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur</span></div>
       <div class="panel-body">
         <form method="POST" action="{{ route('register') }}" class="form-horizontal">
 
@@ -114,7 +114,7 @@ Inscription
                                   </div>
 
                                     <div class="col-md-6">
-                                        <label class="col-sm-3 control-label">lieu de naissance</label>
+                                        <label class="col-sm-3 control-label">Lieu de naissance</label>
                                         <div class="col-sm-9">
                                             <input id="lieu_naissance" type="text" name="lieu_naissance" class="form-control" value="{{ old('lieu_naissance') }}" required>
                                         </div>
@@ -142,14 +142,15 @@ Inscription
                               <div class="form-group">
 
                                 <div class="col-md-6">
-                                  <label class="col-sm-3 control-label">{{ __('E-Mail Address') }}</label>
+                                  {{-- <label class="col-sm-3 control-label">{{ __('E-Mail Address') }}</label> --}}
+                                  <label class="col-sm-3 control-label">Adresse e-mail</label>
                                   <div class="col-sm-9">
                                       <input id="email" type="email" name="email" value="{{ old('email') }}" class="form-control" required autocomplete="email">
                                   </div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="col-sm-3 control-label">Telephone</label>
+                                    <label class="col-sm-3 control-label">Téléphone</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone') }}" required>
                                     </div>
@@ -161,7 +162,8 @@ Inscription
                               <div class="form-group">
 
                                <div class="col-md-6">
-                                   <label class="col-sm-3 control-label">{{ __('Password') }}</label>
+                                   {{-- <label class="col-sm-3 control-label">{{ __('Password') }}</label> --}}
+                                   <label class="col-sm-3 control-label">Mot de passe</label>
                                    <div class="col-sm-9">
                                      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
@@ -174,7 +176,8 @@ Inscription
                                </div>
 
                                <div class="col-md-6">
-                                 <label class="col-sm-3 control-label">{{ __('Confirm Password') }}</label>
+                                 {{-- <label class="col-sm-3 control-label">{{ __('Confirm Password') }}</label> --}}
+                                 <label class="col-sm-3 control-label">Confirmation du mot de passe</label>
                                  <div class="col-sm-9">
                                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                  </div>

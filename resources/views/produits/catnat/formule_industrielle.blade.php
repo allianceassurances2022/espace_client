@@ -45,7 +45,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
                 </div>
             </div>
             <div class="slice">
-                <h6>Valeur equipement</h6>
+                <h6>Valeur équipement</h6>
                 <div class="wrap-input100 validate-input2">
                     {{-- <input id="equipement" onchange="calcul_contenu();" class="input100" type="number" name="equipement" value="{{$equipement ?? 0}}" placeholder="Valeur equipement" min=0 required> --}}
                     <input class="input100 money" onchange="calcul_contenu();" value="{{$equipement ?? '0'}}" type="text" id="equipement" required>

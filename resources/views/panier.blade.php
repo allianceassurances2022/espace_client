@@ -31,7 +31,7 @@ Panier
               </td>
               <td>
                 <br> <span class='thin product_title'>{{$auto['nom']}}</span>
-                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
+                <br> ___<br> <span class='thin small'> ___<br><br></span>
                 <div class="product_actions">
                 	<a href="{{route('pannier_supp','auto')}}" class="bot-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 	<a href="" class="bot-button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
@@ -57,10 +57,10 @@ Panier
               </td>
               <td>
                 <br> <span class='thin product_title'>{{$mrh['nom']}}</span>
-                <br> Resumé<br> <span class='thin small'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil!<br><br></span>
+                <br> ___<br> <span class='thin small'> ___<br><br></span>
                 <div class="product_actions">
                 	<a href="{{route('devis_mrh')}}" class="bot-button">Devis  <i class="fa fa-edit" aria-hidden="true"></i></a>
-                  <a href="{{route('pannier_supp','mrh')}}" class="bot-button">Supprimer  <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="{{route('pannier_supp','mrh')}}" class="bot-button">Supprimer  <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </div>
               </td>
             </tr>
@@ -82,9 +82,9 @@ Panier
               </td>
               <td>
                 <br> <span class='thin product_title'>{{$cat['nom']}}</span>
-                <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
+                <br> ___<br> <span class='thin small'> ___</span>
                 <div class="product_actions">
-									<a href="{{route('devis_catnat')}}" class="bot-button">Devis  <i class="fa fa-edit" aria-hidden="true"></i></a>
+					<a href="{{route('devis_catnat')}}" class="bot-button">Devis  <i class="fa fa-edit" aria-hidden="true"></i></a>
                 	<a href="{{route('pannier_supp','catnat')}}" class="bot-button">Supprimer  <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                  </div>
               </td>

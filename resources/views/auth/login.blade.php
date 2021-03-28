@@ -4,7 +4,7 @@
 <div class="main-content container-fluid">
           <div class="splash-container">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
-              <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur.</span></div>
+              <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur</span></div>
               <div class="panel-body">
                 <form method="POST" action="{{ route('login') }}" data-parsley-validate="" novalidate="">
                         @csrf

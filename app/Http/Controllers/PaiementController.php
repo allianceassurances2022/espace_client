@@ -351,9 +351,9 @@ class PaiementController extends Controller
 
               public function save_auto ($id){
 
-                $auto         = Rsq_Vehicule::where('id',$id)->first();
+                $auto        = Rsq_Vehicule::where('id',$id)->first();
                 $devis       = devis::where('id',$id)->first();
-                $agence = Agences::find($devis->code_agence);
+                $agence      = Agences::find($devis->code_agence);
                 $prime_total = $devis->prime_total;
                 $catnat      = '';
                 $mrh         = '';
@@ -370,8 +370,6 @@ class PaiementController extends Controller
 
                 $matricule_lieu = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first();
                 $permis_lieu = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first();
-
-                $puissance = Puissance::where('libelle',$risque->puissance )->first();
 
                 $cat_permis = Categorie_permis::where('libelle',$risque->categorie )->first();
 
@@ -401,44 +399,80 @@ class PaiementController extends Controller
                     "wilaya_assure_id"        => $assure->code_wilaya,
                     "ville_assure_id"         => $assure->code_commune,
 
-                    "periode"                 => 1,
-                    "periodeType"             => 2,
-                    "wilayaId"                => auth()->user()->wilaya,
-                    "villeId"                 => auth()->user()->commune,
-                    "matricule"               => $risque->matricule,
-                    "constructionAnnee"       => $risque->annee_mise_circulation,
-                    "chassisNo"               => $risque->num_chassis,
-                    "chassisType"             => $risque->type,
-                    "matriculeLieu"           => $matricule_lieu->code_wilaya,
-                    "marque"                  => $risque->marque,
-                    "genre"                   => $risque->genre,
-                    "usage"                   => $risque->usage,
-                    "model"                   => $risque->modele,
-                    "puissance"               => $puissance->code,
-                    "typeCarburant"           => "1",
-                    "couleur"                 => "02",
-                    "nbrPersonne"             => $risque->personne_transporte,
-                    "cUtil"                   => 0,
-                    "pTac"                    => 0,
-                    "formule"                 => $formule->libelle,
-                    "attestation"             => "null",
-                    "capitaleAssure"          => $risque->valeur_vehicule,
-                    "autoRadio"               => 0,
-                    "chiffreAffaire"          => 0,
-                    "tauxReduction"           => "0",
-                    "assistance"              => $risque->assistance,
-                    "alarme"                  => 0,
-                    "turbo"                   => 0,
-                    "hautGamme"               => 0,
-                    "liquidInflamable"        => 0,
-                    "controleTechnique"       => 0,
-                    "conducteurCode"          => "null",
-                    "conducteurNom"           => auth()->user()->name,
-                    "conducteurDateNaissance" => $date_naissance,
-                    "permisNo"                => $risque->permis_num,
-                    "permisCategorie"         => $cat_permis->code,
-                    "permisDate"              => $date_permis,
-                    "permisLieu"              => $permis_lieu->code_wilaya
+                    // "periode"                 => 1,
+                    // "periodeType"             => 2,
+                    // "wilayaId"                => auth()->user()->wilaya,
+                    // "villeId"                 => auth()->user()->commune,
+                    // "matricule"               => $risque->matricule,
+                    // "constructionAnnee"       => $risque->annee_mise_circulation,
+                    // "chassisNo"               => $risque->num_chassis,
+                    // "chassisType"             => $risque->type,
+                    // "matriculeLieu"           => $matricule_lieu->code_wilaya,
+                    // "marque"                  => $risque->marque,
+                    // "genre"                   => $risque->genre,
+                    // "usage"                   => $risque->usage,
+                    // "model"                   => $risque->modele,
+                    // "puissance"               => $risque->puissance,
+                    // "typeCarburant"           => "1",
+                    // "couleur"                 => "02",
+                    // "nbrPersonne"             => $risque->personne_transporte,
+                    // "cUtil"                   => 0,
+                    // "pTac"                    => 0,
+                    // "formule"                 => $formule->libelle,
+                    // "attestation"             => "",
+                    // "capitaleAssure"          => $risque->valeur_vehicule,
+                    // "autoRadio"               => 0,
+                    // "chiffreAffaire"          => 0,
+                    // "tauxReduction"           => "0",
+                    // "assistance"              => $risque->assistance,
+                    // "alarme"                  => 0,
+                    // "turbo"                   => 0,
+                    // "hautGamme"               => 0,
+                    // "liquidInflamable"        => 0,
+                    // "controleTechnique"       => 0,
+                    // "conducteurCode"          => "null",
+                    // "conducteurNom"           => auth()->user()->name,
+                    // "conducteurDateNaissance" => $date_naissance,
+                    // "permisNo"                => $risque->permis_num,
+                    // "permisCategorie"         => $cat_permis->code,
+                    // "permisDate"              => $date_permis,
+                    // "permisLieu"              => $permis_lieu->code_wilaya
+
+                    "matricule"                 =>  "123456",
+                    "annee_construction2"                 => 2013 ,
+                    "num_chassis"                 =>  "123456",
+                    "type_chassis"                 => "0" ,
+                    "lieu_matricule"                 => "16" ,
+                    "marque"                 => "531" ,
+                    "modele"                 => "545" ,
+                    "genre"                 => "03" ,
+                    "usage"                 => "00" ,
+                    "puissance"                 => "5" ,
+                    "energie"               =>"1"  ,
+                    "couleur"                 => "1" ,
+                    "nbr_personne"                 => 3,
+                    "cutil"                 => 0 ,
+                    "ptac"                 => 0 ,
+                    "formule_auto"         => "1" ,
+                    "attestation"          =>  "456",
+                    "capitale_assure"      => 1000 ,
+                    "auto_radio"           =>1000  ,
+                    "chiffre_affaire"      => 1000 ,
+                    "taux_reduction"       => "0" ,
+                    "assistance"           => "0" ,
+                    "alarme"               =>0  ,
+                    "turbo"                 => 0 ,
+                    "haut_gamme"           => 3,
+                    "liquid_inflamable"          => 0,
+                    "controle_technique"          =>  0,
+                    "code_conducteur"          =>  "0123",
+                    "nom_conducteur"          =>  "rachid",
+                    "date_nais_conducteur"          =>  "01/12/2000 11:00:55",
+                    "num_permis"          =>  "012456",
+                    "categorie_permis"          => "2",
+                    "date_permis"          =>  "01/12/2015 11:00:55",
+                    "lieu_permis"          => "alger",
+
 
                 ];
 
