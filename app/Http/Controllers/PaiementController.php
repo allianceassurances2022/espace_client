@@ -103,7 +103,7 @@ class PaiementController extends Controller
                 "etage_batiment"     => $risque->etage,
                 "formule"            => "3",
                 "capitale_assure"    => $risque->montant_forfaitaire,
-                "terasse"            => $terasse,
+                "terrasse"           l=> $terasse,
             ];
 
             $var=json_encode($var);
@@ -351,36 +351,43 @@ class PaiementController extends Controller
 
               public function save_auto ($id){
 
-                $auto        = Rsq_Vehicule::where('id',$id)->first();
-                $devis       = devis::where('id',$id)->first();
-                $agence      = Agences::find($devis->code_agence);
-                $prime_total = $devis->prime_total;
-                $catnat      = '';
-                $mrh         = '';
+                $devis             = devis::find($id);
+                $risque            = Rsq_Vehicule::where('code_devis',$devis->id)->first();
+                $assure            = Assure::where('id_devis',$devis->id)->first();
 
-                $devis = devis::find($id);
-                $risque = Rsq_Vehicule::where('code_devis',$devis->id)->first();
-                $assure = Assure::where('id_devis',$devis->id)->first();
+                $agence            = Agences::find($devis->code_agence);
+                $prime_total       = $devis->prime_total;
 
-                $date_naissance = Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y');
                 $date_souscription = Carbon::parse($devis->date_souscription)->format('d/m/Y');
                 $date_effet        = Carbon::parse($devis->date_effet)->format('d/m/Y');
                 $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
-                $date_permis   = Carbon::parse($risque->date_permis)->format('d/m/Y');
 
-                $matricule_lieu = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first();
-                $permis_lieu = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first();
+                $date_permis       = Carbon::parse($risque->date_permis)->format('d/m/Y');
+                $matricule_lieu    = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first()->code_wilaya;
+                $permis_lieu       = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first()->code_wilaya;
 
-                $cat_permis = Categorie_permis::where('libelle',$risque->categorie )->first();
+                $cat_permis        = Categorie_permis::where('libelle',$risque->categorie )->first()->code;
 
-                $formule = formule::where('libelle',$risque->offre )->first();
+                $offre             = formule::where('libelle',$risque->offre )->first();
+
+                $formule           = $risque->code_formule;
+
+                //Detail formule
+                switch ($formule) {
+                    case ($formule == 'Tous Risques') :
+                        $formule = '1';
+                        break;
+                    case ($formule == 'D.C Valeur Vénale') :
+                        $formule = '2';
+                        break;
+                }
 
 
                 $var = [
                     "region"                  => $agence->dr,
                     "agence"                  => $agence->id,
-                    "class_id"                => $formule->class_id,
-                    "branch_id"               => $formule->branch_id,
+                    "class_id"                => $offre->class_id,
+                    "branch_id"               => $offre->branch_id,
                     "date_souscription"       => $date_souscription ,
                     "date_effet"              => $date_effet,
                     "date_expiration"         => $date_expiration,
@@ -399,81 +406,41 @@ class PaiementController extends Controller
                     "wilaya_assure_id"        => $assure->code_wilaya,
                     "ville_assure_id"         => $assure->code_commune,
 
-                    // "periode"                 => 1,
-                    // "periodeType"             => 2,
-                    // "wilayaId"                => auth()->user()->wilaya,
-                    // "villeId"                 => auth()->user()->commune,
-                    // "matricule"               => $risque->matricule,
-                    // "constructionAnnee"       => $risque->annee_mise_circulation,
-                    // "chassisNo"               => $risque->num_chassis,
-                    // "chassisType"             => $risque->type,
-                    // "matriculeLieu"           => $matricule_lieu->code_wilaya,
-                    // "marque"                  => $risque->marque,
-                    // "genre"                   => $risque->genre,
-                    // "usage"                   => $risque->usage,
-                    // "model"                   => $risque->modele,
-                    // "puissance"               => $risque->puissance,
-                    // "typeCarburant"           => "1",
-                    // "couleur"                 => "02",
-                    // "nbrPersonne"             => $risque->personne_transporte,
-                    // "cUtil"                   => 0,
-                    // "pTac"                    => 0,
-                    // "formule"                 => $formule->libelle,
-                    // "attestation"             => "",
-                    // "capitaleAssure"          => $risque->valeur_vehicule,
-                    // "autoRadio"               => 0,
-                    // "chiffreAffaire"          => 0,
-                    // "tauxReduction"           => "0",
-                    // "assistance"              => $risque->assistance,
-                    // "alarme"                  => 0,
-                    // "turbo"                   => 0,
-                    // "hautGamme"               => 0,
-                    // "liquidInflamable"        => 0,
-                    // "controleTechnique"       => 0,
-                    // "conducteurCode"          => "null",
-                    // "conducteurNom"           => auth()->user()->name,
-                    // "conducteurDateNaissance" => $date_naissance,
-                    // "permisNo"                => $risque->permis_num,
-                    // "permisCategorie"         => $cat_permis->code,
-                    // "permisDate"              => $date_permis,
-                    // "permisLieu"              => $permis_lieu->code_wilaya
-
-                    "matricule"                 =>  "123456",
-                    "annee_construction2"                 => 2013 ,
-                    "num_chassis"                 =>  "123456",
-                    "type_chassis"                 => "0" ,
-                    "lieu_matricule"                 => "16" ,
-                    "marque"                 => "531" ,
-                    "modele"                 => "545" ,
-                    "genre"                 => "03" ,
-                    "usage"                 => "00" ,
-                    "puissance"                 => "5" ,
-                    "energie"               =>"1"  ,
-                    "couleur"                 => "1" ,
-                    "nbr_personne"                 => 3,
-                    "cutil"                 => 0 ,
-                    "ptac"                 => 0 ,
-                    "formule_auto"         => "1" ,
-                    "attestation"          =>  "456",
-                    "capitale_assure"      => 1000 ,
-                    "auto_radio"           =>1000  ,
-                    "chiffre_affaire"      => 1000 ,
-                    "taux_reduction"       => "0" ,
-                    "assistance"           => "0" ,
-                    "alarme"               =>0  ,
-                    "turbo"                 => 0 ,
-                    "haut_gamme"           => 3,
-                    "liquid_inflamable"          => 0,
-                    "controle_technique"          =>  0,
-                    "code_conducteur"          =>  "0123",
-                    "nom_conducteur"          =>  "rachid",
-                    "date_nais_conducteur"          =>  "01/12/2000 11:00:55",
-                    "num_permis"          =>  "012456",
-                    "categorie_permis"          => "2",
-                    "date_permis"          =>  "01/12/2015 11:00:55",
-                    "lieu_permis"          => "alger",
-
-
+                    "matricule"               => $risque->matricule,
+                    "annee_construction2"     => $risque->annee_mise_circulation,
+                    "num_chassis"             => $risque->num_chassis,
+                    "type_chassis"            => $risque->type,
+                    "lieu_matricule"          => $matricule_lieu,
+                    "marque"                  => $risque->marque,
+                    "modele"                  => $risque->modele,
+                    "genre"                   => "00" ,
+                    "usage"                   => $risque->usage,
+                    "puissance"               => $risque->puissance,
+                    "energie"                 => "1"  ,
+                    "couleur"                 => $risque->couleur,
+                    "nbr_personne"            => $risque->personne_transporte,
+                    "cutil"                   => 0,
+                    "ptac"                    => 0,
+                    "formule_auto"            => $formule,
+                    "attestation"             => "",
+                    "capitale_assure"         => $risque->valeur_vehicule,
+                    "auto_radio"              => 0,
+                    "chiffre_affaire"         => 0,
+                    "taux_reduction"          => "0",
+                    "assistance"              => $risque->assistance,
+                    "alarme"                  => 0,
+                    "turbo"                   => 0,
+                    "haut_gamme"              => 0,
+                    "liquid_inflamable"       => 0,
+                    "controle_technique"      => 0,
+                    "code_conducteur"         => "",
+                    "nom_conducteur"          => "rachid",
+                    "prenom_conducteur"       => "rachid",
+                    "date_nais_conducteur"    => $risque->date_conducteur,
+                    "num_permis"              => $risque->permis_num,
+                    "categorie_permis"        => $cat_permis,
+                    "date_permis"             => $date_permis,
+                    "lieu_permis"             => $permis_lieu
                 ];
 
 
