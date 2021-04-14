@@ -95,8 +95,8 @@ class TarificationAutoController extends Controller
         $data=json_encode($tab_json);
 
         $client = new \GuzzleHttp\Client();
-        $url = "http://epaiment.local/api/calculeauto";
-    	$response = Http::contentType("application/json")->send('POST',"http://epaiment.local/api/calculeauto", [ 'body' => $data ])->json();             
+        $url = "http://10.0.0.95/epaiement/public/api/calculeauto";
+    	$response = Http::contentType("application/json")->send('POST',"http://10.0.0.95/epaiement/public/api/calculeauto", [ 'body' => $data ])->json();             
 
 		//dd($response);
 

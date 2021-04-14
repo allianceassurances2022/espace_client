@@ -282,7 +282,7 @@ class TarificationController extends Controller
     {
 
                 //////// Verificateur captcha ////////
-               /*  $recap='g-recaptcha-response';
+                $recap='g-recaptcha-response';
 
                 $response=$request->$recap;
                 $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -318,7 +318,7 @@ class TarificationController extends Controller
                         'habitation', 'commerce', 'industrielle'
                     );
 
-                } */
+                } 
         
         $tab_json = array();
         $code_formule = session('code_formule');
@@ -343,8 +343,8 @@ class TarificationController extends Controller
         $data=json_encode($tab_json);
 
          $client = new \GuzzleHttp\Client();
-            $url = "http://epaiment.local/api/calculecatnat";
-            $response = Http::contentType("application/json")->send('POST',"http://epaiment.local/api/calculecatnat", [ 'body' => $data ])->json();             
+            $url = "http://10.0.0.95/epaiement/public/api/calculecatnat";
+            $response = Http::contentType("application/json")->send('POST',"http://10.0.0.95/epaiement/public/api/calculecatnat", [ 'body' => $data ])->json();             
 
 
         $tableau = array('Habitation', 'Commerce', 'Industrielle');
@@ -478,7 +478,7 @@ class TarificationController extends Controller
 	public function montant_mrh(Request $request)
 	{
 
-       /*  $recap = 'g-recaptcha-response';
+         $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -528,7 +528,7 @@ class TarificationController extends Controller
 
             if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
                 Alert::warning('Nombre de piéces doit etre inferieur a 16');
-            } */
+            } 
 
             $tab_json = array();
             $habitation = $request->habitation;
@@ -652,8 +652,8 @@ class TarificationController extends Controller
             
 
             $client = new \GuzzleHttp\Client();
-            $url = "http://epaiment.local/api/calcule_mrh";
-            $response = Http::contentType("application/json")->send('POST',"http://epaiment.local/api/calculemrh", [ 'body' => $data ])->json(); 
+            $url = "http://10.0.0.95/epaiement/public/api/calcule_mrh";
+            $response = Http::contentType("application/json")->send('POST',"http://10.0.0.95/epaiement/public/api/calculemrh", [ 'body' => $data ])->json(); 
  
             $totale = $response['prime_total']; 
 
@@ -683,7 +683,7 @@ class TarificationController extends Controller
 
 
          return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
-        //}
+        }
 
 	}
 
