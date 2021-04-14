@@ -458,7 +458,7 @@ class PaiementController extends Controller
                   ]);
 
                 $response = json_decode($request->getBody(), true);
-                 dd($response);
+                // dd($response);
 
                   $assure = Assure::where('id_devis', $id)->first();
                   //dd($assure);

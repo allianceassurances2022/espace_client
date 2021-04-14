@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activite_catnat;
+use App\Http\Controllers\Services;
 use Illuminate\Http\Request;
 use App\Wilaya;
 use App\commune;
@@ -17,8 +18,9 @@ use App\Assure;
 use PDF;
 use App\Profession;
 use App\Civilite;
-
+use App\Http\Controllers\Services\TarificationService;
 use auth;
+use Illuminate\Support\Facades\Http;
 
 class TarificationController extends Controller
 {
@@ -280,7 +282,7 @@ class TarificationController extends Controller
     {
 
                 //////// Verificateur captcha ////////
-                $recap='g-recaptcha-response';
+               /*  $recap='g-recaptcha-response';
 
                 $response=$request->$recap;
                 $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -316,226 +318,95 @@ class TarificationController extends Controller
                         'habitation', 'commerce', 'industrielle'
                     );
 
-                }
-
-
-
-
-        $maj = 0.0;
-
-        $type_formule = $request->type_formule;
+                } */
+        
+        $tab_json = array();
         $code_formule = session('code_formule');
-        $type_const = $request->type_const;
-        $valeur_c = $request->Contenant;
-        $valeur_e = $request->equipement;
-        $valeur_m = $request->marchandise;
-        $contenu = $request->contenu;
-        $act_reg = $request->activite;
-        $reg_com = $request->registre;
-        $loca = $request->local;
-        $Commune_selected = $request->Commune;
-        $wilaya_selected = $request->Wilaya;
-        $anne_cont = $request->anne_cont;
-        $surface = $request->Superficie;
-        $permis = $request->permis;
-        $val_assur = $request->val_assur;
-        $reg_para = $request->seisme;
+
+        $tab_json['type_formule']=$request->type_formule;
+        $tab_json['type_const']=$request->type_const;
+        $tab_json['contenant']=$request->Contenant;
+        $tab_json['equipement']=$request->equipement;
+        $tab_json['marchandise']=$request->marchandise;
+        $tab_json['contenu']=$request->contenu;
+        $tab_json['activite']=$request->activite;
+        $tab_json['registre']=$request->registre;
+        $tab_json['loca']=$request->local;
+        $tab_json['commune']= $request->Commune;
+        $tab_json['wilaya']=$request->Wilaya;
+        $tab_json['anne_cont']=$request->anne_cont;
+        $tab_json['Superficie']=$request->Superficie;
+        $tab_json['permis']=$request->permis;
+        $tab_json['val_assur']=$request->val_assur;
+        $tab_json['seisme']=$request->seisme;
+
+        $data=json_encode($tab_json);
+
+         $client = new \GuzzleHttp\Client();
+            $url = "http://epaiment.local/api/calculecatnat";
+            $response = Http::contentType("application/json")->send('POST',"http://epaiment.local/api/calculecatnat", [ 'body' => $data ])->json();             
 
 
-
-        $tableau = array(
-            'Habitation', 'Commerce', 'Industrielle'
-        );
-
-        $zone = zcatnat::select('zone')
-            ->where('code_commune', $Commune_selected)
-            ->first();
-        $zone = $zone->zone;
-
-        $wilaya = wilaya::all();
-        $commune = commune::where('code_wilaya', $wilaya_selected)->get();
-
-        $val_assure = 0;
-        $maj = 0;
-        $taux = 0;
-
-
-/////////////////////Habitation-----------------------------------------
-
-        if ($type_formule == "Habitation") {
-            $valeur_c = $val_assur;
-            $valeur_e = 0;
-            $valeur_m = 0;
-            if ($type_const == "Habitation individuelle") {
-                if ($zone == "0") {
-                    $val_assure = $surface * 28000;
-                    $taux = 0.00055;
-                } else if ($zone == "1") {
-                    $val_assure = $surface * 31000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00060;
-                    else $taux = 0.00065;
-                } else if ($zone == "2a") {
-                    $val_assure = $surface * 35000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00065;
-                    else $taux = 0.00080;
-                } else if ($zone == "2b") {
-                    $val_assure = $surface * 39000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00070;
-                    else $taux = 0.001;
-                } else if ($zone == "3") {
-                    $val_assure = $surface * 47000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00075;
-                    else $taux = 0.00125;
-                }
-            } else {
-                if ($zone == "0") {
-                    $val_assure = $surface * 25000;
-                    $taux = 0.00055;
-                } else if ($zone == "1") {
-                    $val_assure = $surface * 28000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00060;
-                    else $taux = 0.00065;
-                } else if ($zone == "2a") {
-                    $val_assure = $surface * 31000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00065;
-                    else $taux = 0.00080;
-                } else if ($zone == "2b") {
-                    $val_assure = $surface * 35000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00070;
-                    else $taux = 0.001;
-                } else if ($zone == "3") {
-                    $val_assure = $surface * 38000;
-                    if ($reg_para == "oui")
-                        $taux = 0.00075;
-                    else $taux = 0.00125;
-                }
-            }
-            if ($valeur_c > $val_assure)
-                $val_assure = $valeur_c;
-        } ///////////////////////industrie et commercial--------------------------------------
-        else {
-
-            $val_assure = $valeur_c + $valeur_e + $valeur_m;
-
-
-            if ($zone == "0") {
-                $taux = 0.00037;
-            } else if ($zone == "1") {
-                if ($reg_para == "oui")
-                    $taux = 0.00040;
-                else $taux = 0.00043;
-            } else if ($zone == "2a") {
-                if ($reg_para == "oui")
-                    $taux = 0.00043;
-                else $taux = 0.00053;
-            } else if ($zone == "2b") {
-                if ($reg_para == "oui")
-                    $taux = 0.00047;
-                else $taux = 0.00067;
-            } else if ($zone == "3") {
-                if ($reg_para == "oui")
-                    $taux = 0.00050;
-                else $taux = 0.00083;
-            }
-
-
-            if ($act_reg == "non") {
-                $maj = $val_assure * $taux * 0.2;
-            }
-
-        }
-///////////////////////////////majoration------------------------------------------------------------------
-        if ($permis == "non" || $permis == "ne sais pas") {
-            $maj = $val_assure * $taux * 0.2;
-        }
-
-
-        $val = $val_assure * $taux;
-
-        if ($type_formule == "Habitation") {
-
-            if ($val < 1500)
-                $val = 1500;
-            else $val = $val_assure * $taux;
-        } else {
-            if ($val < 2500)
-                $val = 2500;
-            else $val = $val_assure * $taux;
-        }
-        $CP = 1000;
-        $TD = 80;
-
-        $prime_total_ = $val + $CP + $TD + $maj;
-        $prime_total = number_format($prime_total_, 2, ',', ' ');
+        $tableau = array('Habitation', 'Commerce', 'Industrielle');
 
         $datec = date('d/m/y');
 
-
-        if ($type_formule == 'Habitation') {
+        if ($response['type_formule'] == 'Habitation') {
 
             $data_session = [
-                'type_formule' => $request->type_formule,
+                'type_formule' => $response['type_formule'],
                 'code_formule'  => $code_formule,
-                'type_const' => $request->type_const,
-                'Contenant' => $request->Contenant,
-                'equipement' => $request->equipement,
-                'marchandise' => $request->marchandise,
-                'contenu' => $request->contenu,
-                'reg_com' => $request->registre,
-                'loca' => $request->local,
-                'commune_selected' => $request->Commune,
-                'wilaya_selected' => $request->Wilaya,
-                'anne_cont' => $request->anne_cont,
-                'surface' => $request->Superficie,
-                'permis' => $request->permis,
-                'val_assur' => $request->val_assur,
-                'reg_para' => $request->seisme,
+                'type_const' => $response['type_const'],
+                'Contenant' => $response['contenant'],
+                'equipement' => $response['equipement'],
+                'marchandise' => $response['marchandise'],
+                'contenu' => $response['contenu'],
+                'reg_com' => $response['registre'],
+                'loca' => $response['loca'],
+                'commune_selected' => $response['commune'],
+                'wilaya_selected' => $response['wilaya'],
+                'anne_cont' => $response['anne_cont'],
+                'surface' => $response['surface'],
+                'permis' => $response['permis'],
+                'val_assur' => $response['val_assur'],
+                'reg_para' => $response['seisme'],
                 'datec' => $datec,
-                'prime_total' => $prime_total_,
-                'cout_police' => $CP,
-                'timbre_dimension' => $TD,
-                'zone'          =>$zone,
-                'prime_nette' => $val,
+                'prime_total' => $response['prime_total'],
+                'cout_police' => $response['cout_police'],
+                'timbre_dimension' => $response['timbre_dimension'],
+                'zone'          =>$response['zone'],
+                'prime_nette' => $response['prime_nette'],
                 'act_reg'     => '',
 
             ];
-
-
 
         } else {
 
 
         $data_session = [
-            'type_formule' => $request->type_formule,
+            'type_formule' => $response['type_formule'],
             'code_formule'  => $code_formule,
-            'type_const' => $request->type_const,
-            'Contenant' => $request->Contenant,
-            'equipement' => $request->equipement,
-            'marchandise' => $request->marchandise,
-            'contenu' => $request->contenu,
-            'reg_com' => $request->registre,
-            'loca' => $request->local,
-            'commune_selected' => $request->Commune,
-            'wilaya_selected' => $request->Wilaya,
-            'anne_cont' => $request->anne_cont,
-            'surface' => $request->Superficie,
-            'permis' => $request->permis,
-            'val_assur' => $request->val_assur,
-            'reg_para' => $request->seisme,
+            'type_const' => $response['type_const'],
+            'Contenant' => $response['contenant'],
+            'equipement' => $response['equipement'],
+            'marchandise' => $response['marchandise'],
+            'contenu' => $response['contenu'],
+            'reg_com' => $response['registre'],
+            'loca' => $response['loca'],
+            'commune_selected' => $response['commune'],
+            'wilaya_selected' => $response['wilaya'],
+            'anne_cont' => $response['anne_cont'],
+            'surface' => $response['surface'],
+            'permis' => $response['permis'],
+            'val_assur' => $response['val_assur'],
+            'reg_para' => $response['seisme'],
             'datec' => $datec,
-            'prime_total' => $prime_total_,
-            'cout_police' => $CP,
-            'timbre_dimension' => $TD,
-            'prime_nette' => $val,
-            'zone'          =>$zone,
-            'act_reg'     => $act_reg,
+            'prime_total' => $response['prime_total'],
+            'cout_police' => $response['cout_police'],
+            'timbre_dimension' => $response['timbre_dimension'],
+            'prime_nette' => $response['prime_nette'],
+            'zone'          =>$response['zone'],
+            'act_reg'     => $response['activite'],
 
         ];
 
@@ -544,24 +415,44 @@ class TarificationController extends Controller
 		$request->session()->put('data_catnat', $data_session);
 
 
-		$Contenant   = $valeur_c;
-        $equipement  = $valeur_e;
-        $marchandise = $valeur_m;
-        $activite    = $act_reg;
-        $registre    = $reg_com;
-        $local       = $loca;
+		$Contenant   = $response['contenant'];
+        $equipement  = $response['equipement'];
+        $marchandise = $response['marchandise'];
+        $activite    = $response['activite'];
+        $registre    = $response['registre'];
+        $local       = $response['loca'];
+        $type_formule       = $response['type_formule'];
+        $type_const       = $response['type_const'];
+        $contenu       = $response['contenu'];
+        $activite       = $response['activite'];
+        $registre       = $response['registre'];
+        $Commune_selected       = $response['commune'];
+        $wilaya_selected       = $response['wilaya'];
+        $anne_cont       = $response['anne_cont'];
+        $surface       = $response['surface'];
+        $permis       = $response['permis'];
+        $val_assur       = $response['val_assur'];
+        $reg_para       = $response['seisme'];
+        $prime_total       = $response['prime_total'];
+        $cout_police       = $response['cout_police'];
+        $timbre_dimension       = $response['timbre_dimension'];
+        $zone       = $response['zone'];
+        $prime_nette       = $response['prime_nette'];
+        $seisme       = $response['seisme'];
+        $wilaya = wilaya::all();
+        $commune = commune::all();
 
-        if ( in_array( $request->type_formule , $tableau )) {
+        if ( in_array( $response['type_formule'] , $tableau )) {
 
-            switch ($request->type_formule){
+            switch ($response['type_formule']){
                 case 'Habitation';
 
-                    if ($request->surface < 0 || $request->surface === 0) {
+                    if ($response['surface'] < 0 || $response['surface'] === 0) {
                         Alert::warning('Avertissement', 'Veuillez entrer une surface');
                         return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
                     }
 
-                    if ($request->anne_cont > date("Y") ) {
+                    if ($response['anne_cont'] > date("Y") ) {
                         Alert::warning('Avertissement', 'La date deconstruction dépasse l\'année en cours');
                         return view('produits.catnat.construction',compact('type_formule' ,'prime_total','wilaya','wilaya_selected','Commune_selected','reg_para'));
                     }
@@ -587,7 +478,7 @@ class TarificationController extends Controller
 	public function montant_mrh(Request $request)
 	{
 
-        $recap = 'g-recaptcha-response';
+       /*  $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -637,12 +528,25 @@ class TarificationController extends Controller
 
             if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
                 Alert::warning('Nombre de piéces doit etre inferieur a 16');
-            }
+            } */
 
+            $tab_json = array();
             $habitation = $request->habitation;
+            $juredique = $request->juredique;
+            $nbr_piece = $request->nbr_piece;
+            $montant = $request->montant;
+            $terasse = $request->terasse;
+
+            $tab_json['habitation']=$habitation;
+            $tab_json['juredique']=$juredique;
+            $tab_json['nbr_piece']=$nbr_piece;
+            $tab_json['terasse']=$terasse;
+            $tab_json['montant']=$montant;
+            
+            $data=json_encode($tab_json);
 
 
-            $ct = 0;
+         /*   $ct = 0;
             $taux = 0.0;
             $p_res_civile = 0;
 
@@ -744,38 +648,42 @@ class TarificationController extends Controller
 
             $td = 120;
             $Ctpolice = 500;
-            $tva = ($prim + $Ctpolice) * 0.19;
+            $tva = ($prim + $Ctpolice) * 0.19;*/
+            
 
-
-            $totale = $prim + $Ctpolice + $tva + $td;
+            $client = new \GuzzleHttp\Client();
+            $url = "http://epaiment.local/api/calcule_mrh";
+            $response = Http::contentType("application/json")->send('POST',"http://epaiment.local/api/calculemrh", [ 'body' => $data ])->json(); 
+ 
+            $totale = $response['prime_total']; 
 
             $datec = date('d/m/y');
 
-            $data_session = [
+             $data_session = [
                 'terasse' => $terasse,
                 'habitation' => $habitation,
                 'montant' => $montant,
                 'juredique' => $juredique,
                 'nbr_piece' => $nbr_piece,
                 'datec' => $datec,
-                'prime_total' => $totale,
-                'incendie' => $p_in,
-                'degats_eaux' => $p_degat,
-                'bris_glace' => $p_bris,
-                'vol' => $p_vol,
-                'rc_chef_famille' => $p_res_civile,
-                'prime_nette' => $prim,
-                'cout_police' => $Ctpolice,
-                'timbre_dimension' => $td,
-                'tva' => $tva
-            ];
+                'prime_total' => $response['prime_total'],
+                'incendie' => $response['incendie'],
+                'degats_eaux' => $response['degats_eaux'],
+                'bris_glace' => $response['bris_glace'],
+                'vol' => $response['vol'],
+                'rc_chef_famille' => $response['rc_chef_famille'],
+                'prime_nette' => $response['prime_nette'],
+                'cout_police' => $response['cout_police'],
+                'timbre_dimension' => $response['timbre_dimension'],
+                'tva' => $response['tva']
+            ]; 
 
 
             $request->session()->put('data_mrh', $data_session);
 
 
          return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
-        }
+        //}
 
 	}
 
@@ -1419,6 +1327,6 @@ class TarificationController extends Controller
 		return $pdf->stream();
 		}
 
-
+        
 
 }

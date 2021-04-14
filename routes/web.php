@@ -145,6 +145,9 @@ Route::get('contrat_catnat/{id}','TarificationController@contrat_catnat')->name(
 Route::get('contrat_auto/{id}','TarificationAutoController@contrat_auto')->name('contrat_auto');
 Route::get('attestation/{id}','TarificationAutoController@attestation')->name('attestation');
 
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/calculemrh', 'TarificationService@calculeMRH')->name('calculemrh');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
