@@ -64,6 +64,11 @@ class TarificationService {
     	$taxe=$data['taxe'];
     	$date_taxe=$data['date_taxe'];
 
+        if ($valeur < "8000000.00"){
+
+          return -1; 
+
+        } else {
 
 		if ($offre == "OTO_L") {
 			$formule = $data['formule'];
@@ -517,7 +522,8 @@ class TarificationService {
         $data=json_encode($tab);
 
         print_r($data);
-     
+           
+       }
 
     }
 
@@ -537,6 +543,14 @@ class TarificationService {
             $juredique = $data['juredique'];
             $nbr_piece = $data['nbr_piece'];
 
+            $tab1 = array("oui", "non");
+            $tab2 = array("proprietaire", "locataire");
+            $tab3 = array("individuelle", "collective");
+
+            print_r((in_array($juredique, $tab2)));
+            if (($montant > "200000.00") && ($montant < "5000000.00") && (in_array(strtolower($terasse), $tab1)) && (in_array(strtolower($juredique), $tab2)) && (in_array(strtolower($habitation), $tab3))
+            && ($nbr_piece > "0") && ($nbr_piece < "16")) {
+               
             $sup_log = 35 + ($nbr_piece - 1) * 15;
 
 
@@ -645,8 +659,14 @@ class TarificationService {
             $tab['cout_police'] = $Ctpolice;
             $tab['timbre_dimension'] = $td;
             $tab['tva'] = $tva;
+
             $data=json_encode($tab);
             print_r($data);
+
+        }else{
+            http_response_code( 500 ); 
+            print_r(-1);
+        }
 
     }
 
@@ -673,6 +693,26 @@ class TarificationService {
         $permis = $data['permis'];
         $val_assur = $data['val_assur'];
         $reg_para = $data['seisme'];
+
+        $tableau = array('Habitation', 'Commerce', 'Industrielle');
+
+        if ( in_array( $type_formule , $tableau )) {
+
+            switch ($type_formule){
+                case 'Habitation';
+
+                    if ($surface < "0" || $surface === "0") {  
+        
+                        return -1;
+                    }
+
+                    if ($anne_cont > date("Y") ) {
+                        
+                        return -1;
+                    }
+            }
+
+        }
 
         $maj = 0.0;
 

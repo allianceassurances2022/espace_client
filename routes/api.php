@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/calculemrh', 'Services\TarificationService@calculeMRH');
 Route::post('/calculecatnat', 'Services\TarificationService@calculeCatnat');
 Route::post('/calculeauto', 'Services\TarificationService@calculeAuto');
+Route::post('/create_sinistre', 'Services\SinistreService@createSinistre');
+Route::get('/get_sinistre', 'Services\SinistreService@getAllDossierSinistre');
