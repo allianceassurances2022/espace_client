@@ -23,3 +23,4 @@ Route::post('/calculecatnat', 'Services\TarificationService@calculeCatnat');
 Route::post('/calculeauto', 'Services\TarificationService@calculeAuto');
 Route::post('/create_sinistre', 'Services\SinistreService@createSinistre');
 Route::get('/get_sinistre', 'Services\SinistreService@getAllDossierSinistre');
+Route::post('/get_email', 'Services\SinistreService@getEmail');

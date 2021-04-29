@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Services;
 
+use App\Agences;
 use App\DossierSinistre;
 use App\DossierVehicule;
 use Illuminate\Http\Request;
@@ -24,6 +25,8 @@ class SinistreService {
 
     public function createSinistre(Request $request)
 	{
+        
+        
         $data = $request->json()->all();
         $id=$this->guidv4();
 
@@ -35,12 +38,15 @@ class SinistreService {
                 $this->createVehicule($data['vehicle2'], $id);
              }
           }
+
+          $this->getEmail($data);
           
           print_r(true);
     }
 
     public function getAllDossierSinistre()
 	{
+
         $dossiers=DossierSinistre::all()->toArray();
         $data = json_encode($dossiers);
         print_r($data);
@@ -141,6 +147,42 @@ class SinistreService {
                     
                 }
                 return false;
+            }
+
+            public function getEmail($data){ 
+
+                $numero_agence = substr($data['num_police'],0,4);
+                $numero_police = $data['num_police'];
+                $agence = Agences::where('id','like','%'.$numero_agence.'%')->get()->toArray();
+                if ($agence != null){
+                // $email=$agence[0]['Mail'];
+                $email='nbelkacemi@allianceassurances.com.dz';
+                if (($email != null)&& ($email != ''))
+                $this->envoiMail($email, $numero_police);
+                }
+               
+            }
+
+            public function envoiMail($email, $numero_police){ 
+                if(($email !== '') && ($email !== null)){
+
+                    $destinataire = $email;
+                    // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
+                    $objet = 'Création sinistre'; // Objet du message 
+                    $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° '.$numero_police;
+                    $headers = 'From: Alliance' . "\r\n" .
+                    'Reply-To: webmaster@example.com' . "\r\n" .
+                    'X-Mailer: PHP/';
+                    
+                    $success = mail($destinataire, $objet, $message, $headers);
+                    
+                    if (!$success) {
+                        $errorMessage = error_get_last();
+                        echo $errorMessage;
+                        // echo "Votre message n'a pas pu être envoyé";
+                    }
+                    
+                }
             }
 
 }
