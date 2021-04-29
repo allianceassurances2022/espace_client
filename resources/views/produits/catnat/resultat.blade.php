@@ -101,7 +101,7 @@ Devis CATNAT
                     @endif
                     <a href="{{route('page_pdf',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
                     @if($devis->type_devis==1)
-                    <a href="{{route('paiement_catnat',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
+                    <a href="{{route('save_catnat',$devis->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
                     @endif
                   </div>
                 </div>

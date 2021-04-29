@@ -121,7 +121,7 @@ Devis MRH
                     {{-- <button class="btn btn-lg btn-space btn-default">Enregistrer PDF</button>--}}
                     <a href="{{route('page_pdf',$devis->id)}}" target="_blank" class="btn btn-lg btn-space btn-default">Imprimer</a>
                     @if($devis->type_devis==1)
-                    <a href="{{route('paiement_mrh',$risque->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
+                    <a href="{{route('save_mrh',$devis->id)}}" class="btn btn-lg btn-space btn-primary">Payer maintenant</a>
                     @endif
                   </div>
                 </div>

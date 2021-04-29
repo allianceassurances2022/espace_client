@@ -162,18 +162,23 @@ class PaiementController extends Controller
             // $response = json_decode($request->getBody(), true);
             $response = json_decode($request->getBody(), true);
 
-dd( $response);
-            if($response['status']){
+              $assure = Assure::where('id_devis', $id)->first();
+            if($response['status']== "true"){
 
               $devis->update([
           			'type_devis'      => 2,
           			'reference_police' => $response['data']['Code de référence'],
           		]);
-          		$dev=$devis;
+                $assure->update([
+                    'code_assure' => $response['data']["Code assure"],
+                ]);
 
+
+            } else{
+                dd($response);
             }
 
-            return redirect()->route('home');
+          //  return redirect()->route('home');
 
           }
 
@@ -192,6 +197,13 @@ dd( $response);
             }
 
             public function save_catnat ($id){
+
+                $catnat      = Rsq_Immobilier::where('id',$id)->first();
+
+                $devis       = devis::where('id',$id)->first();
+                $prime_total = $devis->prime_total;
+                $mrh         = '';
+                $auto        = '';
 
               $devis = devis::find($id);
               $risque = Rsq_Immobilier::where('code_devis', $id)->first();
@@ -288,65 +300,6 @@ dd( $response);
 
               ];
 */
-/*
-                $var = [
-                    "nom"               => auth()->user()->name,
-                    "prenom"            => auth()->user()->prenom,
-                    "categorie"         => "1",
-                    "civitlite"         => "1",
-                    "date_naissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
-                    "lieu_naissance"     => "Rahouia",
-                    "nationalite"       => "Algérienne",
-                    "activite"          => "1",
-                    "proffession"       => "1",
-                    "addresse_assure "    => "Fort de l'eau",
-                    "pay_assure_id"     => "Algérie",
-                    "wilaya_assure_id"    => "01",
-                    "ville_assure_id"     => "0101",
-                    "region"          => "16",
-                    "agence"          => "00000",
-                    "class_id"           => "12",
-                    "branch_id"          => "1290",
-                    "date_souscription"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
-                    "date_effet"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
-                    "date_expiration"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
-                    "periode"           => 1,
-                    "periodeType"       => 2,
-                    "wilayaId"          => "01",
-                    "villeId"           => "0101",
-                    "address"           => "ADRAR",
-                    "zone"              => "5",
-                    "formule_catna"           => "3",
-                    "batimentType"      => "1",
-                    "batimentCategorie" => "1",
-                    "surface"           => "0",
-                    "nombrePieces"      => "3",
-                    "etage"             => "0",
-                    "annee_construction" => 2015,
-                    "proprietaire"      => 1,
-                    "activiteRisque"    => "1",
-                    "capitaleAssure"    => 500000,
-                    "valeurEquipement"  => 200000,
-                    "valeurMarchandise" => 300000,
-                    "valeurContenant"   => 500000,
-                    "regPara"           => 1,
-                    "inscRegisteCom"    => 1,
-                    "registeCom"        => 1,
-                    "equipement"        => 1 ,
-                    "marchandise"       => 1 ,
-                    "contenant"         => 1 ,
-                    "regles_parasismiques" => 0,
-                    "insc_registre_commerce" => 1 ,
-                    "registre_commerce" => 0 ,
-                    "local_assure" =>  1,
-                    "regles_parasismiques" =>  1,
-                    "construction_vous_appartient" => 0 ,
-                    "permis_construire" =>  1,
-
-
-                ];
-*/
-
 
 
                 //dd($var);
@@ -363,18 +316,29 @@ dd( $response);
               ]);
               // $response = json_decode($request->getBody(), true);
               $response = json_decode($request->getBody(), true);
-                dd( $response);
-              if($response['status']){
+
+                $assure = Assure::where('id_devis', $id)->first();
+
+                dd($response);
+              if($response['status']== "true"){
 
                 $devis->update([
             			'type_devis'      => 2,
-            			'reference_police' => $response['data']["reference"],
+            			'reference_police' => $response['data']["Code de reference"],
             		]);
+
+                  $assure->update([
+                      'code_assure' => $response['data']["Code assure"],
+                  ]);
             		$dev=$devis;
 
+                  return view('paiement',compact('mrh','auto','catnat','prime_total','id','devis'));
+
+              }else{
+                  dd($response);
               }
 
-              return redirect()->route('home');
+           //   return redirect()->route('home');
 
             }
 
@@ -394,11 +358,7 @@ dd( $response);
 
               public function save_auto ($id){
 
-                  $auto         = Rsq_Vehicule::where('id',$id)->first();
-                 // $code_devis  = $auto->code_devis;
-                 // dd($id);
-              //    $id          = $auto->id;
-
+                  $auto        = Rsq_Vehicule::where('id',$id)->first();
                   $devis       = devis::where('id',$id)->first();
                   $prime_total = $devis->prime_total;
                   $catnat      = '';
@@ -506,7 +466,7 @@ dd( $response);
 
                   $assure = Assure::where('id_devis', $id)->first();
                   //dd($assure);
-                if($response['status']){
+                if($response['status']=="true"){
 
                   $devis->update([
               			'type_devis'      => 2,
