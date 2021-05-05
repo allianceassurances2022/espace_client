@@ -31,7 +31,7 @@
 
                            <tr>
                                <td class="strong">Fonction</td>
-                               <td class="span">{{  $user->profession }}</td>
+                               <td class="span">{{  $profession->libelle }}</td>
                            </tr>
                            <tr>
                                <td class="strong">Date de naissance</td>

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','prenom','wilaya','commune','adresse','date_naissance','sexe','profession','activite','telephone','avatar'
+        'name', 'email', 'password','prenom','wilaya','commune','adresse','date_naissance','lieu_naissance','sexe','profession','activite','telephone','avatar'
     ];
 
     /**
@@ -46,4 +46,5 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\devis');
     }
+
 }

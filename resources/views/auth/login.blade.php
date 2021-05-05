@@ -4,7 +4,7 @@
 <div class="main-content container-fluid">
           <div class="splash-container">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
-              <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur.</span></div>
+              <div class="panel-heading"><img src="assets/img/logo_dark.svg" alt="logo" width="300" height="100" class="logo-img"><span class="splash-description">Veuillez saisir vos informations d'utilisateur</span></div>
               <div class="panel-body">
                 <form method="POST" action="{{ route('login') }}" data-parsley-validate="" novalidate="">
                         @csrf
@@ -59,9 +59,13 @@
                     <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">{{ __('Login') }}</button>
                   </div>
                 </form>
+                <div class="splash-footer"><span>Vous n'avez pas de compte?</span></div>
+                <div class="form-group login-submit">
+                    <a href="{{route('register')}}" class="btn btn-success btn-xl">S'inscrire</a>
+                </div>
               </div>
             </div>
-            <div class="splash-footer"><span>Vous n'avez pas de compte? <a href="{{route('register')}}">S'inscrire</a></span></div>
+            {{-- <div class="splash-footer"><span>Vous n'avez pas de compte? <a href="{{route('register')}}">S'inscrire</a></span></div> --}}
           </div>
         </div>
 @endsection

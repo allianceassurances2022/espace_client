@@ -84,28 +84,23 @@ Devis MRH
 
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Sexe</label>
+                                                    <label class="col-sm-3 control-label">Civilité</label>
                                                     <div class="col-sm-9">
-                                                        <div class="be-radio-icon inline">
-                                                            <input type="radio" @if($assure->sexe == '2') checked @endif name="sexe" value="2" id="rad1" disabled>
-                                                            <label for="rad1"><span class="mdi mdi-female"></span></label>
-                                                        </div>
-                                                        <div class="be-radio-icon inline">
-                                                            <input type="radio" @if($assure->sexe == '1') checked @endif name="sexe" value="1" id="rad2" disabled>
-                                                            <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
-                                                        </div>
+                                                        <input type="text" class="form-control" name="civilite_lib"
+                                                                   value="{{$civilite->libelle}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Profession</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="commune_assure" value="{{$assure->profession}}" readonly>
+                                                        <input type="text" class="form-control" name="profession_lib"
+                                                               value="{{$profession->libelle}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Telephone</label>
+                                                    <label class="col-sm-3 control-label">Téléphone</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="telephone" value="{{$assure->telephone}}" id="telephone" class="form-control" readonly>
                                                     </div>
@@ -138,9 +133,9 @@ Devis MRH
                                               </div>
 
                                               <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Nombre de pieces</label>
+                                                  <label class="col-sm-3 control-label">Nombre de pièces</label>
                                                   <div class="col-sm-9">
-                                                      <input type="text" name="nbr_piece" value="{{ $nbr_piece ?? ''}}" class="form-control" readonly>
+                                                      <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -157,7 +152,7 @@ Devis MRH
                                               </div>
 
                                               <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Qualité juredique</label>
+                                                  <label class="col-sm-3 control-label">Qualité juridique</label>
                                                   <div class="col-sm-9">
                                                       <input type="text" name="juredique" value="{{$juredique}}" class="form-control" readonly>
                                                   </div>
@@ -175,23 +170,23 @@ Devis MRH
                                           <div class="form-group">
 
                                               <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Nombre d'Etage</label>
+                                                  <label class="col-sm-3 control-label">Nombre d'étages</label>
                                                   <div class="col-sm-9">
-                                                      <input type="number" id="etage" name="etage" value="{{Session::get('etage') ?? ''}}" class="form-control" required min="0">
+                                                      <input type="number" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required min="0">
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
                                                   <label class="col-sm-3 control-label">Date d'effet</label>
                                                   <div class="col-sm-9">
-                                                      <input type="date" id="date_effet" name="date_eff" value="{{Session::get('date_eff') ?? ''}}" class="form-control" min="" onchange="dateplusunans()" required >
+                                                      <input type="date" id="date_effet" name="date_eff" value="{{$date_eff ?? ''}}" class="form-control" min="" onchange="dateplusunans()" required >
                                                   </div>
                                               </div>
 
                                               <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Date expiration</label>
+                                                  <label class="col-sm-3 control-label">Date d'expiration</label>
                                                   <div class="col-sm-9">
-                                                      <input type="date" id="date_expiration" name="date_exp" value="{{Session::get('date_exp') ?? ''}}" class="form-control" readonly>
+                                                      <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                                   </div>
                                               </div>
 
@@ -199,43 +194,55 @@ Devis MRH
 
                                           <div class="form-group">
 
-                                              <div class="col-md-8">
-                                                  <label class="col-sm-2 control-label" style="width: 12%;">Adress</label>
-                                                  <div class="col-sm-9" style="width: 88%;">
-                                                      <input type="text" name="adresse" value="{{Session::get('adresse') ?? ''}}" class="form-control" required>
-                                                  </div>
-                                              </div>
+                                            <div class="col-md-4">
+                                                <label class="col-sm-3 control-label">Surface</label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" name="surface"  id="surface" value="{{$surface ?? ''}}" class="form-control" required min="0">
+                                                </div>
+                                            </div>
 
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Wilaya</label>
-                                                  <div class="col-sm-9">
-                                                      <select id="Wilaya" name="Wilaya" class="select2" required>
-                                                              <option value="{{ session('Wilaya') }}">{{ session('Wilaya') }}</option>
-                                                              @foreach($wilaya as $wilay)
-                                                                  <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
-                                                              @endforeach
-                                                      </select>
-                                                  </div>
-                                              </div>
+                                            <div class="col-md-4">
+                                                <label class="col-sm-3 control-label">Wilaya</label>
+                                                <div class="col-sm-9">
+                                                    <select id="wilaya" name="Wilaya" class="select2" required>
+                                                            @foreach($wilaya as $wilay)
+                                                                <option  value="{{$wilay->code_wilaya}}" @if($wilay->code_wilaya == $wilaya_selected) selected @endif>{{$wilay->nlib_wilaya}} </option>
+                                                            @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label class="col-sm-3 control-label">Commune</label>
+                                                <div class="col-sm-9">
+                                                    <select id="commune" name="commune" class="select2" required>
+                                                            @foreach($commune as $commun)
+                                                                <option  value="{{$commun->code_commune}}" @if($commun->code_commune == $commune_selected) selected @endif>{{$commun->lib_commune}} </option>
+                                                            @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
 
                                           </div>
 
                                           <div class="form-group">
 
-                                              <div class="col-md-4">
-                                                  <label class="col-sm-3 control-label">Surface</label>
-                                                  <div class="col-sm-9">
-                                                      <input type="number" name="surface"  id="surface" value="{{Session::get('surface') ?? ''}}" class="form-control" required min="0">
-                                                  </div>
-                                              </div>
+                                            <div class="col-md-4">
+                                                <label class="col-sm-3 control-label">Adresse</label>
+                                                <div class="col-sm-9" >
+                                                    <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control" required>
+                                                </div>
+                                            </div>
 
-                                          </div>
+
+                                        </div>
 
 
                                             <div class="panel-heading panel-heading-divider">
                                               <div class="icon-container">
                                                  <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                                 <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                                 <span class="icon-class">Veuillez choisir l'agence la plus proche</span>
                                                </div>
                                              </div>
 
@@ -287,6 +294,8 @@ Devis MRH
                                                 </div>
                                             </div>
 
+                                        <input type="hidden" name="civilite" value="{{$civilite->libelle}}">
+                                        <input type="hidden" name="profession" value="{{$profession->code}}">
                                         <input type="hidden" name="montant" value="{{$montant}}">
                                         <input type="hidden" name="prime_total" value="{{$prime_total}}">
                                         <input type="hidden" name="id" value="{{$id ?? ''}}">
@@ -300,7 +309,7 @@ Devis MRH
 
 
                             <div class="form-group">
-                                <h3 class="col-sm-9 text-right">Total a payer :</h3>
+                                <h3 class="col-sm-9 text-right">Total à payer :</h3>
                                 <div class="col-sm-3">
                                     <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                                 </div>
@@ -541,4 +550,36 @@ $('#Commune_map').html(result);
 })
 }
 });
+
+
+$('#wilaya').change(function(){
+
+
+    if($(this).val() != '')
+    {
+    var select = $(this).attr("id");
+
+    var value = $(this).val();
+
+
+    //alter(dependent);
+
+    var _token = $('#signup-token').val();
+    //alert( _token );
+    $.ajax({
+
+    //alert(value);
+    url:"{{ route('construction.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token: $('#signup-token').val()},
+    success:function(result)
+    {
+    $('#commune').html(result);
+    //alert(value);
+
+    }
+
+    })
+    }
+    });
 @endsection

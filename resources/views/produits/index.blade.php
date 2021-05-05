@@ -163,18 +163,18 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
           </div>
           <div class="card-body">
               <h2 class="card-title">
-                Multirisques Habitation
+                Multirisque Habitation
                 <img src="{{asset('produit_assets/images/icons/hab_black.svg')}}" />
               </h2>
               <p class="card-intro">
                   Avoir un toit est synonyme d’un projet de toute une vie !
-                  C’est pourquoi Alliance vous propose de protéger votre maison et vos meubles en cas de sinistre.
+                  C’est pourquoi Alliance Assurances vous propose de protéger votre maison et vos meubles en cas de sinistre.
               </p>
               <a href="{{route('type_produit',['mrh','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
           </div>
         </a>
     </div>
-    <div class="card">
+    {{-- <div class="card">
         <a href="{{route('type_produit',['mrp','index'])}}">
           <div class="card-img">
               <img src="{{asset('produit_assets/images/backgrounds/entreprise.jpg')}}" />
@@ -193,7 +193,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/index.jpg')}});
               <a href="{{route('type_produit',['mrp','index'])}}" class="btn-dark"><i class="fa fa-calculator"></i> Tarification</a>
         </a>
         </div>
-    </div>
+    </div> --}}
     <div class="card">
       <a href="{{route('type_produit',['catnat','index'])}}">
         <div class="card-img">

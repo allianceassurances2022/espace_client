@@ -16,7 +16,7 @@
 
                     <div class="pricing-table-title">Succès</div>
                     <div class="panel-divider panel-divider-xl"></div>
-                    <div class="pricing-table-price"><span class="currency">Le devis #id_devi a bien été supprimé</span></div>
+                    <div class="pricing-table-price"><span class="currency">Le devis a bien été supprimé</span></div>
 
 
                     <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">

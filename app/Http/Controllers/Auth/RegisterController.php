@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\commune;
+use App\wilaya;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -64,20 +67,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      /*  return User::create([
+
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'prenom'  => $data['prenom'],
+            'adresse' => $data['adresse'],
+            'wilaya' => $data['wilaya'],
+            'commune' => $data['commune'],
+            'activite' => $data['activity'],
+            'lieu_naissance' => $data['lieu_naissance'],
+            'date_naissance' => date('Y-m-d', strtotime(str_replace('/', '-', $data['date_naissance']))),
+            'sexe' => $data['civilite'],
+            'profession' => $data['profession'],
+            'telephone' => $data['telephone'],
+            'avatar' => 'default.png',
         ]);
 
-      */
-        User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $this->guard()->login($user);
 
-        return view('auth.register');
+        //return view('auth.login');
+        Alert::success('Information', 'Votre inscription a bien été enregistrée');
+  		   return redirect()->route('home');
 
     }
 }

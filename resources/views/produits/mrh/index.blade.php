@@ -55,7 +55,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
 
            <div class="slice">
-                <h6>Nombre de pieces</h6>
+                <h6>Nombre de pièces</h6>
 
                <div class="wrap-input100 validate-input3">
                    <input  class="input100" type="number" name="nbr_piece" placeholder="" value="{{$nbr_piece ?? ''}}" min="0" oninput="disable_devis()" required>
@@ -81,14 +81,14 @@ background-image: url({{asset('produit_assets/images/backgrounds/habitation.jpg'
            </div>
             <div class="slice slice_third">
                 <div class="radio_section_slice">
-                    <h6>Qualité juredique</h6>
+                    <h6>Qualité juridique</h6>
                     <label>
                         <input type="radio" name="juredique" value="proprietaire" checked @if( (isset($juredique)) &&  $juredique ==="proprietaire") checked @endif onclick="disable_devis()" required>
-                        <span>Propretaire</span>
+                        <span>Propriétaire</span>
                     </label>
                     <label>
                         <input type="radio" name="juredique" value="locataire" @if(  (isset($juredique)) &&   $juredique ==="locataire") checked @endif onclick="disable_devis()" required>
-                        <span>locataire</span>
+                        <span>Locataire</span>
                     </label>
                 </div>
             </div>

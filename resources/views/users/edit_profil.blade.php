@@ -47,7 +47,7 @@
                     <div class="col-md-6">
                         <label class="col-sm-3 control-label">Wilaya</label>
                         <div class="col-sm-9">
-                            <select  name="wilaya" class="custom-select select2" required>
+                            <select  name="wilaya" class="custom-select select2" id="wilaya" required>
                                 @foreach($wilayas as $wilaya)
                                     <option value="{{ $wilaya->code_wilaya }}" @if($wilaya->code_wilaya == Auth()->user()->wilaya) selected  @endif>{{ $wilaya->nlib_wilaya }}</option>
                                 @endforeach
@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <label class="col-sm-3 control-label">Commune</label>
                         <div class="col-sm-9">
-                            <select  name="commune" class="custom-select select2" required>
+                            <select  name="commune" class="custom-select select2" id="commune" required>
                             @foreach($communes as $commune)
                                 <option value="{{ $commune->code_commune }}" @if($commune->code_commune == Auth()->user()->commune) selected  @endif >{{ $commune->lib_commune }}</option>
                             @endforeach
@@ -88,19 +88,16 @@
                         </div>
                     </div>
 
-                <div class="col-md-6">
-                        <label class="col-sm-3 control-label">Civilité</label>
+                    <div class="col-md-6">
+                        <label class="col-sm-3 control-label">civilité</label>
                         <div class="col-sm-9">
-                            <div class="be-radio-icon inline">
-                                <input type="radio"  name="gender" value="2"
-                                       {{ $gender =='2' ? 'checked' : ''  }} id="rad1">
-                                <label for="rad1"><span class="mdi mdi-female"></span></label>
-                        </div>
-                            <div class="be-radio-icon inline">
-                                <input type="radio" name="gender" value="1"
-                                        {{ $gender =='1' ? 'checked' : ''  }} id="rad2">
-                                <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
-                            </div>
+                            <select id="civilite" name="civilite" class="select2">
+                                @foreach($civilites as $civilite)
+                                    <option value="{{$civilite->code}}"
+                                            {{$civilite->code == $user->sexe  ? 'selected' : ''  }}
+                                    >{{$civilite->libelle}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -112,7 +109,9 @@
                             <select id="profession" name="profession" class="select2">
                                 @foreach($professions as $profession)
                                 <option value="{{$profession->code}}"
-                                        {{$profession  ? 'selected' : ''  }}
+                                       @if ( Auth()->user()->profession == $profession->code )
+                                       selected
+                                       @endif
                                 >{{$profession->libelle}}</option>
                                @endforeach
                             </select>
@@ -124,7 +123,9 @@
                             <select id="activity" name="activity" class="select2">
                                 @foreach($activities as $activity)
                                     <option value="{{$activity->code}}"
-                                            {{$activity  ? 'selected' : ''  }}
+                                            @if ( Auth()->user()->activite == $activity->code )
+                                            selected
+                                            @endif
                                     >{{$activity->libelle}}</option>
                                 @endforeach
                             </select>

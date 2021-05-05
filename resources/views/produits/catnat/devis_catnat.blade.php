@@ -91,28 +91,23 @@ Devis CATNAT
 
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Sexe</label>
+                                                    <label class="col-sm-3 control-label">Civilité</label>
                                                     <div class="col-sm-9">
-                                                        <div class="be-radio-icon inline">
-                                                            <input type="radio" @if(auth()->user()->sexe == 'Femme') checked @endif name="sexe" value="Femme" id="rad1" disabled>
-                                                            <label for="rad1"><span class="mdi mdi-female"></span></label>
-                                                        </div>
-                                                        <div class="be-radio-icon inline">
-                                                            <input type="radio" @if(auth()->user()->sexe == 'Homme') checked @endif name="sexe" value="Homme" id="rad2" disabled>
-                                                            <label for="rad2"><span class="mdi mdi-male-alt"></span></label>
-                                                        </div>
+                                                        <input type="text" class="form-control" name="civilite_lib"
+                                                                   value="{{$civilite->libelle}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label class="col-sm-3 control-label">Profession</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="commune_assure" value="{{$assure->profession}}" readonly>
+                                                        <input type="text" class="form-control" name="profession_lib"
+                                                               value="{{$profession->libelle}}" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Telephone</label>
+                                                    <label class="col-sm-3 control-label">Téléphone</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="telephone" value="{{$assure->telephone}}" id="telephone" class="form-control" readonly>
                                                     </div>
@@ -303,7 +298,7 @@ Devis CATNAT
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Date expiration</label>
+                                                    <label class="col-sm-3 control-label">Date d'expiration</label>
                                                     <div class="col-sm-9">
                                                           <input type="date" id="date_expiration" name="date_exp" value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                                     </div>
@@ -316,27 +311,71 @@ Devis CATNAT
                                             <div class="form-group">
 
                                                 <div class="col-md-4">
-                                                    <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
-                                                    <div class="col-sm-9">
+                                                    <label class="col-sm-3 control-label">Propriétaire </label>
+                                                    <div class="col-sm-9" style="padding-top: 10px;">
                                                       <div class="switch-button switch-button-yesno">
-                                                        <input type="checkbox" @if($appartient == "oui") checked @endif name="appartient" id="swt8"><span>
-                                                          <label for="swt8"></label></span>
+                                                        <input type="checkbox" @if($proprietaire == "oui") checked @endif name="proprietaire" id="swt9"><span>
+                                                          <label for="swt9"></label></span>
                                                       </div>
-                                                        {{-- <select id="appartient" name="appartient" class="select2">
-                                                            <option value="oui" @if($appartient == "oui") selected @endif>OUI</option>
-                                                                <option value="non" @if($appartient == "non") selected @endif>NON</option>
-                                                        </select> --}}
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Adresse</label>
+                                                    <div class="col-sm-9" >
+                                                        <input type="text" name="adresse" value="{{$adresse ?? ''}}" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Activité</label>
+                                                    <div class="col-sm-9">
+                                                      <select name="activite_catnat" class="select2">
+                                                        @foreach($activite_catnat as $activite_cat)
+                                                          <option value="{{$activite_cat->code}}" @if($code_activite==$activite_cat->code) selected @endif>{{$activite_cat->libelle}}</option>
+                                                        @endforeach
+                                                      </select>
                                                     </div>
                                                 </div>
 
                                             </div>
 
+                                            <div class="form-group">
 
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Nombre d'étages</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" id="etage" name="etage" value="{{$etage ?? ''}}" class="form-control" required min="0">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Nombre de pièces</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="nbr_piece" value="{{$nbr_piece ?? ''}}" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-sm-3 control-label">Vous appartient-t-elle ? </label>
+                                                    <div class="col-sm-9" style="padding-top: 15px;">
+                                                      <div class="switch-button switch-button-yesno">
+                                                        <input type="checkbox" @if($appartient == "oui") checked @endif name="appartient" id="swt8"><span>
+                                                          <label for="swt8"></label></span>
+                                                      </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
 
                                             <div class="panel-heading panel-heading-divider">
                                               <div class="icon-container">
                                                  <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                                 <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                                 <span class="icon-class">Veuillez choisir l'agence la plus proche</span>
                                                </div>
                                              </div>
 
@@ -384,6 +423,8 @@ Devis CATNAT
                                                 </div>
                                             </div>
 
+                                        <input type="hidden" name="civilite" value="{{$civilite->libelle}}">
+                                        <input type="hidden" name="profession" value="{{$profession->code}}">
                                         <input type="hidden" name="prime_total" value="{{$prime_total}}">
                                         <input type="hidden" name="id" value="{{$id ?? ''}}">
                                         <input type="hidden" id="code_agence" name="code_agence" value="{{$code_agence ?? ''}}">
@@ -395,7 +436,7 @@ Devis CATNAT
                                     </form>
 
                             <div class="form-group">
-                                <h3 class="col-sm-9 text-right">Total a payer :</h3>
+                                <h3 class="col-sm-9 text-right">Total à payer :</h3>
                                 <div class="col-sm-3">
                                     <input type="text" name="prime_total_" value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control" readonly style="border-radius: 20px;border-color: #007481;text-align: right;">
                                 </div>

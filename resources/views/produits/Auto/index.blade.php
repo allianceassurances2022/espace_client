@@ -51,7 +51,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
-                <h6>Date d'obtention du permis <span>(Champs Obligatoire)</span></h6>
+                <h6>Date de l'obtention du permis <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     <input class="input100" id="date_permis" type="date" name="date_permis" value="{{$auto['date_permis'] ?? ''}}" placeholder="Date d'obtention du permis">
                     <span class="focus-input100"></span>
@@ -81,7 +81,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/automobile.jpg'
                 </div>
             </div>
             <div class="slice">
-                <h6>Valeur estimée du vehicule <span>(Champs Obligatoire)</span></h6>
+                <h6>Valeur estimée du véhicule <span>(Champs Obligatoire)</span></h6>
                 <div class="wrap-input100 validate-input">
                     {{-- <input class="input100" type="number" name="valeur_auto" placeholder="Valeur estimée du vehicule"> --}}
                     <input class="input100 money" onchange="valeur_vehicule();" value="{{$auto['valeur_auto'] ?? ''}}" type="text" id="money" required>

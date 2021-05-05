@@ -18,8 +18,7 @@
                 <div class="panel-body">
                     <div class="col-md-12 fuelux">
 
-                        <form action="{{route('validation_devis_auto')}}" method="post"
-                              class="form-horizontal group-border-dashed">
+                        <form action="{{route('validation_devis_auto')}}" method="post" class="form-horizontal group-border-dashed">
                             @csrf
 
                             <div class="panel-heading panel-heading-divider">
@@ -31,16 +30,13 @@
 
                             <div class="form-group">
 
-
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Nom</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="name" name="name" class="form-control"
                                                value="{{auth()->user()->name}}" readonly autocomplete="name" autofocus>
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
+                                        <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -113,24 +109,23 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Civilité</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="commune_assure"
-                                                   value="{{auth()->user()->sexe}}" readonly>
+                                        <input type="text" class="form-control" name="civilite_lib"
+                                                   value="{{$civilite->libelle}}" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Profession</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="commune_assure"
-                                               value="{{auth()->user()->profession}}" readonly>
+                                        <input type="text" class="form-control" name="profession_lib"
+                                               value="{{$profession->libelle}}" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Telephone</label>
+                                    <label class="col-sm-3 control-label">Téléphone</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="telephone" value="{{auth()->user()->telephone}}"
-                                               id="telephone" class="form-control" readonly>
+                                        <input type="text" name="telephone" value="{{auth()->user()->telephone}}" id="telephone" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -149,24 +144,21 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date souscription</label>
                                     <div class="col-sm-9">
-                                        <input type="date" name="date_sous" value="{{$date_souscription}}"
-                                               class="form-control" readonly>
+                                        <input type="date" name="date_sous" value="{{$date_souscription}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date de naissance assuré/conducteur</label>
                                     <div class="col-sm-9">
-                                        <input type="date" name="date_conducteur" value="{{$date_conducteur}}"
-                                               class="form-control" readonly>
+                                        <input type="date" name="date_conducteur" value="{{$date_conducteur}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date d'obtention du permis</label>
                                     <div class="col-sm-9">
-                                        <input type="date" name="date_permis" value="{{$date_permis}}"
-                                               class="form-control" readonly>
+                                        <input type="date" name="date_permis" value="{{$date_permis}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -177,24 +169,21 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Immatriculé à</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}"
-                                               class="form-control" readonly>
+                                        <input type="text" name="wilaya" value="{{$wilaya_selected}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Année de mise en circulation</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="annee_auto" value="{{$annee_auto}}"
-                                               class="form-control" readonly>
+                                        <input type="text" name="annee_auto" value="{{$annee_auto}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Puissance</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="puissance" value="{{$puissance->libelle}}" class="form-control"
-                                               readonly>
+                                        <input type="text" name="puissance_lib" value="{{$puissance->libelle}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -205,8 +194,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Usage</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="usage" name="usage" value="{{$usage}}" class="form-control"
-                                               readonly>
+                                        <input type="text" id="usage" name="usage" value="{{$usage}}" class="form-control" readonly>
                                     </div>
 
                                 </div>
@@ -214,7 +202,6 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Durée</label>
                                     <div class="col-sm-9">
-                                        <!--input type="text" name="dure" value="{{$dure}}'année'" class="form-control" readonly-->
                                         <input type="text" name="dure_affiche"
 
                                                @if($dure == '1')
@@ -245,12 +232,19 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Assistance</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="assistance" value="{{$assistance_nom}}"
-                                               class="form-control" readonly>
+                                        <input type="text" name="assistance_lib" value="{{$assistance->libelle}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
+                                    <label class="col-sm-3 control-label">Type d'assurance</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="offre" value="{{$offre}}" class="form-control"
+                                               readonly>
+                                    </div>
+                                </div>
+
+                                 {{-- <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Taxe pollution</label>
                                     <div class="col-sm-9">
                                         <input type="text_affiche" name="dure_affiche"
@@ -276,26 +270,14 @@
                                                    class="form-control" readonly>
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
 
                             </div>
 
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Type d'assurance</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="offre" value="{{$offre}}" class="form-control"
-                                               readonly>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Valeur estimée du vehicule</label>
+                                    <label class="col-sm-3 control-label">Valeur estimée du véhicule</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="valeur" name="valeur_estime" value="{{number_format($valeur, 2,',', ' ')}} DA"" class="form-control valeur"
                                                readonly>
@@ -306,7 +288,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Date d'effet</label>
                                     <div class="col-sm-9">
-                                        <input type="date" id="date_effet" name="date_eff" value="{{Session::get('date_eff') ?? ''}}"
+                                        <input type="date" id="date_effet" name="date_eff" value="{{$date_effet ?? ''}}"
                                                class="form-control" min="" onchange="dateplusunans()" required>
                                     </div>
                                 </div>
@@ -315,7 +297,7 @@
                                     <label class="col-sm-3 control-label">Date expiration</label>
                                     <div class="col-sm-9">
                                         <input type="date" id="date_expiration" name="date_exp"
-                                               value="{{Session::get('date_exp') ?? ''}}" class="form-control" readonly>
+                                               value="{{$date_exp ?? ''}}" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -326,15 +308,15 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Matricule</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="matricule" name="matricule" value="{{Session::get('matricule') ?? ''}}"
+                                        <input type="text" id="matricule" name="matricule" value="{{$matricule ?? ''}}"
                                                class="form-control"  required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">N° Chassis</label>
+                                    <label class="col-sm-3 control-label">N° Châssis</label>
                                     <div class="col-sm-9">
-                                        <input type="text" id="num_chassis" name="num_chassis" value="{{Session::get('num_chassis') ?? ''}}"
+                                        <input type="text" id="num_chassis" name="num_chassis" value="{{$num_chassis ?? ''}}"
                                                class="form-control" maxlength="17" required>
                                     </div>
                                 </div>
@@ -343,7 +325,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Type</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="type" value="{{Session::get('type') ?? ''}}" class="form-control"
+                                        <input type="text" name="type" value="{{$type ?? ''}}" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -356,19 +338,17 @@
                                     <label class="col-sm-3 control-label">Marque</label>
                                     <div class="col-sm-9">
                                         <select name="marque" id="marque" class="form-control select2" required >
-                                            <option value="{{ session('marque') }}">{{ session('marque') }}</option>
                                             @foreach( $marques as $marque)
-                                                <option  value="{{ $marque->code }}" @if($marque->libelle == $marque_selected) selected @endif>{{ $marque->libelle }}</option>
+                                                <option  value="{{ $marque->code }}" @if($marque->code == $marque_selected) selected @endif>{{ $marque->libelle }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Model</label>
+                                    <label class="col-sm-3 control-label">Modèle</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="model" value="{{Session::get('model') ?? ''}}" class="form-control"
-                                               required>
+                                        <input type="text" name="model" value="{{$model ?? ''}}" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -377,9 +357,8 @@
                                     <label class="col-sm-3 control-label">Couleur</label>
                                     <div class="col-sm-9">
                                     <select name="couleur" id="couleur" class="form-control select2" required >
-                                        <option value="{{ session('couleur') }}">{{ session('couleur') }}</option>
                                         @foreach( $couleurs as $couleur)
-                                            <option  value="{{$couleur->code }}">{{ $couleur->libelle }}</option>
+                                            <option  value="{{$couleur->code }}" @if($couleur->code == $couleur_selected) selected @endif>{{ $couleur->libelle }}</option>
                                         @endforeach
                                     </select>
                                     </div>
@@ -390,9 +369,9 @@
                             <div class="form-group">
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-3 control-label">Permis N°</label>
+                                    <label class="col-sm-3 control-label">N° Permis</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="permis_num" value="{{Session::get('permis_num') ?? ''}}"
+                                        <input type="text" name="permis_num" value="{{$permis_num ?? ''}}"
                                                class="form-control" required>
                                     </div>
                                 </div>
@@ -400,12 +379,9 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Catégorie</label>
                                     <div class="col-sm-9">
-                                        <!--input type="text" name="categorie" value="{{$categorie ?? ''}}"
-                                               class="form-control" required-->
                                             <select  name="categorie" id="categorie" class="form-control select2" required >
-                                                <option value="{{ session('categorie') }}">{{ session('categorie') }}</option>
                                                 @foreach($categorie as $cat)
-                                                    <option  value="{{ $cat->libelle }}" @if($cat->libelle == $categorie) selected @endif>{{ $cat->libelle  }}</option>
+                                                    <option  value="{{ $cat->libelle }}" @if($cat->libelle == $categorie_selected) selected @endif>{{ $cat->libelle  }}</option>
                                                 @endforeach
                                             </select>
 
@@ -419,9 +395,8 @@
                                     <div class="col-sm-9">
 
                                         <select  name="wilaya_obtention" id="wilaya_obtention" class="form-control select2" required >
-                                            <option value="{{ session('wilaya_obtention') }}">{{ session('wilaya_obtention') }}</option>
                                             @foreach($wilaya as $wilay)
-                                                <option  value="{{$wilay->nlib_wilaya}}" >{{$wilay->nlib_wilaya}} </option>
+                                                <option  value="{{$wilay->nlib_wilaya}}" @if($wilay->nlib_wilaya == $delivre_a) selected @endif>{{$wilay->nlib_wilaya}} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -433,7 +408,7 @@
                             <div class="panel-heading panel-heading-divider">
                                 <div class="icon-container">
                                     <div class="icon"><span class="mdi mdi-collection-item-3"></span></div>
-                                    <span class="icon-class">Veuillez choisir une agence la plus proche</span>
+                                    <span class="icon-class">Veuillez choisir l'agence la plus proche</span>
                                 </div>
                             </div>
 
@@ -489,7 +464,10 @@
                                 </div>
                             </div>
 
-                            {{-- <input type="hidden" name="montant" value="{{$montant}}"> --}}
+                            <input type="hidden" name="puissance" value="{{$puissance->code}}">
+                            <input type="hidden" name="assistance" value="{{$assistance->code}}">
+                            <input type="hidden" name="civilite" value="{{$civilite->libelle}}">
+                            <input type="hidden" name="profession" value="{{$profession->code}}">
                             <input type="hidden" name="prime_total" value="{{$prime_total}}">
                             <input type="hidden" name="id" value="{{$id ?? ''}}">
                             <input type="hidden" name="valeur" value="{{$valeur ?? ''}}">
@@ -501,7 +479,7 @@
 
 
                         <div class="form-group">
-                            <h3 class="col-sm-9 text-right">Total a payer :</h3>
+                            <h3 class="col-sm-9 text-right">Total à payer :</h3>
                             <div class="col-sm-3">
                                 <input type="text" name="prime_total_"
                                        value="{{number_format($prime_total, 2,',', ' ')}} DA" class="form-control"
@@ -712,8 +690,6 @@
 
 @section('docready')
 
-
-
     App.formElements();
     App.masks();
 
@@ -755,4 +731,5 @@
     (function() {
     $('.valeur').mask('# ##0,00', {reverse: true});
     });
+
 @endsection

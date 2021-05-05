@@ -19,41 +19,58 @@ Home
 
     <div class="row">
 
-<div class="col-md-7">
+        <div class="col-md-2">
+            <div class="panel">
+                <div class="row">
+                    <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Faire un devis</h2>
+                </div>
+                <div class="row" style="padding: 20px; font-weight: bold;">
+                    <div class="col-md-12 item-renouvellement">
+                        <a href="{{ route('index_produit') }}" >
+                            <img src="{{asset('produit_assets/images/icons/devis.svg')}}" class="img-renouvellement" alt="Automobile">
+                            <br>
+                            <span>Devis</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="col-md-5">
 
 
     <div class="panel">
 
         <div class="row">
-            <h2 style="padding-top: 12px; padding-bottom: 13px; margin-left: 56px;">Si vous êtes déjà souscrit, renouvellez votre contrat ici :</h2>
+            <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Si vous êtes déjà souscrit, renouvelez votre contrat ici :</h2>
         </div>
        <div class="row" style="padding: 20px; font-weight: bold;">
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement.auto') }}" >
                    <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
                    <br>
-                   <span>Renouvellement Auto</span>
+                   <span>Automobile</span>
                </a>
            </div>
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement.mrh') }}" >
                    <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="mrh">
                    <br>
-                   <span>Renouvellement Multirisque habitation</span>
+                   <span>Multirisque habitation</span>
                </a>
            </div >
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement.mrp') }}">
                    <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="mrp">
                    <br>
-                   <span>Renouvellement multirisque professionnelle</span>
+                   <span>Multirisque professionnelle</span>
                </a>
            </div>
            <div class="col-md-3 item-renouvellement">
                <a href="{{ route('renouvellement.catnat') }}" >
                    <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="catnat">
                    <br>
-                   <span>Renouvellement catastrophe naturelle</span>
+                   <span>Catastrophe naturelle</span>
                </a>
            </div>
        </div>
@@ -62,7 +79,7 @@ Home
 </div>
 <div class="col-md-5">
   <div class="bord-title">
-      <h1>Bienvenu sur notre plateforme E-commerce</h1>
+      <h1>Bienvenue sur notre plateforme e-paiement</h1>
   </div>
 
   <div class="user-display" style="margin-top: 20px;">
@@ -100,7 +117,7 @@ Home
       <div class="row">
         <div class="col-sm-6">
               <div class="panel panel-default panel-table">
-                <div class="panel-heading">Mes Devis</div>
+                <div class="panel-heading">Mes devis</div>
                 <form>
 										@csrf
 								</form>
@@ -126,7 +143,7 @@ Home
 
         <div class="col-sm-6">
               <div class="panel panel-default panel-table">
-                <div class="panel-heading">Mes Contrats</div>
+                <div class="panel-heading">Mes contrats</div>
                 <form>
 										@csrf
 								</form>
@@ -242,7 +259,7 @@ Home
 					"order": [[0, "asc"]],
 					"searching": true,
 					"deferRender": true,
-          "pageLength": 3,
+                    "pageLength": 3,
 					"scrollY":"180px",
 					"language": {
 						"info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
@@ -270,7 +287,7 @@ Home
 							"first": "Premier",
 							"last": "Dernier",
 							"next": "Suivant",
-							"previous": "précédent"
+							"previous": "Précédent"
 						}
 					}
 				});
@@ -370,7 +387,7 @@ var table_ods = $('#contrat').DataTable({
           "first": "Premier",
           "last": "Dernier",
           "next": "Suivant",
-          "previous": "précédent"
+          "previous": "Précédent"
         }
       }
     });
@@ -382,13 +399,13 @@ var table_ods = $('#contrat').DataTable({
 
           //  window.alert(id);
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Êtes-vous sûr?',
+                text: "Vous ne pourrez pas revenir en arrière!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Oui, supprimez-le!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = "/delete_devis/" +id;
