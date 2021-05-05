@@ -1,12 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers\APIs;
 
-use Illuminate\Http\Request;
-use App\User;
 use App\wilaya;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class WilayaAPI
 {

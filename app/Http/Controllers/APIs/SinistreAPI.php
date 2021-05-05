@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers\APIs;
 
 use App\Agences;
 use App\DossierSinistre;
