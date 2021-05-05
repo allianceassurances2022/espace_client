@@ -7,7 +7,7 @@ use App\DossierSinistre;
 use App\DossierVehicule;
 use Illuminate\Http\Request;
 
-class SinistreService
+class SinistreAPI
 {
 
     function guidv4()

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Eden_parrain;
 
 
-class EdenService
+class EdenAPI
 {
 
     public function getParrainage(Request $request)

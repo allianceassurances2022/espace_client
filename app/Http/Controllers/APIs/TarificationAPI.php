@@ -20,7 +20,7 @@ use App\Civilite;
 
 use auth;*/
 
-class TarificationService
+class TarificationAPI
 {
 
     //********************** DEVI AUTO ********************** */

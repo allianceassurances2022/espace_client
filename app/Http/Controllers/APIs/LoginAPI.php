@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginService
+class LoginAPI
 {
 
     public function CheckUser(Request $request)
@@ -19,13 +19,7 @@ class LoginService
         $username = $data['email'];
         $password = $data['password'];
 
-        $user = User::where('email', $username)->first();
-        // $pass = User::where('password', $password)->get();
-
-        // $user->toJson();
-
-        // print_r($user->password);
-
+        $user = User::where('email', $username)->first();   
 
         if (Hash::check($password, $user->password)) {
 
