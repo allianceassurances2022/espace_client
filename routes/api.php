@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteAPIProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
@@ -18,15 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/calculemrh', 'Services\TarificationService@calculeMRH');
-Route::post('/calculecatnat', 'Services\TarificationService@calculeCatnat');
-Route::post('/calculeauto', 'Services\TarificationService@calculeAuto');
-Route::post('/create_sinistre', 'Services\SinistreService@createSinistre');
-Route::get('/get_sinistre', 'Services\SinistreService@getAllDossierSinistre');
-Route::post('/get_email', 'Services\SinistreService@getEmail');
-Route::post('/check_user', 'Services\LoginService@CheckUser');
+Route::post('/calculemrh', 'APIs\TarificationAPI@calculeMRH');
+Route::post('/calculecatnat', 'APIs\TarificationAPI@calculeCatnat');
+Route::post('/calculeauto', 'APIs\TarificationAPI@calculeAuto');
+Route::post('/create_sinistre', 'APIs\SinistreAPI@createSinistre');
+Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre');
+Route::post('/get_email', 'APIs\SinistreAPI@getEmail');
 
-Route::get('/get_wilaya', 'Services\DataService@getWilayas');
+Route::post('/check_user', 'APIs\LoginAPI@CheckUser');
 
-Route::post('/get_parrainage', 'Services\EdenService@getParrainage');
-Route::get('/get_parrainage', 'Services\EdenService@getParrainage');
+Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
+Route::post('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
+
+Route::post('/get_parrainage', 'APIs\EdenAPI@getParrainage');
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers\APIs;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ use App\Civilite;
 
 use auth;*/
 
-class TarificationService
+class TarificationAPI
 {
 
     //********************** DEVI AUTO ********************** */

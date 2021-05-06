@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers\APIs;
 
 use App\Agences;
 use App\DossierSinistre;
 use App\DossierVehicule;
 use Illuminate\Http\Request;
 
-class SinistreService
+class SinistreAPI
 {
 
     function guidv4()
