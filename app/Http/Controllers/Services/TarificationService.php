@@ -698,6 +698,8 @@ class TarificationService
     public function calculeCatnat(Request $request)
     {
 
+        header("Access-Control-Allow-Origin: *");
+
         $data = $request->json()->all();
 
         $type_formule = $data['type_formule'];
