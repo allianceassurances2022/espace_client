@@ -27,6 +27,7 @@ class TarificationAPI
 
     public function calculeAuto(Request $request)
     {
+
         header("Access-Control-Allow-Origin: *");
         $data = $request->json()->all();
 

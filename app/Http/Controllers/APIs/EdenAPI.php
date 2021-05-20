@@ -12,7 +12,7 @@ class EdenAPI
 
     public function getParrainage(Request $request)
     {
-        // header("Access-Control-Allow-Origin: *");
+      
 
         $getdata = $request->json()->all();
 
