@@ -29,8 +29,8 @@ class InscriptionAPI
 
         $user->name = $data['nom'];
         $user->prenom = $data['prenom'];
-        $user->lieu_naissance = $data['nom_wilaya'];
-        $user->wilaya = $data['ville'];
+        $user->lieu_naissance = $data['ldn'];
+        $user->wilaya = $data['nom_wilaya'];
         $user->sexe = $data['sexe'];
         $user->profession = $data['proffession'];
         $user->activite = $data['activite'];
