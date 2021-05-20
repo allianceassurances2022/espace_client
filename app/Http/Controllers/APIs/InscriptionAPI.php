@@ -48,6 +48,12 @@ class InscriptionAPI
         $user_assure->id_user = $user_select[0]['id'];
         $user_assure->save();
 
+        mail($data['email'], 'test inscription', "test");
+
+        return $password;
+
+
+
 
 
         // var_dump(json_decode($data)->results[0]->points);
