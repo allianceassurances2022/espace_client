@@ -91,6 +91,24 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'backoffice' => [
+            'driver' => 'mysql',
+            'host' => '10.0.0.193',
+            'port' =>  '3306',
+            'database' => 'backoffice',
+            'username' => 'dji',
+            'password' => 'dji',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
     ],
 
     /*

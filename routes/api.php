@@ -29,6 +29,7 @@ Route::post('/create_sinistre', 'APIs\SinistreAPI@createSinistre');
 Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre');
 Route::post('/get_email', 'APIs\SinistreAPI@getEmail');
 
+Route::get('/get_points', 'APIs\EdenValidationPointAPI@updatePoints');
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
 Route::post('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
 

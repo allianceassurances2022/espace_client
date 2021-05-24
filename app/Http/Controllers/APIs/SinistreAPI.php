@@ -28,7 +28,7 @@ class SinistreAPI
     public function createSinistre(Request $request)
     {
 
-
+        //header("Access-Control-Allow-Origin: *");
         $data = $request->json()->all();
         $id = $this->guidv4();
 
@@ -49,7 +49,7 @@ class SinistreAPI
     public function getAllDossierSinistre()
     {
 
-        header("Access-Control-Allow-Origin: *");
+        //header("Access-Control-Allow-Origin: *");
         $dossiers = DossierSinistre::all()->toArray();
         $data = json_encode($dossiers);
         print_r($data);
