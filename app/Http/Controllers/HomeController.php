@@ -8,7 +8,7 @@ use App\commune;
 use App\devis;
 use Illuminate\Http\Request;
 use App\Status_ods;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\wilaya;
 use Illuminate\Support\Facades\Redirect;
 use UxWeb\SweetAlert\SweetAlert;

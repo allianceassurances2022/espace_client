@@ -18,29 +18,20 @@ class EdenValidationPointAPI
 
         // Store the cipher method
         $ciphering = "AES-128-CTR";
-  
+
         // Use OpenSSl Encryption method
         $iv_length = openssl_cipher_iv_length($ciphering);
         $options = 0;
-  
-        // Non-NULL Initialization Vector for encryption
-        $encryption_iv = '1234567891011121';
-  
-        // Store the encryption key
-        $encryption_key = "azerty";
-  
-        // Use openssl_encrypt() function to encrypt the data
-        $encryption = openssl_encrypt($code_assure, $ciphering,
-                    $encryption_key, $options, $encryption_iv);
-  
+
+
         // Non-NULL Initialization Vector for decryption
         $decryption_iv = '1234567891011121';
-  
+
         // Store the decryption key
         $decryption_key = "azerty";
-  
+
         // Use openssl_decrypt() function to decrypt the data
-        $code_decrypted=openssl_decrypt ($encryption, $ciphering, 
+        $code_decrypted=openssl_decrypt ($code_assure, $ciphering,
                 $decryption_key, $options, $decryption_iv);
 
 
@@ -52,7 +43,7 @@ class EdenValidationPointAPI
 
         $point_to_convert = $eden_parrain->points_to_convert ;
         $point_converted = $eden_parrain->points_to_convert ;
-        
+
         $new_point_to_convert = $point_to_convert-$points;
         $new_point_converted = $point_converted+$points;
 
@@ -64,8 +55,8 @@ class EdenValidationPointAPI
         if($eden_parrain) {
             $sql = "UPDATE eden_points_converted SET is_validate='1' where code_assure='". $code_decrypted."' and code_generated='".$code."' order by created_at";
             $points = DB::connection('backoffice')->select($sql);
-        }                  
-        print_r($encryption);
+        }
+        print_r(true);
 
 
         // var_dump(json_decode($data)->results[0]->points);

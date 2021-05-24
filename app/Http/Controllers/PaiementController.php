@@ -103,7 +103,7 @@ class PaiementController extends Controller
                 "etage_batiment"     => $risque->etage,
                 "formule"            => "3",
                 "capitale_assure"    => $risque->montant_forfaitaire,
-                "terrasse"           l=> $terasse,
+                "terrasse"           => $terasse,
             ];
 
             $var=json_encode($var);
@@ -120,22 +120,17 @@ class PaiementController extends Controller
 
             $response = json_decode($request->getBody(), true);
 
-<<<<<<< HEAD
               $assure = Assure::where('id_devis', $id)->first();
             if($response['status']== "true"){
-=======
-            if($response['status']=="True"){
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
             $devis->update([
           			'type_devis'      => 2,
           			'reference_police' => $response['data']['Code de référence'],
           		]);
-<<<<<<< HEAD
-                $assure->update([
+
+            $assure->update([
                     'code_assure' => $response['data']["Code assure"],
                 ]);
-=======
           	$dev=$devis;
 
               Historique_Iris::create([
@@ -143,19 +138,13 @@ class PaiementController extends Controller
                 'message' => $response['message'],
                 'id_devis' => $devis->id
               ]);
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
 
-            } else{
-                dd($response);
             }
             else {
                 $titre = 'Echec de paiement';
                 $description = $response['message'];
 
-<<<<<<< HEAD
-          //  return redirect()->route('home');
-=======
                 Historique_Iris::create([
                     'status' => $response['status'],
                     'message' => $description,
@@ -167,7 +156,6 @@ class PaiementController extends Controller
 
             Alert::success('Validé', 'Opération effectuée avec succès');
             return redirect()->route('contrat_mrh',$dev->id);
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
           }
 
@@ -188,22 +176,16 @@ class PaiementController extends Controller
 
         public function save_catnat ($id){
 
-<<<<<<< HEAD
-                $catnat      = Rsq_Immobilier::where('id',$id)->first();
+            $catnat      = Rsq_Immobilier::where('id',$id)->first();
 
-                $devis       = devis::where('id',$id)->first();
-                $prime_total = $devis->prime_total;
-                $mrh         = '';
-                $auto        = '';
+            $mrh         = '';
+            $auto        = '';
 
-              $devis = devis::find($id);
-              $risque = Rsq_Immobilier::where('code_devis', $id)->first();
-=======
             $devis  = devis::find($id);
+            $prime_total = $devis->prime_total;
             $risque = Rsq_Immobilier::where('code_devis', $id)->first();
             $assure = Assure::where('id_devis',$devis->id)->first();
             $agence = Agences::find($devis->code_agence);
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
             $formule = formule::where('abreviation', $risque->offre)->first();
 
@@ -242,8 +224,6 @@ class PaiementController extends Controller
                 $local_assure = 0;
             }
 
-<<<<<<< HEAD
-             //   dd($var);
 /*
               $var = [
                     "nom"               => auth()->user()->name,
@@ -291,7 +271,7 @@ class PaiementController extends Controller
 
               ];
 */
-=======
+
             if ($registre_com == "oui"){
                 $registre_com = 1;
             }else {
@@ -315,7 +295,6 @@ class PaiementController extends Controller
             }else {
                 $proprietaire = 0;
             }
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
             if($risque->code_formule == 1){
                 $capitale_assure = $risque->valeur_assure;
@@ -384,22 +363,13 @@ class PaiementController extends Controller
               // $response = json_decode($request->getBody(), true);
               $response = json_decode($request->getBody(), true);
 
-<<<<<<< HEAD
                 $assure = Assure::where('id_devis', $id)->first();
 
-                dd($response);
               if($response['status']== "true"){
 
                 $devis->update([
             			'type_devis'      => 2,
             			'reference_police' => $response['data']["Code de reference"],
-=======
-              if($response['status']=="True"){
-
-                $devis->update([
-            			'type_devis'      => 2,
-            			'reference_police' => $response['data']["Code de référence"],
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
             		]);
 
                   $assure->update([
@@ -407,20 +377,7 @@ class PaiementController extends Controller
                   ]);
             		$dev=$devis;
 
-<<<<<<< HEAD
                   return view('paiement',compact('mrh','auto','catnat','prime_total','id','devis'));
-
-              }else{
-                  dd($response);
-              }
-
-           //   return redirect()->route('home');
-=======
-                    Historique_Iris::create([
-                        'status' => $response['status'],
-                        'message' => $response['message'],
-                        'id_devis' => $devis->id
-                      ]);
 
               }else {
                 $titre = 'Echec de paiement';
@@ -436,8 +393,7 @@ class PaiementController extends Controller
               }
 
               Alert::success('Validé', 'Opération effectuée avec succès');
-              return redirect()->route('contrat_catnat',$dev->id);
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
+              return redirect()->route('contrat_catnat',$devis->id);
 
             }
 
@@ -457,20 +413,18 @@ class PaiementController extends Controller
 
               public function save_auto ($id){
 
-<<<<<<< HEAD
-                  $auto        = Rsq_Vehicule::where('id',$id)->first();
-                  $devis       = devis::where('id',$id)->first();
-                  $prime_total = $devis->prime_total;
-                  $catnat      = '';
-                  $mrh         = '';
-=======
+                $auto        = Rsq_Vehicule::where('id',$id)->first();
+                $devis       = devis::where('id',$id)->first();
+                $prime_total = $devis->prime_total;
+                $catnat      = '';
+                $mrh         = '';
+
                 $devis             = devis::find($id);
                 $risque            = Rsq_Vehicule::where('code_devis',$devis->id)->first();
                 $assure            = Assure::where('id_devis',$devis->id)->first();
 
                 $agence            = Agences::find($devis->code_agence);
                 $prime_total       = $devis->prime_total;
->>>>>>> 03fbea7c1f99da5d8bfc14bd45f56ae05fa9fbef
 
                 $date_souscription = Carbon::parse($devis->date_souscription)->format('d/m/Y');
                 $date_effet        = Carbon::parse($devis->date_effet)->format('d/m/Y');
@@ -574,7 +528,7 @@ class PaiementController extends Controller
                 $response = json_decode($request->getBody(), true);
                 // dd($response);
 
-                  $assure = Assure::where('id_devis', $id)->first();
+                $assure = Assure::where('id_devis', $id)->first();
                   //dd($assure);
                 if($response['status']=="true"){
 
