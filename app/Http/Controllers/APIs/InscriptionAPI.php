@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Response;
+
 class InscriptionAPI
 {
 
@@ -50,7 +52,10 @@ class InscriptionAPI
 
         mail($data['email'], 'test inscription', "test");
 
-        return $password;
+        $data= [
+            'reponse' => 'oui',
+        ];
+        return Response::json($data);
 
 
 
