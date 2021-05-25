@@ -24,13 +24,16 @@ class EdenValidationPointAPI
 
         $sql = "SELECT points FROM eden_points_converted where code_assure='". $code_decrypted."' order by created_at";
         $points_1 = DB::connection('backoffice')->select($sql);
+
         $points = $points_1[0]->points;
 
-        $eden_parrain = Eden_parrain:: where('code_parrain',$code_decrypted)->first();
+        $sql = "SELECT * FROM eden_parrain where code_parrain='". $code_decrypted."'";
+        $eden_parrain = DB::connection('backoffice')->select($sql);
+
         if(!is_null($eden_parrain)) {
 
-            $point_to_convert = $eden_parrain->points_to_convert ;
-            $point_converted = $eden_parrain->point_converted ;
+            $point_to_convert = $eden_parrain[0]->points_to_convert ;
+            $point_converted = $eden_parrain[0]->points_converted ;
 
             $new_point_to_convert = $point_to_convert-$points;
             $new_point_converted = $point_converted+$points;
@@ -41,7 +44,12 @@ class EdenValidationPointAPI
 
             $sql = "UPDATE eden_points_converted SET is_validate='1' where code_assure='". $code_decrypted."' and code_generated='".$code."' order by created_at";
             $update = DB::connection('backoffice')->update($sql);
-            print_r($update);
+            if($update){
+                print_r('Conversion réussite');
+            }else{
+                print_r('Conversion non réussite');
+            }
+
         }
 
 
