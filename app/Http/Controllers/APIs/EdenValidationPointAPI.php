@@ -16,52 +16,34 @@ class EdenValidationPointAPI
         $code_assure = $request->input('code1'); //code assure
         $code = $request->input('code2'); // code hash
 
-        // Store the cipher method
-        $ciphering = "AES-128-CTR";
-
-        // Use OpenSSl Encryption method
-        $iv_length = openssl_cipher_iv_length($ciphering);
+        $key = "djilai";
+        $encryption_iv = '9567616987456256';
         $options = 0;
-
-
-        // Non-NULL Initialization Vector for decryption
-        $decryption_iv = '1234567891011121';
-
-        // Store the decryption key
-        $decryption_key = "azerty";
-
-        // Use openssl_decrypt() function to decrypt the data
-        $code_decrypted=openssl_decrypt ($code_assure, $ciphering,
-                $decryption_key, $options, $decryption_iv);
+        $code_decrypted=openssl_decrypt(hex2bin($code_assure),'AES-128-CBC',$key, $options, $encryption_iv);
 
 
         $sql = "SELECT points FROM eden_points_converted where code_assure='". $code_decrypted."' order by created_at";
-        $points = DB::connection('backoffice')->select($sql);
+        $points_1 = DB::connection('backoffice')->select($sql);
+        $points = $points_1[0]->points;
 
-        $eden_parrain = Eden_parrain:: where('code_parrain',$code_assure)->first();
+        $eden_parrain = Eden_parrain:: where('code_parrain',$code_decrypted)->first();
+        if(!is_null($eden_parrain)) {
+
+            $point_to_convert = $eden_parrain->points_to_convert ;
+            $point_converted = $eden_parrain->point_converted ;
+
+            $new_point_to_convert = $point_to_convert-$points;
+            $new_point_converted = $point_converted+$points;
 
 
-        $point_to_convert = $eden_parrain->points_to_convert ;
-        $point_converted = $eden_parrain->points_to_convert ;
+            $sql = "UPDATE eden_parrain SET points_to_convert='".$new_point_to_convert."',  points_converted='".$new_point_converted."' where code_parrain='". $code_decrypted."'";
+            $update = DB::connection('backoffice')->update($sql);
 
-        $new_point_to_convert = $point_to_convert-$points;
-        $new_point_converted = $point_converted+$points;
-
-        $eden_parrain->update([
-                    'points_to_convert'   => $new_point_to_convert,
-                    'points_converted'    => $new_point_converted
-                    ]);
-
-        if($eden_parrain) {
             $sql = "UPDATE eden_points_converted SET is_validate='1' where code_assure='". $code_decrypted."' and code_generated='".$code."' order by created_at";
-            $points = DB::connection('backoffice')->select($sql);
+            $update = DB::connection('backoffice')->update($sql);
+            print_r($update);
         }
-        print_r(true);
 
-
-        // var_dump(json_decode($data)->results[0]->points);
-        //  $points = $data['points'];
-        // print_r($points);
 
     }
 }
