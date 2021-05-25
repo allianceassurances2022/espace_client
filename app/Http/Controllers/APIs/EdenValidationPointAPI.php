@@ -21,11 +21,10 @@ class EdenValidationPointAPI
         $options = 0;
         $code_decrypted=openssl_decrypt(hex2bin($code_assure),'AES-128-CBC',$key, $options, $encryption_iv);
 
-
-        $sql = "SELECT points FROM eden_points_converted where code_assure='". $code_decrypted."' order by created_at";
+        $sql = "SELECT points FROM eden_points_converted where code_assure='". $code_decrypted."' and code_generated='".$code."' and is_validate='0' ORDER BY created_at desc";
         $points_1 = DB::connection('backoffice')->select($sql);
-
         $points = $points_1[0]->points;
+
 
         $sql = "SELECT * FROM eden_parrain where code_parrain='". $code_decrypted."'";
         $eden_parrain = DB::connection('backoffice')->select($sql);
@@ -42,7 +41,7 @@ class EdenValidationPointAPI
             $sql = "UPDATE eden_parrain SET points_to_convert='".$new_point_to_convert."',  points_converted='".$new_point_converted."' where code_parrain='". $code_decrypted."'";
             $update = DB::connection('backoffice')->update($sql);
 
-            $sql = "UPDATE eden_points_converted SET is_validate='1' where code_assure='". $code_decrypted."' and code_generated='".$code."' order by created_at";
+            $sql = "UPDATE eden_points_converted SET is_validate='1' where code_assure='". $code_decrypted."' and code_generated='".$code."' ORDER BY created_at desc";
             $update = DB::connection('backoffice')->update($sql);
             if($update){
                 print_r('Conversion réussite');
