@@ -74,7 +74,7 @@ class EdenCreatePointsToConvertAPI
                     $user = DB::connection('backoffice')->select($sql);
 
                     $mail = $user[0]->email;
-            
+                   
                     //****************Envoi mail ****************/
             
                     if($mail !== ''){
@@ -82,9 +82,11 @@ class EdenCreatePointsToConvertAPI
                         // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
             
                         $objet = 'Validation'; // Objet du message
-                        $message ="Nous avons reçu une demande de conversion de ".$points." point(s). Merci de valider votre demande \n"+
+                        
+                       
+                        $message ="Nous avons reçu une demande de conversion de ".$points." point(s). Merci de valider votre demande \n ".
                         "https://epaiement.allianceassurances.com.dz/public/api/get_points?code1=". $encryption ."&code2=".$code2;
-            
+                      
                         $expediteur = 'notif@allianceassurance.com.dz';
                         // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
                         $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
