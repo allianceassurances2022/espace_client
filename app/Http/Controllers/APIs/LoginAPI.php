@@ -22,6 +22,7 @@ class LoginAPI
 
         $user = User::where('email', $username)->first();
 
+      
         $code = CodeAssureParrain::where('id_user', $user['id'])->first();
         $codeAssure = $code['code_assure'];
 

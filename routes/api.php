@@ -32,7 +32,7 @@ Route::post('/get_email', 'APIs\SinistreAPI@getEmail');
 Route::get('/get_points', 'APIs\EdenValidationPointAPI@updatePoints');
 
 Route::get('/get_create_points', 'APIs\EdenCreatePointsToConvertAPI@getCreatePointsToConvert');
-Route::get('/get_points_converted', 'APIs\EdenValidationPointAPI@getPoints');
+Route::get('/get_points_converted', 'APIs\EdenPointsConverted@getPoints');
 
 
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
