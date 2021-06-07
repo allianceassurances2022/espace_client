@@ -50,10 +50,11 @@ class InscriptionAPI
         $user_assure->id_user = $user_select[0]['id'];
         $user_assure->save();
 
-        mail($data['email'], 'test inscription', "test");
+        // mail($data['email'], 'test inscription', "test");
 
         $data= [
             'reponse' => 'oui',
+            'password' => $password
         ];
         return Response::json($data);
 
