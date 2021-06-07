@@ -12,7 +12,7 @@ class CommuneAPI
     public function getCommunesByCodeWilaya(Request $request)
     {
 
-        header("Access-Control-Allow-Origin: '*' ");
+        header("Access-Control-Allow-Origin: * ");
 
         $getdata = $request->json()->all();
 
