@@ -51,7 +51,7 @@ class SinistreAPI
 
         //header("Access-Control-Allow-Origin: *");
         $user_id = $request->input('code'); //code assure
-        $dossiers = DossierSinistre::where('user_id', '30')->get();
+        $dossiers = DossierSinistre::where('user_id', $user_id)->get();
         $data = json_encode($dossiers);
         print_r($data); 
     }
