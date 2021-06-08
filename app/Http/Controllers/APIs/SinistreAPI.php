@@ -46,13 +46,14 @@ class SinistreAPI
         print_r(true);
     }
 
-    public function getAllDossierSinistre()
+    public function getAllDossierSinistre(Request $request)
     {
 
         //header("Access-Control-Allow-Origin: *");
-        $dossiers = DossierSinistre::all()->toArray();
+        $user_id = $request->input('code'); //code assure
+        $dossiers = DossierSinistre::where('user_id', '30')->get();
         $data = json_encode($dossiers);
-        print_r($data);
+        print_r($data); 
     }
 
     public function createDossier($data, $id)
