@@ -22,14 +22,15 @@ class LoginAPI
 
         $user = User::where('email', $username)->first();
 
-      
+
         $code = CodeAssureParrain::where('id_user', $user['id'])->first();
         $codeAssure = $code['code_assure'];
 
         if (Hash::check($password, $user->password)) {
             $data = [
                 'check' => true,
-                'code_assure' => $codeAssure
+                'code_assure' => $codeAssure,
+                'id_user'   => $user['id']
             ];
             $data = json_encode($data);
             print_r($data);
