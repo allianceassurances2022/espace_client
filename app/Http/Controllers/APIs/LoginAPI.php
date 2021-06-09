@@ -25,8 +25,8 @@ class LoginAPI
 
         $code = CodeAssureParrain::where('id_user', $user['id'])->first();
         $codeAssure = $code['code_assure'];
-
-        if (Hash::check($password, $user->password)) {
+        
+         if (Hash::check($password, $user->password)) {
             $data = [
                 'check' => true,
                 'code_assure' => $codeAssure,
