@@ -67,7 +67,7 @@ class TarificationAPI
         $taxe = $data['taxe'];
         $date_taxe = $data['date_taxe'];
 
-        if ($valeur < "8000000.00") {
+        if ($valeur < "800000.00") {
 
             return -1;
         } else {
