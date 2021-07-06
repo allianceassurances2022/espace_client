@@ -6,6 +6,8 @@ use App\Agences;
 use App\DossierSinistre;
 use App\DossierVehicule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class SinistreAPI
 {
@@ -50,10 +52,37 @@ class SinistreAPI
     {
 
         //header("Access-Control-Allow-Origin: *");
-        $user_id = $request->input('code'); //code assure
+        $user_id = $request->input('user_id'); //code assure
+        $user_code_assure = $request->input('code'); //code assure
         $dossiers = DossierSinistre::where('user_id', $user_id)->get();
-        $data = json_encode($dossiers);
-        print_r($data); 
+
+        $tableau = array();
+        if(!empty($dossiers)){
+           
+            for($i=0; $i<sizeof($dossiers)-1;$i++){
+              
+                $tableau[$i]['ref_police']=$dossiers[$i]['num_police'];
+                $tableau[$i]['ref_sinistre']=null;
+            }
+        }
+        $client = new \GuzzleHttp\Client();
+        $url = "http://10.0.0.95/backoffice/public/api/get_sinistre?code=".$user_code_assure;
+        $resp = Http::contentType("application/json")->send('GET',$url)->json();   
+       
+        if(!empty($resp) && !empty($tableau)) {
+            $data = array_merge($resp, $tableau); 
+            $data = json_encode($data);
+            print_r($data);
+                 
+        }elseif(!empty($resp)){
+        $data = json_encode($resp);
+        print_r($data);
+        }else{
+        $data = json_encode($tableau);
+        print_r($data);
+
+        }
+        
     }
 
     public function createDossier($data, $id)
