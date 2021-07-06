@@ -16,6 +16,7 @@ class EdenCreatePointsToConvertAPI
 
     public function getCreatePointsToConvert (Request $request)
     {
+        //  header("Access-Control-Allow-Origin: * ");
 
         $code_parrain = $request->input('code1'); //code assure
         $points = $request->input('code2'); //points

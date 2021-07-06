@@ -556,6 +556,7 @@ class TarificationAPI
 
     public function calculeMRH(Request $request)
     {
+          header("Access-Control-Allow-Origin: * ");
 
         $data = $request->json()->all();
         $ct = 0;
