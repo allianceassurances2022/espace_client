@@ -15,12 +15,12 @@ use App\Rsq_Immobilier;
 use App\devis;
 use App\Prime;
 use App\Assure;
-use PDF;
 use App\Profession;
 use App\Civilite;
 use App\Http\Controllers\Services\TarificationService;
-use auth;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class TarificationController extends Controller
 {
@@ -352,9 +352,8 @@ class TarificationController extends Controller
 
         $data = json_encode($tab_json);
 
-        $client = new \GuzzleHttp\Client();
         $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
-        $response = Http::contentType("application/json")->send('POST', "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat", ['body' => $data])->json();
+        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
 
         $tableau = array('Habitation', 'Commerce', 'Industrielle');
@@ -501,7 +500,7 @@ class TarificationController extends Controller
     public function montant_mrh(Request $request)
     {
 
-        $recap = 'g-recaptcha-response';
+      /*  $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -529,7 +528,7 @@ class TarificationController extends Controller
             echo 'window.history.go(-1);';
             echo '</script>';
         } else if ($captcha_success->success == true) {
-
+*/
             if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
                 Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
             }
@@ -569,22 +568,8 @@ class TarificationController extends Controller
             $data = json_encode($tab_json);
 
 
-           // $client = new \GuzzleHttp\Client();
-           // $url = "http://127.0.0.1:8000/api/calculemrh";
-           // $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
-
-
-        //    $client = new \GuzzleHttp\Client();
-
-        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
-
-        // $request = $client->post($url, [
-        //     'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-        //     'body'    => $data
-        // ]);
-
-        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
-
+            $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
+            $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
             $totale = $response['prime_total'];
 
             $datec = date('d/m/y');
@@ -613,7 +598,7 @@ class TarificationController extends Controller
 
 
             return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
-        }
+      //  }
     }
 
 

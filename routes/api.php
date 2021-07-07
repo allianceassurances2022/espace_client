@@ -40,3 +40,6 @@ Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
 Route::get('/get_agence', 'APIs\GetAgencesAPI@getAgences');
 Route::post('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
 Route::post('/get_nearest_agence', 'APIs\GetNearestAgencesAPI@getNearestAgences');
+
+Route::get('/get_police', 'APIs\GetPoliceAPI@getPoliceByUser');
+Route::get('/get_user_police', 'APIs\GetUserByPoliceAPI@getUserByPolice');
