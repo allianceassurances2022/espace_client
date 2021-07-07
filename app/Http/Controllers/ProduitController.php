@@ -7,7 +7,7 @@ use App\marque;
 use App\Puissance;
 use App\UsageAuto;
 use Illuminate\Http\Request;
-use App\Wilaya;
+use App\wilaya;
 use App\commune;
 use App\Agences;
 use App\Profession;
@@ -19,8 +19,8 @@ use App\Activite_catnat;
 
 use App\Assure;
 
-use PDF;
-use auth;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
 class ProduitController extends Controller
 {
     /**

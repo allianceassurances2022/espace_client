@@ -9,7 +9,7 @@ use App\UsageAuto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Wilaya;
+use App\wilaya;
 use App\commune;
 use App\Categorie_permis;
 

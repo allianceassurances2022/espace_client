@@ -58,22 +58,22 @@ class SinistreAPI
 
         $tableau = array();
         if(!empty($dossiers)){
-           
+
             for($i=0; $i<sizeof($dossiers)-1;$i++){
-              
+
                 $tableau[$i]['ref_police']=$dossiers[$i]['num_police'];
                 $tableau[$i]['ref_sinistre']=null;
             }
         }
-        $client = new \GuzzleHttp\Client();
+
         $url = "http://10.0.0.95/backoffice/public/api/get_sinistre?code=".$user_code_assure;
-        $resp = Http::contentType("application/json")->send('GET',$url)->json();   
-       
+        $resp = Http::contentType("application/json")->send('GET',$url)->json();
+
         if(!empty($resp) && !empty($tableau)) {
-            $data = array_merge($resp, $tableau); 
+            $data = array_merge($resp, $tableau);
             $data = json_encode($data);
             print_r($data);
-                 
+
         }elseif(!empty($resp)){
         $data = json_encode($resp);
         print_r($data);
@@ -82,7 +82,7 @@ class SinistreAPI
         print_r($data);
 
         }
-        
+
     }
 
     public function createDossier($data, $id)
@@ -201,7 +201,7 @@ class SinistreAPI
 
             $destinataire = $email;
             // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
-            $objet = 'Création sinistre'; // Objet du message 
+            $objet = 'Création sinistre'; // Objet du message
             $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police;
             $headers = 'From: Alliance' . "\r\n" .
                 'Reply-To: webmaster@example.com' . "\r\n" .

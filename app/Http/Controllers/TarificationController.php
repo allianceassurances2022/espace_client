@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Activite_catnat;
 use App\Http\Controllers\Services;
 use Illuminate\Http\Request;
-use App\Wilaya;
+use App\wilaya;
 use App\commune;
 use App\zcatnat;
 use App\Agences;
@@ -294,41 +294,43 @@ class TarificationController extends Controller
     {
 
         //////// Verificateur captcha ////////
-        $recap = 'g-recaptcha-response';
 
-        $response = $request->$recap;
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array(
-            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-            'response' => $request->$recap
+        // $recap = 'g-recaptcha-response';
+
+        // $response = $request->$recap;
+        // $url = 'https://www.google.com/recaptcha/api/siteverify';
+        // $data = array(
+        //     'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+        //     'response' => $request->$recap
+        // );
+        // $query = http_build_query($data);
+        // $options = array(
+        //     'http' => array(
+        //         'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+        //         "Content-Length: " . strlen($query) . "\r\n" .
+        //             "User-Agent:MyAgent/1.0\r\n",
+        //         'method' => 'POST',
+        //         'content' => http_build_query($data)
+        //     )
+        // );
+        // $context  = stream_context_create($options);
+        // $verify = file_get_contents($url, false, $context);
+        // $captcha_success = json_decode($verify);
+
+        // if ($captcha_success->success == false) {
+
+        //     echo '<script language="javascript" type="text/javascript">';
+        //     echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+        //     echo 'window.history.go(-1);';
+        //     echo '</script>';
+        // } else if ($captcha_success->success == true) {
+
+
+        // }
+
+        $tableau = array(
+            'habitation', 'commerce', 'industrielle'
         );
-        $query = http_build_query($data);
-        $options = array(
-            'http' => array(
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: " . strlen($query) . "\r\n" .
-                    "User-Agent:MyAgent/1.0\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $verify = file_get_contents($url, false, $context);
-        $captcha_success = json_decode($verify);
-
-        if ($captcha_success->success == false) {
-
-            echo '<script language="javascript" type="text/javascript">';
-            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-            echo 'window.history.go(-1);';
-            echo '</script>';
-        } else if ($captcha_success->success == true) {
-
-
-            $tableau = array(
-                'habitation', 'commerce', 'industrielle'
-            );
-        }
 
         $tab_json = array();
         $code_formule = session('code_formule');
