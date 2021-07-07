@@ -353,8 +353,8 @@ class TarificationController extends Controller
         $data = json_encode($tab_json);
 
         $client = new \GuzzleHttp\Client();
-        $url = "http://epaiement.local/api/api/calculecatnat";
-        $response = Http::contentType("application/json")->send('POST', "http://epaiement.local/api/api/calculecatnat", ['body' => $data])->json();
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
+        $response = Http::contentType("application/json")->send('POST', "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat", ['body' => $data])->json();
 
 
         $tableau = array('Habitation', 'Commerce', 'Industrielle');
@@ -569,114 +569,21 @@ class TarificationController extends Controller
             $data = json_encode($tab_json);
 
 
-            /*   $ct = 0;
-            $taux = 0.0;
-            $p_res_civile = 0;
-
-            $terasse = $request->terasse;
-            ($habitation);
-            $montant = $request->montant;
-
-            $juredique = $request->juredique;
-            $nbr_piece = $request->nbr_piece;
-
-            $sup_log = 35 + ($nbr_piece - 1) * 15;
+           // $client = new \GuzzleHttp\Client();
+           // $url = "http://127.0.0.1:8000/api/calculemrh";
+           // $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
 
-            if ($habitation == "individuelle") {
-                $ct = 60000;
-            } else if ($habitation == "collective") {
-                $ct = 40000;
-            }
+        //    $client = new \GuzzleHttp\Client();
 
-            $val_batim = $sup_log * $ct;
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
 
-            if ($juredique == "proprietaire") {
-                $taux = 0.0005;
-                $p_res_civile = 100;
-            } else if ($juredique == "locataire") {
-                $taux = 0.0003;
-                $p_res_civile = 200;
-            }
+        // $request = $client->post($url, [
+        //     'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+        //     'body'    => $data
+        // ]);
 
-            $p_inc = $val_batim * $taux;
-
-            $p_con_inc = $montant * 0.0009;
-
-            $p_in = $p_inc + $p_con_inc;
-            $p_vol = $montant * 0.001;
-            $p_degat = $montant * 0.0009;
-            $p_bris = 100 * $nbr_piece;
-
-            if ($terasse == "oui") {
-                $Majter = $p_degat * 1.5;
-                $prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
-            } else {
-                $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-            }
-
-            $ct = 0;
-            $taux = 0.0;
-            $p_res_civile = 0;
-
-
-
-            $sup_log = 35 + ($nbr_piece - 1) * 15;
-
-
-            if ($habitation == "individuelle") {
-                $ct = 60000;
-            } else if ($habitation == "collective") {
-                $ct = 40000;
-            }
-
-            $val_batim = $sup_log * $ct;
-
-            if ($juredique == "proprietaire") {
-                $taux = 0.0005;
-                $p_res_civile = 100;
-            } else if ($juredique == "locataire") {
-                $taux = 0.0003;
-                $p_res_civile = 200;
-            }
-
-            $p_inc = $val_batim * $taux;
-
-            $p_con_inc = $montant * 0.0009;
-
-            $p_in = $p_inc + $p_con_inc;
-            $p_vol = $montant * 0.001;
-            $p_degat = $montant * 0.0009;
-            $p_bris = 100 * $nbr_piece;
-
-            if ($terasse == "oui") {
-                $p_degat = $p_degat * 1.5;
-            }
-
-
-            $red = $p_in * 0.4;
-            $p_in = $p_in - $red;
-
-            $red = $p_vol * 0.4;
-            $p_vol = $p_vol - $red;
-
-            $red = $p_degat * 0.4;
-            $p_degat = $p_degat - $red;
-
-            $red = $p_bris * 0.4;
-            $p_bris = $p_bris - $red;
-
-
-            $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-
-            $td = 120;
-            $Ctpolice = 500;
-            $tva = ($prim + $Ctpolice) * 0.19;*/
-
-
-            $client = new \GuzzleHttp\Client();
-            $url = "http://epaiement.local/api/calcule_mrh";
-            $response = Http::contentType("application/json")->send('POST', "http://epaiement.local/api/api/calculemrh", ['body' => $data])->json();
+        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
             $totale = $response['prime_total'];
 
