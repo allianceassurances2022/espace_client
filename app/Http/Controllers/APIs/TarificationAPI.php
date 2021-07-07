@@ -28,7 +28,9 @@ class TarificationAPI
     public function calculeAuto(Request $request)
     {
 
-        header("Access-Control-Allow-Origin: *");
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: application/json');
+        
         $data = $request->json()->all();
 
         $wilaya = Wilaya::where('code_wilaya', "1")->first();
@@ -556,7 +558,8 @@ class TarificationAPI
 
     public function calculeMRH(Request $request)
     {
-          header("Access-Control-Allow-Origin: * ");
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: application/json');
 
         $data = $request->json()->all();
         $ct = 0;
@@ -573,7 +576,7 @@ class TarificationAPI
         $tab2 = array("proprietaire", "locataire");
         $tab3 = array("individuelle", "collective");
 
-        print_r((in_array($juredique, $tab2)));
+        //print_r((in_array($juredique, $tab2)));
         if (($montant > "200000.00") && ($montant < "5000000.00") && (in_array(strtolower($terasse), $tab1)) && (in_array(strtolower($juredique), $tab2)) && (in_array(strtolower($habitation), $tab3))
             && ($nbr_piece > "0") && ($nbr_piece < "16")
         ) {
@@ -700,7 +703,8 @@ class TarificationAPI
     public function calculeCatnat(Request $request)
     {
 
-        header("Access-Control-Allow-Origin: *");
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: application/json');
 
         $data = $request->json()->all();
 

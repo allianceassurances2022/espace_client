@@ -12,9 +12,10 @@ class GetUserByPoliceAPI
 
         $user_code_assure = $request->input('code'); //code assure
         $client = new \GuzzleHttp\Client();
-        $url = "http://10.0.0.95/backoffice/public/api/get_user_police?code=".$user_code_assure;
+        $url = "http://backoffice.local/api/get_user_police?code=".$user_code_assure;
         $data = Http::contentType("application/json")->send('GET',$url)->json();  
 
+        $data = json_encode($data);
         print_r($data);
     }
 
