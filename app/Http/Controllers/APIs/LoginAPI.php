@@ -13,7 +13,7 @@ class LoginAPI
 
     public function CheckUser(Request $request)
     {
-
+//  header("Access-Control-Allow-Origin: * ");
 
         $data = $request->json()->all();
 

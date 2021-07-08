@@ -94,7 +94,7 @@ background-image: url({{asset('produit_assets/images/backgrounds/catastrophe-nat
             <div class="tarificateur">
                 <h5>Montant à payer </h5>
                 <div class="wrap-input100 validate-input2">
-                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{$prime_total}} DA" >
+                    <input id="montant_calcul" class="input100" type="text" name="montant_calcul"  placeholder="Calcul du Montant en cours" value="{{number_format($prime_total, 2,',', ' ')}} DA" >
                 </div>
             </div>
            @endif

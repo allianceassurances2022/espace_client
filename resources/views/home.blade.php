@@ -19,70 +19,15 @@ Home
 
     <div class="row">
 
-        <div class="col-md-2">
-            <div class="panel">
-                <div class="row">
-                    <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Faire un devis</h2>
-                </div>
-                <div class="row" style="padding: 20px; font-weight: bold;">
-                    <div class="col-md-12 item-renouvellement">
-                        <a href="{{ route('index_produit') }}" >
-                            <img src="{{asset('produit_assets/images/icons/devis.svg')}}" class="img-renouvellement" alt="Automobile">
-                            <br>
-                            <span>Devis</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-<div class="col-md-5">
 
 
-    <div class="panel">
 
-        <div class="row">
-            <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Si vous êtes déjà souscrit, renouvelez votre contrat ici :</h2>
-        </div>
-       <div class="row" style="padding: 20px; font-weight: bold;">
-           <div class="col-md-3 item-renouvellement">
-               <a href="{{ route('renouvellement.auto') }}" >
-                   <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
-                   <br>
-                   <span>Automobile</span>
-               </a>
-           </div>
-           <div class="col-md-3 item-renouvellement">
-               <a href="{{ route('renouvellement.mrh') }}" >
-                   <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="mrh">
-                   <br>
-                   <span>Multirisque habitation</span>
-               </a>
-           </div >
-           <div class="col-md-3 item-renouvellement">
-               <a href="{{ route('renouvellement.mrp') }}">
-                   <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="mrp">
-                   <br>
-                   <span>Multirisque professionnelle</span>
-               </a>
-           </div>
-           <div class="col-md-3 item-renouvellement">
-               <a href="{{ route('renouvellement.catnat') }}" >
-                   <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="catnat">
-                   <br>
-                   <span>Catastrophe naturelle</span>
-               </a>
-           </div>
-       </div>
-    </div>
-
-</div>
-<div class="col-md-5">
+<div class="col-sm-5">
   <div class="bord-title">
-      <h1>Bienvenue sur notre plateforme e-paiement</h1>
+      <h1>Espace Client Alliance Assurances</h1>
   </div>
 
-  <div class="user-display" style="margin-top: 20px;">
+  <div class="user-display" style="margin-top: 20px;   border-radius: 10px;border: 2px solid;border-color: #007481;">
     {{-- <div class="user-display-bg"><img src="assets/img/user-profile-display.png" alt="Profile Background"></div> --}}
     <div class="user-display-bottom">
       <div class="user-display-avatar"><img src="{{ asset('user_assets/assets/uploads/avatars/'.Auth()->user()->avatar) }}" alt="Avatar"></div>
@@ -110,6 +55,113 @@ Home
 </div>
 </div>
 </div>
+
+<div class="col-sm-7" style="width: 58%">
+
+    <div class="container" style="width: 100%">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" style="height: 235px; border-radius: 10px;
+          border: 2px solid;
+          border-color: #007481;">
+            <div class="item active">
+              <img src="{{asset('produit_assets/images/slide/img1.jpg')}}" alt="img1" style="width:100%;height:231px">
+            </div>
+
+            <div class="item">
+              <img src="{{asset('produit_assets/images/slide/img2.jpg')}}" alt="img2" style="width:100%;height:231px">
+            </div>
+
+            <div class="item">
+              <img src="{{asset('produit_assets/images/slide/img3.jpg')}}" alt="img3" style="width:100%;height:231px">
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-8">
+
+
+    <div class="panel">
+
+        <div class="row">
+            <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Si vous êtes déjà souscrit, renouvelez votre contrat ici :</h2>
+        </div>
+       <div class="row" style="padding: 20px; font-weight: bold;">
+           <div class="col-md-3 item-renouvellement">
+               <a href="{{ route('renouvellement.auto') }}" >
+                   <img src="{{asset('produit_assets/images/icons/auto_col.svg')}}" class="img-renouvellement" alt="Automobile">
+                   <br>
+                   <div class="bouton-k">
+                   <span>Automobile</span>
+                   </div>
+               </a>
+           </div>
+           <div class="col-md-3 item-renouvellement">
+               <a href="{{ route('renouvellement.mrh') }}" >
+                   <img src="{{asset('produit_assets/images/icons/hab_col.svg')}}" class="img-renouvellement" alt="mrh">
+                   <br>
+                   <div class="bouton-k">
+                   <span>Multirisque habitation</span>
+                   </div>
+               </a>
+           </div >
+           <div class="col-md-3 item-renouvellement">
+               <a href="{{ route('renouvellement.mrp') }}">
+                   <img src="{{asset('produit_assets/images/icons/pro_col.svg')}}" class="img-renouvellement" alt="mrp">
+                   <br>
+                   <div class="bouton-k">
+                   <span>Multirisque professionnelle</span>
+                   </div>
+               </a>
+           </div>
+           <div class="col-md-3 item-renouvellement">
+               <a href="{{ route('renouvellement.catnat') }}" >
+                   <img src="{{asset('produit_assets/images/icons/cat_nat_col.svg')}}" class="img-renouvellement" alt="catnat">
+                   <br>
+                   <div class="bouton-k">
+                    <span>Catastrophe naturelle</span>
+                   </div>
+               </a>
+           </div>
+       </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="row">
+            <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Faire un devis</h2>
+        </div>
+        <div class="row" style="padding: 20px; font-weight: bold;">
+            <div class="col-md-12 item-renouvellement">
+                <a href="{{ route('index_produit') }}">
+                    <img src="{{asset('produit_assets/images/icons/devis.svg')}}" class="img-renouvellement" alt="Automobile">
+                    <br>
+                    <div class="bouton-k">
+                        <span>Devis</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 
@@ -168,6 +220,73 @@ Home
 
       </div>
 
+      <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">Mes sinistres</div>
+              <form>
+                                      @csrf
+                              </form>
+              <div class="panel-body">
+                <table id="sinistre" class="table table-striped table-hover table-fw-widget">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Police</th>
+                      <th>Date déclaration</th>
+                      <th>Statut</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="panel">
+            <div class="row">
+                <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Déclarer un Sinistre</h2>
+            </div>
+            <div class="row" style="padding: 20px; font-weight: bold;">
+                <div class="col-md-12 item-renouvellement">
+                    <a href="{{ route('index_produit') }}" >
+                        <img src="{{asset('produit_assets/images/icons/fender-bender.svg')}}" class="img-renouvellement" alt="Automobile">
+                        <br>
+                        <div class="bouton-k">
+                        <span>Déclarer</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel">
+            <div class="row">
+                <h2 style="padding-top: 12px; padding-bottom: 13px; text-align:center;">Mes points Eden</h2>
+            </div>
+            <div class="row" style="padding: 20px; font-weight: bold;">
+                <div class="col-md-12 item-renouvellement">
+                    <a href="{{ route('index_produit') }}" >
+                        <img src="{{asset('produit_assets/images/icons/hand-gesture.svg')}}" class="img-renouvellement" alt="Automobile">
+                        <br>
+                        <div class="bouton-k">
+                        <span>Mes points</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      </div>
+
 
 
 @endsection
@@ -190,6 +309,8 @@ Home
 
 
     <script>
+
+
 
 ///////////////////////////////////////////////////////////  Devis ///////////////////////////////////////////////////////////////////
 
@@ -418,4 +539,5 @@ var table_ods = $('#contrat').DataTable({
 
 @section('docready')
 App.dataTables();
+$('.carouselExampleSlidesOnly').carousel();
 @endsection

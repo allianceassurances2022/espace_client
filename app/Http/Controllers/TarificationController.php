@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Activite_catnat;
 use App\Http\Controllers\Services;
 use Illuminate\Http\Request;
-use App\Wilaya;
+use App\wilaya;
 use App\commune;
 use App\zcatnat;
 use App\Agences;
@@ -15,12 +15,12 @@ use App\Rsq_Immobilier;
 use App\devis;
 use App\Prime;
 use App\Assure;
-use PDF;
 use App\Profession;
 use App\Civilite;
 use App\Http\Controllers\Services\TarificationService;
-use auth;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 
 class TarificationController extends Controller
@@ -295,41 +295,43 @@ class TarificationController extends Controller
     {
 
         //////// Verificateur captcha ////////
-        $recap = 'g-recaptcha-response';
 
-        $response = $request->$recap;
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array(
-            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-            'response' => $request->$recap
+        // $recap = 'g-recaptcha-response';
+
+        // $response = $request->$recap;
+        // $url = 'https://www.google.com/recaptcha/api/siteverify';
+        // $data = array(
+        //     'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+        //     'response' => $request->$recap
+        // );
+        // $query = http_build_query($data);
+        // $options = array(
+        //     'http' => array(
+        //         'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+        //         "Content-Length: " . strlen($query) . "\r\n" .
+        //             "User-Agent:MyAgent/1.0\r\n",
+        //         'method' => 'POST',
+        //         'content' => http_build_query($data)
+        //     )
+        // );
+        // $context  = stream_context_create($options);
+        // $verify = file_get_contents($url, false, $context);
+        // $captcha_success = json_decode($verify);
+
+        // if ($captcha_success->success == false) {
+
+        //     echo '<script language="javascript" type="text/javascript">';
+        //     echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+        //     echo 'window.history.go(-1);';
+        //     echo '</script>';
+        // } else if ($captcha_success->success == true) {
+
+
+        // }
+
+        $tableau = array(
+            'habitation', 'commerce', 'industrielle'
         );
-        $query = http_build_query($data);
-        $options = array(
-            'http' => array(
-                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: " . strlen($query) . "\r\n" .
-                    "User-Agent:MyAgent/1.0\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $verify = file_get_contents($url, false, $context);
-        $captcha_success = json_decode($verify);
-
-        if ($captcha_success->success == false) {
-
-            echo '<script language="javascript" type="text/javascript">';
-            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-            echo 'window.history.go(-1);';
-            echo '</script>';
-        } else if ($captcha_success->success == true) {
-
-
-            $tableau = array(
-                'habitation', 'commerce', 'industrielle'
-            );
-        }
 
         $tab_json = array();
         $code_formule = session('code_formule');
@@ -353,9 +355,8 @@ class TarificationController extends Controller
 
         $data = json_encode($tab_json);
 
-        $client = new \GuzzleHttp\Client();
-        $url = "http://epaiement.local/api/api/calculecatnat";
-        $response = Http::contentType("application/json")->send('POST', "http://epaiement.local/api/api/calculecatnat", ['body' => $data])->json();
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
+        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
 
         $tableau = array('Habitation', 'Commerce', 'Industrielle');
@@ -502,7 +503,7 @@ class TarificationController extends Controller
     public function montant_mrh(Request $request)
     {
 
-        $recap = 'g-recaptcha-response';
+        /*  $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -531,6 +532,7 @@ class TarificationController extends Controller
             echo '</script>';
         } else if ($captcha_success->success == true) {
 */
+
         if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
             Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
         }
@@ -538,6 +540,11 @@ class TarificationController extends Controller
         $tab = array("oui", "non");
         if (!in_array($request->terasse, $tab)) {
             Alert::warning('Avertissement', 'terasse est incorrecte');
+        }
+
+        $tab = array("proprietaire", "locataire");
+        if (!in_array($request->juredique, $tab)) {
+            Alert::warning('Avertissement', 'juredique est incorrecte');
         }
 
         $tab = array("proprietaire", "locataire");
@@ -570,115 +577,9 @@ class TarificationController extends Controller
         $data = json_encode($tab_json);
 
 
-        /*   $ct = 0;
-            $taux = 0.0;
-            $p_res_civile = 0;
-
-            $terasse = $request->terasse;
-            ($habitation);
-            $montant = $request->montant;
-
-            $juredique = $request->juredique;
-            $nbr_piece = $request->nbr_piece;
-
-            $sup_log = 35 + ($nbr_piece - 1) * 15;
-
-
-            if ($habitation == "individuelle") {
-                $ct = 60000;
-            } else if ($habitation == "collective") {
-                $ct = 40000;
-            }
-
-            $val_batim = $sup_log * $ct;
-
-            if ($juredique == "proprietaire") {
-                $taux = 0.0005;
-                $p_res_civile = 100;
-            } else if ($juredique == "locataire") {
-                $taux = 0.0003;
-                $p_res_civile = 200;
-            }
-
-            $p_inc = $val_batim * $taux;
-
-            $p_con_inc = $montant * 0.0009;
-
-            $p_in = $p_inc + $p_con_inc;
-            $p_vol = $montant * 0.001;
-            $p_degat = $montant * 0.0009;
-            $p_bris = 100 * $nbr_piece;
-
-            if ($terasse == "oui") {
-                $Majter = $p_degat * 1.5;
-                $prim = $p_in + $p_vol + $Majter + $p_bris + $p_res_civile;
-            } else {
-                $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-            }
-
-            $ct = 0;
-            $taux = 0.0;
-            $p_res_civile = 0;
-
-
-
-            $sup_log = 35 + ($nbr_piece - 1) * 15;
-
-
-            if ($habitation == "individuelle") {
-                $ct = 60000;
-            } else if ($habitation == "collective") {
-                $ct = 40000;
-            }
-
-            $val_batim = $sup_log * $ct;
-
-            if ($juredique == "proprietaire") {
-                $taux = 0.0005;
-                $p_res_civile = 100;
-            } else if ($juredique == "locataire") {
-                $taux = 0.0003;
-                $p_res_civile = 200;
-            }
-
-            $p_inc = $val_batim * $taux;
-
-            $p_con_inc = $montant * 0.0009;
-
-            $p_in = $p_inc + $p_con_inc;
-            $p_vol = $montant * 0.001;
-            $p_degat = $montant * 0.0009;
-            $p_bris = 100 * $nbr_piece;
-
-            if ($terasse == "oui") {
-                $p_degat = $p_degat * 1.5;
-            }
-
-
-            $red = $p_in * 0.4;
-            $p_in = $p_in - $red;
-
-            $red = $p_vol * 0.4;
-            $p_vol = $p_vol - $red;
-
-            $red = $p_degat * 0.4;
-            $p_degat = $p_degat - $red;
-
-            $red = $p_bris * 0.4;
-            $p_bris = $p_bris - $red;
-
-
-            $prim = $p_in + $p_vol + $p_degat + $p_bris + $p_res_civile;
-
-            $td = 120;
-            $Ctpolice = 500;
-            $tva = ($prim + $Ctpolice) * 0.19;*/
-
-
-        /*    $client = new \GuzzleHttp\Client();
-        $url = "http://epaiement.local/api/calcule_mrh";
-        $response = Http::contentType("application/json")->send('POST', "http://epaiement.local/api/calculemrh", ['body' => $data])->json();
-*/
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
+        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
+        $totale = $response['prime_total'];
 
         $client = new \GuzzleHttp\Client();
 
@@ -694,31 +595,8 @@ class TarificationController extends Controller
 
         $datec = date('d/m/y');
 
-        $data_session = [
-            'terasse' => $terasse,
-            'habitation' => $habitation,
-            'montant' => $montant,
-            'juredique' => $juredique,
-            'nbr_piece' => $nbr_piece,
-            'datec' => $datec,
-            'prime_total' => $response['prime_total'],
-            'incendie' => $response['incendie'],
-            'degats_eaux' => $response['degats_eaux'],
-            'bris_glace' => $response['bris_glace'],
-            'vol' => $response['vol'],
-            'rc_chef_famille' => $response['rc_chef_famille'],
-            'prime_nette' => $response['prime_nette'],
-            'cout_police' => $response['cout_police'],
-            'timbre_dimension' => $response['timbre_dimension'],
-            'tva' => $response['tva']
-        ];
-
-
-        $request->session()->put('data_mrh', $data_session);
-
-
         return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
-        // }
+        //  }
     }
 
 

@@ -9,7 +9,7 @@ use App\UsageAuto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Wilaya;
+use App\wilaya;
 use App\commune;
 use App\Categorie_permis;
 
@@ -25,9 +25,9 @@ use App\Civilite;
 use App\Assistance;
 
 use RealRashid\SweetAlert\Facades\Alert;
-use PDF;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
 
-use auth;
 use Illuminate\Support\Facades\Http;
 
 class TarificationAutoController extends Controller
@@ -95,10 +95,8 @@ class TarificationAutoController extends Controller
 
 		$data = json_encode($tab_json);
 
-		$client = new \GuzzleHttp\Client();
-		//$url = "http://10.0.0.95/epaiement/public/api/calculeauto";
-		$url = "http://epaiement.local/api/calculeauto";
-		$response = Http::contentType("application/json")->send('POST', "http://epaiement.local/api/calculeauto", ['body' => $data])->json();
+		$url = "https://epaiement.allianceassurances.com.dz/public/api/calculeauto";
+		$response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
 		//dd($response);
 

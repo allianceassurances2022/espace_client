@@ -18,7 +18,7 @@ use App\devis;
 use App\Historique_Iris;
 use RealRashid\SweetAlert\Facades\Alert;
 
-use auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PaiementController extends Controller
