@@ -102,6 +102,8 @@ Route::get('/devis_catnat', 'ProduitController@devis_catnat')->name('devis_catna
 Route::post('/validation_devis_catnat', 'TarificationController@validation_devis_catnat')->name('validation_devis_catnat');
 Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catnat')->name('modification_devis_catnat')->middleware('auth');
 
+/////////////////////////////// Sinistre
+Route::get('/sinistre', 'SinistreController@index_sinistre')->name('sinistre');
 
 //Route::get('/devis_catnat/{id}', 'TarificationController@delete_devis')->name('delete_devis')->middleware('auth');
 
