@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DossierSinistre;
 use Illuminate\Http\Request;
 use App\DossierVehicule;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,18 @@ class SinistreController extends Controller
     public function getData()
     {
 
-        $sinistre = DossierVehicule::where('id', 74)->first();
-        $data = $sinistre->toArray();
+        $vehicule = DossierVehicule::where('num_police', 1303485412365)->first();
+        $sinistre = DossierSinistre::where('num_police', 1303485412365)->first();
+
+        $data1 = $vehicule->toArray();
+        $data2 = $sinistre->toArray();
+
+        $data = array();
+        $data = [
+            'data1' => $data1,
+            'data2' => $data2,
+        ];
+
 
         return $data;
     }

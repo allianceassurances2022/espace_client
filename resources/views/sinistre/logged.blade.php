@@ -133,11 +133,31 @@
 
                 success: function(data) { // What to do if we succeed
                     //$('#name').val(JSON.parse(response)[0].name); //<---- This line,
-                    console.log(data.nom_proprietaire);
-                    $('#num_police').val(data.num_police);
-                    $('#societe_assurance').val(data.societe_assurance);
-                    $('#contrat_debut').val(data.contrat_debut);
-                    $('#contrat_fin').val(data.contrat_fin);
+                    console.log(data.data1.num_police);
+
+                    $('#num_police').val(data.data1.num_police);
+                    $('#societe_assurance').val(data.data1.societe_assurance);
+                    $('#contrat_debut').val(data.data1.contrat_debut);
+                    $('#contrat_fin').val(data.data1.contrat_fin);
+
+                    $('#name').val(data.data1.nom_proprietaire);
+                    $('#prenom').val(data.data1.prenom_proprietaire);
+                    $('#adress').val(data.data1.address_proprietaire);
+                    $('#profession').val(data.data1.profession_proprietaire);
+
+                    $('#modele').val(data.data1.modele);
+                    $('#marque').val(data.data1.marque);
+                    $('#matricule').val(data.data1.matricule);
+                    $('#from').val(data.data1.profession_proprietaire);
+                    $('#to').val(data.data1.profession_proprietaire);
+
+                    $('#name_cond').val(data.data1.nom_conducteur);
+                    $('#prenom_cond').val(data.data1.prenom_conducteur);
+                    $('#adress_cond').val(data.data1.address_conducteur);
+                    $('#permis').val(data.data1.num_permis);
+                    $('#deliver').val(data.data1.date_permis);
+                    $('#categorie').val(data.data1.num_permis);
+
                 }
             });
         });

@@ -75,11 +75,9 @@ label {
 #msform .action-button {
     width: 100px;
     background: #2a6c72;
-    font-weight: bold;
     color: white;
     border: 0 none;
-    font-family: FontAwesome;
-    border-radius: 0px;
+    border-radius: 6px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 20px 10px 5px;
@@ -88,17 +86,17 @@ label {
 
 #msform .action-button:hover,
 #msform .action-button:focus {
-    background-color: #311b92;
+    /*  background-color: #311b92;*/
+    background-color: #d3d3d3;
+    color: #2a6c72;
 }
 
 #msform .action-button-previous {
     width: 100px;
     background: #616161;
-    font-weight: bold;
     color: white;
     border: 0 none;
-    font-family: FontAwesome;
-    border-radius: 0px;
+    border-radius: 6px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px 10px 0px;
@@ -107,7 +105,7 @@ label {
 
 #msform .action-button-previous:hover,
 #msform .action-button-previous:focus {
-    background-color: #000000;
+    background-color: #2a6c72;
 }
 
 .card {
@@ -236,6 +234,7 @@ label {
 #separator {
     background-color: #2a6c72;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 10px;
+    height: 45px;
 }
