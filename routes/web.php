@@ -103,7 +103,11 @@ Route::post('/validation_devis_catnat', 'TarificationController@validation_devis
 Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catnat')->name('modification_devis_catnat')->middleware('auth');
 
 /////////////////////////////// Sinistre
-Route::get('/sinistre', 'SinistreController@index_sinistre')->name('sinistre');
+Route::get('/sinistre', 'SinistreController@index')->name('new_sinistre');
+//Route::get('/sinistre', 'SinistreController@index_sinistre')->name('new_sinistre');
+Route::get('/ajaxtest', 'SinistreController@index')->name('ajaxtest');
+Route::get('/getData', 'SinistreController@getData')->name('ajaxdata');
+
 
 //Route::get('/devis_catnat/{id}', 'TarificationController@delete_devis')->name('delete_devis')->middleware('auth');
 
