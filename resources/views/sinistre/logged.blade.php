@@ -122,8 +122,6 @@
     </script>
     <script type='text/javascript'>
         $(function() {
-            //  var vid = $("#vid").val();
-            //var id=$(this).data('id');
 
             $.ajax({
 

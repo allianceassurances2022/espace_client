@@ -265,6 +265,53 @@
                                         <span> Propriétaire véhicule tier </span>
                                     </div>
                                 </div>
+
+                                <div class="form-card">
+
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Modèle du Véhicule</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="modele" name="modele"
+                                                    value="{{ old('modele') }}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Marque, type</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="marque" id="marque"
+                                                    value="{{ old('marque') }}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">N° d'immatriculation</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="matricule" name="matricule"
+                                                    value="{{ old('matricule') }}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Venant de</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="from" id="from" value="{{ old('from') }}"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Allant vers</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="to" name="to" value="{{ old('to') }}"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <input type="button" name="next" class="next action-button" value="Next" />
                             <input type="button" name="previous" class="previous action-button-previous"
@@ -277,16 +324,16 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Nom</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="name_cond_adv" name="name_cond_adv"
-                                                value="{{ old('name_cond_adv') }}" required>
+                                            <input type="text" id="name_cond" name="name_cond"
+                                                value="{{ old('name_cond') }}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Prénom</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="prenom_cond_adv" id="prenom_cond_adv"
-                                                value="{{ old('prenom_cond_adv') }}" required>
+                                            <input type="text" name="prenom_cond" id="prenom_cond_adv"
+                                                value="{{ old('prenom_cond') }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -387,7 +434,62 @@
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Date de l'accident</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="date_accident" name="date_accident"
+                                                value="{{ old('date_accident') }}" required>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Heure de l'accident</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="heure_accident" id="heure_accident"
+                                                value="{{ old('heure_accident') }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Lieu de l'accident</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="lieu_accident" name="lieu_accident"
+                                                value="{{ old('lieu_accident') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Circonstances de l'accident</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis" id="permis" value="{{ old('permis') }}"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Un procès-verbal de gendarmerie</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                                value="option1" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                            <input class="form-check-input" type="checkbox" id="gendarme"
+                                                name="gendarme" value="{{ old('gendarme') }}" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">non</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Un rapport de police</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="categorie" id="categorie"
+                                                value="{{ old('categorie') }}" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <input type="button" name="next" class="next action-button" value="Next" />
                             <input type="button" name="previous" class="previous action-button-previous"
