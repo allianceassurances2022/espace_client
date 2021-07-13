@@ -231,12 +231,9 @@ Home
                 <table id="sinistre" class="table table-striped table-hover table-fw-widget">
                   <thead>
                     <tr>
-                      <th></th>
-                      <th>Police</th>
+                      <th>Référence Police</th>
+                      <th>Référence Sinistre</th>
                       <th>Date déclaration</th>
-                      <th>Statut</th>
-                      <th></th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -310,6 +307,65 @@ Home
 
     <script>
 
+///////////////////////////////////////////////////////////  Sinistre ///////////////////////////////////////////////////////////////////
+
+var table_sinistre = $('#sinistre').DataTable({
+					"responsive": true,
+					"autoWidth": true,
+					"columns": [
+                        {"data": "ref_police",  "orderable": true,"visible": true, "searchable": true},
+                        {"data": "ref_sinistre", "orderable": true, "searchable": true},
+                        {"data": "date_declaration", "orderable": true, "searchable": true},
+					],
+					"rowId": 'ref_police', // IdRow = Id_User in bd
+					"processing": true,
+					"serverSide": true,
+					"ajax": {
+						url: '{{route('sinistre.table')}}',
+						type: 'POST',
+						data: {
+							'_token': function () {
+											return $('input[name="_token"]').val();
+											},
+                            'id': {{Auth()->user()->id}},
+						}
+
+					},
+					"order": [[0, "asc"]],
+					"searching": true,
+					"deferRender": true,
+                    "pageLength": 3,
+					"scrollY":"180px",
+					"language": {
+						"info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
+						"infoEmpty": "Pas de résultat",
+						"infoFiltered": " - Filtere dans _MAX_ enregistrements",
+						"decimal": "",
+						"emptyTable": "Pas de résultat",
+						"infoPostFix": "",
+						"thousands": ",",
+						"lengthMenu": " <select>" +
+                '<option value="3">3</option>' +
+								'<option value="10">10</option>' +
+								'<option value="20">20</option>' +
+								'<option value="30">30</option>' +
+								'<option value="40">40</option>' +
+								'<option value="50">50</option>' +
+								'<option value="100">100</option>' +
+								'<option value="-1">Tous</option>' +
+								"</select>  lignes à afficher", //_MENU_
+						"loadingRecords": "Veuillez patienter - Chargement...",
+//"processing":     "<img src='{{asset('assets/images/loading_bar.gif')}}' > Chargement...",
+						"search": "Recherche:",
+						"zeroRecords": "Pas de résultat",
+						"paginate": {
+							"first": "Premier",
+							"last": "Dernier",
+							"next": "Suivant",
+							"previous": "Précédent"
+						}
+					}
+				});
 
 
 ///////////////////////////////////////////////////////////  Devis ///////////////////////////////////////////////////////////////////

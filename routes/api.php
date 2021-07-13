@@ -33,7 +33,7 @@ Route::post('/calculecatnat', 'APIs\TarificationAPI@calculeCatnat');
 Route::post('/calculeauto', 'APIs\TarificationAPI@calculeAuto');
 
 Route::post('/create_sinistre', 'APIs\SinistreAPI@createSinistre');
-Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre');
+Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre')->name('api_get_alldossiersinistre');
 
 
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\CodeAssureParrain;
 use Illuminate\Support\Facades\DB;
 use App\commune;
 use App\devis;
@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Status_ods;
 use Illuminate\Support\Facades\Auth;
 use App\wilaya;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use UxWeb\SweetAlert\SweetAlert;
 
@@ -143,6 +144,29 @@ class HomeController extends Controller
           })->rawColumns(['show'])
             ->make(true);
     }
+
+    public function index_table_sinistre(Request $request){
+
+        $id_user=$request->id;
+        $code_assures=CodeAssureParrain::where('id_user',$id_user)->get();
+        $code='';
+
+        foreach ($code_assures as $code_assure) {
+            $code=$code."'".$code_assure->code_assure."'";
+        }
+
+        $code=str_replace("''","','",$code);
+
+         $url=route('api_get_alldossiersinistre');
+         //$url = $url."?user_id=30&code=1000000296869";
+
+        // $url = $url."?user_id=".$id_user."&code=".$code;
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/get_sinistre?user_id=".$id_user."&code=".$code;
+        $data = Http::contentType("application/json")->send('GET',$url)->json();
+
+        return datatables()->of($data)
+              ->make(true);
+      }
 
 
     public function renouvellement_auto(){
