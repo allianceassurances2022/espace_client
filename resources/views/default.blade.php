@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('core.home.head')
+@include('core.home.head')
 
-    <body>
+<body>
 
-       <div class="be-wrapper">
+    <div class="be-wrapper">
 
+        @if (auth::user())
             @include('core.home.topbar')
-
-            <!-- Start right Content here -->
-
-            <div class="content-page">
-
-                <!-- Start content -->
-                <div class="be-content">
-
-                    <div class="main-content container-fluid">
-
-                            {{-- @include('core.breadcrumb') --}}
-
-                        {{--    @include('core.home.messages')--}}
-
-                            @include('sweetalert::alert')
-
-                            @yield('content')
-
-                    </div>
-
-                </div> <!-- content -->
+        @endif
 
 
+        <!-- Start right Content here -->
 
-            </div>
-            <!-- End Right content here -->
+        <div class="content-page">
 
-            @include('core.home.footer')
+            <!-- Start content -->
+            <div class="be-content">
+
+                <div class="main-content container-fluid">
+
+                    {{-- @include('core.breadcrumb') --}}
+
+                    {{-- @include('core.home.messages') --}}
+
+                    @include('sweetalert::alert')
+
+                    @yield('content')
+
+                </div>
+
+            </div> <!-- content -->
+
+
 
         </div>
-        <!-- END wrapper -->
+        <!-- End Right content here -->
+
+        @include('core.home.footer')
+
+    </div>
+    <!-- END wrapper -->
 
 
-    </body>
+</body>
 
-    @include('core.home.js')
+@include('core.home.js')
 
 </html>

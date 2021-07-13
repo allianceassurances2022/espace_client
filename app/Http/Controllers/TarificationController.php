@@ -22,6 +22,7 @@ use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
+
 class TarificationController extends Controller
 {
     //catnat
@@ -502,7 +503,7 @@ class TarificationController extends Controller
     public function montant_mrh(Request $request)
     {
 
-      /*  $recap = 'g-recaptcha-response';
+        /*  $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -523,7 +524,7 @@ class TarificationController extends Controller
         $context = stream_context_create($options);
         $verify = file_get_contents($url, false, $context);
         $captcha_success = json_decode($verify);
-        if ($captcha_success->success == false) {
+        /*  if ($captcha_success->success == false) {
 
             echo '<script language="javascript" type="text/javascript">';
             echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
@@ -531,76 +532,71 @@ class TarificationController extends Controller
             echo '</script>';
         } else if ($captcha_success->success == true) {
 */
-            if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
-                Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
-            }
 
-            $tab = array("oui", "non");
-            if (!in_array($request->terasse, $tab)) {
-                Alert::warning('Avertissement', 'terasse est incorrecte');
-            }
+        if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
+            Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
+        }
 
-            $tab = array("proprietaire", "locataire");
-            if (!in_array($request->juredique, $tab)) {
-                Alert::warning('Avertissement', 'juredique est incorrecte');
-            }
+        $tab = array("oui", "non");
+        if (!in_array($request->terasse, $tab)) {
+            Alert::warning('Avertissement', 'terasse est incorrecte');
+        }
 
-            $tab = array("individuelle", "collective");
-            if (!in_array($request->habitation, $tab)) {
-                Alert::warning('Avertissement', 'habitation est incorrecte');
-            }
+        $tab = array("proprietaire", "locataire");
+        if (!in_array($request->juredique, $tab)) {
+            Alert::warning('Avertissement', 'juredique est incorrecte');
+        }
 
-            if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
-                Alert::warning('Nombre de piéces doit etre inferieur a 16');
-            }
+        $tab = array("proprietaire", "locataire");
+        if (!in_array($request->juredique, $tab)) {
+            Alert::warning('Avertissement', 'juredique est incorrecte');
+        }
 
-            $tab_json = array();
-            $habitation = $request->habitation;
-            $juredique = $request->juredique;
-            $nbr_piece = $request->nbr_piece;
-            $montant = $request->montant;
-            $terasse = $request->terasse;
+        $tab = array("individuelle", "collective");
+        if (!in_array($request->habitation, $tab)) {
+            Alert::warning('Avertissement', 'habitation est incorrecte');
+        }
 
-            $tab_json['habitation'] = $habitation;
-            $tab_json['juredique'] = $juredique;
-            $tab_json['nbr_piece'] = $nbr_piece;
-            $tab_json['terasse'] = $terasse;
-            $tab_json['montant'] = $montant;
+        if ($request->nbr_piece < "0" || $request->nbr_piece > "16") {
+            Alert::warning('Nombre de piéces doit etre inferieur a 16');
+        }
 
-            $data = json_encode($tab_json);
+        $tab_json = array();
+        $habitation = $request->habitation;
+        $juredique = $request->juredique;
+        $nbr_piece = $request->nbr_piece;
+        $montant = $request->montant;
+        $terasse = $request->terasse;
 
+        $tab_json['habitation'] = $habitation;
+        $tab_json['juredique'] = $juredique;
+        $tab_json['nbr_piece'] = $nbr_piece;
+        $tab_json['terasse'] = $terasse;
+        $tab_json['montant'] = $montant;
 
-            $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
-            $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
-            $totale = $response['prime_total'];
-
-            $datec = date('d/m/y');
-
-            $data_session = [
-                'terasse' => $terasse,
-                'habitation' => $habitation,
-                'montant' => $montant,
-                'juredique' => $juredique,
-                'nbr_piece' => $nbr_piece,
-                'datec' => $datec,
-                'prime_total' => $response['prime_total'],
-                'incendie' => $response['incendie'],
-                'degats_eaux' => $response['degats_eaux'],
-                'bris_glace' => $response['bris_glace'],
-                'vol' => $response['vol'],
-                'rc_chef_famille' => $response['rc_chef_famille'],
-                'prime_nette' => $response['prime_nette'],
-                'cout_police' => $response['cout_police'],
-                'timbre_dimension' => $response['timbre_dimension'],
-                'tva' => $response['tva']
-            ];
+        $data = json_encode($tab_json);
 
 
-            $request->session()->put('data_mrh', $data_session);
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
+        $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
+        $totale = $response['prime_total'];
+
+        $client = new \GuzzleHttp\Client();
+
+        $url = "http://epaiement.local/api/calculemrh";
 
 
-            return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
-      //  }
+        $response = $client->post($url, [
+            'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+            'body'    => $data
+        ]);
+        dd($response->json());
+        $totale = $response['prime_total'];
+
+        $datec = date('d/m/y');
+
+        return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
+        //  }
     }
 
 
