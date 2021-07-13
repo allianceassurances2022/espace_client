@@ -119,6 +119,14 @@
 
 
         }
+
+        function showInput(box) {
+            document.getElementById(box).style.display = "block";
+        }
+
+        function showNone(box) {
+            document.getElementById(box).style.display = "none";
+        }
     </script>
     <script type='text/javascript'>
         $(function() {

@@ -369,6 +369,47 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="col-sm-4 control-label">Date de naissance</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="adress_cond_adv" name="adress_cond_adv"
+                                            value="{{ old('adress_cond_adv') }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="col-sm-4 control-label">Numéro de téléphone</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="permis_adv" id="permis_adv"
+                                            value="{{ old('permis_adv') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-sm-4 control-label">Étiez-vous au volant du
+                                        véhicule</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
+                                            value="{{ old('gendarme') }}" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                        <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                        <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
+                                            value="{{ old('gendarme') }}" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                        <label class="form-check-label" style="font-size: 16px;">non</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-sm-4 control-label">Le conducteur réside-t-il chez vous</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="permis_adv" id="permis_adv"
+                                            value="{{ old('permis_adv') }}" required>
+                                    </div>
+                                </div>
+
+                            </div>
 
                             <div id="div4" style="display:none">
                                 <div class="list-group">
@@ -425,6 +466,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <input type="button" name="next" class="next action-button" value="Next" />
@@ -467,16 +509,17 @@
                                                 required>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Un procès-verbal de gendarmerie</label>
                                         <div class="col-sm-8">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1" style="width: 100px;
+                                            <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
+                                                value="{{ old('gendarme') }}" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                             <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                            <input class="form-check-input" type="checkbox" id="gendarme"
-                                                name="gendarme" value="{{ old('gendarme') }}" style="width: 100px;
+                                            <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
+                                                value="{{ old('gendarme') }}" style="width: 100px;
                                             margin-right: -27px;
                                             margin-top: 23px;">
                                             <label class="form-check-label" style="font-size: 16px;">non</label>
@@ -485,8 +528,206 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Un rapport de police</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="categorie" id="categorie"
-                                                value="{{ old('categorie') }}" required>
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" onclick="showInput('brigade1')" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" onclick="showNone('brigade1')"
+                                                style="width: 100px;margin-right: -27px;margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">non</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="display: none" id="brigade1">
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Brigade ou commissariat de</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="brigade" name="brigade"
+                                                    value="{{ old('brigade') }}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">S'agit-il d'un
+                                                    vol ?</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-check-input" type="radio" id="police"
+                                                        name="police" value="{{ old('police') }}"
+                                                        onclick="showInput('serie_type')" style="width: 100px;
+                                                margin-right: -27px;">
+                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <input class="form-check-input" type="radio" id="police"
+                                                        name="police" value="{{ old('police') }}"
+                                                        onclick="showNone('serie_type')"
+                                                        style="width: 100px; margin-right: -27px; margin-top: 23px;">
+                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="display: none" id="serie_type">
+                                                <label class="col-sm-4 control-label">Numéro dans la série du
+                                                    type</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="permis_adv" id="permis_adv"
+                                                        value="{{ old('permis_adv') }}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">Votre véhicule est-il gagé</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-check-input" type="radio" id="police"
+                                                        name="police" value="{{ old('police') }}"
+                                                        onclick="showInput('gage')" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <input class="form-check-input" type="radio" id="police"
+                                                        name="police" value="{{ old('police') }}"
+                                                        onclick="showNone('gage')" style="width: 100px; margin-right: -27px;
+                                            margin-top: 23px;">
+                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="display: none" id="gage">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">Nom de l'organisme de
+                                                    crédit</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="permis_adv" id="permis_adv"
+                                                        value="{{ old('permis_adv') }}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">Adresse de l'organisme de
+                                                    crédit</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="permis_adv" id="permis_adv"
+                                                        value="{{ old('permis_adv') }}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">S'agit-il d'un véhicule poids
+                                            lourd</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">non</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">tait attelé à un autre véhicule (tracteur
+                                            ou remorque) au moment de l'accident</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Numéro d'immatriculation du 2nd véhicule
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Poids totale en charge</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Nom de la société qui l'assure</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">N° de police</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Dégâts matériels autres que mon véhicule
+                                            et celui de mon adversaire</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">non</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Nature et importance</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Nom du propriétaire</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Adresse du propriétaire</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Blessé (S)</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                                margin-right: -27px;
+                                                margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                            <input class="form-check-input" type="radio" id="police" name="police"
+                                                value="{{ old('police') }}" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                            <label class="form-check-label" style="font-size: 16px;">non</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Nombre de personnes blessés</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="permis_adv" id="permis_adv"
+                                                value="{{ old('permis_adv') }}" required>
                                         </div>
                                     </div>
                                 </div>
