@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CreationCompteEden;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,10 +107,21 @@ Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catn
 
 /////////////////////////////// Sinistre
 Route::get('/sinistre', 'SinistreController@index')->name('new_sinistre');
+Route::post('/declare_sinistre', 'SinistreController@declare_sinistre')->name('declare_sinistre');
 //Route::get('/sinistre', 'SinistreController@index_sinistre')->name('new_sinistre');
 Route::get('/ajaxtest', 'SinistreController@index')->name('ajaxtest');
 Route::get('/getData', 'SinistreController@getData')->name('ajaxdata');
 
+
+Route::get('/Eden/djilali', function () {
+  // $mail = 'delmedjadji@allianceassurances.com.dz';
+
+
+  $users = new User();
+  //$data= collect(["email" => "delmedjadji@allianceassurances.com.dz"]);
+  $users->email = 'it-dev@allianceassurances.com.dz';
+  Notification::send($users, new CreationCompteEden('djilali'));
+});
 
 //Route::get('/devis_catnat/{id}', 'TarificationController@delete_devis')->name('delete_devis')->middleware('auth');
 

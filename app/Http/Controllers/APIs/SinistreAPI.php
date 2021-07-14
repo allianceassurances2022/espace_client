@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\APIs;
 
 use App\Agences;
+use App\User;
+
 use App\DossierSinistre;
 use App\DossierVehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SendActivateEden;
+use App\Notifications\sendMailSinistre;
+
 
 class SinistreAPI
 {
@@ -43,7 +49,7 @@ class SinistreAPI
             }
         }
 
-        $this->getEmail($data);
+        $this->getEmail($data['vehicle1']);
 
         print_r(true);
     }
@@ -57,32 +63,29 @@ class SinistreAPI
         $dossiers = DossierSinistre::where('user_id', $user_id)->get();
 
         $tableau = array();
-        if(!empty($dossiers)){
+        if (!empty($dossiers)) {
 
-            for($i=0; $i<sizeof($dossiers)-1;$i++){
+            for ($i = 0; $i < sizeof($dossiers) - 1; $i++) {
 
-                $tableau[$i]['ref_police']=$dossiers[$i]['num_police'];
-                $tableau[$i]['ref_sinistre']=null;
+                $tableau[$i]['ref_police'] = $dossiers[$i]['num_police'];
+                $tableau[$i]['ref_sinistre'] = null;
             }
         }
 
-        $url = "http://10.0.0.95/backoffice/public/api/get_sinistre?code=".$user_code_assure;
-        $resp = Http::contentType("application/json")->send('GET',$url)->json();
+        $url = "http://10.0.0.95/backoffice/public/api/get_sinistre?code=" . $user_code_assure;
+        $resp = Http::contentType("application/json")->send('GET', $url)->json();
 
-        if(!empty($resp) && !empty($tableau)) {
+        if (!empty($resp) && !empty($tableau)) {
             $data = array_merge($resp, $tableau);
             $data = json_encode($data);
             print_r($data);
-
-        }elseif(!empty($resp)){
-        $data = json_encode($resp);
-        print_r($data);
-        }else{
-        $data = json_encode($tableau);
-        print_r($data);
-
+        } elseif (!empty($resp)) {
+            $data = json_encode($resp);
+            print_r($data);
+        } else {
+            $data = json_encode($tableau);
+            print_r($data);
         }
-
     }
 
     public function createDossier($data, $id)
@@ -189,7 +192,7 @@ class SinistreAPI
         $agence = Agences::where('id', 'like', '%' . $numero_agence . '%')->get()->toArray();
         if ($agence != null) {
             // $email=$agence[0]['Mail'];
-            $email = 'nbelkacemi@allianceassurances.com.dz';
+            $email = 'h.sarah1308@gmail.com';
             if (($email != null) && ($email != ''))
                 $this->envoiMail($email, $numero_police);
         }
@@ -204,15 +207,24 @@ class SinistreAPI
             $objet = 'Création sinistre'; // Objet du message
             $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police;
             $headers = 'From: Alliance' . "\r\n" .
-                'Reply-To: webmaster@example.com' . "\r\n" .
+                'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
                 'X-Mailer: PHP/';
 
             $success = mail($destinataire, $objet, $message, $headers);
 
+            /*
+            $users = new User();
+            $users->email = 'it-dev@allianceassurances.com.dz';
+            $success = Notification::send($users, new sendMailSinistre($message));
+
+ */
             if (!$success) {
                 $errorMessage = error_get_last();
                 echo $errorMessage;
                 // echo "Votre message n'a pas pu être envoyé";
+
+
+
             }
         }
     }
