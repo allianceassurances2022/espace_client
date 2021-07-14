@@ -35,7 +35,6 @@ class SinistreAPI
 
     public function createSinistre(Request $request)
     {
-
         //header("Access-Control-Allow-Origin: *");
         $data = $request->json()->all();
         $id = $this->guidv4();
@@ -58,21 +57,26 @@ class SinistreAPI
     {
 
         //header("Access-Control-Allow-Origin: *");
-        $user_id = $request->input('user_id'); //code assure
+        $user_id = $request->input('user_id'); // id user
         $user_code_assure = $request->input('code'); //code assure
-        $dossiers = DossierSinistre::where('user_id', $user_id)->get();
-
         $tableau = array();
-        if (!empty($dossiers)) {
 
-            for ($i = 0; $i < sizeof($dossiers) - 1; $i++) {
 
-                $tableau[$i]['ref_police'] = $dossiers[$i]['num_police'];
-                $tableau[$i]['ref_sinistre'] = null;
+        if (($user_id != null) && ($user_id != "")) {
+
+            $dossiers = DossierSinistre::where('user_id', $user_id)->get();
+            if (!empty($dossiers)) {
+
+                for ($i = 0; $i < sizeof($dossiers) - 1; $i++) {
+
+                    $tableau[$i]['ref_police'] = $dossiers[$i]['num_police'];
+                    $tableau[$i]['date_declaration'] = $dossiers[$i]['date_declaration'];
+                    $tableau[$i]['ref_sinistre'] = null;
+                }
             }
         }
 
-        $url = "http://10.0.0.95/backoffice/public/api/get_sinistre?code=" . $user_code_assure;
+        $url = "http://41.111.145.36/backoffice/public/api/get_sinistre?code=" . $user_code_assure;
         $resp = Http::contentType("application/json")->send('GET', $url)->json();
 
         if (!empty($resp) && !empty($tableau)) {

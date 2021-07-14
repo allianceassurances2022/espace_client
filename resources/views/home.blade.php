@@ -236,26 +236,23 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default panel-table">
-                <div class="panel-heading">Mes sinistres</div>
-                <form>
-                    @csrf
-                </form>
-                <div class="panel-body">
-                    <table id="sinistre" class="table table-striped table-hover table-fw-widget">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Police</th>
-                                <th>Date déclaration</th>
-                                <th>Statut</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+              <div class="panel-heading">Mes sinistres</div>
+              <form>
+                                      @csrf
+                              </form>
+              <div class="panel-body">
+                <table id="sinistre" class="table table-striped table-hover table-fw-widget">
+                  <thead>
+                    <tr>
+                      <th>Référence Police</th>
+                      <th>Référence Sinistre</th>
+                      <th>Date déclaration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
             </div>
         </div>
 
@@ -412,126 +409,65 @@
                     },
                 }
 
-            },
-            "order": [
-                [0, "asc"]
-            ],
-            "searching": true,
-            "deferRender": true,
-            "pageLength": 3,
-            "scrollY": "180px",
-            "language": {
-                "info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
-                "infoEmpty": "Pas de résultat",
-                "infoFiltered": " - Filtere dans _MAX_ enregistrements",
-                "decimal": "",
-                "emptyTable": "Pas de résultat",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": " <select>" +
-                    '<option value="3">3</option>' +
-                    '<option value="10">10</option>' +
-                    '<option value="20">20</option>' +
-                    '<option value="30">30</option>' +
-                    '<option value="40">40</option>' +
-                    '<option value="50">50</option>' +
-                    '<option value="100">100</option>' +
-                    '<option value="-1">Tous</option>' +
-                    "</select>  lignes à afficher", //_MENU_
-                "loadingRecords": "Veuillez patienter - Chargement...",
-                //"processing":     "<img src='{{ asset('assets/images/loading_bar.gif') }}' > Chargement...",
-                "search": "Recherche:",
-                "zeroRecords": "Pas de résultat",
-                "paginate": {
-                    "first": "Premier",
-                    "last": "Dernier",
-                    "next": "Suivant",
-                    "previous": "Précédent"
-                }
-            }
-        });
+///////////////////////////////////////////////////////////  Sinistre ///////////////////////////////////////////////////////////////////
 
+var table_sinistre = $('#sinistre').DataTable({
+					"responsive": true,
+					"autoWidth": true,
+					"columns": [
+                        {"data": "ref_police",  "orderable": true,"visible": true, "searchable": true},
+                        {"data": "ref_sinistre", "orderable": true, "searchable": true},
+                        {"data": "date_declaration", "orderable": true, "searchable": true},
+					],
+					"rowId": 'ref_police', // IdRow = Id_User in bd
+					"processing": true,
+					"serverSide": true,
+					"ajax": {
+						url: '{{route('sinistre.table')}}',
+						type: 'POST',
+						data: {
+							'_token': function () {
+											return $('input[name="_token"]').val();
+											},
+                            'id': {{Auth()->user()->id}},
+						}
 
-
-
-
-        ///////////////////////////////////////////////////////////  Contrat ///////////////////////////////////////////////////////////////////
-
-        var table_ods = $('#contrat').DataTable({
-            "responsive": true,
-            "autoWidth": true,
-            "columns": [{
-                    "data": "id",
-                    "orderable": true,
-                    "visible": false,
-                    "searchable": true
-                },
-                {
-                    "data": "type_assurance",
-                    "orderable": true,
-                    "searchable": true,
-                    "render": function(data) {
-                        if (data == "Automobile")
-                            return '<img src="{{ asset('produit_assets/images/icons/auto_col.svg') }}" style="height: 30px;"  />' +
-                                '  ' + data;
-                        else if (data == "Catastrophe Naturelle")
-                            return '<img src="{{ asset('produit_assets/images/icons/cat_nat_col.svg') }}" style="height: 30px;"  />' +
-                                '  ' + data;
-                        else if (data == "Multirisques Habitation")
-                            return '<img src="{{ asset('produit_assets/images/icons/hab_col.svg') }}" style="height: 30px;"  />' +
-                                '  ' + data;
-                    }
-                },
-                {
-                    "data": "prime_total",
-                    "orderable": true,
-                    "searchable": true
-                },
-                {
-                    "data": "created_at",
-                    "orderable": true,
-                    "searchable": true,
-                    "render": function(data) {
-                        return data.substr(0, 10) + ' ' + data.substr(11, 8);
-                    }
-                },
-                // {"data": "date_ods", "orderable": true, "searchable": true},
-                // {"data": "date_ods", "orderable": true, "searchable": true},
-                // {"data": "nom_tiers", "orderable": true, "searchable": true},
-                // {"data": "libelle", "orderable": true, "searchable": false},
-                {
-                    "data": "show",
-                    "orderable": false,
-                    "searchable": false,
-                    "render": function(data) {
-                        if (data[0] == "Automobile") {
-                            var url = '{{ route('contrat_auto', ':id') }}';
-                            url = url.replace(':id', data[1]);
-                            return '<a href="' + url + '" class="icon"><i class="mdi mdi-eye"></i></a>';
-                        } else if (data[0] == "Catastrophe Naturelle") {
-                            var url = '{{ route('contrat_catnat', ':id') }}';
-                            url = url.replace(':id', data[1]);
-                            return '<a href="' + url + '" class="icon"><i class="mdi mdi-eye"></i></a> ';
-                        } else if (data[0] == "Multirisques Habitation") {
-                            var url = '{{ route('contrat_mrh', ':id') }}';
-                            url = url.replace(':id', data[1]);
-                            return '<a href="' + url + '" class="icon"><i class="mdi mdi-eye"></i></a> ';
-                        }
-                    }
-                },
-
-            ],
-            "rowId": 'id', // IdRow = Id_User in bd
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                url: '{{ route('contrat.table') }}',
-                type: 'POST',
-                data: {
-                    '_token': function() {
-                        return $('input[name="_token"]').val();
-                    },
-                }
+					},
+					"order": [[0, "asc"]],
+					"searching": true,
+					"deferRender": true,
+                    "pageLength": 3,
+					"scrollY":"180px",
+					"language": {
+						"info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
+						"infoEmpty": "Pas de résultat",
+						"infoFiltered": " - Filtere dans _MAX_ enregistrements",
+						"decimal": "",
+						"emptyTable": "Pas de résultat",
+						"infoPostFix": "",
+						"thousands": ",",
+						"lengthMenu": " <select>" +
+                '<option value="3">3</option>' +
+								'<option value="10">10</option>' +
+								'<option value="20">20</option>' +
+								'<option value="30">30</option>' +
+								'<option value="40">40</option>' +
+								'<option value="50">50</option>' +
+								'<option value="100">100</option>' +
+								'<option value="-1">Tous</option>' +
+								"</select>  lignes à afficher", //_MENU_
+						"loadingRecords": "Veuillez patienter - Chargement...",
+//"processing":     "<img src='{{asset('assets/images/loading_bar.gif')}}' > Chargement...",
+						"search": "Recherche:",
+						"zeroRecords": "Pas de résultat",
+						"paginate": {
+							"first": "Premier",
+							"last": "Dernier",
+							"next": "Suivant",
+							"previous": "Précédent"
+						}
+					}
+				});
 
             },
             "order": [

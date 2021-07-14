@@ -87,6 +87,7 @@ Route::get('satim_confirmation', 'PaiementController@satim_confirmation')->name(
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/devis', 'HomeController@index_table_devis')->name('devis.table');
 Route::post('/contrat', 'HomeController@index_table_contrat')->name('contrat.table');
+Route::post('/sinistre', 'HomeController@index_table_sinistre')->name('sinistre.table');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/delete_devis/{id}', 'TarificationController@delete_devis')->name('delete_devis');
@@ -168,6 +169,8 @@ Route::get('attestation/{id}', 'TarificationAutoController@attestation')->name('
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/calculemrh', 'TarificationService@calculeMRH')->name('calculemrh');
+
+
 
 
 Auth::routes();
