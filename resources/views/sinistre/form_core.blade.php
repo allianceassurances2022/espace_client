@@ -30,7 +30,9 @@
                                         <div class="col-sm-8">
                                             <input type="text" id="num_police" name="name"
                                                 value="{{ old('num_police') }}" autofocus>
+ 
                                         </div>
+
                                     </div>
 
                                     <div class="col-md-6">

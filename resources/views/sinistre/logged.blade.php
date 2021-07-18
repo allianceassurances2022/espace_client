@@ -127,21 +127,23 @@
         function showNone(box) {
             document.getElementById(box).style.display = "none";
         }
-    </script>
-    <script type='text/javascript'>
-        $(function() {
+
+        function getSinistre() {
+
 
             $.ajax({
 
                 type: "get",
                 url: '{{ route('ajaxdata') }}',
+
+
                 dataType: 'json',
 
                 success: function(data) { // What to do if we succeed
                     //$('#name').val(JSON.parse(response)[0].name); //<---- This line,
-                    console.log(data.data1.num_police);
+                    console.log(data);
 
-                    $('#num_police').val(data.data1.num_police);
+                    $('#num_police').val(data.num_police);
                     $('#societe_assurance').val(data.data1.societe_assurance);
                     $('#contrat_debut').val(data.data1.contrat_debut);
                     $('#contrat_fin').val(data.data1.contrat_fin);
@@ -164,6 +166,21 @@
                     $('#deliver').val(data.data1.date_permis);
                     $('#categorie').val(data.data1.num_permis);
 
+                }
+            });
+        }
+    </script>
+    <script type='text/javascript'>
+        $(function() {
+            $.ajax({
+
+                type: "get",
+                url: '{{ route('ajaxdata') }}',
+                dataType: 'json',
+
+                success: function(data) { // What to do if we succeed
+                    //$('#name').val(JSON.parse(response)[0].name); //<---- This line,
+                    console.log(data);
                 }
             });
         });

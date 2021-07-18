@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CodeAssureParrain;
 use App\DossierSinistre;
 use Illuminate\Http\Request;
 use App\DossierVehicule;
@@ -26,8 +27,16 @@ class SinistreController extends Controller
         }
     }
 
+
+
     public function getData()
     {
+
+        $user_id = Auth::user()->id;
+        $num_polices = DossierSinistre::where('user_id', $user_id)->get();
+
+        //   $num_polices = $num_polices['num_police'];
+
 
         $vehicule = DossierVehicule::where('num_police', 160832111000044)->first();
         $sinistre = DossierSinistre::where('num_police', 160832111000044)->first();
@@ -37,12 +46,35 @@ class SinistreController extends Controller
 
         $data = array();
         $data = [
+            'num_police' => $num_polices,
             'data1' => $data1,
             'data2' => $data2,
         ];
 
 
         return $data;
+    }
+
+    public function getPolice()
+    {
+
+        $user_id = Auth::user()->id;
+        $num_assure = CodeAssureParrain::where('id_user', $user_id)->get();
+        $num_assure = $num_assure->pluck('code_assure');
+
+
+        // dd($num_assure->join(',  '));       
+        $code = $num_assure->join(', ', ',');
+        // $code = $num_assure->concat(['null']);
+        foreach ($num_assure as $assure) {
+            // dd($assure);
+            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";
+            $response = Http::contentType("application/json")
+                ->send('GET', $url)
+                ->json();
+
+            dd($response->reference);
+        }
     }
 
     public function declare_sinistre(Request $request)
