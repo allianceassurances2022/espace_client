@@ -355,7 +355,7 @@ class TarificationController extends Controller
 
         $data = json_encode($tab_json);
 
-        $url = "http://epaiment.local/api/calculecatnat";
+        $url = route('api_calcul_catnat');
        // $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
@@ -578,6 +578,7 @@ class TarificationController extends Controller
         $data = json_encode($tab_json);
 
 
+        
         $url = route('api_calcul_mrh');
         //$url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
