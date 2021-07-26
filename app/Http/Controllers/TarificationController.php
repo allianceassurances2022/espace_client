@@ -355,7 +355,8 @@ class TarificationController extends Controller
 
         $data = json_encode($tab_json);
 
-        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
+        $url = "http://epaiment.local/api/calculecatnat";
+       // $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
 
@@ -577,25 +578,38 @@ class TarificationController extends Controller
         $data = json_encode($tab_json);
 
 
-        $url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
+        $url = "http://epaiment.local/api/calculemrh";
+        //$url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
         $totale = $response['prime_total'];
 
-        $client = new \GuzzleHttp\Client();
-
-        $url = "http://epaiement.local/api/calculemrh";
-
-
-        $response = $client->post($url, [
-            'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-            'body'    => $data
-        ]);
-        dd($response->json());
-        $totale = $response['prime_total'];
 
         $datec = date('d/m/y');
 
-        return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale'));
+        $data_session = [
+            "habitation" => $habitation,
+            "juredique" => $juredique,
+            "nbr_piece" => $nbr_piece,
+            "terasse" => $terasse,
+            "montant" => $montant,
+            "prime_total" => $response['prime_total'],
+            "incendie" => $response['incendie'],
+            "degats_eaux" => $response['degats_eaux'],
+            "bris_glace" => $response['bris_glace'],
+            "vol" => $response['vol'],
+            "rc_chef_famille" => $response['rc_chef_famille'],
+            "prime_nette" => $response['prime_nette'],
+            "cout_police" => $response['cout_police'],
+            "timbre_dimension" => $response['timbre_dimension'],
+            "offre" => "Multirisque habitation", 
+            "tva" => $response['tva'], 
+		];
+        $wilaya = wilaya::all();
+        $commune = commune::all();
+        $offre = "Multirisque habitation";
+        $request->session()->put('data_mrh', $data_session);
+
+        return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale','wilaya','commune'));
         //  }
     }
 

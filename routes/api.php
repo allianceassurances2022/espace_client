@@ -38,6 +38,7 @@ Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre')->name('api
 
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
 Route::get('/get_agence', 'APIs\GetAgencesAPI@getAgences');
+Route::get('/get_agence_json', 'APIs\GetAgencesAPI@getAgencesJson');
 Route::post('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
 Route::post('/get_nearest_agence', 'APIs\GetNearestAgencesAPI@getNearestAgences');
 

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendActivateEden;
 use App\Notifications\sendMailSinistre;
 
+use function GuzzleHttp\json_encode;
 
 class SinistreAPI
 {
@@ -48,7 +49,9 @@ class SinistreAPI
             }
         }
 
-        $this->getEmail($data['vehicle1']);
+        $information = json_encode($data);
+
+        $this->getEmail($data['vehicle1'], $information);
 
         print_r(true);
     }
@@ -188,7 +191,7 @@ class SinistreAPI
         return false;
     }
 
-    public function getEmail($data)
+    public function getEmail($data, $information)
     {
 
         $numero_agence = substr($data['num_police'], 0, 4);
@@ -198,30 +201,24 @@ class SinistreAPI
             // $email=$agence[0]['Mail'];
             $email = 'h.sarah1308@gmail.com';
             if (($email != null) && ($email != ''))
-                $this->envoiMail($email, $numero_police);
+                $this->envoiMail($email, $numero_police, $information);
         }
     }
 
-    public function envoiMail($email, $numero_police)
+    public function envoiMail($email, $numero_police, $information)
     {
         if (($email !== '') && ($email !== null)) {
 
             $destinataire = $email;
             // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
             $objet = 'Création sinistre'; // Objet du message
-            $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police;
+            $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police. '\n'. $information;
             $headers = 'From: Alliance' . "\r\n" .
                 'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
                 'X-Mailer: PHP/';
 
             $success = mail($destinataire, $objet, $message, $headers);
-
-            /*
-            $users = new User();
-            $users->email = 'it-dev@allianceassurances.com.dz';
-            $success = Notification::send($users, new sendMailSinistre($message));
-
- */
+         
             if (!$success) {
                 $errorMessage = error_get_last();
                 echo $errorMessage;

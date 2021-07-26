@@ -607,7 +607,7 @@ class PaiementController extends Controller
 
             $mrh = [
                 'nom' => $nom,
-                'datec' => $datec,
+               // 'datec' => $datec,
                 'montant' => $montant
             ];
         }
