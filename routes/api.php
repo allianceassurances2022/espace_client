@@ -28,9 +28,9 @@ Route::post('/get_parrainage', 'APIs\EdenAPI@getParrainage');
 Route::get('/get_points', 'APIs\EdenValidationPointAPI@updatePoints');
 
 
-Route::post('/calculemrh', 'APIs\TarificationAPI@calculeMRH');
-Route::post('/calculecatnat', 'APIs\TarificationAPI@calculeCatnat');
-Route::post('/calculeauto', 'APIs\TarificationAPI@calculeAuto');
+Route::post('/calculemrh', 'APIs\TarificationAPI@calculeMRH')->name('api_calcul_mrh');
+Route::post('/calculecatnat', 'APIs\TarificationAPI@calculeCatnat')->name('api_calcul_catnat');
+Route::post('/calculeauto', 'APIs\TarificationAPI@calculeAuto')->name('api_calcul_auto');
 
 Route::post('/create_sinistre', 'APIs\SinistreAPI@createSinistre');
 Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre')->name('api_get_alldossiersinistre');

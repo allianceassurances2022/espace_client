@@ -578,7 +578,7 @@ class TarificationController extends Controller
         $data = json_encode($tab_json);
 
 
-        $url = "http://epaiment.local/api/calculemrh";
+        $url = route('api_calcul_mrh');
         //$url = "https://epaiement.allianceassurances.com.dz/public/api/calculemrh";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
         $totale = $response['prime_total'];
@@ -601,8 +601,8 @@ class TarificationController extends Controller
             "prime_nette" => $response['prime_nette'],
             "cout_police" => $response['cout_police'],
             "timbre_dimension" => $response['timbre_dimension'],
-            "offre" => "Multirisque habitation", 
-            "tva" => $response['tva'], 
+            "offre" => "Multirisque habitation",
+            "tva" => $response['tva'],
 		];
         $wilaya = wilaya::all();
         $commune = commune::all();
