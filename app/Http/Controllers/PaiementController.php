@@ -103,57 +103,9 @@ class PaiementController extends Controller
             "capitale_assure"    => $risque->montant_forfaitaire,
             "terrasse"           => $terasse,
         ];
-        /*
-        $var = json_encode($var);
 
-        $client = new \GuzzleHttp\Client();
-
-        $url = "http://10.0.0.131:8888/api/create_police/";
-
-        $request = $client->post($url, [
-            'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-            'auth' => ['djilali', 'API.create_police'],
-            'body'    => $var
-        ]);
-
-        $response = json_decode($request->getBody(), true);
-
-        $assure = Assure::where('id_devis', $id)->first();
-*/
         return view('redirect satim/redirect', compact('devis'));
-        /*    if ($response['status'] == "true") {
 
-            $devis->update([
-                'type_devis'      => 2,
-                'reference_police' => $response['data']['Code de référence'],
-            ]);
-
-            $assure->update([
-                'code_assure' => $response['data']["Code assure"],
-            ]);
-            $dev = $devis;
-
-            Historique_Iris::create([
-                'status' => $response['status'],
-                'message' => $response['message'],
-                'id_devis' => $devis->id
-            ]);
-        } else {
-            $titre = 'Echec de paiement';
-            $description = $response['message'];
-
-            Historique_Iris::create([
-                'status' => $response['status'],
-                'message' => $description,
-                'id_devis' => $devis->id
-            ]);
-
-            return view('erreur', compact('titre', 'description'));
-        }
-
-        Alert::success('Validé', 'Opération effectuée avec succès');
-        return redirect()->route('contrat_mrh', $dev->id);
-        */
     }
 
     public function paiement_catnat($id)
@@ -298,53 +250,11 @@ class PaiementController extends Controller
             "permis_construire"             => $permis,
 
         ];
-        /*
-        $var = json_encode($var);
 
-        $client = new \GuzzleHttp\Client();
-        $url = "http://10.0.0.131:8888/api/create_police/";
-
-        $request = $client->post($url, [
-            'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-            'auth' => ['djilali', 'API.create_police'],
-            'body'    => $var
-        ]);
-        // $response = json_decode($request->getBody(), true);
-        $response = json_decode($request->getBody(), true);
-*/
         $assure = Assure::where('id_devis', $id)->first();
 
         return view('redirect satim/redirect', compact('devis'));
-        /*
-        if ($response['status'] == "true") {
 
-            $devis->update([
-                'type_devis'      => 2,
-                'reference_police' => $response['data']["Code de reference"],
-            ]);
-
-            $assure->update([
-                'code_assure' => $response['data']["Code assure"],
-            ]);
-            $dev = $devis;
-
-            return view('paiement', compact('mrh', 'auto', 'catnat', 'prime_total', 'id', 'devis'));
-        } else {
-            $titre = 'Echec de paiement';
-            $description = $response['message'];
-
-            Historique_Iris::create([
-                'status' => $response['status'],
-                'message' => $description,
-                'id_devis' => $devis->id
-            ]);
-
-            return view('erreur', compact('titre', 'description'));
-        }
-
-        Alert::success('Validé', 'Opération effectuée avec succès');
-        return redirect()->route('contrat_catnat', $devis->id);
-        */
     }
 
     public function paiement_auto($id)
@@ -461,71 +371,28 @@ class PaiementController extends Controller
             "lieu_permis"             => $permis_lieu
         ];
 
-        /*
-        $var = json_encode($var);
 
-        $client = new \GuzzleHttp\Client();
-
-        $url = "http://10.0.0.131:8888/api/create_police/";
-
-
-        $request = $client->post($url, [
-            'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-            'auth' => ['djilali', 'API.create_police'],
-            'body'    => $var
-        ]);
-
-        $response = json_decode($request->getBody(), true);
-        // dd($response);
-*/
         $assure = Assure::where('id_devis', $id)->first();
-        // dd($assure);
-        /*    $devis->update([
-            'type_devis'      => 2,
-            'reference_police' => '1223545485',
-        ]);
-        */
+
         return view('redirect satim/redirect', compact('devis'));
-        //   return view('paiement', compact('mrh', 'auto', 'catnat', 'prime_total', 'id', 'devis'));
 
-        /*
-        if ($response['status'] == "true") {
-
-            $devis->update([
-                'type_devis'      => 2,
-                'reference_police' => $response['data']["Code de référence"],
-            ]);
-
-            $assure->update([
-                'code_assure' => $response['data']["Code assure"],
-            ]);
-            $dev = $devis;
-
-
-
-            return view('paiement', compact('mrh', 'auto', 'catnat', 'prime_total', 'id', 'devis'));
-        } else {
-            dd($response);
-        }
-
-*/
-        // return redirect()->route('home');
 
     }
+
+
     public function satim_confirmation(Request $request)
     {
-
-        // $devis_id = $request->devis_id
 
         $devis = devis::where('id', $request->devis_id)->first();
         if($devis->type_assurance=="Automobile"){
             $risque = Rsq_Vehicule::where('code_devis', $devis->id)->first();
 
-        }else if($devis->type_assurance=="mrh"|| $devis->type_assurance=="catnat"){
+        }else if($devis->type_assurance=="Multirisques Habitation"|| $devis->type_assurance=="Catastrophe Naturelle"){
             $risque = Rsq_Immobilier::where('code_devis', $devis->id)->first();
         }
 
         $offre  = formule::where('libelle', $risque->offre)->first();
+
 
         $num = $devis->code_agence;
 
@@ -583,15 +450,21 @@ class PaiementController extends Controller
             ->where('type_devis', "1")
             ->count();
 
-        $sum_contr = devis::all()
+        $sum_contr = devis::where('id_user', $user->id )
+            ->where('type_devis', "2")
             ->count();
+
+        $sum_contr_branche=devis::where('type_devis',"2")
+        ->where('code_agence',$devis->code_agence)
+        ->where('type_assurance',$devis->type_assurance)
+        ->count();
 
 
         $year = substr(date('Y'), 2, 2);
 
         $branch = $offre->branch_id;
 
-        $count = $sum_contr + 1;
+        $count = $sum_contr_branche + 1;
 
         $formatted_count = substr(str_repeat(0, 4) . $count, -4);
 

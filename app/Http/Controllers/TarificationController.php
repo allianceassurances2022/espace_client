@@ -18,7 +18,7 @@ use App\Assure;
 use App\Profession;
 use App\Civilite;
 use App\Http\Controllers\Services\TarificationService;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
@@ -925,7 +925,7 @@ class TarificationController extends Controller
                 'prime_nette'       => $value_catnat['prime_nette'],
                 'cp'                => $value_catnat['cout_police'],
                 'td'                => $value_catnat['timbre_dimension'],
-                'type_assurance'    => 'catnat'
+                'type_assurance'    => 'Catastrophe Naturelle'
             ]);
 
             if ($value_catnat['type_formule'] == 'Habitation') {
@@ -984,7 +984,7 @@ class TarificationController extends Controller
                     'appartient'            => $request->appartient,
                     'code_activite'         => $request->activite_catnat,
                     'code_zone'             => $value_catnat['zone'],
-                    'offre'                 => "catnat",
+                    'offre'                 => "Catastrophe Naturelle",
                     'code_devis'            => $dev->id,
                     'etage'                 => $request->etage,
                     'nombre_piece'          => $request->nbr_piece,

@@ -25,7 +25,7 @@ use App\Civilite;
 use App\Assistance;
 
 use RealRashid\SweetAlert\Facades\Alert;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Http;
