@@ -13,7 +13,7 @@
 
                         <ul id="progressbar">
 
-                            <li class="active" id="account"><strong>L'Assurance</strong></i></li>
+                            <li class="active" id="account"><strong>L'Assurance</strong></li>
                             <li id="account"><strong>Le propriétaire</strong></li>
                             <li id="personal"><strong>le véhicule</strong></li>
                             <li id="personal"><strong>le conducteur</strong></li>
@@ -27,14 +27,30 @@
                         <fieldset>
                             <div class="form-card">
                                 <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label class="col-sm-4 control-label">N° Police d'assurance</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" id="num_police" name="name"
-                                                value="{{ old('num_police') }}" autofocus>
-                                        </div>
+                                    @if (Auth::user())
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">N° Police d'assurance</label>
+                                            <div class="col-sm-8">
 
-                                    </div>
+                                                <select onchange="getSinistre()" type="text" id="num_police" name="ref">
+                                                    @foreach ($codeAssures as $codeAssure)
+                                                        <option value="{{ $codeAssure }}" selected>{{ $codeAssure }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">N° Police d'assurance</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="num_police" name="name"
+                                                    value="{{ old('num_police') }}" autofocus>
+                                            </div>
+                                        </div>
+                                    @endif
+
+
 
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Société d'assurance</label>

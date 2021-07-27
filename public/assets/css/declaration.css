@@ -48,6 +48,7 @@ label {
 }
 
 #msform input,
+#msform select,
 #msform textarea {
     padding: 8px 15px 8px 15px;
     border: 1px solid #ccc;

@@ -108,6 +108,7 @@ Route::get('/devis_catnat/{id}', 'TarificationController@modification_devis_catn
 
 /////////////////////////////// Sinistre
 Route::get('/sinistre', 'SinistreController@index')->name('new_sinistre');
+Route::get('/sinistre_logged', 'SinistreController@logged')->name('new_sinistre_logged');
 Route::post('/declare_sinistre', 'SinistreController@declare_sinistre')->name('declare_sinistre');
 //Route::get('/sinistre', 'SinistreController@index_sinistre')->name('new_sinistre');
 Route::get('/ajaxtest', 'SinistreController@index')->name('ajaxtest');

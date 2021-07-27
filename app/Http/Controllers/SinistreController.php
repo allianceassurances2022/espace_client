@@ -18,10 +18,20 @@ class SinistreController extends Controller
         return view('sinistre.declaration');
     }
 
+    public function logged()
+    {
+        return view('');
+    }
+
     public function index()
     {
         if (Auth::user()) {
-            return view('sinistre.logged');
+            $user_id = Auth::user()->id;
+
+            $dataAssure = CodeAssureParrain::where('id_user', $user_id)->get();
+            $codeAssures = $dataAssure->pluck('code_assure');
+
+            return view('sinistre.logged', compact('codeAssures'));
         } else {
             return view('sinistre.not_logged');
         }
@@ -33,7 +43,7 @@ class SinistreController extends Controller
     {
 
         $user_id = Auth::user()->id;
-        dd($user_id);
+
         $num_polices = DossierSinistre::where('user_id', $user_id)->get();
 
         //   $num_polices = $num_polices['num_police'];
