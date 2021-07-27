@@ -3,8 +3,9 @@
     Déclaration sinistres
 @endsection
 @section('head')
-    <link rel="stylesheet" type="text/css" href="assets/lib/datatables/css/dataTables.bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/declaration.css" />
+ {{-- <link rel="stylesheet" type="text/css" href="assets/lib/datatables/css/dataTables.bootstrap.min.css" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="assets/css/declaration.css" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> --}}
 @endsection
 <!--
 <div>

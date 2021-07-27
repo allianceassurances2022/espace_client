@@ -221,54 +221,6 @@ class PaiementController extends Controller
             $local_assure = 0;
         }
 
-        /*
-              $var = [
-                    "nom"               => auth()->user()->name,
-                    "prenom"            => auth()->user()->prenom,
-                    "categorie"         => "1",
-                    "civitlite"         => "1",
-                    "dateNaissance"     => Carbon::parse(auth()->user()->date_naissance)->format('d/m/Y'),
-                    "lieuNaissance"     => "Rahouia",
-                    "nationalite"       => "Algérienne",
-                    "activite"          => "1",
-                    "proffession"       => "1",
-                    "assureAddresse"    => "Fort de l'eau",
-                    "assureWilayaId"    => "01",
-                    "assureVilleId"     => "0101",
-                    "regionId"          => "16",
-                    "agenceId"          => "00000",
-                    "classId"           => "12",
-                    "branchId"          => "1290",
-                    "souscriptionDate"  => Carbon::parse($devis->date_souscription)->format('d/m/Y'),
-                    "effetDate"         => Carbon::parse($devis->date_effet)->format('d/m/Y'),
-                    "expirationDate"    => Carbon::parse($devis->date_expiration)->format('d/m/Y'),
-                    "periode"           => 1,
-                    "periodeType"       => 2,
-                    "wilayaId"          => "01",
-                    "villeId"           => "0101",
-                    "address"           => "ADRAR",
-                    "zone"              => "5",
-                    "formule"           => "3",
-                    "batimentType"      => "1",
-                    "batimentCategorie" => "1",
-    "surface"           => "0",
-    "nombrePieces"      => "3",
-    "etage"             => "0",
-    "anneeConstruction" => 2015,
-    "proprietaire"      => 1,
-    "activiteRisque"    => "1",
-    "capitaleAssure"    => 500000,
-    "valeurEquipement"  => 200000,
-    "valeurMarchandise" => 300000,
-    "valeurContenant"   => 500000,
-    "regPara"           => 1,
-    "inscRegisteCom"    => 1,
-    "registeCom"        => 1,
-    "appartient"        => 1
-
-              ];
-*/
-
         if ($registre_com == "oui") {
             $registre_com = 1;
         } else {
@@ -397,8 +349,6 @@ class PaiementController extends Controller
 
     public function paiement_auto($id)
     {
-
-
         $auto         = Rsq_Vehicule::where('code_devis', $id)->first();
         $code_devis  = $auto->code_devis;
         $id          = $auto->id;
@@ -575,8 +525,8 @@ class PaiementController extends Controller
             $risque = Rsq_Immobilier::where('code_devis', $devis->id)->first();
         }
 
-        $offre  = formule::where('abreviation', $risque->offre)->first();
-        
+        $offre  = formule::where('libelle', $risque->offre)->first();
+
         $num = $devis->code_agence;
 
         $user = auth::user();
@@ -646,12 +596,11 @@ class PaiementController extends Controller
         $formatted_count = substr(str_repeat(0, 4) . $count, -4);
 
 
+
         $devis->update([
             'type_devis'      => 2,
             'reference_police' =>  $num . ' ' . $year . ' ' . $branch . ' ' . $formatted_count,
         ]);
-
-
 
 
         return view('home', compact('user', 'mrh', 'auto', 'cat', 'total',  'sum_contr', 'sum_devis'));
