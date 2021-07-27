@@ -33,6 +33,7 @@ class SinistreController extends Controller
     {
 
         $user_id = Auth::user()->id;
+        dd($user_id);
         $num_polices = DossierSinistre::where('user_id', $user_id)->get();
 
         //   $num_polices = $num_polices['num_police'];
@@ -64,16 +65,17 @@ class SinistreController extends Controller
 
 
         // dd($num_assure->join(',  '));       
-        $code = $num_assure->join(', ', ',');
+        //  $code = $num_assure->join(', ', ',');
         // $code = $num_assure->concat(['null']);
         foreach ($num_assure as $assure) {
             // dd($assure);
             $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";
+            //  dd($url);
             $response = Http::contentType("application/json")
                 ->send('GET', $url)
                 ->json();
 
-            dd($response->reference);
+            dd($response);
         }
     }
 
