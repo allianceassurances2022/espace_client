@@ -567,14 +567,17 @@ class PaiementController extends Controller
 
         // $devis_id = $request->devis_id
 
-        $devis_ = devis::where('id', $request->devis_id)->first();
-        $risque = Rsq_Vehicule::where('code_devis', $devis_->id)->first();
-        $offre  = formule::where('libelle', $risque->offre)->first();
+        $devis = devis::where('id', $request->devis_id)->first();
+        if($devis->type_assurance=="Automobile"){
+            $risque = Rsq_Vehicule::where('code_devis', $devis->id)->first();
 
+        }else if($devis->type_assurance=="mrh"|| $devis->type_assurance=="catnat"){
+            $risque = Rsq_Immobilier::where('code_devis', $devis->id)->first();
+        }
 
-
-
-        $num = $devis_->code_agence;
+        $offre  = formule::where('abreviation', $risque->offre)->first();
+        
+        $num = $devis->code_agence;
 
         $user = auth::user();
         $value_cat = session('data_catnat');
@@ -589,11 +592,11 @@ class PaiementController extends Controller
             $nom = 'Catastrophe Naturelle';
             $montant = $value_cat['prime_total'];
             $total = $total + $montant;
-            $datec = $value_cat['datec'];
+           // $datec = $value_cat['datec'];
 
             $cat = [
                 'nom' => $nom,
-                'datec' => $datec,
+               // 'datec' => $datec,
                 'montant' => $montant
             ];
         }
@@ -603,11 +606,11 @@ class PaiementController extends Controller
             $nom = 'Multirisques Habitation';
             $montant = $value_mrh['prime_total'];
             $total = $total + $montant;
-            $datec = $value_mrh['datec'];
+            //$datec = $value_mrh['datec'];
 
             $mrh = [
                 'nom' => $nom,
-                'datec' => $datec,
+               // 'datec' => $datec,
                 'montant' => $montant
             ];
         }
@@ -626,14 +629,6 @@ class PaiementController extends Controller
             ];
         }
 
-        $devis = devis::where('id_user', $user->id)
-            ->where('type_devis', "1")
-            ->paginate(4, ['*'], 'p');
-
-        $contrats = devis::where('id_user', $user->id)
-            ->where('type_devis', "2")
-            ->paginate(4,  ['*'], 'p1');
-
         $sum_devis = devis::where('id_user', $user->id)
             ->where('type_devis', "1")
             ->count();
@@ -651,14 +646,14 @@ class PaiementController extends Controller
         $formatted_count = substr(str_repeat(0, 4) . $count, -4);
 
 
-        $devis_->update([
+        $devis->update([
             'type_devis'      => 2,
-            'reference_police' => 'e-' . $num . ' ' . $year . ' ' . $branch . ' ' . $formatted_count,
+            'reference_police' =>  $num . ' ' . $year . ' ' . $branch . ' ' . $formatted_count,
         ]);
 
 
 
 
-        return view('home', compact('user', 'mrh', 'auto', 'cat', 'total', 'devis', 'contrats', 'sum_contr', 'sum_devis'));
+        return view('home', compact('user', 'mrh', 'auto', 'cat', 'total',  'sum_contr', 'sum_devis'));
     }
 }

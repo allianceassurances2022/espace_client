@@ -20,4 +20,17 @@ class GetAgencesAPI
         print_r($data);
 
     }
+    public function getAgencesJson()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+        header('Access-Control-Allow-Headers: Origin, Content-Type');
+        header("Content-Type:application/json");
+
+        $sql = "SELECT Name as title, Latitude as lat, Longetude as lng, Type, Chef_Agence, wilaya, Adresse, Tel FROM agences ";
+        $data = DB::connection('mysql')->select($sql);
+        $data = json_encode($data);
+        print_r($data);
+
+    }
 }
