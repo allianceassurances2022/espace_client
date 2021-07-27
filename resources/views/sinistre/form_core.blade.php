@@ -3,15 +3,17 @@
         <div class="row justify-content-center">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <center>
+                    {{-- <center> --}}
                         <h2 id="heading">Déclaration sinistre</h2>
                         <p>Déclarez votre sinitre en toute facilité</p>
-                    </center>
+                    {{-- </center> --}}
                     <form id="msform" method="POST" action="{{ route('declare_sinistre') }}" class="form-horizontal">
                         @csrf
                         <!-- progressbar -->
+
                         <ul id="progressbar">
-                            <li class="active" id="account"><strong>L'Assurance</strong></li>
+
+                            <li class="active" id="account"><strong>L'Assurance</strong></i></li>
                             <li id="account"><strong>Le propriétaire</strong></li>
                             <li id="personal"><strong>le véhicule</strong></li>
                             <li id="personal"><strong>le conducteur</strong></li>
@@ -30,7 +32,6 @@
                                         <div class="col-sm-8">
                                             <input type="text" id="num_police" name="name"
                                                 value="{{ old('num_police') }}" autofocus>
-
                                         </div>
 
                                     </div>

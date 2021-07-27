@@ -15,9 +15,9 @@ class EdenAPI
     {
         //header("Access-Control-Allow-Origin: * ");
 
-        $getdata = $request->json()->all();
-
-        $code_parrain = $getdata['code_parrain'];
+        // $getdata = $request->json()->all();
+        $data = $request->json()->all();
+        $code_parrain = $data['code_parrain'];
 
         $sql = "SELECT * FROM eden_parrain where code_parrain='" . $code_parrain . "' ";
         $data = DB::connection('backoffice')->select($sql);
