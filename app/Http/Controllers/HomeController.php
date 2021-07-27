@@ -62,11 +62,11 @@ class HomeController extends Controller
             $nom = 'Multirisques Habitation';
             $montant = $value_mrh['prime_total'];
             $total=$total+$montant;
-            $datec=$value_mrh['datec'];
+            //$datec=$value_mrh['datec'];
 
             $mrh = [
                 'nom' => $nom,
-                'datec' => $datec,
+                //'datec' => $datec,
                 'montant' => $montant
             ];
 
@@ -96,9 +96,9 @@ class HomeController extends Controller
                             ->where('type_devis', "2")
                             ->paginate(4,  ['*'], 'p1');
 
-     //   $sum_auto = $devis->where('type_assurance', 'Automobile')->count();
-      //  $sum_mrh = $devis->where('type_assurance', 'Multirisques Habitation')->count();
-       // $sum_catnat = $devis->where('type_assurance', 'Catastrophe Naturelle')->count();
+      //    $sum_auto = $devis->where('type_assurance', 'Automobile')->count();
+      //    $sum_mrh = $devis->where('type_assurance', 'Multirisques Habitation')->count();
+      //    $sum_catnat = $devis->where('type_assurance', 'Catastrophe Naturelle')->count();
 
         $sum_devis = devis::where('id_user', $user->id )
                              ->where('type_devis', "1")
