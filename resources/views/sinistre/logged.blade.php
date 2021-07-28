@@ -5,7 +5,8 @@
 @section('head')
     <link rel="stylesheet" type="text/css" href="assets/lib/datatables/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/declaration.css" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 @endsection
 
 @section('content')
@@ -130,13 +131,20 @@
         }
 
         function getSinistre() {
-
+            alert($('#num_police').val());
 
             $.ajax({
 
-                type: "get",
+                type: "post",
                 url: '{{ route('ajaxdata') }}',
-
+                data: {
+                    '_token': function() {
+                        return $('input[name="_token"]').val();
+                    },
+                    'num_police': function() {
+                        return $('#num_police').val();
+                    }
+                },
 
                 dataType: 'json',
 
@@ -171,7 +179,7 @@
             });
         }
     </script>
-    <script type='text/javascript'>
+    {{-- <script type='text/javascript'>
         $(function() {
             $.ajax({
 
@@ -185,5 +193,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

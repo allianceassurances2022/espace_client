@@ -30,6 +30,20 @@ class SinistreController extends Controller
 
             $dataAssure = CodeAssureParrain::where('id_user', $user_id)->get();
             $codeAssures = $dataAssure->pluck('code_assure');
+            $codeAssures =  $codeAssures->join("','");
+
+            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $codeAssures . "')";
+            $response = Http::contentType("application/json")
+                ->send('GET', $url)
+                ->json();
+
+
+            $codeAssures = $response;
+            dd($codeAssures);
+
+            //    $dataAssure = DossierSinistre::where('user_id', $user_id)->get();
+            //    $codeAssures = $dataAssure->pluck('num_police');
+
 
             return view('sinistre.logged', compact('codeAssures'));
         } else {
@@ -39,15 +53,14 @@ class SinistreController extends Controller
 
 
 
-    public function getData()
+    public function getData(Request $request)
     {
 
-        $user_id = Auth::user()->id;
+        // $user_id = Auth::user()->id;
 
-        $num_polices = DossierSinistre::where('user_id', $user_id)->get();
+        $num_polices = $request->num_police;
 
-        //   $num_polices = $num_polices['num_police'];
-
+        $num_polices = str_replace(' ', '', $num_polices);
 
         $vehicule = DossierVehicule::where('num_police', 160832111000044)->first();
         $sinistre = DossierSinistre::where('num_police', 160832111000044)->first();

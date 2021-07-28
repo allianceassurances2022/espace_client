@@ -112,7 +112,7 @@ Route::get('/sinistre_logged', 'SinistreController@logged')->name('new_sinistre_
 Route::post('/declare_sinistre', 'SinistreController@declare_sinistre')->name('declare_sinistre');
 //Route::get('/sinistre', 'SinistreController@index_sinistre')->name('new_sinistre');
 Route::get('/ajaxtest', 'SinistreController@index')->name('ajaxtest');
-Route::get('/getData', 'SinistreController@getData')->name('ajaxdata');
+Route::post('/getData', 'SinistreController@getData')->name('ajaxdata');
 Route::get('/getPlice', 'SinistreController@getPolice')->name('getPolice');
 
 

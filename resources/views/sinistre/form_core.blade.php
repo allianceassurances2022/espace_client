@@ -32,9 +32,12 @@
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
 
-                                                <select onchange="getSinistre()" type="text" id="num_police" name="ref">
+                                                <select onchange="getSinistre()" type="text" id="num_police"
+                                                    name="num_police" value="{{ old('num_police') }}">
+                                                    <option value="codeAssure"> </option>
                                                     @foreach ($codeAssures as $codeAssure)
-                                                        <option value="{{ $codeAssure }}" selected>{{ $codeAssure }}
+                                                        <option value="{{ $codeAssure['reference'] }}" @if (old('num_police')) selected @endif>
+                                                            {{ $codeAssure['reference'] }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -44,7 +47,7 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
-                                                <input type="text" id="num_police" name="name"
+                                                <input type="text" id="num_police" name="num_police"
                                                     value="{{ old('num_police') }}" autofocus>
                                             </div>
                                         </div>
@@ -809,14 +812,14 @@
                                 <input type="button" name="previous" class="previous action-button-previous"
                                     value="Précédent" />
                         </fieldset>
-                        <!--fieldset>
+                        <fieldset>
                             <div class="form-card">
 
                             </div>
                             <input type="button" name="next" class="next action-button" value="Valider" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
-                        </!--fieldset-->
+                        </fieldset>
 
                     </form>
 
