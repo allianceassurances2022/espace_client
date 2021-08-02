@@ -114,6 +114,7 @@ Route::post('/declare_sinistre', 'SinistreController@declare_sinistre')->name('d
 Route::get('/ajaxtest', 'SinistreController@index')->name('ajaxtest');
 Route::post('/getData', 'SinistreController@getData')->name('ajaxdata');
 Route::get('/getPlice', 'SinistreController@getPolice')->name('getPolice');
+Route::post('/getSinistres', 'SinistreController@getSinistres')->name('getSinistres');
 
 
 Route::get('/Eden/djilali', function () {

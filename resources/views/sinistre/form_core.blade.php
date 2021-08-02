@@ -1,7 +1,12 @@
-<div class="main-content">
+<div class="loader" id="loading"></div>
+
+
+
+<div class="main-content" id="main-content" style="display: none">
     <div class="jumbotron">
         <div class="row justify-content-center">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
+
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <center>
                         <h2 id="heading">Déclaration sinistre</h2>
@@ -12,13 +17,12 @@
                         <!-- progressbar -->
 
                         <ul id="progressbar">
-
                             <li class="active" id="account"><strong>L'Assurance</strong></li>
-                            <li id="account"><strong>Le propriétaire</strong></li>
-                            <li id="personal"><strong>le véhicule</strong></li>
-                            <li id="personal"><strong>le conducteur</strong></li>
-                            <li id="payment"><strong>l'accident</strong></li>
-                            <li id="confirm"><strong>Validation</strong></li>
+                            <li id="personal"><strong>Le propriétaire</strong></li>
+                            <li id="payment"><strong>le véhicule</strong></li>
+                            <li id="user"><strong>le conducteur</strong></li>
+                            <li id="confirm"><strong>l'accident</strong></li>
+
                         </ul>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -32,15 +36,20 @@
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
 
-                                                <select onchange="getSinistre()" type="text" id="num_police"
+                                                {{-- <select onchange="getSinistre()" type="text" id="num_police" 
                                                     name="num_police" value="{{ old('num_police') }}">
                                                     <option value="codeAssure"> </option>
                                                     @foreach ($codeAssures as $codeAssure)
-                                                        <option value="{{ $codeAssure['reference'] }}" @if (old('num_police')) selected @endif>
-                                                            {{ $codeAssure['reference'] }}
+                                                        <option value="{{ $codeAssure['REFERENCE'] }}" @if (old('num_police')) selected @endif>
+                                                            {{ $codeAssure['REFERENCE'] }}
                                                         </option>
                                                     @endforeach
+                                                </select> --}}
+
+                                                <select onchange="mapdata()" type="text" id="num_police"
+                                                    name='num_police'>
                                                 </select>
+
                                             </div>
                                         </div>
                                     @else
@@ -52,8 +61,6 @@
                                             </div>
                                         </div>
                                     @endif
-
-
 
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Société d'assurance</label>
@@ -74,7 +81,7 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Au</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="contrat_fin_adv" id="contrat_fin"
+                                            <input type="text" name="contrat_fin" id="contrat_fin"
                                                 value="{{ old('contrat_fin') }}">
                                         </div>
                                     </div>
@@ -134,8 +141,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" name="next" class="btn btn-primary next action-button"
-                                value="Suivant" />
+                            <!--input type="button" name="next" class="btn btn-primary next action-button"
+                                value="Suivant" /-->
+                            <input type="button" name="next" class="next action-button" value="Suivant" />
+
+
+
 
                         </fieldset>
                         <fieldset>
@@ -208,8 +219,8 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Adresse</label>
                                             <div class="col-sm-8">
-                                                <input type="text" id="adress" name="adress"
-                                                    value="{{ old('adress') }}">
+                                                <input type="text" id="adress_adv" name="adress_adv"
+                                                    value="{{ old('adress_adv') }}">
                                             </div>
                                         </div>
 
@@ -227,7 +238,7 @@
 
                             </div>
 
-                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="next" class="next action-button" value="Suivant" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
                         </fieldset>
@@ -235,7 +246,6 @@
 
                         <fieldset>
                             <div class="form-card">
-
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Modèle du Véhicule</label>
@@ -329,7 +339,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="next" class="next action-button" value="Suivant" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
@@ -404,23 +414,24 @@
                                     <label class="col-sm-4 control-label">Étiez-vous au volant du
                                         véhicule</label>
                                     <div class="col-sm-8">
-                                        <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
-                                            value="{{ old('gendarme') }}" style="width: 100px;
+                                        <input class="form-check-input" type="radio" id="au_volant" name="au_volant"
+                                            value="{{ old('au_volant') }}" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                         <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                        <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
-                                            value="{{ old('gendarme') }}" style="width: 100px;
+                                        <input class="form-check-input" type="radio" id="au_volant" name="au_volant"
+                                            value="{{ old('au_volant') }}" style="width: 100px;
                                             margin-right: -27px;
                                             margin-top: 23px;">
                                         <label class="form-check-label" style="font-size: 16px;">non</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="col-sm-4 control-label">Le conducteur réside-t-il chez vous</label>
+                                    <label class="col-sm-4 control-label">Le conducteur réside-t-il chez
+                                        vous</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="permis_adv" id="permis_adv"
-                                            value="{{ old('permis_adv') }}">
+                                        <input type="text" name="resid_cond" id="resid_cond"
+                                            value="{{ old('resid_cond') }}">
                                     </div>
                                 </div>
 
@@ -484,7 +495,7 @@
 
                                 </div>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="next" class="next action-button" value="Suivant" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
@@ -526,16 +537,16 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="col-sm-4 control-label">Un procès-verbal de gendarmerie</label>
+                                        <label class="col-sm-4 control-label">Un procès-verbal de
+                                            gendarmerie</label>
                                         <div class="col-sm-8">
                                             <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
-                                                value="{{ old('gendarme') }}" style="width: 100px;
+                                                value="1" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                             <label class="form-check-label" style="font-size: 16px;">oui</label>
                                             <input class="form-check-input" type="radio" id="gendarme" name="gendarme"
-                                                value="{{ old('gendarme') }}" style="width: 100px;
-                                            margin-right: -27px;
+                                                value="0" style="width: 100px;                                  margin-right: -27px;
                                             margin-top: 23px;">
                                             <label class="form-check-label" style="font-size: 16px;">non</label>
                                         </div>
@@ -546,14 +557,12 @@
                                                 <label class="col-sm-4 control-label">Un rapport de police</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="police"
-                                                        name="police" value="{{ old('police') }}"
-                                                        onclick="showInput('brigade1')" style="width: 100px;
+                                                        name="police" value="1" onclick="showInput('brigade1')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="police"
-                                                        name="police" value="{{ old('police') }}"
-                                                        onclick="showNone('brigade1')"
+                                                        name="police" value="0" onclick="showNone('brigade1')"
                                                         style="width: 100px;margin-right: -27px;margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
                                                 </div>
@@ -578,12 +587,11 @@
                                                 <label class="col-sm-4 control-label">S'agit-il d'un vol ?</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="vol" name="vol"
-                                                        value="{{ old('vol') }}" onclick="showInput('serie_type')"
-                                                        style="width: 100px;
+                                                        value="1" onclick="showInput('serie_type')" style="width: 100px;
                                                 margin-right: -27px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="vol" name="vol"
-                                                        value="{{ old('vol') }}" onclick="showNone('serie_type')"
+                                                        value="0" onclick="showNone('serie_type')"
                                                         style="width: 100px; margin-right: -27px; margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
                                                 </div>
@@ -592,8 +600,8 @@
                                                 <label class="col-sm-4 control-label">Numéro dans la série du
                                                     type</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="num_serie" id="num_serie"
-                                                        value="{{ old('num_serie') }}">
+                                                    <input type="text" name="num_serie_type" id="num_serie_type"
+                                                        value="{{ old('num_serie_type') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -601,15 +609,16 @@
                                     <div class="form-group" style="margin-top: -25px;">
                                         <div class="col-md-12">
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">Votre véhicule est-il gagé</label>
+                                                <label class="col-sm-4 control-label">Votre véhicule est-il
+                                                    gagé</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id=gager" name="gager"
-                                                        value="{{ old('gager') }}" onclick="showInput('gage')" style="width: 100px;
+                                                        value="1" onclick="showInput('gage')" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="gager" name="gager"
-                                                        value="{{ old('gager') }}" onclick="showNone('gage')" style="width: 100px; margin-right: -27px;
+                                                        value="0" onclick="showNone('gage')" style="width: 100px; margin-right: -27px;
                                             margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
                                                 </div>
@@ -642,14 +651,12 @@
                                                     lourd</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="lourd" name="lourd"
-                                                        value="{{ old('lourd') }}" onclick="showInput('div-lourd')"
-                                                        style="width: 100px;
+                                                        value="1" onclick="showInput('div-lourd')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="lourd" name="lourd"
-                                                        value="{{ old('lourd') }}" onclick="showNone('div-lourd')"
-                                                        style="width: 100px;
+                                                        value="0" onclick="showNone('div-lourd')" style="width: 100px;
                                                     margin-right: -27px;
                                                     margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
@@ -660,26 +667,26 @@
                                         <div class="col-md-12" style="display: none" id="div-lourd">
 
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">était attelé à un autre véhicule
+                                                <label class="col-sm-4 control-label">était attelé à un autre
+                                                    véhicule
                                                     (tracteur
                                                     ou remorque) au moment de l'accident</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id="police"
-                                                        name="police" value="{{ old('police') }}"
-                                                        onclick="showInput('attele')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="attele"
+                                                        name="police" value="1" onclick="showInput('attele')" style="width: 100px;
                                                             margin-right: -27px;
                                                             margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                                    <input class="form-check-input" type="radio" id="police"
-                                                        name="police" value="{{ old('police') }}"
-                                                        onclick="showNone('attele')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="attele"
+                                                        name="police" value="0" onclick="showNone('attele')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">Poids total en charge(Kg)</label>
+                                                <label class="col-sm-4 control-label">Poids total en
+                                                    charge(Kg)</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" name="poids_charge" id="poids_charge_second"
                                                         value="{{ old('poids_charge') }}">
@@ -687,7 +694,8 @@
                                             </div>
                                             <div class="col-md-12" style="display: none" id="attele">
                                                 <div class="col-md-6">
-                                                    <label class="col-sm-4 control-label">Numéro d'immatriculation du
+                                                    <label class="col-sm-4 control-label">Numéro d'immatriculation
+                                                        du
                                                         2nd
                                                         véhicule
                                                     </label>
@@ -710,15 +718,15 @@
                                                     <label class="col-sm-4 control-label">Nom de la société qui
                                                         l'assure</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="assurance" id="assurance"
-                                                            value="{{ old('assurance') }}">
+                                                        <input type="text" name="assurance_second" id="assurance_second"
+                                                            value="{{ old('assurance_second') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="col-sm-4 control-label">N° de police</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" name="n_police" id="n_police"
-                                                            value="{{ old('n_police') }}">
+                                                        <input type="text" name="n_police_second" id="n_police_second"
+                                                            value="{{ old('n_police_second') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -732,15 +740,13 @@
                                                     véhicule
                                                     et celui de mon adversaire</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id="autre_degat"
-                                                        name="autre_degat" value="{{ old('autre_degat') }}"
-                                                        onclick="showInput('autre-dega')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="degat" name="degat"
+                                                        value="1" onclick="showInput('dega')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                                    <input class="form-check-input" type="radio" id="autre_degat"
-                                                        name="autre_degat" value="{{ old('autre_degat') }}"
-                                                        onclick="showNone('autre-dega')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="degat"
+                                                        name="autre_degat" value="0" onclick="showNone('degat')" style="width: 100px;
                                                     margin-right: -27px; margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
 
@@ -748,7 +754,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div style="display: none" id="autre-dega">
+                                    <div style="display: none" id="nature">
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Nature et importance</label>
                                             <div class="col-sm-8">
@@ -779,14 +785,13 @@
                                                 <label class="col-sm-4 control-label">Blessé (S)</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="blesse"
-                                                        name="blesse" value="{{ old('blesse') }}"
-                                                        onclick="showInput('autre_bless')" style="width: 100px;
+                                                        name="blesse" value="1" onclick="showInput('autre_bless')"
+                                                        style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="blesse"
-                                                        name="blesse" value="{{ old('blesse') }}"
-                                                        onclick="showNone('autre_bless')" style="width: 100px;
+                                                        name="blesse" value="0" onclick="showNone('autre_bless')" style="width: 100px;
                                                     margin-right: -27px;
                                                     margin-top: 23px;">
                                                     <label class="form-check-label" style="font-size: 16px;">non</label>
@@ -806,19 +811,13 @@
 
 
                                 </div>
-                                <button data-dismiss="modal" type="submit"
-                                    class="btn btn-primary btn-xl">{{ __('Valider') }}</button>
-                                <input type="button" name="next" class="next action-button" value="next" />
-                                <input type="button" name="previous" class="previous action-button-previous"
-                                    value="Précédent" />
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-card">
-
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Valider" />
+
+                            <button data-dismiss="modal" type="submit" class="next action-button"
+                                value="Valider">{{ __('Valider') }}</button>
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
+
                         </fieldset>
 
                     </form>

@@ -20,12 +20,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- jQuery CDN -->
     <script>
+        var donnes = '';
+
         $(document).ready(function() {
+
 
             var current_fs, next_fs, previous_fs; //fieldsets
             var opacity;
             var current = 1;
             var steps = $("fieldset").length;
+
+
+            $.ajax({
+                url: '{{ route('getSinistres') }}',
+                type: 'POST',
+                data: {
+                    '_token': function() {
+                        return $('input[name="_token"]').val();
+                    },
+                },
+                success: function(data) {
+                    donnes = data;
+                    for (i = 0; i < data.length; i++) {
+                        // $('#num_police').append(new Option(data[i].REFERENCE), i)
+                        $('#num_police').append($('<option>', {
+                            value: i,
+                            text: data[i].REFERENCE
+                        }));
+                    }
+
+                    $("#loading").hide();
+                    $("#main-content").show();
+
+
+                }
+            });
+
+
+
+
+
 
             setProgressBar(current);
 
@@ -59,6 +93,8 @@
                 });
                 setProgressBar(++current);
             });
+
+
 
             $(".previous").click(function() {
 
@@ -103,9 +139,11 @@
                 return false;
             })
 
-
-
         });
+
+        function showDiv() {
+
+        }
 
         function showMe(box) {
 
@@ -119,7 +157,6 @@
             }
             document.getElementById(box).style.display = vis;
 
-
         }
 
         function showInput(box) {
@@ -130,68 +167,25 @@
             document.getElementById(box).style.display = "none";
         }
 
-        function getSinistre() {
-            alert($('#num_police').val());
+        function mapdata() {
 
-            $.ajax({
+            var i = $('#num_police').val();
+            var data = donnes[i]
 
-                type: "post",
-                url: '{{ route('ajaxdata') }}',
-                data: {
-                    '_token': function() {
-                        return $('input[name="_token"]').val();
-                    },
-                    'num_police': function() {
-                        return $('#num_police').val();
-                    }
-                },
+            $('#contrat_debut').val(data.EFFET);
+            $('#contrat_fin').val(data.EXPIRATION);
 
-                dataType: 'json',
+            $('#name').val(data.NOM);
+            $('#prenom').val(data.PRENOM);
+            $('#adress').val(data.ADRESSE);
+            $('#profession').val(data.PROFFESSION);
 
-                success: function(data) { // What to do if we succeed
-                    //$('#name').val(JSON.parse(response)[0].name); //<---- This line,
-                    console.log(data);
+            $('#modele').val(data.model);
+            $('#marque').val(data.marque);
+            $('#matricule').val(data.matricule);
 
-                    $('#num_police').val(data.num_police);
-                    $('#societe_assurance').val(data.data1.societe_assurance);
-                    $('#contrat_debut').val(data.data1.contrat_debut);
-                    $('#contrat_fin').val(data.data1.contrat_fin);
-
-                    $('#name').val(data.data1.nom_proprietaire);
-                    $('#prenom').val(data.data1.prenom_proprietaire);
-                    $('#adress').val(data.data1.address_proprietaire);
-                    $('#profession').val(data.data1.profession_proprietaire);
-
-                    $('#modele').val(data.data1.modele);
-                    $('#marque').val(data.data1.marque);
-                    $('#matricule').val(data.data1.matricule);
-                    $('#from').val(data.data1.profession_proprietaire);
-                    $('#to').val(data.data1.profession_proprietaire);
-
-                    $('#name_cond').val(data.data1.nom_conducteur);
-                    $('#prenom_cond').val(data.data1.prenom_conducteur);
-                    $('#adress_cond').val(data.data1.address_conducteur);
-                    $('#permis').val(data.data1.num_permis);
-                    $('#deliver').val(data.data1.date_permis);
-                    $('#categorie').val(data.data1.num_permis);
-
-                }
-            });
         }
     </script>
-    {{-- <script type='text/javascript'>
-        $(function() {
-            $.ajax({
 
-                type: "get",
-                url: '{{ route('ajaxdata') }}',
-                dataType: 'json',
 
-                success: function(data) { // What to do if we succeed
-                    //$('#name').val(JSON.parse(response)[0].name); //<---- This line,
-                    console.log(data);
-                }
-            });
-        });
-    </script> --}}
 @endsection

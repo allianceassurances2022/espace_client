@@ -23,32 +23,45 @@ class SinistreController extends Controller
         return view('');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::user()) {
-            $user_id = Auth::user()->id;
 
-            $dataAssure = CodeAssureParrain::where('id_user', $user_id)->get();
-            $codeAssures = $dataAssure->pluck('code_assure');
-            $codeAssures =  $codeAssures->join("','");
-
-            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $codeAssures . "')";
-            $response = Http::contentType("application/json")
-                ->send('GET', $url)
-                ->json();
-
-
-            $codeAssures = $response;
-            dd($codeAssures);
-
-            //    $dataAssure = DossierSinistre::where('user_id', $user_id)->get();
-            //    $codeAssures = $dataAssure->pluck('num_police');
-
-
+            $codeAssures = array();
             return view('sinistre.logged', compact('codeAssures'));
         } else {
             return view('sinistre.not_logged');
         }
+    }
+
+
+    public function getSinistres()
+    {
+
+        $user_id = Auth::user()->id;
+
+        $dataAssure = CodeAssureParrain::where('id_user', $user_id)->get();
+        $codeAssures = $dataAssure->pluck('code_assure');
+        $codeAssures =  $codeAssures->join("','");
+
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $codeAssures . "')";
+        $response = Http::contentType("application/json")
+            ->send('GET', $url)
+            ->json();
+
+
+        $codeAssures = $response;
+
+        return $codeAssures;
+        // dd($codeAssures[0]['REFERENCE']);
+
+        //    $dataAssure = DossierSinistre::where('user_id', $user_id)->get();
+        //    $codeAssures = $dataAssure->pluck('num_police');
+
+
+        // $request->session()->put('cookies', $response);
+
+        // dd($request);
     }
 
 
@@ -98,92 +111,97 @@ class SinistreController extends Controller
                 ->send('GET', $url)
                 ->json();
 
-            dd($response);
+            // dd($response);
         }
     }
 
     public function declare_sinistre(Request $request)
     {
 
-        //  $data = $request;
+        //   dd($request);
 
         $vehicule1 =   [
-            "account_id" => "",
-            "num_police" => "160832111000044",
+            "account_id" => 1,
+            "num_police" => $request->num_police,
             "car_serial" => "6571465461846",
             "societe_assurance" => "ALLIANCE ASSURANCE",
-            "contrat_debut" => "2021-07-14",
-            "contrat_fin" => "2021-07-14",
-            "nom_proprietaire" => "test",
-            "prenom_proprietaire" => "test",
-            "address_proprietaire" => "",
-            "profession_proprietaire" => "test",
+            "contrat_debut" => $request->contrat_debut,
+            "contrat_fin" => $request->contrat_fin,
+            "nom_proprietaire" => $request->name,
+            "prenom_proprietaire" => $request->prenom,
+            "address_proprietaire" => $request->adress,
+            "profession_proprietaire" => $request->profession,
             "num_permis_proprietaire" => "",
             "date_permis_proprietaire" => "",
             "tel_proprietaire" => "0546982365",
-            "model" => "", "marque" => "",
-            "immatriculation" => "",
-            "nom_conducteur" => "test",
-            "prenom_conducteur" => "test",
-            "adresse_conducteur" => "test",
+            "model" => $request->modele,
+            "marque" => $request->marque,
+            "immatriculation" => $request->matricule,
+            "nom_conducteur" => $request->name_cond,
+            "prenom_conducteur" => $request->prenom_cond,
+            "adresse_conducteur" => $request->adress_cond,
             "tel_conducteur" => "054263985",
-            "num_permis_conducteur" => "686879718",
-            "date_permis_conducteur" => "2021-07-14",
-            "categorie_conducteur" => "test",
+            "num_permis_conducteur" => $request->permis,
+            "date_permis_conducteur" => $request->deliver,
+            "categorie_conducteur" => $request->categorie,
             "degat_conducteur" => "test",
-            "adresse_proprietaire" => "test",
-            "model_vehicule" => "test",
-            "marque_vehicule" => "test",
-            "immatriculation_vehicule" => "65768656"
+
         ];
 
         $vehicule2 = [
-            "account_id" => "",
-            "num_police" => "",
-            "societe_assurance" => "",
-            "contrat_debut" => "",
-            "contrat_fin" => "",
-            "nom_proprietaire" => "",
-            "prenom_proprietaire" => "",
-            "address_proprietaire" => "",
-            "profession_proprietaire" => "",
-            "num_permis_proprietaire" => "24654684",
-            "date_permis_proprietaire" => "2021-07-14",
+            "account_id" => 1,
+            "num_police" => $request->num_police_adv,
+            "societe_assurance" => $request->societe_assurance_adv,
+            "contrat_debut" => $request->contrat_debut_adv,
+            "contrat_fin" => $request->contrat_fin_adv,
+            "nom_proprietaire" => $request->name_adv,
+            "prenom_proprietaire" => $request->prenom_adv,
+            "address_proprietaire" => $request->adress_adv,
+            "profession_proprietaire" => $request->profession_adv,
+            /* "num_permis_proprietaire" => "24654684",
+            "date_permis_proprietaire" => "2021-07-14", 
             "tel_proprietaire" => "", "model" => "",
-            "marque" => "", "immatriculation" => "",
-            "nom_conducteur" => "",
-            "prenom_conducteur" => "",
-            "adresse_conducteur" => "",
+            */
+            "marque" => "",
+            "immatriculation" => "",
+            "nom_conducteur" => $request->name_cond_adv,
+            "prenom_conducteur" => $request->prenom_cond_adv,
+            "adresse_conducteur" => $request->adress_cond_adv,
             "tel_conducteur" => "056326541",
-            "num_permis_conducteur" => "",
-            "date_permis_conducteur" => "",
-            "categorie_conducteur" => "",
+            "num_permis_conducteur" => $request->permis_adv,
+            "date_permis_conducteur" => $request->deliver_adv,
+            "categorie_conducteur" => $request->categorie_adv,
             "degat_conducteur" => "",
             "car_serial" => ""
 
         ];
 
         $data = [
-            "account_id" => "",
-            "user_id" => "",
-            "isGendarmerie" => 1,
-            "isPolice" => 1,
-            "isYourVehicule" => 1,
-            "isPledged" => 0,
-            "isVol" => 0,
-            "isHeavyWeights" => 0,
-            "isDamage" => 0,
-            "isInjured" => 0,
-            "nbr_hurts" => "",
-            "categorie" => "",
-            "came_from" => "test",
-            "go_to" => "test",
-            "accident_date" => "2021-07-14",
-            "accident_time" => "09:57",
-            "accident_place" => "test",
-            "comment" => "test",
-            "vehicle1" => $vehicule1,
-            "vehicle2" => $vehicule2,
+            "account_id"            => 1,
+            "user_id"               => "",
+            "isGendarmerie"         => $request->brigade,
+            "isPolice"              => $request->police,
+            "brigade"               => $request->brigade,
+            "isVol"                 => $request->vol,
+            "num_serie_type"        => $request->num_serie_type,
+            "isPledged"             => $request->gager,
+            "nom_organism"          => $request->nom_organism,
+            "adress_organism"       => $request->adress_organism,
+            "lourd"                 => $request->lourd,
+            "attele"                => $request->attele,
+            "poids_charge_second"   => $request->poids_charge_second,
+            "num_imma_charge"       => $request->num_imma_charge,
+            "poids_charge_second"   => $request->poids_charge_second,
+            "assurance_second"      => $request->assurance_second,
+            "n_police_second"       => $request->n_police_second,
+            "degat"       => $request->degat,
+            "nature"                => $request->nature,
+            "nom_nature"                => $request->nom_nature,
+            "adress_nature"                => $request->adress_nature,
+            "blesse"                => $request->blesse,
+            "nbr_hurts"             => $request->nmbr_blesse,
+            "vehicle1"              => $vehicule1,
+            "vehicle2"              => $vehicule2,
         ];
 
         $data = json_encode($data);
@@ -196,12 +214,14 @@ class SinistreController extends Controller
             ->send('POST', $url, ['body' => $data])
             ->json();
 */
-        $url = 'http://epaiement.local/api/create_sinistre';
+        $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
             ->send('POST', $url, ['body' => $data])
             ->json();
 
-        dd($response);
+        // dd($response);
+
+        return view('sinistre.validation', compact('response'));
 
         //  $num_agence = substr($data['vehicle1'], 0, 4);
         //    dd(substr($data['num_police'], 0, 4));

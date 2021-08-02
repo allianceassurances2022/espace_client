@@ -99,27 +99,36 @@ class SinistreAPI
     {
         $al_dossier = DossierSinistre::create([
             'id' => $id,
-            'account_id' => $data['account_id'],
-            'num_police' => $data['vehicle1']['num_police'],
-            'user_id' => $data['user_id'],
-            'date_acc' => $data['accident_date'],
-            'time_acc' => $data['accident_time'],
-            'lieu_acc' => $data['accident_place'],
-            'came_from' => $data['came_from'],
-            'go_to' => $data['go_to'],
-            'comment' => $data['comment'],
-            'gendarmerie' => $data['isGendarmerie'],
-            'police' => $data['isPolice'],
-            'gage' => $data['isPledged'],
-            'lourd' => $data['isHeavyWeights'],
-            'vol' => $data['isVol'],
-            'degats' => $data['isDamage'],
-            'hurts' => $data['isInjured'],
-            'nbr_hurts' => $data['nbr_hurts'],
-            'categorie' => $data['categorie'],
-
-            /*           'created_at'=>$data['created_at'],
-            'updated_at'=>$data['updated_at'], */
+            'account_id'            => $data['account_id'],
+            'num_police'            => $data['vehicle1']['num_police'],
+            'user_id'               => $data['user_id'],
+            'date_acc'              => $data['accident_date'],
+            'time_acc'              => $data['accident_time'],
+            'lieu_acc'              => $data['accident_place'],
+            'came_from'             => $data['came_from'],
+            'go_to'                 => $data['go_to'],
+            'comment'               => $data['comment'],
+            'gendarmerie'           => $data['isGendarmerie'],
+            'police'                => $data['isPolice'],
+            'brigade'               => $data['brigade'],
+            'vol'                   => $data['isVol'],
+            'num_serie_type'        => $data['num_serie_type'],
+            'gage'                  => $data['isPledged'],
+            'nom_organism'          => $data['nom_organism'],
+            'adress_organism'       => $data['adress_organism'],
+            'lourd'                 => $data['isHeavyWeights'],
+            'num_imma_charge'       => $data['num_imma_charge'],
+            'attele'                => $data['attele'],
+            'poids_charge_second'   => $data['poids_charge_second'],
+            'assurance_second'      => $data['assurance_second'],
+            'n_police_second'       => $data['n_police_second'],
+            'degats'                => $data['degat'],
+            'nature'                => $data['nature'],
+            'nom_nature'            => $data['nom_nature'],
+            'adress_nature'         => $data['adress_nature'],
+            'hurts'                 => $data['blesse'],
+            'nbr_hurts'             => $data['nbr_hurts'],
+          
         ]);
     }
 
@@ -212,13 +221,13 @@ class SinistreAPI
             $destinataire = $email;
             // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
             $objet = 'Création sinistre'; // Objet du message
-            $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police. '\n'. $information;
+            $message = 'Nous vous remercions de bien vouloir prendre en charge le sinistre n° ' . $numero_police . '\n' . $information;
             $headers = 'From: Alliance' . "\r\n" .
                 'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
                 'X-Mailer: PHP/';
 
             $success = mail($destinataire, $objet, $message, $headers);
-         
+
             if (!$success) {
                 $errorMessage = error_get_last();
                 echo $errorMessage;
