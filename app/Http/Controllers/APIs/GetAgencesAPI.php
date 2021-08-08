@@ -27,7 +27,7 @@ class GetAgencesAPI
         header('Access-Control-Allow-Headers: Origin, Content-Type');
         header("Content-Type:application/json");
 
-        $sql = "SELECT Name as title, Latitude as lat, Longetude as lng, Type, Chef_Agence, wilaya, Adresse, Tel FROM agences ";
+        $sql = "SELECT Name as title, Latitude as lat, Longetude as lng, Type, Chef_Agence, wilaya, Adresse, Tel, commune FROM agences ";
         $data = DB::connection('mysql')->select($sql);
         $data = json_encode($data);
         print_r($data);

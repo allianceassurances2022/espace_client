@@ -6,6 +6,7 @@ namespace App\Http\Controllers\APIs;
 use Illuminate\Http\Request;
 use App\Eden_parrain;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 
 class EdenAPI
@@ -13,22 +14,13 @@ class EdenAPI
 
     public function getParrainage(Request $request)
     {
-        //header("Access-Control-Allow-Origin: * ");
+        $code_parrain = $request->input('code'); //code assure
 
-        // $getdata = $request->json()->all();
-        $data = $request->json()->all();
-        $code_parrain = $data['code_parrain'];
-
-        $sql = "SELECT * FROM eden_parrain where code_parrain='" . $code_parrain . "' ";
-        $data = DB::connection('backoffice')->select($sql);
+        $url = "http://41.111.145.36/backoffice/public/api/get_parrainage?code=".$code_parrain;
+        $data = Http::contentType("application/json")->send('GET',$url)->json();
 
         $data = json_encode($data);
         print_r($data);
-
-
-        // var_dump(json_decode($data)->results[0]->points);
-        //  $points = $data['points'];
-        // print_r($points);
 
     }
 }
