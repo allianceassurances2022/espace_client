@@ -18,7 +18,7 @@ class EdenCreatePointsToConvertAPI
         $code_parrain = $request->input('code1'); //code assure
         $points = $request->input('code2'); //points
 
-        $url = "http://41.111.145.36/backoffice/public/api/get_create_points?code1=" +$code_parrain + "&code2=" + $points;
+        $url = "http://41.111.145.36/backoffice/public/api/get_create_points?code1=" .$code_parrain . "&code2=" . $points;
         $data = Http::contentType("application/json")->send('GET',$url)->json();
 
         $data = json_encode($data);

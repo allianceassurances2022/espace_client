@@ -81,6 +81,10 @@ Route::get('paiement_send_mrh/{id}', 'PaiementController@save_mrh')->name('save_
 Route::get('paiement_send_catnat/{id}', 'PaiementController@save_catnat')->name('save_catnat');
 Route::get('paiement_send_auto/{id}', 'PaiementController@save_auto')->name('save_auto');
 Route::get('satim_confirmation', 'PaiementController@satim_confirmation')->name('satim_confirmation');
+Route::get('paiement_success', 'PaiementController@paiement_success')->name('paiement_success');
+Route::get('paiement_failed', 'PaiementController@paiement_failed')->name('paiement_failed');
+
+Route::get('enregistrement_satim', 'PaiementController@enregistrement_satim')->name('enregistrement_satim');
 // Route::get('paiementauto', 'PaiementController@test2')->name('test2');
 
 //////////////////////////////// Accueil

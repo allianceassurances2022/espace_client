@@ -94,7 +94,7 @@ class TarificationAutoController extends Controller
 
 
 		$data = json_encode($tab_json);
-
+//dd($data);
 		$url = "https://epaiement.allianceassurances.com.dz/public/api/calculeauto";
 		$response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 

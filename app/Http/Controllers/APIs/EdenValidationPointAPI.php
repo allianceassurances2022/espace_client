@@ -19,7 +19,7 @@ class EdenValidationPointAPI
         $code_assure = $request->input('code1'); //code assure
         $code = $request->input('code2'); // code hash
 
-        $url = "http://41.111.145.36/backoffice/public/api/get_points?code1=" +$code_assure + "&code2=" + $code;
+        $url = "http://41.111.145.36/backoffice/public/api/get_points?code1=" .$code_assure . "&code2=" . $code;
         $data = Http::contentType("application/json")->send('GET',$url)->json();
 
         $data = json_encode($data);
