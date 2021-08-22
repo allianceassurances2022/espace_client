@@ -1,8 +1,4 @@
-<div class="loader" id="loading"></div>
-
-
-
-<div class="main-content" id="main-content" style="display: none">
+<div class="main-content" id="main-content" @if (Auth::user()) style="display: none" @endif>
     <div class="jumbotron">
         <div class="row justify-content-center">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
@@ -35,21 +31,9 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
-
-                                                {{-- <select onchange="getSinistre()" type="text" id="num_police" 
-                                                    name="num_police" value="{{ old('num_police') }}">
-                                                    <option value="codeAssure"> </option>
-                                                    @foreach ($codeAssures as $codeAssure)
-                                                        <option value="{{ $codeAssure['REFERENCE'] }}" @if (old('num_police')) selected @endif>
-                                                            {{ $codeAssure['REFERENCE'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select> --}}
-
                                                 <select onchange="mapdata()" type="text" id="num_police"
                                                     name='num_police'>
                                                 </select>
-
                                             </div>
                                         </div>
                                     @else
@@ -66,7 +50,7 @@
                                         <label class="col-sm-4 control-label">Société d'assurance</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="societe_assurance" id="societe_assurance"
-                                                value="{{ old('societe_assurance') }}">
+                                                value="Alliance assurances">
                                         </div>
                                     </div>
                                 </div>
@@ -74,20 +58,20 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Attestation valable du</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="contrat_debut" name="contrat_debut"
+                                            <input type="date" id="contrat_debut" name="contrat_debut"
                                                 value="{{ old('contrat_debut') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Au</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="contrat_fin" id="contrat_fin"
+                                            <input type="date" name="contrat_fin" id="contrat_fin"
                                                 value="{{ old('contrat_fin') }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-check" style="text-align: center;">
+                            <div class="form-check form-switch" style="text-align: center;">
                                 <input class="form-check-input" name="c1" type="checkbox"
                                     onclick="showMe('div1'), showMe('div2'), showMe('div3'), showMe('div4')"
                                     style="width: 100px;margin-right: -27px;">
@@ -126,7 +110,7 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Attestation valable du</label>
                                             <div class="col-sm-8">
-                                                <input type="text" id="contrat_debut_adv" name="contrat_debut_adv"
+                                                <input type="date" id="contrat_debut_adv" name="contrat_debut_adv"
                                                     value="{{ old('contrat_debut_adv') }}">
                                             </div>
                                         </div>
@@ -134,7 +118,7 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Au</label>
                                             <div class="col-sm-8">
-                                                <input type="text" name="contrat_fin_adv" id="contrat_fin_adv"
+                                                <input type="date" name="contrat_fin_adv" id="contrat_fin_adv"
                                                     value="{{ old('contrat_fin_adv') }}">
                                             </div>
                                         </div>
@@ -254,12 +238,31 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <label class="col-sm-4 control-label">Marque, type</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="marque" id="marque" value="{{ old('marque') }}">
+                                    @if (Auth::user())
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Marque, type</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="marque" id="marque"
+                                                    value="{{ old('marque') }}">
+                                            </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <label class="col-sm-4 control-label">Marque, type</label>
+                                            <div class="col-sm-8">
+                                                <select name="marque" id="marque" class="form-control select2" required>
+                                                    @foreach ($marques as $marque)
+                                                        <option value="{{ $marque->code }}">{{ $marque->libelle }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                    @endif
+
+
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6">
@@ -388,8 +391,15 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Catégorie</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="categorie" id="categorie"
-                                                value="{{ old('categorie') }}">
+
+                                            <select name="categorie" id="categorie" class="form-control select2"
+                                                required>
+                                                @foreach ($categories as $categorie)
+                                                    <option value="{{ $categorie->libelle }}">
+                                                        {{ $categorie->libelle }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -398,7 +408,7 @@
                                 <div class="col-md-6">
                                     <label class="col-sm-4 control-label">Date de naissance</label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="adress_cond_adv" name="adress_cond_adv"
+                                        <input type="date" id="adress_cond_adv" name="adress_cond_adv"
                                             value="{{ old('adress_cond_adv') }}">
                                     </div>
                                 </div>
@@ -415,12 +425,12 @@
                                         véhicule</label>
                                     <div class="col-sm-8">
                                         <input class="form-check-input" type="radio" id="au_volant" name="au_volant"
-                                            value="{{ old('au_volant') }}" style="width: 100px;
+                                            value="1" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                         <label class="form-check-label" style="font-size: 16px;">oui</label>
                                         <input class="form-check-input" type="radio" id="au_volant" name="au_volant"
-                                            value="{{ old('au_volant') }}" style="width: 100px;
+                                            value="0" style="width: 100px;
                                             margin-right: -27px;
                                             margin-top: 23px;">
                                         <label class="form-check-label" style="font-size: 16px;">non</label>
@@ -430,8 +440,17 @@
                                     <label class="col-sm-4 control-label">Le conducteur réside-t-il chez
                                         vous</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="resid_cond" id="resid_cond"
-                                            value="{{ old('resid_cond') }}">
+                                        <input class="form-check-input" type="radio" id="resid_cond" name="resid_cond"
+                                            value="1" style="width: 100px;
+                                            margin-right: -27px;
+                                            margin-top: 23px;">
+                                        <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                        <input class="form-check-input" type="radio" id="resid_cond" name="resid_cond"
+                                            value="0" style="width: 100px;
+                                        margin-right: -27px;
+                                        margin-top: 23px;">
+                                        <label class="form-check-label" style="font-size: 16px;">non</label>
+
                                     </div>
                                 </div>
 

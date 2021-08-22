@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\CodeAssureParrain;
 use App\DossierSinistre;
-use Illuminate\Http\Request;
+use App\marque;
+use App\Categorie_permis;
 use App\DossierVehicule;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -25,12 +28,16 @@ class SinistreController extends Controller
 
     public function index(Request $request)
     {
+
+        $marques = marque::all();
+        $categories = categorie_permis::all();
+
+
         if (Auth::user()) {
 
-            $codeAssures = array();
-            return view('sinistre.logged', compact('codeAssures'));
+            return view('sinistre.logged', compact('categories'));
         } else {
-            return view('sinistre.not_logged');
+            return view('sinistre.not_logged', compact('marques', 'categories'));
         }
     }
 

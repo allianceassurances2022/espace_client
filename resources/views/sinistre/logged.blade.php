@@ -11,6 +11,8 @@
 
 @section('content')
 
+    <div class="loader" id="loading"></div>
+
     @include('sinistre.form_core');
 
 @endsection
@@ -18,6 +20,9 @@
 @section('js')
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/app-form-masks.js') }}" type="text/javascript"></script>
+
     <!-- jQuery CDN -->
     <script>
         var donnes = '';
@@ -29,6 +34,7 @@
             var opacity;
             var current = 1;
             var steps = $("fieldset").length;
+
 
 
             $.ajax({
@@ -55,11 +61,6 @@
 
                 }
             });
-
-
-
-
-
 
             setProgressBar(current);
 
@@ -139,6 +140,12 @@
                 return false;
             })
 
+            $('#matricule').mask("99999 - 999 - 99", {
+                placeholder: "xxxxx - xxx - xx"
+            });
+            $('#heure_accident').setMask('time').val('hh:mm');
+
+
         });
 
         function showDiv() {
@@ -172,7 +179,10 @@
             var i = $('#num_police').val();
             var data = donnes[i]
 
-            $('#contrat_debut').val(data.EFFET);
+
+          
+
+            $('#contrat_debut').val(data.date2);
             $('#contrat_fin').val(data.EXPIRATION);
 
             $('#name').val(data.NOM);

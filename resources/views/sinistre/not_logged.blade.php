@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 @section('content')
 
@@ -18,6 +19,9 @@
 
 @section('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/app-form-masks.js') }}" type="text/javascript"></script>
+
     <!-- jQuery CDN -->
     <script>
         $(document).ready(function() {
@@ -26,6 +30,8 @@
             var opacity;
             var current = 1;
             var steps = $("fieldset").length;
+
+
 
             setProgressBar(current);
 
@@ -104,7 +110,37 @@
             })
 
 
+            $('#matricule').mask("99999 - 999 - 99", {
+                placeholder: "xxxxx - xxx - xx"
+            });
 
+            var maskBehavior = function(val) {
+                val = val.split(":");
+                return (parseInt(val[0]) > 19) ? "HZ:M0" : "H0:M0";
+            }
+
+            spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(maskBehavior.apply({}, arguments), options);
+                },
+                translation: {
+                    'H': {
+                        pattern: /[0-2]/,
+                        optional: false
+                    },
+                    'Z': {
+                        pattern: /[0-3]/,
+                        optional: false
+                    },
+                    'M': {
+                        pattern: /[0-5]/,
+                        optional: false
+                    }
+                }
+            };
+
+            $('#heure_accident').mask(maskBehavior, spOptions);
+            //  $('#heure_accident').setMask('time').val('hh:mm');
         });
 
         function showMe(box) {

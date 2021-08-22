@@ -256,6 +256,8 @@ label {
 
 .loader {
     margin: auto;
+    margin-top: 15%;
+    margin-bottom: 20%;
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid teal; /* Blue */
     border-radius: 50%;

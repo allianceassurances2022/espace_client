@@ -25,6 +25,17 @@
             display: inline-block;
         }
 
+        .title-confirm {
+            text-align: center;
+            font-weight: 400;
+            color: teal;
+        }
+
+        .popup-content {
+            text-align: center;
+            font-size: 16px;
+        }
+
     </style>
 @endsection
 
@@ -173,14 +184,55 @@
                         @endif
                     </div>
                 </div>
-
-                <div class='line'></div>
-
+                @if (session()->has('popup'))
+                    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Modal body text goes here.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
 
         </div>
     </div>
     </div>
+
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-titleb title-confirm">Confirmation du paiement</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body popup-content">
+                    <p>Votre commande à été enregistrée avec succée. Veuillez confirmer votre paiement</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg">Confirmer</button>
+                    <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
 
 
@@ -191,16 +243,26 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
-        function test() {
-            $("#POST").removeClass("image-clignote");
-            $("#CIB").addClass("image-clignote");
-        }
+        $(document).ready(function() {
+                    $('#myModal').modal(options)
+                }
 
-        function test2() {
-            $("#CIB").removeClass("image-clignote");
-            $("#POST").addClass("image-clignote");
-        }
+                function test() {
+                    $("#POST").removeClass("image-clignote");
+                    $("#CIB").addClass("image-clignote");
+                }
 
+                function test2() {
+                    $("#CIB").removeClass("image-clignote");
+                    $("#POST").addClass("image-clignote");
+                }
     </script>
+    @if (!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+        <script>
+            $(function() {
+                $('#myModal').modal('show');
+            });
+        </script>
+    @endif
 
 @endsection
