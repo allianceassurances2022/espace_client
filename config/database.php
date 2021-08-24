@@ -63,6 +63,21 @@ return [
             ]) : [],
         ],
 
+        'iris' => [
+            'driver' => 'iris',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '10.0.0.159'),
+            'port' => env('DB_PORT', '1521'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'APPS_API'),
+            'password' => env('DB_PASSWORD', 'Sder125@juG'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

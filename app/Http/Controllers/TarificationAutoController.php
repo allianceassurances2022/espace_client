@@ -338,6 +338,9 @@ class TarificationAutoController extends Controller
 				'id_devis'          => $dev->id
 			]);
 
+			//creation devis sur IRIS
+
+			
 
 
 
