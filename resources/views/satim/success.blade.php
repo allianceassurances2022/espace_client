@@ -26,7 +26,7 @@
                                     height="300">
                                 <h2>Votre paiement a été enregistré avec succées</h2>
 								 <h2>{{$message}}</h2>
-                                <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
+                                <form method="GET" action="{{ route('home') }}" class="form-horizontal">
                                     @csrf
                                     <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
                                         value="Retour à l'accueil">Retour à l'accueil</button>
