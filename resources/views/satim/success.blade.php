@@ -25,6 +25,7 @@
                                 <img src="{{ asset('/images/verifier.png') }}" style="margin: auto;" width="250"
                                     height="300">
                                 <h2>Votre paiement a été enregistré avec succées</h2>
+								 <h2>{{$message}}</h2>
                                 <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
                                     @csrf
                                     <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"

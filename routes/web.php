@@ -83,6 +83,9 @@ Route::get('paiement_send_auto/{id}', 'PaiementController@save_auto')->name('sav
 Route::get('satim_confirmation', 'PaiementController@satim_confirmation')->name('satim_confirmation');
 Route::get('paiement_success', 'PaiementController@paiement_success')->name('paiement_success');
 Route::get('paiement_failed', 'PaiementController@paiement_failed')->name('paiement_failed');
+Route::get('confirmation_paiement', 'PaiementController@confirmation_paiement')->name('confirmation_paiement');
+Route::get('enregistrement_satim', 'PaiementController@enregistrement_satim')->name('enregistrement_satim');
+Route::get('confirmation_enregistrement_satim', 'PaiementController@confirmation_enregistrement_satim')->name('confirmation_enregistrement_satim');
 
 Route::get('enregistrement_satim', 'PaiementController@enregistrement_satim')->name('enregistrement_satim');
 // Route::get('paiementauto', 'PaiementController@test2')->name('test2');

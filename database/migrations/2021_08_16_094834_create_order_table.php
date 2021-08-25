@@ -19,6 +19,8 @@ class CreateOrderTable extends Migration
             $table->string('montant');
             $table->string('orderNumber');
             $table->string('orderId');
+            $table->string('ErrorCode')->nullable();
+            $table->string('respCode_desc')->nullable();
             $table->timestamps();
         });
     }

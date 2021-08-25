@@ -8,7 +8,7 @@ use App\formule;
 use Carbon\Carbon;
 
 
-use App\Wilaya;
+use App\wilaya;
 use App\Agences;
 
 use App\Rsq_Immobilier;
@@ -290,8 +290,8 @@ class PaiementController extends Controller
         $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
 
         $date_permis       = Carbon::parse($risque->date_permis)->format('d/m/Y');
-        $matricule_lieu    = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first()->code_wilaya;
-        $permis_lieu       = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first()->code_wilaya;
+        $matricule_lieu    = wilaya::where('nlib_wilaya', $risque->immatricule_a)->first()->code_wilaya;
+        $permis_lieu       = wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first()->code_wilaya;
 
         $cat_permis        = Categorie_permis::where('libelle', $risque->categorie)->first()->code;
 
@@ -478,23 +478,42 @@ class PaiementController extends Controller
         return view('home', compact('user', 'mrh', 'auto', 'cat', 'total',  'sum_contr', 'sum_devis'));
     }
 
-    public function paiement_success()
+    public function paiement_success(Request $request)
     {
-        return view('satim/success');
+		$orderId = $request->orderId;
+		$order = Order::where('orderId', $orderId)->first();
+		
+		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
+		$response = Http::contentType("application/json")->send('GET', $url)->json();
+	
+		$message = $response['params']['respCode_desc'];
+		$order->update([
+            'ErrorCode'      => $response['params']['respCode'],
+            'respCode_desc' =>  $response['params']['respCode_desc'],
+        ]);
+		
+		return view('satim/success',compact('message'));
     }
 
-    public function paiement_failed()
+    public function paiement_failed(Request $request)
     {
-        return view('satim/failed');
+		$orderId = $request->orderId;
+		$order = Order::where('orderId', $orderId)->first();
+		
+		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
+		$response = Http::contentType("application/json")->send('GET', $url)->json();
+	
+		$message = $response['params']['respCode_desc'];
+		$order->update([
+            'ErrorCode'      => $response['params']['respCode'],
+            'respCode_desc' =>  $response['params']['respCode_desc'],
+        ]);
+		
+		return view('satim/failed',compact('message'));
     }
 
     public function enregistrement_satim(Request $request)
     {
-
-
-
-
-
         $devis_id = $request->devis;
         $devis = devis::where('id', $devis_id)->first();
 
@@ -504,32 +523,29 @@ class PaiementController extends Controller
         $orderNumber = $arr2[0];
         $montant = str_replace(".", "", $devis->prime_total);
 
-        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
-
+        
+        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success/' . $orderNumber .'&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
         $response = Http::contentType("application/json")->send('GET', $url)->json();
-
 
         //  $tab = json_decode($response, JSON_OBJECT_AS_ARRAY);
 
         $redirect = $response['formUrl'];
+        $orderId = $response['orderId'];
 
-        return Redirect::to($redirect);
-
-        //  dd($redirect);
-        //create order after api
-        /*
         $resultat = Order::create([
-            'devis_id' => $tab['devis_id'],
-            'montant'  => $tab['montant'],
-            'orderNumber'  => $tab['orderNumber'],
-            'orderId'  => $tab['orderId'],
+            'devis_id' => $devis_id,
+            'montant'  => $montant,
+            'orderNumber'  => $orderNumber,
+            'orderId'  => $response['orderId'], ]);
+		
+        //dd($resultat);
+        return Redirect::to($redirect); 
+		
+    }
 
-        ]);
 
-*/
-
-
-
-        //     return Redirect::back()->with('error_code', 5);
+     public function confirmation_paiement($id)
+    { //dd($id);
+        return view('satim/confirmation_order', ['id' => $id]);
     }
 }
