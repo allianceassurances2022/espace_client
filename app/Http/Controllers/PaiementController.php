@@ -27,7 +27,7 @@ class PaiementController extends Controller
     public function paiement_mrh($id)
     {
 
-        $mrh         = Rsq_Immobilier::where('id', $id)->first();
+        $mrh         = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $mrh->code_devis;
         $id          = $mrh->id;
         $devis       = devis::where('id', $code_devis)->first();
@@ -112,7 +112,7 @@ class PaiementController extends Controller
     public function paiement_catnat($id)
     {
 
-        $catnat      = Rsq_Immobilier::where('id', $id)->first();
+        $catnat      = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $catnat->code_devis;
         $id          = $catnat->id;
         $devis       = devis::where('id', $code_devis)->first();
@@ -529,7 +529,7 @@ class PaiementController extends Controller
         $montant = str_replace(".", "", $devis->prime_total);
 
 
-        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success/' . $orderNumber .'&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
+        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
         $response = Http::contentType("application/json")->send('GET', $url)->json();
 
         //  $tab = json_decode($response, JSON_OBJECT_AS_ARRAY);
