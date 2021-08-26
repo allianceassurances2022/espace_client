@@ -26,7 +26,6 @@ class PaiementController extends Controller
 {
     public function paiement_mrh($id)
     {
-
         $mrh         = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $mrh->code_devis;
         $id          = $mrh->id;
@@ -34,6 +33,8 @@ class PaiementController extends Controller
         $prime_total = $devis->prime_total;
         $catnat      = '';
         $auto        = '';
+		
+		
 
         return view('paiement', compact('mrh', 'auto', 'catnat', 'prime_total', 'id', 'devis'));
     }
@@ -111,7 +112,6 @@ class PaiementController extends Controller
 
     public function paiement_catnat($id)
     {
-
         $catnat      = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $catnat->code_devis;
         $id          = $catnat->id;
@@ -125,7 +125,6 @@ class PaiementController extends Controller
 
     public function save_catnat($id)
     {
-
         $catnat      = Rsq_Immobilier::where('id', $id)->first();
 
         $mrh         = '';
@@ -496,8 +495,10 @@ class PaiementController extends Controller
         ]);
 
         $this->satim_confirmation($order->devis_id);
-
-		return view('satim/success',compact('message'));
+		
+		$devis = devis::where('id', $order->devis_id)->first();
+	//	dd($devis);
+		return view('satim/success',compact('message','devis'));
     }
 
     public function paiement_failed(Request $request)
@@ -520,6 +521,7 @@ class PaiementController extends Controller
     public function enregistrement_satim(Request $request)
     {
         $devis_id = $request->devis;
+		
         $devis = devis::where('id', $devis_id)->first();
 
         $myuuid = Uuid::uuid4();

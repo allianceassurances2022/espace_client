@@ -24,7 +24,7 @@
 
                         <div>
                             <center>
-                                <img src="{{ asset('/images/verifier.png') }}" style="margin: auto;" width="250"
+                                <img src="https://www.freeiconspng.com/uploads/error-icon-4.png" style="margin: auto;" width="250"
                                     height="300">
                                 <h2>L'opération est échouée</h2>
                                 <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
