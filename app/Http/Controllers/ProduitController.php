@@ -115,7 +115,7 @@ class ProduitController extends Controller
        // $datec             = $value_mrh['datec'];
         $prime_total       = $value_mrh['prime_total'];
         $offre             = $value_mrh['offre'];
-        
+
 
         $wilaya            = wilaya::all();
         $commune           = commune::all();
@@ -276,7 +276,7 @@ class ProduitController extends Controller
         $categorie_selected = '';
         $delivre_a = '';
 
-        return view('produits.Auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre','dure','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie','user_wilaya', 'user_commune','assure','cat_permi','couleurs','profession','civilite','couleur_selected','categorie_selected','delivre_a'));
+        return view('produits.auto.devis_auto',compact('date_souscription','date_conducteur','date_permis','wilaya','annee_auto','puissance','usage','valeur','offre','dure','formule','assistance','prime_total','datec','wilaya','agences','wilaya_selected','agence_map','marques', 'cat_permi','assistance_nom','marque_selected','categorie','user_wilaya', 'user_commune','assure','cat_permi','couleurs','profession','civilite','couleur_selected','categorie_selected','delivre_a'));
     }
 
     public function visuelisation()
@@ -344,8 +344,6 @@ class ProduitController extends Controller
 
         $user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
         $user_commune = commune::where('code_commune', $user->commune)->first();
-
-
 
         return view('produits.catnat.devis_catnat',compact('type_formule','code_formule','type_const','Contenant','equipement','marchandise','contenu','act_reg','reg_com','agence_map','loca','anne_cont','surface','permis','val_assur','reg_para','datec','prime_total','date_souscription','wilaya','wilaya_selected','commune_selected','agences','appartient','user_wilaya', 'user_commune','assure','profession','civilite','proprietaire','activite_catnat','code_activite'));
     }

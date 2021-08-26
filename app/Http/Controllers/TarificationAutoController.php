@@ -75,6 +75,38 @@ class TarificationAutoController extends Controller
 	public function montant_auto(Request $request)
 	{
 
+         //////// Verificateur captcha ////////
+
+         $recap = 'g-recaptcha-response';
+
+         $response = $request->$recap;
+         $url = 'https://www.google.com/recaptcha/api/siteverify';
+         $data = array(
+             'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+             'response' => $request->$recap
+         );
+         $query = http_build_query($data);
+         $options = array(
+             'http' => array(
+                 'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                 "Content-Length: " . strlen($query) . "\r\n" .
+                     "User-Agent:MyAgent/1.0\r\n",
+                 'method' => 'POST',
+                 'content' => http_build_query($data)
+             )
+         );
+         $context  = stream_context_create($options);
+         $verify = file_get_contents($url, false, $context);
+         $captcha_success = json_decode($verify);
+
+         if ($captcha_success->success == false) {
+
+             echo '<script language="javascript" type="text/javascript">';
+             echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+             echo 'window.history.go(-1);';
+             echo '</script>';
+         } else if ($captcha_success->success == true) {
+
 		$auto = $request->all();
 		$tab_json = array();
 
@@ -177,6 +209,8 @@ class TarificationAutoController extends Controller
 			return view('produits.auto.formule_part', compact('auto', 'devis'));
 		}
 	}
+
+}
 
 	public function validation_devis_auto(Request $request)
 	{
@@ -340,7 +374,7 @@ class TarificationAutoController extends Controller
 
 			//creation devis sur IRIS
 
-			
+
 
 
 
@@ -410,7 +444,7 @@ class TarificationAutoController extends Controller
 
 
 
-		return view('produits.Auto.resultat', compact('user', 'devis', 'risque', 'prime_total', 'agence', 'prime', 'assure'));
+		return view('produits.auto.resultat', compact('user', 'devis', 'risque', 'prime_total', 'agence', 'prime', 'assure'));
 	}
 
 	public function modification_devis_auto(Request $request, $id)
@@ -478,7 +512,7 @@ class TarificationAutoController extends Controller
 			$user_wilaya = wilaya::where('code_wilaya', $user->wilaya)->first();
 			$user_commune = commune::where('code_commune', $user->commune)->first();
 
-			return view('produits.Auto.devis_auto', compact('date_souscription', 'date_effet', 'date_exp', 'date_conducteur', 'date_permis', 'wilaya_selected', 'annee_auto', 'puissance', 'usage', 'dure', 'formule', 'taxe', 'date_taxe', 'offre', 'valeur', 'matricule', 'marques', 'marque_selected', 'model', 'delivre_a', 'wilaya', 'prime_total', 'agences', 'code_agence', 'agence_map', 'num_chassis', 'type', 'couleur_selected', 'couleurs', 'permis_num', 'categorie_selected', 'categorie', 'id', 'user_wilaya', 'user_commune', 'assure', 'profession', 'civilite', 'assistance'));
+			return view('produits.auto.devis_auto', compact('date_souscription', 'date_effet', 'date_exp', 'date_conducteur', 'date_permis', 'wilaya_selected', 'annee_auto', 'puissance', 'usage', 'dure', 'formule', 'taxe', 'date_taxe', 'offre', 'valeur', 'matricule', 'marques', 'marque_selected', 'model', 'delivre_a', 'wilaya', 'prime_total', 'agences', 'code_agence', 'agence_map', 'num_chassis', 'type', 'couleur_selected', 'couleurs', 'permis_num', 'categorie_selected', 'categorie', 'id', 'user_wilaya', 'user_commune', 'assure', 'profession', 'civilite', 'assistance'));
 		} else {
 			return view('welcome');
 		}
@@ -515,11 +549,12 @@ class TarificationAutoController extends Controller
 		$prime_total = $devis->prime_total;
 		$assure = Assure::where('id_devis', $devis->id)->first();
 
-		return view('produits.Auto.resultat', compact('user', 'devis', 'risque', 'agence', 'prime', 'prime_total', 'assure'));
+		return view('produits.auto.resultat', compact('user', 'devis', 'risque', 'agence', 'prime', 'prime_total', 'assure'));
 	}
 
 	public function attestation($id)
 	{
+
 		$devis = devis::find($id);
 		$risque = Rsq_Vehicule::where('code_devis', $devis->id)->first();
 		$user = auth::user();
