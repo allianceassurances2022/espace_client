@@ -8,7 +8,7 @@ use App\formule;
 use Carbon\Carbon;
 
 
-use App\Wilaya;
+use App\wilaya;
 use App\Agences;
 
 use App\Rsq_Immobilier;
@@ -26,21 +26,21 @@ class PaiementController extends Controller
 {
     public function paiement_mrh($id)
     {
-
-        $mrh         = Rsq_Immobilier::where('id', $id)->first();
+        $mrh         = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $mrh->code_devis;
         $id          = $mrh->id;
         $devis       = devis::where('id', $code_devis)->first();
         $prime_total = $devis->prime_total;
         $catnat      = '';
         $auto        = '';
+		
+		
 
         return view('paiement', compact('mrh', 'auto', 'catnat', 'prime_total', 'id', 'devis'));
     }
 
     public function save_mrh($id)
     {
-
         $devis  = devis::find($id);
         $risque = Rsq_Immobilier::where('code_devis', $id)->first();
         $assure = Assure::where('id_devis', $devis->id)->first();
@@ -105,13 +105,13 @@ class PaiementController extends Controller
             "terrasse"           => $terasse,
         ];
 
-        return view('satim/redirect', compact('devis'));
+        //return view('satim/redirect', compact('devis'));
+        return redirect()->route('enregistrement_satim', compact('devis'));
     }
 
     public function paiement_catnat($id)
     {
-
-        $catnat      = Rsq_Immobilier::where('id', $id)->first();
+        $catnat      = Rsq_Immobilier::where('code_devis', $id)->first();
         $code_devis  = $catnat->code_devis;
         $id          = $catnat->id;
         $devis       = devis::where('id', $code_devis)->first();
@@ -124,7 +124,6 @@ class PaiementController extends Controller
 
     public function save_catnat($id)
     {
-
         $catnat      = Rsq_Immobilier::where('id', $id)->first();
 
         $mrh         = '';
@@ -253,7 +252,8 @@ class PaiementController extends Controller
 
         $assure = Assure::where('id_devis', $id)->first();
 
-        return view('satim/redirect', compact('devis'));
+        //return view('satim/redirect', compact('devis'));
+        return redirect()->route('enregistrement_satim', compact('devis'));
     }
 
     public function paiement_auto($id)
@@ -271,7 +271,6 @@ class PaiementController extends Controller
 
     public function save_auto($id)
     {
-
         $auto        = Rsq_Vehicule::where('id', $id)->first();
         $devis       = devis::where('id', $id)->first();
         $prime_total = $devis->prime_total;
@@ -290,8 +289,8 @@ class PaiementController extends Controller
         $date_expiration   = Carbon::parse($devis->date_expiration)->format('d/m/Y');
 
         $date_permis       = Carbon::parse($risque->date_permis)->format('d/m/Y');
-        $matricule_lieu    = Wilaya::where('nlib_wilaya', $risque->immatricule_a)->first()->code_wilaya;
-        $permis_lieu       = Wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first()->code_wilaya;
+        $matricule_lieu    = wilaya::where('nlib_wilaya', $risque->immatricule_a)->first()->code_wilaya;
+        $permis_lieu       = wilaya::where('nlib_wilaya', $risque->wilaya_obtention)->first()->code_wilaya;
 
         $cat_permis        = Categorie_permis::where('libelle', $risque->categorie)->first()->code;
 
@@ -380,10 +379,11 @@ class PaiementController extends Controller
     }
 
 
-    public function satim_confirmation(Request $request)
+    public function satim_confirmation($id)
     {
 
-        $devis = devis::where('id', $request->devis_id)->first();
+        $devis = devis::where('id', $id)->first();
+
         if ($devis->type_assurance == "Automobile") {
             $risque = Rsq_Vehicule::where('code_devis', $devis->id)->first();
         } else if ($devis->type_assurance == "Multirisques Habitation" || $devis->type_assurance == "Catastrophe Naturelle") {
@@ -475,27 +475,51 @@ class PaiementController extends Controller
         ]);
 
 
-        return view('home', compact('user', 'mrh', 'auto', 'cat', 'total',  'sum_contr', 'sum_devis'));
+       // return view('home', compact('user', 'mrh', 'auto', 'cat', 'total',  'sum_contr', 'sum_devis'));
     }
 
-    public function paiement_success()
+    public function paiement_success(Request $request)
     {
-        return view('satim/success');
+		$orderId = $request->orderId;
+		$order = Order::where('orderId', $orderId)->first();
+
+		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
+		$response = Http::contentType("application/json")->send('GET', $url)->json();
+
+		$message = $response['params']['respCode_desc'];
+		$order->update([
+            'ErrorCode'      => $response['params']['respCode'],
+            'respCode_desc' =>  $response['params']['respCode_desc'],
+        ]);
+
+        $this->satim_confirmation($order->devis_id);
+		
+		$devis = devis::where('id', $order->devis_id)->first();
+	//	dd($devis);
+		return view('satim/success',compact('message','devis'));
     }
 
-    public function paiement_failed()
+    public function paiement_failed(Request $request)
     {
-        return view('satim/failed');
+		$orderId = $request->orderId;
+		$order = Order::where('orderId', $orderId)->first();
+
+		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
+		$response = Http::contentType("application/json")->send('GET', $url)->json();
+
+		$message = $response['params']['respCode_desc'];
+		$order->update([
+            'ErrorCode'      => $response['params']['respCode'],
+            'respCode_desc' =>  $response['params']['respCode_desc'],
+        ]);
+
+		return view('satim/failed',compact('message'));
     }
 
     public function enregistrement_satim(Request $request)
     {
-
-
-
-
-
         $devis_id = $request->devis;
+		
         $devis = devis::where('id', $devis_id)->first();
 
         $myuuid = Uuid::uuid4();
@@ -504,32 +528,29 @@ class PaiementController extends Controller
         $orderNumber = $arr2[0];
         $montant = str_replace(".", "", $devis->prime_total);
 
-        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
 
+      /*  $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
         $response = Http::contentType("application/json")->send('GET', $url)->json();
-
 
         //  $tab = json_decode($response, JSON_OBJECT_AS_ARRAY);
 
         $redirect = $response['formUrl'];
+        $orderId = $response['orderId'];
 
-        return Redirect::to($redirect);
-
-        //  dd($redirect);
-        //create order after api
-        /*
         $resultat = Order::create([
-            'devis_id' => $tab['devis_id'],
-            'montant'  => $tab['montant'],
-            'orderNumber'  => $tab['orderNumber'],
-            'orderId'  => $tab['orderId'],
+            'devis_id' => $devis_id,
+            'montant'  => $montant,
+            'orderNumber'  => $orderNumber,
+            'orderId'  => $response['orderId'], ]);
 
-        ]);
+        //dd($resultat);
+        return Redirect::to($redirect);*/
 
-*/
+    }
 
 
-
-        //     return Redirect::back()->with('error_code', 5);
+     public function confirmation_paiement($id)
+    { //dd($id);
+        return view('satim/confirmation_order', ['id' => $id]);
     }
 }

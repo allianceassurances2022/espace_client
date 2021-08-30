@@ -296,38 +296,35 @@ class TarificationController extends Controller
 
         //////// Verificateur captcha ////////
 
-        // $recap = 'g-recaptcha-response';
+        $recap = 'g-recaptcha-response';
 
-        // $response = $request->$recap;
-        // $url = 'https://www.google.com/recaptcha/api/siteverify';
-        // $data = array(
-        //     'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
-        //     'response' => $request->$recap
-        // );
-        // $query = http_build_query($data);
-        // $options = array(
-        //     'http' => array(
-        //         'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-        //         "Content-Length: " . strlen($query) . "\r\n" .
-        //             "User-Agent:MyAgent/1.0\r\n",
-        //         'method' => 'POST',
-        //         'content' => http_build_query($data)
-        //     )
-        // );
-        // $context  = stream_context_create($options);
-        // $verify = file_get_contents($url, false, $context);
-        // $captcha_success = json_decode($verify);
+        $response = $request->$recap;
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdA5eMZAAAAAFQaDfKxFdSo7UJbUxyZUQptej5Q',
+            'response' => $request->$recap
+        );
+        $query = http_build_query($data);
+        $options = array(
+            'http' => array(
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: " . strlen($query) . "\r\n" .
+                    "User-Agent:MyAgent/1.0\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success = json_decode($verify);
 
-        // if ($captcha_success->success == false) {
+        if ($captcha_success->success == false) {
 
-        //     echo '<script language="javascript" type="text/javascript">';
-        //     echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
-        //     echo 'window.history.go(-1);';
-        //     echo '</script>';
-        // } else if ($captcha_success->success == true) {
-
-
-        // }
+            echo '<script language="javascript" type="text/javascript">';
+            echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
+            echo 'window.history.go(-1);';
+            echo '</script>';
+        } else if ($captcha_success->success == true) {
 
         $tableau = array(
             'habitation', 'commerce', 'industrielle'
@@ -500,11 +497,13 @@ class TarificationController extends Controller
         ));
     }
 
+}
+
     //mrh
     public function montant_mrh(Request $request)
     {
 
-        /*  $recap = 'g-recaptcha-response';
+          $recap = 'g-recaptcha-response';
 
         $response = $request->$recap;
         $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -525,14 +524,14 @@ class TarificationController extends Controller
         $context = stream_context_create($options);
         $verify = file_get_contents($url, false, $context);
         $captcha_success = json_decode($verify);
-        /*  if ($captcha_success->success == false) {
+          if ($captcha_success->success == false) {
 
             echo '<script language="javascript" type="text/javascript">';
             echo 'alert(\'Recaptcha incorrect, merci de r\351essayer\');';
             echo 'window.history.go(-1);';
             echo '</script>';
         } else if ($captcha_success->success == true) {
-*/
+
 
         if ($request->montant < "200000.00" || $request->montant > "5000000.00") {
             Alert::warning('Avertissement', 'Le montant doit etre superieur a 200000.00 et inferieur a 5000000.00');
@@ -611,7 +610,7 @@ class TarificationController extends Controller
         $request->session()->put('data_mrh', $data_session);
 
         return view('produits.mrh.index', compact('habitation', 'terasse', 'montant', 'juredique', 'nbr_piece', 'totale','wilaya','commune'));
-        //  }
+          }
     }
 
 

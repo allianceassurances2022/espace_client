@@ -18,19 +18,19 @@
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <center>
                             <h2 id="heading">Confirmation du paiement</h2>
-							 <h2>L'opération est échouée</h2>
-							 {{ $message ?? '' }}
                         </center>
 
                         <div>
                             <center>
-                                <img src="https://www.freeiconspng.com/uploads/error-icon-4.png" style="margin: auto;" width="250"
-                                    height="300">
-                                <h2>L'opération est échouée</h2>
-                                <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
+                                
+                                <h2>Voulez vous confirmer le paiement?</h2>
+                                <form method="GET" action="{{ route('confirmation_enregistrement_satim') }}" class="form-horizontal">
                                     @csrf
-                                    <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
-                                        value="Retour à l'accueil">Retour à l'accueil</button>
+                                    <button data-dismiss="modal" type="submit" name="submitbutton" id="submitbutton1" class="action-button"
+                                        value="1">Confirmer</button>
+										<input type="hidden" name="id" id="id" value={{ $id }} class="form-control">
+                                    <button data-dismiss="modal" type="submit" name="submitbutton" id="submitbutton2" class="action-button"
+                                        value="2">Retour à l'accueil</button>
                                 </form>
                             </center>
                         </div>

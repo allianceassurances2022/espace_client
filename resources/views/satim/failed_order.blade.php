@@ -18,15 +18,12 @@
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <center>
                             <h2 id="heading">Confirmation du paiement</h2>
-							 <h2>L'opération est échouée</h2>
-							 {{ $message ?? '' }}
                         </center>
 
                         <div>
                             <center>
-                                <img src="https://www.freeiconspng.com/uploads/error-icon-4.png" style="margin: auto;" width="250"
-                                    height="300">
-                                <h2>L'opération est échouée</h2>
+                                
+                                <h2>Voulez vous confirmer le paiement?</h2>
                                 <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
                                     @csrf
                                     <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
