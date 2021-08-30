@@ -41,7 +41,6 @@ class PaiementController extends Controller
 
     public function save_mrh($id)
     {
-
         $devis  = devis::find($id);
         $risque = Rsq_Immobilier::where('code_devis', $id)->first();
         $assure = Assure::where('id_devis', $devis->id)->first();
@@ -272,7 +271,6 @@ class PaiementController extends Controller
 
     public function save_auto($id)
     {
-
         $auto        = Rsq_Vehicule::where('id', $id)->first();
         $devis       = devis::where('id', $id)->first();
         $prime_total = $devis->prime_total;
@@ -531,7 +529,7 @@ class PaiementController extends Controller
         $montant = str_replace(".", "", $devis->prime_total);
 
 
-        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
+      /*  $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
         $response = Http::contentType("application/json")->send('GET', $url)->json();
 
         //  $tab = json_decode($response, JSON_OBJECT_AS_ARRAY);
@@ -546,7 +544,7 @@ class PaiementController extends Controller
             'orderId'  => $response['orderId'], ]);
 
         //dd($resultat);
-        return Redirect::to($redirect);
+        return Redirect::to($redirect);*/
 
     }
 
