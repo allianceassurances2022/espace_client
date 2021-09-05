@@ -157,6 +157,7 @@ class HomeController extends Controller
 
         $code=str_replace("''","','",$code);
 
+
          $url=route('api_get_alldossiersinistre');
          //$url = $url."?user_id=30&code=1000000296869";
 
