@@ -153,8 +153,9 @@
                             <input type="image" name="type_paiment" value="CIB" id="CIB" onclick="test();" width="100"
                                 height="100" src="{{ asset('assets/img/logo_satim.svg') }}" />
 
-                            <input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="85"
-                                height="85" src="{{ asset('assets/img/logo_poste.svg') }}" />
+                           <!--<input type="image" name="type_paiment" value="POST" id="POST" onclick="test2();" width="85"
+                                height="85" src="{{ asset('assets/img/logo_poste.svg') }}" />-->
+
 
                     </div>
 
@@ -162,25 +163,25 @@
 
                     <h3> <span>3 - </span> Acception des conditions generales</h3>
 
-                    <div class="condition">
+                   <div class="condition">
                         <p>
-                            <input type="checkbox"> J'accepte les termes et conditions d’utilisation</input>
+              <input name ="accepte" id="accepte" onclick="checkFunction()" type="checkbox"> J'accepte les termes et conditions d’utilisation</input>
                         </p>
 
                     </div>
                     <div class='line'></div>
                     <div class="bouton-blanc">
                         @if ($auto != '')
-                            <a href="{{ route('save_auto', $devis->id) }}" class="bot-button"> Payer <i
-                                    class="fa fa-arrow-circle-right"></i></a>
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_auto', $devis->id) }}'" class="bot-button"> Payer <i
+                                    class="fa fa-arrow-circle-right"></i></button>
                         @endif
                         @if ($mrh != '')
-                            <a href="{{ route('save_mrh', $devis->id) }}" class="bot-button"> Payer <i
-                                    class="fa fa-arrow-circle-right"></i></a>
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_mrh', $devis->id) }}'" class="bot-button"> Payer <i
+                                    class="fa fa-arrow-circle-right"></i></button>
                         @endif
                         @if ($catnat != '')
-                            <a href="{{ route('save_catnat', $devis->id) }}" class="bot-button"> Payer <i
-                                    class="fa fa-arrow-circle-right"></i></a>
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_catnat', $devis->id) }}'" class="bot-button"> Payer <i
+                                    class="fa fa-arrow-circle-right"></i></button>
                         @endif
                     </div>
                 </div>
@@ -241,6 +242,21 @@
 @section('js')
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+ <script>
+        function checkFunction(){
+           var isChecked = document.getElementById("accepte").checked ;
+		  var x = document.getElementById("payer");
+			  if (isChecked) {
+				x.style.display = "block";
+				  x.style.marginLeft = "auto";
+				 x.style.marginRight = "auto";
+			  } else {
+				x.style.display = "none";
+			  }
+		}		  
+			   
+    </script>
 
     <script>
         $(document).ready(function() {

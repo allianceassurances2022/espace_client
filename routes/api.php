@@ -24,7 +24,7 @@ Route::get('/get_create_points', 'APIs\EdenCreatePointsToConvertAPI@getCreatePoi
 Route::get('/get_points_converted', 'APIs\EdenPointsConverted@getPoints');
 
 Route::post('/addparrain', 'APIs\InscriptionAPI@addparrain');
-Route::post('/get_parrainage', 'APIs\EdenAPI@getParrainage');
+Route::get('/get_parrainage', 'APIs\EdenAPI@getParrainage');
 Route::get('/get_points', 'APIs\EdenValidationPointAPI@updatePoints');
 
 
