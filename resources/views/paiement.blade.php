@@ -134,14 +134,13 @@
 
                 <div class="action text-center">
 
-                    <h3><span>1 - </span> Confirmer que vous etes un etre humain </h3>
+                    <h3><span>1 - </span> Confirmer que vous êtes un être humain </h3>
                     <div class="text-center">
-                        <div class="d-flex justify-content-center">
-                            <div class="cc-selector">
-                                <div class="g-recaptcha" data-sitekey="6Lcej2kUAAAAALC9FcojJ3-UdYusYTeLF_VdG2IL"></div>
-                            </div>
-
+                        <div class="d-flex justify-content-center recaptcha">
+                        <div class="cc-selector">
+                            <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LdA5eMZAAAAABi5jq_MCXyQl-7hHGOEH-lHkSBd"></div>
                         </div>
+                    </div>
                     </div>
 
                     <div class='line'></div>
@@ -161,28 +160,48 @@
 
                     <div class='line'></div>
 
-                    <h3> <span>3 - </span> Acception des conditions generales</h3>
+                    <h3> <span>3 - </span> Acception des conditions générales</h3>
+
+					</div>
 
                    <div class="condition">
                         <p>
-              <input name ="accepte" id="accepte" onclick="checkFunction()" type="checkbox"> J'accepte les termes et conditions d’utilisation</input>
+             <table class="condition" id="condition" cellpadding="0" cellspacing="0" border="0" summary="">
+							<tbody>
+								<tr  style="font-size: 17px;">
+								<td class="condition">
+								<input name ="accepte" id="accepte" onclick="checkFunction()" type="checkbox"> J'accepte les </input>									</td>
+						<td> </td>
+						<td class="condition">
+						<a id="conditions" class="agrement-link af_goLink" href="{{ asset('pdf/conditions_vente_en_ligne.pdf') }}" target="_blank">&nbsp conditions d’utilisation</a> </td>
+
+							 </tr>
+						  </tbody>
+						</table>
                         </p>
 
                     </div>
-                    <div class='line'></div>
                     <div class="bouton-blanc">
                         @if ($auto != '')
-                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_auto', $devis->id) }}'" class="bot-button"> Payer <i
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_auto', $devis->id) }}'" class="bot-button"><img alt="Porto" height="30px" width="30px" src="{{ asset('images/logo-cib.svg') }}">&nbsp;&nbsp; Valider <i
                                     class="fa fa-arrow-circle-right"></i></button>
                         @endif
                         @if ($mrh != '')
-                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_mrh', $devis->id) }}'" class="bot-button"> Payer <i
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_mrh', $devis->id) }}'" class="bot-button"><img alt="Porto" height="30px" width="30px" src="{{ asset('images/logo-cib.svg') }}">&nbsp;&nbsp; Valider <i
                                     class="fa fa-arrow-circle-right"></i></button>
                         @endif
                         @if ($catnat != '')
-                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_catnat', $devis->id) }}'" class="bot-button"> Payer <i
+                            <button style="display:none;" id="payer" name="payer" onclick="window.location.href='{{ route('save_catnat', $devis->id) }}'" class="bot-button"><img alt="Porto" height="30px" width="30px" src="{{ asset('images/logo-cib.svg') }}">&nbsp;&nbsp; Valider <i
                                     class="fa fa-arrow-circle-right"></i></button>
                         @endif
+                    </div>
+                    <div class='line'></div>
+                    <div>
+                        <p>
+                            Pour plus d'informations, veuillez contacter les numéros suivants :
+                            Service clients Alliance assurance : +213 23 46 31/23/33
+                            Service clients SATIM : 3020
+                        </p>
                     </div>
                 </div>
                 @if (session()->has('popup'))
@@ -245,8 +264,14 @@
 
  <script>
         function checkFunction(){
-           var isChecked = document.getElementById("accepte").checked ;
-		  var x = document.getElementById("payer");
+
+            var googleResponse = $('#g-recaptcha-response').val();
+            if (!googleResponse) {
+                alert("Merci de Confirmer que vous êtes un être humain")
+                $('#accepte').prop('checked', false);
+            } else {
+                var isChecked = document.getElementById("accepte").checked ;
+		        var x = document.getElementById("payer");
 			  if (isChecked) {
 				x.style.display = "block";
 				  x.style.marginLeft = "auto";
@@ -254,14 +279,18 @@
 			  } else {
 				x.style.display = "none";
 			  }
-		}		  
-			   
+            }
+
+
+		}
+
     </script>
 
     <script>
         $(document).ready(function() {
-                    $('#myModal').modal(options)
-                }
+                    $('#myModal').modal(options);
+
+        });
 
                 function test() {
                     $("#POST").removeClass("image-clignote");
@@ -272,6 +301,7 @@
                     $("#CIB").removeClass("image-clignote");
                     $("#POST").addClass("image-clignote");
                 }
+
     </script>
     @if (!empty(Session::get('error_code')) && Session::get('error_code') == 5)
         <script>

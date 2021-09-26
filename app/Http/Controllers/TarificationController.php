@@ -713,8 +713,8 @@ class TarificationController extends Controller
         $request->session()->put('surface', $request->surface);
 
 
-        if ($request->code_agence == "" && strlen($request->code_agence) > 5) {
-            Alert::warning('Avertissement', 'Merci de verifier code d Agence');
+        if ($request->code_agence == "" || strlen($request->code_agence) > 5) {
+            Alert::warning('Avertissement', 'Merci de choisir une agence');
             return redirect()->route('devis_mrh', ['mrh', 'index']);
         }
 
@@ -865,13 +865,12 @@ class TarificationController extends Controller
     public function validation_devis_catnat(Request $request)
     {
 
-        $rules = array(
-            'code_agence'  => 'bail|string|max:5',
-        );
-
-        $this->validate($request, $rules);
-
         $value_catnat = session('data_catnat');
+		
+		if ($request->code_agence == "" || strlen($request->code_agence) > 5) {
+            Alert::warning('Avertissement', 'Merci de choisir une agence');
+            return redirect()->route('devis_catnat', ['catnat', 'index']);
+        }
 
         $user = auth::user();
 
@@ -1257,5 +1256,28 @@ class TarificationController extends Controller
             $pdf = PDF::loadView('pdf.catnat', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
         }
         return $pdf->stream();
+		
+    }
+	
+
+	public function download_pdf($id)
+    {
+
+        $devis = devis::find($id);
+        $risque = Rsq_Immobilier::where('code_devis', $devis->id)->first();
+        $prime = Prime::where('id_devis', $devis->id)->get();
+        $user = auth::user();
+        $assure = Assure::where('id_devis', $devis->id)->first();
+
+        $agence = Agences::where('Name', $devis->code_agence)->first();
+
+
+        if ($devis->type_assurance == 'Multirisques Habitation') {
+            $pdf = PDF::loadView('pdf.mrh', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
+        } elseif ($devis->type_assurance == 'Catastrophe Naturelle') {
+            $pdf = PDF::loadView('pdf.catnat', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
+        }
+        return $pdf->download('contrat.pdf');
+		
     }
 }

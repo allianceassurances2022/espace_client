@@ -15,6 +15,7 @@ use App\Rsq_Immobilier;
 use App\Rsq_Vehicule;
 use App\devis;
 use App\Order;
+use App\User;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Auth;
@@ -485,7 +486,7 @@ class PaiementController extends Controller
 
 		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
 		$response = Http::contentType("application/json")->send('GET', $url)->json();
-
+		
 		$message = $response['params']['respCode_desc'];
 		$order->update([
             'ErrorCode'      => $response['params']['respCode'],
@@ -495,24 +496,47 @@ class PaiementController extends Controller
         $this->satim_confirmation($order->devis_id);
 		
 		$devis = devis::where('id', $order->devis_id)->first();
+		
+		$respCode_desc = $response['params']['respCode_desc'];
+		$orderNumber= $response['OrderNumber'];
+		$approvalCode= $response['approvalCode'];
+		$date = date('Y-m-d H:i:s');
+		$montant = $response['Amount'];
+		$mode = "CIB";
+		
 	//	dd($devis);
-		return view('satim/success',compact('message','devis'));
+		return view('satim/success',compact('message','devis','respCode_desc','orderNumber','orderId','approvalCode','date','montant','mode'));
     }
 
     public function paiement_failed(Request $request)
     {
 		$orderId = $request->orderId;
 		$order = Order::where('orderId', $orderId)->first();
-
+		$message = "";
 		$url = 'https://test.satim.dz/payment/rest/confirmOrder.do?language=fr&orderId='.$orderId.'&password=satim120&userName=SAT2108150225';
 		$response = Http::contentType("application/json")->send('GET', $url)->json();
 
-		$message = $response['params']['respCode_desc'];
-		$order->update([
+		if($response['OrderStatus'] == "3")
+		{
+			$message = "Votre transaction a été rejetée/ Your transaction was rejected/ تم رفض معاملتك";
+		}else { 
+			if(!empty($response['params'])){
+			$message = $response['params']['respCode_desc'];
+			$order->update([
             'ErrorCode'      => $response['params']['respCode'],
             'respCode_desc' =>  $response['params']['respCode_desc'],
         ]);
+		
+		}else{
+			$message = $response['actionCodeDescription'];
+			$order->update([
+            'ErrorCode'      => $response['ErrorCode'],
+            'respCode_desc' =>  $response['actionCodeDescription'],
+        ]);
 
+		}
+		}
+		
 		return view('satim/failed',compact('message'));
     }
 
@@ -526,10 +550,20 @@ class PaiementController extends Controller
         $order = $myuuid->toString();
         $arr2 = explode("-", $order);
         $orderNumber = $arr2[0];
-        $montant = str_replace(".", "", $devis->prime_total);
+        //$montant = str_replace(".", "", $devis->prime_total);
+		if (str_contains($devis->prime_total, '.')) {
+		$montants = explode(".", $devis->prime_total);
+		if(strlen($montants[1]) == 1){
+			$montant = str_replace(".", "", $devis->prime_total);
+			$montant = $montant . '0';
+		}else{
+			$montant = str_replace(".", "", $devis->prime_total);
+		}
+		}else{
+			$montant = $devis->prime_total.'00';
+		}
 
-
-      /*  $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
+        $url = 'https://test.satim.dz/payment/rest/register.do?currency=012&amount=' . $montant . '&language=fr&orderNumber=' . $orderNumber . '&userName=SAT2108150225&password=satim120&returnUrl=https://epaiement.allianceassurances.com.dz/public/paiement_success&failUrl=https://epaiement.allianceassurances.com.dz/public/paiement_failed&jsonParams={"force_terminal_id":"E010900222","udf1":"' . $devis_id . '"}';
         $response = Http::contentType("application/json")->send('GET', $url)->json();
 
         //  $tab = json_decode($response, JSON_OBJECT_AS_ARRAY);
@@ -544,7 +578,7 @@ class PaiementController extends Controller
             'orderId'  => $response['orderId'], ]);
 
         //dd($resultat);
-        return Redirect::to($redirect);*/
+        return Redirect::to($redirect);
 
     }
 
@@ -552,5 +586,53 @@ class PaiementController extends Controller
      public function confirmation_paiement($id)
     { //dd($id);
         return view('satim/confirmation_order', ['id' => $id]);
+    }
+	
+	 public function getEmailAgence($code_agence)
+    {
+        $agence = Agences::where('Name', $code_agence )->get()->toArray();
+        if ($agence != null) {
+            // $email=$agence[0]['Mail'];
+            $email = 'delmedjadji@allianceassurances.com.dz';
+            if (($email != null) && ($email != ''))
+                $this->envoiMail($email);
+        }
+    }
+
+    public function getEmailUser($id_user)
+    {
+        $user = User::where('id', $id_user )->get()->toArray();
+        if ($user != null) {
+             //$email=$user[0]['email'];
+            $email = 'nbelkacemi@allianceassurances.com.dz';
+            if (($email != null) && ($email != ''))
+                $this->envoiMail($email);
+        }
+    }
+
+
+    public function envoiMail($email)
+    {
+        if (($email !== '') && ($email !== null)) {
+
+            $destinataire = $email;
+            // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
+            $objet = 'Opération de paiement'; // Objet du message
+            $message = 'Un paiement est effectué.  \n' ;
+            $headers = 'From: Alliance' . "\r\n" .
+                'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
+                'X-Mailer: PHP/';
+
+            $success = mail($destinataire, $objet, $message, $headers);
+
+            if (!$success) {
+                $errorMessage = error_get_last();
+                echo $errorMessage;
+                // echo "Votre message n'a pas pu être envoyé";
+
+
+
+            }
+        }
     }
 }

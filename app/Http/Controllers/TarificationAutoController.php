@@ -536,6 +536,25 @@ class TarificationAutoController extends Controller
 
 		return $pdf->stream();
 	}
+	
+	public function download_pdf($id)
+	{
+
+		$devis = devis::find($id);
+		$risque = Rsq_Vehicule::where('code_devis', $devis->id)->first();
+
+		$prime = Prime::where('id_devis', $devis->id)->get();
+		$user = auth::user();
+		$agence = Agences::where('Name', $devis->code_agence)->first();
+		$assure = Assure::where('id_devis', $devis->id)->first();
+
+		$agence = Agences::where('Name', $devis->code_agence)->first();
+
+		$pdf = PDF::loadView('pdf.auto', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
+		//return view('pdf.auto',compact('user','devis','risque','agence','prime'));
+
+		return $pdf->download('contrat.pdf');
+	}
 
 	public function contrat_auto($id)
 	{
