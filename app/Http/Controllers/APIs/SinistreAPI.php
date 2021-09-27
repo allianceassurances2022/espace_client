@@ -207,8 +207,8 @@ class SinistreAPI
         $numero_police = $data['num_police'];
         $agence = Agences::where('id', 'like', '%' . $numero_agence . '%')->get()->toArray();
         if ($agence != null) {
-            // $email=$agence[0]['Mail'];
-            $email = 'h.sarah1308@gmail.com';
+             $email=$agence[0]['Mail'];
+            //$email = 'h.sarah1308@gmail.com';
             if (($email != null) && ($email != ''))
                 $this->envoiMail($email, $numero_police, $information);
         }

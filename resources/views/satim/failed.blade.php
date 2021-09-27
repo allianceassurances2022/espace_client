@@ -17,16 +17,16 @@
                 <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <center>
-                            <h2 id="heading">Confirmation du paiement</h2>
-							 <h2>L'opération est échouée</h2>
-							 {{ $message ?? '' }}
+                            <h2 id="heading">Information sur la transaction </h2>
+							<h2>
+								<strong style="color:red;">Paiement rejeté </strong>
+									<img src="https://www.freeiconspng.com/uploads/error-icon-4.png" style="margin: auto;" width="50" height="50"> <h2>		
+							<h2> <FONT size="2">{{ $message ?? '' }} </FONT> </h2>	 
                         </center>
-
+<br/><br/><br/><br/>
                         <div>
                             <center>
-                                <img src="https://www.freeiconspng.com/uploads/error-icon-4.png" style="margin: auto;" width="250"
-                                    height="300">
-                                <h2>L'opération est échouée</h2>
+                       
                                 <form method="GET" action="{{ route('index_produit') }}" class="form-horizontal">
                                     @csrf
                                     <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
@@ -34,6 +34,18 @@
                                 </form>
                             </center>
                         </div>
+						<br/><br/>
+					<div>
+						<center>
+                        <span class="s1"> Pour plus d'informations, veuillez contacter les numéros suivants : </span>
+							<br/>
+                          <span class="s1"> Service clients Alliance assurance : +213 23 46 31/23/33   </span>
+							<br/>
+                          <span class="s1">  Service clients SATIM : 3020 </span>
+							
+							<span class="s1"> <img src="{{asset('images/3020.png')}}" style="margin: auto;" width="60" height="60"/> </span>
+                       </center>
+                    </div>
 
                     </div>
                 </div>

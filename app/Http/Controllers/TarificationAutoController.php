@@ -537,7 +537,7 @@ class TarificationAutoController extends Controller
 		return $pdf->stream();
 	}
 
-    public function download_pdf($id)
+	public function download_pdf($id)
 	{
 
 		$devis = devis::find($id);

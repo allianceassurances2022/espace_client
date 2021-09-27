@@ -38,7 +38,11 @@ class LoginAPI
             $data = json_encode($data);
             print_r($data);
         } else {
-            print_r(false);
+            $data = [
+                'check' => false,
+            ];
+            $data = json_encode($data);
+            print_r($data);
         }
 
 

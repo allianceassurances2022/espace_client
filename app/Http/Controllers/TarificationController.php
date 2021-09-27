@@ -865,13 +865,12 @@ class TarificationController extends Controller
     public function validation_devis_catnat(Request $request)
     {
 
+        $value_catnat = session('data_catnat');
 
-        if ($request->code_agence == "" || strlen($request->code_agence) > 5) {
+		if ($request->code_agence == "" || strlen($request->code_agence) > 5) {
             Alert::warning('Avertissement', 'Merci de choisir une agence');
             return redirect()->route('devis_catnat', ['catnat', 'index']);
         }
-
-        $value_catnat = session('data_catnat');
 
         $user = auth::user();
 
@@ -1256,10 +1255,12 @@ class TarificationController extends Controller
         } elseif ($devis->type_assurance == 'Catastrophe Naturelle') {
             $pdf = PDF::loadView('pdf.catnat', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
         }
-        return $pdf->stream('contrat.pdf');
+        return $pdf->stream();
+
     }
 
-    public function download_pdf($id)
+
+	public function download_pdf($id)
     {
 
         $devis = devis::find($id);
@@ -1277,6 +1278,5 @@ class TarificationController extends Controller
             $pdf = PDF::loadView('pdf.catnat', compact('user', 'devis', 'risque', 'agence', 'prime', 'assure'));
         }
         return $pdf->download('contrat.pdf');
-
     }
 }

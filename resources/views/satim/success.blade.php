@@ -22,13 +22,62 @@
 
                         <div>
                             <center>
-                                <img src="{{ asset('/images/verifier.png') }}" style="margin: auto;" width="250"
-                                    height="300">
-                                <h2>Votre paiement a été enregistré avec succées</h2>
-								 <h2>{{$message}}</h2>
+                                <img src="{{ asset('/images/verifier.png') }}" style="margin: auto;" width="200"
+                                    height="200">
+								 <h2 style="color:teal;">{{$message}}</h2>
+
+								<table class="table table-hover" style="width: 500px;margin-top: 31px;">
+								  <tbody>
+									<tr>
+									  <th scope="row">respCode_desc</th>
+									  <td>{{$respCode_desc}}</td>
+									</tr>
+									<tr>
+									  <th scope="row">orderId</th>
+									  <td>{{$orderId}}</td>
+									</tr>
+									<tr>
+									  <th scope="row">orderNumber</th>
+									  <td colspan="2">{{$orderNumber}}</td>
+									</tr>
+									  <tr>
+									  <th scope="row">approvalCode</th>
+									  <td colspan="2">{{$approvalCode}}</td>
+									</tr>
+									  <tr>
+									  <th scope="row">orderNumber</th>
+									  <td colspan="2">{{$orderNumber}}</td>
+									</tr>
+									  <tr>
+									  <th scope="row">date</th>
+									  <td colspan="2">{{$date}}</td>
+									</tr>
+									<tr>
+									  <th scope="row">montant</th>
+									  <td colspan="2">{{$montant}}</td>
+									</tr>
+									  <tr>
+									  <th scope="row">mode</th>
+									  <td colspan="2">{{$mode}}</td>
+									</tr>
+								  </tbody>
+								</table>
+								<div>
+						<center>
+                        <span style="font-size:14px;"> Pour plus d'informations, veuillez contacter les numéros suivants : </span>
+							<br/>
+                          <span > Service clients Alliance assurance : +213 23 46 31/23/33   </span>
+							<br/>
+                          <span style="color: green;" >  Service clients SATIM : 3020 </span>
+
+							<span >
+								<img 		src="{{asset('images/3020.png')}}" style="margin: auto;" width="60" height="60"/>
+							</span>
+                       </center>
+                    </div>
                                 <form method="GET" action="{{ route('home') }}" class="form-horizontal">
                                     @csrf
-                                    <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
+                                    <button data-dismiss="modal" type="submit" id="accueil-button" class="btn btn-lg btn-space btn-default"
                                         value="Retour à l'accueil">Retour à l'accueil</button>
                                     @if($devis->type_assurance=="Automobile")
                                         <a href="{{route('contrat_auto',$devis->id)}}" class="btn btn-lg btn-space btn-default">Consulter</a>
