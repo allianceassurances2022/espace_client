@@ -170,7 +170,9 @@ Route::get('djilali', function () {
 })->name('djilali');
 
 Route::get('page_pdf/{id}', 'TarificationController@generate_pdf')->name('page_pdf');
+Route::get('download_pdf/{id}', 'TarificationController@download_pdf')->name('download_pdf');
 Route::get('page_pdf_auto/{id}', 'TarificationAutoController@generate_pdf')->name('page_pdf_auto');
+Route::get('download_pdf_auto/{id}', 'TarificationAutoController@download_pdf')->name('download_pdf_auto');
 
 Route::get('contrat_mrh/{id}', 'TarificationController@contrat_mrh')->name('contrat_mrh');
 Route::get('contrat_catnat/{id}', 'TarificationController@contrat_catnat')->name('contrat_catnat');

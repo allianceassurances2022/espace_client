@@ -30,15 +30,21 @@
                                     @csrf
                                     <button data-dismiss="modal" type="submit" id="accueil-button" class="action-button"
                                         value="Retour à l'accueil">Retour à l'accueil</button>
-					@if($devis->type_assurance=="Automobile")
-                    <a href="{{route('contrat_auto',$devis->id)}}" class="btn btn-lg btn-space btn-default">Consulter</a>
-                    @endif
-                    @if($devis->type_assurance=="Catastrophe Naturelle")
-                    <a href="{{route('contrat_catnat',$devis->id)}}" class="btn btn-lg btn-space btn-default">Consulter</a>
-                    @endif
-                    @if($devis->type_assurance=="Multirisques Habitation")
-                    <a href="{{route('contrat_mrh',$devis->id)}}" class="btn btn-lg btn-space btn-primary">Consulter</a>
-                    @endif
+                                    @if($devis->type_assurance=="Automobile")
+                                        <a href="{{route('contrat_auto',$devis->id)}}" class="btn btn-lg btn-space btn-default">Consulter</a>
+                                        <a href="{{route('page_pdf_auto',$devis->id)}}" class="btn btn-lg btn-space btn-default" target="_blank">Imprimer</a>
+                                        <a href="{{route('download_pdf_auto',$devis->id)}}" class="btn btn-lg btn-space btn-default" target="_blank">Télécharger</a>
+                                    @endif
+                                    @if($devis->type_assurance=="Catastrophe Naturelle")
+                                        <a href="{{route('contrat_catnat',$devis->id)}}" class="btn btn-lg btn-space btn-default">Consulter</a>
+                                        <a href="{{route('page_pdf',$devis->id)}}" class="btn btn-lg btn-space btn-default" target="_blank">Imprimer</a>
+                                        <a href="{{route('download_pdf',$devis->id)}}" class="btn btn-lg btn-space btn-default" target="_blank">Télécharger</a>
+                                    @endif
+                                    @if($devis->type_assurance=="Multirisques Habitation")
+                                        <a href="{{route('contrat_mrh',$devis->id)}}" class="btn btn-lg btn-space btn-primary">Consulter</a>
+                                        <a href="{{route('page_pdf',$devis->id)}}" class="btn btn-lg btn-space btn-primary" target="_blank">Imprimer</a>
+                                        <a href="{{route('download_pdf',$devis->id)}}" class="btn btn-lg btn-space btn-primary" target="_blank">Télécharger</a>
+                                    @endif
                                 </form>
                             </center>
                         </div>
