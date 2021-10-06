@@ -37,15 +37,16 @@
                     </div>
                     <div class="user-display-info">
                         <div class="name">{{ Auth()->user()->prenom }} {{ Auth()->user()->name }}</div>
-                        <div class="nick"><span class="mdi mdi-account"></span> {{ Auth()->user()->profession }}</div>
+                        <div class="nick"><span class="mdi mdi-account"></span> {{ Auth()->user()->profession }}
+                        </div>
                     </div>
                     <div class="row user-display-details">
                         <div class="col-xs-">
                             <!--
-                      <div class="title">Issues</div>
-                      <div class="counter">26</div>
+                          <div class="title">Issues</div>
+                          <div class="counter">26</div>
 
-                      -->
+                          -->
                         </div>
                         <div class="col-xs-6">
                             <div class="title">Nombre de devis</div>
@@ -73,8 +74,8 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" style="height: 235px; border-radius: 10px;
-                      border: 2px solid;
-                      border-color: #007481;">
+                          border: 2px solid;
+                          border-color: #007481;">
                         <div class="item active">
                             <img src="{{ asset('produit_assets/images/slide/img1.jpg') }}" alt="img1"
                                 style="width:100%;height:231px">
@@ -236,23 +237,23 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default panel-table">
-              <div class="panel-heading">Mes sinistres</div>
-              <form>
-                                      @csrf
-                              </form>
-              <div class="panel-body">
-                <table id="sinistre" class="table table-striped table-hover table-fw-widget">
-                  <thead>
-                    <tr>
-                      <th>Référence Police</th>
-                      <th>Référence Sinistre</th>
-                      <th>Date déclaration</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
-              </div>
+                <div class="panel-heading">Mes sinistres</div>
+                <form>
+                    @csrf
+                </form>
+                <div class="panel-body">
+                    <table id="sinistre" class="table table-striped table-hover table-fw-widget">
+                        <thead>
+                            <tr>
+                                <th>Référence Police</th>
+                                <th>Référence Sinistre</th>
+                                <th>Date déclaration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -283,7 +284,7 @@
                 </div>
                 <div class="row" style="padding: 20px; font-weight: bold;">
                     <div class="col-md-12 item-renouvellement">
-                        <a href="{{ route('index_produit') }}">
+                        <a href="{{ route('eden_page') }}">
                             <img src="{{ asset('produit_assets/images/icons/hand-gesture.svg') }}"
                                 class="img-renouvellement" alt="Automobile">
                             <br>
@@ -440,13 +441,13 @@
                 //"processing":     "<img src='{{ asset('assets/images/loading_bar.gif') }}' > Chargement...",
                 "search": "Recherche:",
                 "zeroRecords": "Pas de résultat",
-						"paginate": {
-							"first": "Premier",
-							"last": "Dernier",
-							"next": "Suivant",
-							"previous": "Précédent"
-						}
-					}
+                "paginate": {
+                    "first": "Premier",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précédent"
+                }
+            }
         });
 
 
@@ -559,75 +560,89 @@
                 //"processing":     "<img src='{{ asset('assets/images/loading_bar.gif') }}' > Chargement...",
                 "search": "Recherche:",
                 "zeroRecords": "Pas de résultat",
-						"paginate": {
-							"first": "Premier",
-							"last": "Dernier",
-							"next": "Suivant",
-							"previous": "Précédent"
-						}
-					}
-				});
+                "paginate": {
+                    "first": "Premier",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précédent"
+                }
+            }
+        });
 
 
-///////////////////////////////////////////////////////////  Sinistre ///////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////  Sinistre ///////////////////////////////////////////////////////////////////
 
-var table_sinistre = $('#sinistre').DataTable({
-					"responsive": true,
-					"autoWidth": true,
-					"columns": [
-                        {"data": "ref_police",  "orderable": true,"visible": true, "searchable": true},
-                        {"data": "ref_sinistre", "orderable": true, "searchable": true},
-                        {"data": "date_declaration", "orderable": true, "searchable": true},
-					],
-					"rowId": 'ref_police', // IdRow = Id_User in bd
-					"processing": true,
-					"serverSide": true,
-					"ajax": {
-						url: '{{route('sinistre.table')}}',
-						type: 'POST',
-						data: {
-							'_token': function () {
-											return $('input[name="_token"]').val();
-											},
-                            'id': {{Auth()->user()->id}},
-						}
+        var table_sinistre = $('#sinistre').DataTable({
+            "responsive": true,
+            "autoWidth": true,
+            "columns": [{
+                    "data": "ref_police",
+                    "orderable": true,
+                    "visible": true,
+                    "searchable": true
+                },
+                {
+                    "data": "ref_sinistre",
+                    "orderable": true,
+                    "searchable": true
+                },
+                {
+                    "data": "date_declaration",
+                    "orderable": true,
+                    "searchable": true
+                },
+            ],
+            "rowId": 'ref_police', // IdRow = Id_User in bd
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                url: '{{ route('sinistre.table') }}',
+                type: 'POST',
+                data: {
+                    '_token': function() {
+                        return $('input[name="_token"]').val();
+                    },
+                    'id': {{ Auth()->user()->id }},
+                }
 
-					},
-					"order": [[0, "asc"]],
-					"searching": true,
-					"deferRender": true,
-                    "pageLength": 3,
-					"scrollY":"180px",
-					"language": {
-						"info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
-						"infoEmpty": "Pas de résultat",
-						"infoFiltered": " - Filtere dans _MAX_ enregistrements",
-						"decimal": "",
-						"emptyTable": "Pas de résultat",
-						"infoPostFix": "",
-						"thousands": ",",
-						"lengthMenu": " <select>" +
-                '<option value="3">3</option>' +
-								'<option value="10">10</option>' +
-								'<option value="20">20</option>' +
-								'<option value="30">30</option>' +
-								'<option value="40">40</option>' +
-								'<option value="50">50</option>' +
-								'<option value="100">100</option>' +
-								'<option value="-1">Tous</option>' +
-								"</select>  lignes à afficher", //_MENU_
-						"loadingRecords": "Veuillez patienter - Chargement...",
-//"processing":     "<img src='{{asset('assets/images/loading_bar.gif')}}' > Chargement...",
-						"search": "Recherche:",
-						"zeroRecords": "Pas de résultat",
-						"paginate": {
-							"first": "Premier",
-							"last": "Dernier",
-							"next": "Suivant",
-							"previous": "Précédent"
-						}
-					}
-				});
+            },
+            "order": [
+                [0, "asc"]
+            ],
+            "searching": true,
+            "deferRender": true,
+            "pageLength": 3,
+            "scrollY": "180px",
+            "language": {
+                "info": " page : _PAGE_ sur _PAGES_   (de _START_ à _END_ sur un total de : _TOTAL_ enregistrements )",
+                "infoEmpty": "Pas de résultat",
+                "infoFiltered": " - Filtere dans _MAX_ enregistrements",
+                "decimal": "",
+                "emptyTable": "Pas de résultat",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": " <select>" +
+                    '<option value="3">3</option>' +
+                    '<option value="10">10</option>' +
+                    '<option value="20">20</option>' +
+                    '<option value="30">30</option>' +
+                    '<option value="40">40</option>' +
+                    '<option value="50">50</option>' +
+                    '<option value="100">100</option>' +
+                    '<option value="-1">Tous</option>' +
+                    "</select>  lignes à afficher", //_MENU_
+                "loadingRecords": "Veuillez patienter - Chargement...",
+                //"processing":     "<img src='{{ asset('assets/images/loading_bar.gif') }}' > Chargement...",
+                "search": "Recherche:",
+                "zeroRecords": "Pas de résultat",
+                "paginate": {
+                    "first": "Premier",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précédent"
+                }
+            }
+        });
 
 
 

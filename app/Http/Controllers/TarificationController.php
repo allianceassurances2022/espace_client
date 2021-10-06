@@ -356,7 +356,6 @@ class TarificationController extends Controller
        // $url = "https://epaiement.allianceassurances.com.dz/public/api/calculecatnat";
         $response = Http::contentType("application/json")->send('POST', $url, ['body' => $data])->json();
 
-
         $tableau = array('Habitation', 'Commerce', 'Industrielle');
 
         $datec = date('d/m/y');

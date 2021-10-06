@@ -182,7 +182,9 @@ Route::get('attestation/{id}', 'TarificationAutoController@attestation')->name('
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/calculemrh', 'TarificationService@calculeMRH')->name('calculemrh');
 
+///////////////////////////// Eden
 
+Route::get('/eden_page', 'EdenController@index')->name('eden_page');
 
 
 Auth::routes();
