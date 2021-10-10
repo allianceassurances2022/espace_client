@@ -13,6 +13,7 @@ class EdenController extends Controller
     {
 
 
+
         $dataAssure = CodeAssureParrain::where('id_user', Auth::user()->id)->first();
 
         // $codeAssures = $dataAssure->pluck('code_assure');
@@ -26,15 +27,41 @@ class EdenController extends Controller
             ->send('GET', $url)
             ->json();
 
-        //dd($response[0]);
-
-
-
+        // dd($response);
         $points_collected = $response[0]['points_collected'];
         $point_to_convert = $response[0]['points_to_convert'];
 
-        $list_of_demandes = null;
+        ////////////////////////////////////// get list points to convert ///////////////////////////////////////
 
-        return view('eden.points', compact('codeAssures', 'points_collected', 'point_to_convert'));
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/get_points_converted?code1=" . $codeAssures . "";
+        //dd($url);
+        $response = Http::contentType("application/json")
+            ->send('GET', $url)
+            ->json();
+
+        // dd($response);
+        $count = 1;
+        $data_demandes = $response;
+
+
+        return view('eden.points', compact('codeAssures', 'points_collected', 'point_to_convert', 'data_demandes', 'count'));
     }
+    /*   public function data_demande()
+    {
+        $dataAssure = CodeAssureParrain::where('id_user', Auth::user()->id)->first();
+        $codeAssures = $dataAssure->code_assure;
+
+        $url = "https://epaiement.allianceassurances.com.dz/public/api/get_points_converted?code1=" . $codeAssures . "";
+        $data = Http::contentType("application/json")
+            ->send('GET', $url)
+            ->json();
+
+        dd($data);
+
+        return $data;
+
+        // dd($response);
+        // $data_demandes = $data;
+
+    }*/
 }

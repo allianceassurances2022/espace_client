@@ -185,6 +185,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 ///////////////////////////// Eden
 
 Route::get('/eden_page', 'EdenController@index')->name('eden_page');
+Route::get('/eden_data', 'EdenController@data_demande')->name('eden_data');
 
 
 Auth::routes();

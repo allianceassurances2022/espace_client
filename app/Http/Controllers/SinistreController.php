@@ -106,19 +106,13 @@ class SinistreController extends Controller
         $num_assure = CodeAssureParrain::where('id_user', $user_id)->get();
         $num_assure = $num_assure->pluck('code_assure');
 
-
-        // dd($num_assure->join(',  '));       
-        //  $code = $num_assure->join(', ', ',');
-        // $code = $num_assure->concat(['null']);
         foreach ($num_assure as $assure) {
-            // dd($assure);
-            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";
-            //  dd($url);
+           
+            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";           
             $response = Http::contentType("application/json")
                 ->send('GET', $url)
                 ->json();
-
-            // dd($response);
+            
         }
     }
 

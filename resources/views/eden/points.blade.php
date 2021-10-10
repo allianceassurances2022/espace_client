@@ -124,28 +124,37 @@
                         </div>
 
                         <div class="row" style="margin-top: 20px;">
-                            <div class="panel panel-default panel-table">
+                            <div class="panel panel-default" style="width: 750px;  margin: auto;">
 
                                 <center>
                                     <div class="panel-heading">Mes demandes de conversions non valides</div>
                                 </center>
-                                <form>
-                                    @csrf
-                                </form>
 
-                                <table id="devis" class="table table-striped table-hover table-fw-widget" style="width: 600px;
-                                                                margin: auto;margin-top:20px">
+
+                                <table id="convertion" class="table table-striped table-hover text-center"
+                                    style="width: 600px;
+                                                                                                                                                                                margin: auto;margin-top:20px">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th>Nombre de points</th>
-                                            <th>Date de la demande</th>
-                                            <th>Statut</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="text-center">Numéro</th>
+                                            <th class="text-center">Nombre de points</th>
+                                            <th class="text-center">Date de la demande</th>
+                                            <th class="text-center">Statut</th>
+
                                         </tr>
                                     </thead>
+
                                     <tbody>
+
+                                        @foreach ($data_demandes as $data)
+
+                                            <tr>
+                                                <td> {{ $count++ }}</td>
+                                                <td> {{ $data['points'] }}</td>
+                                                <td> {{ $data['created_at'] }}</td>
+                                                <td> {{ $data['is_validate'] }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
