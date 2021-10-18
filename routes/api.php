@@ -44,3 +44,5 @@ Route::post('/get_nearest_agence', 'APIs\GetNearestAgencesAPI@getNearestAgences'
 
 Route::get('/get_police', 'APIs\GetPoliceAPI@getPoliceByUser');
 Route::get('/get_user_police', 'APIs\GetUserByPoliceAPI@getUserByPolice');
+
+Route::get('/get_slider_img', 'APIs\SliderAPI@getSliderImg');
