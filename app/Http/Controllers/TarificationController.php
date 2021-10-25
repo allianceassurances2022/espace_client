@@ -497,7 +497,7 @@ class TarificationController extends Controller
     }
 
 }
-
+     
     //mrh
     public function montant_mrh(Request $request)
     {
