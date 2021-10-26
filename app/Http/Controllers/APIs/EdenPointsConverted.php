@@ -18,7 +18,7 @@ class EdenPointsConverted
 
         $code_assure = $request->input('code1'); //code assure
 
-        $url = "http://41.111.145.36/backoffice/public/api/get_points_converted?code1=" . $code_assure;
+        $url = "http://41.111.145.36/api/get_points_converted?code1=" . $code_assure;
         $data = Http::contentType("application/json")->send('GET',$url)->json();
 
         $data = json_encode($data);

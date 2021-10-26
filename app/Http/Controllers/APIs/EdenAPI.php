@@ -16,7 +16,7 @@ class EdenAPI
     {
         $code_parrain = $request->input('code'); //code assure
 
-        $url = "http://41.111.145.36/backoffice/public/api/get_parrainage?code=".$code_parrain;
+        $url = "http://41.111.145.36/api/get_parrainage?code=".$code_parrain;
         $data = Http::contentType("application/json")->send('GET',$url)->json();
 
         $data = json_encode($data);

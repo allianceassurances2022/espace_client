@@ -79,7 +79,7 @@ class SinistreAPI
             }
         }
 
-        $url = "http://41.111.145.36/backoffice/public/api/get_sinistre?code=" . $user_code_assure;
+        $url = "http://41.111.145.36/api/get_sinistre?code=" . $user_code_assure;
         $resp = Http::contentType("application/json")->send('GET', $url)->json();
 
         if (!empty($resp) && !empty($tableau)) {
@@ -128,7 +128,7 @@ class SinistreAPI
             'adress_nature'         => $data['adress_nature'],
             'hurts'                 => $data['blesse'],
             'nbr_hurts'             => $data['nbr_hurts'],
-          
+
         ]);
     }
 
