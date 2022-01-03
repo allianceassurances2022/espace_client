@@ -18,6 +18,7 @@
                             <li id="payment"><strong>le véhicule</strong></li>
                             <li id="user"><strong>le conducteur</strong></li>
                             <li id="confirm"><strong>l'accident</strong></li>
+                            <li id="coins"><strong>Remboursement</strong></li>
 
                         </ul>
                         <div class="progress">
@@ -104,6 +105,7 @@
                                                     id="societe_assurance_adv" class="form-control"
                                                     value="{{ old('societe_assurance_adv') }}">
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -133,6 +135,7 @@
 
 
                         </fieldset>
+
                         <fieldset>
                             <div class="form-card">
 
@@ -227,7 +230,6 @@
                                 value="Précédent" />
                         </fieldset>
 
-
                         <fieldset>
                             <div class="form-card">
                                 <div class="form-group">
@@ -250,7 +252,8 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Marque, type</label>
                                             <div class="col-sm-8">
-                                                <select name="marque" id="marque" class="form-control select2" required>
+                                                <select name="marque" id="marque" class="form-control select2"
+                                                    required>
                                                     @foreach ($marques as $marque)
                                                         <option value="{{ $marque->code }}">{{ $marque->libelle }}
                                                         </option>
@@ -347,6 +350,7 @@
                                 value="Précédent" />
 
                         </fieldset>
+
                         <fieldset>
                             <div class="form-card">
                                 <div class="form-group">
@@ -519,6 +523,7 @@
                                 value="Précédent" />
 
                         </fieldset>
+
                         <fieldset>
                             <div class="form-card">
                                 <div class="form-group">
@@ -579,11 +584,13 @@
                                                         name="police" value="1" onclick="showInput('brigade1')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="police"
                                                         name="police" value="0" onclick="showNone('brigade1')"
                                                         style="width: 100px;margin-right: -27px;margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="display: none" id="brigade1">
@@ -608,11 +615,13 @@
                                                     <input class="form-check-input" type="radio" id="vol" name="vol"
                                                         value="1" onclick="showInput('serie_type')" style="width: 100px;
                                                 margin-right: -27px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="vol" name="vol"
                                                         value="0" onclick="showNone('serie_type')"
                                                         style="width: 100px; margin-right: -27px; margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6" style="display: none" id="serie_type">
@@ -635,11 +644,13 @@
                                                         value="1" onclick="showInput('gage')" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                                    <input class="form-check-input" type="radio" id="gager" name="gager"
-                                                        value="0" onclick="showNone('gage')" style="width: 100px; margin-right: -27px;
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
+                                                    <input class="form-check-input" type="radio" id="gager"
+                                                        name="gager" value="0" onclick="showNone('gage')" style="width: 100px; margin-right: -27px;
                                             margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -669,16 +680,18 @@
                                                 <label class="col-sm-4 control-label">S'agit-il d'un véhicule poids
                                                     lourd</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id="lourd" name="lourd"
-                                                        value="1" onclick="showInput('div-lourd')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="lourd"
+                                                        name="lourd" value="1" onclick="showInput('div-lourd')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
-                                                    <input class="form-check-input" type="radio" id="lourd" name="lourd"
-                                                        value="0" onclick="showNone('div-lourd')" style="width: 100px;
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
+                                                    <input class="form-check-input" type="radio" id="lourd"
+                                                        name="lourd" value="0" onclick="showNone('div-lourd')" style="width: 100px;
                                                     margin-right: -27px;
                                                     margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -695,12 +708,14 @@
                                                         name="police" value="1" onclick="showInput('attele')" style="width: 100px;
                                                             margin-right: -27px;
                                                             margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="attele"
                                                         name="police" value="0" onclick="showNone('attele')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -759,15 +774,17 @@
                                                     véhicule
                                                     et celui de mon adversaire</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id="degat" name="degat"
-                                                        value="1" onclick="showInput('dega')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="degat"
+                                                        name="degat" value="1" onclick="showInput('dega')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="degat"
                                                         name="autre_degat" value="0" onclick="showNone('degat')" style="width: 100px;
                                                     margin-right: -27px; margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
 
                                                 </div>
                                             </div>
@@ -808,12 +825,14 @@
                                                         style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">oui</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="blesse"
                                                         name="blesse" value="0" onclick="showNone('autre_bless')" style="width: 100px;
                                                     margin-right: -27px;
                                                     margin-top: 23px;">
-                                                    <label class="form-check-label" style="font-size: 16px;">non</label>
+                                                    <label class="form-check-label"
+                                                        style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
 
@@ -827,22 +846,77 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
+
+                            <input type="button" name="next" class="next action-button" value="Suivant" />
+                            <input type="button" name="previous" class="previous action-button-previous"
+                                value="Précédent" />
+
+                        </fieldset>
+
+                        <fieldset>
+
+
+                            <!--div class="radio_section_slice"-->
+                            <div>
+                                <h3><span> Séléctionner un moyen de paiement pour votre rembouressement</h3>
+
+                                <!--
+                                <div class="col-md-3">
+                                    <input type="image" id="type_paiment" value="CIB" id="type_paiment" width="100"
+                                        onclick="$('#type_paiement').val('CIB')" height="135"
+                                        src="{{ asset('assets/img/logo_satim.svg') }}" />
+
+                                </div>
+                                <div class="col-md-3">
+                                   
+                                    <input type="image" id="type_paiment" value="cheque" id="type_paiment" width="100"
+                                        heigh="50" onclick="$('#type_paiement').val('cheque')"
+                                        src="{{ asset('assets/img/cheque.jpg') }}" />
+-->
+                                <input class="form-check-input" type="radio" id="type_paiement" name="type_paiement"
+                                    value="RIP" onclick="showInput('num_rip')" style="width: 100px;
+                                        margin-right: -27px;
+                                        margin-top: 23px;">
+                                <label class="form-check-label" style="font-size: 16px;">Par Virement </label>
+                                <input class="form-check-input" type="radio" id="type_paiement" name="type_paiement"
+                                    value="CHEQ" onclick="showNone('num_rip')" style="width: 100px;
+                                        margin-right: -27px;
+                                        margin-top: 23px;">
+                                <label class="form-check-label" style="font-size: 16px;">Récupération du chéque au
+                                    niverau de l'agence</label>
+
+
+                            </div>
+                            <div class="col-md-12" name="num_rip" id="num_rip" style="display: none">
+                                <div class="col-sm-1">
+                                </div>
+                                <label class="col-sm-4">Veuillez introduire votre numéro de RIP</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
+                                </div>
+                            </div>
+
+
 
                             <button data-dismiss="modal" type="submit" class="next action-button"
                                 value="Valider">{{ __('Valider') }}</button>
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
-                        </fieldset>
-
-                    </form>
 
                 </div>
+
+
+
+                </fieldset>
+
+                </form>
+
             </div>
+
         </div>
     </div>
+</div>
 </div>

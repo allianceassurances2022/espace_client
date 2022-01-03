@@ -30,9 +30,6 @@
             var opacity;
             var current = 1;
             var steps = $("fieldset").length;
-
-
-
             setProgressBar(current);
 
             $(".next").click(function() {

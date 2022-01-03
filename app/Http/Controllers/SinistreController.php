@@ -107,19 +107,18 @@ class SinistreController extends Controller
         $num_assure = $num_assure->pluck('code_assure');
 
         foreach ($num_assure as $assure) {
-           
-            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";           
+
+            $url = "https://epaiement.allianceassurances.com.dz/public/api/get_police?code=('" . $assure . "')";
             $response = Http::contentType("application/json")
                 ->send('GET', $url)
                 ->json();
-            
         }
     }
 
     public function declare_sinistre(Request $request)
     {
 
-        //   dd($request);
+        dd($request);
 
         $vehicule1 =   [
             "account_id"                => 1,
@@ -199,6 +198,7 @@ class SinistreController extends Controller
             "nbr_hurts"                 => $request->nmbr_blesse,
             "vehicle1"                  => $vehicule1,
             "vehicle2"                  => $vehicule2,
+            "type_paiment"              => $request->type_paiment
         ];
 
         $data = json_encode($data);
