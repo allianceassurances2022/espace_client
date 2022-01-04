@@ -46,3 +46,4 @@ Route::get('/get_police', 'APIs\GetPoliceAPI@getPoliceByUser');
 Route::get('/get_user_police', 'APIs\GetUserByPoliceAPI@getUserByPolice');
 
 Route::get('/get_slider_img', 'APIs\SliderAPI@getSliderImg');
+Route::get('/get_slider_img_detail', 'APIs\SliderAPI@getSliderImgDetail');
