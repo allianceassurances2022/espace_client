@@ -118,7 +118,7 @@ class SinistreController extends Controller
     public function declare_sinistre(Request $request)
     {
 
-        dd($request);
+     //   dd($request);
 
         $vehicule1 =   [
             "account_id"                => 1,
@@ -171,8 +171,9 @@ class SinistreController extends Controller
             "car_serial"                => ""
 
         ];
-
+        $id = $this->guidv4();
         $data = [
+         //   "id"                        => $id,
             "account_id"                => 1,
             "user_id"                   => "",
             "isGendarmerie"             => $request->brigade,
@@ -187,7 +188,6 @@ class SinistreController extends Controller
             "attele"                    => $request->attele,
             "poids_charge_second"       => $request->poids_charge_second,
             "num_imma_charge"           => $request->num_imma_charge,
-            "poids_charge_second"       => $request->poids_charge_second,
             "assurance_second"          => $request->assurance_second,
             "n_police_second"           => $request->n_police_second,
             "degat"                     => $request->degat,
@@ -198,41 +198,33 @@ class SinistreController extends Controller
             "nbr_hurts"                 => $request->nmbr_blesse,
             "vehicle1"                  => $vehicule1,
             "vehicle2"                  => $vehicule2,
-            "type_paiment"              => $request->type_paiment
+            "type_paiement"             => $request->type_paiment,
+            "facon_paiement"            => $request->facon_paiement
         ];
 
-        $data = json_encode($data);
-
-        //  dd($data);
-
-        /*   
-        $url = "https://epaiement.allianceassurances.com.dz/public/api/create_sinistre";
-        $response = Http::contentType("application/json")
-            ->send('POST', $url, ['body' => $data])
-            ->json();
-*/
         $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
             ->send('POST', $url, ['body' => $data])
             ->json();
 
-        // dd($response);
 
         return view('sinistre.validation', compact('response'));
-
-        //  $num_agence = substr($data['vehicle1'], 0, 4);
-        //    dd(substr($data['num_police'], 0, 4));
-
-        /*  $client = new \GuzzleHttp\Client();
-        $client->post(
-            'http://epaiement.local/api/create_sinistre',
-            array(
-                'form_params' => $data
-            )
-        );
-
-
-        dd($client);
-        */
+  
     }
+
+    function guidv4()
+    {
+        // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
+        $data = random_bytes(16);
+        assert(strlen($data) == 16);
+
+        // Set version to 0100
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+        // Set bits 6-7 to 10
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+
+        // Output the 36 character UUID.
+        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+    }
+    
 }
