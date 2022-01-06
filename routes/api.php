@@ -34,12 +34,16 @@ Route::post('/calculeauto', 'APIs\TarificationAPI@calculeAuto')->name('api_calcu
 
 Route::post('/create_sinistre', 'APIs\SinistreAPI@createSinistre');
 Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre')->name('api_get_alldossiersinistre');
+Route::get('/all_sinistre', 'APIs\SinistreAPI@AllDossierSinistre');
+Route::get('/all_vehicule', 'APIs\SinistreAPI@AllVehicules');
+Route::get('/getSinistreById', 'APIs\SinistreAPI@getSinistreById');
+Route::get('/getVehiculeById', 'APIs\SinistreAPI@getVehiculeById');
 
 
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');
 Route::get('/get_agence', 'APIs\GetAgencesAPI@getAgences');
 Route::get('/get_agence_json', 'APIs\GetAgencesAPI@getAgencesJson');
-Route::post('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
+Route::get('/get_commune', 'APIs\CommuneAPI@getCommunesByCodeWilaya');
 Route::post('/get_nearest_agence', 'APIs\GetNearestAgencesAPI@getNearestAgences');
 
 Route::get('/get_police', 'APIs\GetPoliceAPI@getPoliceByUser');

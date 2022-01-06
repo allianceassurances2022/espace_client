@@ -207,7 +207,7 @@ class SinistreAPI
         $numero_police = $data['num_police'];
         $agence = Agences::where('id', 'like', '%' . $numero_agence . '%')->get()->toArray();
         if ($agence != null) {
-             $email=$agence[0]['Mail'];
+            $email = $agence[0]['Mail'];
             //$email = 'h.sarah1308@gmail.com';
             if (($email != null) && ($email != ''))
                 $this->envoiMail($email, $numero_police, $information);
@@ -233,9 +233,57 @@ class SinistreAPI
                 echo $errorMessage;
                 // echo "Votre message n'a pas pu être envoyé";
 
-
-
             }
         }
+    }
+
+    public function AllDossierSinistre(Request $request)
+    {
+
+        $condition = $request->input('condition');
+
+        $sinistres = DossierSinistre::where('is_validate', $condition)->get();
+        $sinistres = json_encode($sinistres);
+        print_r($sinistres);
+    }
+
+    public function AllVehicules(Request $request)
+    {
+
+        $condition = $request->input('condition');
+
+        $vehicules = DossierVehicule::where('is_validate', $condition)->get();
+        $vehicules = json_encode($vehicules);
+        print_r($vehicules);
+    }
+
+    public function getSinistreById(Request $request)
+    {
+        $id_sinistre = $request->input('id_sinistre');
+
+        $sinistre = DossierVehicule::where('id_dossier', $id_sinistre)->get();
+        $sinistre = json_encode($sinistre);
+
+        /*
+        $sinistre = DossierSinistre::where('id', $id_sinistre)->get();
+        $sinistre = json_encode($sinistre);
+
+        $data = [
+            'vehicule' =>  $vehicule,
+            'sinistre' =>  $sinistre,
+        ];
+        */
+        $data = $sinistre;
+        print_r($data);
+    }
+    public function getVehiculeById(Request $request)
+    {
+        $id_sinistre = $request->input('id_sinistre');
+
+        $vehicule = DossierSinistre::where('id', $id_sinistre)->first();
+        $vehicule = json_encode($vehicule);
+
+        $data = $vehicule;
+        print_r($data);
     }
 }
