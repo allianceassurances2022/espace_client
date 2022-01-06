@@ -17,6 +17,7 @@ class MobileImageTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
+            $table->string('lien');
             $table->timestamps();
         });
     }

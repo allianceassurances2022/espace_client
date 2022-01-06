@@ -27,4 +27,14 @@ class SliderAPI
         //  print_r($data[0]->url);
         print_r($data_array);
     }
+
+    public function getSliderImgDetail()
+    {
+        $data = MobileImg::All();
+
+        $data_array = json_encode($data);
+        // print_r($data_array->toArray());
+        //  print_r($data[0]->url);
+        print_r($data_array);
+    }
 }
