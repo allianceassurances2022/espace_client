@@ -892,7 +892,7 @@
                             <div class="col-md-12" name="num_rip" id="num_rip" style="display: none">
                                 <div class="col-sm-1">
                                 </div>
-                                <label class="col-sm-4">Veuillez introduire votre numéro de RIP</label>
+                                <label class="col-sm-4">Veuillez ntroduire votre numéro de RIP</label>
                                 <div class="col-sm-6">
                                     <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
                                 </div>
