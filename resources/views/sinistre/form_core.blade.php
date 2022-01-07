@@ -32,8 +32,7 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
-                                                <select onchange="mapdata()" type="text" id="num_police"
-                                                    name='num_police'>
+                                                <select onclick="mapdata()" type="text" id="num_police" name='num_police'>
                                                 </select>
                                             </div>
                                         </div>
@@ -861,50 +860,62 @@
                             <!--div class="radio_section_slice"-->
                             <div>
                                 <h3><span> Séléctionner un moyen de paiement pour votre rembouressement</h3>
-
-                                <!--
-                                <div class="col-md-3">
-                                    <input type="image" id="type_paiment" value="CIB" id="type_paiment" width="100"
-                                        onclick="$('#type_paiement').val('CIB')" height="135"
-                                        src="{{ asset('assets/img/logo_satim.svg') }}" />
-
-                                </div>
-                                <div class="col-md-3">
-                                   
-                                    <input type="image" id="type_paiment" value="cheque" id="type_paiment" width="100"
-                                        heigh="50" onclick="$('#type_paiement').val('cheque')"
-                                        src="{{ asset('assets/img/cheque.jpg') }}" />
--->
                                 <input class="form-check-input" type="radio" id="type_paiement" name="type_paiement"
-                                    value="RIP" onclick="showInput('num_rip')" style="width: 100px;
+                                    value="RIP" onclick="showInput('cas_rip'),showNone('cas_cheq')" style="width: 100px;
                                         margin-right: -27px;
                                         margin-top: 23px;">
-                                <label class="form-check-label" style="font-size: 16px;">Par Virement </label>
+                                <label class="form-check-label" style="font-size: 16px;">RIB</label>
                                 <input class="form-check-input" type="radio" id="type_paiement" name="type_paiement"
-                                    value="CHEQ" onclick="showNone('num_rip')" style="width: 100px;
+                                    value="CHEQ" onclick="showNone('cas_rip'),showInput('cas_cheq')" style="width: 100px;
                                         margin-right: -27px;
                                         margin-top: 23px;">
-                                <label class="form-check-label" style="font-size: 16px;">Récupération du chéque au
-                                    niverau de l'agence</label>
+                                <label class="form-check-label" style="font-size: 16px;">Chèque</label>
 
-
-                            </div>
-                            <div class="col-md-12" name="num_rip" id="num_rip" style="display: none">
-                                <div class="col-sm-1">
+                                <div id="cas_rip" style="display: none">
+                                    <label class="col-sm-4">Veuillez introduire votre numéro de RIP</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
+                                    </div>
+                                    <label class="col-sm-4" for="myfile">Joindre le chèque</label>
+                                    <div class="col-sm-6">
+                                        <input type="file" name="myfile" id="myfile" accept="pdf/*">
+                                    </div>
                                 </div>
+<<<<<<< HEAD
                                 <label class="col-sm-4">Veuillez ntroduire votre numéro de RIP</label>
                                 <div class="col-sm-6">
                                     <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
+=======
+                                
+                                <div id="cas_cheq" style="display: none">
+                                    <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez :</label>
+                                        <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
+                                        value="livrer"  style="width: 100px;  margin-right: -27px; margin-top: 23px;">
+                                    <label class="form-check-label" style="font-size: 16px;">Livrer</label>
+                                    <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
+                                        value="recuperation"   style="width: 100px;  margin-right: -27px; margin-top: 23px;">
+                                    <label class="form-check-label" style="font-size: 16px;">Récupération de l'agence</label>                                  
+>>>>>>> 467a737967ae7d88e44ea14217a18baaf3b17b54
                                 </div>
                             </div>
 
-
+                        <div class="col-md-12">
+                            <br>
+                            <hr>
+                            <br>
+                            <br>
+                            <div class="col-md-6" name="formulaire" id="formulaire" >
+                            <a href="#" onclick="openOnglet()">Télécharger formulaire</a>
+                            </div>
+                            <div class="col-md-6" name="formulaire" id="formulaire" >
+                            <input type="file" value="Importer formulaire" name="myfile" id="myfile" accept="pdf/*">    
+                            </div>
+                        </div>
 
                             <button data-dismiss="modal" type="submit" class="next action-button"
                                 value="Valider">{{ __('Valider') }}</button>
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
-
 
                 </div>
 
@@ -920,3 +931,189 @@
     </div>
 </div>
 </div>
+
+@section('js')
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/lib/jquery.maskedinput/jquery.maskedinput.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/app-form-masks.js') }}" type="text/javascript"></script>
+
+    <!-- jQuery CDN -->
+    <script>
+        var donnes = '';
+
+        $(document).ready(function() {
+
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
+
+
+
+            $.ajax({
+                url: '{{ route('getSinistres') }}',
+                type: 'POST',
+                data: {
+                    '_token': function() {
+                        return $('input[name="_token"]').val();
+                    },
+                },
+                success: function(data) {
+                    donnes = data;
+                    for (i = 0; i < data.length; i++) {
+                        // $('#num_police').append(new Option(data[i].REFERENCE), i)
+                        $('#num_police').append($('<option>', {
+                            value: i,
+                            text: data[i].REFERENCE
+                        }));
+                    }
+
+                    $("#loading").hide();
+                    $("#main-content").show();
+
+
+                }
+            });
+
+            setProgressBar(current);
+
+            $(".next").click(function() {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
+
+
+
+            $(".previous").click(function() {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+            }
+
+            $(".submit").click(function() {
+                return false;
+            })
+
+            $('#matricule').mask("99999 - 999 - 99", {
+                placeholder: "xxxxx - xxx - xx"
+            });
+            $('#heure_accident').setMask('time').val('hh:mm');
+
+
+        });
+
+        function showDiv() {
+
+        }
+
+        function showMe(box) {
+
+            var chboxs = document.getElementsByName("c1");
+            var vis = "none";
+            for (var i = 0; i < chboxs.length; i++) {
+                if (chboxs[i].checked) {
+                    vis = "block";
+                    break;
+                }
+            }
+            document.getElementById(box).style.display = vis;
+
+        }
+
+        function showInput(box) {
+            document.getElementById(box).style.display = "block";
+        }
+
+        function showNone(box) {
+            document.getElementById(box).style.display = "none";
+        }
+
+        function openOnglet(){
+         window.open("https://epaiement.allianceassurances.com.dz/documents/export/declaration_automobile.pdf", "_blank");
+}
+        function mapdata() {
+
+            var i = $('#num_police').val();
+            var data = donnes[i]
+
+
+          
+
+            $('#contrat_debut').val(data.date2);
+            $('#contrat_fin').val(data.EXPIRATION);
+
+            $('#name').val(data.NOM);
+            $('#prenom').val(data.PRENOM);
+            $('#adress').val(data.ADRESSE);
+            $('#profession').val(data.PROFFESSION);
+
+            $('#modele').val(data.model);
+            $('#marque').val(data.marque);
+            $('#matricule').val(data.matricule);
+
+        }
+    </script>
+
+
+@endsection

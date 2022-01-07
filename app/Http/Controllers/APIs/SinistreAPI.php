@@ -38,8 +38,12 @@ class SinistreAPI
     {
         //header("Access-Control-Allow-Origin: *");
         $data = $request->json()->all();
-        $id = $this->guidv4();
-
+        $index = "id";
+        if (!array_key_exists($index, $data)) {
+            $id = $this->guidv4();
+        } else {
+            $id = $data['id'];
+        }
         $this->createDossier($data, $id);
         $this->createVehicule($data['vehicle1'], $id);
 
