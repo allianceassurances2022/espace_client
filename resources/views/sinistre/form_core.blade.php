@@ -849,6 +849,11 @@
                                         <input type="file" name="myfile1" id="myfile1" accept="pdf/*">
                                     </div>
                                 </div>
+<<<<<<< HEAD
+                                <label class="col-sm-4">Veuillez ntroduire votre numéro de RIP</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
+=======
                                 
                                 <div id="cas_cheq" style="display: none">
                                     <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez :</label>
@@ -858,6 +863,7 @@
                                     <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
                                         value="recuperation"   style="width: 100px;  margin-right: -27px; margin-top: 23px;">
                                     <label class="form-check-label" style="font-size: 16px;">Récupération de l'agence</label>                                  
+>>>>>>> 467a737967ae7d88e44ea14217a18baaf3b17b54
                                 </div>
                             </div>
 

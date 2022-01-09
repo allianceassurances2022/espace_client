@@ -263,28 +263,21 @@ class SinistreAPI
 
     public function getSinistreById(Request $request)
     {
+
         $id_sinistre = $request->input('id_sinistre');
 
-        $sinistre = DossierVehicule::where('id_dossier', $id_sinistre)->get();
-        $sinistre = json_encode($sinistre);
-
-        /*
         $sinistre = DossierSinistre::where('id', $id_sinistre)->get();
         $sinistre = json_encode($sinistre);
 
-        $data = [
-            'vehicule' =>  $vehicule,
-            'sinistre' =>  $sinistre,
-        ];
-        */
         $data = $sinistre;
         print_r($data);
     }
     public function getVehiculeById(Request $request)
     {
+
         $id_sinistre = $request->input('id_sinistre');
 
-        $vehicule = DossierSinistre::where('id', $id_sinistre)->first();
+        $vehicule = DossierVehicule::where('id_dossier', $id_sinistre)->get();
         $vehicule = json_encode($vehicule);
 
         $data = $vehicule;
