@@ -112,20 +112,23 @@ class SinistreController extends Controller
 
     public function declare_sinistre(Request $request)
     {
-
+        //dd($request->contrat_debut);
         $vehicule1 =   [
             "account_id"                => 1,
             "num_police"                => $request->num_police,
             "car_serial"                => "6571465461846",
             "societe_assurance"         => "ALLIANCE ASSURANCE",
-            "contrat_debut"             => $request->contrat_debut,
+            "contrat_debut"             =>  $request->contrat_debut,
             "contrat_fin"               => $request->contrat_fin,
+            "came_from"                 => $request->came_from,
+            "go_to"                     => $request->go_to,
+            "date_cond"                 => $request->date_cond,
+            "permis"                    => $request->permis,
+            "num_permis_proprietaire"   => $request->permis,
             "nom_proprietaire"          => $request->name,
             "prenom_proprietaire"       => $request->prenom,
             "address_proprietaire"      => $request->adress,
             "profession_proprietaire"   => $request->profession,
-            "num_permis_proprietaire"   => "",
-            "date_permis_proprietaire"  => "",
             "tel_proprietaire"          => "0546982365",
             "model"                     => $request->modele,
             "marque"                    => $request->marque,
@@ -136,6 +139,7 @@ class SinistreController extends Controller
             "tel_conducteur"            => "054263985",
             "num_permis_conducteur"     => $request->permis,
             "date_permis_conducteur"    => $request->deliver,
+            "date_permis_proprietaire"  => $request->deliver,
             "categorie_conducteur"      => $request->categorie,
             "degat_conducteur"          => "test",
 
@@ -147,10 +151,13 @@ class SinistreController extends Controller
             "societe_assurance"         => $request->societe_assurance_adv,
             "contrat_debut"             => $request->contrat_debut_adv,
             "contrat_fin"               => $request->contrat_fin_adv,
+            "came_from"                 => $request->came_from,
+            "go_to"                     => $request->go_to,
             "nom_proprietaire"          => $request->name_adv,
             "prenom_proprietaire"       => $request->prenom_adv,
             "address_proprietaire"      => $request->adress_adv,
             "profession_proprietaire"   => $request->profession_adv,
+            "num_permis_proprietaire"   => $request->permis,
             "marque"                    => "",
             "immatriculation"           => "",
             "nom_conducteur"            => $request->name_cond_adv,
@@ -159,6 +166,7 @@ class SinistreController extends Controller
             "tel_conducteur"            => "056326541",
             "num_permis_conducteur"     => $request->permis_adv,
             "date_permis_conducteur"    => $request->deliver_adv,
+            "date_permis_proprietaire"  => $request->deliver,
             "categorie_conducteur"      => $request->categorie_adv,
             "degat_conducteur"          => "",
             "car_serial"                => ""
@@ -169,6 +177,12 @@ class SinistreController extends Controller
             "id"                        => $id,
             "account_id"                => 1,
             "user_id"                   => "",
+            "accident_date"             => $request->date_accident,
+            "accident_time"             => $request->heure_accident,
+            "accident_place"            => $request->lieu_accident,
+            "came_from"                 => $request->came_from,
+            "go_to"                     => $request->go_to,
+            "comment"                   => $request->comment,
             "isGendarmerie"             => $request->brigade,
             "isPolice"                  => $request->police,
             "brigade"                   => $request->brigade,
@@ -177,7 +191,7 @@ class SinistreController extends Controller
             "isPledged"                 => $request->gager,
             "nom_organism"              => $request->nom_organism,
             "adress_organism"           => $request->adress_organism,
-            "lourd"                     => $request->lourd,
+            "isHeavyWeights"            => $request->isHeavyWeights,
             "attele"                    => $request->attele,
             "poids_charge_second"       => $request->poids_charge_second,
             "num_imma_charge"           => $request->num_imma_charge,
@@ -195,23 +209,22 @@ class SinistreController extends Controller
             "facon_paiement"            => $request->facon_paiement
         ];
 
+      //  dd($request->myfile1);
+        if(!is_null($request->myfile1)){
+        $file = $request->file('myfile1');
+        $filename = $id. '_RIB.' . $file->getClientOriginalExtension();
+        $destinationPath = storage_path('app/public/Documents/Import');
+        $file_saved = $file->move($destinationPath,$filename);
+        }
+
+        if(!is_null($request->myfile)){
         $file = $request->file('myfile');
         $filename = $id. '.' . $file->getClientOriginalExtension();
         $destinationPath = storage_path('app/public/Documents/Import');
-        
         $file_saved = $file->move($destinationPath,$filename);
-        
-        //dd($file_saved);
-        
-       // $contents = Storage::put($destinationPath, $file);
-        //Image::make($file)->save($destinationPath .'/'.$filename);
-        //'declaration_automobile_Copie.pdf'
-      //  dd($contents );
-        
+        }
 
-
-       // $path = $request->file('file')->store('D:\DEV\GIT\EPAIEMENT\Document\Import\avatars.phf');
-       
+        dd(json_encode($data));
         $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
             ->send('POST', $url, ['body' => json_encode($data)])
@@ -234,7 +247,7 @@ class SinistreController extends Controller
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
 
         // Output the 36 character UUID.
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        return vsprintf('%s%s', str_split(bin2hex($data), 4));
     }
     
 }

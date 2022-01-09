@@ -279,7 +279,7 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Venant de</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="from" id="from" value="{{ old('from') }}">
+                                            <input type="text" name="came_from" id="came_from" value="{{ old('came_from') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +287,7 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Allant vers</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="to" name="to" value="{{ old('to') }}">
+                                            <input type="text" id="go_to" name="go_to" value="{{ old('go_to') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -388,7 +388,7 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Délivré le</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="deliver" id="deliver"
+                                            <input type="date" name="deliver" id="deliver"
                                                 value="{{ old('deliver') }}">
                                         </div>
                                     </div>
@@ -412,16 +412,16 @@
                                 <div class="col-md-6">
                                     <label class="col-sm-4 control-label">Date de naissance</label>
                                     <div class="col-sm-8">
-                                        <input type="date" id="adress_cond_adv" name="adress_cond_adv"
-                                            value="{{ old('adress_cond_adv') }}">
+                                        <input type="date" id="date_cond" name="date_cond"
+                                            value="{{ old('date_cond') }}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="col-sm-4 control-label">Numéro de téléphone</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="permis_adv" id="permis_adv"
-                                            value="{{ old('permis_adv') }}">
+                                        <input type="text" name="permis" id="permis"
+                                            value="{{ old('permis') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -528,7 +528,7 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Date de l'accident</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="date_accident" name="date_accident"
+                                            <input type="date" id="date_accident" name="date_accident"
                                                 value="{{ old('date_accident') }}">
                                         </div>
                                     </div>
@@ -553,8 +553,8 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Circonstances de l'accident</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="circonstances" id="circonstances"
-                                                value="{{ old('circonstances') }}">
+                                            <input type="text" name="comment" id="comment"
+                                                value="{{ old('comment') }}">
                                         </div>
                                     </div>
 
@@ -671,14 +671,14 @@
                                             <div class="col-md-6">
                                                 <label class="col-sm-4 control-label">S'agit-il d'un véhicule poids lourd</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id="lourd"
-                                                        name="lourd" value="1" onclick="showInput('div-lourd')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="isHeavyWeights"
+                                                        name="isHeavyWeights" value="1" onclick="showInput('div-lourd')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">oui</label>
-                                                    <input class="form-check-input" type="radio" id="lourd"
-                                                        name="lourd" value="0" onclick="showNone('div-lourd'),showNone('attele1'),nonInput('attele')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="isHeavyWeights"
+                                                        name="isHeavyWeights" value="0" onclick="showNone('div-lourd'),showNone('attele1'),nonInput('attele')" style="width: 100px;
                                                     margin-right: -27px;poids_charge
                                                     margin-top: 23px;">
                                                     <label class="form-check-label"
@@ -844,16 +844,11 @@
                                     <div class="col-sm-6">
                                         <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
                                     </div>
-                                    <label class="col-sm-4" for="myfile">Joindre le chèque</label>
+                                    <label class="col-sm-4" for="myfile1">Joindre le chèque</label>
                                     <div class="col-sm-6">
-                                        <input type="file" name="myfile1" id="myfile1" accept="pdf/*">
+                                        <input type="file" name="myfile1" id="myfile1" accept="application/pdf,image/*">
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                <label class="col-sm-4">Veuillez ntroduire votre numéro de RIP</label>
-                                <div class="col-sm-6">
-                                    <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
-=======
                                 
                                 <div id="cas_cheq" style="display: none">
                                     <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez :</label>
@@ -863,7 +858,6 @@
                                     <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
                                         value="recuperation"   style="width: 100px;  margin-right: -27px; margin-top: 23px;">
                                     <label class="form-check-label" style="font-size: 16px;">Récupération de l'agence</label>                                  
->>>>>>> 467a737967ae7d88e44ea14217a18baaf3b17b54
                                 </div>
                             </div>
 
@@ -880,26 +874,25 @@
                                 </div>
                             </div>
 
-                            <button data-dismiss="modal" type="submit" class="next action-button"
-                                value="Valider">{{ __('Valider') }}</button>
+                            <button data-dismiss="modal" type="submit" class="next action-button" value="Valider">Valider</button>
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
 
-                    </fieldset>
+                        </fieldset>
 
                 
 
 
 
                
-                </form>
+                    </form>
+
+                </div>
 
             </div>
-
         </div>
     </div>
-</div>
 </div>
 
 @section('js')
