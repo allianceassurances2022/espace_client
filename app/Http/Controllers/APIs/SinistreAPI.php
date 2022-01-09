@@ -247,9 +247,12 @@ class SinistreAPI
         $condition = $request->input('condition');
 
         // $sinistres = DossierSinistre::where('is_validate', $condition)->get();
+        /*
 
-
-
+        $sinistres = DossierSinistre::where('is_validate', $condition)->get();
+        $sinistres = json_encode($sinistres);
+        print_r($sinistres);
+*/
 
         $sql = "SELECT * FROM dossiers_sinistre where is_validate = " . $condition;
         $data = DB::connection('mysql')->select($sql);
@@ -272,16 +275,22 @@ class SinistreAPI
 
         $id_sinistre = $request->input('id_sinistre');
 
-        $sinistre = DossierSinistre::where('id', $id_sinistre)->get();
+        /*   $sinistre = DossierSinistre::where('id', $id_sinistre)->get();
         $sinistre = json_encode($sinistre);
 
         $data = $sinistre;
         print_r($data);
+        */
+        $sql = "SELECT * FROM dossiers_sinistre where id = '" . $id_sinistre . "'";
+        $data = DB::connection('mysql')->select($sql);
+        $sinistres = json_encode($data);
+        print_r($sinistres);
     }
     public function getVehiculeById(Request $request)
     {
 
         $id_sinistre = $request->input('id_sinistre');
+
 
         $vehicule = DossierVehicule::where('id_dossier', $id_sinistre)->get();
         $vehicule = json_encode($vehicule);

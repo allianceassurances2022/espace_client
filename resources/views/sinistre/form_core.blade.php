@@ -8,7 +8,8 @@
                         <h2 id="heading">Déclaration sinistre</h2>
                         <p>Déclarez votre sinitre en toute facilité</p>
                     </center>
-                    <form id="msform" method="POST" action="{{ route('declare_sinistre') }}" class="form-horizontal">
+                    <form id="msform" method="POST" action="{{ route('declare_sinistre') }}" class="form-horizontal"
+                        enctype="multipart/form-data">
                         @csrf
                         <!-- progressbar -->
 
@@ -18,7 +19,7 @@
                             <li id="payment"><strong>le véhicule</strong></li>
                             <li id="user"><strong>le conducteur</strong></li>
                             <li id="confirm"><strong>l'accident</strong></li>
-                            <li id="coins"><strong>Remboursement</strong></li>
+                            <li id="coins"><strong>Modalité de paiement</strong></li>
 
                         </ul>
                         <div class="progress">
@@ -34,6 +35,7 @@
                                             <div class="col-sm-8">
                                                 <select onclick="mapdata()" type="text" id="num_police"
                                                     name='num_police'>
+                                                    <option> </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -424,10 +426,10 @@
                                             value="{{ old('permis_adv') }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="col-sm-4 control-label">Étiez-vous au volant du
-                                        véhicule</label>
-                                    <div class="col-sm-8">
+                                <div class="col-md-12">
+                                    <label class="col-sm-3 control-label" style="margin-top: 15px;">Étiez-vous au
+                                        volant du véhicule</label>
+                                    <div class="col-sm-3" style="margin-left: -150px;">
                                         <input class="form-check-input" type="radio" id="au_volant" name="au_volant"
                                             value="1" style="width: 100px;
                                                 margin-right: -27px;
@@ -440,10 +442,10 @@
                                         <label class="form-check-label" style="font-size: 16px;">non</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="col-sm-4 control-label">Le conducteur réside-t-il chez
-                                        vous</label>
-                                    <div class="col-sm-8">
+                                <div class="col-md-12">
+                                    <label class="col-sm-3 control-label" style="margin-top: 15px;">Le conducteur
+                                        réside-t-il chez vous</label>
+                                    <div class="col-sm-3" style="margin-left: -150px;">
                                         <input class="form-check-input" type="radio" id="resid_cond" name="resid_cond"
                                             value="1" style="width: 100px;
                                             margin-right: -27px;
@@ -503,7 +505,7 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Délivré le</label>
                                             <div class="col-sm-8">
-                                                <input type="text" name="deliver_adv" id="deliver_adv"
+                                                <input type="date" name="deliver_adv" id="deliver_adv"
                                                     value="{{ old('deliver_adv') }}">
                                             </div>
                                         </div>
@@ -595,8 +597,6 @@
                                             </div>
                                             <div class="form-group" style="display: none" id="brigade1">
                                                 <div class="col-md-6">
-                                                </div>
-                                                <div class="col-md-6">
                                                     <label class="col-sm-4 control-label">Brigade ou commissariat
                                                         de</label>
                                                     <div class="col-sm-8">
@@ -640,8 +640,8 @@
                                                 <label class="col-sm-4 control-label">Votre véhicule est-il
                                                     gagé</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-check-input" type="radio" id=gager" name="gager"
-                                                        value="1" onclick="showInput('gage')" style="width: 100px;
+                                                    <input class="form-check-input" type="radio" id="gager"
+                                                        name="gager" value="1" onclick="showInput('gage')" style="width: 100px;
                                                 margin-right: -27px;
                                                 margin-top: 23px;">
                                                     <label class="form-check-label"
@@ -687,8 +687,10 @@
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="lourd"
-                                                        name="lourd" value="0" onclick="showNone('div-lourd')" style="width: 100px;
-                                                    margin-right: -27px;
+                                                        name="lourd" value="0"
+                                                        onclick="showNone('div-lourd'),showNone('attele1'),nonInput('attele')"
+                                                        style="width: 100px;
+                                                    margin-right: -27px;poids_charge
                                                     margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">non</label>
@@ -697,71 +699,56 @@
                                         </div>
 
                                         <div class="col-md-12" style="display: none" id="div-lourd">
-
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">était attelé à un autre
-                                                    véhicule
-                                                    (tracteur
-                                                    ou remorque) au moment de l'accident</label>
+                                                <label class="col-sm-4 control-label">était attelé à un autre véhicule
+                                                    (tracteur ou remorque) au moment de l'accident</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="attele"
-                                                        name="police" value="1" onclick="showInput('attele')" style="width: 100px;
+                                                        name="police" value="1" onclick="showInput('attele1')" style="width: 100px;
                                                             margin-right: -27px;
                                                             margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="attele"
-                                                        name="police" value="0" onclick="showNone('attele')" style="width: 100px;
+                                                        name="police" value="0" onclick="showNone('attele1')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">non</label>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">Poids total en
-                                                    charge(Kg)</label>
+                                                <label class="col-sm-4 control-label">Poids total en charge(Kg)
+                                                </label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="poids_charge" id="poids_charge_second"
+                                                    <input type="text" name="poids_charge" id="poids_charge"
                                                         value="{{ old('poids_charge') }}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-12" style="display: none" id="attele">
-                                                <div class="col-md-6">
-                                                    <label class="col-sm-4 control-label">Numéro d'immatriculation
-                                                        du
-                                                        2nd
-                                                        véhicule
-                                                    </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="num_imma_charge" id="num_imma_charge"
-                                                            value="{{ old('num_imma_charge') }}">
-                                                    </div>
+                                        </div>
+                                        <div class="col-md-12" style="display: none" id="attele1">
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">Numéro d'immatriculation du 2ème
+                                                    véhicule </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="num_imma_charge" id="num_imma_charge"
+                                                        value="{{ old('num_imma_charge') }}">
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label class="col-sm-4 control-label">Poids total en
-                                                        charge(Kg)</label>
-
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="poids_charge_second"
-                                                            id="poids_charge_second"
-                                                            value="{{ old('poids_charge_second') }}">
-                                                    </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">Nom de la société qui
+                                                    l'assure</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="assurance_second" id="assurance_second"
+                                                        value="{{ old('assurance_second') }}">
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label class="col-sm-4 control-label">Nom de la société qui
-                                                        l'assure</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="assurance_second" id="assurance_second"
-                                                            value="{{ old('assurance_second') }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="col-sm-4 control-label">N° de police</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="n_police_second" id="n_police_second"
-                                                            value="{{ old('n_police_second') }}">
-                                                    </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="col-sm-4 control-label">N° de police</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="n_police_second" id="n_police_second"
+                                                        value="{{ old('n_police_second') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -769,19 +756,17 @@
                                     <div class="form-group" style="margin-top: -25px;">
                                         <div class="col-md-12">
                                             <div class="col-md-6">
-                                                <label class="col-sm-4 control-label">Dégâts matériels autres que
-                                                    mon
-                                                    véhicule
-                                                    et celui de mon adversaire</label>
+                                                <label class="col-sm-4 control-label">Dégâts matériels autres que mon
+                                                    véhicule et celui de mon adversaire</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="degat"
-                                                        name="degat" value="1" onclick="showInput('dega')" style="width: 100px;
+                                                        name="degat" value="1" onclick="showInput('nature1')" style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="degat"
-                                                        name="autre_degat" value="0" onclick="showNone('degat')" style="width: 100px;
+                                                        name="degat" value="0" onclick="showNone('nature1')" style="width: 100px;
                                                     margin-right: -27px; margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">non</label>
@@ -790,7 +775,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div style="display: none" id="nature">
+                                    <div style="display: none" id="nature1">
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">Nature et importance</label>
                                             <div class="col-sm-8">
@@ -879,7 +864,7 @@
                                     </div>
                                     <label class="col-sm-4" for="myfile">Joindre le chèque</label>
                                     <div class="col-sm-6">
-                                        <input type="file" name="myfile" id="myfile" accept="pdf/*">
+                                        <input type="file" name="myfile1" id="myfile1" accept="pdf/*">
                                     </div>
                                 </div>
 
@@ -889,12 +874,13 @@
                                     <input class="form-check-input" type="radio" id="facon_paiement"
                                         name="facon_paiement" value="livrer"
                                         style="width: 100px;  margin-right: -27px; margin-top: 23px;">
-                                    <label class="form-check-label" style="font-size: 16px;">Livrer</label>
+                                    <label class="form-check-label" style="font-size: 16px;">Livraison</label>
                                     <input class="form-check-input" type="radio" id="facon_paiement"
                                         name="facon_paiement" value="recuperation"
                                         style="width: 100px;  margin-right: -27px; margin-top: 23px;">
                                     <label class="form-check-label" style="font-size: 16px;">Récupération de
                                         l'agence</label>
+
                                 </div>
                             </div>
 
@@ -917,19 +903,21 @@
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
+
+                        </fieldset>
+
+
+
+
+
+
+                    </form>
+
                 </div>
 
-
-
-                </fieldset>
-
-                </form>
-
             </div>
-
         </div>
     </div>
-</div>
 </div>
 
 @section('js')
@@ -1085,6 +1073,10 @@
             document.getElementById(box).style.display = "block";
         }
 
+        function nonInput(box) {
+            document.getElementById(box)[0].value = "0";
+        }
+
         function showNone(box) {
             document.getElementById(box).style.display = "none";
         }
@@ -1102,8 +1094,8 @@
 
 
 
-            $('#contrat_debut').val(data.date2);
-            $('#contrat_fin').val(data.EXPIRATION);
+            $('#contrat_debut').val(data.date1);
+            $('#contrat_fin').val(data.date2);
 
             $('#name').val(data.NOM);
             $('#prenom').val(data.PRENOM);
