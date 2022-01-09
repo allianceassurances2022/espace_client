@@ -10,7 +10,11 @@ use App\DossierVehicule;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use \Illuminate\Http\UploadedFile;
 
 
 class SinistreController extends Controller
@@ -60,15 +64,6 @@ class SinistreController extends Controller
         $codeAssures = $response;
 
         return $codeAssures;
-        // dd($codeAssures[0]['REFERENCE']);
-
-        //    $dataAssure = DossierSinistre::where('user_id', $user_id)->get();
-        //    $codeAssures = $dataAssure->pluck('num_police');
-
-
-        // $request->session()->put('cookies', $response);
-
-        // dd($request);
     }
 
 
@@ -117,8 +112,6 @@ class SinistreController extends Controller
 
     public function declare_sinistre(Request $request)
     {
-
-     //   dd($request);
 
         $vehicule1 =   [
             "account_id"                => 1,
@@ -173,7 +166,7 @@ class SinistreController extends Controller
         ];
         $id = $this->guidv4();
         $data = [
-         //   "id"                        => $id,
+            "id"                        => $id,
             "account_id"                => 1,
             "user_id"                   => "",
             "isGendarmerie"             => $request->brigade,
@@ -202,9 +195,26 @@ class SinistreController extends Controller
             "facon_paiement"            => $request->facon_paiement
         ];
 
+        $file = $request->file('myfile');
+        $filename = $id. '.' . $file->getClientOriginalExtension();
+        $destinationPath = storage_path('app/public/Documents/Import');
+        
+        $file_saved = $file->move($destinationPath,$filename);
+        
+        //dd($file_saved);
+        
+       // $contents = Storage::put($destinationPath, $file);
+        //Image::make($file)->save($destinationPath .'/'.$filename);
+        //'declaration_automobile_Copie.pdf'
+      //  dd($contents );
+        
+
+
+       // $path = $request->file('file')->store('D:\DEV\GIT\EPAIEMENT\Document\Import\avatars.phf');
+       
         $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
-            ->send('POST', $url, ['body' => $data])
+            ->send('POST', $url, ['body' => json_encode($data)])
             ->json();
 
 
