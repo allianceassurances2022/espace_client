@@ -32,7 +32,8 @@
                                         <div class="col-md-6">
                                             <label class="col-sm-4 control-label">N° Police d'assurance</label>
                                             <div class="col-sm-8">
-                                                <select onclick="mapdata()" type="text" id="num_police" name='num_police'>
+                                                <select onclick="mapdata()" type="text" id="num_police"
+                                                    name='num_police'>
                                                 </select>
                                             </div>
                                         </div>
@@ -881,36 +882,35 @@
                                         <input type="file" name="myfile" id="myfile" accept="pdf/*">
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                <label class="col-sm-4">Veuillez ntroduire votre numéro de RIP</label>
-                                <div class="col-sm-6">
-                                    <input type="text" name="rip" id="rip" value="{{ old('num_rip') }}">
-=======
-                                
+
                                 <div id="cas_cheq" style="display: none">
-                                    <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez :</label>
-                                        <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
-                                        value="livrer"  style="width: 100px;  margin-right: -27px; margin-top: 23px;">
+                                    <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez
+                                        :</label>
+                                    <input class="form-check-input" type="radio" id="facon_paiement"
+                                        name="facon_paiement" value="livrer"
+                                        style="width: 100px;  margin-right: -27px; margin-top: 23px;">
                                     <label class="form-check-label" style="font-size: 16px;">Livrer</label>
-                                    <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
-                                        value="recuperation"   style="width: 100px;  margin-right: -27px; margin-top: 23px;">
-                                    <label class="form-check-label" style="font-size: 16px;">Récupération de l'agence</label>                                  
->>>>>>> 467a737967ae7d88e44ea14217a18baaf3b17b54
+                                    <input class="form-check-input" type="radio" id="facon_paiement"
+                                        name="facon_paiement" value="recuperation"
+                                        style="width: 100px;  margin-right: -27px; margin-top: 23px;">
+                                    <label class="form-check-label" style="font-size: 16px;">Récupération de
+                                        l'agence</label>
                                 </div>
                             </div>
 
-                        <div class="col-md-12">
-                            <br>
-                            <hr>
-                            <br>
-                            <br>
-                            <div class="col-md-6" name="formulaire" id="formulaire" >
-                            <a href="#" onclick="openOnglet()">Télécharger formulaire</a>
+                            <div class="col-md-12">
+                                <br>
+                                <hr>
+                                <br>
+                                <br>
+                                <div class="col-md-6" name="formulaire" id="formulaire">
+                                    <a href="#" onclick="openOnglet()">Télécharger formulaire</a>
+                                </div>
+                                <div class="col-md-6" name="formulaire" id="formulaire">
+                                    <input type="file" value="Importer formulaire" name="myfile" id="myfile"
+                                        accept="pdf/*">
+                                </div>
                             </div>
-                            <div class="col-md-6" name="formulaire" id="formulaire" >
-                            <input type="file" value="Importer formulaire" name="myfile" id="myfile" accept="pdf/*">    
-                            </div>
-                        </div>
 
                             <button data-dismiss="modal" type="submit" class="next action-button"
                                 value="Valider">{{ __('Valider') }}</button>
@@ -1089,16 +1089,18 @@
             document.getElementById(box).style.display = "none";
         }
 
-        function openOnglet(){
-         window.open("https://epaiement.allianceassurances.com.dz/documents/export/declaration_automobile.pdf", "_blank");
-}
+        function openOnglet() {
+            window.open("https://epaiement.allianceassurances.com.dz/documents/export/declaration_automobile.pdf",
+            "_blank");
+        }
+
         function mapdata() {
 
             var i = $('#num_police').val();
             var data = donnes[i]
 
 
-          
+
 
             $('#contrat_debut').val(data.date2);
             $('#contrat_fin').val(data.EXPIRATION);

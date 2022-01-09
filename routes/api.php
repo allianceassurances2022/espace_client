@@ -37,7 +37,9 @@ Route::get('/get_sinistre', 'APIs\SinistreAPI@getAllDossierSinistre')->name('api
 Route::get('/all_sinistre', 'APIs\SinistreAPI@AllDossierSinistre');
 Route::get('/all_vehicule', 'APIs\SinistreAPI@AllVehicules');
 Route::get('/getSinistreById', 'APIs\SinistreAPI@getSinistreById');
-Route::get('/getVehiculeById', 'APIs\SinistreAPI@getVehiculeById');
+Route::get('/validateSinistre', 'APIs\SinistreAPI@validateSinistre');
+
+
 
 
 Route::get('/get_wilaya', 'APIs\WilayaAPI@getWilayas');

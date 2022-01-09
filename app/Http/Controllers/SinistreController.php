@@ -118,7 +118,7 @@ class SinistreController extends Controller
     public function declare_sinistre(Request $request)
     {
 
-     //   dd($request);
+        dd($request);
 
         $vehicule1 =   [
             "account_id"                => 1,
@@ -140,7 +140,7 @@ class SinistreController extends Controller
             "nom_conducteur"            => $request->name_cond,
             "prenom_conducteur"         => $request->prenom_cond,
             "adresse_conducteur"        => $request->adress_cond,
-            "tel_conducteur"            => "054263985",
+            "tel_conducteur"            =>  "0552204156",
             "num_permis_conducteur"     => $request->permis,
             "date_permis_conducteur"    => $request->deliver,
             "categorie_conducteur"      => $request->categorie,
@@ -173,7 +173,7 @@ class SinistreController extends Controller
         ];
         $id = $this->guidv4();
         $data = [
-         //   "id"                        => $id,
+            //   "id"                        => $id,
             "account_id"                => 1,
             "user_id"                   => "",
             "isGendarmerie"             => $request->brigade,
@@ -209,7 +209,6 @@ class SinistreController extends Controller
 
 
         return view('sinistre.validation', compact('response'));
-  
     }
 
     function guidv4()
@@ -226,5 +225,4 @@ class SinistreController extends Controller
         // Output the 36 character UUID.
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
-    
 }
