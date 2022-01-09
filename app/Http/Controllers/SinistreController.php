@@ -74,7 +74,6 @@ class SinistreController extends Controller
         // $user_id = Auth::user()->id;
 
         $num_polices = $request->num_police;
-
         $num_polices = str_replace(' ', '', $num_polices);
 
         $vehicule = DossierVehicule::where('num_police', 160832111000044)->first();
@@ -112,13 +111,13 @@ class SinistreController extends Controller
 
     public function declare_sinistre(Request $request)
     {
-        //dd($request->contrat_debut);
+
         $vehicule1 =   [
             "account_id"                => 1,
-            "num_police"                => $request->num_police,
+            "num_police"                => str_replace(' ', '', $request->police_numero),
             "car_serial"                => "6571465461846",
             "societe_assurance"         => "ALLIANCE ASSURANCE",
-            "contrat_debut"             =>  $request->contrat_debut,
+            "contrat_debut"             => $request->contrat_debut,
             "contrat_fin"               => $request->contrat_fin,
             "came_from"                 => $request->came_from,
             "go_to"                     => $request->go_to,
@@ -224,7 +223,7 @@ class SinistreController extends Controller
         $file_saved = $file->move($destinationPath,$filename);
         }
 
-        dd(json_encode($data));
+        
         $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
             ->send('POST', $url, ['body' => json_encode($data)])

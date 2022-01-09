@@ -169,21 +169,26 @@
         function showInput(box) {
             document.getElementById(box).style.display = "block";
         }
+        function nonInput(box) {
+            document.getElementById(box)[0].value = "0";
+        }
 
         function showNone(box) {
             document.getElementById(box).style.display = "none";
         }
 
+        function openOnglet(){
+         window.open("https://epaiement.allianceassurances.com.dz/documents/export/declaration_automobile.pdf", "_blank");
+        }
         function mapdata() {
 
             var i = $('#num_police').val();
             var data = donnes[i]
-
-
+            $('#police_numero').val(data.REFERENCE);
           
 
-            $('#contrat_debut').val(data.date2);
-            $('#contrat_fin').val(data.EXPIRATION);
+            $('#contrat_debut').val(data.date1);
+            $('#contrat_fin').val(data.date2);
 
             $('#name').val(data.NOM);
             $('#prenom').val(data.PRENOM);
