@@ -45,7 +45,6 @@ class SinistreController extends Controller
         }
     }
 
-
     public function getSinistres()
     {
 
@@ -66,14 +65,11 @@ class SinistreController extends Controller
         return $codeAssures;
     }
 
-
-
     public function getData(Request $request)
     {
-       
+
 
         $num_polices = $request->num_police;
-
         $num_polices = str_replace(' ', '', $num_polices);
 
         // dd($num_polices);
@@ -113,13 +109,12 @@ class SinistreController extends Controller
 
     public function declare_sinistre(Request $request)
     {
-       
         $vehicule1 =   [
             "account_id"                => 1,
-            "num_police"                => $request->num_police,
+            "num_police"                => str_replace(' ', '', $request->police_numero),
             "car_serial"                => "6571465461846",
             "societe_assurance"         => "ALLIANCE ASSURANCE",
-            "contrat_debut"             =>  $request->contrat_debut,
+            "contrat_debut"             => $request->contrat_debut,
             "contrat_fin"               => $request->contrat_fin,
             "came_from"                 => $request->came_from,
             "go_to"                     => $request->go_to,
@@ -209,7 +204,7 @@ class SinistreController extends Controller
             "type_paiement"             => $request->type_paiment,
             "facon_paiement"            => $request->facon_paiement
         ];
-       
+
         if (!is_null($request->myfile1)) {
             $file = $request->file('myfile1');
             $filename = $id . '_RIB.' . $file->getClientOriginalExtension();
@@ -222,32 +217,29 @@ class SinistreController extends Controller
             $filename = $id . '.' . $file->getClientOriginalExtension();
             $destinationPath = storage_path('app/public/Documents/Import');
 
-            $file_saved = $file->move($destinationPath, $filename);
+
+            $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
+            $response = Http::contentType("application/json")
+                ->send('POST', $url, ['body' => json_encode($data)])
+                ->json();
+
+
+            return view('sinistre.validation', compact('response'));
         }
-      
-        $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
-        $response = Http::contentType("application/json")
-            ->send('POST', $url, ['body' => json_encode($data)])
-            ->json();
 
+        function guidv4()
+        {
+            // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
+            $data = random_bytes(16);
+            assert(strlen($data) == 16);
 
-        return view('sinistre.validation', compact('response'));
+            // Set version to 0100
+            $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+            // Set bits 6-7 to 10
+            $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+
+            // Output the 36 character UUID.
+            return vsprintf('%s%s', str_split(bin2hex($data), 4));
+        }
     }
-
-    function guidv4()
-    {
-        // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-        $data = random_bytes(16);
-        assert(strlen($data) == 16);
-
-        // Set version to 0100
-        $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
-        // Set bits 6-7 to 10
-        $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
-
-        // Output the 36 character UUID.
-        return vsprintf('%s%s', str_split(bin2hex($data), 4));
-    }
-
-    public function 
 }
