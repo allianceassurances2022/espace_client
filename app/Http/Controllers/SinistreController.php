@@ -70,14 +70,13 @@ class SinistreController extends Controller
 
     public function getData(Request $request)
     {
-
-        // $user_id = Auth::user()->id;
+       
 
         $num_polices = $request->num_police;
 
         $num_polices = str_replace(' ', '', $num_polices);
 
-        dd($num_polices);
+        // dd($num_polices);
 
         $vehicule = DossierVehicule::where('num_police',  1000001460443)->first();
         $sinistre = DossierSinistre::where('num_police',  1000001460443)->first();
@@ -114,7 +113,7 @@ class SinistreController extends Controller
 
     public function declare_sinistre(Request $request)
     {
-        //dd($request->contrat_debut);
+       
         $vehicule1 =   [
             "account_id"                => 1,
             "num_police"                => $request->num_police,
@@ -210,8 +209,7 @@ class SinistreController extends Controller
             "type_paiement"             => $request->type_paiment,
             "facon_paiement"            => $request->facon_paiement
         ];
-
-        //  dd($request->myfile1);
+       
         if (!is_null($request->myfile1)) {
             $file = $request->file('myfile1');
             $filename = $id . '_RIB.' . $file->getClientOriginalExtension();
@@ -226,17 +224,7 @@ class SinistreController extends Controller
 
             $file_saved = $file->move($destinationPath, $filename);
         }
-        //dd($file_saved);
-
-        // $contents = Storage::put($destinationPath, $file);
-        //Image::make($file)->save($destinationPath .'/'.$filename);
-        //'declaration_automobile_Copie.pdf'
-        //  dd($contents );
-
-
-
-        // $path = $request->file('file')->store('D:\DEV\GIT\EPAIEMENT\Document\Import\avatars.phf');
-
+      
         $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
         $response = Http::contentType("application/json")
             ->send('POST', $url, ['body' => json_encode($data)])
@@ -260,4 +248,6 @@ class SinistreController extends Controller
         // Output the 36 character UUID.
         return vsprintf('%s%s', str_split(bin2hex($data), 4));
     }
+
+    public function 
 }
