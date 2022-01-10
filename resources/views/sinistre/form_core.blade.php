@@ -8,12 +8,8 @@
                         <h2 id="heading">Déclaration sinistre</h2>
                         <p>Déclarez votre sinitre en toute facilité</p>
                     </center>
-<<<<<<< HEAD
                     <form id="msform" method="POST" action="{{ route('declare_sinistre') }}" class="form-horizontal"
-                        enctype="multipart/form-data">
-=======
-                    <form id="msform" method="POST" action="{{ route('declare_sinistre') }}" class="form-horizontal" enctype="multipart/form-data" novalidate>
->>>>>>> f5a2db0cf5b7fb7a1339297d3175a799abb54128
+                        enctype="multipart/form-data" novalidate>
                         @csrf
                         <!-- progressbar -->
 
@@ -285,7 +281,8 @@
                                     <div class="col-md-6">
                                         <label class="col-sm-4 control-label">Venant de</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="came_from" id="came_from" value="{{ old('came_from') }}">
+                                            <input type="text" name="came_from" id="came_from"
+                                                value="{{ old('came_from') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -426,8 +423,7 @@
                                 <div class="col-md-6">
                                     <label class="col-sm-4 control-label">Numéro de téléphone</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="permis" id="permis"
-                                            value="{{ old('permis') }}">
+                                        <input type="text" name="permis" id="permis" value="{{ old('permis') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -685,13 +681,16 @@
                                                     lourd</label>
                                                 <div class="col-sm-8">
                                                     <input class="form-check-input" type="radio" id="isHeavyWeights"
-                                                        name="isHeavyWeights" value="1" onclick="showInput('div-lourd')" style="width: 100px;
+                                                        name="isHeavyWeights" value="1" onclick="showInput('div-lourd')"
+                                                        style="width: 100px;
                                                         margin-right: -27px;
                                                         margin-top: 23px;">
                                                     <label class="form-check-label"
                                                         style="font-size: 16px;">oui</label>
                                                     <input class="form-check-input" type="radio" id="isHeavyWeights"
-                                                        name="isHeavyWeights" value="0" onclick="showNone('div-lourd'),showNone('attele1'),nonInput('attele')" style="width: 100px;
+                                                        name="isHeavyWeights" value="0"
+                                                        onclick="showNone('div-lourd'),showNone('attele1'),nonInput('attele')"
+                                                        style="width: 100px;
                                                     margin-right: -27px;poids_charge
                                                     margin-top: 23px;">
                                                     <label class="form-check-label"
@@ -869,7 +868,7 @@
                                         <input type="file" name="myfile1" id="myfile1" accept="application/pdf,image/*">
                                     </div>
                                 </div>
-                                
+
                                 <div id="cas_cheq" style="display: none">
                                     <label class="col-md-12" style="font-size: 25px;">Est-ce que vous voulez
                                         :</label>
@@ -877,9 +876,11 @@
                                         name="facon_paiement" value="livrer"
                                         style="width: 100px;  margin-right: -27px; margin-top: 23px;">
                                     <label class="form-check-label" style="font-size: 16px;">Livraison</label>
-                                    <input class="form-check-input" type="radio" id="facon_paiement" name="facon_paiement"
-                                        value="recuperation"   style="width: 100px;  margin-right: -27px; margin-top: 23px;">
-                                    <label class="form-check-label" style="font-size: 16px;">Récupération de l'agence</label>                                  
+                                    <input class="form-check-input" type="radio" id="facon_paiement"
+                                        name="facon_paiement" value="recuperation"
+                                        style="width: 100px;  margin-right: -27px; margin-top: 23px;">
+                                    <label class="form-check-label" style="font-size: 16px;">Récupération de
+                                        l'agence</label>
                                 </div>
                             </div>
 
@@ -899,7 +900,8 @@
 
 
                             <input type="hidden" name="police_numero" id="police_numero" />
-                            <button data-dismiss="modal" type="submit" class="next action-button" value="Valider">Valider</button>
+                            <button data-dismiss="modal" type="submit" class="next action-button"
+                                value="Valider">Valider</button>
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Précédent" />
 
@@ -909,7 +911,7 @@
 
 
 
-               
+
                     </form>
 
                 </div>
@@ -918,4 +920,3 @@
         </div>
     </div>
 </div>
-

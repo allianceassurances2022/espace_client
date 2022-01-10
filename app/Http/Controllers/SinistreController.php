@@ -25,11 +25,6 @@ class SinistreController extends Controller
         return view('sinistre.declaration');
     }
 
-    public function logged()
-    {
-        return view('');
-    }
-
     public function index(Request $request)
     {
 
@@ -216,30 +211,99 @@ class SinistreController extends Controller
             $file = $request->file('myfile');
             $filename = $id . '.' . $file->getClientOriginalExtension();
             $destinationPath = storage_path('app/public/Documents/Import');
-
-
-            $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
-            $response = Http::contentType("application/json")
-                ->send('POST', $url, ['body' => json_encode($data)])
-                ->json();
-
-
-            return view('sinistre.validation', compact('response'));
         }
 
-        function guidv4()
-        {
-            // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-            $data = random_bytes(16);
-            assert(strlen($data) == 16);
+        $url = 'https://epaiement.allianceassurances.com.dz/public/api/create_sinistre';
+        $response = Http::contentType("application/json")
+            ->send('POST', $url, ['body' => json_encode($data)])
+            ->json();
 
-            // Set version to 0100
-            $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
-            // Set bits 6-7 to 10
-            $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+        //Send Mail to user to validate the declaration 
+        if (Auth::user()) {
 
-            // Output the 36 character UUID.
-            return vsprintf('%s%s', str_split(bin2hex($data), 4));
+            //  $email = Auth::user()->email;
+            $email = "shariti@allianceassurances.com.dz";
+
+            $numero_police = str_replace(' ', '', $request->police_numero);
+            $information = "Circanstances de l'accident ";
+            $this->envoiMail($email, $numero_police, $information);
+        } else {
+            print("not connected recuperation de l'email de la base AARIS");
+        }
+
+
+
+        return view('sinistre.validation', compact('response'));
+    }
+    function guidv4()
+    {
+        // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
+        $data = random_bytes(16);
+        assert(strlen($data) == 16);
+
+        // Set version to 0100
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+        // Set bits 6-7 to 10
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+
+        // Output the 36 character UUID.
+        return vsprintf('%s%s', str_split(bin2hex($data), 4));
+    }
+    /*   public function envoiMail($email, $numero_police, $information)
+    {
+        if (($email !== '') && ($email !== null)) {
+
+            $destinataire = $email;
+            // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
+            $objet = 'Création sinistre'; // Objet du message
+            $message = 'Votre sinistre à bien été enregistré sous le numéro de police :' . $numero_police . '\n' . $information;
+
+            $headers = 'From: Alliance' . "\r\n" .
+                'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
+                'X-Mailer: PHP/';
+
+            $success = mail($destinataire, $objet, $message, $headers);
+
+            if (!$success) {
+                $errorMessage = error_get_last();
+                echo $errorMessage;
+                // echo "Votre message n'a pas pu être envoyé";
+
+            }
+        }
+    }
+*/
+    public function envoiMail($email, $numero_police, $information)
+    {
+        if (($email !== '') && ($email !== null)) {
+
+            $template_file = "../../../resources/views/layouts/mail_template.php";
+            $destinataire = $email;
+            // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
+            $objet = 'Création sinistre'; // Objet du message        
+
+            $headers = 'From: Alliance' . "\r\n" .
+                'Reply-To: webmaster@allianceassurances.com.dz' . "\r\n" .
+                'X-Mailer: PHP/';
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            //  $message = 'Votre sinistre à bien été enregistré sous le numéro de police :' . $numero_police . '\n' . $information;
+
+            if (file_exists($template_file)) {
+                $message = file_get_contents($template_file);
+            } else {
+                die("unable to locate the template file");
+            }
+
+            $success = mail($destinataire, $objet, $message, $headers);
+
+            if (!$success) {
+                $errorMessage = error_get_last();
+                echo $errorMessage;
+                // echo "Votre message n'a pas pu être envoyé";
+
+            }
         }
     }
 }

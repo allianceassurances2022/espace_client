@@ -288,9 +288,7 @@ class SinistreAPI
     }
     public function getVehiculeById(Request $request)
     {
-
         $id_sinistre = $request->input('id_sinistre');
-
 
         $vehicule = DossierVehicule::where('id_dossier', $id_sinistre)->get();
         $vehicule = json_encode($vehicule);
