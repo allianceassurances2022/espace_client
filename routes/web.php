@@ -182,6 +182,8 @@ Route::get('attestation/{id}', 'TarificationAutoController@attestation')->name('
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/calculemrh', 'TarificationService@calculeMRH')->name('calculemrh');
 
+
+
 ///////////////////////////// Eden
 
 Route::get('/eden_page', 'EdenController@index')->name('eden_page');
@@ -189,3 +191,8 @@ Route::get('/eden_data', 'EdenController@data_demande')->name('eden_data');
 
 
 Auth::routes();
+
+
+//zoom
+Route::get('/buttonzoom', 'ImageController@index')->name('indexZoom');
+Route::post('/expertiseMeeting', 'ImageController@zoomMeeting')->name('expertiseMeeting');

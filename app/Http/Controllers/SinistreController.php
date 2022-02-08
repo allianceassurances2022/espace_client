@@ -277,8 +277,20 @@ class SinistreController extends Controller
     {
         if (($email !== '') && ($email !== null)) {
 
-            $template_file = "../../../resources/views/layouts/mail_template.php";
+         //   $template_file = "../../../resources/views/layouts/mail_template.php";
+            $template_file = '/app/Http/Controllers/mail_template.php';
             $destinataire = $email;
+
+            $swap_var = array(
+                "{SITE_ADDR}" => "https://www.heytuts.com",
+                "{EMAIL_LOGO}" => "https://www.heytuts.com/images/logo_emailer.png",
+                "{EMAIL_TITLE}" => "Send custom HTML emails with a PHP script!",
+                "{CUSTOM_URL}" => "https://www.heytuts.com/web-dev/php/send-emails-with-php-from-localhost-with-sendmail",
+                "{CUSTOM_IMG}" => "https://i1.wp.com/www.heytuts.com/wp-content/uploads/2019/05/thumbnail_Send-emails-with-php-from-localhost-with-SendMail.png",
+                "{TO_NAME}" => "THEIR_NAME",
+                "{TO_EMAIL}" => "this_person@their_website.com"
+            );
+
             // Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
             $objet = 'Création sinistre'; // Objet du message        
 
@@ -295,6 +307,14 @@ class SinistreController extends Controller
             } else {
                 die("unable to locate the template file");
             }
+
+            // search and replace for predefined variables, like SITE_ADDR, {NAME}, {lOGO}, {CUSTOM_URL} etc
+            foreach (array_keys($swap_var) as $key){
+                if (strlen($key) > 2 && trim($swap_var[$key]) != '')
+                    $email_message = str_replace($key, $swap_var[$key], $email_message);
+            }
+
+          
 
             $success = mail($destinataire, $objet, $message, $headers);
 
