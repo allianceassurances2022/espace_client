@@ -277,7 +277,7 @@ class SinistreController extends Controller
     {
         if (($email !== '') && ($email !== null)) {
 
-         //   $template_file = "../../../resources/views/layouts/mail_template.php";
+            //   $template_file = "../../../resources/views/layouts/mail_template.php";
             $template_file = '/app/Http/Controllers/mail_template.php';
             $destinataire = $email;
 
@@ -309,12 +309,12 @@ class SinistreController extends Controller
             }
 
             // search and replace for predefined variables, like SITE_ADDR, {NAME}, {lOGO}, {CUSTOM_URL} etc
-            foreach (array_keys($swap_var) as $key){
+            foreach (array_keys($swap_var) as $key) {
                 if (strlen($key) > 2 && trim($swap_var[$key]) != '')
                     $email_message = str_replace($key, $swap_var[$key], $email_message);
             }
 
-          
+
 
             $success = mail($destinataire, $objet, $message, $headers);
 

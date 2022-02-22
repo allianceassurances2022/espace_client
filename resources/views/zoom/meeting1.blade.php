@@ -1,17 +1,6 @@
-@extends('zoom.layouts.default')
+<!DOCTYPE html>
 
-@section('head_title')
-    Zoom meeting
-@endsection
-
-@section('title')
-    Zoom meeting
-@endsection
-
-
-@section('head')
-    <!-- Dropzone css -->
-    <link href="{{ asset('assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css">
+<head>
     <title>Zoom WebSDK</title>
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="js/lib/bootstrap.css" />
@@ -19,34 +8,30 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="origin-trial" content="">
-    <style>
-        img.illustration {
-            width: 25%;
-            margin: auto;
-            margin-bottom: 15px;
-        }
+</head>
+<style type="text/css">
+    #zmmtg-root {
+        position: relative;
+        top: 8px;
+        right: 8px;
+        display: block;
+    }
 
-        button {
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+</style>
 
-    </style>
-@endsection
+<body>
+    </div>
 
-@section('content')
     <div id="meetingSDKElement"></div>
     <br>
-    <div id="zmmtg-root" style="display: block;margin-top: 10px;"></div>
+    <div id="zmmtg-root" style="right: 8px;display: block;margin-top: 62px;"></div>
     <br>
     <br>
     <div id="aria-notify-area"></div>
-@endsection
 
 
 
-@section('js')
+
     <script src="{{ asset('assets/js/lib/react.min.js') }}"></script>
     <script src="{{ asset('assets/js/lib/react-dom.min.js') }}"></script>
     <script src="{{ asset('assets/js/lib/redux.min.js') }}"></script>
@@ -136,4 +121,7 @@
             }
         });
     </script>
-@endsection
+
+</body>
+
+</html>
